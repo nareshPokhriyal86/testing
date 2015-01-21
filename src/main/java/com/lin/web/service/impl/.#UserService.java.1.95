@@ -1,0 +1,2740 @@
+package com.lin.web.service.impl;
+
+import java.io.BufferedInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Logger;
+
+import org.apache.commons.io.IOUtils;
+
+import com.lin.persistance.dao.IUserDetailsDAO;
+import com.lin.persistance.dao.impl.UserDetailsDAO;
+import com.lin.server.Exception.DataServiceException;
+import com.lin.server.bean.AccountsHistObj;
+import com.lin.server.bean.AccountsObj;
+import com.lin.server.bean.AuthorisationText;
+import com.lin.server.bean.CompanyHistObj;
+import com.lin.server.bean.CompanyObj;
+import com.lin.server.bean.DfpBQMappingObj;
+import com.lin.server.bean.EmailAuthObj;
+import com.lin.server.bean.PropertyHistObj;
+import com.lin.server.bean.PropertyObj;
+import com.lin.server.bean.RolesAndAuthorisation;
+import com.lin.server.bean.TeamPropertiesHistObj;
+import com.lin.server.bean.TeamPropertiesObj;
+import com.lin.server.bean.UserDetailsHistObj;
+import com.lin.server.bean.UserDetailsObj;
+import com.lin.web.dto.AdServerCredentialsDTO;
+import com.lin.web.dto.CommonDTO;
+import com.lin.web.dto.LineItemDTO;
+import com.lin.web.dto.LoginDetailsDTO;
+import com.lin.web.dto.RolesAndAuthorisationDTO;
+import com.lin.web.dto.UserDetailsDTO;
+import com.lin.web.service.IMediaPlanService;
+import com.lin.web.service.IUserService;
+import com.lin.web.servlet.StorageServiceServlet;
+import com.lin.web.util.ClientLoginAuth;
+import com.lin.web.util.DateUtil;
+import com.lin.web.util.EmailUtil;
+import com.lin.web.util.EncriptionUtil;
+import com.lin.web.util.LinMobileConstants;
+import com.lin.web.util.LinMobileVariables;
+import com.lin.web.util.MemcacheUtil;
+
+public class UserService implements IUserService{
+	private static final Logger log = Logger.getLogger(LinMobileBusinessService.class.getName());
+
+	@Override
+	public Boolean loginAuthentication(LoginDetailsDTO login) throws Exception {
+		log.info("inside loginAuthentication of UserService");
+		Boolean isAuthenticate = false;
+		String emailId=login.getEmailId();
+		String password=login.getPassword();
+		String encriptedPassword = EncriptionUtil.getEncriptedStrMD5(password);
+		IUserDetailsDAO userDAO = new UserDetailsDAO();
+		UserDetailsObj userDetails = userDAO.getUserDetails(emailId, encriptedPassword);
+		if(userDetails!=null && userDetails.getEmailId()!=null && userDetails.getStatus() != null && userDetails.getStatus().equalsIgnoreCase(LinMobileConstants.STATUS_ARRAY[0])){ 
+			if(userDetails.getRole()!=null){
+				login.setRoleId(String.valueOf(userDetails.getRole()));
+				List<RolesAndAuthorisation> rolesAndAuthorisationList = MemcacheUtil.getAllRolesAndAuthorisationList();
+				RolesAndAuthorisation rolesAndAuthorisation = userDAO.getRolesAndAuthorisationByRoleId(userDetails.getRole(), rolesAndAuthorisationList);
+				if(rolesAndAuthorisation != null) {
+					login.setRoleName(rolesAndAuthorisation.getRoleName().trim());
+					if(rolesAndAuthorisation.getRoleName().trim().equalsIgnoreCase(LinMobileConstants.ADMINS[0])) {
+						login.setSuperAdmin(true);
+					}
+					else {
+						login.setSuperAdmin(false);
+					}
+					if(rolesAndAuthorisation.getRoleName().trim().equalsIgnoreCase(LinMobileConstants.ADMINS[1])) {
+						login.setAdminUser(true);
+					}
+					else { 
+						login.setAdminUser(false);
+					}
+				} 
+				else {
+					return false;
+				}
+			} 
+			else {
+				return false;
+			}
+			login.setIsAuthenticated("true");
+			login.setEmailId(userDetails.getEmailId().trim());
+			if(userDetails.getId() > 0){
+				login.setUserId(userDetails.getId());	
+			}
+			String userName ="";
+			if(userDetails.getUserName()!=null){
+				userName = userDetails.getUserName();
+			}
+			login.setUserName(userName);
+			isAuthenticate = true;
+			login.setLoginStatus("active");
+			if(!login.isSuperAdmin()) {			// if not a superAdmin
+				CompanyObj companyObj = userDAO.getNonSuperAdminCompany(userDetails, MemcacheUtil.getAllTeamPropertiesObjList(), MemcacheUtil.getAllCompanyList());
+				if(companyObj != null && companyObj.getStatus().equals(LinMobileConstants.STATUS_ARRAY[0])) {
+					if(login.isAdminUser() && companyObj.getCompanyType() != null && companyObj.getCompanyType().equals(LinMobileConstants.COMPANY_TYPE[0])) { 	// if Admin user
+						login.setPublisherPoolPartner(true);
+					}
+					if(companyObj.getCompanyLogoURL() != null && companyObj.getCompanyLogoURL().length() > 0) {
+						login.setCompanyLogoURL(companyObj.getCompanyLogoURL());
+					}
+				}
+			}
+		}
+		else if(userDetails!=null && userDetails.getEmailId()!=null && userDetails.getStatus() != null && userDetails.getStatus().equalsIgnoreCase(LinMobileConstants.STATUS_ARRAY[1])){ 
+			login.setLoginStatus("inactive");
+			login.setEmailId("");
+			login.setIsAuthenticated("false");
+		}
+		else{
+			login.setLoginStatus("invalidUser");
+			login.setEmailId("");
+			login.setIsAuthenticated("false");
+		}
+		return isAuthenticate;
+	}
+	
+	@Override
+	public Boolean googleLoginAuthentication(LoginDetailsDTO login, String emailId) throws Exception{
+		log.info("inside googleLoginAuthentication of UserService");
+		Boolean isAuthenticate = false;
+		IUserDetailsDAO userDAO = new UserDetailsDAO();
+		UserDetailsObj userDetails = userDAO.getUserByEmailId(emailId);
+		if(userDetails!=null && userDetails.getEmailId()!=null && userDetails.getStatus().equalsIgnoreCase(LinMobileConstants.STATUS_ARRAY[0])){ 
+			if(userDetails.getRole()!=null){
+				login.setRoleId(String.valueOf(userDetails.getRole()));
+				List<RolesAndAuthorisation> rolesAndAuthorisationList = MemcacheUtil.getAllRolesAndAuthorisationList();
+				RolesAndAuthorisation rolesAndAuthorisation = userDAO.getRolesAndAuthorisationByRoleId(userDetails.getRole(), rolesAndAuthorisationList);
+				if(rolesAndAuthorisation != null) {
+					login.setRoleName(rolesAndAuthorisation.getRoleName().trim());
+					if(rolesAndAuthorisation.getRoleName().trim().equalsIgnoreCase(LinMobileConstants.ADMINS[0])) {
+						login.setSuperAdmin(true);
+					}
+					else {
+						login.setSuperAdmin(false);
+					}
+					if(rolesAndAuthorisation.getRoleName().trim().equalsIgnoreCase(LinMobileConstants.ADMINS[1])) {
+						login.setAdminUser(true);
+					}
+					else { 
+						login.setAdminUser(false);
+					}
+				} 
+				else {
+					return false;
+				}
+			} 
+			else {
+				return false;
+			}
+			login.setIsAuthenticated("true");
+			login.setEmailId(userDetails.getEmailId().trim());
+			if(userDetails.getId() > 0){
+				login.setUserId(userDetails.getId());	
+			}
+			String userName ="";
+			if(userDetails.getUserName()!=null){
+				userName = userDetails.getUserName();
+			}
+			login.setUserName(userName);
+			isAuthenticate = true;
+			login.setLoginStatus("active");
+			if(!login.isSuperAdmin()) {			// if not a superAdmin
+				CompanyObj companyObj = userDAO.getNonSuperAdminCompany(userDetails, MemcacheUtil.getAllTeamPropertiesObjList(), MemcacheUtil.getAllCompanyList());
+				if(companyObj != null && companyObj.getStatus().equals(LinMobileConstants.STATUS_ARRAY[0])) {
+					if(login.isAdminUser() && companyObj.getCompanyType() != null && companyObj.getCompanyType().equals(LinMobileConstants.COMPANY_TYPE[0])) { 	// if Admin user
+						login.setPublisherPoolPartner(true);
+					}
+					if(companyObj.getCompanyLogoURL() != null && companyObj.getCompanyLogoURL().length() > 0) {
+						login.setCompanyLogoURL(companyObj.getCompanyLogoURL());
+					}
+				}
+			}
+		}
+		else if(userDetails!=null && userDetails.getEmailId()!=null && userDetails.getStatus().equalsIgnoreCase(LinMobileConstants.STATUS_ARRAY[1])){ 
+			login.setLoginStatus("inactive");
+			login.setEmailId("");
+			login.setIsAuthenticated("false");
+		}
+		else{
+			login.setLoginStatus("UnauthorisedGoogleAccount");
+			login.setEmailId("");
+			login.setIsAuthenticated("false");
+		}
+		return isAuthenticate;
+	}
+
+	@Override
+	public List<CommonDTO> fetchAllActiveRoles(long userId, boolean superAdmin) throws Exception {
+		log.info("inside fetchAllActiveRoles of UserService");
+		List<CommonDTO> list = new ArrayList<CommonDTO>();
+		String companyId = null;
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		if(!superAdmin) {
+			List<CompanyObj> companyList = dao.getSelectedCompaniesByUserId(userId);
+			if(companyList != null && companyList.size() > 0) {
+				CompanyObj obj = companyList.get(0);
+				if(obj != null) {
+					companyId = obj.getId()+"";
+				}
+			}
+		}
+		List<RolesAndAuthorisation> rolesAndAuthorisationList = MemcacheUtil.getAllRolesAndAuthorisationList();
+		if(rolesAndAuthorisationList != null && rolesAndAuthorisationList.size() > 0) {
+			for (RolesAndAuthorisation rolesAndAuthorisation : rolesAndAuthorisationList) {
+				 if(superAdmin && rolesAndAuthorisation != null && rolesAndAuthorisation.getRoleStatus().trim().equalsIgnoreCase(LinMobileConstants.STATUS_ARRAY[0])) {
+					list.add(new CommonDTO(String.valueOf(rolesAndAuthorisation.getId()), rolesAndAuthorisation.getRoleName()));
+				}
+				else if(!superAdmin && rolesAndAuthorisation != null && rolesAndAuthorisation.getRoleType().equalsIgnoreCase(LinMobileConstants.DEFINED_TYPES[1]) && rolesAndAuthorisation.getRoleStatus().trim().equalsIgnoreCase(LinMobileConstants.STATUS_ARRAY[0]) && companyId != null && rolesAndAuthorisation.getCompanyId() != null && rolesAndAuthorisation.getCompanyId().trim().equals(companyId.trim())) {
+					list.add(new CommonDTO(String.valueOf(rolesAndAuthorisation.getId()), rolesAndAuthorisation.getRoleName()));
+				}
+				else if(!superAdmin && rolesAndAuthorisation != null && rolesAndAuthorisation.getRoleType().equalsIgnoreCase(LinMobileConstants.DEFINED_TYPES[0]) && rolesAndAuthorisation.getRoleStatus().trim().equalsIgnoreCase(LinMobileConstants.STATUS_ARRAY[0]) && !rolesAndAuthorisation.getRoleName().trim().equalsIgnoreCase(LinMobileConstants.ADMINS[0])) {
+					list.add(new CommonDTO(String.valueOf(rolesAndAuthorisation.getId()), rolesAndAuthorisation.getRoleName()));
+				}
+			}
+		}
+		return list;
+	}
+	
+	@Override
+	public List<CommonDTO> fetchActiveRolesByCompanyId(String companyId, boolean superAdmin) throws Exception {
+		log.info("inside fetchActiveRolesByCompanyId of UserService");
+		List<CommonDTO> list = new ArrayList<CommonDTO>();
+		List<RolesAndAuthorisation> rolesAndAuthorisationList = MemcacheUtil.getAllRolesAndAuthorisationList();
+		if(companyId != null && rolesAndAuthorisationList != null && rolesAndAuthorisationList.size() > 0) {
+			companyId = companyId.trim();
+			for (RolesAndAuthorisation rolesAndAuthorisation : rolesAndAuthorisationList) {
+				if(!superAdmin && rolesAndAuthorisation != null && rolesAndAuthorisation.getRoleType().equalsIgnoreCase(LinMobileConstants.DEFINED_TYPES[0]) && rolesAndAuthorisation.getRoleStatus().trim().equalsIgnoreCase(LinMobileConstants.STATUS_ARRAY[0]) && !rolesAndAuthorisation.getRoleName().trim().equalsIgnoreCase(LinMobileConstants.ADMINS[0])) {
+					list.add(new CommonDTO(String.valueOf(rolesAndAuthorisation.getId()), rolesAndAuthorisation.getRoleName()));
+				}
+				else if(superAdmin && rolesAndAuthorisation != null && rolesAndAuthorisation.getRoleType().equals(LinMobileConstants.DEFINED_TYPES[0]) && rolesAndAuthorisation.getRoleStatus().trim().equalsIgnoreCase(LinMobileConstants.STATUS_ARRAY[0])) {
+					list.add(new CommonDTO(String.valueOf(rolesAndAuthorisation.getId()), rolesAndAuthorisation.getRoleName()));
+				}
+				else if(rolesAndAuthorisation != null && rolesAndAuthorisation.getRoleType().equalsIgnoreCase(LinMobileConstants.DEFINED_TYPES[1]) && rolesAndAuthorisation.getRoleStatus().trim().equalsIgnoreCase(LinMobileConstants.STATUS_ARRAY[0]) && rolesAndAuthorisation.getCompanyId() != null && rolesAndAuthorisation.getCompanyId().trim().equals(companyId)) {
+					list.add(new CommonDTO(String.valueOf(rolesAndAuthorisation.getId()), rolesAndAuthorisation.getRoleName()));
+				}
+			}
+		}
+		return list;
+	}
+	
+	@Override
+	public List<AuthorisationText> fetchAllActiveAuthorisationText() throws Exception {
+		log.info("inside fetchAllActiveAuthorisationText of UserService");
+		List<AuthorisationText> list = new ArrayList<AuthorisationText>();
+		IUserDetailsDAO dao = new UserDetailsDAO();		
+		List<AuthorisationText> resultList = MemcacheUtil.getAllAuthorisationTextList();	
+		if(resultList != null && resultList.size() > 0) {
+			for (AuthorisationText authorisationText : resultList) {
+				if(authorisationText != null && authorisationText.getAuthorisationTextStatus().trim().equalsIgnoreCase(LinMobileConstants.STATUS_ARRAY[0])) {
+					list.add(authorisationText);
+				}
+			}
+		}
+		return list;
+	}
+
+	@Override
+	public Boolean createUser(UserDetailsDTO userDetailsDTO, long userId) throws Exception {
+		log.info("inside createUser of UserService");
+		Boolean result = false;
+		userDetailsDTO.setReturnStatus("failed");
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		if (dao.getUserByEmailId(userDetailsDTO.getEmailId()) != null) {
+			userDetailsDTO.setReturnStatus("exists"); // email Id exists
+			return result;
+		}
+		UserDetailsObj userDetailsObj = new UserDetailsObj();
+				
+		userDetailsObj.setEmailId(userDetailsDTO.getEmailId().trim().toLowerCase());
+		userDetailsObj.setUserName(userDetailsDTO.getUserName());
+		userDetailsObj.setRole(userDetailsDTO.getRole());
+		userDetailsObj.setStatus("Pending");
+		userDetailsObj.setTimezone(userDetailsDTO.getTimezone());
+		userDetailsObj.setReservedStatus(userDetailsDTO.getStatus());
+		userDetailsObj.setUserCreationDate(DateUtil.getDateYYYYMMDDHHMMSS());
+		userDetailsObj.setUserModifiedDate(DateUtil.getDateYYYYMMDDHHMMSS());
+		userDetailsObj.setUserModifiedUserId(userId);
+		userDetailsObj.setCreatedByUserId(userId);
+		
+		if(userDetailsDTO.getSelectedRoleType().trim().equals(LinMobileConstants.ADMINS[1])) {					// if admin
+			List<String> teamIdList = new ArrayList<String>();
+			if(userDetailsDTO.getAdminTeam() != null && !userDetailsDTO.getAdminTeam().trim().equalsIgnoreCase("")) {
+				teamIdList.add(userDetailsDTO.getAdminTeam().trim());
+			}
+			userDetailsObj.setTeams(teamIdList);
+		}
+		else if(!userDetailsDTO.getSelectedRoleType().trim().equals(LinMobileConstants.ADMINS[0])) {			// if neither admin nor superAdmin
+			List<String> teamIdList = new ArrayList<String>();
+			if(userDetailsDTO.getNonAdminTeam() != null && !userDetailsDTO.getNonAdminTeam().trim().equalsIgnoreCase("")) {
+				String[] teamIdArray = userDetailsDTO.getNonAdminTeam().split(",");
+				for (String teamId : teamIdArray) {
+					if(teamId.startsWith(LinMobileConstants.TEAM_NO_ENTITIE)) {
+						teamIdList.clear();
+						teamIdList.add(teamId.trim());
+						break;
+					}
+					else if(teamId.startsWith(LinMobileConstants.TEAM_ALL_ENTITIE)) {
+						teamIdList.clear();
+						teamIdList.add(teamId.trim());
+						break;
+					}
+					else {
+						teamIdList.add(teamId.trim());
+					}
+				}
+			}
+			userDetailsObj.setTeams(teamIdList);
+		}
+		userDetailsObj.setId(dao.getMaxCount());
+		if(MemcacheUtil.selfUpdateMemcacheUserDetails(userDetailsObj, true)) {
+			dao.saveObject(userDetailsObj);
+			String statusStr = sendActivationMail(userDetailsDTO.getUserName(), userDetailsObj.getId(), userDetailsDTO.getEmailId(), "", userId);
+			userDetailsDTO.setReturnStatus(statusStr);
+			result = true;
+		}
+		return result;		
+	}
+	
+	public String sendActivationMail(String toUserName, long userId, String emailId, String note, long invitedByUserId) {
+		log.info("inside sendActivationMail of UserService");
+		String returnStr = "success";
+		try {
+			String uniqueNumber = EncriptionUtil.getEncriptedStrMD5(new Date().toString().replaceAll(" ", ""));
+			EmailAuthObj emailAuthObj = new EmailAuthObj();
+			emailAuthObj.setRandomNumber(uniqueNumber);
+			emailAuthObj.setUserId(userId);
+			emailAuthObj.setStatus("unAuthorised");
+			IUserDetailsDAO dao = new UserDetailsDAO();
+			dao.saveObject(emailAuthObj);
+			String subject = LinMobileConstants.APPLICATION_NAME+" Account Activation";
+			String authenticate_url = LinMobileVariables.AUTHORIZATION_URL+uniqueNumber;
+			String messageText = welcomeEmailMsg(toUserName, emailId.trim(), note, authenticate_url, invitedByUserId);
+			EmailUtil.sendAuthMail(emailId.trim(), LinMobileConstants.SENDER_EMAIL_ADDRESS, subject, messageText, "");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			log.severe("Exception in sendActivationMail of UserService"+e.getMessage());
+			returnStr = "mailSentFailed";
+		}
+		return returnStr;
+	}
+
+	@Override
+	public long authorizeEmail(String randomNumber) throws Exception {
+		log.info("inside authorizeEmail of UserService");
+		long result = -1;
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		result = dao.authorizeEmail(randomNumber);
+		return result;
+	}
+
+	@Override
+	public Boolean authorizeUser(UserDetailsDTO userDetailsDTO) throws Exception {
+		log.info("inside authorizeUser of UserService");
+		Boolean result = false;
+		UserDetailsObj userDetailsObj = null;
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		userDetailsObj = dao.getUserById(userDetailsDTO.getId());
+		if(userDetailsObj != null && userDetailsObj.getId() > 0) {
+			userDetailsDTO.setEmailId(userDetailsObj.getEmailId());
+			String status = userDetailsObj.getReservedStatus();
+			userDetailsObj.setPassword(EncriptionUtil.getEncriptedStrMD5(userDetailsDTO.getPassword()));
+			userDetailsObj.setStatus(status);
+			userDetailsObj.setUserModifiedDate(DateUtil.getDateYYYYMMDDHHMMSS());
+			userDetailsObj.setUserModifiedUserId(userDetailsDTO.getId());
+			
+			result = dao.authorizeUser(userDetailsObj, userDetailsDTO);
+		}
+		return result;
+	}
+
+	@Override
+	public void userSetup(UserDetailsDTO userDetailsDTO, long userId, boolean superAdmin) throws Exception {
+		log.info("inside userSetup of UserService");
+		List<UserDetailsObj> selectedUserDetailsObjList = new ArrayList<UserDetailsObj>();
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		if(superAdmin) {
+			List<UserDetailsObj> userDetailsObjList = MemcacheUtil.getAllUsersList();
+			if(userDetailsObjList != null && userDetailsObjList.size() > 0) {
+				List<RolesAndAuthorisation> rolesAndAuthorisationList = MemcacheUtil.getAllRolesAndAuthorisationList();
+				for (UserDetailsObj userDetailsObj : userDetailsObjList) {
+					if(userDetailsObj != null && userDetailsObj.getRole() != null) {
+						 String roleName = dao.getRoleNameByRoleId(userDetailsObj.getRole().trim(), rolesAndAuthorisationList);
+						if(!roleName.trim().equals("")) {
+							userDetailsObj.setRole(roleName);
+							selectedUserDetailsObjList.add(userDetailsObj);
+						}
+					}
+				}
+			}
+		}
+		else {
+			List<String> selectedTeamIdList = new ArrayList<String>();
+			List<CompanyObj> companyList = dao.getSelectedCompaniesByUserId(userId);
+			String superAdminRoleId = dao.getSuperAdminRoleId();
+			if(superAdminRoleId != null && !superAdminRoleId.trim().equalsIgnoreCase("")) {
+				List<String> allSuperAdminUserIdList = dao.getAllSuperAdminUserId(superAdminRoleId);
+				if(companyList != null && companyList.size() > 0 && companyList.get(0).getStatus().equals(LinMobileConstants.STATUS_ARRAY[0])) {
+					String companyId = String.valueOf(companyList.get(0).getId());
+					List<TeamPropertiesObj> teamPropertiesObjList = MemcacheUtil.getAllTeamPropertiesObjList();
+					if(teamPropertiesObjList != null && teamPropertiesObjList.size() > 0) {
+						for (TeamPropertiesObj teamPropertiesObj : teamPropertiesObjList) {
+							if(teamPropertiesObj != null && teamPropertiesObj.getCompanyId() != null && teamPropertiesObj.getCompanyId().trim().equals(companyId)) {
+								selectedTeamIdList.add(teamPropertiesObj.getId().trim());
+							}
+						}
+					}
+					
+					List<UserDetailsObj> userDetailsObjList = MemcacheUtil.getAllUsersList();
+					if(userDetailsObjList != null && userDetailsObjList.size() > 0 && selectedTeamIdList != null && selectedTeamIdList.size() > 0) {
+						List<RolesAndAuthorisation> rolesAndAuthorisationList = MemcacheUtil.getAllRolesAndAuthorisationList();
+						for (UserDetailsObj userDetailsObj : userDetailsObjList) {
+							if(userDetailsObj != null && !allSuperAdminUserIdList.contains(String.valueOf(userDetailsObj.getId())) && userDetailsObj.getTeams() != null && userDetailsObj.getTeams().size()  > 0 && selectedTeamIdList.contains(userDetailsObj.getTeams().get(0))) {
+								String roleName = dao.getRoleNameByRoleId(userDetailsObj.getRole(), rolesAndAuthorisationList);
+								if(!roleName.trim().equals("")) {
+									userDetailsObj.setRole(roleName);
+									selectedUserDetailsObjList.add(userDetailsObj);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		userDetailsDTO.setUsersList(selectedUserDetailsObjList);
+	}
+
+	@Override
+	public Boolean initEditUser(UserDetailsDTO userDetailsDTO) throws Exception {
+		log.info("inside initEditUser of UserService");
+		UserDetailsObj userDetailsObj = null;
+		Boolean result = false;
+		List<CommonDTO> selectedRoleList = new ArrayList<CommonDTO>();
+		List<CommonDTO> selectedStatusList = new ArrayList<CommonDTO>();
+		List<CommonDTO> selectedTeamList = new ArrayList<CommonDTO>();
+		List<CommonDTO> selectedAdminTeamList = new ArrayList<CommonDTO>();
+		List<CommonDTO> selectedNonAdminTeamList = new ArrayList<CommonDTO>();
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		userDetailsObj = dao.getUserById(Long.valueOf(userDetailsDTO.getId()));
+		if(userDetailsObj != null) {
+			List<RolesAndAuthorisation> rolesAndAuthorisationList = MemcacheUtil.getAllRolesAndAuthorisationList();
+			userDetailsDTO.setId(userDetailsObj.getId());
+			userDetailsDTO.setUserName(userDetailsObj.getUserName());
+			userDetailsDTO.setEmailId(userDetailsObj.getEmailId());
+			userDetailsDTO.setEmailIdRepeat(userDetailsObj.getEmailId());
+			
+			if(userDetailsObj.getStatus().equalsIgnoreCase("Pending")) {
+				selectedStatusList.add(new CommonDTO(userDetailsObj.getReservedStatus(), ""));
+			}
+			else {
+				selectedStatusList.add(new CommonDTO(userDetailsObj.getStatus(), ""));
+			}
+			
+			String roleName = dao.getRoleNameByRoleId(userDetailsObj.getRole().trim(), rolesAndAuthorisationList);						// used to check if superAdmin
+			if(!roleName.trim().equals("")) {
+				userDetailsDTO.setSelectedRoleType(roleName.trim());
+				selectedRoleList.add(new CommonDTO(userDetailsObj.getRole(), ""));
+				
+				if(userDetailsObj.getTeams() != null && userDetailsObj.getTeams().size() > 0) {
+					if(roleName.trim().equals(LinMobileConstants.ADMINS[1])) {						// if Admin
+						selectedAdminTeamList.add( new CommonDTO(userDetailsObj.getTeams().get(0).trim(), ""));
+					}
+					else if(!roleName.trim().equals(LinMobileConstants.ADMINS[0])) {				// if neither Admin nor superAdmin
+						List<String> teamIdList = userDetailsObj.getTeams();
+						for(String teamId : teamIdList) {
+							selectedNonAdminTeamList.add( new CommonDTO(teamId.trim(), ""));
+						}
+					}
+					List<String> teamList = userDetailsObj.getTeams();
+					if(teamList != null && teamList.size() > 0) {
+						List<TeamPropertiesObj> teamPropertiesObjList = MemcacheUtil.getAllTeamPropertiesObjList();
+						for(String teamId : teamList) {
+							TeamPropertiesObj teamPropertiesObj = dao.getTeamPropertiesObjById(teamId, teamPropertiesObjList);
+							if(teamPropertiesObj != null && teamPropertiesObj.getTeamStatus().equals(LinMobileConstants.STATUS_ARRAY[0]) && teamPropertiesObj.getCompanyId() != null && !teamPropertiesObj.getCompanyId().equals("")) {
+								List<CommonDTO> selectedCompanyList = new ArrayList<CommonDTO>();
+								selectedCompanyList.add(new CommonDTO(teamPropertiesObj.getCompanyId(), ""));
+								userDetailsDTO.setSelectedCompanyList(selectedCompanyList);
+								break;
+							}
+						}
+					}
+				}
+				userDetailsDTO.setSelectedNonAdminTeamList(selectedNonAdminTeamList);
+				userDetailsDTO.setSelectedAdminTeamList(selectedAdminTeamList);
+				userDetailsDTO.setTimezone(userDetailsObj.getTimezone());
+				userDetailsDTO.setSelectedRoleList(selectedRoleList);
+				userDetailsDTO.setSelectedStatusList(selectedStatusList);
+				userDetailsDTO.setSelectedTeamList(selectedTeamList);
+				result = true;
+			}
+		}
+		return result;
+	}
+
+	@Override
+	public int userUpdate(UserDetailsDTO userDetailsDTO, long userId) throws Exception {
+		log.info("inside userUpdate of UserService");
+		int result = 0;
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		List<String> teamIdList = new ArrayList<String>();
+		UserDetailsObj userDetailsObj = dao.getUserByEmailId(userDetailsDTO.getEmailId());
+		if (userDetailsObj != null && userDetailsDTO.getId() != userDetailsObj.getId()) {
+			result = -1;					// emailId belongs to another user
+			return result;
+		}
+		
+		userDetailsObj = dao.getUserById(userDetailsDTO.getId());
+		if(userDetailsObj != null) {
+			maintainUserHistory(userDetailsObj, userId, "Updated");
+			
+			userDetailsObj.setEmailId(userDetailsDTO.getEmailId().toLowerCase());
+			userDetailsObj.setUserName(userDetailsDTO.getUserName());
+			if(userDetailsObj.getStatus().equalsIgnoreCase("Pending")) {
+				userDetailsObj.setReservedStatus(userDetailsDTO.getStatus());
+			}
+			else {
+				userDetailsObj.setStatus(userDetailsDTO.getStatus());
+			}
+			userDetailsObj.setTimezone(userDetailsDTO.getTimezone());
+			userDetailsObj.setRole(userDetailsDTO.getRole());
+			userDetailsObj.setUserModifiedDate(DateUtil.getDateYYYYMMDDHHMMSS());
+			userDetailsObj.setUserModifiedUserId(userId);
+			
+			if(userDetailsDTO.getSelectedRoleType().trim().equals(LinMobileConstants.ADMINS[1])) {					// if admin
+				if(userDetailsDTO.getAdminTeam() != null && !userDetailsDTO.getAdminTeam().trim().equalsIgnoreCase("")) {
+					teamIdList.add(userDetailsDTO.getAdminTeam().trim());
+				}
+				userDetailsObj.setTeams(teamIdList);
+			}
+			else if(!userDetailsDTO.getSelectedRoleType().trim().equals(LinMobileConstants.ADMINS[0])) {			// if neither admin nor superAdmin
+				if(userDetailsDTO.getNonAdminTeam() != null && !userDetailsDTO.getNonAdminTeam().trim().equalsIgnoreCase("")) {
+					String[] teamIdArray = userDetailsDTO.getNonAdminTeam().split(",");
+					for (String teamId : teamIdArray) {
+						if(teamId.startsWith(LinMobileConstants.TEAM_NO_ENTITIE)) {
+							teamIdList.clear();
+							teamIdList.add(teamId.trim());
+							break;
+						}
+						else if(teamId.startsWith(LinMobileConstants.TEAM_ALL_ENTITIE)) {
+							teamIdList.clear();
+							teamIdList.add(teamId.trim());
+							break;
+						}
+						else {
+							teamIdList.add(teamId.trim());
+						}
+					}
+				}
+				userDetailsObj.setTeams(teamIdList);
+			}
+			
+			if(MemcacheUtil.selfUpdateMemcacheUserDetails(userDetailsObj, false)) {
+				dao.saveObject(userDetailsObj);
+				result = 1;
+				if(userId == userDetailsObj.getId()) {
+					result = -2;
+				}
+			}
+		}			
+		return result;
+	}
+	
+	public void maintainUserHistory(UserDetailsObj userDetailsObj,  long updateDeleteByUserId, String historyStatus) throws Exception {
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		UserDetailsHistObj userDetailsHistObj = new UserDetailsHistObj();
+		
+		userDetailsHistObj.setId(userDetailsObj.getId());
+		userDetailsHistObj.setEmailId(userDetailsObj.getEmailId());
+		userDetailsHistObj.setPassword(userDetailsObj.getPassword());
+		userDetailsHistObj.setUserName(userDetailsObj.getUserName());
+		userDetailsHistObj.setRole(userDetailsObj.getRole());
+		userDetailsHistObj.setStatus(userDetailsObj.getStatus());
+		userDetailsHistObj.setTeams(userDetailsObj.getTeams());
+		userDetailsHistObj.setUserCreationDate(userDetailsObj.getUserCreationDate());
+		userDetailsHistObj.setUserModifiedDate(userDetailsObj.getUserModifiedDate());
+		userDetailsHistObj.setUserModifiedUserId(userDetailsObj.getUserModifiedUserId());
+		userDetailsHistObj.setHistoryDate(DateUtil.getDateYYYYMMDDHHMMSS());
+		userDetailsHistObj.setUpdateDeleteByUserId(updateDeleteByUserId);
+		userDetailsHistObj.setHistoryStatus(historyStatus);
+		
+		dao.saveObject(userDetailsHistObj);		
+	}
+
+	@Override
+	public int forgetPassword(UserDetailsDTO userDetailsDTO) throws Exception {
+		log.info("inside forgetPassword of UserService");
+		int result = -1;
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		
+		UserDetailsObj userDetailsObj = dao.getUserByEmailId(userDetailsDTO.getEmailId());
+		if(userDetailsObj == null) {
+			result = 2;		// user not in system
+		}
+		else if(userDetailsObj != null && userDetailsObj.getStatus().equalsIgnoreCase(LinMobileConstants.STATUS_ARRAY[0])) {
+			sendForgetPasswordMail(userDetailsObj.getId(), userDetailsObj.getEmailId());
+			result = 1;		// active User
+		}
+		else if(userDetailsObj != null && userDetailsObj.getStatus().equalsIgnoreCase(LinMobileConstants.STATUS_ARRAY[1])) {
+			result = 3;		// Inactive User
+		}
+		return result;
+	}
+	
+	public String welcomeEmailMsg(String toUserName, String email_to, String note,String authenticate_url, long invitedByUserId) throws Exception {
+		StringBuilder msg = new StringBuilder();
+		msg.append("<html lang='en'>")
+		.append("<head>")
+		.append("</head>")
+		.append("<body>")
+		.append("<div style='margin:0; margin-top:10px;' >")
+		.append("<div style='margin:0;padding:0;' dir='ltr'>")
+		.append("<table cellspacing='0' cellpadding='0' style='border-collapse:collapse;' border='0'>")
+		.append("<tbody>")
+		.append("<tr>")
+		.append("<td style='font-family:Arial, Helvetica, sans-serif;font-size:12px'>")
+		.append("<table cellspacing='0' cellpadding='0' style='border-collapse:collapse;width:620px;'>")
+		.append("<tbody>")
+		.append("<tr>")
+		.append("<td style='font-size:16px;font-family:Arial, Helvetica, sans-serif; background:#333333;color:#ffffff;font-weight:bold;text-align:left;padding:5px 20px ; border-top-left-radius:10px; border-top-right-radius:10px; -moz-border-radius-topleft:10px; -webkit-border-radius-topleft:10px; -o-border-radius:10px; -ms-border-radius:10px;'>")
+		.append("<a style='text-decoration:none' href='#' target='_blank'>")
+		.append("<span style='background:#333333;color:#ffffff;font-weight:bold;font-family:Arial, Helvetica, sans-serif;font-size:16px;letter-spacing:-0.03em;text-align:left;vertical-align:baseline'>")
+		.append("<img src='"+LinMobileVariables.APPLICATION_URL+LinMobileConstants.APPLICATION_IMAGE_URL+"' width='100'></span></a><span style='vertical-align: 20px; font-size:12px;'><sup style='font-size:8px;'>TM</sup></span><span style='float:right; margin-top:11px; margin-right:56%; font-size:14px;'>Account Activation</span>")
+		.append("</td>")
+		.append("</tr>")
+		.append("</tbody>")
+		.append("</table>")
+		.append("<table cellspacing='0' cellpadding='0' width='620px' style='border-collapse:collapse;width:620px' border='0'>")
+		.append("<tbody>")
+		.append("<tr>")
+		.append("<td style='font-size:11px;font-family:Arial, Helvetica, sans-serif;padding:0px; border-left:none;border-right:none;border-top:none;border-bottom:none'>")
+		.append("<table cellspacing='0' cellpadding='0' width='620px' style='border-collapse:collapse'>")
+		.append("<tbody>")
+		.append("<tr>")
+		.append("<td style='font-size:11px;font-family:Arial, Helvetica, sans-serif;padding:0px;width:620px'>")
+		.append("<table cellspacing='0' cellpadding='0' border='0' style='border-collapse:collapse;width:100%; border:1px solid #333;'>")
+		.append("<tbody><tr><td style='font-size:11px;font-family:Arial, Helvetica, sans-serif;padding:20px;background-color:#fff;border-left:none;border-right:none;border-top:none;border-bottom:none'>")
+		.append("<table cellspacing='0' cellpadding='0' style='border-collapse:collapse;width:100%; '><tbody>")
+		.append("<tr>")
+		.append("<td style='font-size:12px;font-family:Arial, Helvetica, sans-serif;padding-bottom:6px'>Hi "+toUserName+",<br>")
+		.append("<br>Welcome to Lin Mobile "+LinMobileConstants.APPLICATION_NAME+"<sup style='font-size:8px;'>TM</sup>, our mobile advertising platform.")
+		.append("</td>")
+		.append("</tr>")
+		.append("<tr>")
+		.append("<td style='font-size:12px;font-family:Arial, Helvetica, sans-serif;padding-bottom:15px'>All you need to do is choose a password. It only takes a few seconds and you'll be ready to use "+LinMobileConstants.APPLICATION_NAME+"<sup style='font-size:8px;'>")
+		.append("TM</sup>. ")
+		.append("</td>")
+		.append("</tr>")
+		.append("<tr>")
+		.append("<td style='font-size:12px;font-family:Arial, Helvetica, sans-serif;padding-top:10px; padding-bottom:10px;border-top:1px solid #e8e8e8'><b>")
+		.append("</b>Click here or copy this link into your browser to get started:<br>")
+		.append("<br><a href='"+authenticate_url+"' style='color:#3b5998;text-decoration:none' target='_blank'>"+authenticate_url+"</a></td>")
+		.append("</tr>")
+		.append("<tr>")
+		.append("<td style='font-size:12px;font-family:Arial, Helvetica, sans-serif;padding-top:20px;'><b>")
+		.append("</b>Thank you,")
+		.append("<br>"+LinMobileConstants.APPLICATION_NAME+"<sup style='font-size:8px;'>TM</sup> Team</td>")
+		.append("</tr>")
+		.append("</tbody>")
+		.append("</table>")
+		.append("</td>")
+		.append("</tr>")
+		.append("</tbody>")
+		.append("</table>")
+		.append("</td>")
+		.append("</tr>")
+		.append("<tr>")
+		.append("<td style='font-size:11px;font-family:Arial, Helvetica, sans-serif;padding:0px;width:620px'>")
+		.append("<table cellspacing='0' cellpadding='0' style='border-collapse:collapse;width:100%' border='0'>")
+		.append("<tbody>")
+		.append("<tr>")
+		.append("<td style='font-size:12px;font-family:Arial, Helvetica, sans-serif;padding:7px 20px;background-color:#333333; height:17px; color:#fff;  border-bottom-left-radius:10px; border-bottom-right-radius:10px; -moz-border-radius-bottomleft:10px; -moz-border-radius-bottomright:10px;-webkit-border-radius-bottomleft:10px; -webkit-border-radius-bottomright:10px;'>")
+		.append("<table cellspacing='0' cellpadding='0'>")
+		.append("<tbody>")
+		.append("<tr>")
+		.append("<td style='font-size:12px;font-family:Arial, Helvetica, sans-serif;padding-left:0px'>")
+		.append("<table cellspacing='0' cellpadding='0' style='border-collapse:collapse'>")
+		.append("<tbody>")
+		.append("<tr>")
+		.append("<td>")
+		.append("<table cellspacing='0' cellpadding='0' style='border-collapse:collapse'>")
+		.append("<tbody>")
+		.append("<tr>")
+		.append("</tr>")
+		.append("</tbody>")
+		.append("</table>")
+		.append("</td>")
+		.append("</tr>")
+		.append("</tbody>")
+		.append("</table>")
+		.append("</td>")
+		.append("</tr>")
+		.append("</tbody>")
+		.append("</table>")
+		.append("</td>")
+		.append("</tr>")
+		.append("</tbody>")
+		.append("</table>")
+		.append("</td>")
+		.append("</tr>")
+		.append("</td></tr></tbody></table></div>")
+		.append("</div>")
+		.append("</div>")
+		.append("</div>")
+		.append("</body>")
+		.append("</html>")
+		
+        .append(note);
+		return msg.toString();
+	}
+
+	public String forgetPasswordEmailMsg(String reset_password_url, long userId) {
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		UserDetailsObj userDetailsObj = new UserDetailsObj();
+		try {
+			userDetailsObj = dao.getUserById(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		String toUserName  = userDetailsObj.getUserName();
+		
+		StringBuilder msg = new StringBuilder();
+		msg.append("<html lang='en'>")
+		.append("<head>")
+		.append("</head>")
+		.append("<body>")
+		.append("<div style='margin:0; margin-top:10px;' >")
+		.append("<div style='margin:0;padding:0' dir='ltr'>")
+		.append("<table cellspacing='0' cellpadding='0' style='border-collapse:collapse;width:98%' border='0'>")
+		.append("<tbody>")
+		.append("<tr>")
+		.append("<td style='font-family:Arial, Helvetica, sans-serif;font-size:12px'>")
+		.append("<table cellspacing='0' cellpadding='0' style='border-collapse:collapse;width:620px; '>")
+		.append("<tbody>")
+		.append("<tr>")
+		.append("<td style='font-size:16px;font-family:Arial, Helvetica, sans-serif;background:#333333;color:#ffffff;font-weight:bold;vertical-align:baseline;letter-spacing:-0.03em;text-align:left;padding:5px 20px ; border-top-left-radius:10px; border-top-right-radius:10px; -moz-border-radius-topleft:10px; -webkit-border-radius-topleft:10px; -o-border-radius:10px; -ms-border-radius:10px;''>")
+		.append("<a style='text-decoration:none' href='#' target='_blank'>")
+		.append("<span style='background:#333333;color:#ffffff;font-weight:bold;font-family:Arial, Helvetica, sans-serif;vertical-align:middle;font-size:16px;letter-spacing:-0.03em;text-align:left;vertical-align:baseline'>")
+		.append("<img src='"+LinMobileVariables.APPLICATION_URL+LinMobileConstants.APPLICATION_IMAGE_URL+"' width='100'></span></a><span style='vertical-align: 20px; font-size:9px;'><sup>TM</sup></span><span style='float:right; margin-top:11px; margin-right:59%; font-size:14px;'>Password Reset</span>")
+		.append("</td>")
+		.append("</tr>")
+		.append("</tbody>")
+		.append("</table>")
+		.append("<table cellspacing='0' cellpadding='0' width='620px' style='border-collapse:collapse;width:620px'  border='0'>")
+		.append("<tbody>")
+		.append("<tr>")
+		.append("<td style='font-size:12px;font-family:Arial, Helvetica, sans-serif; padding:0px;background-color:#f2f2f2;border-left:none;border-right:none;border-top:none;border-bottom:none'>")
+		.append("<table cellspacing='0' cellpadding='0' width='620px' style='border-collapse:collapse;  '>")
+		.append("<tbody>")
+		.append("<tr>")
+		.append("<td style='font-size:12px;font-family:Arial, Helvetica, sans-serif;padding:0px;width:620px'>")
+		.append("<table cellspacing='0' cellpadding='0' border='0' style='border-collapse:collapse;width:100%;border:solid 1px #333; '>")
+		.append("<tbody>")
+		.append("<tr>")
+		.append("<td style='font-size:12px;font-family:Arial, Helvetica, sans-serif;padding:20px;background-color:#fff;'>")
+		.append("<table cellspacing='0' cellpadding='0' style='border-collapse:collapse;width:100%;'>")
+		.append("<tbody>")
+		.append("<tr>")
+		.append("<td style='font-size:12px;font-family:Arial, Helvetica, sans-serif;padding-bottom:10px'>Hi "+toUserName+",<br><br>You recently asked to reset your "+LinMobileConstants.APPLICATION_NAME+"<span style=' font-size:10px;'><sup style='font-size:8px;'>TM</sup></span> password.</td></tr><tr>")
+		.append("</td></tr>")
+		.append("<tr>")
+		.append("<td style='font-size:12px;font-family:Arial, Helvetica, sans-serif;padding-top:6px;border-top:1px solid #e8e8e8'>Click here or copy this link into your browser to get started:")
+		.append("<br>")
+		.append("<br><a href='"+reset_password_url+"' style='color:#3b5998;text-decoration:none' target='_blank'>"+reset_password_url+"</a>")
+		.append("<br><br>If you did not request a password reset, please ignore this message.")
+		.append("</td>")
+		.append("</tr>")
+		.append("<tr>")
+		.append("<td style='font-size:12px;font-family:Arial, Helvetica, sans-serif;padding-top:20px;'><b>")
+		.append("</b>Thank you,")
+		.append("<br>"+LinMobileConstants.APPLICATION_NAME+"<sup style='font-size:8px;'>TM</sup> Team</td>")
+		.append("</tr>")
+		.append("</tbody>")
+		.append("</table>")
+		.append("</td>")
+		.append("</tr>")
+		.append("</tbody>")
+		.append("</table>")
+		.append("</td>")
+		.append("</tr>")
+		.append("<tr>")
+		.append("<td style='font-size:12px;font-family:Arial, Helvetica, sans-serif;padding:0px;width:620px'>")
+		.append("<table cellspacing='0' cellpadding='0' style='border-collapse:collapse;width:100%' border='0'>")
+		.append("<tbody>")
+		.append("<tr>")
+		.append("<td style='font-size:12px;font-family:Arial, Helvetica, sans-serif;padding:7px 20px;background-color:#333333; height:17px; color:#fff;  border-bottom-left-radius:10px; border-bottom-right-radius:10px; -moz-border-radius-bottomleft:10px; -moz-border-radius-bottomright:10px;-webkit-border-radius-bottomleft:10px; -webkit-border-radius-bottomright:10px;''>")
+		.append("<table cellspacing='0' cellpadding='0'>")
+		.append("</table>")
+		.append("</td>")
+		.append("</tr>")
+		.append("</tbody>")
+		.append("</table>")
+		.append("</td>")
+		.append("</tr>")
+		.append("</tbody>")
+		.append("</table>")
+		.append("</div>")
+		.append("</div>")
+		.append("</body>")
+		.append("</html>");
+		return msg.toString();
+	}
+
+	public void sendForgetPasswordMail(long userId, String emailId) {
+		log.info("inside sendForgetPasswordMail of UserService");
+		try {
+			String uniqueNumber = EncriptionUtil.getEncriptedStrMD5(new Date().toString().replaceAll(" ", ""));
+			EmailAuthObj emailAuthObj = new EmailAuthObj();
+			emailAuthObj.setRandomNumber(uniqueNumber);
+			emailAuthObj.setUserId(userId);
+			emailAuthObj.setStatus("forgetPassword");
+			IUserDetailsDAO dao = new UserDetailsDAO();
+			dao.saveObject(emailAuthObj);
+			String subject = "Password reset on "+LinMobileConstants.APPLICATION_NAME;
+			String reset_password_url = LinMobileVariables.FORGET_PASSWORD_URL+uniqueNumber;
+			String messageText = forgetPasswordEmailMsg(reset_password_url, userId);
+			
+			EmailUtil.sendAuthMail(emailId.trim(), LinMobileConstants.SENDER_EMAIL_ADDRESS, subject, messageText, "");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+			log.info("Exception in sendForgetPasswordMail of UserService");
+		}
+	}
+	
+	@Override
+	public long forgetPasswordEmail(String randomNumber) throws Exception {
+		log.info("inside forgetPasswordEmail of UserService");
+		long result = -1;
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		result = dao.forgetPasswordEmail(randomNumber);
+		return result;
+	}
+
+	@Override
+	public Boolean resetPassword(UserDetailsDTO userDetailsDTO) throws Exception {
+		log.info("inside resetPassword of UserService");
+		Boolean result = false;
+		UserDetailsObj userDetailsObj = null;
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		userDetailsObj = dao.getUserById(userDetailsDTO.getId());
+		if(userDetailsObj != null && userDetailsObj.getId() > 0) {
+			maintainUserHistory(userDetailsObj, userDetailsObj.getId(), "forgetPassword");
+			userDetailsDTO.setEmailId(userDetailsObj.getEmailId());
+			userDetailsObj.setPassword(EncriptionUtil.getEncriptedStrMD5(userDetailsDTO.getPassword()));
+			userDetailsObj.setUserModifiedDate(DateUtil.getDateYYYYMMDDHHMMSS());
+			userDetailsObj.setUserModifiedUserId(userDetailsDTO.getId());
+			
+			result = dao.resetPassword(userDetailsObj, userDetailsDTO);
+		}
+		log.info("UserDetailsDAO : resetPassword, result : "+result); 
+		return result;
+	}
+
+	@Override
+	public Boolean initUserOwnProfileUpdate(UserDetailsDTO userDetailsDTO, long userId) throws Exception {
+		log.info("inside initUserOwnProfileUpdate of UserService");
+		UserDetailsObj userDetailsObj = null;
+		Boolean result = false;
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		userDetailsObj = dao.getUserById(userId);
+		if(userDetailsObj != null) {
+			userDetailsDTO.setId(userDetailsObj.getId());
+			userDetailsDTO.setUserName(userDetailsObj.getUserName());
+			userDetailsDTO.setEmailId(userDetailsObj.getEmailId());
+			userDetailsDTO.setEmailIdRepeat(userDetailsObj.getEmailId());
+			userDetailsDTO.setPassword(LinMobileConstants.DEFAULT_PASSWORD);
+			userDetailsDTO.setPasswordRepeat(LinMobileConstants.DEFAULT_PASSWORD);
+			userDetailsDTO.setTimezone(userDetailsObj.getTimezone());
+			result = true;
+		}
+		return result;
+	}
+
+	@Override
+	public Boolean userOwnProfileUpdate(UserDetailsDTO userDetailsDTO) throws Exception {
+		log.info("inside userOwnProfileUpdate of UserService");
+		Boolean result = false;
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		UserDetailsObj userDetailsObj = dao.getUserByEmailId(userDetailsDTO.getEmailId());
+		if (userDetailsObj != null && userDetailsDTO.getId() != userDetailsObj.getId()) {
+			// emailId belongs to an existing user
+			return result;
+		}
+		
+		userDetailsObj = dao.getUserById(userDetailsDTO.getId());
+		if(userDetailsObj != null) {
+			maintainUserHistory(userDetailsObj, userDetailsDTO.getId(), "Updated");
+			
+			userDetailsObj.setEmailId(userDetailsDTO.getEmailId().toLowerCase());
+			userDetailsObj.setUserName(userDetailsDTO.getUserName());
+			if(!(userDetailsDTO.getPassword().equals(LinMobileConstants.DEFAULT_PASSWORD))) {
+				userDetailsObj.setPassword(EncriptionUtil.getEncriptedStrMD5(userDetailsDTO.getPassword().trim()));
+			}
+			userDetailsObj.setUserModifiedDate(DateUtil.getDateYYYYMMDDHHMMSS());
+			userDetailsObj.setUserModifiedUserId(userDetailsDTO.getId());
+			userDetailsObj.setTimezone(userDetailsDTO.getTimezone());
+			
+			if(MemcacheUtil.selfUpdateMemcacheUserDetails(userDetailsObj, false)) {
+				dao.saveObject(userDetailsObj);
+				result = true;
+			}
+		}			
+		return result;
+	}
+	
+	@Override
+	public void roleSetup(UserDetailsDTO userDetailsDTO, long userId, boolean isSuperAdmin) throws Exception {
+		log.info("inside roleSetup of UserService");
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		List<RolesAndAuthorisationDTO> rolesAndAuthorisationDTOList = new ArrayList<RolesAndAuthorisationDTO>();
+		List<RolesAndAuthorisation> rolesAndAuthorisationList = MemcacheUtil.getAllRolesAndAuthorisationList();
+		if(rolesAndAuthorisationList != null && rolesAndAuthorisationList.size() > 0) {
+			RolesAndAuthorisationDTO rolesAndAuthorisationDTO = null;
+			if(isSuperAdmin) {
+				for(RolesAndAuthorisation rolesAndAuthorisation : rolesAndAuthorisationList) {
+					rolesAndAuthorisationDTO = new RolesAndAuthorisationDTO();
+					rolesAndAuthorisationDTO.setId(rolesAndAuthorisation.getId());
+					rolesAndAuthorisationDTO.setRoleName(rolesAndAuthorisation.getRoleName());
+					rolesAndAuthorisationDTO.setRoleDescription(rolesAndAuthorisation.getRoleDescription());
+					rolesAndAuthorisationDTO.setRoleStatus(rolesAndAuthorisation.getRoleStatus());
+					rolesAndAuthorisationDTO.setRoleType(rolesAndAuthorisation.getRoleType());
+					rolesAndAuthorisationDTOList.add(rolesAndAuthorisationDTO);
+				}
+			}
+			else {
+				
+				List<CompanyObj> companyList = dao.getSelectedCompaniesByUserId(userId);
+				if(companyList != null && companyList.size() > 0 && companyList.get(0).getStatus().equals(LinMobileConstants.STATUS_ARRAY[0])) {
+					String companyId = String.valueOf(companyList.get(0).getId());
+					for(RolesAndAuthorisation rolesAndAuthorisation : rolesAndAuthorisationList) {
+						if(rolesAndAuthorisation != null 
+								&& ((rolesAndAuthorisation.getRoleType().trim().equalsIgnoreCase(LinMobileConstants.DEFINED_TYPES[0]) && !rolesAndAuthorisation.getRoleName().trim().equalsIgnoreCase(LinMobileConstants.ADMINS[0]))
+								|| (rolesAndAuthorisation.getRoleType().trim().equalsIgnoreCase(LinMobileConstants.DEFINED_TYPES[1]) && rolesAndAuthorisation.getCompanyId() != null && rolesAndAuthorisation.getCompanyId().trim().equals(companyId)))) {							
+							rolesAndAuthorisationDTO = new RolesAndAuthorisationDTO();
+							rolesAndAuthorisationDTO.setId(rolesAndAuthorisation.getId());
+							rolesAndAuthorisationDTO.setRoleName(rolesAndAuthorisation.getRoleName());
+							rolesAndAuthorisationDTO.setRoleDescription(rolesAndAuthorisation.getRoleDescription());
+							rolesAndAuthorisationDTO.setRoleStatus(rolesAndAuthorisation.getRoleStatus());
+							rolesAndAuthorisationDTO.setRoleType(rolesAndAuthorisation.getRoleType());
+							rolesAndAuthorisationDTOList.add(rolesAndAuthorisationDTO);
+						}
+					}
+				}
+			}
+		}
+		userDetailsDTO.setRolesAndAuthorisationDTOList(rolesAndAuthorisationDTOList);
+		
+	}
+
+	@Override
+	public Boolean createRole(UserDetailsDTO userDetailsDTO, long userId, boolean superAdmin) throws Exception {
+		log.info("inside createRole of UserService");
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		Boolean result = false; 
+		
+		RolesAndAuthorisation rolesAndAuthorisation = new RolesAndAuthorisation();
+		
+		rolesAndAuthorisation.setCreationDate(DateUtil.getDateYYYYMMDDHHMMSS());
+		rolesAndAuthorisation.setLastModifiedDate(DateUtil.getDateYYYYMMDDHHMMSS());
+		rolesAndAuthorisation.setLastModifiedById(userId);
+		rolesAndAuthorisation.setCreatedById(userId);
+		rolesAndAuthorisation.setRoleDescription(userDetailsDTO.getRoleDescription());
+		rolesAndAuthorisation.setRoleStatus(LinMobileConstants.STATUS_ARRAY[0]);
+		rolesAndAuthorisation.setRoleName(userDetailsDTO.getRoleName());
+		rolesAndAuthorisation.setRoleType(LinMobileConstants.DEFINED_TYPES[1]);
+		if(superAdmin) {
+			rolesAndAuthorisation.setCompanyId(userDetailsDTO.getCompanyId());
+		}
+		else {
+			List<CompanyObj> companyList = dao.getSelectedCompaniesByUserId(userId);
+			if(companyList != null && companyList.size() > 0 && companyList.get(0).getStatus().equals(LinMobileConstants.STATUS_ARRAY[0])) {
+				rolesAndAuthorisation.setCompanyId(String.valueOf(companyList.get(0).getId()));
+			}
+		}		
+		rolesAndAuthorisation.setA1(userDetailsDTO.getA1());
+		rolesAndAuthorisation.setA2(userDetailsDTO.getA2());
+		rolesAndAuthorisation.setA3(userDetailsDTO.getA3());
+		rolesAndAuthorisation.setA4(userDetailsDTO.getA4());
+		rolesAndAuthorisation.setA5(userDetailsDTO.getA5());
+		rolesAndAuthorisation.setA6(userDetailsDTO.getA6());
+		rolesAndAuthorisation.setA7(userDetailsDTO.getA7());
+		rolesAndAuthorisation.setA8(userDetailsDTO.getA8());
+		rolesAndAuthorisation.setA9(userDetailsDTO.getA9());
+		rolesAndAuthorisation.setA10(userDetailsDTO.getA10());
+		rolesAndAuthorisation.setA11(userDetailsDTO.getA11());
+		rolesAndAuthorisation.setA12(userDetailsDTO.getA12());
+		rolesAndAuthorisation.setA13(userDetailsDTO.getA13());
+		rolesAndAuthorisation.setA14(userDetailsDTO.getA14());
+		rolesAndAuthorisation.setA15(userDetailsDTO.getA15());
+		rolesAndAuthorisation.setA16(userDetailsDTO.getA16());
+		rolesAndAuthorisation.setA17(userDetailsDTO.getA17());
+		rolesAndAuthorisation.setA18(userDetailsDTO.getA18());
+		rolesAndAuthorisation.setA19(userDetailsDTO.getA19());
+		rolesAndAuthorisation.setA20(userDetailsDTO.getA20());
+		rolesAndAuthorisation.setA21(userDetailsDTO.getA21());
+		rolesAndAuthorisation.setA22(userDetailsDTO.getA22());
+		rolesAndAuthorisation.setA23(userDetailsDTO.getA23());
+		rolesAndAuthorisation.setA24(userDetailsDTO.getA24());
+		rolesAndAuthorisation.setA25(userDetailsDTO.getA25());
+		rolesAndAuthorisation.setA26(userDetailsDTO.getA26());
+		rolesAndAuthorisation.setA27(userDetailsDTO.getA27());
+		rolesAndAuthorisation.setA28(userDetailsDTO.getA28());
+		rolesAndAuthorisation.setA29(userDetailsDTO.getA29());
+		rolesAndAuthorisation.setA30(userDetailsDTO.getA30());
+		rolesAndAuthorisation.setA31(userDetailsDTO.getA31());
+		rolesAndAuthorisation.setA32(userDetailsDTO.getA32());
+		rolesAndAuthorisation.setA33(userDetailsDTO.getA33());
+		rolesAndAuthorisation.setA34(userDetailsDTO.getA34());
+		rolesAndAuthorisation.setA35(userDetailsDTO.getA35());
+		rolesAndAuthorisation.setA36(userDetailsDTO.getA36());
+		rolesAndAuthorisation.setA37(userDetailsDTO.getA37());
+		rolesAndAuthorisation.setA38(userDetailsDTO.getA38());
+		rolesAndAuthorisation.setA39(userDetailsDTO.getA39());
+		rolesAndAuthorisation.setA40(userDetailsDTO.getA40());
+		rolesAndAuthorisation.setA41(userDetailsDTO.getA41());
+		rolesAndAuthorisation.setA42(userDetailsDTO.getA42());
+		rolesAndAuthorisation.setA43(userDetailsDTO.getA43());
+		rolesAndAuthorisation.setA44(userDetailsDTO.getA44());
+		rolesAndAuthorisation.setA45(userDetailsDTO.getA45());
+		rolesAndAuthorisation.setA46(userDetailsDTO.getA46());
+		rolesAndAuthorisation.setA47(userDetailsDTO.getA47());
+		rolesAndAuthorisation.setA48(userDetailsDTO.getA48());
+		rolesAndAuthorisation.setA49(userDetailsDTO.getA49());
+		rolesAndAuthorisation.setA50(userDetailsDTO.getA50());
+		rolesAndAuthorisation.setA51(userDetailsDTO.getA51());
+		rolesAndAuthorisation.setA52(userDetailsDTO.getA52());
+		rolesAndAuthorisation.setA53(userDetailsDTO.getA53());
+		rolesAndAuthorisation.setA54(userDetailsDTO.getA54());
+		rolesAndAuthorisation.setA55(userDetailsDTO.getA55());
+		rolesAndAuthorisation.setA56(userDetailsDTO.getA56());
+		rolesAndAuthorisation.setA57(userDetailsDTO.getA57());
+		rolesAndAuthorisation.setA58(userDetailsDTO.getA58());
+		rolesAndAuthorisation.setA59(userDetailsDTO.getA59());
+		rolesAndAuthorisation.setA60(userDetailsDTO.getA60());
+		rolesAndAuthorisation.setA61(userDetailsDTO.getA61());
+		rolesAndAuthorisation.setA62(userDetailsDTO.getA62());
+		rolesAndAuthorisation.setA63(userDetailsDTO.getA63());
+		rolesAndAuthorisation.setA64(userDetailsDTO.getA64());
+		rolesAndAuthorisation.setA65(userDetailsDTO.getA65());
+		rolesAndAuthorisation.setA66(userDetailsDTO.getA66());
+		rolesAndAuthorisation.setA67(userDetailsDTO.getA67());
+		rolesAndAuthorisation.setA68(userDetailsDTO.getA68());
+		rolesAndAuthorisation.setA69(userDetailsDTO.getA69());
+		rolesAndAuthorisation.setA70(userDetailsDTO.getA70());
+		rolesAndAuthorisation.setA71(userDetailsDTO.getA71());
+		rolesAndAuthorisation.setA72(userDetailsDTO.getA72());
+		rolesAndAuthorisation.setA73(userDetailsDTO.getA73());
+		rolesAndAuthorisation.setA74(userDetailsDTO.getA74());
+		rolesAndAuthorisation.setA75(userDetailsDTO.getA75());
+		rolesAndAuthorisation.setA76(userDetailsDTO.getA76());
+		rolesAndAuthorisation.setA77(userDetailsDTO.getA77());
+		rolesAndAuthorisation.setA78(userDetailsDTO.getA78());
+		rolesAndAuthorisation.setA79(userDetailsDTO.getA79());
+		rolesAndAuthorisation.setA80(userDetailsDTO.getA80());
+		rolesAndAuthorisation.setA81(userDetailsDTO.getA81());
+		rolesAndAuthorisation.setA82(userDetailsDTO.getA82());
+		rolesAndAuthorisation.setA83(userDetailsDTO.getA83());
+		rolesAndAuthorisation.setA84(userDetailsDTO.getA84());
+		rolesAndAuthorisation.setA85(userDetailsDTO.getA85());
+		rolesAndAuthorisation.setA86(userDetailsDTO.getA86());
+		rolesAndAuthorisation.setA87(userDetailsDTO.getA87());
+		rolesAndAuthorisation.setA88(userDetailsDTO.getA88());
+		rolesAndAuthorisation.setA89(userDetailsDTO.getA89());
+		rolesAndAuthorisation.setA90(userDetailsDTO.getA90());
+		rolesAndAuthorisation.setA91(userDetailsDTO.getA91());
+		rolesAndAuthorisation.setA92(userDetailsDTO.getA92());
+		rolesAndAuthorisation.setA93(userDetailsDTO.getA93());
+		rolesAndAuthorisation.setA94(userDetailsDTO.getA94());
+		rolesAndAuthorisation.setA95(userDetailsDTO.getA95());
+		rolesAndAuthorisation.setA96(userDetailsDTO.getA96());
+		rolesAndAuthorisation.setA97(userDetailsDTO.getA97());
+		rolesAndAuthorisation.setA98(userDetailsDTO.getA98());
+		rolesAndAuthorisation.setA99(userDetailsDTO.getA99());
+		rolesAndAuthorisation.setA100(userDetailsDTO.getA100());
+		
+		rolesAndAuthorisation.setId(dao.getMaxCount());
+		if(MemcacheUtil.selfUpdateMemcacheRolesAndAuthorisation(rolesAndAuthorisation, true)) {
+			dao.saveObject(rolesAndAuthorisation);
+			result = true;
+		}
+		userDetailsDTO.setRoleName("");
+		userDetailsDTO.setRoleDescription("");
+					
+		return result;
+	}
+
+	@Override
+	public Boolean initEditRole(UserDetailsDTO userDetailsDTO, boolean superAdmin) throws Exception {
+		log.info("inside initEditRole of UserService");
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		Boolean result = false;
+		List<AuthorisationText> authorisationTextList = null;
+		List<RolesAndAuthorisation> rolesAndAuthorisationList = null;
+		RolesAndAuthorisation rolesAndAuthorisation = null;
+		rolesAndAuthorisationList = MemcacheUtil.getAllRolesAndAuthorisationList();
+		if(rolesAndAuthorisationList != null && rolesAndAuthorisationList.size() >0) {
+			for (RolesAndAuthorisation obj : rolesAndAuthorisationList) {
+				if(String.valueOf(obj.getId()).equals(userDetailsDTO.getRoleId().trim()) && obj.getRoleStatus().trim().equals(LinMobileConstants.STATUS_ARRAY[0])) {
+					rolesAndAuthorisation = obj;
+					break;
+				}
+			}
+		}
+		if(rolesAndAuthorisation != null) {
+			userDetailsDTO.setRoleDescription(rolesAndAuthorisation.getRoleDescription());
+			authorisationTextList = MemcacheUtil.getAllAuthorisationTextList();
+			if(rolesAndAuthorisation != null && authorisationTextList != null && authorisationTextList.size() >0) {
+				userDetailsDTO.setRoleId(String.valueOf(rolesAndAuthorisation.getId()));
+				userDetailsDTO.setRoleName(rolesAndAuthorisation.getRoleName().trim());
+				userDetailsDTO.setRoleType(rolesAndAuthorisation.getRoleType());
+				List<CommonDTO> selectedCompanyList = new ArrayList<CommonDTO>();
+				if(rolesAndAuthorisation.getCompanyId() != null) {
+					selectedCompanyList.add(new CommonDTO(rolesAndAuthorisation.getCompanyId().trim(), ""));
+				}
+				userDetailsDTO.setSelectedCompanyList(selectedCompanyList);
+				List<CommonDTO> selectedStatusList = new ArrayList<CommonDTO>();
+				selectedStatusList.add(new CommonDTO(rolesAndAuthorisation.getRoleStatus(), rolesAndAuthorisation.getRoleStatus()));
+				userDetailsDTO.setSelectedStatusList(selectedStatusList);
+				
+				setAuthorisations(authorisationTextList, rolesAndAuthorisation);
+				userDetailsDTO.setAuthorisationTextList(authorisationTextList);
+				result = true;
+			}
+		}
+		return result;
+	}
+	
+	public void setAuthorisations(List<AuthorisationText> authorisationTextList, RolesAndAuthorisation rolesAndAuthorisation) {
+		for (AuthorisationText authorisationText : authorisationTextList) {
+			if(authorisationText.getAuthorisationTextStatus().trim().equals(LinMobileConstants.STATUS_ARRAY[0])) {
+				if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A1")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA1());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A2")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA2());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A3")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA3());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A4")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA4());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A5")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA5());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A6")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA6());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A7")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA7());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A8")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA8());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A9")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA9());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A10")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA10());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A11")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA11());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A12")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA12());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A13")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA13());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A14")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA14());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A15")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA15());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A16")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA16());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A17")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA17());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A18")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA18());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A19")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA19());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A20")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA20());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A21")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA21());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A22")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA22());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A23")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA23());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A24")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA24());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A25")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA25());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A26")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA26());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A27")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA27());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A28")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA28());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A29")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA29());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A30")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA30());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A31")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA31());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A32")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA32());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A33")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA33());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A34")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA34());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A35")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA35());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A36")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA36());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A37")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA37());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A38")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA38());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A39")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA39());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A40")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA40());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A41")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA41());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A42")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA42());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A43")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA43());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A44")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA44());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A45")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA45());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A46")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA46());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A47")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA47());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A48")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA48());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A49")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA49());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A50")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA50());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A51")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA51());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A52")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA52());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A53")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA53());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A54")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA54());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A55")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA55());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A56")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA56());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A57")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA57());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A58")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA58());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A59")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA59());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A60")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA60());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A61")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA61());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A62")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA62());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A63")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA63());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A64")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA64());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A65")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA65());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A66")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA66());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A67")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA67());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A68")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA68());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A69")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA69());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A70")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA70());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A71")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA71());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A72")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA72());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A73")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA73());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A74")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA74());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A75")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA75());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A76")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA76());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A77")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA77());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A78")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA78());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A79")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA79());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A80")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA80());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A81")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA81());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A82")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA82());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A83")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA83());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A84")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA84());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A85")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA85());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A86")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA86());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A87")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA87());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A88")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA88());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A89")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA89());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A90")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA90());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A91")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA91());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A92")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA92());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A93")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA93());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A94")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA94());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A95")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA95());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A96")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA96());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A97")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA97());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A98")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA98());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A99")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA99());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A100")) {
+					authorisationText.setPermission(rolesAndAuthorisation.getA100());
+				}
+			}
+		}
+	}
+
+	@Override
+	public Boolean updateRole(UserDetailsDTO userDetailsDTO, long userId) throws Exception {
+		log.info("inside updateRole of UserService");
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		Boolean result = false;
+		
+		List<RolesAndAuthorisation> rolesAndAuthorisationList = null;
+		RolesAndAuthorisation rolesAndAuthorisation = null;
+		rolesAndAuthorisationList = MemcacheUtil.getAllRolesAndAuthorisationList();
+		if(rolesAndAuthorisationList != null && rolesAndAuthorisationList.size() >0) {
+			for (RolesAndAuthorisation obj : rolesAndAuthorisationList) {
+				if(String.valueOf(obj.getId()).equals(userDetailsDTO.getRoleId().trim()) && obj.getRoleStatus().trim().equals(LinMobileConstants.STATUS_ARRAY[0])) {
+					rolesAndAuthorisation = obj;
+					break;
+				}
+			}
+		}
+		if(rolesAndAuthorisation != null) {
+			rolesAndAuthorisation.setLastModifiedDate(DateUtil.getDateYYYYMMDDHHMMSS());
+			rolesAndAuthorisation.setLastModifiedById(userId);
+			rolesAndAuthorisation.setRoleDescription(userDetailsDTO.getRoleDescription());
+			//rolesAndAuthorisation.setRoleStatus("Active");
+			rolesAndAuthorisation.setRoleName(userDetailsDTO.getRoleName());
+			if(rolesAndAuthorisation.getRoleType().trim().equalsIgnoreCase(LinMobileConstants.DEFINED_TYPES[1])) {
+				rolesAndAuthorisation.setRoleStatus(userDetailsDTO.getRoleStatus());
+			}
+			if(userDetailsDTO.getCompanyId() != null) {
+				rolesAndAuthorisation.setCompanyId(userDetailsDTO.getCompanyId());
+			}
+			else {
+				List<CompanyObj> companyList = dao.getSelectedCompaniesByUserId(userId);
+				if(companyList != null && companyList.size() > 0 && companyList.get(0).getStatus().equals(LinMobileConstants.STATUS_ARRAY[0])) {
+					rolesAndAuthorisation.setCompanyId(String.valueOf(companyList.get(0).getId()));
+				}
+			}
+			rolesAndAuthorisation.setA1(userDetailsDTO.getA1());
+			rolesAndAuthorisation.setA2(userDetailsDTO.getA2());
+			rolesAndAuthorisation.setA3(userDetailsDTO.getA3());
+			rolesAndAuthorisation.setA4(userDetailsDTO.getA4());
+			rolesAndAuthorisation.setA5(userDetailsDTO.getA5());
+			rolesAndAuthorisation.setA6(userDetailsDTO.getA6());
+			rolesAndAuthorisation.setA7(userDetailsDTO.getA7());
+			rolesAndAuthorisation.setA8(userDetailsDTO.getA8());
+			rolesAndAuthorisation.setA9(userDetailsDTO.getA9());
+			rolesAndAuthorisation.setA10(userDetailsDTO.getA10());
+			rolesAndAuthorisation.setA11(userDetailsDTO.getA11());
+			rolesAndAuthorisation.setA12(userDetailsDTO.getA12());
+			rolesAndAuthorisation.setA13(userDetailsDTO.getA13());
+			rolesAndAuthorisation.setA14(userDetailsDTO.getA14());
+			rolesAndAuthorisation.setA15(userDetailsDTO.getA15());
+			rolesAndAuthorisation.setA16(userDetailsDTO.getA16());
+			rolesAndAuthorisation.setA17(userDetailsDTO.getA17());
+			rolesAndAuthorisation.setA18(userDetailsDTO.getA18());
+			rolesAndAuthorisation.setA19(userDetailsDTO.getA19());
+			rolesAndAuthorisation.setA20(userDetailsDTO.getA20());
+			rolesAndAuthorisation.setA21(userDetailsDTO.getA21());
+			rolesAndAuthorisation.setA22(userDetailsDTO.getA22());
+			rolesAndAuthorisation.setA23(userDetailsDTO.getA23());
+			rolesAndAuthorisation.setA24(userDetailsDTO.getA24());
+			rolesAndAuthorisation.setA25(userDetailsDTO.getA25());
+			rolesAndAuthorisation.setA26(userDetailsDTO.getA26());
+			rolesAndAuthorisation.setA27(userDetailsDTO.getA27());
+			rolesAndAuthorisation.setA28(userDetailsDTO.getA28());
+			rolesAndAuthorisation.setA29(userDetailsDTO.getA29());
+			rolesAndAuthorisation.setA30(userDetailsDTO.getA30());
+			rolesAndAuthorisation.setA31(userDetailsDTO.getA31());
+			rolesAndAuthorisation.setA32(userDetailsDTO.getA32());
+			rolesAndAuthorisation.setA33(userDetailsDTO.getA33());
+			rolesAndAuthorisation.setA34(userDetailsDTO.getA34());
+			rolesAndAuthorisation.setA35(userDetailsDTO.getA35());
+			rolesAndAuthorisation.setA36(userDetailsDTO.getA36());
+			rolesAndAuthorisation.setA37(userDetailsDTO.getA37());
+			rolesAndAuthorisation.setA38(userDetailsDTO.getA38());
+			rolesAndAuthorisation.setA39(userDetailsDTO.getA39());
+			rolesAndAuthorisation.setA40(userDetailsDTO.getA40());
+			rolesAndAuthorisation.setA41(userDetailsDTO.getA41());
+			rolesAndAuthorisation.setA42(userDetailsDTO.getA42());
+			rolesAndAuthorisation.setA43(userDetailsDTO.getA43());
+			rolesAndAuthorisation.setA44(userDetailsDTO.getA44());
+			rolesAndAuthorisation.setA45(userDetailsDTO.getA45());
+			rolesAndAuthorisation.setA46(userDetailsDTO.getA46());
+			rolesAndAuthorisation.setA47(userDetailsDTO.getA47());
+			rolesAndAuthorisation.setA48(userDetailsDTO.getA48());
+			rolesAndAuthorisation.setA49(userDetailsDTO.getA49());
+			rolesAndAuthorisation.setA50(userDetailsDTO.getA50());
+			rolesAndAuthorisation.setA51(userDetailsDTO.getA51());
+			rolesAndAuthorisation.setA52(userDetailsDTO.getA52());
+			rolesAndAuthorisation.setA53(userDetailsDTO.getA53());
+			rolesAndAuthorisation.setA54(userDetailsDTO.getA54());
+			rolesAndAuthorisation.setA55(userDetailsDTO.getA55());
+			rolesAndAuthorisation.setA56(userDetailsDTO.getA56());
+			rolesAndAuthorisation.setA57(userDetailsDTO.getA57());
+			rolesAndAuthorisation.setA58(userDetailsDTO.getA58());
+			rolesAndAuthorisation.setA59(userDetailsDTO.getA59());
+			rolesAndAuthorisation.setA60(userDetailsDTO.getA60());
+			rolesAndAuthorisation.setA61(userDetailsDTO.getA61());
+			rolesAndAuthorisation.setA62(userDetailsDTO.getA62());
+			rolesAndAuthorisation.setA63(userDetailsDTO.getA63());
+			rolesAndAuthorisation.setA64(userDetailsDTO.getA64());
+			rolesAndAuthorisation.setA65(userDetailsDTO.getA65());
+			rolesAndAuthorisation.setA66(userDetailsDTO.getA66());
+			rolesAndAuthorisation.setA67(userDetailsDTO.getA67());
+			rolesAndAuthorisation.setA68(userDetailsDTO.getA68());
+			rolesAndAuthorisation.setA69(userDetailsDTO.getA69());
+			rolesAndAuthorisation.setA70(userDetailsDTO.getA70());
+			rolesAndAuthorisation.setA71(userDetailsDTO.getA71());
+			rolesAndAuthorisation.setA72(userDetailsDTO.getA72());
+			rolesAndAuthorisation.setA73(userDetailsDTO.getA73());
+			rolesAndAuthorisation.setA74(userDetailsDTO.getA74());
+			rolesAndAuthorisation.setA75(userDetailsDTO.getA75());
+			rolesAndAuthorisation.setA76(userDetailsDTO.getA76());
+			rolesAndAuthorisation.setA77(userDetailsDTO.getA77());
+			rolesAndAuthorisation.setA78(userDetailsDTO.getA78());
+			rolesAndAuthorisation.setA79(userDetailsDTO.getA79());
+			rolesAndAuthorisation.setA80(userDetailsDTO.getA80());
+			rolesAndAuthorisation.setA81(userDetailsDTO.getA81());
+			rolesAndAuthorisation.setA82(userDetailsDTO.getA82());
+			rolesAndAuthorisation.setA83(userDetailsDTO.getA83());
+			rolesAndAuthorisation.setA84(userDetailsDTO.getA84());
+			rolesAndAuthorisation.setA85(userDetailsDTO.getA85());
+			rolesAndAuthorisation.setA86(userDetailsDTO.getA86());
+			rolesAndAuthorisation.setA87(userDetailsDTO.getA87());
+			rolesAndAuthorisation.setA88(userDetailsDTO.getA88());
+			rolesAndAuthorisation.setA89(userDetailsDTO.getA89());
+			rolesAndAuthorisation.setA90(userDetailsDTO.getA90());
+			rolesAndAuthorisation.setA91(userDetailsDTO.getA91());
+			rolesAndAuthorisation.setA92(userDetailsDTO.getA92());
+			rolesAndAuthorisation.setA93(userDetailsDTO.getA93());
+			rolesAndAuthorisation.setA94(userDetailsDTO.getA94());
+			rolesAndAuthorisation.setA95(userDetailsDTO.getA95());
+			rolesAndAuthorisation.setA96(userDetailsDTO.getA96());
+			rolesAndAuthorisation.setA97(userDetailsDTO.getA97());
+			rolesAndAuthorisation.setA98(userDetailsDTO.getA98());
+			rolesAndAuthorisation.setA99(userDetailsDTO.getA99());
+			rolesAndAuthorisation.setA100(userDetailsDTO.getA100());
+			
+			if(MemcacheUtil.selfUpdateMemcacheRolesAndAuthorisation(rolesAndAuthorisation, false)) {
+				dao.saveObject(rolesAndAuthorisation);
+				result = true;
+			}
+		}	
+					
+		return result;
+	}
+
+	@Override
+	public Boolean copyRole(UserDetailsDTO userDetailsDTO) throws Exception {
+		log.info("inside copyRole of UserService");
+		Boolean result = false;
+		List<AuthorisationText> authorisationTextList = null;
+		List<RolesAndAuthorisation> rolesAndAuthorisationList = null;
+		RolesAndAuthorisation rolesAndAuthorisation = null;
+		List<CommonDTO> selectedStatusList = new ArrayList<CommonDTO>();
+		List<CommonDTO> selectedCompanyList = new ArrayList<CommonDTO>();
+		
+		if(userDetailsDTO.getRoleStatus() != null) {
+			selectedStatusList.add(new CommonDTO(userDetailsDTO.getRoleStatus(), userDetailsDTO.getRoleStatus()));
+			userDetailsDTO.setSelectedStatusList(selectedStatusList);
+		}
+		if(userDetailsDTO.getCompanyId() != null) {
+			selectedCompanyList.add(new CommonDTO(userDetailsDTO.getCompanyId(), ""));
+			userDetailsDTO.setSelectedCompanyList(selectedCompanyList);
+		}
+		rolesAndAuthorisationList = MemcacheUtil.getAllRolesAndAuthorisationList();
+		if(rolesAndAuthorisationList != null && rolesAndAuthorisationList.size() >0) {
+			for (RolesAndAuthorisation obj : rolesAndAuthorisationList) {
+				if(String.valueOf(obj.getId()).equals(userDetailsDTO.getRole().trim()) && obj.getRoleStatus().trim().equals(LinMobileConstants.STATUS_ARRAY[0])) {
+					rolesAndAuthorisation = obj;
+					break;
+				}
+			}
+		}
+		if(rolesAndAuthorisation != null) {
+			authorisationTextList = MemcacheUtil.getAllAuthorisationTextList();
+			if(authorisationTextList != null && authorisationTextList.size() >0) {
+				setAuthorisations(authorisationTextList, rolesAndAuthorisation);
+				userDetailsDTO.setAuthorisationTextList(authorisationTextList);
+				result = true;
+			}
+		}
+		return result;
+	}
+	
+	@Override
+	public void teamSetup(UserDetailsDTO userDetailsDTO, long userId, boolean superAdmin) throws Exception {
+		log.info("inside teamSetup of UserService");
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		List<TeamPropertiesObj> teamSetupTeamPropertiesObjList = new ArrayList<TeamPropertiesObj>();
+		List<TeamPropertiesObj> teamPropertiesObjList = MemcacheUtil.getAllTeamPropertiesObjList();
+		if(superAdmin) {
+			List<CompanyObj> companyObjList = MemcacheUtil.getAllCompanyList();
+			if(teamPropertiesObjList!= null && teamPropertiesObjList.size() > 0) {
+				for (TeamPropertiesObj teamPropertiesObj : teamPropertiesObjList) {
+					if(teamPropertiesObj != null) {
+						teamSetupTeamPropertiesObjList.add(teamPropertiesObj);
+					}
+				}
+			}
+		}
+		else {
+			List<CompanyObj> companyList = dao.getSelectedCompaniesByUserId(userId);
+			if(teamPropertiesObjList!= null && teamPropertiesObjList.size() > 0 && companyList != null && companyList.size() > 0) {
+				CompanyObj companyObj = companyList.get(0);
+				String status = companyObj.getStatus();
+				String companyId = companyObj.getId()+"";
+				if(status.equals(LinMobileConstants.STATUS_ARRAY[0]) && !companyId.equals("")) {
+					for (TeamPropertiesObj teamPropertiesObj : teamPropertiesObjList) {
+						if(teamPropertiesObj != null && teamPropertiesObj.getCompanyId() != null && teamPropertiesObj.getCompanyId().trim().equals(companyId)) {
+							teamSetupTeamPropertiesObjList.add(teamPropertiesObj);
+						}
+					}
+				}
+			}
+		}
+		userDetailsDTO.setTeamPropertiesObjList(teamSetupTeamPropertiesObjList);
+	}
+	
+	public String getCommaSeperatedIdValues(List<CommonDTO> list) {
+		log.info("inside getCommaSeperatedIdValues of UserService");
+		String commaSeperatedIds ="";
+		if(list != null && list.size() > 0) {
+			for (CommonDTO commonDTO : list) {
+				commaSeperatedIds = commaSeperatedIds + commonDTO.getId().trim() + ",";
+			}
+		}
+		if(commaSeperatedIds != null && commaSeperatedIds.lastIndexOf(",") != -1) {
+			commaSeperatedIds = commaSeperatedIds.substring(0, commaSeperatedIds.lastIndexOf(","));
+		}
+		return commaSeperatedIds;
+	}
+	
+	@Override
+	public List<String> CommaSeperatedStringToList(String commaSeperatedString) {
+		log.info("inside CommaSeperatedStringToList of UserService");
+		List<String> tempList = new ArrayList<String>();
+		if(commaSeperatedString != null && !commaSeperatedString.trim().equals("")) {
+			String[] stringArray = commaSeperatedString.trim().split(",");
+			int length = stringArray.length;
+			if(length > 0) {
+				for (int i = 0; i < stringArray.length; i++) {
+					String tempString = stringArray[i];
+					if(tempString != null) {
+						tempList.add(tempString.trim());
+					}
+				}
+			}
+		}
+		log.info("tempList size :  "+tempList.size());
+		return tempList;
+	}
+	
+	@Override
+	public Boolean createTeam(UserDetailsDTO userDetailsDTO, long userId, boolean superAdmin) throws Exception {
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		Boolean result = false; 
+		List<String> propertyIdList =  new ArrayList<String>();
+		List<String> agencyList = new ArrayList<String>();
+		List<String> advertiserList = new ArrayList<String>();
+		List<String> appViewList = new ArrayList<String>();
+		TeamPropertiesObj teamPropertiesObj = new TeamPropertiesObj();
+		
+		teamPropertiesObj.setCreationDate(DateUtil.getDateYYYYMMDDHHMMSS());
+		teamPropertiesObj.setLastModifiedDate(DateUtil.getDateYYYYMMDDHHMMSS());
+		teamPropertiesObj.setLastModifiedByUserId(userId);
+		teamPropertiesObj.setCreatedByUserId(userId);
+		teamPropertiesObj.setTeamName(userDetailsDTO.getTeamName().trim());
+		teamPropertiesObj.setTeamType(LinMobileConstants.DEFINED_TYPES[1]);
+		teamPropertiesObj.setTeamDescription(userDetailsDTO.getTeamDescription().trim());
+		teamPropertiesObj.setTeamStatus(LinMobileConstants.STATUS_ARRAY[0]);
+		
+		if(userDetailsDTO.getCompanyId() != null) {
+			teamPropertiesObj.setCompanyId(userDetailsDTO.getCompanyId().trim());
+		}
+		else {
+			teamPropertiesObj.setCompanyId(userDetailsDTO.getCompanyIDOfSessionAdminUser().trim());
+		}
+		
+		if(userDetailsDTO.getAppViews() != null) {
+			appViewList.addAll(CommaSeperatedStringToList(userDetailsDTO.getAppViews()));
+		}
+		
+		//Publisher Pool Partner Company
+		if(userDetailsDTO.getSelectedCompanyType().trim().equals(LinMobileConstants.COMPANY_TYPE[0]) && userDetailsDTO.getAccessToProperties() != null && userDetailsDTO.getAccessToProperties().equals("1")) {
+			if(userDetailsDTO.getAllPropertiesFlag() != null && userDetailsDTO.getAllPropertiesFlag().equals("1")) {
+				propertyIdList.add(LinMobileConstants.ALL_PROPERTIES);
+			}
+			else if(userDetailsDTO.getProperties() != null) {
+				propertyIdList.addAll(CommaSeperatedStringToList(userDetailsDTO.getProperties()));
+			}
+		}
+		
+		if(userDetailsDTO.getAccessToAccounts() != null && userDetailsDTO.getAccessToAccounts().equals("1")) {
+			if(userDetailsDTO.getAccountsFlag() != null && userDetailsDTO.getAccountsFlag().equals("1")) {
+				createAdvertiserAndAgencyList(userDetailsDTO.getAccounts(), agencyList, advertiserList);
+			}
+			if(userDetailsDTO.getAccountsFlag() != null && userDetailsDTO.getAccountsFlag().equals("2")) {
+				agencyList.add(LinMobileConstants.ALL_AGENCIES);
+				advertiserList.add(LinMobileConstants.ALL_ADVERTISERS);
+			}
+			if(userDetailsDTO.getSelectedCompanyType().trim().equals(LinMobileConstants.COMPANY_TYPE[0]) && userDetailsDTO.getAccountsFlag() != null && userDetailsDTO.getAccountsFlag().equals("3")) {
+				agencyList.add(LinMobileConstants.NO_RESTRICTIONS);
+				advertiserList.add(LinMobileConstants.NO_RESTRICTIONS);
+			}
+		}
+		
+		teamPropertiesObj.setAppViews(appViewList);
+		teamPropertiesObj.setPropertyId(propertyIdList);
+		teamPropertiesObj.setAgencyId(agencyList);
+		teamPropertiesObj.setAdvertiserId(advertiserList);
+		
+		String uniqueNumber = String.valueOf(dao.getMaxCount());
+		teamPropertiesObj.setId(uniqueNumber);
+		if(MemcacheUtil.selfUpdateMemcacheTeamPropertiesObj(teamPropertiesObj, true)) {
+			dao.saveObject(teamPropertiesObj);
+			result = true;
+		}
+		return result;
+	}
+
+	public void createAdvertiserAndAgencyList(String CommaSeperatedAccountString, List<String> agencyList, List<String> advertiserList) {
+		if(CommaSeperatedAccountString != null && !CommaSeperatedAccountString.trim().equals("")) {
+			CommaSeperatedAccountString = CommaSeperatedAccountString.trim();
+			String[] stringArray = CommaSeperatedAccountString.split(",");
+			for (int i = 0; i < stringArray.length; i++) {
+				String tempString = stringArray[i].trim();
+				if(tempString.startsWith(LinMobileConstants.AGENCY_ID_PREFIX)) {
+					agencyList.add(tempString.substring(LinMobileConstants.AGENCY_ID_PREFIX.length()));
+				}
+				else if(tempString.startsWith(LinMobileConstants.ADVERTISER_ID_PREFIX)) {
+					advertiserList.add(tempString.substring(LinMobileConstants.ADVERTISER_ID_PREFIX.length()));
+				}
+			}
+		}
+	}
+
+	@Override
+	public void initEditTeam(TeamPropertiesObj teamProperties, UserDetailsDTO userDetailsDTO) throws Exception {
+		List<CommonDTO> selectedStatusList = new ArrayList<CommonDTO>();
+		List<CommonDTO> selectedAppViewsList = new ArrayList<CommonDTO>();
+		List<CommonDTO> propertiesList = new ArrayList<CommonDTO>();
+		List<CommonDTO> selectedPropertiesList = new ArrayList<CommonDTO>();
+		List<CommonDTO> accountsList = new ArrayList<CommonDTO>();
+		List<CommonDTO> selectedAccountsList = new ArrayList<CommonDTO>();
+		/*String agencyIdStringForBigQuery = "";
+		String advertiserIdStringForBigQuery = "";*/
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		
+		if(teamProperties != null && userDetailsDTO.getDefaultSelectedCompanyType() != null) {
+			String companyId = teamProperties.getCompanyId();
+			userDetailsDTO.setTeamName(teamProperties.getTeamName());
+			userDetailsDTO.setTeamDescription(teamProperties.getTeamDescription());
+			userDetailsDTO.setTeamType(teamProperties.getTeamType());
+			selectedStatusList.add(new CommonDTO(teamProperties.getTeamStatus(),""));
+			userDetailsDTO.setTeamStatus(teamProperties.getTeamStatus());
+			
+			List<String> tempList = teamProperties.getAppViews();
+			if(tempList != null && tempList.size() > 0) {
+				for (String appview : tempList) {
+					selectedAppViewsList.add(new CommonDTO(appview.trim(), ""));
+				}
+			}
+			
+			if(userDetailsDTO.getAccessToProperties() != null && userDetailsDTO.getAccessToProperties().equals("1") && userDetailsDTO.getDefaultSelectedCompanyType().equals(LinMobileConstants.COMPANY_TYPE[0])) {
+				// Publisher Pool Partner
+				propertiesList = dao.getActivePropertiesByPublisherCompanyId(companyId);
+				tempList = teamProperties.getPropertyId();
+				if(tempList != null && tempList.size() > 0) {
+					if(tempList.contains(LinMobileConstants.ALL_PROPERTIES)) {
+						userDetailsDTO.setAllPropertiesFlag("1");
+					}
+					else {
+						for (String propertyId : tempList) {
+							selectedPropertiesList.add(new CommonDTO(propertyId.trim(), ""));
+						}
+					}
+				}
+			}
+			
+			if(userDetailsDTO.getAccessToAccounts() != null && userDetailsDTO.getAccessToAccounts().equals("1")) {
+				accountsList = getActiveAccountsByCompanyId(companyId, true);
+				if(teamProperties.getAgencyId() != null && teamProperties.getAdvertiserId() != null && teamProperties.getAgencyId().contains(LinMobileConstants.NO_RESTRICTIONS) && teamProperties.getAdvertiserId().contains(LinMobileConstants.NO_RESTRICTIONS)) {
+					userDetailsDTO.setAccountsFlag("3");
+				}
+				else if(teamProperties.getAgencyId() != null && teamProperties.getAdvertiserId() != null && teamProperties.getAgencyId().contains(LinMobileConstants.ALL_AGENCIES) && teamProperties.getAdvertiserId().contains(LinMobileConstants.ALL_ADVERTISERS)) {
+					userDetailsDTO.setAccountsFlag("2");
+				}
+				else {
+					userDetailsDTO.setAccountsFlag("1");
+					if(teamProperties.getAgencyId() != null && teamProperties.getAgencyId().size() > 0 && !(teamProperties.getAgencyId().contains(LinMobileConstants.ALL_AGENCIES)) && !(teamProperties.getAgencyId().contains(LinMobileConstants.NO_RESTRICTIONS))) {
+						selectedAccountsList.addAll(createUpdateTeamAccounts(LinMobileConstants.AGENCY_ID_PREFIX, teamProperties.getAgencyId()));
+						/*agencyIdStringForBigQuery = UserService.createCommaSeperatedStringForBigQuery(teamProperties.getAgencyId());*/
+					}
+					if(teamProperties.getAdvertiserId() != null && teamProperties.getAdvertiserId().size() > 0 && !(teamProperties.getAdvertiserId().contains(LinMobileConstants.ALL_ADVERTISERS)) && !(teamProperties.getAgencyId().contains(LinMobileConstants.NO_RESTRICTIONS))) {
+						selectedAccountsList.addAll(createUpdateTeamAccounts(LinMobileConstants.ADVERTISER_ID_PREFIX, teamProperties.getAdvertiserId()));
+						/*advertiserIdStringForBigQuery = UserService.createCommaSeperatedStringForBigQuery(teamProperties.getAdvertiserId());*/
+					}
+				}
+			}
+		}
+		userDetailsDTO.setPropertiesList(propertiesList);
+		userDetailsDTO.setSelectedPropertiesList(selectedPropertiesList);
+		userDetailsDTO.setAccountsList(accountsList);
+		userDetailsDTO.setSelectedAccountsList(selectedAccountsList);
+		userDetailsDTO.setSelectedAppViewsList(selectedAppViewsList);
+		userDetailsDTO.setSelectedStatusList(selectedStatusList);
+		/*userDetailsDTO.setAgencyIdStringForBigQuery(agencyIdStringForBigQuery);
+		userDetailsDTO.setAdvertiserIdStringForBigQuery(advertiserIdStringForBigQuery);*/
+	}
+	
+	public List<CommonDTO> createUpdateTeamAccounts(String prefixString, List<String> list) {
+		List<CommonDTO> commonDTOList = new ArrayList<CommonDTO>();
+		for (String str : list) {
+			commonDTOList.add(new CommonDTO(prefixString+str, ""));
+		}
+		return commonDTOList;
+	}
+
+	@Override
+	public Boolean updateTeam(UserDetailsDTO userDetailsDTO, long updateByUserId) throws Exception {
+		log.info("inside updateTeam of UserService");
+		List<String> propertyIdList =  new ArrayList<String>();
+		List<String> appViewList = new ArrayList<String>();
+		List<String> agencyList = new ArrayList<String>();
+		List<String> advertiserList = new ArrayList<String>();
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		Boolean result = false;
+		
+		List<TeamPropertiesObj> teamPropertiesObjList = MemcacheUtil.getAllTeamPropertiesObjList();
+		TeamPropertiesObj teamPropertiesObj = dao.getTeamPropertiesObjById(userDetailsDTO.getTeamId(), teamPropertiesObjList);
+		if(teamPropertiesObj != null) {
+			maintainTeamPropertiesObjHistory(teamPropertiesObj, updateByUserId);
+			
+			teamPropertiesObj.setLastModifiedDate(DateUtil.getDateYYYYMMDDHHMMSS());
+			teamPropertiesObj.setLastModifiedByUserId(updateByUserId);
+			teamPropertiesObj.setTeamName(userDetailsDTO.getTeamName().trim());
+			teamPropertiesObj.setTeamDescription(userDetailsDTO.getTeamDescription().trim());
+			teamPropertiesObj.setTeamStatus(userDetailsDTO.getTeamStatus());
+			
+			if(userDetailsDTO.getAppViews() != null) {
+				appViewList.addAll(CommaSeperatedStringToList(userDetailsDTO.getAppViews()));
+			}
+			
+			//Publisher Pool Partner Company
+			if(userDetailsDTO.getSelectedCompanyType().trim().equals(LinMobileConstants.COMPANY_TYPE[0]) && userDetailsDTO.getAccessToProperties() != null && userDetailsDTO.getAccessToProperties().equals("1")) {
+				if(userDetailsDTO.getAllPropertiesFlag() != null && userDetailsDTO.getAllPropertiesFlag().equals("1")) {
+					propertyIdList.add(LinMobileConstants.ALL_PROPERTIES);
+				}
+				else if(userDetailsDTO.getProperties() != null) {
+					propertyIdList.addAll(CommaSeperatedStringToList(userDetailsDTO.getProperties()));
+				}
+			}
+			
+			log.info("userDetailsDTO.getAccessToAccounts() + "+userDetailsDTO.getAccessToAccounts());
+			if(userDetailsDTO.getAccessToAccounts() != null && userDetailsDTO.getAccessToAccounts().equals("1")) {
+				if(userDetailsDTO.getAccountsFlag() != null && userDetailsDTO.getAccountsFlag().equals("1")) {
+					createAdvertiserAndAgencyList(userDetailsDTO.getAccounts(), agencyList, advertiserList);
+				}
+				if(userDetailsDTO.getAccountsFlag() != null && userDetailsDTO.getAccountsFlag().equals("2")) {
+					agencyList.add(LinMobileConstants.ALL_AGENCIES);
+					advertiserList.add(LinMobileConstants.ALL_ADVERTISERS);
+				}
+				if(userDetailsDTO.getSelectedCompanyType().trim().equals(LinMobileConstants.COMPANY_TYPE[0]) && userDetailsDTO.getAccountsFlag() != null && userDetailsDTO.getAccountsFlag().equals("3")) {
+					agencyList.add(LinMobileConstants.NO_RESTRICTIONS);
+					advertiserList.add(LinMobileConstants.NO_RESTRICTIONS);
+				}
+			}
+			
+			teamPropertiesObj.setAppViews(appViewList);
+			teamPropertiesObj.setPropertyId(propertyIdList);
+			teamPropertiesObj.setAgencyId(agencyList);
+			teamPropertiesObj.setAdvertiserId(advertiserList);
+			
+			if(MemcacheUtil.selfUpdateMemcacheTeamPropertiesObj(teamPropertiesObj, false)) {
+				dao.saveObject(teamPropertiesObj);
+				result = true;
+			}
+		}
+		return result;
+	}
+
+	private void maintainTeamPropertiesObjHistory(TeamPropertiesObj teamPropertiesObj, long updateByUserId) throws Exception{
+		log.info("inside maintainTeamPropertiesObjHistory of UserService");
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		TeamPropertiesHistObj teamPropertiesHistObj = new TeamPropertiesHistObj();
+		
+		teamPropertiesHistObj.setId(teamPropertiesObj.getId());
+		teamPropertiesHistObj.setTeamStatus(teamPropertiesObj.getTeamStatus());
+		teamPropertiesHistObj.setTeamName(teamPropertiesObj.getTeamName());
+		teamPropertiesHistObj.setTeamDescription(teamPropertiesObj.getTeamDescription());
+		teamPropertiesHistObj.setCompanyId(teamPropertiesObj.getCompanyId());
+		teamPropertiesHistObj.setAppViews(teamPropertiesObj.getAppViews());
+		teamPropertiesHistObj.setTeamType(teamPropertiesObj.getTeamType());
+		teamPropertiesHistObj.setAgencyId(teamPropertiesObj.getAgencyId());
+		teamPropertiesHistObj.setAdvertiserId(teamPropertiesObj.getAdvertiserId());
+		teamPropertiesHistObj.setPropertyId(teamPropertiesObj.getPropertyId());
+		teamPropertiesHistObj.setCreationDate(teamPropertiesObj.getCreationDate());
+		teamPropertiesHistObj.setCreatedByUserId(teamPropertiesObj.getCreatedByUserId());
+		teamPropertiesHistObj.setLastModifiedDate(teamPropertiesObj.getLastModifiedDate());
+		teamPropertiesHistObj.setLastModifiedByUserId(teamPropertiesObj.getLastModifiedByUserId());
+		teamPropertiesHistObj.setHistoryDate(DateUtil.getDateYYYYMMDDHHMMSS());
+		teamPropertiesHistObj.setModifiedByUserId(updateByUserId);
+		
+		dao.saveObject(teamPropertiesHistObj);
+		log.info("Successfully created history for TeamPropertiesObj");		
+	}
+
+	@Override
+	public Boolean createNewCompany(UserDetailsDTO userDetailsDTO, long userId) throws Exception {
+		log.info("inside createNewCompany method of userservice");
+		Boolean result = false;
+		List<CompanyObj> companyObjList = MemcacheUtil.getAllCompanyList();
+		CompanyObj companyObj = new CompanyObj();
+		List<String> adServerId = new ArrayList<String>();
+		List<String> adServerUsername = new ArrayList<String>();
+		List<String> adServerPassword = new ArrayList<String>();
+		List<String> appViewList = new ArrayList<String>();
+		companyObj.setCompanyName(userDetailsDTO.getCompanyName());
+		companyObj.setCompanyType(userDetailsDTO.getCompanyTypeToCreate());
+		companyObj.setStatus(LinMobileConstants.STATUS_ARRAY[0]);
+		companyObj.setWebURL(userDetailsDTO.getWebURL());
+		companyObj.setCompanyEmail(userDetailsDTO.getCompanyEmail());
+		companyObj.setPhone(userDetailsDTO.getPhone());
+		companyObj.setFax(userDetailsDTO.getFax());
+		companyObj.setContactPersonName(userDetailsDTO.getContactPersonName());
+		companyObj.setCompanyAddress(userDetailsDTO.getCompanyAddress());
+		if(userDetailsDTO.getAccessToAccounts() != null && userDetailsDTO.getAccessToAccounts().equals("1")) {
+			companyObj.setAccessToAccounts(true);
+		}
+		
+		if(userDetailsDTO.getCompanyTypeToCreate().equals(LinMobileConstants.COMPANY_TYPE[0]) && userDetailsDTO.getAccessToProperties() != null && userDetailsDTO.getAccessToProperties().equals("1")) {	// if publisher pool partner
+			companyObj.setAccessToProperties(true);
+		}
+		
+		if(userDetailsDTO.getAdServerInfo() != null) {
+			if(userDetailsDTO.getAdServerInfo().equals(LinMobileConstants.DFP_DATA_SOURCE) && userDetailsDTO.getAdServerId() != null && userDetailsDTO.getAdServerUsername() != null && userDetailsDTO.getAdServerPassword() != null && (userDetailsDTO.getAdServerId().length == userDetailsDTO.getAdServerUsername().length) && (userDetailsDTO.getAdServerUsername().length == userDetailsDTO.getAdServerPassword().length)) {
+				int length = userDetailsDTO.getAdServerId().length;
+				for(int i=0; i<length; i++) {
+					if(userDetailsDTO.getAdServerId()[i] != null && userDetailsDTO.getAdServerUsername()[i] != null && userDetailsDTO.getAdServerPassword()[i] != null 
+							&& !userDetailsDTO.getAdServerId()[i].trim().equals("") && !userDetailsDTO.getAdServerUsername()[i].trim().equals("") && !userDetailsDTO.getAdServerPassword()[i].trim().equals("")) {
+						adServerId.add(userDetailsDTO.getAdServerId()[i].trim());
+						adServerUsername.add(userDetailsDTO.getAdServerUsername()[i].trim());
+						adServerPassword.add(userDetailsDTO.getAdServerPassword()[i].trim());
+					}
+				}
+				
+				companyObj.setAdServerId(adServerId);
+				companyObj.setAdServerUsername(adServerUsername);
+				companyObj.setAdServerPassword(adServerPassword);
+			}
+			
+			if(userDetailsDTO.getAdServerInfo().equalsIgnoreCase("Other") && userDetailsDTO.getServiceURL()!= null && userDetailsDTO.getServiceURL().length > 0) {
+				List<String> serviceURLList = new ArrayList<String>();
+				for(String serviceURL : userDetailsDTO.getServiceURL()) {
+					if(serviceURL != null && !serviceURL.trim().equals("")) {
+						serviceURLList.add(serviceURL.trim());
+					}
+				}
+				companyObj.setServiceURL(serviceURLList);
+			}
+			companyObj.setAdServerInfo(userDetailsDTO.getAdServerInfo());
+		}
+		
+		if(userDetailsDTO.getAppViews() != null) {
+			appViewList.addAll(CommaSeperatedStringToList(userDetailsDTO.getAppViews()));
+			companyObj.setAppViews(appViewList);
+		}
+		
+		if(userDetailsDTO.getCompanyTypeToCreate().equals(LinMobileConstants.COMPANY_TYPE[0]) && userDetailsDTO.getDemandPartnerId() != null) {		// if Publisher Pool Partner
+			List<String> DemandPartnerIdsList = CommaSeperatedStringToList(userDetailsDTO.getDemandPartnerId());
+			companyObj.setDemandPartnerId(DemandPartnerIdsList);
+		}
+		if(userDetailsDTO.getCompanyTypeToCreate().equals(LinMobileConstants.COMPANY_TYPE[1])) {		// if Demand Partner
+			companyObj.setDataSource(userDetailsDTO.getDataSource().trim());
+			if(userDetailsDTO.getDemandPartnerCategory() != null && !userDetailsDTO.getDemandPartnerCategory().trim().equals("")) {
+				companyObj.setDemandPartnerCategory(userDetailsDTO.getDemandPartnerCategory().trim());
+			}
+			if(userDetailsDTO.getDemandPartnerType() != null && !userDetailsDTO.getDemandPartnerType().trim().equals("")) {
+				companyObj.setDemandPartnerType(userDetailsDTO.getDemandPartnerType().trim());
+			}
+			if(userDetailsDTO.getPassbackSiteType()!= null && userDetailsDTO.getPassbackSiteType().length > 0) {
+				List<String> passBackSiteTypeList = new ArrayList<String>();
+				for(String passBackSiteType : userDetailsDTO.getPassbackSiteType()) {
+					if(passBackSiteType != null && !passBackSiteType.trim().equals("")) {
+						passBackSiteTypeList.add(passBackSiteType.trim());
+					}
+				}
+				companyObj.setPassback_Site_type(passBackSiteTypeList);
+			}
+		}
+		
+		companyObj.setCreationDate(DateUtil.getDateYYYYMMDDHHMMSS());
+		companyObj.setLastModifiedDate(DateUtil.getDateYYYYMMDDHHMMSS());
+		companyObj.setLastModifiedByUserId(userId);
+		companyObj.setCreatedByUserId(userId);
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		CompanyObj obj = dao.getCompanyByName(userDetailsDTO.getCompanyName(), companyObjList);
+		if(obj == null) {
+			companyObj.setId(dao.getMaxCount());
+			log.info("logo file : "+userDetailsDTO.getCompanyLogo());
+			log.info("logo file content type : "+userDetailsDTO.getCompanyLogoContentType());
+			log.info("logo file name : "+userDetailsDTO.getCompanyLogoFileName());
+			if(userDetailsDTO.getCompanyLogoFileName() != null) {
+				String uploadedFileURL = uploadCompanyLogo(userDetailsDTO, companyObj);
+				log.info("uploadedFileURL : "+uploadedFileURL);
+				if(uploadedFileURL != null && uploadedFileURL.length() > 0) {
+					companyObj.setCompanyLogoURL(uploadedFileURL);
+					companyObj.setCompanyLogoName(userDetailsDTO.getCompanyLogoFileName());
+				}
+			}
+			if(MemcacheUtil.selfUpdateMemcacheCompany(companyObj, true)) {
+				dao.saveObject(companyObj);
+				result = true;
+				createDefaultTeamAllEntity(companyObj, userId);
+				createDefaultTeamNoEntity(userDetailsDTO, companyObj.getId()+"", userId);
+			}
+		}
+		return result;
+	}
+	
+	public Boolean initEditCompany(UserDetailsDTO userDetailsDTO) throws Exception {
+		log.info("inside initEditCompany method of userservice");
+		Boolean result = false;
+		CompanyObj companyObj = null;
+		int count = 1;
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		List<CommonDTO> selectedDemandPartnersList = new ArrayList<CommonDTO>();
+		List<CommonDTO> selectedAppViewsList = new ArrayList<CommonDTO>();
+		List<AdServerCredentialsDTO> adServerCredentialsDTOList = new ArrayList<AdServerCredentialsDTO>();
+		List<CommonDTO> selectedStatusList = new ArrayList<CommonDTO>();
+		List<CommonDTO> selectedDemandPartnerTypeList = new ArrayList<CommonDTO>();
+		List<String> tempPassbackSiteTypeList = null;
+		List<String> tempServiceURLList = null;
+		List<CommonDTO> passbackSiteTypeList = new ArrayList<CommonDTO>();
+		List<CommonDTO> serviceURLList = new ArrayList<CommonDTO>();
+		if(userDetailsDTO.getCompanyTypeToUpdate() != null) {
+			List<CompanyObj> companyObjList = MemcacheUtil.getAllCompanyList();
+			companyObj = dao.getCompanyById(Long.valueOf(userDetailsDTO.getCompanyId()), companyObjList);
+			if(companyObj != null) {
+				if(companyObj.getCompanyLogoURL() != null && companyObj.getCompanyLogoURL().length() > 0) {
+					userDetailsDTO.setCompanyLogoURL(companyObj.getCompanyLogoURL());
+					if(companyObj.getCompanyLogoName() != null && companyObj.getCompanyLogoName().length() > 0) {
+						userDetailsDTO.setCompanyLogoFileName(companyObj.getCompanyLogoName());
+					}
+				}
+				if(companyObj.getCompanyName()!=null && !companyObj.getCompanyName().equals("")){
+					userDetailsDTO.setCompanyName(companyObj.getCompanyName());
+				}
+				if(companyObj.getStatus()!=null && !companyObj.getStatus().equals("")){
+					selectedStatusList.add(new CommonDTO(companyObj.getStatus(), companyObj.getStatus()));
+					userDetailsDTO.setSelectedStatusList(selectedStatusList);
+					userDetailsDTO.setStatus(companyObj.getStatus());
+				}
+				if(companyObj.getWebURL()!=null){
+					userDetailsDTO.setWebURL(companyObj.getWebURL());
+				}
+				if(companyObj.getCompanyEmail()!=null){
+					userDetailsDTO.setCompanyEmail(companyObj.getCompanyEmail());
+				}
+				if(companyObj.getPhone()!=null){
+					userDetailsDTO.setPhone(companyObj.getPhone());
+				}
+				if(companyObj.getFax()!=null){
+					userDetailsDTO.setFax(companyObj.getFax());
+				}
+				if(companyObj.getContactPersonName()!=null){
+					userDetailsDTO.setContactPersonName(companyObj.getContactPersonName());
+				}
+				if(companyObj.getCompanyAddress()!=null){
+					userDetailsDTO.setCompanyAddress(companyObj.getCompanyAddress());
+				}
+				
+				userDetailsDTO.setAdServerCredentialsCounterValue(String.valueOf(count));
+				userDetailsDTO.setServiceURLCounterValue(String.valueOf(count));
+				if(companyObj.getAdServerInfo() !=null){
+					userDetailsDTO.setAdServerInfo(companyObj.getAdServerInfo());
+					if(companyObj.getAdServerInfo().equals(LinMobileConstants.DFP_DATA_SOURCE) && companyObj.getAdServerId() != null && companyObj.getAdServerUsername() != null && companyObj.getAdServerPassword() != null && (companyObj.getAdServerId().size() == companyObj.getAdServerUsername().size()) && (companyObj.getAdServerUsername().size() == companyObj.getAdServerPassword().size())) {
+						int length = companyObj.getAdServerId().size();
+						for(int i=0; i<length; i++) {
+							if(companyObj.getAdServerId().get(i) != null && companyObj.getAdServerUsername().get(i) != null && companyObj.getAdServerPassword().get(i) != null) {
+								adServerCredentialsDTOList.add(new AdServerCredentialsDTO(String.valueOf(count), companyObj.getAdServerId().get(i).trim(), companyObj.getAdServerUsername().get(i).trim(), companyObj.getAdServerPassword().get(i).trim()));
+								count++;
+							}
+						}
+						userDetailsDTO.setAdServerCredentialsDTOList(adServerCredentialsDTOList);
+						userDetailsDTO.setAdServerCredentialsCounterValue(String.valueOf(count));
+					}					
+					if(companyObj.getAdServerInfo().equalsIgnoreCase("Other")) {
+						count = 1;
+						tempServiceURLList = companyObj.getServiceURL();
+						if(tempServiceURLList != null && tempServiceURLList.size() > 0) {
+							for (String serviceURL : tempServiceURLList) {
+								serviceURLList.add(new CommonDTO(String.valueOf(count), serviceURL.trim()));
+								count++;
+							}
+							userDetailsDTO.setServiceURLList(serviceURLList);
+							userDetailsDTO.setServiceURLCounterValue(String.valueOf(count));
+						}
+					}
+				}
+				
+				List<String> tempList = companyObj.getAppViews();
+				if(tempList != null && tempList.size() > 0) {
+					for (String appview : tempList) {
+						selectedAppViewsList.add(new CommonDTO(appview.trim(), ""));
+					}
+				}
+				
+				if(companyObj.isAccessToAccounts()) {
+					userDetailsDTO.setAccessToAccounts("1");
+				}
+				if(companyObj.isAccessToProperties()) {
+					userDetailsDTO.setAccessToProperties("1");
+				}
+				
+				// Publisher Pool Partner
+				if(userDetailsDTO.getCompanyTypeToUpdate().equals(LinMobileConstants.COMPANY_TYPE[0]) && companyObj.getDemandPartnerId() != null && companyObj.getDemandPartnerId().size() > 0) {
+					for (String demandPartnerId : companyObj.getDemandPartnerId()) {
+						selectedDemandPartnersList.add(new CommonDTO(demandPartnerId.trim(), ""));
+					}
+					userDetailsDTO.setSelectedDemandPartnersList(selectedDemandPartnersList);
+				}
+				
+				// Demand Partner
+				if(userDetailsDTO.getCompanyTypeToUpdate().equals(LinMobileConstants.COMPANY_TYPE[1])) {
+					count = 1;
+					if(companyObj.getDataSource() != null) {
+						userDetailsDTO.setDataSource(companyObj.getDataSource().trim());
+					}
+					if(companyObj.getDemandPartnerCategory() != null) {
+						userDetailsDTO.setDemandPartnerCategory(companyObj.getDemandPartnerCategory().trim());
+					}
+					
+					if(companyObj.getDemandPartnerType() != null) {
+						selectedDemandPartnerTypeList.add(new CommonDTO(companyObj.getDemandPartnerType().trim(), ""));
+						userDetailsDTO.setSelectedDemandPartnerTypeList(selectedDemandPartnerTypeList);
+					}
+					
+					tempPassbackSiteTypeList = companyObj.getPassback_Site_type();
+					if(tempPassbackSiteTypeList != null && tempPassbackSiteTypeList.size() > 0) {
+						for (String passbackSiteType : tempPassbackSiteTypeList) {
+							passbackSiteTypeList.add(new CommonDTO(String.valueOf(count), passbackSiteType.trim()));
+							count++;
+						}
+						userDetailsDTO.setPassbackSiteTypeList(passbackSiteTypeList);
+					}
+					userDetailsDTO.setPassbackSiteTypeCounterValue(String.valueOf(count));
+				}
+			}
+			result = true;
+		}
+		userDetailsDTO.setSelectedAppViewsList(selectedAppViewsList);
+		return result;		
+	}
+	
+	public Boolean updateCompany(UserDetailsDTO userDetailsDTO,long updateDeleteByUserId) throws Exception{
+		log.info("inside updateCompany method of userservice");
+		Boolean result = false;
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		CompanyObj companyObj = null;
+		List<String> adServerId = new ArrayList<String>();
+		List<String> adServerUsername = new ArrayList<String>();
+		List<String> adServerPassword = new ArrayList<String>();
+		List<String> serviceURLList = new ArrayList<String>();
+		List<String> appViewList = new ArrayList<String>();
+		List<String> passBackSiteTypeList = new ArrayList<String>();
+		List<CompanyObj> companyObjList = MemcacheUtil.getAllCompanyList();
+		companyObj = dao.getCompanyById(Long.valueOf(userDetailsDTO.getCompanyId()), companyObjList);
+		if(companyObj != null) {
+			maintainCompanyHistory(companyObj,updateDeleteByUserId);
+			
+			if(companyObj.getCompanyName()!=null && !companyObj.getCompanyName().equals("")){
+				companyObj.setCompanyName(userDetailsDTO.getCompanyName());
+			}
+			if(companyObj.getStatus()!=null && !companyObj.getStatus().equals("")){
+				companyObj.setStatus(userDetailsDTO.getStatus());
+			}
+			companyObj.setCompanyType(userDetailsDTO.getCompanyTypeToUpdate());
+			companyObj.setWebURL(userDetailsDTO.getWebURL());
+			companyObj.setCompanyEmail(userDetailsDTO.getCompanyEmail());
+			companyObj.setPhone(userDetailsDTO.getPhone());
+			companyObj.setFax(userDetailsDTO.getFax());
+			companyObj.setContactPersonName(userDetailsDTO.getContactPersonName());
+			companyObj.setCompanyAddress(userDetailsDTO.getCompanyAddress());
+			if(userDetailsDTO.getAccessToAccounts() != null && userDetailsDTO.getAccessToAccounts().equals("1")) {
+				companyObj.setAccessToAccounts(true);
+			}
+			else {
+				companyObj.setAccessToAccounts(false);
+			}
+			
+			if(userDetailsDTO.getCompanyTypeToUpdate().equals(LinMobileConstants.COMPANY_TYPE[0]) && userDetailsDTO.getAccessToProperties() != null && userDetailsDTO.getAccessToProperties().equals("1")) {		// if publisher pool partner
+				companyObj.setAccessToProperties(true);
+			}
+			else {
+				companyObj.setAccessToProperties(false);
+			}
+			
+			if(userDetailsDTO.getAdServerInfo() != null) {
+				if(userDetailsDTO.getAdServerInfo().equals(LinMobileConstants.DFP_DATA_SOURCE) && userDetailsDTO.getAdServerId() != null && userDetailsDTO.getAdServerUsername() != null && userDetailsDTO.getAdServerPassword() != null && (userDetailsDTO.getAdServerId().length == userDetailsDTO.getAdServerUsername().length) && (userDetailsDTO.getAdServerUsername().length == userDetailsDTO.getAdServerPassword().length)) {
+					int length = userDetailsDTO.getAdServerId().length;
+					for(int i=0; i<length; i++) {
+						if(userDetailsDTO.getAdServerId()[i] != null && userDetailsDTO.getAdServerUsername()[i] != null && userDetailsDTO.getAdServerPassword()[i] != null 
+								&& !userDetailsDTO.getAdServerId()[i].trim().equals("") && !userDetailsDTO.getAdServerUsername()[i].trim().equals("") && !userDetailsDTO.getAdServerPassword()[i].trim().equals("")) {
+							adServerId.add(userDetailsDTO.getAdServerId()[i].trim());
+							adServerUsername.add(userDetailsDTO.getAdServerUsername()[i].trim());
+							adServerPassword.add(userDetailsDTO.getAdServerPassword()[i].trim());
+						}
+					}
+				}
+				
+				if(userDetailsDTO.getAdServerInfo().equalsIgnoreCase("Other") && userDetailsDTO.getServiceURL()!= null && userDetailsDTO.getServiceURL().length > 0) {
+					for(String serviceURL : userDetailsDTO.getServiceURL()) {
+						if(serviceURL != null && !serviceURL.trim().equals("")) {
+							serviceURLList.add(serviceURL.trim());
+						}
+					}
+				}
+				companyObj.setAdServerInfo(userDetailsDTO.getAdServerInfo());
+			}
+			
+			if(userDetailsDTO.getAppViews() != null) {
+				appViewList.addAll(CommaSeperatedStringToList(userDetailsDTO.getAppViews()));
+			}
+			
+			if(userDetailsDTO.getCompanyTypeToUpdate().equals(LinMobileConstants.COMPANY_TYPE[0]) && userDetailsDTO.getDemandPartnerId() != null) {		// if Publisher Pool Partner
+				List<String> DemandPartnerIdsList = CommaSeperatedStringToList(userDetailsDTO.getDemandPartnerId());
+				companyObj.setDemandPartnerId(DemandPartnerIdsList);
+			}
+			if(userDetailsDTO.getCompanyTypeToUpdate().equals(LinMobileConstants.COMPANY_TYPE[1])) {		// if Demand Partner
+				companyObj.setDataSource(userDetailsDTO.getDataSource().trim());
+				if(userDetailsDTO.getDemandPartnerCategory() != null && !userDetailsDTO.getDemandPartnerCategory().trim().equals("")) {
+					companyObj.setDemandPartnerCategory(userDetailsDTO.getDemandPartnerCategory().trim());
+				}
+				if(userDetailsDTO.getDemandPartnerType() != null && !userDetailsDTO.getDemandPartnerType().trim().equals("")) {
+					companyObj.setDemandPartnerType(userDetailsDTO.getDemandPartnerType().trim());
+				}
+				if(userDetailsDTO.getPassbackSiteType()!= null && userDetailsDTO.getPassbackSiteType().length > 0) {
+					for(String passBackSiteType : userDetailsDTO.getPassbackSiteType()) {
+						if(passBackSiteType != null && !passBackSiteType.trim().equals("")) {
+							passBackSiteTypeList.add(passBackSiteType.trim());
+						}
+					}
+				}
+			}
+			
+			companyObj.setAdServerId(adServerId);
+			companyObj.setAdServerUsername(adServerUsername);
+			companyObj.setAdServerPassword(adServerPassword);
+			companyObj.setServiceURL(serviceURLList);
+			companyObj.setAppViews(appViewList);
+			companyObj.setPassback_Site_type(passBackSiteTypeList);
+			companyObj.setLastModifiedDate(DateUtil.getDateYYYYMMDDHHMMSS());
+			companyObj.setLastModifiedByUserId(updateDeleteByUserId);
+			
+			log.info("logo file : "+userDetailsDTO.getCompanyLogo());
+			log.info("logo file content type : "+userDetailsDTO.getCompanyLogoContentType());
+			log.info("logo file name : "+userDetailsDTO.getCompanyLogoFileName());
+			if(userDetailsDTO.getCompanyLogoFileName() != null) {
+				String uploadedFileURL = uploadCompanyLogo(userDetailsDTO, companyObj);
+				log.info("uploadedFileURL : "+uploadedFileURL);
+				if(uploadedFileURL != null && uploadedFileURL.length() > 0) {
+					companyObj.setCompanyLogoURL(uploadedFileURL);
+					companyObj.setCompanyLogoName(userDetailsDTO.getCompanyLogoFileName());
+					userDetailsDTO.setCompanyLogoURL(uploadedFileURL);
+				}
+			}
+			
+			if(MemcacheUtil.selfUpdateMemcacheCompany(companyObj, false)) {
+				dao.saveObject(companyObj);
+				result = true;
+				updateDefaultTeamAllEntity(companyObj, updateDeleteByUserId);
+				updateDefaultTeamNoEntity(userDetailsDTO, companyObj.getId()+"", updateDeleteByUserId);
+			}
+		}
+		return result;
+		
+	}
+	
+	public void maintainCompanyHistory(CompanyObj companyObj,long updateDeleteByUserId) throws Exception{
+		log.info("inside maintainCompanyHistory method of userservice");
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		CompanyHistObj companyHistObj = new CompanyHistObj();
+		
+		if(companyObj!=null){
+			companyHistObj.setCompanyName(companyObj.getCompanyName());
+			companyHistObj.setStatus(companyObj.getStatus());
+			companyHistObj.setId(companyObj.getId());
+			companyHistObj.setCompanyType(companyObj.getCompanyType());
+			companyHistObj.setCompanyLogoURL(companyObj.getCompanyLogoURL());
+			companyHistObj.setCompanyLogoName(companyObj.getCompanyLogoName());
+			companyHistObj.setWebURL(companyObj.getWebURL());
+			companyHistObj.setCompanyEmail(companyObj.getCompanyEmail());
+			companyHistObj.setPhone(companyObj.getPhone());
+			companyHistObj.setFax(companyObj.getFax());
+			companyHistObj.setContactPersonName(companyObj.getContactPersonName());
+			companyHistObj.setCompanyAddress(companyObj.getCompanyAddress());
+			companyHistObj.setAdServerInfo(companyObj.getAdServerInfo());
+			companyHistObj.setAdServerId(companyObj.getAdServerId());
+			companyHistObj.setAdServerUsername(companyObj.getAdServerUsername());
+			companyHistObj.setAdServerPassword(companyObj.getAdServerPassword());
+			companyHistObj.setServiceURL(companyObj.getServiceURL());
+			companyHistObj.setAppViews(companyObj.getAppViews());
+			companyHistObj.setAccessToAccounts(companyObj.isAccessToAccounts());
+			companyHistObj.setAccessToProperties(companyObj.isAccessToProperties());
+			companyHistObj.setDemandPartnerId(companyObj.getDemandPartnerId());
+			companyHistObj.setDataSource(companyObj.getDataSource());
+			companyHistObj.setDemandPartnerCategory(companyObj.getDemandPartnerCategory());
+			companyHistObj.setPassback_Site_type(companyObj.getPassback_Site_type());
+			companyHistObj.setDemandPartnerType(companyObj.getDemandPartnerType());
+			companyHistObj.setCreationDate(companyObj.getCreationDate());
+			companyHistObj.setCreatedByUserId(companyObj.getCreatedByUserId());
+			companyHistObj.setLastModifiedDate(companyObj.getLastModifiedDate());
+			companyHistObj.setLastModifiedByUserId(companyObj.getLastModifiedByUserId());
+			companyHistObj.setHistoryDate(DateUtil.getDateYYYYMMDDHHMMSS());
+			companyHistObj.setUpdateDeleteByUserId(updateDeleteByUserId);
+			
+			dao.saveObject(companyHistObj);
+		}
+	}
+	
+	public void createDefaultTeamAllEntity(CompanyObj companyObj, long userId) {
+		try {
+			log.info("creating default AllEntity team for id : "+companyObj.getId() +" companyType : "+companyObj.getCompanyType());
+			TeamPropertiesObj teamPropertiesObj = new TeamPropertiesObj();
+			IUserDetailsDAO dao = new UserDetailsDAO();
+			
+			// create All Entity
+			teamPropertiesObj.setCompanyId(companyObj.getId()+"");
+			teamPropertiesObj.setTeamType(LinMobileConstants.DEFINED_TYPES[0]);
+			teamPropertiesObj.setTeamStatus(LinMobileConstants.STATUS_ARRAY[0]);
+			teamPropertiesObj.setTeamName(LinMobileConstants.TEAM_ALL_ENTITIE+" ("+companyObj.getCompanyName().trim()+")");		
+			teamPropertiesObj.setCreationDate(DateUtil.getDateYYYYMMDDHHMMSS());
+			teamPropertiesObj.setLastModifiedDate(DateUtil.getDateYYYYMMDDHHMMSS());
+			teamPropertiesObj.setLastModifiedByUserId(userId);
+			teamPropertiesObj.setCreatedByUserId(userId);
+			
+			List<String> tempList = new ArrayList<String>();
+			if(companyObj.getAppViews() != null && companyObj.getAppViews().size() > 0) {
+				tempList.addAll(companyObj.getAppViews());
+			}
+			teamPropertiesObj.setAppViews(tempList);
+			
+			tempList = new ArrayList<String>();
+			if(companyObj.isAccessToProperties()) {
+				tempList.add(LinMobileConstants.ALL_PROPERTIES);
+			}
+			teamPropertiesObj.setPropertyId(tempList);
+			
+			tempList = new ArrayList<String>();
+			if(companyObj.isAccessToAccounts()) {
+				tempList.add(LinMobileConstants.NO_RESTRICTIONS);
+				teamPropertiesObj.setAgencyId(tempList);
+				tempList = new ArrayList<String>();
+				tempList.add(LinMobileConstants.NO_RESTRICTIONS);
+				teamPropertiesObj.setAdvertiserId(tempList);
+			}
+			else {
+				teamPropertiesObj.setAgencyId(tempList);
+				teamPropertiesObj.setAdvertiserId(tempList);
+			}
+			
+			String uniqueNumber = LinMobileConstants.TEAM_ALL_ENTITIE + dao.getMaxCount();
+			teamPropertiesObj.setId(uniqueNumber);
+			if(MemcacheUtil.selfUpdateMemcacheTeamPropertiesObj(teamPropertiesObj, true)) {
+				dao.saveObject(teamPropertiesObj);
+			}
+		}
+		catch (Exception e) {
+			log.severe("Exception in createDefaultTeamAllEntity of userAction : "+e.getMessage());
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void createDefaultTeamNoEntity(UserDetailsDTO userDetailsDTO, String companyId, long userId) {
+		try {
+			log.info("creating default NoEntity team for id : "+companyId +" companyType : "+userDetailsDTO.getCompanyTypeToCreate());
+			TeamPropertiesObj teamPropertiesObj = new TeamPropertiesObj();
+			IUserDetailsDAO dao = new UserDetailsDAO();
+			
+			// create No Entity
+			teamPropertiesObj.setCompanyId(companyId);
+			teamPropertiesObj.setTeamType(LinMobileConstants.DEFINED_TYPES[0]);
+			teamPropertiesObj.setTeamStatus(LinMobileConstants.STATUS_ARRAY[0]);
+			teamPropertiesObj.setTeamName(LinMobileConstants.TEAM_NO_ENTITIE+" ("+userDetailsDTO.getCompanyName().trim()+")");		
+			teamPropertiesObj.setCreationDate(DateUtil.getDateYYYYMMDDHHMMSS());
+			teamPropertiesObj.setLastModifiedDate(DateUtil.getDateYYYYMMDDHHMMSS());
+			teamPropertiesObj.setLastModifiedByUserId(userId);
+			teamPropertiesObj.setCreatedByUserId(userId);
+			
+			teamPropertiesObj.setAppViews(new ArrayList<String>());
+			
+			String uniqueNumber = LinMobileConstants.TEAM_NO_ENTITIE + dao.getMaxCount();
+			teamPropertiesObj.setId(uniqueNumber);
+			if(MemcacheUtil.selfUpdateMemcacheTeamPropertiesObj(teamPropertiesObj, true)) {
+				dao.saveObject(teamPropertiesObj);
+			}
+		}
+		catch (Exception e) {
+			log.severe("Exception in createDefaultTeamNoEntity of userAction : "+e.getMessage());
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void updateDefaultTeamAllEntity(CompanyObj companyObj, long userId) {
+		try {
+			log.info("updating default team AllEntity for id : "+companyObj.getId() +" companyType : "+companyObj.getCompanyType());
+			IUserDetailsDAO dao = new UserDetailsDAO();
+			TeamPropertiesObj teamPropertiesObj =  dao.getAllEntitiesTeamByTeamCompanyId(companyObj.getId()+"", MemcacheUtil.getAllTeamPropertiesObjList());
+			
+			if(teamPropertiesObj != null) {
+				maintainTeamPropertiesObjHistory(teamPropertiesObj, userId);
+				teamPropertiesObj.setTeamStatus(companyObj.getStatus());
+				teamPropertiesObj.setTeamName(LinMobileConstants.TEAM_ALL_ENTITIE+" ("+companyObj.getCompanyName().trim()+")");		
+				teamPropertiesObj.setLastModifiedDate(DateUtil.getDateYYYYMMDDHHMMSS());
+				teamPropertiesObj.setLastModifiedByUserId(userId);
+				
+				/*List<String> tempList = new ArrayList<String>();
+				if(companyObj.getAppViews() != null && companyObj.getAppViews().size() > 0) {
+					tempList.addAll(companyObj.getAppViews());
+				}
+				teamPropertiesObj.setAppViews(tempList);
+				
+				tempList = new ArrayList<String>();
+				if(companyObj.isAccessToProperties()) {
+					tempList.add(LinMobileConstants.ALL_PROPERTIES);
+				}
+				teamPropertiesObj.setPropertyId(tempList);
+				
+				tempList = new ArrayList<String>();
+				if(companyObj.isAccessToAccounts()) {
+					tempList.add(LinMobileConstants.NO_RESTRICTIONS);
+					teamPropertiesObj.setAgencyId(tempList);
+					tempList = new ArrayList<String>();
+					tempList.add(LinMobileConstants.NO_RESTRICTIONS);
+					teamPropertiesObj.setAdvertiserId(tempList);
+				}
+				else {
+					teamPropertiesObj.setAgencyId(tempList);
+					teamPropertiesObj.setAdvertiserId(tempList);
+				}*/
+				
+				if(MemcacheUtil.selfUpdateMemcacheTeamPropertiesObj(teamPropertiesObj, false)) {
+					dao.saveObject(teamPropertiesObj);
+				}
+			}
+			else {
+				log.severe("ALL ENTITIES for company id : '"+companyObj.getId()+"' does not exist at the time of update company. Creating it now");
+				createDefaultTeamAllEntity(companyObj, userId);
+			}
+		}
+		catch (Exception e) {
+			log.severe("Exception in updateDefaultTeamAllEntity of userAction : "+e.getMessage());
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void updateDefaultTeamNoEntity(UserDetailsDTO userDetailsDTO, String companyId, long userId) {
+		try {
+			log.info("updating default team NoEntity for id : "+companyId +" companyType : "+userDetailsDTO.getCompanyTypeToUpdate());
+			IUserDetailsDAO dao = new UserDetailsDAO();
+			TeamPropertiesObj teamPropertiesObj =  dao.getNoEntitiesTeamByTeamCompanyId(companyId, MemcacheUtil.getAllTeamPropertiesObjList());
+			
+			if(teamPropertiesObj != null) {
+				maintainTeamPropertiesObjHistory(teamPropertiesObj, userId);
+				teamPropertiesObj.setTeamStatus(userDetailsDTO.getStatus());
+				teamPropertiesObj.setTeamName(LinMobileConstants.TEAM_NO_ENTITIE+" ("+userDetailsDTO.getCompanyName().trim()+")");		
+				teamPropertiesObj.setLastModifiedDate(DateUtil.getDateYYYYMMDDHHMMSS());
+				teamPropertiesObj.setLastModifiedByUserId(userId);
+				
+				teamPropertiesObj.setAppViews(new ArrayList<String>());
+				if(MemcacheUtil.selfUpdateMemcacheTeamPropertiesObj(teamPropertiesObj, false)) {
+					dao.saveObject(teamPropertiesObj);
+				}
+			}
+			else {
+				createDefaultTeamNoEntity(userDetailsDTO, companyId, userId);
+			}
+		}
+		catch (Exception e) {
+			log.severe("Exception in updateDefaultTeamNoEntity of userAction : "+e.getMessage());
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void fetchTeamsByCompanyId(String companyId, UserDetailsDTO userDetailsDTO) throws Exception {
+		log.info("inside fetchTeamsByCompanyId method of userservice");
+		List<CommonDTO> adminTeamList = new ArrayList<CommonDTO>();
+		List<CommonDTO> nonAdminTeamList = new ArrayList<CommonDTO>();
+		List<TeamPropertiesObj> teamPropertiesObjList =  MemcacheUtil.getAllTeamPropertiesObjList();
+		if(teamPropertiesObjList != null && teamPropertiesObjList.size() > 0) {
+			for (TeamPropertiesObj teamPropertiesObj : teamPropertiesObjList) {
+				if(teamPropertiesObj != null && teamPropertiesObj.getCompanyId() != null && teamPropertiesObj.getCompanyId().equals(companyId.trim()) && teamPropertiesObj.getTeamStatus().equals(LinMobileConstants.STATUS_ARRAY[0])) {
+					if(teamPropertiesObj.getTeamName().startsWith(LinMobileConstants.TEAM_ALL_ENTITIE)) {
+						adminTeamList.add(new CommonDTO(teamPropertiesObj.getId(), teamPropertiesObj.getTeamName()));
+					}
+					nonAdminTeamList.add(new CommonDTO(teamPropertiesObj.getId(), teamPropertiesObj.getTeamName()));
+				}
+			}
+		}
+		userDetailsDTO.setAdminTeamList(adminTeamList);
+		userDetailsDTO.setNonAdminTeamList(nonAdminTeamList);
+	}
+	
+	@Override
+	public CompanyObj getCompanyIdByAdminUserId(long userId) throws Exception {
+		log.info("inside getCompanyIdByAdminUserId method of userservice");
+		CompanyObj  companyObj = null;
+		IUserDetailsDAO dao = new UserDetailsDAO();
+		List<CompanyObj> companyList = dao.getSelectedCompaniesByUserId(userId);
+		if(companyList != null && companyList.size() > 0) {
+			companyObj = companyList.get(0);
+		}
+		return companyObj;
+	}
+	
+	@Override
+	public void getAuthorisations(UserDetailsDTO userDetailsDTO, String roleId) {
+		log.info("inside getAuthorisations of UserService");
+		List<AuthorisationText> authorisationTextList = new ArrayList<AuthorisationText>();
+		List<String> authorisationKeywordList = new ArrayList<String>();
+		IUserDetailsDAO userDetailsDAO = new UserDetailsDAO();
+		try {
+			List<RolesAndAuthorisation> rolesAndAuthorisationList = MemcacheUtil.getAllRolesAndAuthorisationList();
+			RolesAndAuthorisation rolesAndAuthorisation = userDetailsDAO.getRolesAndAuthorisationByRoleId(roleId, rolesAndAuthorisationList);
+			if(rolesAndAuthorisation != null) {
+				authorisationTextList = MemcacheUtil.getAllAuthorisationTextList();
+				if(authorisationTextList != null && authorisationTextList.size() > 0) {
+					setAuthorisationKeywords(authorisationTextList, authorisationKeywordList, rolesAndAuthorisation);
+					userDetailsDTO.setAuthorisationTextList(authorisationTextList);
+				}
+			}
+		} catch (Exception e) {
+			log.severe("Exception in getAuthorisations of UserService"+e.getMessage());
+			e.printStackTrace();
+		}
+		//userDetailsDTO.setAuthorisationTextList(authorisationTextList);
+		userDetailsDTO.setAuthorisationKeywordList(authorisationKeywordList);
+	}
+	
+	public void setAuthorisationKeywords(List<AuthorisationText> authorisationTextList, List<String> authorisationKeywordList, RolesAndAuthorisation rolesAndAuthorisation) {
+		List<String> tempAuthorisationKeywordList = new ArrayList<String>();
+		for (AuthorisationText authorisationText : authorisationTextList) {
+			if(authorisationText.getAuthorisationTextStatus().trim().equals(LinMobileConstants.STATUS_ARRAY[0])) {
+				if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A1") && rolesAndAuthorisation.getA1() != null && rolesAndAuthorisation.getA1().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A2") && rolesAndAuthorisation.getA2() != null && rolesAndAuthorisation.getA2().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A3") && rolesAndAuthorisation.getA3() != null && rolesAndAuthorisation.getA3().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A4") && rolesAndAuthorisation.getA4() != null && rolesAndAuthorisation.getA4().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A5") && rolesAndAuthorisation.getA5() != null && rolesAndAuthorisation.getA5().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A6") && rolesAndAuthorisation.getA6() != null && rolesAndAuthorisation.getA6().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A7") && rolesAndAuthorisation.getA7() != null && rolesAndAuthorisation.getA7().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A8") && rolesAndAuthorisation.getA8() != null && rolesAndAuthorisation.getA8().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A9") && rolesAndAuthorisation.getA9() != null && rolesAndAuthorisation.getA9().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A10") && rolesAndAuthorisation.getA10() != null && rolesAndAuthorisation.getA10().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A11") && rolesAndAuthorisation.getA11() != null && rolesAndAuthorisation.getA11().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A12") && rolesAndAuthorisation.getA12() != null && rolesAndAuthorisation.getA12().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A13") && rolesAndAuthorisation.getA13() != null && rolesAndAuthorisation.getA13().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A14") && rolesAndAuthorisation.getA14() != null && rolesAndAuthorisation.getA14().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A15") && rolesAndAuthorisation.getA15() != null && rolesAndAuthorisation.getA15().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A16") && rolesAndAuthorisation.getA16() != null && rolesAndAuthorisation.getA16().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A17") && rolesAndAuthorisation.getA17() != null && rolesAndAuthorisation.getA17().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A18") && rolesAndAuthorisation.getA18() != null && rolesAndAuthorisation.getA18().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A19") && rolesAndAuthorisation.getA19() != null && rolesAndAuthorisation.getA19().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A20") && rolesAndAuthorisation.getA20() != null && rolesAndAuthorisation.getA20().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A21") && rolesAndAuthorisation.getA21() != null && rolesAndAuthorisation.getA21().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A22") && rolesAndAuthorisation.getA22() != null && rolesAndAuthorisation.getA22().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A23") && rolesAndAuthorisation.getA23() != null && rolesAndAuthorisation.getA23().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A24") && rolesAndAuthorisation.getA24() != null && rolesAndAuthorisation.getA24().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A25") && rolesAndAuthorisation.getA25() != null && rolesAndAuthorisation.getA25().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A26") && rolesAndAuthorisation.getA26() != null && rolesAndAuthorisation.getA26().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A27") && rolesAndAuthorisation.getA27() != null && rolesAndAuthorisation.getA27().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A28") && rolesAndAuthorisation.getA28() != null && rolesAndAuthorisation.getA28().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A29") && rolesAndAuthorisation.getA29() != null && rolesAndAuthorisation.getA29().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A30") && rolesAndAuthorisation.getA30() != null && rolesAndAuthorisation.getA30().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A31") && rolesAndAuthorisation.getA31() != null && rolesAndAuthorisation.getA31().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A32") && rolesAndAuthorisation.getA32() != null && rolesAndAuthorisation.getA32().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A33") && rolesAndAuthorisation.getA33() != null && rolesAndAuthorisation.getA33().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A34") && rolesAndAuthorisation.getA34() != null && rolesAndAuthorisation.getA34().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A35") && rolesAndAuthorisation.getA35() != null && rolesAndAuthorisation.getA35().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A36") && rolesAndAuthorisation.getA36() != null && rolesAndAuthorisation.getA36().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A37") && rolesAndAuthorisation.getA37() != null && rolesAndAuthorisation.getA37().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A38") && rolesAndAuthorisation.getA38() != null && rolesAndAuthorisation.getA38().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A39") && rolesAndAuthorisation.getA39() != null && rolesAndAuthorisation.getA39().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A40") && rolesAndAuthorisation.getA40() != null && rolesAndAuthorisation.getA40().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A41") && rolesAndAuthorisation.getA41() != null && rolesAndAuthorisation.getA41().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A42") && rolesAndAuthorisation.getA42() != null && rolesAndAuthorisation.getA42().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A43") && rolesAndAuthorisation.getA43() != null && rolesAndAuthorisation.getA43().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A44") && rolesAndAuthorisation.getA44() != null && rolesAndAuthorisation.getA44().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A45") && rolesAndAuthorisation.getA45() != null && rolesAndAuthorisation.getA45().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A46") && rolesAndAuthorisation.getA46() != null && rolesAndAuthorisation.getA46().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A47") && rolesAndAuthorisation.getA47() != null && rolesAndAuthorisation.getA47().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A48") && rolesAndAuthorisation.getA48() != null && rolesAndAuthorisation.getA48().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A49") && rolesAndAuthorisation.getA49() != null && rolesAndAuthorisation.getA49().trim().equals("1")) {
+					tempAuthorisationKeywordList.add(authorisationText.getAuthorisationTextKeyword().trim());
+				}
+				else if(authorisationText.getRolesAndAuthorisationColumnName().trim().equals("A50") && rolesAndAuthorisation.getA50() != null && rolesAndAuthorisation.getA50().trim().equals("1")) {
+					tempAuthorisationKeywordLi

@@ -1,0 +1,157 @@
+@CHARSET "UTF-8";
+
+.demoPopup {
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	border: 1px solid whitesmoke;
+	box-shoadow: 1px 1px #cdcdcd;
+	border-radius: 2px;
+}
+
+.demoMapOption {
+	position: absolute;
+	bottom: 0px;
+	height: auto;
+	background: url('/img/bg.png');
+	color: black;
+	border: 1px solid #cdcdcd;
+	box-shadow: 1px 1px black;
+	border-radius: 5px;
+	width: auto;
+	display: table;
+	left :0px;
+}
+
+.demoMapOptionContainer {
+	float: left;
+	display: block;
+	width: auto;
+	height: auto;
+	margin: 0px 2px;
+}
+
+.processScreenSMP {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 5;
+	top: 0;
+	background-image: url('/img/bg.png');
+	background-repeat: repeat;
+	display: none;
+}
+
+.processingContentSMP {
+	display: block;
+	background-color: white;
+	border: 0px solid #cdcdcd;
+	box-shadow: 1px 1px black;
+	border-radius: 9px;
+	float: left;
+	width: auto;
+	padding: 2px 20px;
+	margin: 20% 44%;
+}
+
+.mapRowSMP {
+	position: absolute;
+	top: 0px;
+	background-color: white;
+	border: 1px solid gray;
+	box-shadow: 1px 1px #cdcdcd;
+	margin: 3px 2px;
+}
+
+.loader {
+	display: none;
+	float: left;
+	width: 16px;
+	height: 16px;
+	background-image: url('/img/ajaxloader.gif');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+#customInfoWindowSMP {
+	display: block;
+	width: 400px;
+	height: auto;
+	background-color: white;
+	border: 0px solid #cdcdcd;
+	box-shadow: 1px 1px black;
+	border-radius: 9px;
+	position: absolute;
+	font-family: "Lato";
+	color: #3d3f41;
+	z-index: 4;
+}
+.censusFig{
+	font-size: 16px;
+	font-weight: bold;
+	color:#d26730;
+}
+
+.mapLegend{
+	display: block;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: auto;
+	border: 1px solid black;
+	background-color: white;
+}
+
+.legendGroup{
+	display: block;
+	float: left;
+	width: 100%;
+	margin: 0px 0px 4px 8px;
+}
+
+.legendColorGroup{
+	display: block;
+	float: left;
+	width: 17%;
+	margin: 0px 1px 0px 1px;
+}
+
+.legendText{
+	display: block;
+	float: left;
+	width: 100%;
+	font-size: 8px;
+	text-align: center;
+}
+
+.legendColorBox{
+	display: block;
+	float: left;
+	width: 68%;
+	height: 4px;
+}
+
+.range1{
+	background-color: #74c7e3;
+	opacity : 0.7;
+}
+
+.range2{
+	background-color: #84afe3;
+	opacity : 0.7;
+}
+
+.range3{
+	background-color: #f7d183;
+	opacity : 0.7;
+}
+
+.range4{
+	background-color: #60cc9a;
+	opacity : 0.7;
+}
+
+.range5{
+	background-color: #e67253;
+	opacity : 0.7;
+}

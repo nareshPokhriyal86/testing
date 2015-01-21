@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries> 
+ <!-- Dfp Accounts cron Jobs  -->
+<cron>
+    <url>/updateAccountsFromDFP.lin</url>
+    <description>Updates Datastore Accounts from DFP</description>
+    <schedule>every day 03:30</schedule>
+</cron>
+<cron>
+    <url>/loadAccountsFromDFP.lin</url>
+    <description>Creates Memcache for Accounts from DFP</description>
+    <schedule>every day 03:35</schedule>
+    <target>demobackend</target>
+</cron>
+<cron>
+    <url>/loadPropertiesFromDFP.lin</url>
+    <description>Creates Memcache for Properties from DFP</description>
+    <schedule>every day 03:40</schedule>
+    <target>demobackend</target>
+</cron>
+<!-- Dfp Accounts cron Jobs  -->
+
+ </cronentries>

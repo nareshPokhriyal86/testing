@@ -1,0 +1,5001 @@
+zip,primary_city,state,area_codes,country
+00501,Holtsville,NY,631,US
+00544,Holtsville,NY,631,US
+00601,Adjuntas,PR,"7,87,939",US
+00602,Aguada,PR,787,US
+00603,Aguadilla,PR,787,US
+00604,Aguadilla,PR,,US
+00605,Aguadilla,PR,,US
+00606,Maricao,PR,"7,87,939",US
+00610,Anasco,PR,787,US
+00611,Angeles,PR,,US
+00612,Arecibo,PR,787,US
+00613,Arecibo,PR,,US
+00614,Arecibo,PR,,US
+00616,Bajadero,PR,,US
+00617,Barceloneta,PR,787,US
+00622,Boqueron,PR,787,US
+00623,Cabo Rojo,PR,787,US
+00624,Penuelas,PR,787,US
+00627,Camuy,PR,787,US
+00631,Castaner,PR,,US
+00636,Rosario,PR,,US
+00637,Sabana Grande,PR,787,US
+00638,Ciales,PR,787,US
+00641,Utuado,PR,787,US
+00646,Dorado,PR,787,US
+00647,Ensenada,PR,,US
+00650,Florida,PR,"7,87,939",US
+00652,Garrochales,PR,787,US
+00653,Guanica,PR,787,US
+00656,Guayanilla,PR,787,US
+00659,Hatillo,PR,,US
+00660,Hormigueros,PR,787,US
+00662,Isabela,PR,787,US
+00664,Jayuya,PR,787,US
+00667,Lajas,PR,"7,87,939",US
+00669,Lares,PR,787,US
+00670,Las Marias,PR,"7,87,939",US
+00674,Manati,PR,787,US
+00676,Moca,PR,787,US
+00677,Rincon,PR,"7,87,939",US
+00678,Quebradillas,PR,787,US
+00680,Mayaguez,PR,787,US
+00681,Mayaguez,PR,,US
+00682,Mayaguez,PR,787,US
+00683,San German,PR,787,US
+00685,San Sebastian,PR,787,US
+00687,Morovis,PR,787,US
+00688,Sabana Hoyos,PR,787,US
+00690,San Antonio,PR,,US
+00692,Vega Alta,PR,787,US
+00693,Vega Baja,PR,787,US
+00694,Vega Baja,PR,,US
+00698,Yauco,PR,787,US
+00703,Aguas Buenas,PR,787,US
+00704,Aguirre,PR,,US
+00705,Aibonito,PR,787,US
+00707,Maunabo,PR,"7,87,939",US
+00714,Arroyo,PR,"7,87,939",US
+00715,Mercedita,PR,787,US
+00716,Ponce,PR,787,US
+00717,Ponce,PR,,US
+00718,Naguabo,PR,787,US
+00719,Naranjito,PR,787,US
+00720,Orocovis,PR,"7,87,939",US
+00721,Palmer,PR,,US
+00723,Patillas,PR,,US
+00725,Caguas,PR,787,US
+00726,Caguas,PR,,US
+00727,Caguas,PR,787,US
+00728,Ponce,PR,,US
+00729,Canovanas,PR,787,US
+00730,Ponce,PR,787,US
+00731,Ponce,PR,787,US
+00732,Ponce,PR,,US
+00733,Ponce,PR,,US
+00734,Ponce,PR,,US
+00735,Ceiba,PR,787,US
+00736,Cayey,PR,787,US
+00737,Cayey,PR,,US
+00738,Fajardo,PR,787,US
+00739,Cidra,PR,787,US
+00740,Puerto Real,PR,,US
+00741,Punta Santiago,PR,,US
+00742,Roosevelt Roads,PR,,US
+00744,Rio Blanco,PR,,US
+00745,Rio Grande,PR,787,US
+00751,Salinas,PR,787,US
+00754,San Lorenzo,PR,787,US
+00757,Santa Isabel,PR,787,US
+00765,Vieques,PR,787,US
+00766,Villalba,PR,,US
+00767,Yabucoa,PR,787,US
+00769,Coamo,PR,787,US
+00771,Las Piedras,PR,787,US
+00772,Loiza,PR,,US
+00773,Luquillo,PR,787,US
+00775,Culebra,PR,,US
+00777,Juncos,PR,787,US
+00778,Gurabo,PR,787,US
+00780,Coto Laurel,PR,"7,87,939",US
+00782,Comerio,PR,787,US
+00783,Corozal,PR,787,US
+00784,Guayama,PR,"7,87,939",US
+00785,Guayama,PR,,US
+00786,La Plata,PR,,US
+00791,Humacao,PR,787,US
+00792,Humacao,PR,,US
+00794,Barranquitas,PR,787,US
+00795,Juana Diaz,PR,"7,87,939",US
+00801,St Thomas,VI,,US
+00802,St Thomas,VI,340,US
+00803,St Thomas,VI,,US
+00804,St Thomas,VI,,US
+00805,St Thomas,VI,,US
+00820,Christiansted,VI,340,US
+00821,Christiansted,VI,,US
+00822,Christiansted,VI,,US
+00823,Christiansted,VI,,US
+00824,Christiansted,VI,,US
+00830,St John,VI,,US
+00831,St John,VI,,US
+00840,Frederiksted,VI,340,US
+00841,Frederiksted,VI,,US
+00850,Kingshill,VI,340,US
+00851,Kingshill,VI,,US
+00901,San Juan,PR,,US
+00902,San Juan,PR,,US
+00906,San Juan,PR,,US
+00907,San Juan,PR,787,US
+00908,San Juan,PR,,US
+00909,San Juan,PR,"7,87,939",US
+00910,San Juan,PR,,US
+00911,San Juan,PR,787,US
+00912,San Juan,PR,"7,87,939",US
+00913,San Juan,PR,,US
+00914,San Juan,PR,,US
+00915,San Juan,PR,787,US
+00916,San Juan,PR,,US
+00917,San Juan,PR,,US
+00918,San Juan,PR,,US
+00919,San Juan,PR,,US
+00920,San Juan,PR,"7,87,939",US
+00921,San Juan,PR,,US
+00922,San Juan,PR,,US
+00923,San Juan,PR,,US
+00924,San Juan,PR,787,US
+00925,San Juan,PR,,US
+00926,San Juan,PR,787,US
+00927,San Juan,PR,787,US
+00928,San Juan,PR,,US
+00929,San Juan,PR,,US
+00930,San Juan,PR,,US
+00931,San Juan,PR,,US
+00933,San Juan,PR,,US
+00934,Fort Buchanan,PR,,US
+00935,San Juan,PR,,US
+00936,San Juan,PR,,US
+00937,San Juan,PR,,US
+00939,San Juan,PR,,US
+00940,San Juan,PR,,US
+00949,Toa Baja,PR,"7,87,939",US
+00950,Toa Baja,PR,,US
+00951,Toa Baja,PR,,US
+00952,Sabana Seca,PR,,US
+00953,Toa Alta,PR,787,US
+00954,Toa Alta,PR,,US
+00955,San Juan,PR,,US
+00956,Bayamon,PR,787,US
+00957,Bayamon,PR,"7,87,939",US
+00958,Bayamon,PR,,US
+00959,Bayamon,PR,787,US
+00960,Bayamon,PR,,US
+00961,Bayamon,PR,787,US
+00962,Catano,PR,787,US
+00963,Catano,PR,,US
+00965,Guaynabo,PR,787,US
+00966,Guaynabo,PR,"7,87,939",US
+00968,Guaynabo,PR,787,US
+00969,Guaynabo,PR,787,US
+00970,Guaynabo,PR,,US
+00971,Guaynabo,PR,787,US
+00975,San Juan,PR,,US
+00976,Trujillo Alto,PR,"7,87,939",US
+00977,Trujillo Alto,PR,,US
+00978,Saint Just,PR,,US
+00979,Carolina,PR,787,US
+00981,Carolina,PR,,US
+00982,Carolina,PR,787,US
+00983,Carolina,PR,,US
+00984,Carolina,PR,,US
+00985,Carolina,PR,787,US
+00986,Carolina,PR,,US
+00987,Carolina,PR,787,US
+00988,Carolina,PR,,US
+01001,Agawam,MA,413,US
+01002,Amherst,MA,413,US
+01003,Amherst,MA,413,US
+01004,Amherst,MA,413,US
+01005,Barre,MA,978,US
+01007,Belchertown,MA,413,US
+01008,Blandford,MA,413,US
+01009,Bondsville,MA,413,US
+01010,Brimfield,MA,413,US
+01011,Chester,MA,413,US
+01012,Chesterfield,MA,413,US
+01013,Chicopee,MA,413,US
+01014,Chicopee,MA,413,US
+01020,Chicopee,MA,413,US
+01021,Chicopee,MA,413,US
+01022,Chicopee,MA,413,US
+01026,Cummington,MA,413,US
+01027,Easthampton,MA,413,US
+01028,East Longmeadow,MA,413,US
+01029,East Otis,MA,413,US
+01030,Feeding Hills,MA,413,US
+01031,Gilbertville,MA,413,US
+01032,Goshen,MA,413,US
+01033,Granby,MA,413,US
+01034,Granville,MA,413,US
+01035,Hadley,MA,413,US
+01036,Hampden,MA,413,US
+01037,Hardwick,MA,413,US
+01038,Hatfield,MA,413,US
+01039,Haydenville,MA,413,US
+01040,Holyoke,MA,413,US
+01041,Holyoke,MA,413,US
+01050,Huntington,MA,413,US
+01053,Leeds,MA,413,US
+01054,Leverett,MA,413,US
+01056,Ludlow,MA,413,US
+01057,Monson,MA,413,US
+01059,North Amherst,MA,413,US
+01060,Northampton,MA,413,US
+01061,Northampton,MA,413,US
+01062,Florence,MA,413,US
+01063,Northampton,MA,413,US
+01066,North Hatfield,MA,413,US
+01068,Oakham,MA,"5,08,774",US
+01069,Palmer,MA,413,US
+01070,Plainfield,MA,413,US
+01071,Russell,MA,413,US
+01072,Shutesbury,MA,413,US
+01073,Southampton,MA,413,US
+01074,South Barre,MA,978,US
+01075,South Hadley,MA,413,US
+01077,Southwick,MA,413,US
+01079,Thorndike,MA,413,US
+01080,Three Rivers,MA,413,US
+01081,Wales,MA,413,US
+01082,Ware,MA,413,US
+01083,Warren,MA,413,US
+01084,West Chesterfield,MA,413,US
+01085,Westfield,MA,413,US
+01086,Westfield,MA,413,US
+01088,West Hatfield,MA,413,US
+01089,West Springfield,MA,413,US
+01090,West Springfield,MA,413,US
+01092,West Warren,MA,413,US
+01093,Whately,MA,413,US
+01094,Wheelwright,MA,413,US
+01095,Wilbraham,MA,413,US
+01096,Williamsburg,MA,413,US
+01097,Woronoco,MA,413,US
+01098,Worthington,MA,413,US
+01101,Springfield,MA,413,US
+01102,Springfield,MA,413,US
+01103,Springfield,MA,413,US
+01104,Springfield,MA,413,US
+01105,Springfield,MA,413,US
+01106,Longmeadow,MA,413,US
+01107,Springfield,MA,"8,60,413",US
+01108,Springfield,MA,413,US
+01109,Springfield,MA,413,US
+01111,Springfield,MA,413,US
+01115,Springfield,MA,413,US
+01116,Longmeadow,MA,413,US
+01118,Springfield,MA,413,US
+01119,Springfield,MA,413,US
+01128,Springfield,MA,413,US
+01129,Springfield,MA,413,US
+01133,Springfield,MA,413,US
+01138,Springfield,MA,413,US
+01139,Springfield,MA,413,US
+01144,Springfield,MA,413,US
+01151,Indian Orchard,MA,413,US
+01152,Springfield,MA,413,US
+01195,Springfield,MA,413,US
+01199,Springfield,MA,413,US
+01201,Pittsfield,MA,413,US
+01202,Pittsfield,MA,413,US
+01203,Pittsfield,MA,413,US
+01220,Adams,MA,413,US
+01222,Ashley Falls,MA,413,US
+01223,Becket,MA,413,US
+01224,Berkshire,MA,413,US
+01225,Cheshire,MA,413,US
+01226,Dalton,MA,413,US
+01227,Dalton,MA,413,US
+01229,Glendale,MA,413,US
+01230,Great Barrington,MA,413,US
+01235,Hinsdale,MA,413,US
+01236,Housatonic,MA,413,US
+01237,Lanesboro,MA,413,US
+01238,Lee,MA,413,US
+01240,Lenox,MA,413,US
+01242,Lenox Dale,MA,413,US
+01243,Middlefield,MA,413,US
+01244,Mill River,MA,413,US
+01245,Monterey,MA,413,US
+01247,North Adams,MA,413,US
+01252,North Egremont,MA,413,US
+01253,Otis,MA,413,US
+01254,Richmond,MA,413,US
+01255,Sandisfield,MA,413,US
+01256,Savoy,MA,413,US
+01257,Sheffield,MA,413,US
+01258,South Egremont,MA,413,US
+01259,Southfield,MA,413,US
+01260,South Lee,MA,413,US
+01262,Stockbridge,MA,413,US
+01263,Stockbridge,MA,413,US
+01264,Tyringham,MA,413,US
+01266,West Stockbridge,MA,413,US
+01267,Williamstown,MA,413,US
+01270,Windsor,MA,413,US
+01301,Greenfield,MA,413,US
+01302,Greenfield,MA,413,US
+01330,Ashfield,MA,413,US
+01331,Athol,MA,978,US
+01337,Bernardston,MA,413,US
+01338,Buckland,MA,413,US
+01339,Charlemont,MA,413,US
+01340,Colrain,MA,413,US
+01341,Conway,MA,413,US
+01342,Deerfield,MA,413,US
+01343,Drury,MA,413,US
+01344,Erving,MA,"4,13,978",US
+01346,Heath,MA,413,US
+01347,Lake Pleasant,MA,413,US
+01349,Millers Falls,MA,413,US
+01350,Monroe Bridge,MA,413,US
+01351,Montague,MA,413,US
+01354,Gill,MA,413,US
+01355,New Salem,MA,978,US
+01360,Northfield,MA,413,US
+01364,Orange,MA,978,US
+01366,Petersham,MA,978,US
+01367,Rowe,MA,413,US
+01368,Royalston,MA,978,US
+01370,Shelburne Falls,MA,413,US
+01373,South Deerfield,MA,413,US
+01375,Sunderland,MA,413,US
+01376,Turners Falls,MA,413,US
+01378,Warwick,MA,978,US
+01379,Wendell,MA,978,US
+01380,Wendell Depot,MA,,US
+01420,Fitchburg,MA,"9,78,617",US
+01430,Ashburnham,MA,978,US
+01431,Ashby,MA,978,US
+01432,Ayer,MA,978,US
+01434,Devens,MA,,US
+01436,Baldwinville,MA,978,US
+01438,East Templeton,MA,978,US
+01440,Gardner,MA,978,US
+01441,Westminster,MA,978,US
+01450,Groton,MA,978,US
+01451,Harvard,MA,"9,78,617",US
+01452,Hubbardston,MA,978,US
+01453,Leominster,MA,"9,78,508",US
+01460,Littleton,MA,"97,85,08,781",US
+01462,Lunenburg,MA,978,US
+01463,Pepperell,MA,978,US
+01464,Shirley,MA,978,US
+01467,Still River,MA,978,US
+01468,Templeton,MA,978,US
+01469,Townsend,MA,978,US
+01470,Groton,MA,351,US
+01471,Groton,MA,351,US
+01472,West Groton,MA,978,US
+01473,Westminster,MA,978,US
+01474,West Townsend,MA,978,US
+01475,Winchendon,MA,978,US
+01477,Winchendon Springs,MA,,US
+01501,Auburn,MA,"5,08,774",US
+01503,Berlin,MA,978,US
+01504,Blackstone,MA,"5,08,774",US
+01505,Boylston,MA,"5,08,774",US
+01506,Brookfield,MA,"5,08,413",US
+01507,Charlton,MA,"5,08,774",US
+01508,Charlton City,MA,,US
+01509,Charlton Depot,MA,,US
+01510,Clinton,MA,"9,78,617",US
+01515,East Brookfield,MA,"5,08,774",US
+01516,Douglas,MA,"5,08,774",US
+01517,East Princeton,MA,,US
+01518,Fiskdale,MA,"5,08,774",US
+01519,Grafton,MA,"5,08,774",US
+01520,Holden,MA,"5,08,774",US
+01521,Holland,MA,"4,13,508",US
+01522,Jefferson,MA,508,US
+01523,Lancaster,MA,978,US
+01524,Leicester,MA,"5,08,774",US
+01525,Linwood,MA,508,US
+01526,Manchaug,MA,508,US
+01527,Millbury,MA,"5,08,774",US
+01529,Millville,MA,508,US
+01531,New Braintree,MA,"41,35,08,774",US
+01532,Northborough,MA,"5,08,774",US
+01534,Northbridge,MA,508,US
+01535,North Brookfield,MA,508,US
+01536,North Grafton,MA,508,US
+01537,North Oxford,MA,508,US
+01538,North Uxbridge,MA,508,US
+01540,Oxford,MA,508,US
+01541,Princeton,MA,978,US
+01542,Rochdale,MA,508,US
+01543,Rutland,MA,"5,08,774",US
+01545,Shrewsbury,MA,"5,08,774",US
+01546,Shrewsbury,MA,508,US
+01550,Southbridge,MA,"5,08,774",US
+01560,South Grafton,MA,508,US
+01561,South Lancaster,MA,978,US
+01562,Spencer,MA,"5,08,774",US
+01564,Sterling,MA,978,US
+01566,Sturbridge,MA,"5,08,774",US
+01568,Upton,MA,"5,08,774",US
+01569,Uxbridge,MA,"5,08,774",US
+01570,Webster,MA,"50,86,17,774",US
+01571,Dudley,MA,508,US
+01580,Westborough,MA,508,US
+01581,Westborough,MA,"50,86,17,774",US
+01582,Westborough,MA,508,US
+01583,West Boylston,MA,"5,08,978",US
+01585,West Brookfield,MA,"5,08,413",US
+01586,West Millbury,MA,,US
+01588,Whitinsville,MA,"5,08,774",US
+01590,Sutton,MA,508,US
+01601,Worcester,MA,508,US
+01602,Worcester,MA,508,US
+01603,Worcester,MA,508,US
+01604,Worcester,MA,508,US
+01605,Worcester,MA,508,US
+01606,Worcester,MA,508,US
+01607,Worcester,MA,508,US
+01608,Worcester,MA,"50,87,74,978",US
+01609,Worcester,MA,"50,87,74,978",US
+01610,Worcester,MA,"5,08,774",US
+01611,Cherry Valley,MA,508,US
+01612,Paxton,MA,508,US
+01613,Worcester,MA,508,US
+01614,Worcester,MA,508,US
+01615,Worcester,MA,508,US
+01653,Worcester,MA,508,US
+01654,Worcester,MA,508,US
+01655,Worcester,MA,508,US
+01701,Framingham,MA,"50,86,17,77,47,81,978",US
+01702,Framingham,MA,508,US
+01703,Framingham,MA,508,US
+01704,Framingham,MA,508,US
+01705,Framingham,MA,508,US
+01718,Village Of Nagog Woods,MA,978,US
+01719,Boxborough,MA,978,US
+01720,Acton,MA,"9,78,50,86,17,781",US
+01721,Ashland,MA,"5,08,617",US
+01730,Bedford,MA,781,US
+01731,Hanscom Afb,MA,781,US
+01740,Bolton,MA,978,US
+01741,Carlisle,MA,978,US
+01742,Concord,MA,"5,08,978",US
+01745,Fayville,MA,508,US
+01746,Holliston,MA,"5,08,774",US
+01747,Hopedale,MA,508,US
+01748,Hopkinton,MA,"5,08,774",US
+01749,Hudson,MA,"5,08,978",US
+01752,Marlborough,MA,"50,89,78,774",US
+01754,Maynard,MA,978,US
+01756,Mendon,MA,508,US
+01757,Milford,MA,"50,86,17,774",US
+01760,Natick,MA,"5,08,617",US
+01770,Sherborn,MA,508,US
+01772,Southborough,MA,"5,08,978",US
+01773,Lincoln,MA,"9,78,781",US
+01775,Stow,MA,978,US
+01776,Sudbury,MA,"5,08,978",US
+01778,Wayland,MA,"5,08,978",US
+01784,Woodville,MA,,US
+01801,Woburn,MA,"50,87,81,97,83,39,617",US
+01803,Burlington,MA,"61,77,81,50,89,78,339",US
+01805,Burlington,MA,781,US
+01806,Woburn,MA,339,US
+01807,Woburn,MA,339,US
+01808,Woburn,MA,339,US
+01810,Andover,MA,"97,86,17,781",US
+01812,Andover,MA,351,US
+01813,Woburn,MA,339,US
+01815,Woburn,MA,339,US
+01821,Billerica,MA,"6,17,978",US
+01822,Billerica,MA,351,US
+01824,Chelmsford,MA,978,US
+01826,Dracut,MA,"9,78,617",US
+01827,Dunstable,MA,"9,78,617",US
+01830,Haverhill,MA,978,US
+01831,Haverhill,MA,978,US
+01832,Haverhill,MA,"9,78,508",US
+01833,Georgetown,MA,978,US
+01834,Groveland,MA,978,US
+01835,Haverhill,MA,978,US
+01840,Lawrence,MA,978,US
+01841,Lawrence,MA,"9,78,508",US
+01842,Lawrence,MA,351,US
+01843,Lawrence,MA,"9,78,508",US
+01844,Methuen,MA,"7,81,978",US
+01845,North Andover,MA,978,US
+01850,Lowell,MA,978,US
+01851,Lowell,MA,"50,89,78,617",US
+01852,Lowell,MA,"5,08,978",US
+01853,Lowell,MA,351,US
+01854,Lowell,MA,978,US
+01860,Merrimac,MA,978,US
+01862,North Billerica,MA,"97,86,17,508",US
+01863,North Chelmsford,MA,"9,78,617",US
+01864,North Reading,MA,978,US
+01865,Nutting Lake,MA,,US
+01866,Pinehurst,MA,,US
+01867,Reading,MA,"7,81,617",US
+01876,Tewksbury,MA,"9,78,617",US
+01879,Tyngsboro,MA,978,US
+01880,Wakefield,MA,"61,77,81,339",US
+01885,West Boxford,MA,,US
+01886,Westford,MA,"9,78,508",US
+01887,Wilmington,MA,"5,08,97,87,81,617",US
+01888,Woburn,MA,781,US
+01889,North Reading,MA,351,US
+01890,Winchester,MA,"78,19,78,617",US
+01899,Andover,MA,351,US
+01901,Lynn,MA,781,US
+01902,Lynn,MA,"61,77,81,339",US
+01903,Lynn,MA,339,US
+01904,Lynn,MA,"7,81,978",US
+01905,Lynn,MA,"78,16,17,339",US
+01906,Saugus,MA,"6,17,78,19,78,339",US
+01907,Swampscott,MA,"7,81,978",US
+01908,Nahant,MA,"7,81,617",US
+01910,Lynn,MA,339,US
+01913,Amesbury,MA,978,US
+01915,Beverly,MA,"97,87,81,508",US
+01921,Boxford,MA,"5,08,978",US
+01922,Byfield,MA,"6,17,978",US
+01923,Danvers,MA,"97,86,17,351",US
+01929,Essex,MA,978,US
+01930,Gloucester,MA,978,US
+01931,Gloucester,MA,351,US
+01936,Hamilton,MA,978,US
+01937,Hathorne,MA,978,US
+01938,Ipswich,MA,978,US
+01940,Lynnfield,MA,781,US
+01944,Manchester,MA,"9,78,508",US
+01945,Marblehead,MA,"7,81,617",US
+01949,Middleton,MA,978,US
+01950,Newburyport,MA,978,US
+01951,Newbury,MA,978,US
+01952,Salisbury,MA,978,US
+01960,Peabody,MA,"97,85,08,617",US
+01961,Peabody,MA,508,US
+01965,Prides Crossing,MA,,US
+01966,Rockport,MA,"9,78,508",US
+01969,Rowley,MA,978,US
+01970,Salem,MA,"97,87,81,617",US
+01971,Salem,MA,351,US
+01982,South Hamilton,MA,"50,86,17,978",US
+01983,Topsfield,MA,978,US
+01984,Wenham,MA,978,US
+01985,West Newbury,MA,978,US
+02018,Accord,MA,,US
+02019,Bellingham,MA,"5,08,774",US
+02020,Brant Rock,MA,,US
+02021,Canton,MA,"78,16,17,339",US
+02025,Cohasset,MA,"78,16,17,339",US
+02026,Dedham,MA,"6,17,781",US
+02027,Dedham,MA,339,US
+02030,Dover,MA,"50,87,81,774",US
+02031,East Mansfield,MA,508,US
+02032,East Walpole,MA,"5,08,77,43,39,781",US
+02035,Foxboro,MA,"50,87,81,774",US
+02038,Franklin,MA,"5,08,774",US
+02040,Greenbush,MA,,US
+02041,Green Harbor,MA,781,US
+02043,Hingham,MA,"61,77,81,339",US
+02044,Hingham,MA,339,US
+02045,Hull,MA,781,US
+02047,Humarock,MA,781,US
+02048,Mansfield,MA,"5,08,97,87,81,774",US
+02050,Marshfield,MA,"7,81,339",US
+02051,Marshfield Hills,MA,,US
+02052,Medfield,MA,"50,86,17,774",US
+02053,Medway,MA,"5,08,774",US
+02054,Millis,MA,"50,87,81,774",US
+02055,Minot,MA,,US
+02056,Norfolk,MA,508,US
+02059,North Marshfield,MA,,US
+02060,North Scituate,MA,,US
+02061,Norwell,MA,"7,81,339",US
+02062,Norwood,MA,"61,77,81,508",US
+02065,Ocean Bluff,MA,,US
+02066,Scituate,MA,"61,77,81,339",US
+02067,Sharon,MA,"7,81,339",US
+02070,Sheldonville,MA,,US
+02071,South Walpole,MA,"5,08,774",US
+02072,Stoughton,MA,"50,87,81,617",US
+02081,Walpole,MA,"50,87,74,781",US
+02090,Westwood,MA,"78,16,17,339",US
+02093,Wrentham,MA,"5,08,774",US
+02108,Boston,MA,"6,17,78,15,08,857",US
+02109,Boston,MA,617,US
+02110,Boston,MA,"6,17,85,75,08,77,47,81,000",US
+02111,Boston,MA,"61,77,81,978",US
+02112,Boston,MA,617,US
+02113,Boston,MA,617,US
+02114,Boston,MA,"5,08,61,77,81,857",US
+02115,Boston,MA,"6,17,857",US
+02116,Boston,MA,"6,17,50,87,81,978",US
+02117,Boston,MA,617,US
+02118,Boston,MA,"61,77,81,857",US
+02119,Roxbury,MA,"50,86,17,978",US
+02120,Roxbury Crossing,MA,"6,17,857",US
+02121,Dorchester,MA,"61,77,81,857",US
+02122,Dorchester,MA,"6,17,781",US
+02123,Boston,MA,617,US
+02124,Dorchester Center,MA,617,US
+02125,Dorchester,MA,"6,17,857",US
+02126,Mattapan,MA,617,US
+02127,Boston,MA,"50,86,17,77,47,81,857",US
+02128,Boston,MA,"6,17,857",US
+02129,Charlestown,MA,"61,77,81,857",US
+02130,Jamaica Plain,MA,"6,17,857",US
+02131,Roslindale,MA,617,US
+02132,West Roxbury,MA,"6,17,781",US
+02133,Boston,MA,"61,75,08,78,18,57,978",US
+02134,Allston,MA,617,US
+02135,Brighton,MA,"6,17,857",US
+02136,Hyde Park,MA,"6,17,857",US
+02137,Readville,MA,,US
+02138,Cambridge,MA,"61,79,78,857",US
+02139,Cambridge,MA,"61,77,81,97,88,57,339",US
+02140,Cambridge,MA,"61,77,81,978",US
+02141,Cambridge,MA,"50,86,17,97,87,81,339",US
+02142,Cambridge,MA,"61,77,81,50,88,57,978",US
+02143,Somerville,MA,617,US
+02144,Somerville,MA,"61,77,81,857",US
+02145,Somerville,MA,"61,77,81,857",US
+02148,Malden,MA,"6,17,78,13,39,857",US
+02149,Everett,MA,"61,77,81,857",US
+02150,Chelsea,MA,"6,17,857",US
+02151,Revere,MA,"7,81,97,83,39,617",US
+02152,Winthrop,MA,"61,79,78,857",US
+02153,Medford,MA,339,US
+02155,Medford,MA,"6,17,78,19,78,339",US
+02156,West Medford,MA,,US
+02163,Boston,MA,"61,73,39,78,18,57,978",US
+02169,Quincy,MA,"50,86,17,781",US
+02170,Quincy,MA,"6,17,857",US
+02171,Quincy,MA,"6,17,857",US
+02176,Melrose,MA,"97,87,81,339",US
+02180,Stoneham,MA,"78,16,17,978",US
+02184,Braintree,MA,"5,08,61,77,81,339",US
+02185,Braintree,MA,781,US
+02186,Milton,MA,617,US
+02187,Milton Village,MA,,US
+02188,Weymouth,MA,"61,77,81,339",US
+02189,East Weymouth,MA,781,US
+02190,South Weymouth,MA,"6,17,781",US
+02191,North Weymouth,MA,"61,77,81,339",US
+02196,Boston,MA,617,US
+02199,Boston,MA,"61,73,39,78,18,57,978",US
+02201,Boston,MA,617,US
+02203,Boston,MA,617,US
+02204,Boston,MA,617,US
+02205,Boston,MA,617,US
+02206,Boston,MA,617,US
+02207,Boston,MA,617,US
+02210,Boston,MA,617,US
+02211,Boston,MA,617,US
+02212,Boston,MA,617,US
+02215,Boston,MA,617,US
+02216,Boston,MA,617,US
+02217,Boston,MA,617,US
+02222,Boston,MA,"6,17,857",US
+02228,East Boston,MA,,US
+02238,Cambridge,MA,617,US
+02239,Cambridge,MA,617,US
+02241,Boston,MA,617,US
+02266,Boston,MA,617,US
+02269,Quincy,MA,617,US
+02283,Boston,MA,"61,77,81,978",US
+02284,Boston,MA,"50,86,17,78,18,57,978",US
+02293,Boston,MA,617,US
+02295,Boston,MA,617,US
+02297,Boston,MA,617,US
+02298,Boston,MA,617,US
+02301,Brockton,MA,"50,86,17,774",US
+02302,Brockton,MA,"50,86,17,774",US
+02303,Brockton,MA,508,US
+02304,Brockton,MA,508,US
+02305,Brockton,MA,508,US
+02322,Avon,MA,508,US
+02324,Bridgewater,MA,"5,08,774",US
+02325,Bridgewater,MA,508,US
+02327,Bryantville,MA,,US
+02330,Carver,MA,"5,08,774",US
+02331,Duxbury,MA,339,US
+02332,Duxbury,MA,"7,81,617",US
+02333,East Bridgewater,MA,"5,08,774",US
+02334,Easton,MA,508,US
+02337,Elmwood,MA,,US
+02338,Halifax,MA,"7,81,339",US
+02339,Hanover,MA,"6,17,781",US
+02340,Hanover,MA,339,US
+02341,Hanson,MA,781,US
+02343,Holbrook,MA,781,US
+02344,Middleboro,MA,508,US
+02345,Manomet,MA,508,US
+02346,Middleboro,MA,"5,08,774",US
+02347,Lakeville,MA,"7,81,508",US
+02348,Lakeville,MA,508,US
+02349,Middleboro,MA,508,US
+02350,Monponsett,MA,,US
+02351,Abington,MA,781,US
+02355,North Carver,MA,508,US
+02356,North Easton,MA,508,US
+02357,North Easton,MA,508,US
+02358,North Pembroke,MA,,US
+02359,Pembroke,MA,"7,81,339",US
+02360,Plymouth,MA,"50,86,17,774",US
+02361,Plymouth,MA,508,US
+02362,Plymouth,MA,617,US
+02364,Kingston,MA,"78,13,39,617",US
+02366,South Carver,MA,508,US
+02367,Plympton,MA,"5,08,781",US
+02368,Randolph,MA,"61,77,81,339",US
+02370,Rockland,MA,"7,81,339",US
+02375,South Easton,MA,"50,87,81,774",US
+02379,West Bridgewater,MA,"5,08,781",US
+02381,White Horse Beach,MA,508,US
+02382,Whitman,MA,781,US
+02420,Lexington,MA,"78,16,17,339",US
+02421,Lexington,MA,"6,17,781",US
+02445,Brookline,MA,"6,17,857",US
+02446,Brookline,MA,"6,17,857",US
+02447,Brookline Village,MA,,US
+02451,Waltham,MA,"7,81,61,75,08,339",US
+02452,Waltham,MA,"78,16,17,33,97,74,978",US
+02453,Waltham,MA,"78,16,17,50,87,74,978",US
+02454,Waltham,MA,339,US
+02455,North Waltham,MA,,US
+02456,New Town,MA,617,US
+02457,Babson Park,MA,,US
+02458,Newton,MA,"61,77,81,857",US
+02459,Newton Center,MA,"61,77,81,508",US
+02460,Newtonville,MA,"61,77,81,857",US
+02461,Newton Highlands,MA,"6,17,781",US
+02462,Newton Lower Falls,MA,617,US
+02464,Newton Upper Falls,MA,617,US
+02465,West Newton,MA,"78,16,17,857",US
+02466,Auburndale,MA,"6,17,781",US
+02467,Chestnut Hill,MA,"78,16,17,857",US
+02468,Waban,MA,"7,81,617",US
+02471,Watertown,MA,"6,17,781",US
+02472,Watertown,MA,"6,17,78,19,78,857",US
+02474,Arlington,MA,"7,81,617",US
+02475,Arlington Heights,MA,,US
+02476,Arlington,MA,"61,77,81,339",US
+02477,Watertown,MA,617,US
+02478,Belmont,MA,"61,77,81,857",US
+02479,Waverley,MA,,US
+02481,Wellesley Hills,MA,"7,81,61,75,08,774",US
+02482,Wellesley,MA,"50,86,17,78,13,39,774",US
+02492,Needham,MA,"78,17,74,857",US
+02493,Weston,MA,"7,81,617",US
+02494,Needham Heights,MA,"78,16,17,339",US
+02495,Nonantum,MA,,US
+02532,Buzzards Bay,MA,"5,08,774",US
+02534,Cataumet,MA,508,US
+02535,Chilmark,MA,508,US
+02536,East Falmouth,MA,508,US
+02537,East Sandwich,MA,508,US
+02538,East Wareham,MA,508,US
+02539,Edgartown,MA,"5,08,774",US
+02540,Falmouth,MA,"9,78,508",US
+02541,Falmouth,MA,508,US
+02542,Buzzards Bay,MA,"5,08,774",US
+02543,Woods Hole,MA,"5,08,774",US
+02552,Menemsha,MA,508,US
+02553,Monument Beach,MA,508,US
+02554,Nantucket,MA,"5,08,774",US
+02556,North Falmouth,MA,508,US
+02557,Oak Bluffs,MA,508,US
+02558,Onset,MA,508,US
+02559,Pocasset,MA,"5,08,774",US
+02561,Sagamore,MA,508,US
+02562,Sagamore Beach,MA,508,US
+02563,Sandwich,MA,"5,08,774",US
+02564,Siasconset,MA,508,US
+02565,Silver Beach,MA,508,US
+02568,Vineyard Haven,MA,"5,08,774",US
+02571,Wareham,MA,"5,08,774",US
+02573,West Chop,MA,,US
+02574,West Falmouth,MA,508,US
+02575,West Tisbury,MA,508,US
+02576,West Wareham,MA,508,US
+02584,Nantucket,MA,508,US
+02601,Hyannis,MA,"5,08,774",US
+02630,Barnstable,MA,"5,08,774",US
+02631,Brewster,MA,"5,08,774",US
+02632,Centerville,MA,"5,08,774",US
+02633,Chatham,MA,"5,08,774",US
+02634,Centerville,MA,508,US
+02635,Cotuit,MA,508,US
+02636,Centerville,MA,508,US
+02637,Cummaquid,MA,508,US
+02638,Dennis,MA,"5,08,774",US
+02639,Dennis Port,MA,508,US
+02641,East Dennis,MA,508,US
+02642,Eastham,MA,508,US
+02643,East Orleans,MA,508,US
+02644,Forestdale,MA,508,US
+02645,Harwich,MA,"5,08,774",US
+02646,Harwich Port,MA,508,US
+02647,Hyannis Port,MA,508,US
+02648,Marstons Mills,MA,508,US
+02649,Mashpee,MA,508,US
+02650,North Chatham,MA,508,US
+02651,North Eastham,MA,508,US
+02652,North Truro,MA,508,US
+02653,Orleans,MA,"5,08,774",US
+02655,Osterville,MA,"5,08,774",US
+02657,Provincetown,MA,"5,08,774",US
+02659,South Chatham,MA,508,US
+02660,South Dennis,MA,508,US
+02661,South Harwich,MA,508,US
+02662,South Orleans,MA,508,US
+02663,South Wellfleet,MA,508,US
+02664,South Yarmouth,MA,508,US
+02666,Truro,MA,508,US
+02667,Wellfleet,MA,"5,08,774",US
+02668,West Barnstable,MA,508,US
+02669,West Chatham,MA,508,US
+02670,West Dennis,MA,508,US
+02671,West Harwich,MA,508,US
+02672,West Hyannisport,MA,508,US
+02673,West Yarmouth,MA,"5,08,774",US
+02675,Yarmouth Port,MA,508,US
+02702,Assonet,MA,"5,08,774",US
+02703,Attleboro,MA,"4,01,50,86,17,774",US
+02712,Chartley,MA,508,US
+02713,Cuttyhunk,MA,,US
+02714,Dartmouth,MA,508,US
+02715,Dighton,MA,"5,08,774",US
+02717,East Freetown,MA,508,US
+02718,East Taunton,MA,"5,08,774",US
+02719,Fairhaven,MA,508,US
+02720,Fall River,MA,"5,08,774",US
+02721,Fall River,MA,"5,08,774",US
+02722,Fall River,MA,508,US
+02723,Fall River,MA,"5,08,774",US
+02724,Fall River,MA,508,US
+02725,Somerset,MA,508,US
+02726,Somerset,MA,508,US
+02738,Marion,MA,"5,08,774",US
+02739,Mattapoisett,MA,"50,86,17,774",US
+02740,New Bedford,MA,"5,08,774",US
+02741,New Bedford,MA,508,US
+02742,New Bedford,MA,508,US
+02743,Acushnet,MA,508,US
+02744,New Bedford,MA,"5,08,774",US
+02745,New Bedford,MA,508,US
+02746,New Bedford,MA,"5,08,774",US
+02747,North Dartmouth,MA,508,US
+02748,South Dartmouth,MA,508,US
+02760,North Attleboro,MA,"50,89,78,774",US
+02761,North Attleboro,MA,508,US
+02762,Plainville,MA,508,US
+02763,Attleboro Falls,MA,"5,08,774",US
+02764,North Dighton,MA,"8,57,508",US
+02766,Norton,MA,"5,08,774",US
+02767,Raynham,MA,508,US
+02768,Raynham Center,MA,508,US
+02769,Rehoboth,MA,"5,08,774",US
+02770,Rochester,MA,"5,08,774",US
+02771,Seekonk,MA,"50,86,17,774",US
+02777,Swansea,MA,508,US
+02779,Berkley,MA,"7,81,508",US
+02780,Taunton,MA,508,US
+02783,Taunton,MA,508,US
+02790,Westport,MA,"5,08,774",US
+02791,Westport Point,MA,508,US
+02801,Adamsville,RI,401,US
+02802,Albion,RI,401,US
+02804,Ashaway,RI,401,US
+02806,Barrington,RI,401,US
+02807,Block Island,RI,401,US
+02808,Bradford,RI,401,US
+02809,Bristol,RI,401,US
+02812,Carolina,RI,401,US
+02813,Charlestown,RI,401,US
+02814,Chepachet,RI,401,US
+02815,Clayville,RI,401,US
+02816,Coventry,RI,401,US
+02817,West Greenwich,RI,401,US
+02818,East Greenwich,RI,401,US
+02822,Exeter,RI,401,US
+02823,Fiskeville,RI,401,US
+02824,Forestdale,RI,401,US
+02825,Foster,RI,401,US
+02826,Glendale,RI,401,US
+02827,Greene,RI,401,US
+02828,Greenville,RI,401,US
+02829,Harmony,RI,401,US
+02830,Harrisville,RI,401,US
+02831,Hope,RI,401,US
+02832,Hope Valley,RI,401,US
+02833,Hopkinton,RI,401,US
+02835,Jamestown,RI,401,US
+02836,Kenyon,RI,401,US
+02837,Little Compton,RI,401,US
+02838,Manville,RI,401,US
+02839,Mapleville,RI,401,US
+02840,Newport,RI,401,US
+02841,Newport,RI,401,US
+02842,Middletown,RI,401,US
+02852,North Kingstown,RI,401,US
+02854,North Kingstown,RI,401,US
+02857,North Scituate,RI,401,US
+02858,Oakland,RI,401,US
+02859,Pascoag,RI,401,US
+02860,Pawtucket,RI,401,US
+02861,Pawtucket,RI,401,US
+02862,Pawtucket,RI,401,US
+02863,Central Falls,RI,401,US
+02864,Cumberland,RI,401,US
+02865,Lincoln,RI,"4,01,508",US
+02871,Portsmouth,RI,401,US
+02872,Prudence Island,RI,401,US
+02873,Rockville,RI,401,US
+02874,Saunderstown,RI,401,US
+02875,Shannock,RI,401,US
+02876,Slatersville,RI,401,US
+02877,Slocum,RI,401,US
+02878,Tiverton,RI,401,US
+02879,Wakefield,RI,401,US
+02880,Wakefield,RI,401,US
+02881,Kingston,RI,401,US
+02882,Narragansett,RI,401,US
+02883,Peace Dale,RI,401,US
+02885,Warren,RI,401,US
+02886,Warwick,RI,401,US
+02887,Warwick,RI,401,US
+02888,Warwick,RI,401,US
+02889,Warwick,RI,401,US
+02891,Westerly,RI,401,US
+02892,West Kingston,RI,401,US
+02893,West Warwick,RI,401,US
+02894,Wood River Junction,RI,401,US
+02895,Woonsocket,RI,401,US
+02896,North Smithfield,RI,401,US
+02898,Wyoming,RI,401,US
+02901,Providence,RI,401,US
+02902,Providence,RI,401,US
+02903,Providence,RI,401,US
+02904,Providence,RI,401,US
+02905,Providence,RI,401,US
+02906,Providence,RI,401,US
+02907,Providence,RI,401,US
+02908,Providence,RI,401,US
+02909,Providence,RI,401,US
+02910,Cranston,RI,401,US
+02911,North Providence,RI,401,US
+02912,Providence,RI,401,US
+02914,East Providence,RI,401,US
+02915,Riverside,RI,401,US
+02916,Rumford,RI,401,US
+02917,Smithfield,RI,401,US
+02918,Providence,RI,401,US
+02919,Johnston,RI,401,US
+02920,Cranston,RI,401,US
+02921,Cranston,RI,401,US
+02940,Providence,RI,401,US
+03031,Amherst,NH,603,US
+03032,Auburn,NH,603,US
+03033,Brookline,NH,603,US
+03034,Candia,NH,603,US
+03036,Chester,NH,603,US
+03037,Deerfield,NH,603,US
+03038,Derry,NH,603,US
+03040,East Candia,NH,603,US
+03041,East Derry,NH,603,US
+03042,Epping,NH,603,US
+03043,Francestown,NH,603,US
+03044,Fremont,NH,603,US
+03045,Goffstown,NH,603,US
+03046,Dunbarton,NH,603,US
+03047,Greenfield,NH,603,US
+03048,Greenville,NH,603,US
+03049,Hollis,NH,603,US
+03051,Hudson,NH,603,US
+03052,Litchfield,NH,603,US
+03053,Londonderry,NH,603,US
+03054,Merrimack,NH,603,US
+03055,Milford,NH,603,US
+03057,Mont Vernon,NH,603,US
+03060,Nashua,NH,603,US
+03061,Nashua,NH,603,US
+03062,Nashua,NH,"6,03,802",US
+03063,Nashua,NH,603,US
+03064,Nashua,NH,603,US
+03070,New Boston,NH,603,US
+03071,New Ipswich,NH,603,US
+03073,North Salem,NH,603,US
+03076,Pelham,NH,603,US
+03077,Raymond,NH,603,US
+03079,Salem,NH,603,US
+03082,Lyndeborough,NH,603,US
+03084,Temple,NH,603,US
+03086,Wilton,NH,603,US
+03087,Windham,NH,603,US
+03101,Manchester,NH,603,US
+03102,Manchester,NH,603,US
+03103,Manchester,NH,603,US
+03104,Manchester,NH,603,US
+03105,Manchester,NH,603,US
+03106,Hooksett,NH,603,US
+03107,Manchester,NH,603,US
+03108,Manchester,NH,603,US
+03109,Manchester,NH,603,US
+03110,Bedford,NH,603,US
+03111,Manchester,NH,603,US
+03215,Waterville Valley,NH,603,US
+03216,Andover,NH,603,US
+03217,Ashland,NH,603,US
+03218,Barnstead,NH,603,US
+03220,Belmont,NH,603,US
+03221,Bradford,NH,603,US
+03222,Bristol,NH,603,US
+03223,Campton,NH,603,US
+03224,Canterbury,NH,603,US
+03225,Center Barnstead,NH,603,US
+03226,Center Harbor,NH,603,US
+03227,Center Sandwich,NH,603,US
+03229,Contoocook,NH,603,US
+03230,Danbury,NH,603,US
+03231,East Andover,NH,603,US
+03233,Elkins,NH,603,US
+03234,Epsom,NH,603,US
+03235,Franklin,NH,603,US
+03237,Gilmanton,NH,603,US
+03238,Glencliff,NH,603,US
+03240,Grafton,NH,603,US
+03241,Hebron,NH,603,US
+03242,Henniker,NH,603,US
+03243,Hill,NH,603,US
+03244,Hillsborough,NH,603,US
+03245,Holderness,NH,603,US
+03246,Laconia,NH,603,US
+03247,Laconia,NH,603,US
+03249,Gilford,NH,603,US
+03251,Lincoln,NH,603,US
+03252,Lochmere,NH,603,US
+03253,Meredith,NH,603,US
+03254,Moultonborough,NH,603,US
+03255,Newbury,NH,603,US
+03256,New Hampton,NH,603,US
+03257,New London,NH,603,US
+03258,Chichester,NH,603,US
+03259,North Sandwich,NH,603,US
+03260,North Sutton,NH,603,US
+03261,Northwood,NH,603,US
+03262,North Woodstock,NH,603,US
+03263,Pittsfield,NH,603,US
+03264,Plymouth,NH,603,US
+03266,Rumney,NH,603,US
+03268,Salisbury,NH,603,US
+03269,Sanbornton,NH,603,US
+03272,South Newbury,NH,603,US
+03273,South Sutton,NH,603,US
+03274,Stinson Lake,NH,603,US
+03275,Suncook,NH,603,US
+03276,Tilton,NH,603,US
+03278,Warner,NH,603,US
+03279,Warren,NH,603,US
+03280,Washington,NH,603,US
+03281,Weare,NH,603,US
+03282,Wentworth,NH,603,US
+03284,Springfield,NH,603,US
+03285,Thornton,NH,603,US
+03287,Wilmot,NH,603,US
+03289,Winnisquam,NH,603,US
+03290,Nottingham,NH,603,US
+03291,West Nottingham,NH,603,US
+03293,Woodstock,NH,603,US
+03298,Tilton,NH,603,US
+03299,Tilton,NH,603,US
+03301,Concord,NH,603,US
+03302,Concord,NH,603,US
+03303,Concord,NH,603,US
+03304,Bow,NH,603,US
+03305,Concord,NH,603,US
+03307,Loudon,NH,603,US
+03431,Keene,NH,603,US
+03435,Keene,NH,603,US
+03440,Antrim,NH,603,US
+03441,Ashuelot,NH,603,US
+03442,Bennington,NH,603,US
+03443,Chesterfield,NH,603,US
+03444,Dublin,NH,603,US
+03445,Sullivan,NH,603,US
+03446,Swanzey,NH,603,US
+03447,Fitzwilliam,NH,603,US
+03448,Gilsum,NH,603,US
+03449,Hancock,NH,603,US
+03450,Harrisville,NH,603,US
+03451,Hinsdale,NH,603,US
+03452,Jaffrey,NH,603,US
+03455,Marlborough,NH,603,US
+03456,Marlow,NH,603,US
+03457,Nelson,NH,603,US
+03458,Peterborough,NH,603,US
+03461,Rindge,NH,603,US
+03462,Spofford,NH,603,US
+03464,Stoddard,NH,603,US
+03465,Troy,NH,603,US
+03466,West Chesterfield,NH,603,US
+03467,Westmoreland,NH,603,US
+03468,West Peterborough,NH,603,US
+03469,West Swanzey,NH,603,US
+03470,Winchester,NH,603,US
+03561,Littleton,NH,603,US
+03570,Berlin,NH,603,US
+03574,Bethlehem,NH,603,US
+03575,Bretton Woods,NH,603,US
+03576,Colebrook,NH,603,US
+03579,Errol,NH,"6,03,207",US
+03580,Franconia,NH,603,US
+03581,Gorham,NH,603,US
+03582,Groveton,NH,603,US
+03583,Jefferson,NH,603,US
+03584,Lancaster,NH,603,US
+03585,Lisbon,NH,603,US
+03586,Sugar Hill,NH,603,US
+03588,Milan,NH,603,US
+03589,Mount Washington,NH,603,US
+03590,North Stratford,NH,"6,03,802",US
+03592,Pittsburg,NH,603,US
+03593,Randolph,NH,603,US
+03595,Twin Mountain,NH,603,US
+03597,West Stewartstown,NH,603,US
+03598,Whitefield,NH,603,US
+03601,Acworth,NH,603,US
+03602,Alstead,NH,603,US
+03603,Charlestown,NH,603,US
+03604,Drewsville,NH,603,US
+03605,Lempster,NH,603,US
+03607,South Acworth,NH,603,US
+03608,Walpole,NH,603,US
+03609,North Walpole,NH,603,US
+03740,Bath,NH,603,US
+03741,Canaan,NH,603,US
+03743,Claremont,NH,603,US
+03745,Cornish,NH,603,US
+03746,Cornish Flat,NH,603,US
+03748,Enfield,NH,603,US
+03749,Enfield Center,NH,603,US
+03750,Etna,NH,603,US
+03751,Georges Mills,NH,603,US
+03752,Goshen,NH,603,US
+03753,Grantham,NH,603,US
+03754,Guild,NH,603,US
+03755,Hanover,NH,603,US
+03756,Lebanon,NH,603,US
+03765,Haverhill,NH,603,US
+03766,Lebanon,NH,603,US
+03768,Lyme,NH,603,US
+03769,Lyme Center,NH,603,US
+03770,Meriden,NH,603,US
+03771,Monroe,NH,603,US
+03773,Newport,NH,603,US
+03774,North Haverhill,NH,603,US
+03777,Orford,NH,603,US
+03779,Piermont,NH,603,US
+03780,Pike,NH,603,US
+03781,Plainfield,NH,603,US
+03782,Sunapee,NH,603,US
+03784,West Lebanon,NH,603,US
+03785,Woodsville,NH,603,US
+03801,Portsmouth,NH,603,US
+03802,Portsmouth,NH,603,US
+03803,Portsmouth,NH,603,US
+03804,Portsmouth,NH,603,US
+03805,Newington,NH,603,US
+03809,Alton,NH,603,US
+03810,Alton Bay,NH,603,US
+03811,Atkinson,NH,603,US
+03812,Bartlett,NH,603,US
+03813,Center Conway,NH,603,US
+03814,Center Ossipee,NH,603,US
+03815,Center Strafford,NH,"6,03,978",US
+03816,Center Tuftonboro,NH,603,US
+03817,Chocorua,NH,603,US
+03818,Conway,NH,603,US
+03819,Danville,NH,603,US
+03820,Dover,NH,603,US
+03821,Dover,NH,603,US
+03822,Dover,NH,603,US
+03823,Madbury,NH,603,US
+03824,Durham,NH,603,US
+03825,Barrington,NH,603,US
+03826,East Hampstead,NH,603,US
+03827,East Kingston,NH,603,US
+03830,East Wakefield,NH,603,US
+03832,Eaton Center,NH,603,US
+03833,Exeter,NH,603,US
+03835,Farmington,NH,603,US
+03836,Freedom,NH,603,US
+03837,Gilmanton Iron Works,NH,603,US
+03838,Glen,NH,603,US
+03839,Rochester,NH,603,US
+03840,Greenland,NH,603,US
+03841,Hampstead,NH,603,US
+03842,Hampton,NH,603,US
+03843,Hampton,NH,603,US
+03844,Hampton Falls,NH,603,US
+03845,Intervale,NH,603,US
+03846,Jackson,NH,603,US
+03847,Kearsarge,NH,603,US
+03848,Kingston,NH,603,US
+03849,Madison,NH,603,US
+03850,Melvin Village,NH,603,US
+03851,Milton,NH,603,US
+03852,Milton Mills,NH,603,US
+03853,Mirror Lake,NH,603,US
+03854,New Castle,NH,603,US
+03855,New Durham,NH,603,US
+03856,Newfields,NH,603,US
+03857,Newmarket,NH,603,US
+03858,Newton,NH,603,US
+03859,Newton Junction,NH,603,US
+03860,North Conway,NH,603,US
+03861,Lee,NH,603,US
+03862,North Hampton,NH,603,US
+03864,Ossipee,NH,603,US
+03865,Plaistow,NH,603,US
+03866,Rochester,NH,603,US
+03867,Rochester,NH,603,US
+03868,Rochester,NH,603,US
+03869,Rollinsford,NH,603,US
+03870,Rye,NH,603,US
+03871,Rye Beach,NH,603,US
+03872,Sanbornville,NH,603,US
+03873,Sandown,NH,603,US
+03874,Seabrook,NH,603,US
+03875,Silver Lake,NH,603,US
+03878,Somersworth,NH,603,US
+03882,Effingham,NH,603,US
+03883,South Tamworth,NH,603,US
+03884,Strafford,NH,603,US
+03885,Stratham,NH,603,US
+03886,Tamworth,NH,603,US
+03887,Union,NH,603,US
+03890,West Ossipee,NH,603,US
+03894,Wolfeboro,NH,603,US
+03896,Wolfeboro Falls,NH,603,US
+03897,Wonalancet,NH,603,US
+03901,Berwick,ME,207,US
+03902,Cape Neddick,ME,207,US
+03903,Eliot,ME,207,US
+03904,Kittery,ME,207,US
+03905,Kittery Point,ME,207,US
+03906,North Berwick,ME,207,US
+03907,Ogunquit,ME,207,US
+03908,South Berwick,ME,207,US
+03909,York,ME,207,US
+03910,York Beach,ME,207,US
+03911,York Harbor,ME,207,US
+04001,Acton,ME,207,US
+04002,Alfred,ME,207,US
+04003,Bailey Island,ME,207,US
+04004,Bar Mills,ME,207,US
+04005,Biddeford,ME,207,US
+04006,Biddeford Pool,ME,207,US
+04007,Biddeford,ME,207,US
+04008,Bowdoinham,ME,207,US
+04009,Bridgton,ME,207,US
+04010,Brownfield,ME,207,US
+04011,Brunswick,ME,207,US
+04013,Bustins Island,ME,207,US
+04014,Cape Porpoise,ME,207,US
+04015,Casco,ME,207,US
+04016,Center Lovell,ME,207,US
+04017,Chebeague Island,ME,207,US
+04019,Cliff Island,ME,207,US
+04020,Cornish,ME,207,US
+04021,Cumberland Center,ME,207,US
+04022,Denmark,ME,207,US
+04024,East Baldwin,ME,207,US
+04027,Lebanon,ME,"2,07,603",US
+04028,East Parsonsfield,ME,207,US
+04029,Sebago,ME,207,US
+04030,East Waterboro,ME,207,US
+04032,Freeport,ME,207,US
+04033,Freeport,ME,207,US
+04034,Freeport,ME,207,US
+04037,Fryeburg,ME,"2,07,603",US
+04038,Gorham,ME,207,US
+04039,Gray,ME,207,US
+04040,Harrison,ME,207,US
+04041,Hiram,ME,207,US
+04042,Hollis Center,ME,207,US
+04043,Kennebunk,ME,207,US
+04046,Kennebunkport,ME,207,US
+04047,Parsonsfield,ME,207,US
+04048,Limerick,ME,207,US
+04049,Limington,ME,207,US
+04050,Long Island,ME,207,US
+04051,Lovell,ME,207,US
+04054,Moody,ME,207,US
+04055,Naples,ME,207,US
+04056,Newfield,ME,207,US
+04057,North Bridgton,ME,207,US
+04061,North Waterboro,ME,207,US
+04062,Windham,ME,207,US
+04063,Ocean Park,ME,207,US
+04064,Old Orchard Beach,ME,207,US
+04066,Orrs Island,ME,207,US
+04068,Porter,ME,207,US
+04069,Pownal,ME,207,US
+04070,Scarborough,ME,207,US
+04071,Raymond,ME,207,US
+04072,Saco,ME,207,US
+04073,Sanford,ME,207,US
+04074,Scarborough,ME,207,US
+04075,Sebago Lake,ME,207,US
+04076,Shapleigh,ME,207,US
+04077,South Casco,ME,207,US
+04078,South Freeport,ME,207,US
+04079,Harpswell,ME,207,US
+04082,South Windham,ME,207,US
+04083,Springvale,ME,207,US
+04084,Standish,ME,207,US
+04085,Steep Falls,ME,207,US
+04086,Topsham,ME,207,US
+04087,Waterboro,ME,207,US
+04088,Waterford,ME,207,US
+04090,Wells,ME,207,US
+04091,West Baldwin,ME,207,US
+04092,Westbrook,ME,207,US
+04093,Buxton,ME,207,US
+04094,West Kennebunk,ME,207,US
+04095,West Newfield,ME,207,US
+04096,Yarmouth,ME,207,US
+04097,North Yarmouth,ME,207,US
+04098,Westbrook,ME,207,US
+04101,Portland,ME,207,US
+04102,Portland,ME,207,US
+04103,Portland,ME,207,US
+04104,Portland,ME,207,US
+04105,Falmouth,ME,207,US
+04106,South Portland,ME,207,US
+04107,Cape Elizabeth,ME,207,US
+04108,Peaks Island,ME,207,US
+04109,Portland,ME,207,US
+04110,Cumberland Foreside,ME,207,US
+04112,Portland,ME,207,US
+04116,South Portland,ME,207,US
+04122,Portland,ME,207,US
+04123,Portland,ME,207,US
+04124,Portland,ME,207,US
+04210,Auburn,ME,207,US
+04211,Auburn,ME,207,US
+04212,Auburn,ME,207,US
+04216,Andover,ME,207,US
+04217,Bethel,ME,207,US
+04219,Bryant Pond,ME,207,US
+04220,Buckfield,ME,207,US
+04221,Canton,ME,207,US
+04222,Durham,ME,207,US
+04223,Danville,ME,207,US
+04224,Dixfield,ME,207,US
+04225,Dryden,ME,207,US
+04226,East Andover,ME,207,US
+04227,East Dixfield,ME,207,US
+04228,East Livermore,ME,207,US
+04230,East Poland,ME,207,US
+04231,Stoneham,ME,207,US
+04234,East Wilton,ME,207,US
+04236,Greene,ME,207,US
+04237,Hanover,ME,207,US
+04238,Hebron,ME,207,US
+04239,Jay,ME,207,US
+04240,Lewiston,ME,207,US
+04241,Lewiston,ME,207,US
+04243,Lewiston,ME,207,US
+04250,Lisbon,ME,207,US
+04252,Lisbon Falls,ME,207,US
+04253,Livermore,ME,207,US
+04254,Livermore Falls,ME,207,US
+04255,Greenwood,ME,207,US
+04256,Mechanic Falls,ME,207,US
+04257,Mexico,ME,207,US
+04258,Minot,ME,207,US
+04259,Monmouth,ME,207,US
+04260,New Gloucester,ME,207,US
+04261,Newry,ME,207,US
+04262,North Jay,ME,207,US
+04263,Leeds,ME,207,US
+04265,North Monmouth,ME,207,US
+04266,North Turner,ME,207,US
+04267,North Waterford,ME,207,US
+04268,Norway,ME,207,US
+04270,Oxford,ME,207,US
+04271,Paris,ME,207,US
+04274,Poland,ME,207,US
+04275,Roxbury,ME,207,US
+04276,Rumford,ME,207,US
+04280,Sabattus,ME,207,US
+04281,South Paris,ME,207,US
+04282,Turner,ME,207,US
+04284,Wayne,ME,207,US
+04285,Weld,ME,207,US
+04286,West Bethel,ME,207,US
+04287,Bowdoin,ME,207,US
+04288,West Minot,ME,207,US
+04289,West Paris,ME,207,US
+04290,Peru,ME,207,US
+04291,West Poland,ME,207,US
+04292,Sumner,ME,207,US
+04294,Wilton,ME,207,US
+04330,Augusta,ME,207,US
+04332,Augusta,ME,207,US
+04333,Augusta,ME,207,US
+04336,Augusta,ME,207,US
+04338,Augusta,ME,207,US
+04341,Coopers Mills,ME,207,US
+04342,Dresden,ME,207,US
+04343,East Winthrop,ME,207,US
+04344,Farmingdale,ME,207,US
+04345,Gardiner,ME,207,US
+04346,Randolph,ME,207,US
+04347,Hallowell,ME,207,US
+04348,Jefferson,ME,207,US
+04349,Kents Hill,ME,207,US
+04350,Litchfield,ME,207,US
+04351,Manchester,ME,207,US
+04352,Mount Vernon,ME,207,US
+04353,Whitefield,ME,207,US
+04354,Palermo,ME,207,US
+04355,Readfield,ME,207,US
+04357,Richmond,ME,207,US
+04358,South China,ME,207,US
+04359,South Gardiner,ME,207,US
+04360,Vienna,ME,207,US
+04363,Windsor,ME,207,US
+04364,Winthrop,ME,207,US
+04401,Bangor,ME,207,US
+04402,Bangor,ME,207,US
+04406,Abbot,ME,207,US
+04408,Aurora,ME,207,US
+04410,Bradford,ME,207,US
+04411,Bradley,ME,207,US
+04412,Brewer,ME,207,US
+04413,Brookton,ME,207,US
+04414,Brownville,ME,207,US
+04415,Brownville Junction,ME,207,US
+04416,Bucksport,ME,207,US
+04417,Burlington,ME,207,US
+04418,Greenbush,ME,207,US
+04419,Carmel,ME,207,US
+04420,Castine,ME,207,US
+04421,Castine,ME,207,US
+04422,Charleston,ME,207,US
+04424,Danforth,ME,207,US
+04426,Dover Foxcroft,ME,207,US
+04427,Corinth,ME,207,US
+04428,Eddington,ME,207,US
+04429,Holden,ME,207,US
+04430,East Millinocket,ME,207,US
+04431,East Orland,ME,207,US
+04434,Etna,ME,207,US
+04435,Exeter,ME,207,US
+04438,Frankfort,ME,207,US
+04441,Greenville,ME,207,US
+04442,Greenville Junction,ME,207,US
+04443,Guilford,ME,207,US
+04444,Hampden,ME,207,US
+04448,Howland,ME,207,US
+04449,Hudson,ME,207,US
+04450,Kenduskeag,ME,207,US
+04451,Kingman,ME,207,US
+04453,Lagrange,ME,207,US
+04454,Lambert Lake,ME,207,US
+04455,Lee,ME,207,US
+04456,Levant,ME,207,US
+04457,Lincoln,ME,207,US
+04459,Mattawamkeag,ME,207,US
+04460,Medway,ME,207,US
+04461,Milford,ME,207,US
+04462,Millinocket,ME,207,US
+04463,Milo,ME,207,US
+04464,Monson,ME,207,US
+04467,Olamon,ME,207,US
+04468,Old Town,ME,207,US
+04469,Orono,ME,207,US
+04471,Orient,ME,207,US
+04472,Orland,ME,207,US
+04473,Orono,ME,207,US
+04474,Orrington,ME,207,US
+04475,Passadumkeag,ME,207,US
+04476,Penobscot,ME,207,US
+04478,Rockwood,ME,207,US
+04479,Sangerville,ME,207,US
+04481,Sebec,ME,207,US
+04485,Shirley Mills,ME,207,US
+04487,Springfield,ME,207,US
+04488,Stetson,ME,207,US
+04489,Stillwater,ME,207,US
+04490,Topsfield,ME,207,US
+04491,Vanceboro,ME,207,US
+04492,Waite,ME,207,US
+04493,West Enfield,ME,207,US
+04495,Winn,ME,207,US
+04496,Winterport,ME,207,US
+04497,Wytopitlock,ME,207,US
+04530,Bath,ME,207,US
+04535,Alna,ME,207,US
+04537,Boothbay,ME,207,US
+04538,Boothbay Harbor,ME,207,US
+04539,Bristol,ME,207,US
+04541,Chamberlain,ME,207,US
+04543,Damariscotta,ME,207,US
+04544,East Boothbay,ME,207,US
+04547,Friendship,ME,207,US
+04548,Georgetown,ME,207,US
+04549,Isle Of Springs,ME,207,US
+04551,Bremen,ME,207,US
+04553,Newcastle,ME,207,US
+04554,New Harbor,ME,207,US
+04555,Nobleboro,ME,207,US
+04556,Edgecomb,ME,207,US
+04558,Pemaquid,ME,207,US
+04562,Phippsburg,ME,207,US
+04563,Cushing,ME,207,US
+04564,Round Pond,ME,207,US
+04565,Sebasco Estates,ME,207,US
+04568,South Bristol,ME,207,US
+04570,Squirrel Island,ME,207,US
+04571,Trevett,ME,207,US
+04572,Waldoboro,ME,207,US
+04573,Walpole,ME,207,US
+04574,Washington,ME,207,US
+04575,West Boothbay Harbor,ME,207,US
+04576,Southport,ME,207,US
+04578,Wiscasset,ME,207,US
+04579,Woolwich,ME,207,US
+04605,Ellsworth,ME,207,US
+04606,Addison,ME,207,US
+04607,Gouldsboro,ME,207,US
+04609,Bar Harbor,ME,207,US
+04611,Beals,ME,207,US
+04612,Bernard,ME,207,US
+04613,Birch Harbor,ME,207,US
+04614,Blue Hill,ME,207,US
+04616,Brooklin,ME,207,US
+04617,Brooksville,ME,207,US
+04619,Calais,ME,207,US
+04622,Cherryfield,ME,207,US
+04623,Columbia Falls,ME,207,US
+04624,Corea,ME,207,US
+04625,Cranberry Isles,ME,207,US
+04626,Cutler,ME,207,US
+04627,Deer Isle,ME,207,US
+04628,Dennysville,ME,207,US
+04629,East Blue Hill,ME,207,US
+04630,East Machias,ME,207,US
+04631,Eastport,ME,207,US
+04634,Franklin,ME,207,US
+04635,Frenchboro,ME,207,US
+04637,Grand Lake Stream,ME,207,US
+04640,Hancock,ME,207,US
+04642,Harborside,ME,207,US
+04643,Harrington,ME,207,US
+04644,Hulls Cove,ME,207,US
+04645,Isle Au Haut,ME,207,US
+04646,Islesford,ME,207,US
+04648,Jonesboro,ME,207,US
+04649,Jonesport,ME,207,US
+04650,Little Deer Isle,ME,207,US
+04652,Lubec,ME,207,US
+04653,Bass Harbor,ME,207,US
+04654,Machias,ME,207,US
+04655,Machiasport,ME,207,US
+04657,Meddybemps,ME,207,US
+04658,Milbridge,ME,207,US
+04660,Mount Desert,ME,207,US
+04662,Northeast Harbor,ME,207,US
+04664,Sullivan,ME,207,US
+04666,Pembroke,ME,207,US
+04667,Perry,ME,207,US
+04668,Princeton,ME,207,US
+04669,Prospect Harbor,ME,207,US
+04671,Robbinston,ME,207,US
+04672,Salsbury Cove,ME,207,US
+04673,Sargentville,ME,207,US
+04674,Seal Cove,ME,207,US
+04675,Seal Harbor,ME,207,US
+04676,Sedgwick,ME,207,US
+04677,Sorrento,ME,207,US
+04679,Southwest Harbor,ME,207,US
+04680,Steuben,ME,207,US
+04681,Stonington,ME,207,US
+04683,Sunset,ME,207,US
+04684,Surry,ME,207,US
+04685,Swans Island,ME,207,US
+04686,Wesley,ME,207,US
+04691,Whiting,ME,207,US
+04693,Winter Harbor,ME,207,US
+04694,Baileyville,ME,207,US
+04730,Houlton,ME,207,US
+04732,Ashland,ME,207,US
+04733,Benedicta,ME,207,US
+04734,Blaine,ME,207,US
+04735,Bridgewater,ME,207,US
+04736,Caribou,ME,207,US
+04737,Clayton Lake,ME,207,US
+04738,Crouseville,ME,207,US
+04739,Eagle Lake,ME,207,US
+04740,Easton,ME,207,US
+04741,Estcourt Station,ME,207,US
+04742,Fort Fairfield,ME,207,US
+04743,Fort Kent,ME,207,US
+04744,Fort Kent Mills,ME,207,US
+04745,Frenchville,ME,207,US
+04746,Grand Isle,ME,207,US
+04747,Island Falls,ME,207,US
+04750,Limestone,ME,207,US
+04751,Limestone,ME,207,US
+04756,Madawaska,ME,207,US
+04757,Mapleton,ME,207,US
+04758,Mars Hill,ME,207,US
+04760,Monticello,ME,207,US
+04761,New Limerick,ME,207,US
+04762,New Sweden,ME,207,US
+04763,Oakfield,ME,207,US
+04764,Oxbow,ME,207,US
+04765,Patten,ME,207,US
+04766,Perham,ME,207,US
+04768,Portage,ME,207,US
+04769,Presque Isle,ME,207,US
+04772,Saint Agatha,ME,207,US
+04773,Saint David,ME,207,US
+04774,Saint Francis,ME,207,US
+04775,Sheridan,ME,207,US
+04776,Sherman,ME,207,US
+04777,Stacyville,ME,207,US
+04779,Sinclair,ME,207,US
+04780,Smyrna Mills,ME,207,US
+04781,Wallagrass,ME,207,US
+04783,Stockholm,ME,207,US
+04785,Van Buren,ME,207,US
+04786,Washburn,ME,207,US
+04787,Westfield,ME,207,US
+04841,Rockland,ME,207,US
+04843,Camden,ME,207,US
+04846,Glen Cove,ME,207,US
+04847,Hope,ME,207,US
+04848,Islesboro,ME,207,US
+04849,Lincolnville,ME,207,US
+04850,Lincolnville Center,ME,207,US
+04851,Matinicus,ME,207,US
+04852,Monhegan,ME,207,US
+04853,North Haven,ME,207,US
+04854,Owls Head,ME,207,US
+04855,Port Clyde,ME,207,US
+04856,Rockport,ME,207,US
+04858,South Thomaston,ME,207,US
+04859,Spruce Head,ME,207,US
+04860,Tenants Harbor,ME,207,US
+04861,Thomaston,ME,207,US
+04862,Union,ME,207,US
+04863,Vinalhaven,ME,207,US
+04864,Warren,ME,207,US
+04865,West Rockport,ME,207,US
+04901,Waterville,ME,207,US
+04903,Waterville,ME,207,US
+04910,Albion,ME,207,US
+04911,Anson,ME,207,US
+04912,Athens,ME,207,US
+04915,Belfast,ME,207,US
+04917,Belgrade,ME,207,US
+04918,Belgrade Lakes,ME,207,US
+04920,Bingham,ME,207,US
+04921,Brooks,ME,207,US
+04922,Burnham,ME,207,US
+04923,Cambridge,ME,207,US
+04924,Canaan,ME,207,US
+04925,Caratunk,ME,207,US
+04926,China Village,ME,207,US
+04927,Clinton,ME,207,US
+04928,Corinna,ME,207,US
+04929,Detroit,ME,207,US
+04930,Dexter,ME,207,US
+04932,Dixmont,ME,207,US
+04933,East Newport,ME,207,US
+04935,East Vassalboro,ME,207,US
+04936,Eustis,ME,207,US
+04937,Fairfield,ME,207,US
+04938,Farmington,ME,207,US
+04939,Garland,ME,207,US
+04940,Farmington Falls,ME,207,US
+04941,Freedom,ME,207,US
+04942,Harmony,ME,207,US
+04943,Hartland,ME,207,US
+04944,Hinckley,ME,207,US
+04945,Jackman,ME,207,US
+04947,Kingfield,ME,207,US
+04949,Liberty,ME,207,US
+04950,Madison,ME,207,US
+04951,Monroe,ME,207,US
+04952,Morrill,ME,207,US
+04953,Newport,ME,207,US
+04954,New Portland,ME,207,US
+04955,New Sharon,ME,207,US
+04956,New Vineyard,ME,207,US
+04957,Norridgewock,ME,207,US
+04958,North Anson,ME,207,US
+04961,New Portland,ME,207,US
+04962,North Vassalboro,ME,207,US
+04963,Oakland,ME,207,US
+04964,Oquossoc,ME,207,US
+04965,Palmyra,ME,207,US
+04966,Phillips,ME,207,US
+04967,Pittsfield,ME,207,US
+04969,Plymouth,ME,207,US
+04970,Rangeley,ME,207,US
+04971,Saint Albans,ME,207,US
+04972,Sandy Point,ME,207,US
+04973,Searsmont,ME,207,US
+04974,Searsport,ME,207,US
+04975,Shawmut,ME,207,US
+04976,Skowhegan,ME,207,US
+04978,Smithfield,ME,207,US
+04979,Solon,ME,207,US
+04981,Stockton Springs,ME,207,US
+04982,Stratton,ME,207,US
+04983,Strong,ME,207,US
+04984,Temple,ME,207,US
+04985,West Forks,ME,207,US
+04986,Thorndike,ME,207,US
+04987,Troy,ME,207,US
+04988,Unity,ME,207,US
+04989,Vassalboro,ME,207,US
+04992,West Farmington,ME,207,US
+05001,White River Junction,VT,802,US
+05009,White River Junction,VT,603,US
+05030,Ascutney,VT,802,US
+05031,Barnard,VT,802,US
+05032,Bethel,VT,802,US
+05033,Bradford,VT,802,US
+05034,Bridgewater,VT,802,US
+05035,Bridgewater Corners,VT,802,US
+05036,Brookfield,VT,802,US
+05037,Brownsville,VT,802,US
+05038,Chelsea,VT,802,US
+05039,Corinth,VT,802,US
+05040,East Corinth,VT,802,US
+05041,East Randolph,VT,802,US
+05042,East Ryegate,VT,802,US
+05043,East Thetford,VT,802,US
+05045,Fairlee,VT,802,US
+05046,Groton,VT,802,US
+05047,Hartford,VT,802,US
+05048,Hartland,VT,802,US
+05049,Hartland Four Corners,VT,802,US
+05050,Mc Indoe Falls,VT,802,US
+05051,Newbury,VT,802,US
+05052,North Hartland,VT,802,US
+05053,North Pomfret,VT,802,US
+05054,North Thetford,VT,802,US
+05055,Norwich,VT,802,US
+05056,Plymouth,VT,802,US
+05058,Post Mills,VT,802,US
+05059,Quechee,VT,802,US
+05060,Randolph,VT,802,US
+05061,Randolph Center,VT,802,US
+05062,Reading,VT,802,US
+05065,Sharon,VT,802,US
+05067,South Pomfret,VT,802,US
+05068,South Royalton,VT,802,US
+05069,South Ryegate,VT,802,US
+05070,South Strafford,VT,802,US
+05071,South Woodstock,VT,802,US
+05072,Strafford,VT,802,US
+05073,Taftsville,VT,802,US
+05074,Thetford,VT,802,US
+05075,Thetford Center,VT,802,US
+05076,Topsham,VT,802,US
+05077,Tunbridge,VT,802,US
+05079,Vershire,VT,802,US
+05081,Wells River,VT,802,US
+05083,West Fairlee,VT,802,US
+05084,West Hartford,VT,802,US
+05085,West Newbury,VT,802,US
+05086,West Topsham,VT,802,US
+05088,Wilder,VT,802,US
+05089,Windsor,VT,802,US
+05091,Woodstock,VT,802,US
+05101,Bellows Falls,VT,802,US
+05141,Cambridgeport,VT,802,US
+05142,Cavendish,VT,802,US
+05143,Chester,VT,802,US
+05144,Chester Depot,VT,802,US
+05146,Grafton,VT,802,US
+05148,Londonderry,VT,802,US
+05149,Ludlow,VT,802,US
+05150,North Springfield,VT,802,US
+05151,Perkinsville,VT,802,US
+05152,Peru,VT,802,US
+05153,Proctorsville,VT,802,US
+05154,Saxtons River,VT,802,US
+05155,South Londonderry,VT,802,US
+05156,Springfield,VT,802,US
+05158,Westminster,VT,802,US
+05159,Westminster Station,VT,802,US
+05161,Weston,VT,802,US
+05201,Bennington,VT,802,US
+05250,Arlington,VT,802,US
+05251,Dorset,VT,802,US
+05252,East Arlington,VT,802,US
+05253,East Dorset,VT,802,US
+05254,Manchester,VT,802,US
+05255,Manchester Center,VT,802,US
+05257,North Bennington,VT,802,US
+05260,North Pownal,VT,802,US
+05261,Pownal,VT,802,US
+05262,Shaftsbury,VT,802,US
+05301,Brattleboro,VT,802,US
+05302,Brattleboro,VT,802,US
+05303,Brattleboro,VT,802,US
+05304,Brattleboro,VT,802,US
+05340,Bondville,VT,802,US
+05341,East Dover,VT,802,US
+05342,Jacksonville,VT,802,US
+05343,Jamaica,VT,802,US
+05344,Marlboro,VT,802,US
+05345,Newfane,VT,802,US
+05346,Putney,VT,802,US
+05350,Readsboro,VT,802,US
+05351,South Newfane,VT,802,US
+05352,Stamford,VT,802,US
+05353,Townshend,VT,802,US
+05354,Vernon,VT,802,US
+05355,Wardsboro,VT,802,US
+05356,West Dover,VT,802,US
+05357,West Dummerston,VT,802,US
+05358,West Halifax,VT,802,US
+05359,West Townshend,VT,802,US
+05360,West Wardsboro,VT,802,US
+05361,Whitingham,VT,802,US
+05362,Williamsville,VT,802,US
+05363,Wilmington,VT,802,US
+05401,Burlington,VT,802,US
+05402,Burlington,VT,802,US
+05403,South Burlington,VT,802,US
+05404,Winooski,VT,802,US
+05405,Burlington,VT,802,US
+05406,Burlington,VT,802,US
+05407,South Burlington,VT,802,US
+05408,Burlington,VT,802,US
+05439,Colchester,VT,802,US
+05440,Alburgh,VT,802,US
+05441,Bakersfield,VT,802,US
+05442,Belvidere Center,VT,802,US
+05443,Bristol,VT,802,US
+05444,Cambridge,VT,802,US
+05445,Charlotte,VT,802,US
+05446,Colchester,VT,802,US
+05447,East Berkshire,VT,802,US
+05448,East Fairfield,VT,802,US
+05449,Colchester,VT,802,US
+05450,Enosburg Falls,VT,802,US
+05451,Essex,VT,802,US
+05452,Essex Junction,VT,802,US
+05453,Essex Junction,VT,802,US
+05454,Fairfax,VT,802,US
+05455,Fairfield,VT,802,US
+05456,Ferrisburgh,VT,802,US
+05457,Franklin,VT,802,US
+05458,Grand Isle,VT,802,US
+05459,Highgate Center,VT,802,US
+05460,Highgate Springs,VT,802,US
+05461,Hinesburg,VT,802,US
+05462,Huntington,VT,802,US
+05463,Isle La Motte,VT,802,US
+05464,Jeffersonville,VT,802,US
+05465,Jericho,VT,802,US
+05466,Jonesville,VT,802,US
+05468,Milton,VT,802,US
+05469,Monkton,VT,802,US
+05470,Montgomery,VT,802,US
+05471,Montgomery Center,VT,802,US
+05472,New Haven,VT,802,US
+05473,North Ferrisburgh,VT,802,US
+05474,North Hero,VT,802,US
+05476,Richford,VT,802,US
+05477,Richmond,VT,802,US
+05478,Saint Albans,VT,802,US
+05479,Saint Albans,VT,802,US
+05481,Saint Albans Bay,VT,802,US
+05482,Shelburne,VT,802,US
+05483,Sheldon,VT,802,US
+05485,Sheldon Springs,VT,802,US
+05486,South Hero,VT,802,US
+05487,Starksboro,VT,802,US
+05488,Swanton,VT,802,US
+05489,Underhill,VT,802,US
+05490,Underhill Center,VT,802,US
+05491,Vergennes,VT,802,US
+05492,Waterville,VT,802,US
+05494,Westford,VT,802,US
+05495,Williston,VT,802,US
+05501,Andover,MA,351,US
+05544,Andover,MA,351,US
+05601,Montpelier,VT,802,US
+05602,Montpelier,VT,802,US
+05603,Montpelier,VT,802,US
+05604,Montpelier,VT,802,US
+05609,Montpelier,VT,802,US
+05620,Montpelier,VT,802,US
+05633,Montpelier,VT,802,US
+05640,Adamant,VT,802,US
+05641,Barre,VT,802,US
+05647,Cabot,VT,802,US
+05648,Calais,VT,802,US
+05649,East Barre,VT,802,US
+05650,East Calais,VT,802,US
+05651,East Montpelier,VT,802,US
+05652,Eden,VT,802,US
+05653,Eden Mills,VT,802,US
+05654,Graniteville,VT,802,US
+05655,Hyde Park,VT,802,US
+05656,Johnson,VT,802,US
+05657,Lake Elmore,VT,802,US
+05658,Marshfield,VT,802,US
+05660,Moretown,VT,802,US
+05661,Morrisville,VT,802,US
+05662,Moscow,VT,802,US
+05663,Northfield,VT,802,US
+05664,Northfield Falls,VT,802,US
+05665,North Hyde Park,VT,802,US
+05666,North Montpelier,VT,802,US
+05667,Plainfield,VT,802,US
+05669,Roxbury,VT,802,US
+05670,South Barre,VT,802,US
+05671,Waterbury,VT,802,US
+05672,Stowe,VT,802,US
+05673,Waitsfield,VT,802,US
+05674,Warren,VT,802,US
+05675,Washington,VT,802,US
+05676,Waterbury,VT,802,US
+05677,Waterbury Center,VT,802,US
+05678,Websterville,VT,802,US
+05679,Williamstown,VT,802,US
+05680,Wolcott,VT,802,US
+05681,Woodbury,VT,802,US
+05682,Worcester,VT,802,US
+05701,Rutland,VT,802,US
+05702,Rutland,VT,802,US
+05730,Belmont,VT,802,US
+05731,Benson,VT,802,US
+05732,Bomoseen,VT,802,US
+05733,Brandon,VT,802,US
+05734,Bridport,VT,802,US
+05735,Castleton,VT,802,US
+05736,Center Rutland,VT,802,US
+05737,Chittenden,VT,802,US
+05738,Cuttingsville,VT,802,US
+05739,Danby,VT,802,US
+05740,East Middlebury,VT,802,US
+05741,East Poultney,VT,802,US
+05742,East Wallingford,VT,802,US
+05743,Fair Haven,VT,802,US
+05744,Florence,VT,802,US
+05745,Forest Dale,VT,802,US
+05746,Gaysville,VT,802,US
+05747,Granville,VT,802,US
+05748,Hancock,VT,802,US
+05750,Hydeville,VT,802,US
+05751,Killington,VT,802,US
+05753,Middlebury,VT,802,US
+05757,Middletown Springs,VT,802,US
+05758,Mount Holly,VT,802,US
+05759,North Clarendon,VT,802,US
+05760,Orwell,VT,802,US
+05761,Pawlet,VT,802,US
+05762,Pittsfield,VT,802,US
+05763,Pittsford,VT,802,US
+05764,Poultney,VT,802,US
+05765,Proctor,VT,802,US
+05766,Ripton,VT,802,US
+05767,Rochester,VT,802,US
+05768,Rupert,VT,802,US
+05769,Salisbury,VT,802,US
+05770,Shoreham,VT,802,US
+05772,Stockbridge,VT,802,US
+05773,Wallingford,VT,802,US
+05774,Wells,VT,802,US
+05775,West Pawlet,VT,802,US
+05776,West Rupert,VT,802,US
+05777,West Rutland,VT,802,US
+05778,Whiting,VT,802,US
+05819,Saint Johnsbury,VT,802,US
+05820,Albany,VT,802,US
+05821,Barnet,VT,802,US
+05822,Barton,VT,802,US
+05823,Beebe Plain,VT,802,US
+05824,Concord,VT,802,US
+05825,Coventry,VT,802,US
+05826,Craftsbury,VT,802,US
+05827,Craftsbury Common,VT,802,US
+05828,Danville,VT,802,US
+05829,Derby,VT,802,US
+05830,Derby Line,VT,802,US
+05832,East Burke,VT,802,US
+05833,East Charleston,VT,802,US
+05836,East Hardwick,VT,802,US
+05837,East Haven,VT,802,US
+05838,East Saint Johnsbury,VT,802,US
+05839,Glover,VT,802,US
+05840,Granby,VT,802,US
+05841,Greensboro,VT,802,US
+05842,Greensboro Bend,VT,802,US
+05843,Hardwick,VT,802,US
+05845,Irasburg,VT,802,US
+05846,Island Pond,VT,802,US
+05847,Lowell,VT,802,US
+05848,Lower Waterford,VT,802,US
+05849,Lyndon,VT,802,US
+05850,Lyndon Center,VT,802,US
+05851,Lyndonville,VT,802,US
+05853,Morgan,VT,802,US
+05855,Newport,VT,802,US
+05857,Newport Center,VT,802,US
+05858,North Concord,VT,802,US
+05859,North Troy,VT,802,US
+05860,Orleans,VT,802,US
+05861,Passumpsic,VT,802,US
+05862,Peacham,VT,802,US
+05863,Saint Johnsbury Center,VT,802,US
+05866,Sheffield,VT,802,US
+05867,Sutton,VT,802,US
+05868,Troy,VT,802,US
+05871,West Burke,VT,802,US
+05872,West Charleston,VT,802,US
+05873,West Danville,VT,802,US
+05874,Westfield,VT,802,US
+05875,West Glover,VT,802,US
+05901,Averill,VT,802,US
+05902,Beecher Falls,VT,802,US
+05903,Canaan,VT,802,US
+05904,Gilman,VT,802,US
+05905,Guildhall,VT,802,US
+05906,Lunenburg,VT,802,US
+05907,Norton,VT,802,US
+06001,Avon,CT,"2,03,860",US
+06002,Bloomfield,CT,860,US
+06006,Windsor,CT,860,US
+06010,Bristol,CT,"8,60,203",US
+06011,Bristol,CT,860,US
+06013,Burlington,CT,860,US
+06016,Broad Brook,CT,860,US
+06018,Canaan,CT,860,US
+06019,Canton,CT,860,US
+06020,Canton Center,CT,860,US
+06021,Colebrook,CT,860,US
+06022,Collinsville,CT,860,US
+06023,East Berlin,CT,860,US
+06024,East Canaan,CT,860,US
+06025,East Glastonbury,CT,860,US
+06026,East Granby,CT,860,US
+06027,East Hartland,CT,860,US
+06028,East Windsor Hill,CT,860,US
+06029,Ellington,CT,860,US
+06030,Farmington,CT,860,US
+06031,Falls Village,CT,860,US
+06032,Farmington,CT,860,US
+06033,Glastonbury,CT,"8,60,203",US
+06034,Farmington,CT,860,US
+06035,Granby,CT,"2,03,860",US
+06037,Berlin,CT,860,US
+06039,Lakeville,CT,860,US
+06040,Manchester,CT,860,US
+06041,Manchester,CT,860,US
+06042,Manchester,CT,860,US
+06043,Bolton,CT,860,US
+06045,Manchester,CT,860,US
+06050,New Britain,CT,860,US
+06051,New Britain,CT,860,US
+06052,New Britain,CT,860,US
+06053,New Britain,CT,860,US
+06057,New Hartford,CT,860,US
+06058,Norfolk,CT,860,US
+06059,North Canton,CT,860,US
+06060,North Granby,CT,860,US
+06061,Pine Meadow,CT,,US
+06062,Plainville,CT,860,US
+06063,Barkhamsted,CT,860,US
+06064,Poquonock,CT,860,US
+06065,Riverton,CT,860,US
+06066,Vernon Rockville,CT,860,US
+06067,Rocky Hill,CT,860,US
+06068,Salisbury,CT,860,US
+06069,Sharon,CT,860,US
+06070,Simsbury,CT,860,US
+06071,Somers,CT,860,US
+06072,Somersville,CT,860,US
+06073,South Glastonbury,CT,860,US
+06074,South Windsor,CT,"8,60,203",US
+06075,Stafford,CT,860,US
+06076,Stafford Springs,CT,860,US
+06077,Staffordville,CT,860,US
+06078,Suffield,CT,860,US
+06079,Taconic,CT,,US
+06080,Suffield,CT,860,US
+06081,Tariffville,CT,860,US
+06082,Enfield,CT,860,US
+06083,Enfield,CT,860,US
+06084,Tolland,CT,860,US
+06085,Unionville,CT,860,US
+06087,Unionville,CT,860,US
+06088,East Windsor,CT,860,US
+06089,Weatogue,CT,860,US
+06090,West Granby,CT,860,US
+06091,West Hartland,CT,860,US
+06092,West Simsbury,CT,860,US
+06093,West Suffield,CT,860,US
+06094,Winchester Center,CT,,US
+06095,Windsor,CT,860,US
+06096,Windsor Locks,CT,860,US
+06098,Winsted,CT,860,US
+06101,Hartford,CT,860,US
+06102,Hartford,CT,860,US
+06103,Hartford,CT,"8,60,203",US
+06104,Hartford,CT,860,US
+06105,Hartford,CT,"2,03,860",US
+06106,Hartford,CT,"8,60,203",US
+06107,West Hartford,CT,860,US
+06108,East Hartford,CT,860,US
+06109,Wethersfield,CT,860,US
+06110,West Hartford,CT,860,US
+06111,Newington,CT,860,US
+06112,Hartford,CT,860,US
+06114,Hartford,CT,860,US
+06115,Hartford,CT,860,US
+06117,West Hartford,CT,"2,03,860",US
+06118,East Hartford,CT,860,US
+06119,West Hartford,CT,860,US
+06120,Hartford,CT,860,US
+06123,Hartford,CT,860,US
+06126,Hartford,CT,860,US
+06127,West Hartford,CT,860,US
+06128,East Hartford,CT,860,US
+06129,Wethersfield,CT,860,US
+06131,Newington,CT,860,US
+06132,Hartford,CT,860,US
+06133,West Hartford,CT,860,US
+06134,Hartford,CT,860,US
+06137,West Hartford,CT,860,US
+06138,East Hartford,CT,860,US
+06140,Hartford,CT,860,US
+06141,Hartford,CT,860,US
+06142,Hartford,CT,860,US
+06143,Hartford,CT,860,US
+06144,Hartford,CT,860,US
+06145,Hartford,CT,860,US
+06146,Hartford,CT,860,US
+06147,Hartford,CT,860,US
+06150,Hartford,CT,860,US
+06151,Hartford,CT,860,US
+06152,Hartford,CT,860,US
+06153,Hartford,CT,860,US
+06154,Hartford,CT,860,US
+06155,Hartford,CT,860,US
+06156,Hartford,CT,860,US
+06160,Hartford,CT,860,US
+06161,Hartford,CT,860,US
+06167,Hartford,CT,860,US
+06176,Hartford,CT,860,US
+06180,Hartford,CT,860,US
+06183,Hartford,CT,860,US
+06199,Hartford,CT,860,US
+06226,Willimantic,CT,860,US
+06230,Abington,CT,860,US
+06231,Amston,CT,860,US
+06232,Andover,CT,860,US
+06233,Ballouville,CT,860,US
+06234,Brooklyn,CT,860,US
+06235,Chaplin,CT,860,US
+06237,Columbia,CT,860,US
+06238,Coventry,CT,860,US
+06239,Danielson,CT,860,US
+06241,Dayville,CT,860,US
+06242,Eastford,CT,860,US
+06243,East Killingly,CT,860,US
+06244,East Woodstock,CT,860,US
+06245,Fabyan,CT,860,US
+06246,Grosvenor Dale,CT,860,US
+06247,Hampton,CT,860,US
+06248,Hebron,CT,860,US
+06249,Lebanon,CT,860,US
+06250,Mansfield Center,CT,860,US
+06251,Mansfield Depot,CT,860,US
+06254,North Franklin,CT,860,US
+06255,North Grosvenordale,CT,860,US
+06256,North Windham,CT,860,US
+06258,Pomfret,CT,860,US
+06259,Pomfret Center,CT,860,US
+06260,Putnam,CT,860,US
+06262,Quinebaug,CT,860,US
+06263,Rogers,CT,860,US
+06264,Scotland,CT,860,US
+06265,South Willington,CT,860,US
+06266,South Windham,CT,860,US
+06267,South Woodstock,CT,860,US
+06268,Storrs Mansfield,CT,860,US
+06269,Storrs Mansfield,CT,860,US
+06277,Thompson,CT,860,US
+06278,Ashford,CT,860,US
+06279,Willington,CT,860,US
+06280,Windham,CT,860,US
+06281,Woodstock,CT,860,US
+06282,Woodstock Valley,CT,860,US
+06320,New London,CT,860,US
+06330,Baltic,CT,860,US
+06331,Canterbury,CT,860,US
+06332,Central Village,CT,860,US
+06333,East Lyme,CT,860,US
+06334,Bozrah,CT,860,US
+06335,Gales Ferry,CT,860,US
+06336,Gilman,CT,860,US
+06338,Mashantucket,CT,860,US
+06339,Ledyard,CT,860,US
+06340,Groton,CT,860,US
+06349,Groton,CT,860,US
+06350,Hanover,CT,860,US
+06351,Jewett City,CT,860,US
+06353,Montville,CT,860,US
+06354,Moosup,CT,860,US
+06355,Mystic,CT,860,US
+06357,Niantic,CT,860,US
+06359,North Stonington,CT,860,US
+06360,Norwich,CT,860,US
+06365,Preston,CT,860,US
+06370,Oakdale,CT,"2,03,860",US
+06371,Old Lyme,CT,860,US
+06372,Old Mystic,CT,860,US
+06373,Oneco,CT,860,US
+06374,Plainfield,CT,860,US
+06375,Quaker Hill,CT,860,US
+06376,South Lyme,CT,860,US
+06377,Sterling,CT,860,US
+06378,Stonington,CT,860,US
+06379,Pawcatuck,CT,860,US
+06380,Taftville,CT,860,US
+06382,Uncasville,CT,860,US
+06383,Versailles,CT,860,US
+06384,Voluntown,CT,860,US
+06385,Waterford,CT,860,US
+06386,Waterford,CT,860,US
+06387,Wauregan,CT,860,US
+06388,West Mystic,CT,860,US
+06389,Yantic,CT,860,US
+06390,Fishers Island,NY,631,US
+06401,Ansonia,CT,203,US
+06403,Beacon Falls,CT,203,US
+06404,Botsford,CT,203,US
+06405,Branford,CT,203,US
+06408,Cheshire,CT,203,US
+06409,Centerbrook,CT,860,US
+06410,Cheshire,CT,203,US
+06411,Cheshire,CT,203,US
+06412,Chester,CT,860,US
+06413,Clinton,CT,860,US
+06414,Cobalt,CT,860,US
+06415,Colchester,CT,860,US
+06416,Cromwell,CT,860,US
+06417,Deep River,CT,860,US
+06418,Derby,CT,203,US
+06419,Killingworth,CT,"2,03,860",US
+06420,Salem,CT,860,US
+06422,Durham,CT,860,US
+06423,East Haddam,CT,860,US
+06424,East Hampton,CT,860,US
+06426,Essex,CT,860,US
+06437,Guilford,CT,203,US
+06438,Haddam,CT,860,US
+06439,Hadlyme,CT,860,US
+06440,Hawleyville,CT,203,US
+06441,Higganum,CT,860,US
+06442,Ivoryton,CT,860,US
+06443,Madison,CT,"2,03,860",US
+06444,Marion,CT,860,US
+06447,Marlborough,CT,860,US
+06450,Meriden,CT,203,US
+06451,Meriden,CT,"2,03,860",US
+06454,Meriden,CT,203,US
+06455,Middlefield,CT,"8,60,203",US
+06456,Middle Haddam,CT,860,US
+06457,Middletown,CT,"2,03,860",US
+06459,Middletown,CT,860,US
+06460,Milford,CT,203,US
+06461,Milford,CT,203,US
+06467,Milldale,CT,203,US
+06468,Monroe,CT,203,US
+06469,Moodus,CT,860,US
+06470,Newtown,CT,203,US
+06471,North Branford,CT,203,US
+06472,Northford,CT,203,US
+06473,North Haven,CT,203,US
+06474,North Westchester,CT,860,US
+06475,Old Saybrook,CT,860,US
+06477,Orange,CT,203,US
+06478,Oxford,CT,203,US
+06479,Plantsville,CT,860,US
+06480,Portland,CT,860,US
+06481,Rockfall,CT,860,US
+06482,Sandy Hook,CT,203,US
+06483,Seymour,CT,203,US
+06484,Shelton,CT,"2,03,860",US
+06487,South Britain,CT,203,US
+06488,Southbury,CT,"2,03,860",US
+06489,Southington,CT,860,US
+06491,Stevenson,CT,203,US
+06492,Wallingford,CT,203,US
+06493,Wallingford,CT,203,US
+06494,Wallingford,CT,203,US
+06495,Wallingford,CT,203,US
+06497,Stratford,CT,203,US
+06498,Westbrook,CT,860,US
+06501,New Haven,CT,203,US
+06502,New Haven,CT,203,US
+06503,New Haven,CT,203,US
+06504,New Haven,CT,203,US
+06505,New Haven,CT,203,US
+06506,New Haven,CT,203,US
+06507,New Haven,CT,203,US
+06508,New Haven,CT,203,US
+06509,New Haven,CT,203,US
+06510,New Haven,CT,203,US
+06511,New Haven,CT,203,US
+06512,East Haven,CT,203,US
+06513,New Haven,CT,"2,03,860",US
+06514,Hamden,CT,203,US
+06515,New Haven,CT,203,US
+06516,West Haven,CT,"2,03,860",US
+06517,Hamden,CT,203,US
+06518,Hamden,CT,203,US
+06519,New Haven,CT,"8,60,203",US
+06520,New Haven,CT,203,US
+06521,New Haven,CT,203,US
+06524,Bethany,CT,203,US
+06525,Woodbridge,CT,203,US
+06530,New Haven,CT,203,US
+06531,New Haven,CT,203,US
+06532,New Haven,CT,203,US
+06533,New Haven,CT,203,US
+06534,New Haven,CT,203,US
+06535,New Haven,CT,203,US
+06536,New Haven,CT,203,US
+06537,New Haven,CT,203,US
+06538,New Haven,CT,203,US
+06540,New Haven,CT,203,US
+06601,Bridgeport,CT,203,US
+06602,Bridgeport,CT,203,US
+06604,Bridgeport,CT,203,US
+06605,Bridgeport,CT,203,US
+06606,Bridgeport,CT,203,US
+06607,Bridgeport,CT,203,US
+06608,Bridgeport,CT,203,US
+06610,Bridgeport,CT,203,US
+06611,Trumbull,CT,203,US
+06612,Easton,CT,203,US
+06614,Stratford,CT,203,US
+06615,Stratford,CT,203,US
+06650,Bridgeport,CT,203,US
+06673,Bridgeport,CT,203,US
+06699,Bridgeport,CT,203,US
+06701,Waterbury,CT,203,US
+06702,Waterbury,CT,203,US
+06703,Waterbury,CT,203,US
+06704,Waterbury,CT,203,US
+06705,Waterbury,CT,203,US
+06706,Waterbury,CT,203,US
+06708,Waterbury,CT,"2,03,860",US
+06710,Waterbury,CT,203,US
+06712,Prospect,CT,203,US
+06716,Wolcott,CT,203,US
+06720,Waterbury,CT,203,US
+06721,Waterbury,CT,203,US
+06722,Waterbury,CT,203,US
+06723,Waterbury,CT,203,US
+06724,Waterbury,CT,203,US
+06725,Waterbury,CT,203,US
+06726,Waterbury,CT,203,US
+06749,Waterbury,CT,203,US
+06750,Bantam,CT,860,US
+06751,Bethlehem,CT,"2,03,860",US
+06752,Bridgewater,CT,860,US
+06753,Cornwall,CT,860,US
+06754,Cornwall Bridge,CT,860,US
+06755,Gaylordsville,CT,860,US
+06756,Goshen,CT,860,US
+06757,Kent,CT,860,US
+06758,Lakeside,CT,,US
+06759,Litchfield,CT,860,US
+06762,Middlebury,CT,203,US
+06763,Morris,CT,860,US
+06770,Naugatuck,CT,203,US
+06776,New Milford,CT,"8,60,203",US
+06777,New Preston Marble Dale,CT,860,US
+06778,Northfield,CT,860,US
+06779,Oakville,CT,860,US
+06781,Pequabuck,CT,,US
+06782,Plymouth,CT,860,US
+06783,Roxbury,CT,860,US
+06784,Sherman,CT,860,US
+06785,South Kent,CT,860,US
+06786,Terryville,CT,860,US
+06787,Thomaston,CT,860,US
+06790,Torrington,CT,860,US
+06791,Harwinton,CT,860,US
+06792,Torrington,CT,860,US
+06793,Washington,CT,860,US
+06794,Washington Depot,CT,860,US
+06795,Watertown,CT,860,US
+06796,West Cornwall,CT,860,US
+06798,Woodbury,CT,203,US
+06801,Bethel,CT,203,US
+06804,Brookfield,CT,203,US
+06807,Cos Cob,CT,203,US
+06810,Danbury,CT,203,US
+06811,Danbury,CT,203,US
+06812,New Fairfield,CT,203,US
+06813,Danbury,CT,203,US
+06814,Danbury,CT,203,US
+06816,Danbury,CT,203,US
+06817,Danbury,CT,203,US
+06820,Darien,CT,203,US
+06824,Fairfield,CT,203,US
+06825,Fairfield,CT,203,US
+06828,Fairfield,CT,203,US
+06829,Georgetown,CT,203,US
+06830,Greenwich,CT,203,US
+06831,Greenwich,CT,"2,03,914",US
+06832,Greenwich,CT,203,US
+06836,Greenwich,CT,203,US
+06838,Greens Farms,CT,203,US
+06840,New Canaan,CT,"2,03,860",US
+06842,New Canaan,CT,203,US
+06850,Norwalk,CT,"2,03,860",US
+06851,Norwalk,CT,203,US
+06852,Norwalk,CT,203,US
+06853,Norwalk,CT,203,US
+06854,Norwalk,CT,203,US
+06855,Norwalk,CT,"8,60,203",US
+06856,Norwalk,CT,203,US
+06857,Norwalk,CT,203,US
+06858,Norwalk,CT,203,US
+06859,Norwalk,CT,203,US
+06860,Norwalk,CT,203,US
+06870,Old Greenwich,CT,203,US
+06875,Redding Center,CT,203,US
+06876,Redding Ridge,CT,203,US
+06877,Ridgefield,CT,203,US
+06878,Riverside,CT,203,US
+06879,Ridgefield,CT,203,US
+06880,Westport,CT,"2,03,860",US
+06881,Westport,CT,203,US
+06883,Weston,CT,"2,03,860",US
+06888,Westport,CT,203,US
+06889,Westport,CT,203,US
+06890,Southport,CT,203,US
+06896,Redding,CT,"8,60,203",US
+06897,Wilton,CT,203,US
+06901,Stamford,CT,203,US
+06902,Stamford,CT,203,US
+06903,Stamford,CT,203,US
+06904,Stamford,CT,203,US
+06905,Stamford,CT,203,US
+06906,Stamford,CT,203,US
+06907,Stamford,CT,"2,03,860",US
+06910,Stamford,CT,203,US
+06911,Stamford,CT,203,US
+06912,Stamford,CT,203,US
+06913,Stamford,CT,203,US
+06914,Stamford,CT,203,US
+06920,Stamford,CT,203,US
+06921,Stamford,CT,203,US
+06922,Stamford,CT,203,US
+06925,Stamford,CT,203,US
+06926,Stamford,CT,203,US
+06927,Stamford,CT,203,US
+06928,Stamford,CT,203,US
+07001,Avenel,NJ,"73,28,48,908",US
+07002,Bayonne,NJ,"2,01,551",US
+07003,Bloomfield,NJ,"97,39,08,862",US
+07004,Fairfield,NJ,973,US
+07005,Boonton,NJ,"9,73,862",US
+07006,Caldwell,NJ,"97,32,01,862",US
+07007,Caldwell,NJ,862,US
+07008,Carteret,NJ,732,US
+07009,Cedar Grove,NJ,973,US
+07010,Cliffside Park,NJ,201,US
+07011,Clifton,NJ,"9,73,201",US
+07012,Clifton,NJ,973,US
+07013,Clifton,NJ,"2,01,973",US
+07014,Clifton,NJ,973,US
+07015,Clifton,NJ,862,US
+07016,Cranford,NJ,"2,01,908",US
+07017,East Orange,NJ,973,US
+07018,East Orange,NJ,973,US
+07019,East Orange,NJ,862,US
+07020,Edgewater,NJ,"2,01,551",US
+07021,Essex Fells,NJ,973,US
+07022,Fairview,NJ,"2,01,551",US
+07023,Fanwood,NJ,"9,08,973",US
+07024,Fort Lee,NJ,201,US
+07026,Garfield,NJ,973,US
+07027,Garwood,NJ,908,US
+07028,Glen Ridge,NJ,973,US
+07029,Harrison,NJ,973,US
+07030,Hoboken,NJ,"2,01,732",US
+07031,North Arlington,NJ,201,US
+07032,Kearny,NJ,"20,19,73,551",US
+07033,Kenilworth,NJ,908,US
+07034,Lake Hiawatha,NJ,973,US
+07035,Lincoln Park,NJ,973,US
+07036,Linden,NJ,"9,08,732",US
+07039,Livingston,NJ,"9,73,862",US
+07040,Maplewood,NJ,973,US
+07041,Millburn,NJ,"9,73,862",US
+07042,Montclair,NJ,"20,19,73,212",US
+07043,Montclair,NJ,973,US
+07044,Verona,NJ,"9,73,201",US
+07045,Montville,NJ,973,US
+07046,Mountain Lakes,NJ,973,US
+07047,North Bergen,NJ,201,US
+07050,Orange,NJ,"97,32,01,862",US
+07051,Orange,NJ,973,US
+07052,West Orange,NJ,973,US
+07054,Parsippany,NJ,"20,19,73,516",US
+07055,Passaic,NJ,"20,19,73,862",US
+07057,Wallington,NJ,"2,01,973",US
+07058,Pine Brook,NJ,"9,73,201",US
+07059,Warren,NJ,"90,89,73,732",US
+07060,Plainfield,NJ,"7,32,908",US
+07061,Plainfield,NJ,908,US
+07062,Plainfield,NJ,908,US
+07063,Plainfield,NJ,"9,08,732",US
+07064,Port Reading,NJ,732,US
+07065,Rahway,NJ,"73,28,48,908",US
+07066,Clark,NJ,"73,29,08,848",US
+07067,Colonia,NJ,732,US
+07068,Roseland,NJ,973,US
+07069,Watchung,NJ,908,US
+07070,Rutherford,NJ,201,US
+07071,Lyndhurst,NJ,201,US
+07072,Carlstadt,NJ,201,US
+07073,East Rutherford,NJ,"2,01,973",US
+07074,Moonachie,NJ,"2,01,212",US
+07075,Wood Ridge,NJ,201,US
+07076,Scotch Plains,NJ,"20,17,32,908",US
+07077,Sewaren,NJ,732,US
+07078,Short Hills,NJ,973,US
+07079,South Orange,NJ,973,US
+07080,South Plainfield,NJ,"9,08,732",US
+07081,Springfield,NJ,"20,19,08,973",US
+07082,Towaco,NJ,973,US
+07083,Union,NJ,"90,89,73,201",US
+07086,Weehawken,NJ,"2,01,55,19,08,973",US
+07087,Union City,NJ,"2,01,551",US
+07088,Vauxhall,NJ,908,US
+07090,Westfield,NJ,"2,01,908",US
+07091,Westfield,NJ,908,US
+07092,Mountainside,NJ,908,US
+07093,West New York,NJ,201,US
+07094,Secaucus,NJ,"20,19,73,908",US
+07095,Woodbridge,NJ,"73,29,08,848",US
+07096,Secaucus,NJ,201,US
+07097,Jersey City,NJ,201,US
+07099,Kearny,NJ,201,US
+07101,Newark,NJ,"2,01,973",US
+07102,Newark,NJ,"97,32,01,862",US
+07103,Newark,NJ,"97,32,01,73,28,62,908",US
+07104,Newark,NJ,973,US
+07105,Newark,NJ,"90,89,73,20,17,32,862",US
+07106,Newark,NJ,"9,73,908",US
+07107,Newark,NJ,"9,73,908",US
+07108,Newark,NJ,"97,32,01,908",US
+07109,Belleville,NJ,"9,73,862",US
+07110,Nutley,NJ,"9,73,862",US
+07111,Irvington,NJ,973,US
+07112,Newark,NJ,"2,01,973",US
+07114,Newark,NJ,973,US
+07175,Newark,NJ,862,US
+07182,Newark,NJ,862,US
+07184,Newark,NJ,862,US
+07188,Newark,NJ,862,US
+07189,Newark,NJ,862,US
+07191,Newark,NJ,862,US
+07192,Newark,NJ,862,US
+07193,Newark,NJ,862,US
+07194,Newark,NJ,862,US
+07195,Newark,NJ,862,US
+07198,Newark,NJ,862,US
+07199,Newark,NJ,862,US
+07201,Elizabeth,NJ,"9,08,973",US
+07202,Elizabeth,NJ,908,US
+07203,Roselle,NJ,908,US
+07204,Roselle Park,NJ,908,US
+07205,Hillside,NJ,"9,08,973",US
+07206,Elizabethport,NJ,"73,29,73,908",US
+07207,Elizabeth,NJ,908,US
+07208,Elizabeth,NJ,908,US
+07302,Jersey City,NJ,"20,12,12,551",US
+07303,Jersey City,NJ,201,US
+07304,Jersey City,NJ,201,US
+07305,Jersey City,NJ,201,US
+07306,Jersey City,NJ,201,US
+07307,Jersey City,NJ,201,US
+07308,Jersey City,NJ,201,US
+07309,Jersey City,NJ,201,US
+07310,Jersey City,NJ,"2,01,55,19,08,973",US
+07311,Jersey City,NJ,"2,01,55,19,08,973",US
+07395,Jersey City,NJ,201,US
+07399,Jersey City,NJ,201,US
+07401,Allendale,NJ,201,US
+07403,Bloomingdale,NJ,973,US
+07405,Butler,NJ,"9,73,201",US
+07407,Elmwood Park,NJ,"2,01,551",US
+07410,Fair Lawn,NJ,"20,19,73,551",US
+07416,Franklin,NJ,973,US
+07417,Franklin Lakes,NJ,"2,01,732",US
+07418,Glenwood,NJ,973,US
+07419,Hamburg,NJ,973,US
+07420,Haskell,NJ,973,US
+07421,Hewitt,NJ,973,US
+07422,Highland Lakes,NJ,973,US
+07423,Ho Ho Kus,NJ,201,US
+07424,Little Falls,NJ,"9,73,862",US
+07428,Mc Afee,NJ,973,US
+07430,Mahwah,NJ,"2,01,732",US
+07432,Midland Park,NJ,201,US
+07435,Newfoundland,NJ,973,US
+07436,Oakland,NJ,201,US
+07438,Oak Ridge,NJ,973,US
+07439,Ogdensburg,NJ,973,US
+07440,Pequannock,NJ,973,US
+07442,Pompton Lakes,NJ,"97,32,01,862",US
+07444,Pompton Plains,NJ,973,US
+07446,Ramsey,NJ,"2,01,551",US
+07450,Ridgewood,NJ,201,US
+07451,Ridgewood,NJ,201,US
+07452,Glen Rock,NJ,201,US
+07456,Ringwood,NJ,973,US
+07457,Riverdale,NJ,973,US
+07458,Saddle River,NJ,201,US
+07460,Stockholm,NJ,973,US
+07461,Sussex,NJ,973,US
+07462,Vernon,NJ,973,US
+07463,Waldwick,NJ,201,US
+07465,Wanaque,NJ,973,US
+07470,Wayne,NJ,"20,19,73,862",US
+07474,Wayne,NJ,"9,73,201",US
+07477,Wayne,NJ,862,US
+07480,West Milford,NJ,973,US
+07481,Wyckoff,NJ,"2,01,551",US
+07495,Mahwah,NJ,201,US
+07501,Paterson,NJ,"97,32,01,862",US
+07502,Paterson,NJ,973,US
+07503,Paterson,NJ,"2,01,973",US
+07504,Paterson,NJ,973,US
+07505,Paterson,NJ,"9,73,862",US
+07506,Hawthorne,NJ,"9,73,862",US
+07507,Hawthorne,NJ,862,US
+07508,Haledon,NJ,973,US
+07509,Paterson,NJ,973,US
+07510,Paterson,NJ,"8,62,973",US
+07511,Totowa,NJ,862,US
+07512,Totowa,NJ,973,US
+07513,Paterson,NJ,973,US
+07514,Paterson,NJ,"2,01,973",US
+07522,Paterson,NJ,"9,73,201",US
+07524,Paterson,NJ,973,US
+07533,Paterson,NJ,973,US
+07538,Haledon,NJ,862,US
+07543,Paterson,NJ,862,US
+07544,Paterson,NJ,862,US
+07601,Hackensack,NJ,"2,01,551",US
+07602,Hackensack,NJ,201,US
+07603,Bogota,NJ,201,US
+07604,Hasbrouck Heights,NJ,201,US
+07605,Leonia,NJ,201,US
+07606,South Hackensack,NJ,"2,01,973",US
+07607,Maywood,NJ,201,US
+07608,Teterboro,NJ,201,US
+07620,Alpine,NJ,201,US
+07621,Bergenfield,NJ,201,US
+07624,Closter,NJ,201,US
+07626,Cresskill,NJ,201,US
+07627,Demarest,NJ,201,US
+07628,Dumont,NJ,201,US
+07630,Emerson,NJ,201,US
+07631,Englewood,NJ,201,US
+07632,Englewood Cliffs,NJ,201,US
+07640,Harrington Park,NJ,201,US
+07641,Haworth,NJ,201,US
+07642,Hillsdale,NJ,201,US
+07643,Little Ferry,NJ,201,US
+07644,Lodi,NJ,"2,01,973",US
+07645,Montvale,NJ,201,US
+07646,New Milford,NJ,201,US
+07647,Northvale,NJ,201,US
+07648,Norwood,NJ,201,US
+07649,Oradell,NJ,201,US
+07650,Palisades Park,NJ,201,US
+07652,Paramus,NJ,201,US
+07653,Paramus,NJ,201,US
+07656,Park Ridge,NJ,201,US
+07657,Ridgefield,NJ,201,US
+07660,Ridgefield Park,NJ,201,US
+07661,River Edge,NJ,201,US
+07662,Rochelle Park,NJ,"20,18,62,973",US
+07663,Saddle Brook,NJ,"20,19,73,551",US
+07666,Teaneck,NJ,201,US
+07670,Tenafly,NJ,201,US
+07675,Westwood,NJ,201,US
+07676,Township Of Washington,NJ,201,US
+07677,Woodcliff Lake,NJ,201,US
+07699,Teterboro,NJ,201,US
+07701,Red Bank,NJ,"73,29,08,973",US
+07702,Shrewsbury,NJ,"7,32,848",US
+07703,Fort Monmouth,NJ,"7,32,848",US
+07704,Fair Haven,NJ,732,US
+07709,Red Bank,NJ,732,US
+07710,Adelphia,NJ,,US
+07711,Allenhurst,NJ,732,US
+07712,Asbury Park,NJ,732,US
+07715,Belmar,NJ,732,US
+07716,Atlantic Highlands,NJ,732,US
+07717,Avon By The Sea,NJ,732,US
+07718,Belford,NJ,732,US
+07719,Belmar,NJ,732,US
+07720,Bradley Beach,NJ,732,US
+07721,Cliffwood,NJ,732,US
+07722,Colts Neck,NJ,732,US
+07723,Deal,NJ,732,US
+07724,Eatontown,NJ,732,US
+07726,Englishtown,NJ,"73,28,48,908",US
+07727,Farmingdale,NJ,732,US
+07728,Freehold,NJ,"60,97,32,908",US
+07730,Hazlet,NJ,732,US
+07731,Howell,NJ,732,US
+07732,Highlands,NJ,732,US
+07733,Holmdel,NJ,"7,32,973",US
+07734,Keansburg,NJ,732,US
+07735,Keyport,NJ,732,US
+07737,Leonardo,NJ,732,US
+07738,Lincroft,NJ,732,US
+07739,Little Silver,NJ,732,US
+07740,Long Branch,NJ,"7,32,908",US
+07746,Marlboro,NJ,"73,28,48,908",US
+07747,Matawan,NJ,"60,97,32,848",US
+07748,Middletown,NJ,"73,28,48,908",US
+07750,Monmouth Beach,NJ,732,US
+07751,Morganville,NJ,"9,08,732",US
+07752,Navesink,NJ,,US
+07753,Neptune,NJ,732,US
+07754,Neptune,NJ,732,US
+07755,Oakhurst,NJ,732,US
+07756,Ocean Grove,NJ,732,US
+07757,Oceanport,NJ,"7,32,908",US
+07758,Port Monmouth,NJ,732,US
+07760,Rumson,NJ,"9,73,732",US
+07762,Spring Lake,NJ,"7,32,848",US
+07763,Tennent,NJ,,US
+07764,West Long Branch,NJ,"7,32,908",US
+07765,Wickatunk,NJ,732,US
+07799,Eatontown,NJ,732,US
+07801,Dover,NJ,"9,73,862",US
+07802,Dover,NJ,973,US
+07803,Mine Hill,NJ,973,US
+07806,Picatinny Arsenal,NJ,973,US
+07820,Allamuchy,NJ,908,US
+07821,Andover,NJ,"9,73,908",US
+07822,Augusta,NJ,973,US
+07823,Belvidere,NJ,908,US
+07825,Blairstown,NJ,"9,08,201",US
+07826,Branchville,NJ,973,US
+07827,Montague,NJ,973,US
+07828,Budd Lake,NJ,"9,73,908",US
+07829,Buttzville,NJ,908,US
+07830,Califon,NJ,908,US
+07831,Changewater,NJ,,US
+07832,Columbia,NJ,908,US
+07833,Delaware,NJ,908,US
+07834,Denville,NJ,973,US
+07836,Flanders,NJ,"9,73,908",US
+07837,Glasser,NJ,862,US
+07838,Great Meadows,NJ,908,US
+07839,Greendell,NJ,862,US
+07840,Hackettstown,NJ,908,US
+07842,Hibernia,NJ,,US
+07843,Hopatcong,NJ,973,US
+07844,Hope,NJ,908,US
+07845,Ironia,NJ,973,US
+07846,Johnsonburg,NJ,908,US
+07847,Kenvil,NJ,973,US
+07848,Lafayette,NJ,973,US
+07849,Lake Hopatcong,NJ,973,US
+07850,Landing,NJ,973,US
+07851,Layton,NJ,973,US
+07852,Ledgewood,NJ,973,US
+07853,Long Valley,NJ,908,US
+07855,Middleville,NJ,862,US
+07856,Mount Arlington,NJ,973,US
+07857,Netcong,NJ,"9,73,862",US
+07860,Newton,NJ,"2,01,97,39,08,862",US
+07863,Oxford,NJ,"9,08,201",US
+07865,Port Murray,NJ,908,US
+07866,Rockaway,NJ,"9,73,862",US
+07869,Randolph,NJ,"9,73,862",US
+07870,Schooleys Mountain,NJ,,US
+07871,Sparta,NJ,973,US
+07874,Stanhope,NJ,973,US
+07875,Stillwater,NJ,973,US
+07876,Succasunna,NJ,"20,19,73,862",US
+07877,Swartswood,NJ,862,US
+07878,Mount Tabor,NJ,973,US
+07879,Tranquility,NJ,862,US
+07880,Vienna,NJ,908,US
+07881,Wallpack Center,NJ,862,US
+07882,Washington,NJ,908,US
+07885,Wharton,NJ,"2,01,973",US
+07890,Branchville,NJ,862,US
+07901,Summit,NJ,"2,01,73,29,08,973",US
+07902,Summit,NJ,908,US
+07920,Basking Ridge,NJ,"9,08,973",US
+07921,Bedminster,NJ,908,US
+07922,Berkeley Heights,NJ,"9,08,973",US
+07924,Bernardsville,NJ,"9,08,973",US
+07926,Brookside,NJ,,US
+07927,Cedar Knolls,NJ,"9,73,908",US
+07928,Chatham,NJ,"73,29,73,201",US
+07930,Chester,NJ,"20,19,08,973",US
+07931,Far Hills,NJ,908,US
+07932,Florham Park,NJ,"9,73,201",US
+07933,Gillette,NJ,908,US
+07934,Gladstone,NJ,908,US
+07935,Green Village,NJ,973,US
+07936,East Hanover,NJ,973,US
+07938,Liberty Corner,NJ,908,US
+07939,Lyons,NJ,,US
+07940,Madison,NJ,"9,73,862",US
+07945,Mendham,NJ,"9,73,908",US
+07946,Millington,NJ,908,US
+07950,Morris Plains,NJ,"9,73,201",US
+07960,Morristown,NJ,"9,73,20,19,08,862",US
+07961,Convent Station,NJ,"2,01,973",US
+07962,Morristown,NJ,862,US
+07963,Morristown,NJ,862,US
+07970,Mount Freedom,NJ,973,US
+07974,New Providence,NJ,"9,08,973",US
+07976,New Vernon,NJ,973,US
+07977,Peapack,NJ,908,US
+07978,Pluckemin,NJ,908,US
+07979,Pottersville,NJ,908,US
+07980,Stirling,NJ,908,US
+07981,Whippany,NJ,"7,32,90,89,73,862",US
+07983,Whippany,NJ,862,US
+07999,Whippany,NJ,"8,62,973",US
+08001,Alloway,NJ,856,US
+08002,Cherry Hill,NJ,"6,09,856",US
+08003,Cherry Hill,NJ,"6,09,856",US
+08004,Atco,NJ,"6,09,856",US
+08005,Barnegat,NJ,609,US
+08006,Barnegat Light,NJ,609,US
+08007,Barrington,NJ,856,US
+08008,Beach Haven,NJ,609,US
+08009,Berlin,NJ,856,US
+08010,Beverly,NJ,609,US
+08011,Birmingham,NJ,,US
+08012,Blackwood,NJ,"6,09,856",US
+08014,Bridgeport,NJ,856,US
+08015,Browns Mills,NJ,"8,56,609",US
+08016,Burlington,NJ,609,US
+08018,Cedar Brook,NJ,609,US
+08019,Chatsworth,NJ,609,US
+08020,Clarksboro,NJ,856,US
+08021,Clementon,NJ,"8,56,609",US
+08022,Columbus,NJ,609,US
+08023,Deepwater,NJ,856,US
+08025,Ewan,NJ,856,US
+08026,Gibbsboro,NJ,856,US
+08027,Gibbstown,NJ,856,US
+08028,Glassboro,NJ,"8,56,609",US
+08029,Glendora,NJ,856,US
+08030,Gloucester City,NJ,856,US
+08031,Bellmawr,NJ,"8,56,609",US
+08032,Grenloch,NJ,856,US
+08033,Haddonfield,NJ,"8,56,609",US
+08034,Cherry Hill,NJ,856,US
+08035,Haddon Heights,NJ,"8,56,609",US
+08036,Hainesport,NJ,609,US
+08037,Hammonton,NJ,609,US
+08038,Hancocks Bridge,NJ,856,US
+08039,Harrisonville,NJ,856,US
+08041,Jobstown,NJ,609,US
+08042,Juliustown,NJ,609,US
+08043,Voorhees,NJ,"6,09,856",US
+08045,Lawnside,NJ,856,US
+08046,Willingboro,NJ,609,US
+08048,Lumberton,NJ,609,US
+08049,Magnolia,NJ,"6,09,856",US
+08050,Manahawkin,NJ,609,US
+08051,Mantua,NJ,856,US
+08052,Maple Shade,NJ,"8,56,609",US
+08053,Marlton,NJ,"6,09,856",US
+08054,Mount Laurel,NJ,"6,09,856",US
+08055,Medford,NJ,"6,09,856",US
+08056,Mickleton,NJ,856,US
+08057,Moorestown,NJ,"6,09,856",US
+08059,Mount Ephraim,NJ,856,US
+08060,Mount Holly,NJ,"6,09,856",US
+08061,Mount Royal,NJ,856,US
+08062,Mullica Hill,NJ,"8,56,609",US
+08063,National Park,NJ,856,US
+08064,New Lisbon,NJ,609,US
+08065,Palmyra,NJ,856,US
+08066,Paulsboro,NJ,856,US
+08067,Pedricktown,NJ,856,US
+08068,Pemberton,NJ,609,US
+08069,Penns Grove,NJ,856,US
+08070,Pennsville,NJ,"6,09,856",US
+08071,Pitman,NJ,"6,09,856",US
+08072,Quinton,NJ,856,US
+08073,Rancocas,NJ,,US
+08074,Richwood,NJ,856,US
+08075,Riverside,NJ,"6,09,856",US
+08076,Riverton,NJ,856,US
+08077,Riverton,NJ,"8,56,609",US
+08078,Runnemede,NJ,856,US
+08079,Salem,NJ,"8,56,609",US
+08080,Sewell,NJ,"8,56,609",US
+08081,Sicklerville,NJ,856,US
+08083,Somerdale,NJ,856,US
+08084,Stratford,NJ,856,US
+08085,Swedesboro,NJ,"8,56,609",US
+08086,Thorofare,NJ,"6,09,856",US
+08087,Tuckerton,NJ,609,US
+08088,Vincentown,NJ,609,US
+08089,Waterford Works,NJ,"8,56,609",US
+08090,Wenonah,NJ,856,US
+08091,West Berlin,NJ,856,US
+08092,West Creek,NJ,609,US
+08093,Westville,NJ,"6,09,856",US
+08094,Williamstown,NJ,"6,09,856",US
+08095,Winslow,NJ,"6,09,856",US
+08096,West Deptford,NJ,"6,09,856",US
+08097,Woodbury Heights,NJ,856,US
+08098,Woodstown,NJ,856,US
+08099,Bellmawr,NJ,856,US
+08101,Camden,NJ,856,US
+08102,Camden,NJ,856,US
+08103,Camden,NJ,"8,56,609",US
+08104,Camden,NJ,856,US
+08105,Camden,NJ,"6,09,856",US
+08106,Audubon,NJ,856,US
+08107,Oaklyn,NJ,"8,56,609",US
+08108,Collingswood,NJ,"8,56,609",US
+08109,Merchantville,NJ,"8,56,609",US
+08110,Pennsauken,NJ,"8,56,609",US
+08201,Absecon,NJ,609,US
+08202,Avalon,NJ,609,US
+08203,Brigantine,NJ,609,US
+08204,Cape May,NJ,609,US
+08205,Absecon,NJ,609,US
+08210,Cape May Court House,NJ,609,US
+08212,Cape May Point,NJ,609,US
+08213,Cologne,NJ,,US
+08214,Dennisville,NJ,609,US
+08215,Egg Harbor City,NJ,"6,09,856",US
+08217,Elwood,NJ,,US
+08218,Goshen,NJ,609,US
+08219,Green Creek,NJ,609,US
+08220,Leeds Point,NJ,,US
+08221,Linwood,NJ,609,US
+08223,Marmora,NJ,609,US
+08224,New Gretna,NJ,609,US
+08225,Northfield,NJ,609,US
+08226,Ocean City,NJ,609,US
+08230,Ocean View,NJ,609,US
+08231,Oceanville,NJ,,US
+08232,Pleasantville,NJ,609,US
+08234,Egg Harbor Township,NJ,"6,09,856",US
+08240,Pomona,NJ,609,US
+08241,Port Republic,NJ,609,US
+08242,Rio Grande,NJ,609,US
+08243,Sea Isle City,NJ,609,US
+08244,Somers Point,NJ,609,US
+08245,South Dennis,NJ,609,US
+08246,South Seaville,NJ,609,US
+08247,Stone Harbor,NJ,609,US
+08248,Strathmere,NJ,609,US
+08250,Tuckahoe,NJ,609,US
+08251,Villas,NJ,609,US
+08252,Whitesboro,NJ,609,US
+08260,Wildwood,NJ,"2,01,609",US
+08270,Woodbine,NJ,609,US
+08302,Bridgeton,NJ,"6,09,856",US
+08310,Buena,NJ,"8,56,609",US
+08311,Cedarville,NJ,856,US
+08312,Clayton,NJ,"8,56,609",US
+08313,Deerfield Street,NJ,856,US
+08314,Delmont,NJ,856,US
+08315,Dividing Creek,NJ,856,US
+08316,Dorchester,NJ,856,US
+08317,Dorothy,NJ,609,US
+08318,Elmer,NJ,856,US
+08319,Estell Manor,NJ,609,US
+08320,Fairton,NJ,856,US
+08321,Fortescue,NJ,856,US
+08322,Franklinville,NJ,856,US
+08323,Greenwich,NJ,856,US
+08324,Heislerville,NJ,856,US
+08326,Landisville,NJ,856,US
+08327,Leesburg,NJ,856,US
+08328,Malaga,NJ,856,US
+08329,Mauricetown,NJ,856,US
+08330,Mays Landing,NJ,609,US
+08332,Millville,NJ,"8,56,609",US
+08340,Milmay,NJ,609,US
+08341,Minotola,NJ,856,US
+08342,Mizpah,NJ,609,US
+08343,Monroeville,NJ,856,US
+08344,Newfield,NJ,856,US
+08345,Newport,NJ,856,US
+08346,Newtonville,NJ,609,US
+08347,Norma,NJ,856,US
+08348,Port Elizabeth,NJ,856,US
+08349,Port Norris,NJ,856,US
+08350,Richland,NJ,856,US
+08352,Rosenhayn,NJ,856,US
+08353,Shiloh,NJ,856,US
+08360,Vineland,NJ,856,US
+08361,Vineland,NJ,"8,56,609",US
+08362,Vineland,NJ,856,US
+08401,Atlantic City,NJ,609,US
+08402,Margate City,NJ,609,US
+08403,Longport,NJ,609,US
+08404,Atlantic City,NJ,609,US
+08405,Atlantic City,NJ,609,US
+08406,Ventnor City,NJ,609,US
+08501,Allentown,NJ,609,US
+08502,Belle Mead,NJ,"9,08,732",US
+08504,Blawenburg,NJ,,US
+08505,Bordentown,NJ,609,US
+08510,Millstone Township,NJ,"6,09,732",US
+08511,Cookstown,NJ,609,US
+08512,Cranbury,NJ,"6,09,732",US
+08514,Cream Ridge,NJ,609,US
+08515,Chesterfield,NJ,609,US
+08518,Florence,NJ,"8,56,609",US
+08520,Hightstown,NJ,609,US
+08525,Hopewell,NJ,609,US
+08526,Imlaystown,NJ,609,US
+08527,Jackson,NJ,732,US
+08528,Kingston,NJ,609,US
+08530,Lambertville,NJ,609,US
+08533,New Egypt,NJ,609,US
+08534,Pennington,NJ,609,US
+08535,Millstone Township,NJ,"7,32,609",US
+08536,Plainsboro,NJ,609,US
+08540,Princeton,NJ,"2,01,60,97,32,908",US
+08541,Princeton,NJ,609,US
+08542,Princeton,NJ,609,US
+08543,Princeton,NJ,609,US
+08544,Princeton,NJ,609,US
+08550,Princeton Junction,NJ,609,US
+08551,Ringoes,NJ,"9,08,609",US
+08553,Rocky Hill,NJ,609,US
+08554,Roebling,NJ,609,US
+08555,Roosevelt,NJ,,US
+08556,Rosemont,NJ,609,US
+08557,Sergeantsville,NJ,,US
+08558,Skillman,NJ,"9,08,609",US
+08559,Stockton,NJ,"6,09,908",US
+08560,Titusville,NJ,"9,08,609",US
+08561,Windsor,NJ,609,US
+08562,Wrightstown,NJ,609,US
+08601,Trenton,NJ,609,US
+08602,Trenton,NJ,609,US
+08603,Trenton,NJ,609,US
+08604,Trenton,NJ,609,US
+08605,Trenton,NJ,609,US
+08606,Trenton,NJ,609,US
+08607,Trenton,NJ,609,US
+08608,Trenton,NJ,609,US
+08609,Trenton,NJ,609,US
+08610,Trenton,NJ,609,US
+08611,Trenton,NJ,609,US
+08618,Trenton,NJ,609,US
+08619,Trenton,NJ,609,US
+08620,Trenton,NJ,609,US
+08625,Trenton,NJ,609,US
+08628,Trenton,NJ,"6,09,908",US
+08629,Trenton,NJ,609,US
+08638,Trenton,NJ,609,US
+08640,Fort Dix,NJ,609,US
+08641,Trenton,NJ,609,US
+08645,Trenton,NJ,609,US
+08646,Trenton,NJ,609,US
+08647,Trenton,NJ,609,US
+08648,Lawrence Township,NJ,"6,09,914",US
+08650,Trenton,NJ,609,US
+08666,Trenton,NJ,609,US
+08690,Trenton,NJ,609,US
+08691,Trenton,NJ,609,US
+08695,Trenton,NJ,609,US
+08701,Lakewood,NJ,"7,32,60,98,48,908",US
+08720,Allenwood,NJ,732,US
+08721,Bayville,NJ,732,US
+08722,Beachwood,NJ,732,US
+08723,Brick,NJ,732,US
+08724,Brick,NJ,732,US
+08730,Brielle,NJ,732,US
+08731,Forked River,NJ,"60,97,32,856",US
+08732,Island Heights,NJ,732,US
+08733,Lakehurst,NJ,732,US
+08734,Lanoka Harbor,NJ,609,US
+08735,Lavallette,NJ,732,US
+08736,Manasquan,NJ,732,US
+08738,Mantoloking,NJ,732,US
+08739,Normandy Beach,NJ,732,US
+08740,Ocean Gate,NJ,732,US
+08741,Pine Beach,NJ,732,US
+08742,Point Pleasant Beach,NJ,732,US
+08750,Sea Girt,NJ,732,US
+08751,Seaside Heights,NJ,"2,01,732",US
+08752,Seaside Park,NJ,"2,01,732",US
+08753,Toms River,NJ,732,US
+08754,Toms River,NJ,732,US
+08755,Toms River,NJ,"73,28,48,908",US
+08756,Toms River,NJ,732,US
+08757,Toms River,NJ,"73,28,48,908",US
+08758,Waretown,NJ,609,US
+08759,Manchester Township,NJ,732,US
+08801,Annandale,NJ,908,US
+08802,Asbury,NJ,908,US
+08803,Baptistown,NJ,,US
+08804,Bloomsbury,NJ,908,US
+08805,Bound Brook,NJ,"73,29,08,848",US
+08807,Bridgewater,NJ,"90,89,73,732",US
+08808,Broadway,NJ,908,US
+08809,Clinton,NJ,908,US
+08810,Dayton,NJ,732,US
+08812,Dunellen,NJ,"7,32,908",US
+08816,East Brunswick,NJ,"73,29,73,908",US
+08817,Edison,NJ,"73,28,48,908",US
+08818,Edison,NJ,732,US
+08820,Edison,NJ,"7,32,908",US
+08821,Flagtown,NJ,908,US
+08822,Flemington,NJ,908,US
+08823,Franklin Park,NJ,732,US
+08824,Kendall Park,NJ,"7,32,908",US
+08825,Frenchtown,NJ,908,US
+08826,Glen Gardner,NJ,908,US
+08827,Hampton,NJ,908,US
+08828,Helmetta,NJ,732,US
+08829,High Bridge,NJ,908,US
+08830,Iselin,NJ,"73,29,08,973",US
+08831,Monroe Township,NJ,"6,09,732",US
+08832,Keasbey,NJ,"73,28,48,908",US
+08833,Lebanon,NJ,908,US
+08834,Little York,NJ,,US
+08835,Manville,NJ,908,US
+08836,Martinsville,NJ,732,US
+08837,Edison,NJ,"73,28,48,908",US
+08840,Metuchen,NJ,"7,32,908",US
+08844,Hillsborough,NJ,"9,08,732",US
+08846,Middlesex,NJ,"60,97,32,848",US
+08848,Milford,NJ,908,US
+08850,Milltown,NJ,732,US
+08852,Monmouth Junction,NJ,"7,32,848",US
+08853,Neshanic Station,NJ,908,US
+08854,Piscataway,NJ,"73,29,08,201",US
+08855,Piscataway,NJ,732,US
+08857,Old Bridge,NJ,"7,32,973",US
+08858,Oldwick,NJ,908,US
+08859,Parlin,NJ,732,US
+08861,Perth Amboy,NJ,732,US
+08862,Perth Amboy,NJ,732,US
+08863,Fords,NJ,"73,29,08,848",US
+08865,Phillipsburg,NJ,"4,84,908",US
+08867,Pittstown,NJ,908,US
+08868,Quakertown,NJ,,US
+08869,Raritan,NJ,908,US
+08870,Readington,NJ,908,US
+08871,Sayreville,NJ,732,US
+08872,Sayreville,NJ,"7,32,908",US
+08873,Somerset,NJ,"7,32,908",US
+08875,Somerset,NJ,732,US
+08876,Somerville,NJ,"90,86,09,732",US
+08879,South Amboy,NJ,"7,32,973",US
+08880,South Bound Brook,NJ,732,US
+08882,South River,NJ,732,US
+08884,Spotswood,NJ,732,US
+08885,Stanton,NJ,,US
+08886,Stewartsville,NJ,908,US
+08887,Three Bridges,NJ,908,US
+08888,Whitehouse,NJ,908,US
+08889,Whitehouse Station,NJ,908,US
+08890,Zarephath,NJ,,US
+08899,Edison,NJ,"73,28,48,908",US
+08901,New Brunswick,NJ,"7,32,908",US
+08902,North Brunswick,NJ,"7,32,908",US
+08903,New Brunswick,NJ,732,US
+08904,Highland Park,NJ,"73,28,48,908",US
+08905,New Brunswick,NJ,732,US
+08906,New Brunswick,NJ,732,US
+08922,New Brunswick,NJ,732,US
+08933,New Brunswick,NJ,732,US
+08988,New Brunswick,NJ,732,US
+08989,New Brunswick,NJ,732,US
+09001,Apo,AE,,US
+09002,Apo,AE,,DE
+09003,Apo,AE,,US
+09004,Apo,AE,,US
+09005,Apo,AE,,DE
+09006,Apo,AE,,DE
+09007,Apo,AE,,DE
+09008,Apo,AE,,DE
+09009,Apo,AE,,DE
+09010,Apo,AE,,DE
+09011,Apo,AE,,DE
+09012,Apo,AE,,DE
+09013,Apo,AE,,US
+09014,Apo,AE,,US
+09020,Apo,AE,,DE
+09021,Apo,AE,,DE
+09028,Apo,AE,,DE
+09031,Apo,AE,,US
+09033,Apo,AE,,DE
+09034,Apo,AE,,DE
+09036,Apo,AE,,US
+09038,Apo,AE,,DE
+09042,Apo,AE,,US
+09045,Apo,AE,,US
+09046,Apo,AE,,DE
+09049,Apo,AE,,DE
+09051,Apo,AE,,DE
+09053,Apo,AE,,DE
+09054,Apo,AE,,DE
+09055,Apo,AE,,DE
+09056,Apo,AE,,DE
+09058,Apo,AE,,DE
+09059,Apo,AE,,DE
+09060,Apo,AE,,DE
+09063,Apo,AE,,DE
+09067,Apo,AE,,DE
+09068,Apo,AE,,DE
+09069,Apo,AE,,DE
+09074,Apo,AE,,DE
+09075,Apo,AE,,DE
+09076,Apo,AE,,US
+09079,Apo,AE,,DE
+09080,Apo,AE,,DE
+09081,Apo,AE,,DE
+09086,Apo,AE,,DE
+09088,Apo,AE,,DE
+09089,Apo,AE,,US
+09090,Apo,AE,,DE
+09092,Apo,AE,,DE
+09094,Apo,AE,,DE
+09095,Apo,AE,,DE
+09096,Apo,AE,,DE
+09099,Apo,AE,,US
+09100,Apo,AE,,DE
+09102,Apo,AE,,DE
+09103,Apo,AE,,DE
+09104,Apo,AE,,DE
+09107,Apo,AE,,DE
+09110,Apo,AE,,US
+09112,Apo,AE,,DE
+09114,Apo,AE,,DE
+09123,Apo,AE,,DE
+09126,Apo,AE,,DE
+09128,Apo,AE,,DE
+09131,Apo,AE,,DE
+09136,Apo,AE,,DE
+09137,Apo,AE,,DE
+09138,Apo,AE,,DE
+09139,Apo,AE,,DE
+09140,Apo,AE,,DE
+09142,Apo,AE,,DE
+09143,Apo,AE,,DE
+09154,Apo,AE,,DE
+09165,Apo,AE,,DE
+09166,Apo,AE,,US
+09169,Apo,AE,,US
+09172,Apo,AE,,DE
+09173,Apo,AE,,DE
+09175,Apo,AE,,DE
+09177,Apo,AE,,DE
+09180,Apo,AE,,DE
+09182,Apo,AE,,US
+09183,Apo,AE,,US
+09185,Apo,AE,,US
+09186,Apo,AE,,DE
+09201,Apo,AE,,DE
+09211,Apo,AE,,US
+09212,Apo,AE,,US
+09213,Dpo,AE,,DE
+09214,Apo,AE,,DE
+09225,Apo,AE,,US
+09226,Apo,AE,,DE
+09227,Apo,AE,,DE
+09229,Apo,AE,,US
+09237,Apo,AE,,US
+09244,Apo,AE,,DE
+09245,Apo,AE,,DE
+09250,Apo,AE,,DE
+09252,Apo,AE,,US
+09261,Apo,AE,,DE
+09262,Apo,AE,,US
+09263,Apo,AE,,DE
+09264,Apo,AE,,DE
+09265,Dpo,AE,,DE
+09266,Apo,AE,,DE
+09267,Apo,AE,,DE
+09300,Apo,AE,,IQ
+09301,Apo,AE,,IQ
+09302,Apo,AE,,GE
+09303,Apo,AE,,BH
+09304,Apo,AE,,IQ
+09305,Apo,AE,,US
+09306,Apo,AE,,KW
+09307,Apo,AE,,BH
+09308,Apo,AE,,IQ
+09309,Apo,AE,,QA
+09310,Apo,AE,,AF
+09311,Apo,AE,,AF
+09312,Apo,AE,,IQ
+09313,Apo,AE,,AF
+09314,Apo,AE,,AF
+09315,Apo,AE,,IQ
+09316,Apo,AE,,IQ
+09317,Apo,AE,,IQ
+09318,Apo,AE,,US
+09319,Apo,AE,,US
+09320,Apo,AE,,AF
+09321,Apo,AE,,IQ
+09322,Apo,AE,,IQ
+09323,Apo,AE,,IQ
+09324,Apo,AE,,US
+09327,Apo,AE,,KW
+09328,Apo,AE,,OM
+09330,Apo,AE,,KW
+09331,Apo,AE,,IQ
+09332,Apo,AE,,IQ
+09333,Apo,AE,,IQ
+09334,Apo,AE,,IQ
+09336,Apo,AE,,IQ
+09337,Apo,AE,,KW
+09338,Apo,AE,,IQ
+09339,Apo,AE,,TM
+09340,Apo,AE,,XK
+09342,Apo,AE,,IQ
+09343,Apo,AE,,IL
+09344,Apo,AE,,IQ
+09346,Apo,AE,,US
+09347,Apo,AE,,AF
+09348,Apo,AE,,IQ
+09350,Apo,AE,,IQ
+09351,Apo,AE,,IQ
+09352,Apo,AE,,AF
+09353,Apo,AE,,KG
+09354,Apo,AE,,AF
+09355,Apo,AE,,AF
+09356,Apo,AE,,AF
+09357,Apo,AE,,KW
+09358,Apo,AE,,SC
+09359,Apo,AE,,IQ
+09360,Apo,AE,,CU
+09361,Apo,AE,,IQ
+09362,Apo,AE,,IQ
+09363,Fpo,AE,,DJ
+09364,Apo,AE,,AF
+09365,Apo,AE,,QA
+09366,Apo,AE,,KW
+09367,Apo,AE,,US
+09368,Apo,AE,,AF
+09369,Fpo,AE,,AF
+09370,Apo,AE,,AF
+09371,Apo,AE,,US
+09372,Fpo,AE,,AF
+09373,Fpo,AE,,AF
+09374,Apo,AE,,IQ
+09375,Apo,AE,,IQ
+09376,Fpo,AE,,AF
+09377,Fpo,AE,,AF
+09378,Apo,AE,,IQ
+09379,Fpo,AE,,BH
+09380,Apo,AE,,AF
+09381,Apo,AE,,IQ
+09382,Apo,AE,,AF
+09383,Apo,AE,,AF
+09384,Apo,AE,,US
+09386,Apo,AE,,US
+09387,Apo,AE,,US
+09388,Apo,AE,,US
+09389,Apo,AE,,IQ
+09390,Apo,AE,,US
+09391,Apo,AE,,IQ
+09393,Apo,AE,,IQ
+09394,Fpo,AE,,US
+09396,Apo,AE,,IQ
+09397,Apo,AE,,US
+09399,Apo,AE,,US
+09402,Apo,AE,,GB
+09403,Apo,AE,,GB
+09409,Fpo,AE,,US
+09420,Fpo,AE,,US
+09421,Apo,AE,,GB
+09447,Apo,AE,,GB
+09454,Apo,AE,,GB
+09456,Apo,AE,,GB
+09459,Apo,AE,,GB
+09461,Apo,AE,,US
+09463,Apo,AE,,GB
+09464,Apo,AE,,GB
+09468,Apo,AE,,GB
+09469,Apo,AE,,GB
+09470,Apo,AE,,GB
+09494,Apo,AE,,GB
+09496,Apo,AE,,US
+09498,Dpo,AE,,US
+09499,Fpo,AE,,US
+09501,Fpo,AE,,GB
+09502,Fpo,AE,,US
+09503,Fpo,AE,,US
+09504,Fpo,AE,,US
+09505,Fpo,AE,,US
+09506,Fpo,AE,,US
+09507,Fpo,AE,,US
+09508,Fpo,AE,,US
+09509,Fpo,AE,,US
+09510,Fpo,AE,,US
+09511,Fpo,AE,,US
+09513,Fpo,AE,,US
+09517,Fpo,AE,,US
+09524,Fpo,AE,,US
+09532,Fpo,AE,,US
+09534,Fpo,AE,,US
+09543,Fpo,AE,,US
+09545,Fpo,AE,,US
+09549,Fpo,AE,,US
+09550,Fpo,AE,,US
+09554,Fpo,AE,,US
+09556,Fpo,AE,,US
+09557,Fpo,AE,,US
+09564,Fpo,AE,,US
+09565,Fpo,AE,,US
+09566,Fpo,AE,,US
+09567,Fpo,AE,,US
+09568,Fpo,AE,,US
+09569,Fpo,AE,,US
+09570,Fpo,AE,,US
+09573,Fpo,AE,,US
+09574,Fpo,AE,,US
+09575,Fpo,AE,,US
+09576,Fpo,AE,,US
+09577,Fpo,AE,,US
+09578,Fpo,AE,,US
+09579,Fpo,AE,,US
+09581,Fpo,AE,,US
+09582,Fpo,AE,,US
+09586,Fpo,AE,,US
+09587,Fpo,AE,,US
+09588,Fpo,AE,,US
+09589,Fpo,AE,,CU
+09590,Fpo,AE,,US
+09591,Fpo,AE,,US
+09593,Fpo,AE,,CU
+09594,Fpo,AE,,US
+09596,Fpo,AE,,US
+09599,Fpo,AE,,US
+09601,Apo,AE,,IT
+09602,Apo,AE,,IT
+09603,Apo,AE,,IT
+09604,Apo,AE,,US
+09605,Apo,AE,,IT
+09606,Apo,AE,,US
+09607,Fpo,AE,,US
+09608,Fpo,AE,,IT
+09609,Fpo,AE,,IT
+09610,Apo,AE,,IT
+09611,Apo,AE,,US
+09612,Fpo,AE,,US
+09613,Apo,AE,,IT
+09617,Apo,AE,,IT
+09618,Fpo,AE,,IT
+09619,Fpo,AE,,US
+09620,Fpo,AE,,IT
+09621,Fpo,AE,,IT
+09622,Fpo,AE,,IT
+09623,Fpo,AE,,IT
+09624,Dpo,AE,,US
+09625,Fpo,AE,,IT
+09626,Fpo,AE,,IT
+09627,Fpo,AE,,IT
+09630,Apo,AE,,IT
+09631,Fpo,AE,,IT
+09633,Apo,AE,,IT
+09636,Fpo,AE,,IT
+09642,Dpo,AE,,ES
+09643,Apo,AE,,ES
+09644,Fpo,AE,,US
+09645,Fpo,AE,,ES
+09647,Apo,AE,,ES
+09648,Fpo,AE,,US
+09649,Fpo,AE,,US
+09701,Dpo,AE,,US
+09702,Apo,AE,,BE
+09703,Apo,AE,,NL
+09704,Apo,AE,,GL
+09705,Apo,AE,,BE
+09706,Apo,AE,,NO
+09707,Dpo,AE,,NO
+09708,Apo,AE,,BE
+09709,Apo,AE,,NL
+09710,Dpo,AE,,US
+09711,Apo,AE,,NL
+09713,Apo,AE,,BE
+09714,Apo,AE,,BE
+09715,Dpo,AE,,NL
+09716,Dpo,AE,,DK
+09717,Apo,AE,,NO
+09718,Dpo,AE,,MA
+09719,Apo,AE,,DE
+09720,Apo,AE,,PT
+09721,Dpo,AE,,RU
+09722,Apo,AE,,PL
+09723,Dpo,AE,,FI
+09724,Apo,AE,,BE
+09726,Dpo,AE,,PT
+09727,Dpo,AE,,US
+09728,Dpo,AE,,US
+09729,Fpo,AE,,PT
+09730,Dpo,AE,,US
+09731,Dpo,AE,,US
+09732,Apo,AE,,US
+09733,Fpo,AE,,CA
+09734,Dpo,AE,,US
+09735,Apo,AE,,CA
+09736,Dpo,AE,,US
+09737,Dpo,AE,,US
+09738,Dpo,AE,,US
+09739,Dpo,AE,,US
+09740,Apo,AE,,BE
+09741,Dpo,AE,,US
+09742,Dpo,AE,,US
+09743,Apo,AE,,PL
+09744,Dpo,AE,,US
+09745,Apo,AE,,DE
+09746,Apo,AE,,FR
+09747,Fpo,AE,,GI
+09748,Dpo,AE,,US
+09749,Apo,AE,,RO
+09750,Dpo,AE,,US
+09751,Apo,AE,,DE
+09752,Apo,AE,,NL
+09753,Apo,AE,,BG
+09754,Apo,AE,,BE
+09755,Apo,AE,,BE
+09756,Apo,AE,,BE
+09757,Apo,AE,,BE
+09758,Dpo,AE,,US
+09759,Dpo,AE,,US
+09762,Dpo,AE,,US
+09769,Dpo,AE,,US
+09771,Apo,AE,,US
+09777,Dpo,AE,,FR
+09780,Apo,AE,,BA
+09789,Apo,AE,,US
+09790,Apo,AE,,US
+09798,Apo,AE,,FR
+09801,Apo,AE,,AE
+09802,Apo,AE,,US
+09803,Apo,AE,,SA
+09804,Apo,AE,,TR
+09805,Fpo,AE,,BH
+09806,Apo,AE,,US
+09807,Dpo,AE,,US
+09808,Apo,AE,,IQ
+09809,Fpo,AE,,US
+09810,Apo,AE,,TR
+09811,Dpo,AE,,US
+09812,Dpo,AE,,US
+09813,Dpo,AE,,US
+09814,Dpo,AE,,US
+09815,Apo,AE,,US
+09816,Dpo,AE,,US
+09817,Dpo,AE,,US
+09818,Apo,AE,,CY
+09819,Apo,AE,,TR
+09820,Dpo,AE,,US
+09821,Apo,AE,,TR
+09822,Apo,AE,,TR
+09823,Dpo,AE,,US
+09824,Apo,AE,,TR
+09825,Dpo,AE,,US
+09826,Dpo,AE,,US
+09827,Dpo,AE,,TR
+09828,Dpo,AE,,US
+09829,Apo,AE,,IL
+09830,Dpo,AE,,IL
+09831,Dpo,AE,,US
+09832,Apo,AE,,EG
+09833,Apo,AE,,EG
+09834,Fpo,AE,,BH
+09835,Fpo,AE,,EG
+09836,Dpo,AE,,GB
+09837,Fpo,AE,,AE
+09838,Fpo,AE,,BH
+09839,Apo,AE,,US
+09840,Fpo,AE,,BH
+09841,Apo,AE,,GR
+09842,Dpo,AE,,US
+09843,Apo,AE,,US
+09844,Fpo,AE,,GR
+09845,Dpo,AE,,US
+09846,Dpo,AE,,US
+09848,Apo,AE,,US
+09852,Apo,AE,,SA
+09853,Apo,AE,,AE
+09855,Apo,AE,,KW
+09858,Apo,AE,,SA
+09859,Fpo,AE,,BH
+09862,Apo,AE,,US
+09865,Fpo,AE,,GR
+09868,Apo,AE,,EG
+09870,Dpo,AE,,US
+09871,Dpo,AE,,US
+09872,Dpo,AE,,US
+09873,Dpo,AE,,US
+09874,Dpo,AE,,US
+09875,Dpo,AE,,US
+09876,Dpo,AE,,US
+09880,Dpo,AE,,US
+09888,Apo,AE,,US
+09890,Apo,AE,,US
+09892,Dpo,AE,,US
+09898,Apo,AE,,QA
+10001,New York,NY,"2,12,71,89,17,51,86,46,000",US
+10002,New York,NY,"64,69,17,21,25,16,718",US
+10003,New York,NY,"21,26,46,91,73,47,718",US
+10004,New York,NY,"2,12,91,76,46,51,63,47,000",US
+10005,New York,NY,"21,26,46,91,73,47,718",US
+10006,New York,NY,"2,12,646",US
+10007,New York,NY,"21,29,17,64,67,18,347",US
+10008,New York,NY,212,US
+10009,New York,NY,"9,17,21,26,46,718",US
+10010,New York,NY,"2,12,34,76,46,91,49,17,000",US
+10011,New York,NY,"64,67,18,91,72,12,51,60,00,000",US
+10012,New York,NY,"91,79,14,21,26,46,347",US
+10013,New York,NY,"21,26,46,91,49,17,51,60,00,000",US
+10014,New York,NY,"64,69,17,21,23,47,718",US
+10015,New York,NY,212,US
+10016,New York,NY,"21,26,46,91,79,14,718",US
+10017,New York,NY,"2,12,64,69,17,51,69,14,000",US
+10018,New York,NY,"21,26,46,91,75,16,20,30,00,000",US
+10019,New York,NY,"21,26,46,71,89,17,347",US
+10020,New York,NY,"64,69,17,212",US
+10021,New York,NY,"21,26,46,91,73,15,347",US
+10022,New York,NY,"21,26,31,64,69,17,914",US
+10023,New York,NY,"6,46,91,72,12,718",US
+10024,New York,NY,"2,12,64,69,17,718",US
+10025,New York,NY,"91,72,12,646",US
+10026,New York,NY,"91,76,46,212",US
+10027,New York,NY,"64,69,17,212",US
+10028,New York,NY,"21,29,17,646",US
+10029,New York,NY,"21,29,17,646",US
+10030,New York,NY,"91,72,12,646",US
+10031,New York,NY,"64,62,12,917",US
+10032,New York,NY,"91,72,12,646",US
+10033,New York,NY,"21,26,46,917",US
+10034,New York,NY,"21,29,17,646",US
+10035,New York,NY,"91,72,12,646",US
+10036,New York,NY,"2,12,64,69,17,914",US
+10037,New York,NY,"21,29,17,646",US
+10038,New York,NY,"6,46,21,29,17,845",US
+10039,New York,NY,"21,26,46,917",US
+10040,New York,NY,"91,76,46,212",US
+10041,New York,NY,"21,23,47,64,67,18,917",US
+10043,New York,NY,212,US
+10044,New York,NY,"64,62,12,917",US
+10045,New York,NY,"2,12,34,76,46,917",US
+10046,New York,NY,212,US
+10047,New York,NY,212,US
+10048,New York,NY,212,US
+10055,New York,NY,212,US
+10060,New York,NY,646,US
+10065,New York,NY,212,US
+10069,New York,NY,"91,76,46,212",US
+10072,New York,NY,212,US
+10075,New York,NY,212,US
+10079,New York,NY,212,US
+10080,New York,NY,212,US
+10081,New York,NY,212,US
+10082,New York,NY,212,US
+10087,New York,NY,212,US
+10090,New York,NY,212,US
+10094,New York,NY,212,US
+10095,New York,NY,718,US
+10096,New York,NY,212,US
+10098,New York,NY,917,US
+10099,New York,NY,646,US
+10101,New York,NY,212,US
+10102,New York,NY,212,US
+10103,New York,NY,212,US
+10104,New York,NY,"2,12,914",US
+10105,New York,NY,"9,17,212",US
+10106,New York,NY,"2,12,34,76,46,71,89,14,000",US
+10107,New York,NY,"2,12,34,76,46,71,89,14,000",US
+10108,New York,NY,212,US
+10109,New York,NY,212,US
+10110,New York,NY,"2,12,64,67,18,917",US
+10111,New York,NY,"2,12,917",US
+10112,New York,NY,212,US
+10113,New York,NY,212,US
+10114,New York,NY,212,US
+10115,New York,NY,212,US
+10116,New York,NY,212,US
+10117,New York,NY,212,US
+10118,New York,NY,"64,69,17,212",US
+10119,New York,NY,"21,26,46,917",US
+10120,New York,NY,212,US
+10121,New York,NY,"2,12,34,76,46,718",US
+10122,New York,NY,"2,12,646",US
+10123,New York,NY,"2,12,646",US
+10124,New York,NY,212,US
+10125,New York,NY,212,US
+10126,New York,NY,212,US
+10128,New York,NY,"2,12,91,76,46,203",US
+10129,New York,NY,212,US
+10130,New York,NY,212,US
+10131,New York,NY,212,US
+10132,New York,NY,212,US
+10133,New York,NY,212,US
+10138,New York,NY,212,US
+10149,New York,NY,212,US
+10150,New York,NY,212,US
+10151,New York,NY,212,US
+10152,New York,NY,"91,72,12,646",US
+10153,New York,NY,"9,17,212",US
+10154,New York,NY,"21,26,46,917",US
+10155,New York,NY,"9,17,646",US
+10156,New York,NY,212,US
+10157,New York,NY,212,US
+10158,New York,NY,212,US
+10159,New York,NY,212,US
+10160,New York,NY,212,US
+10161,New York,NY,212,US
+10162,New York,NY,"2,12,646",US
+10163,New York,NY,212,US
+10164,New York,NY,212,US
+10165,New York,NY,"64,62,12,917",US
+10166,New York,NY,"2,12,646",US
+10167,New York,NY,"21,23,47,646",US
+10168,New York,NY,"51,62,12,646",US
+10169,New York,NY,"21,26,46,917",US
+10170,New York,NY,"2,12,646",US
+10171,New York,NY,212,US
+10172,New York,NY,"2,12,646",US
+10173,New York,NY,212,US
+10174,New York,NY,"2,12,917",US
+10175,New York,NY,"6,46,212",US
+10176,New York,NY,212,US
+10177,New York,NY,"2,12,646",US
+10178,New York,NY,"2,12,64,67,18,917",US
+10179,New York,NY,212,US
+10184,New York,NY,212,US
+10185,New York,NY,212,US
+10196,New York,NY,212,US
+10197,New York,NY,212,US
+10199,New York,NY,"21,23,47,64,67,18,917",US
+10200,New York,NY,,US
+10203,New York,NY,212,US
+10211,New York,NY,212,US
+10212,New York,NY,212,US
+10213,New York,NY,212,US
+10242,New York,NY,212,US
+10249,New York,NY,212,US
+10256,New York,NY,212,US
+10257,New York,NY,212,US
+10258,New York,NY,212,US
+10259,New York,NY,212,US
+10260,New York,NY,212,US
+10261,New York,NY,212,US
+10265,New York,NY,212,US
+10268,New York,NY,212,US
+10269,New York,NY,212,US
+10270,New York,NY,"21,23,47,64,67,18,917",US
+10271,New York,NY,"64,62,12,917",US
+10272,New York,NY,212,US
+10273,New York,NY,212,US
+10274,New York,NY,212,US
+10275,New York,NY,212,US
+10276,New York,NY,212,US
+10277,New York,NY,212,US
+10278,New York,NY,"21,26,46,917",US
+10279,New York,NY,"9,17,21,26,46,718",US
+10280,New York,NY,"2,12,64,63,47,917",US
+10281,New York,NY,"2,12,646",US
+10282,New York,NY,"2,12,646",US
+10285,New York,NY,212,US
+10286,New York,NY,212,US
+10292,New York,NY,212,US
+10301,Staten Island,NY,718,US
+10302,Staten Island,NY,"91,77,18,347",US
+10303,Staten Island,NY,718,US
+10304,Staten Island,NY,"71,83,47,917",US
+10305,Staten Island,NY,718,US
+10306,Staten Island,NY,"91,77,18,646",US
+10307,Staten Island,NY,"7,18,347",US
+10308,Staten Island,NY,718,US
+10309,Staten Island,NY,"71,83,47,917",US
+10310,Staten Island,NY,"7,18,914",US
+10311,Staten Island,NY,718,US
+10312,Staten Island,NY,"91,77,18,347",US
+10313,Staten Island,NY,212,US
+10314,Staten Island,NY,"20,37,18,347",US
+10451,Bronx,NY,"3,47,71,89,14,917",US
+10452,Bronx,NY,"71,83,47,646",US
+10453,Bronx,NY,"9,17,718",US
+10454,Bronx,NY,718,US
+10455,Bronx,NY,"9,14,718",US
+10456,Bronx,NY,"7,18,34,76,46,917",US
+10457,Bronx,NY,"7,18,91,73,47,646",US
+10458,Bronx,NY,"34,77,18,646",US
+10459,Bronx,NY,"7,18,917",US
+10460,Bronx,NY,718,US
+10461,Bronx,NY,"71,82,12,347",US
+10462,Bronx,NY,"7,18,91,43,47,917",US
+10463,Bronx,NY,"9,14,718",US
+10464,Bronx,NY,"71,89,14,917",US
+10465,Bronx,NY,"84,57,18,347",US
+10466,Bronx,NY,"9,14,71,88,45,347",US
+10467,Bronx,NY,"7,18,347",US
+10468,Bronx,NY,718,US
+10469,Bronx,NY,"91,77,18,347",US
+10470,Bronx,NY,"91,47,18,347",US
+10471,Bronx,NY,718,US
+10472,Bronx,NY,718,US
+10473,Bronx,NY,"91,77,18,347",US
+10474,Bronx,NY,"7,18,917",US
+10475,Bronx,NY,718,US
+10499,Bronx,NY,212,US
+10501,Amawalk,NY,914,US
+10502,Ardsley,NY,914,US
+10503,Ardsley On Hudson,NY,914,US
+10504,Armonk,NY,914,US
+10505,Baldwin Place,NY,914,US
+10506,Bedford,NY,914,US
+10507,Bedford Hills,NY,914,US
+10509,Brewster,NY,"84,52,03,914",US
+10510,Briarcliff Manor,NY,"9,14,203",US
+10511,Buchanan,NY,914,US
+10512,Carmel,NY,"84,59,14,203",US
+10514,Chappaqua,NY,"9,14,203",US
+10516,Cold Spring,NY,"8,45,914",US
+10517,Crompond,NY,914,US
+10518,Cross River,NY,914,US
+10519,Croton Falls,NY,845,US
+10520,Croton On Hudson,NY,"9,14,212",US
+10521,Croton On Hudson,NY,914,US
+10522,Dobbs Ferry,NY,914,US
+10523,Elmsford,NY,914,US
+10524,Garrison,NY,"9,17,845",US
+10526,Goldens Bridge,NY,"91,79,14,845",US
+10527,Granite Springs,NY,914,US
+10528,Harrison,NY,914,US
+10530,Hartsdale,NY,"91,42,03,718",US
+10532,Hawthorne,NY,"9,14,203",US
+10533,Irvington,NY,914,US
+10535,Jefferson Valley,NY,914,US
+10536,Katonah,NY,"9,14,917",US
+10537,Lake Peekskill,NY,"8,45,914",US
+10538,Larchmont,NY,"9,14,212",US
+10540,Lincolndale,NY,914,US
+10541,Mahopac,NY,"8,45,914",US
+10542,Mahopac Falls,NY,845,US
+10543,Mamaroneck,NY,"91,49,17,212",US
+10545,Maryknoll,NY,914,US
+10546,Millwood,NY,914,US
+10547,Mohegan Lake,NY,914,US
+10548,Montrose,NY,914,US
+10549,Mount Kisco,NY,"8,45,914",US
+10550,Mount Vernon,NY,"84,59,17,914",US
+10551,Mount Vernon,NY,914,US
+10552,Mount Vernon,NY,914,US
+10553,Mount Vernon,NY,914,US
+10557,Mount Vernon,NY,914,US
+10558,Mount Vernon,NY,914,US
+10560,North Salem,NY,"20,38,45,914",US
+10562,Ossining,NY,914,US
+10566,Peekskill,NY,"8,45,914",US
+10567,Cortlandt Manor,NY,"9,14,845",US
+10570,Pleasantville,NY,"9,14,203",US
+10571,Pleasantville,NY,914,US
+10572,Pleasantville,NY,914,US
+10573,Port Chester,NY,914,US
+10576,Pound Ridge,NY,914,US
+10577,Purchase,NY,914,US
+10578,Purdys,NY,"9,14,845",US
+10579,Putnam Valley,NY,"9,14,845",US
+10580,Rye,NY,914,US
+10583,Scarsdale,NY,914,US
+10587,Shenorock,NY,914,US
+10588,Shrub Oak,NY,"9,14,845",US
+10589,Somers,NY,"9,14,845",US
+10590,South Salem,NY,914,US
+10591,Tarrytown,NY,914,US
+10594,Thornwood,NY,"9,14,203",US
+10595,Valhalla,NY,"9,14,203",US
+10596,Verplanck,NY,914,US
+10597,Waccabuc,NY,914,US
+10598,Yorktown Heights,NY,914,US
+10601,White Plains,NY,"9,14,203",US
+10602,White Plains,NY,914,US
+10603,White Plains,NY,914,US
+10604,West Harrison,NY,"91,42,03,845",US
+10605,White Plains,NY,"9,14,203",US
+10606,White Plains,NY,"9,14,845",US
+10607,White Plains,NY,"9,14,203",US
+10610,White Plains,NY,914,US
+10701,Yonkers,NY,914,US
+10702,Yonkers,NY,914,US
+10703,Yonkers,NY,"91,43,47,845",US
+10704,Yonkers,NY,"9,14,917",US
+10705,Yonkers,NY,914,US
+10706,Hastings On Hudson,NY,914,US
+10707,Tuckahoe,NY,914,US
+10708,Bronxville,NY,914,US
+10709,Eastchester,NY,914,US
+10710,Yonkers,NY,"9,14,845",US
+10801,New Rochelle,NY,"5,16,914",US
+10802,New Rochelle,NY,914,US
+10803,Pelham,NY,914,US
+10804,New Rochelle,NY,914,US
+10805,New Rochelle,NY,"8,45,914",US
+10901,Suffern,NY,"84,59,14,917",US
+10910,Arden,NY,845,US
+10911,Bear Mountain,NY,845,US
+10912,Bellvale,NY,845,US
+10913,Blauvelt,NY,845,US
+10914,Blooming Grove,NY,845,US
+10915,Bullville,NY,845,US
+10916,Campbell Hall,NY,845,US
+10917,Central Valley,NY,845,US
+10918,Chester,NY,845,US
+10919,Circleville,NY,845,US
+10920,Congers,NY,845,US
+10921,Florida,NY,845,US
+10922,Fort Montgomery,NY,845,US
+10923,Garnerville,NY,"9,14,845",US
+10924,Goshen,NY,845,US
+10925,Greenwood Lake,NY,845,US
+10926,Harriman,NY,845,US
+10927,Haverstraw,NY,"5,16,845",US
+10928,Highland Falls,NY,845,US
+10930,Highland Mills,NY,845,US
+10931,Hillburn,NY,"9,14,845",US
+10932,Howells,NY,845,US
+10933,Johnson,NY,845,US
+10940,Middletown,NY,"8,45,914",US
+10941,Middletown,NY,"8,45,914",US
+10943,Middletown,NY,845,US
+10949,Monroe,NY,845,US
+10950,Monroe,NY,"9,14,845",US
+10952,Monsey,NY,"9,14,845",US
+10953,Mountainville,NY,845,US
+10954,Nanuet,NY,"9,14,845",US
+10956,New City,NY,"84,59,14,201",US
+10958,New Hampton,NY,"8,45,914",US
+10959,New Milford,NY,845,US
+10960,Nyack,NY,"8,45,914",US
+10962,Orangeburg,NY,845,US
+10963,Otisville,NY,845,US
+10964,Palisades,NY,845,US
+10965,Pearl River,NY,"8,45,914",US
+10968,Piermont,NY,"8,45,914",US
+10969,Pine Island,NY,845,US
+10970,Pomona,NY,845,US
+10973,Slate Hill,NY,"9,14,845",US
+10974,Sloatsburg,NY,845,US
+10975,Southfields,NY,845,US
+10976,Sparkill,NY,845,US
+10977,Spring Valley,NY,"84,59,14,917",US
+10979,Sterling Forest,NY,845,US
+10980,Stony Point,NY,845,US
+10981,Sugar Loaf,NY,845,US
+10982,Tallman,NY,845,US
+10983,Tappan,NY,"20,18,45,212",US
+10984,Thiells,NY,845,US
+10985,Thompson Ridge,NY,845,US
+10986,Tomkins Cove,NY,845,US
+10987,Tuxedo Park,NY,845,US
+10988,Unionville,NY,845,US
+10989,Valley Cottage,NY,845,US
+10990,Warwick,NY,"9,14,845",US
+10992,Washingtonville,NY,845,US
+10993,West Haverstraw,NY,845,US
+10994,West Nyack,NY,"91,78,45,914",US
+10996,West Point,NY,"9,14,845",US
+10997,West Point,NY,845,US
+10998,Westtown,NY,845,US
+11001,Floral Park,NY,"5,16,718",US
+11002,Floral Park,NY,212,US
+11003,Elmont,NY,"51,69,17,718",US
+11004,Glen Oaks,NY,"63,17,18,516",US
+11005,Floral Park,NY,718,US
+11010,Franklin Square,NY,516,US
+11020,Great Neck,NY,516,US
+11021,Great Neck,NY,"3,47,51,66,31,718",US
+11022,Great Neck,NY,516,US
+11023,Great Neck,NY,"5,16,718",US
+11024,Great Neck,NY,516,US
+11025,Great Neck,NY,516,US
+11026,Great Neck,NY,516,US
+11027,Great Neck,NY,516,US
+11030,Manhasset,NY,"5,16,212",US
+11040,New Hyde Park,NY,"51,69,17,718",US
+11041,New Hyde Park,NY,516,US
+11042,New Hyde Park,NY,516,US
+11043,New Hyde Park,NY,516,US
+11044,New Hyde Park,NY,516,US
+11050,Port Washington,NY,516,US
+11051,Port Washington,NY,516,US
+11052,Port Washington,NY,516,US
+11053,Port Washington,NY,516,US
+11054,Port Washington,NY,516,US
+11055,Port Washington,NY,516,US
+11096,Inwood,NY,"51,67,18,347",US
+11099,New Hyde Park,NY,516,US
+11101,Long Island City,NY,"91,77,18,212",US
+11102,Astoria,NY,"9,17,718",US
+11103,Astoria,NY,"9,17,718",US
+11104,Sunnyside,NY,718,US
+11105,Astoria,NY,"7,18,914",US
+11106,Astoria,NY,"7,18,917",US
+11109,Long Island City,NY,"7,18,347",US
+11120,Long Island City,NY,718,US
+11201,Brooklyn,NY,"7,18,91,73,47,212",US
+11202,Brooklyn,NY,"7,18,347",US
+11203,Brooklyn,NY,"71,89,17,212",US
+11204,Brooklyn,NY,718,US
+11205,Brooklyn,NY,"6,46,718",US
+11206,Brooklyn,NY,"91,77,18,347",US
+11207,Brooklyn,NY,718,US
+11208,Brooklyn,NY,718,US
+11209,Brooklyn,NY,"91,77,18,646",US
+11210,Brooklyn,NY,"7,18,347",US
+11211,Brooklyn,NY,"51,67,18,91,76,46,347",US
+11212,Brooklyn,NY,718,US
+11213,Brooklyn,NY,"91,77,18,347",US
+11214,Brooklyn,NY,"9,17,718",US
+11215,Brooklyn,NY,"64,67,18,917",US
+11216,Brooklyn,NY,"9,17,71,82,12,347",US
+11217,Brooklyn,NY,"7,18,917",US
+11218,Brooklyn,NY,"91,77,18,212",US
+11219,Brooklyn,NY,718,US
+11220,Brooklyn,NY,718,US
+11221,Brooklyn,NY,"71,89,17,347",US
+11222,Brooklyn,NY,"34,77,18,917",US
+11223,Brooklyn,NY,"71,89,17,212",US
+11224,Brooklyn,NY,718,US
+11225,Brooklyn,NY,718,US
+11226,Brooklyn,NY,"91,77,18,212",US
+11228,Brooklyn,NY,718,US
+11229,Brooklyn,NY,"6,31,71,89,17,347",US
+11230,Brooklyn,NY,"7,18,917",US
+11231,Brooklyn,NY,"71,82,12,917",US
+11232,Brooklyn,NY,"9,17,718",US
+11233,Brooklyn,NY,718,US
+11234,Brooklyn,NY,"7,18,91,72,12,347",US
+11235,Brooklyn,NY,"71,89,17,212",US
+11236,Brooklyn,NY,"9,17,718",US
+11237,Brooklyn,NY,"3,47,718",US
+11238,Brooklyn,NY,"71,83,47,917",US
+11239,Brooklyn,NY,718,US
+11240,Brooklyn,NY,212,US
+11241,Brooklyn,NY,347,US
+11242,Brooklyn,NY,"7,18,347",US
+11243,Brooklyn,NY,212,US
+11244,Brooklyn,NY,212,US
+11245,Brooklyn,NY,212,US
+11247,Brooklyn,NY,212,US
+11248,Brooklyn,NY,212,US
+11249,Brooklyn,NY,212,US
+11251,Brooklyn,NY,212,US
+11252,Brooklyn,NY,212,US
+11254,Brooklyn,NY,212,US
+11255,Brooklyn,NY,212,US
+11256,Brooklyn,NY,212,US
+11351,Flushing,NY,"34,77,18,917",US
+11352,Flushing,NY,212,US
+11354,Flushing,NY,"91,77,18,347",US
+11355,Flushing,NY,"71,83,47,917",US
+11356,College Point,NY,718,US
+11357,Whitestone,NY,"71,89,17,347",US
+11358,Flushing,NY,"91,77,18,212",US
+11359,Bayside,NY,718,US
+11360,Bayside,NY,"3,47,718",US
+11361,Bayside,NY,"7,18,917",US
+11362,Little Neck,NY,718,US
+11363,Little Neck,NY,"71,83,47,917",US
+11364,Oakland Gardens,NY,"71,89,17,347",US
+11365,Fresh Meadows,NY,"7,18,917",US
+11366,Fresh Meadows,NY,718,US
+11367,Flushing,NY,"7,18,917",US
+11368,Corona,NY,"9,17,718",US
+11369,East Elmhurst,NY,"9,17,718",US
+11370,East Elmhurst,NY,"9,14,71,83,47,917",US
+11371,Flushing,NY,914,US
+11372,Jackson Heights,NY,"71,83,47,917",US
+11373,Elmhurst,NY,"6,46,91,77,18,347",US
+11374,Rego Park,NY,"91,77,18,347",US
+11375,Forest Hills,NY,"6,46,71,89,17,212",US
+11377,Woodside,NY,"7,18,347",US
+11378,Maspeth,NY,"9,17,718",US
+11379,Middle Village,NY,718,US
+11380,Elmhurst,NY,212,US
+11381,Flushing,NY,212,US
+11385,Ridgewood,NY,"7,18,51,69,17,212",US
+11386,Ridgewood,NY,212,US
+11390,Flushing,NY,212,US
+11405,Jamaica,NY,212,US
+11411,Cambria Heights,NY,"91,77,18,347",US
+11412,Saint Albans,NY,"71,86,46,347",US
+11413,Springfield Gardens,NY,"9,17,718",US
+11414,Howard Beach,NY,"91,77,18,516",US
+11415,Kew Gardens,NY,718,US
+11416,Ozone Park,NY,718,US
+11417,Ozone Park,NY,718,US
+11418,Richmond Hill,NY,"71,89,17,347",US
+11419,South Richmond Hill,NY,"91,77,18,347",US
+11420,South Ozone Park,NY,"7,18,347",US
+11421,Woodhaven,NY,"51,67,18,917",US
+11422,Rosedale,NY,"9,17,718",US
+11423,Hollis,NY,718,US
+11424,Jamaica,NY,718,US
+11425,Jamaica,NY,212,US
+11426,Bellerose,NY,"91,77,18,516",US
+11427,Queens Village,NY,718,US
+11428,Queens Village,NY,"34,75,16,718",US
+11429,Queens Village,NY,"71,83,47,917",US
+11430,Jamaica,NY,718,US
+11431,Jamaica,NY,212,US
+11432,Jamaica,NY,"71,85,16,347",US
+11433,Jamaica,NY,718,US
+11434,Jamaica,NY,"6,46,91,77,18,347",US
+11435,Jamaica,NY,"71,89,17,347",US
+11436,Jamaica,NY,"7,18,917",US
+11439,Jamaica,NY,212,US
+11451,Jamaica,NY,212,US
+11499,Jamaica,NY,212,US
+11501,Mineola,NY,516,US
+11507,Albertson,NY,516,US
+11509,Atlantic Beach,NY,516,US
+11510,Baldwin,NY,516,US
+11514,Carle Place,NY,"51,67,18,631",US
+11516,Cedarhurst,NY,"5,16,718",US
+11518,East Rockaway,NY,516,US
+11520,Freeport,NY,"51,69,17,631",US
+11530,Garden City,NY,"51,66,31,718",US
+11531,Garden City,NY,516,US
+11535,Garden City,NY,516,US
+11536,Garden City,NY,516,US
+11542,Glen Cove,NY,516,US
+11545,Glen Head,NY,"5,16,212",US
+11547,Glenwood Landing,NY,516,US
+11548,Greenvale,NY,516,US
+11549,Hempstead,NY,516,US
+11550,Hempstead,NY,"5,16,63,12,12,718",US
+11551,Hempstead,NY,516,US
+11552,West Hempstead,NY,"6,31,516",US
+11553,Uniondale,NY,516,US
+11554,East Meadow,NY,"5,16,716",US
+11555,Uniondale,NY,516,US
+11556,Uniondale,NY,516,US
+11557,Hewlett,NY,516,US
+11558,Island Park,NY,516,US
+11559,Lawrence,NY,"5,16,718",US
+11560,Locust Valley,NY,516,US
+11561,Long Beach,NY,"5,16,917",US
+11563,Lynbrook,NY,516,US
+11565,Malverne,NY,516,US
+11566,Merrick,NY,"6,31,516",US
+11568,Old Westbury,NY,"51,66,31,718",US
+11569,Point Lookout,NY,516,US
+11570,Rockville Centre,NY,516,US
+11571,Rockville Centre,NY,516,US
+11572,Oceanside,NY,"5,16,212",US
+11575,Roosevelt,NY,"63,19,17,516",US
+11576,Roslyn,NY,516,US
+11577,Roslyn Heights,NY,516,US
+11579,Sea Cliff,NY,516,US
+11580,Valley Stream,NY,"34,75,16,212",US
+11581,Valley Stream,NY,516,US
+11582,Valley Stream,NY,516,US
+11590,Westbury,NY,"51,66,31,718",US
+11592,Rockville Center,NY,516,US
+11594,Westbury,NY,516,US
+11595,Westbury,NY,516,US
+11596,Williston Park,NY,516,US
+11597,Westbury,NY,516,US
+11598,Woodmere,NY,516,US
+11599,Garden City,NY,516,US
+11690,Far Rockaway,NY,718,US
+11691,Far Rockaway,NY,718,US
+11692,Arverne,NY,"7,18,347",US
+11693,Far Rockaway,NY,718,US
+11694,Rockaway Park,NY,718,US
+11695,Far Rockaway,NY,212,US
+11697,Breezy Point,NY,718,US
+11701,Amityville,NY,"6,31,516",US
+11702,Babylon,NY,"51,66,31,212",US
+11703,North Babylon,NY,"6,31,516",US
+11704,West Babylon,NY,"6,31,516",US
+11705,Bayport,NY,631,US
+11706,Bay Shore,NY,"5,16,631",US
+11707,West Babylon,NY,631,US
+11708,Amityville,NY,631,US
+11709,Bayville,NY,516,US
+11710,Bellmore,NY,"9,17,516",US
+11713,Bellport,NY,"5,16,631",US
+11714,Bethpage,NY,516,US
+11715,Blue Point,NY,631,US
+11716,Bohemia,NY,631,US
+11717,Brentwood,NY,"63,12,12,516",US
+11718,Brightwaters,NY,631,US
+11719,Brookhaven,NY,631,US
+11720,Centereach,NY,"5,16,631",US
+11721,Centerport,NY,631,US
+11722,Central Islip,NY,"5,16,631",US
+11724,Cold Spring Harbor,NY,"6,31,516",US
+11725,Commack,NY,"6,31,516",US
+11726,Copiague,NY,631,US
+11727,Coram,NY,631,US
+11729,Deer Park,NY,"6,31,516",US
+11730,East Islip,NY,"5,16,631",US
+11731,East Northport,NY,"6,31,516",US
+11732,East Norwich,NY,516,US
+11733,East Setauket,NY,"5,16,631",US
+11735,Farmingdale,NY,"6,31,516",US
+11736,Farmingdale,NY,516,US
+11737,Farmingdale,NY,516,US
+11738,Farmingville,NY,631,US
+11739,Great River,NY,"5,16,631",US
+11740,Greenlawn,NY,"5,16,631",US
+11741,Holbrook,NY,"6,31,516",US
+11742,Holtsville,NY,631,US
+11743,Huntington,NY,"5,16,631",US
+11746,Huntington Station,NY,"51,66,31,212",US
+11747,Melville,NY,"5,16,631",US
+11749,Islandia,NY,"6,31,516",US
+11750,Huntington Station,NY,631,US
+11751,Islip,NY,"5,16,631",US
+11752,Islip Terrace,NY,631,US
+11753,Jericho,NY,516,US
+11754,Kings Park,NY,631,US
+11755,Lake Grove,NY,"6,31,516",US
+11756,Levittown,NY,"63,15,16,917",US
+11757,Lindenhurst,NY,"5,16,631",US
+11758,Massapequa,NY,"5,16,631",US
+11760,Islandia,NY,631,US
+11762,Massapequa Park,NY,516,US
+11763,Medford,NY,631,US
+11764,Miller Place,NY,631,US
+11765,Mill Neck,NY,516,US
+11766,Mount Sinai,NY,"5,16,631",US
+11767,Nesconset,NY,631,US
+11768,Northport,NY,631,US
+11769,Oakdale,NY,"5,16,631",US
+11770,Ocean Beach,NY,631,US
+11771,Oyster Bay,NY,"6,31,516",US
+11772,Patchogue,NY,"63,19,17,516",US
+11773,Syosset,NY,516,US
+11774,Farmingdale,NY,516,US
+11775,Melville,NY,631,US
+11776,Port Jefferson Station,NY,"5,16,631",US
+11777,Port Jefferson,NY,"51,66,31,917",US
+11778,Rocky Point,NY,631,US
+11779,Ronkonkoma,NY,"5,16,631",US
+11780,Saint James,NY,631,US
+11782,Sayville,NY,"6,31,516",US
+11783,Seaford,NY,"5,16,631",US
+11784,Selden,NY,631,US
+11786,Shoreham,NY,"5,16,631",US
+11787,Smithtown,NY,631,US
+11788,Hauppauge,NY,"5,16,631",US
+11789,Sound Beach,NY,631,US
+11790,Stony Brook,NY,631,US
+11791,Syosset,NY,"51,68,45,631",US
+11792,Wading River,NY,"5,16,631",US
+11793,Wantagh,NY,"6,31,516",US
+11794,Stony Brook,NY,631,US
+11795,West Islip,NY,631,US
+11796,West Sayville,NY,631,US
+11797,Woodbury,NY,"51,62,03,631",US
+11798,Wyandanch,NY,631,US
+11801,Hicksville,NY,516,US
+11802,Hicksville,NY,516,US
+11803,Plainview,NY,"5,16,917",US
+11804,Old Bethpage,NY,516,US
+11815,Hicksville,NY,516,US
+11819,Hicksville,NY,516,US
+11853,Jericho,NY,516,US
+11854,Hicksville,NY,516,US
+11855,Hicksville,NY,516,US
+11901,Riverhead,NY,"6,31,516",US
+11930,Amagansett,NY,631,US
+11931,Aquebogue,NY,631,US
+11932,Bridgehampton,NY,"6,31,516",US
+11933,Calverton,NY,631,US
+11934,Center Moriches,NY,631,US
+11935,Cutchogue,NY,631,US
+11937,East Hampton,NY,"6,31,516",US
+11939,East Marion,NY,"9,17,631",US
+11940,East Moriches,NY,631,US
+11941,Eastport,NY,631,US
+11942,East Quogue,NY,631,US
+11944,Greenport,NY,"6,31,516",US
+11946,Hampton Bays,NY,"5,16,631",US
+11947,Jamesport,NY,631,US
+11948,Laurel,NY,631,US
+11949,Manorville,NY,631,US
+11950,Mastic,NY,"5,16,631",US
+11951,Mastic Beach,NY,631,US
+11952,Mattituck,NY,631,US
+11953,Middle Island,NY,631,US
+11954,Montauk,NY,"5,16,631",US
+11955,Moriches,NY,631,US
+11956,New Suffolk,NY,631,US
+11957,Orient,NY,631,US
+11958,Peconic,NY,631,US
+11959,Quogue,NY,631,US
+11960,Remsenburg,NY,631,US
+11961,Ridge,NY,"5,16,631",US
+11962,Sagaponack,NY,631,US
+11963,Sag Harbor,NY,631,US
+11964,Shelter Island,NY,631,US
+11965,Shelter Island Heights,NY,631,US
+11967,Shirley,NY,"6,31,516",US
+11968,Southampton,NY,"5,16,631",US
+11969,Southampton,NY,631,US
+11970,South Jamesport,NY,631,US
+11971,Southold,NY,631,US
+11972,Speonk,NY,631,US
+11973,Upton,NY,631,US
+11975,Wainscott,NY,631,US
+11976,Water Mill,NY,631,US
+11977,Westhampton,NY,631,US
+11978,Westhampton Beach,NY,631,US
+11980,Yaphank,NY,631,US
+12007,Alcove,NY,518,US
+12008,Alplaus,NY,518,US
+12009,Altamont,NY,518,US
+12010,Amsterdam,NY,518,US
+12015,Athens,NY,518,US
+12016,Auriesville,NY,518,US
+12017,Austerlitz,NY,518,US
+12018,Averill Park,NY,518,US
+12019,Ballston Lake,NY,518,US
+12020,Ballston Spa,NY,518,US
+12022,Berlin,NY,518,US
+12023,Berne,NY,518,US
+12024,Brainard,NY,518,US
+12025,Broadalbin,NY,518,US
+12027,Burnt Hills,NY,518,US
+12028,Buskirk,NY,518,US
+12029,Canaan,NY,518,US
+12031,Carlisle,NY,518,US
+12032,Caroga Lake,NY,518,US
+12033,Castleton On Hudson,NY,518,US
+12035,Central Bridge,NY,518,US
+12036,Charlotteville,NY,607,US
+12037,Chatham,NY,518,US
+12040,Cherry Plain,NY,518,US
+12041,Clarksville,NY,518,US
+12042,Climax,NY,518,US
+12043,Cobleskill,NY,518,US
+12045,Coeymans,NY,518,US
+12046,Coeymans Hollow,NY,518,US
+12047,Cohoes,NY,518,US
+12050,Columbiaville,NY,518,US
+12051,Coxsackie,NY,518,US
+12052,Cropseyville,NY,518,US
+12053,Delanson,NY,518,US
+12054,Delmar,NY,518,US
+12055,Dormansville,NY,518,US
+12056,Duanesburg,NY,518,US
+12057,Eagle Bridge,NY,518,US
+12058,Earlton,NY,518,US
+12059,East Berne,NY,518,US
+12060,East Chatham,NY,518,US
+12061,East Greenbush,NY,518,US
+12062,East Nassau,NY,518,US
+12063,East Schodack,NY,518,US
+12064,East Worcester,NY,607,US
+12065,Clifton Park,NY,518,US
+12066,Esperance,NY,518,US
+12067,Feura Bush,NY,518,US
+12068,Fonda,NY,518,US
+12069,Fort Hunter,NY,518,US
+12070,Fort Johnson,NY,518,US
+12071,Fultonham,NY,518,US
+12072,Fultonville,NY,518,US
+12073,Gallupville,NY,518,US
+12074,Galway,NY,518,US
+12075,Ghent,NY,518,US
+12076,Gilboa,NY,"6,07,518",US
+12077,Glenmont,NY,518,US
+12078,Gloversville,NY,518,US
+12082,Grafton,NY,518,US
+12083,Greenville,NY,518,US
+12084,Guilderland,NY,518,US
+12085,Guilderland Center,NY,518,US
+12086,Hagaman,NY,518,US
+12087,Hannacroix,NY,518,US
+12089,Hoosick,NY,518,US
+12090,Hoosick Falls,NY,518,US
+12092,Howes Cave,NY,518,US
+12093,Jefferson,NY,607,US
+12094,Johnsonville,NY,518,US
+12095,Johnstown,NY,518,US
+12106,Kinderhook,NY,518,US
+12107,Knox,NY,518,US
+12108,Lake Pleasant,NY,518,US
+12110,Latham,NY,518,US
+12115,Malden Bridge,NY,518,US
+12116,Maryland,NY,607,US
+12117,Mayfield,NY,518,US
+12118,Mechanicville,NY,518,US
+12120,Medusa,NY,518,US
+12121,Melrose,NY,518,US
+12122,Middleburgh,NY,518,US
+12123,Nassau,NY,518,US
+12124,New Baltimore,NY,518,US
+12125,New Lebanon,NY,518,US
+12128,Newtonville,NY,518,US
+12130,Niverville,NY,518,US
+12131,North Blenheim,NY,518,US
+12132,North Chatham,NY,518,US
+12133,North Hoosick,NY,518,US
+12134,Northville,NY,518,US
+12136,Old Chatham,NY,518,US
+12137,Pattersonville,NY,518,US
+12138,Petersburg,NY,518,US
+12139,Piseco,NY,518,US
+12140,Poestenkill,NY,518,US
+12141,Quaker Street,NY,518,US
+12143,Ravena,NY,518,US
+12144,Rensselaer,NY,518,US
+12147,Rensselaerville,NY,518,US
+12148,Rexford,NY,518,US
+12149,Richmondville,NY,518,US
+12150,Rotterdam Junction,NY,518,US
+12151,Round Lake,NY,518,US
+12153,Sand Lake,NY,518,US
+12154,Schaghticoke,NY,518,US
+12155,Schenevus,NY,607,US
+12156,Schodack Landing,NY,518,US
+12157,Schoharie,NY,518,US
+12158,Selkirk,NY,518,US
+12159,Slingerlands,NY,518,US
+12160,Sloansville,NY,518,US
+12161,South Bethlehem,NY,518,US
+12164,Speculator,NY,518,US
+12165,Spencertown,NY,518,US
+12166,Sprakers,NY,518,US
+12167,Stamford,NY,607,US
+12168,Stephentown,NY,518,US
+12169,Stephentown,NY,518,US
+12170,Stillwater,NY,518,US
+12172,Stottville,NY,518,US
+12173,Stuyvesant,NY,518,US
+12174,Stuyvesant Falls,NY,518,US
+12175,Summit,NY,518,US
+12176,Surprise,NY,518,US
+12177,Tribes Hill,NY,518,US
+12180,Troy,NY,"5,18,212",US
+12181,Troy,NY,518,US
+12182,Troy,NY,518,US
+12183,Troy,NY,518,US
+12184,Valatie,NY,518,US
+12185,Valley Falls,NY,518,US
+12186,Voorheesville,NY,518,US
+12187,Warnerville,NY,518,US
+12188,Waterford,NY,518,US
+12189,Watervliet,NY,518,US
+12190,Wells,NY,518,US
+12192,West Coxsackie,NY,518,US
+12193,Westerlo,NY,518,US
+12194,West Fulton,NY,518,US
+12195,West Lebanon,NY,518,US
+12196,West Sand Lake,NY,518,US
+12197,Worcester,NY,"6,07,518",US
+12198,Wynantskill,NY,518,US
+12201,Albany,NY,518,US
+12202,Albany,NY,518,US
+12203,Albany,NY,518,US
+12204,Albany,NY,518,US
+12205,Albany,NY,518,US
+12206,Albany,NY,518,US
+12207,Albany,NY,518,US
+12208,Albany,NY,518,US
+12209,Albany,NY,518,US
+12210,Albany,NY,518,US
+12211,Albany,NY,"5,18,212",US
+12212,Albany,NY,518,US
+12214,Albany,NY,518,US
+12220,Albany,NY,518,US
+12222,Albany,NY,518,US
+12223,Albany,NY,518,US
+12224,Albany,NY,518,US
+12225,Albany,NY,518,US
+12226,Albany,NY,518,US
+12227,Albany,NY,518,US
+12228,Albany,NY,518,US
+12229,Albany,NY,518,US
+12230,Albany,NY,518,US
+12231,Albany,NY,518,US
+12232,Albany,NY,518,US
+12233,Albany,NY,518,US
+12234,Albany,NY,518,US
+12235,Albany,NY,518,US
+12236,Albany,NY,518,US
+12237,Albany,NY,518,US
+12238,Albany,NY,518,US
+12239,Albany,NY,518,US
+12240,Albany,NY,518,US
+12241,Albany,NY,518,US
+12242,Albany,NY,518,US
+12243,Albany,NY,518,US
+12244,Albany,NY,518,US
+12245,Albany,NY,518,US
+12246,Albany,NY,518,US
+12247,Albany,NY,518,US
+12248,Albany,NY,518,US
+12249,Albany,NY,518,US
+12250,Albany,NY,518,US
+12252,Albany,NY,518,US
+12255,Albany,NY,518,US
+12256,Albany,NY,518,US
+12257,Albany,NY,518,US
+12260,Albany,NY,518,US
+12261,Albany,NY,518,US
+12288,Albany,NY,518,US
+12301,Schenectady,NY,518,US
+12302,Schenectady,NY,518,US
+12303,Schenectady,NY,518,US
+12304,Schenectady,NY,518,US
+12305,Schenectady,NY,518,US
+12306,Schenectady,NY,518,US
+12307,Schenectady,NY,518,US
+12308,Schenectady,NY,518,US
+12309,Schenectady,NY,518,US
+12325,Schenectady,NY,518,US
+12345,Schenectady,NY,518,US
+12401,Kingston,NY,"9,14,845",US
+12402,Kingston,NY,845,US
+12404,Accord,NY,845,US
+12405,Acra,NY,518,US
+12406,Arkville,NY,845,US
+12407,Ashland,NY,518,US
+12409,Bearsville,NY,845,US
+12410,Big Indian,NY,845,US
+12411,Bloomington,NY,"2,01,845",US
+12412,Boiceville,NY,845,US
+12413,Cairo,NY,518,US
+12414,Catskill,NY,"8,45,518",US
+12416,Chichester,NY,845,US
+12417,Connelly,NY,845,US
+12418,Cornwallville,NY,518,US
+12419,Cottekill,NY,845,US
+12420,Cragsmoor,NY,845,US
+12421,Denver,NY,607,US
+12422,Durham,NY,518,US
+12423,East Durham,NY,518,US
+12424,East Jewett,NY,518,US
+12427,Elka Park,NY,518,US
+12428,Ellenville,NY,845,US
+12429,Esopus,NY,845,US
+12430,Fleischmanns,NY,845,US
+12431,Freehold,NY,518,US
+12432,Glasco,NY,845,US
+12433,Glenford,NY,845,US
+12434,Grand Gorge,NY,607,US
+12435,Greenfield Park,NY,845,US
+12436,Haines Falls,NY,518,US
+12438,Halcottsville,NY,607,US
+12439,Hensonville,NY,518,US
+12440,High Falls,NY,845,US
+12441,Highmount,NY,845,US
+12442,Hunter,NY,518,US
+12443,Hurley,NY,845,US
+12444,Jewett,NY,518,US
+12446,Kerhonkson,NY,845,US
+12448,Lake Hill,NY,845,US
+12449,Lake Katrine,NY,845,US
+12450,Lanesville,NY,845,US
+12451,Leeds,NY,518,US
+12452,Lexington,NY,518,US
+12453,Malden On Hudson,NY,845,US
+12454,Maplecrest,NY,518,US
+12455,Margaretville,NY,845,US
+12456,Mount Marion,NY,845,US
+12457,Mount Tremper,NY,845,US
+12458,Napanoch,NY,845,US
+12459,New Kingston,NY,,US
+12460,Oak Hill,NY,518,US
+12461,Olivebridge,NY,845,US
+12463,Palenville,NY,518,US
+12464,Phoenicia,NY,845,US
+12465,Pine Hill,NY,845,US
+12466,Port Ewen,NY,845,US
+12468,Prattsville,NY,"5,18,607",US
+12469,Preston Hollow,NY,518,US
+12470,Purling,NY,518,US
+12471,Rifton,NY,"9,14,845",US
+12472,Rosendale,NY,845,US
+12473,Round Top,NY,518,US
+12474,Roxbury,NY,607,US
+12475,Ruby,NY,845,US
+12477,Saugerties,NY,"8,45,518",US
+12480,Shandaken,NY,845,US
+12481,Shokan,NY,845,US
+12482,South Cairo,NY,518,US
+12483,Spring Glen,NY,845,US
+12484,Stone Ridge,NY,845,US
+12485,Tannersville,NY,518,US
+12486,Tillson,NY,"9,14,845",US
+12487,Ulster Park,NY,845,US
+12489,Wawarsing,NY,845,US
+12490,West Camp,NY,845,US
+12491,West Hurley,NY,845,US
+12492,West Kill,NY,518,US
+12493,West Park,NY,845,US
+12494,West Shokan,NY,845,US
+12495,Willow,NY,845,US
+12496,Windham,NY,518,US
+12498,Woodstock,NY,845,US
+12501,Amenia,NY,845,US
+12502,Ancram,NY,518,US
+12503,Ancramdale,NY,518,US
+12504,Annandale On Hudson,NY,845,US
+12506,Bangall,NY,,US
+12507,Barrytown,NY,845,US
+12508,Beacon,NY,"8,45,914",US
+12510,Billings,NY,,US
+12511,Castle Point,NY,,US
+12512,Chelsea,NY,,US
+12513,Claverack,NY,518,US
+12514,Clinton Corners,NY,845,US
+12515,Clintondale,NY,"6,31,845",US
+12516,Copake,NY,518,US
+12517,Copake Falls,NY,518,US
+12518,Cornwall,NY,845,US
+12520,Cornwall On Hudson,NY,845,US
+12521,Craryville,NY,518,US
+12522,Dover Plains,NY,"8,45,914",US
+12523,Elizaville,NY,"8,45,518",US
+12524,Fishkill,NY,"8,45,914",US
+12525,Gardiner,NY,845,US
+12526,Germantown,NY,"5,18,845",US
+12527,Glenham,NY,845,US
+12528,Highland,NY,"8,45,914",US
+12529,Hillsdale,NY,518,US
+12530,Hollowville,NY,518,US
+12531,Holmes,NY,845,US
+12533,Hopewell Junction,NY,845,US
+12534,Hudson,NY,518,US
+12537,Hughsonville,NY,,US
+12538,Hyde Park,NY,845,US
+12540,Lagrangeville,NY,"8,45,914",US
+12541,Livingston,NY,518,US
+12542,Marlboro,NY,845,US
+12543,Maybrook,NY,845,US
+12544,Mellenville,NY,518,US
+12545,Millbrook,NY,845,US
+12546,Millerton,NY,"5,18,845",US
+12547,Milton,NY,845,US
+12548,Modena,NY,845,US
+12549,Montgomery,NY,845,US
+12550,Newburgh,NY,"8,45,914",US
+12551,Newburgh,NY,845,US
+12552,Newburgh,NY,845,US
+12553,New Windsor,NY,"8,45,914",US
+12555,Newburgh,NY,845,US
+12561,New Paltz,NY,"8,45,914",US
+12563,Patterson,NY,"8,45,203",US
+12564,Pawling,NY,"9,14,845",US
+12565,Philmont,NY,518,US
+12566,Pine Bush,NY,"8,45,914",US
+12567,Pine Plains,NY,518,US
+12568,Plattekill,NY,845,US
+12569,Pleasant Valley,NY,845,US
+12570,Poughquag,NY,845,US
+12571,Red Hook,NY,"8,45,914",US
+12572,Rhinebeck,NY,845,US
+12574,Rhinecliff,NY,845,US
+12575,Rock Tavern,NY,845,US
+12577,Salisbury Mills,NY,845,US
+12578,Salt Point,NY,845,US
+12580,Staatsburg,NY,"8,45,914",US
+12581,Stanfordville,NY,845,US
+12582,Stormville,NY,845,US
+12583,Tivoli,NY,845,US
+12584,Vails Gate,NY,845,US
+12585,Verbank,NY,845,US
+12586,Walden,NY,"8,45,914",US
+12588,Walker Valley,NY,845,US
+12589,Wallkill,NY,845,US
+12590,Wappingers Falls,NY,"8,45,914",US
+12592,Wassaic,NY,845,US
+12593,West Copake,NY,518,US
+12594,Wingdale,NY,845,US
+12601,Poughkeepsie,NY,"8,45,914",US
+12602,Poughkeepsie,NY,845,US
+12603,Poughkeepsie,NY,"8,45,914",US
+12604,Poughkeepsie,NY,845,US
+12701,Monticello,NY,845,US
+12719,Barryville,NY,845,US
+12720,Bethel,NY,845,US
+12721,Bloomingburg,NY,845,US
+12722,Burlingham,NY,845,US
+12723,Callicoon,NY,845,US
+12724,Callicoon Center,NY,845,US
+12725,Claryville,NY,845,US
+12726,Cochecton,NY,845,US
+12727,Cochecton Center,NY,845,US
+12729,Cuddebackville,NY,845,US
+12732,Eldred,NY,845,US
+12733,Fallsburg,NY,845,US
+12734,Ferndale,NY,845,US
+12736,Fremont Center,NY,845,US
+12737,Glen Spey,NY,845,US
+12738,Glen Wild,NY,845,US
+12740,Grahamsville,NY,845,US
+12741,Hankins,NY,845,US
+12742,Harris,NY,845,US
+12743,Highland Lake,NY,845,US
+12745,Hortonville,NY,845,US
+12746,Huguenot,NY,845,US
+12747,Hurleyville,NY,845,US
+12748,Jeffersonville,NY,845,US
+12749,Kauneonga Lake,NY,845,US
+12750,Kenoza Lake,NY,845,US
+12751,Kiamesha Lake,NY,845,US
+12752,Lake Huntington,NY,845,US
+12754,Liberty,NY,845,US
+12758,Livingston Manor,NY,845,US
+12759,Loch Sheldrake,NY,845,US
+12760,Long Eddy,NY,845,US
+12762,Mongaup Valley,NY,845,US
+12763,Mountain Dale,NY,845,US
+12764,Narrowsburg,NY,845,US
+12765,Neversink,NY,845,US
+12766,North Branch,NY,845,US
+12767,Obernburg,NY,845,US
+12768,Parksville,NY,845,US
+12769,Phillipsport,NY,845,US
+12770,Pond Eddy,NY,845,US
+12771,Port Jervis,NY,845,US
+12775,Rock Hill,NY,845,US
+12776,Roscoe,NY,"6,07,845",US
+12777,Forestburgh,NY,"8,45,914",US
+12778,Smallwood,NY,845,US
+12779,South Fallsburg,NY,845,US
+12780,Sparrow Bush,NY,845,US
+12781,Summitville,NY,,US
+12783,Swan Lake,NY,845,US
+12784,Thompsonville,NY,845,US
+12785,Westbrookville,NY,845,US
+12786,White Lake,NY,845,US
+12787,White Sulphur Springs,NY,845,US
+12788,Woodbourne,NY,845,US
+12789,Woodridge,NY,845,US
+12790,Wurtsboro,NY,845,US
+12791,Youngsville,NY,845,US
+12792,Yulan,NY,845,US
+12801,Glens Falls,NY,518,US
+12803,South Glens Falls,NY,518,US
+12804,Queensbury,NY,518,US
+12808,Adirondack,NY,518,US
+12809,Argyle,NY,518,US
+12810,Athol,NY,518,US
+12811,Bakers Mills,NY,518,US
+12812,Blue Mountain Lake,NY,518,US
+12814,Bolton Landing,NY,518,US
+12815,Brant Lake,NY,518,US
+12816,Cambridge,NY,518,US
+12817,Chestertown,NY,518,US
+12819,Clemons,NY,518,US
+12820,Cleverdale,NY,518,US
+12821,Comstock,NY,518,US
+12822,Corinth,NY,518,US
+12823,Cossayuna,NY,518,US
+12824,Diamond Point,NY,518,US
+12827,Fort Ann,NY,518,US
+12828,Fort Edward,NY,518,US
+12831,Gansevoort,NY,518,US
+12832,Granville,NY,518,US
+12833,Greenfield Center,NY,518,US
+12834,Greenwich,NY,518,US
+12835,Hadley,NY,518,US
+12836,Hague,NY,518,US
+12837,Hampton,NY,518,US
+12838,Hartford,NY,518,US
+12839,Hudson Falls,NY,518,US
+12841,Huletts Landing,NY,518,US
+12842,Indian Lake,NY,518,US
+12843,Johnsburg,NY,518,US
+12844,Kattskill Bay,NY,518,US
+12845,Lake George,NY,518,US
+12846,Lake Luzerne,NY,518,US
+12847,Long Lake,NY,"5,18,315",US
+12848,Middle Falls,NY,518,US
+12849,Middle Granville,NY,518,US
+12850,Middle Grove,NY,518,US
+12851,Minerva,NY,518,US
+12852,Newcomb,NY,518,US
+12853,North Creek,NY,518,US
+12854,North Granville,NY,518,US
+12855,North Hudson,NY,518,US
+12856,North River,NY,518,US
+12857,Olmstedville,NY,518,US
+12858,Paradox,NY,518,US
+12859,Porter Corners,NY,518,US
+12860,Pottersville,NY,518,US
+12861,Putnam Station,NY,518,US
+12862,Riparius,NY,518,US
+12863,Rock City Falls,NY,518,US
+12864,Sabael,NY,518,US
+12865,Salem,NY,518,US
+12866,Saratoga Springs,NY,518,US
+12870,Schroon Lake,NY,518,US
+12871,Schuylerville,NY,518,US
+12872,Severance,NY,518,US
+12873,Shushan,NY,518,US
+12874,Silver Bay,NY,518,US
+12878,Stony Creek,NY,518,US
+12879,Newcomb,NY,518,US
+12883,Ticonderoga,NY,518,US
+12884,Victory Mills,NY,518,US
+12885,Warrensburg,NY,518,US
+12886,Wevertown,NY,518,US
+12887,Whitehall,NY,518,US
+12901,Plattsburgh,NY,518,US
+12903,Plattsburgh,NY,518,US
+12910,Altona,NY,518,US
+12911,Keeseville,NY,518,US
+12912,Au Sable Forks,NY,518,US
+12913,Bloomingdale,NY,518,US
+12914,Bombay,NY,518,US
+12915,Brainardsville,NY,518,US
+12916,Brushton,NY,518,US
+12917,Burke,NY,518,US
+12918,Cadyville,NY,518,US
+12919,Champlain,NY,518,US
+12920,Chateaugay,NY,518,US
+12921,Chazy,NY,518,US
+12922,Childwold,NY,518,US
+12923,Churubusco,NY,518,US
+12924,Keeseville,NY,518,US
+12926,Constable,NY,518,US
+12927,Cranberry Lake,NY,315,US
+12928,Crown Point,NY,518,US
+12929,Dannemora,NY,518,US
+12930,Dickinson Center,NY,518,US
+12932,Elizabethtown,NY,518,US
+12933,Ellenburg,NY,518,US
+12934,Ellenburg Center,NY,518,US
+12935,Ellenburg Depot,NY,518,US
+12936,Essex,NY,518,US
+12937,Fort Covington,NY,518,US
+12939,Gabriels,NY,518,US
+12941,Jay,NY,518,US
+12942,Keene,NY,518,US
+12943,Keene Valley,NY,518,US
+12944,Keeseville,NY,518,US
+12945,Lake Clear,NY,518,US
+12946,Lake Placid,NY,"5,18,917",US
+12949,Lawrenceville,NY,315,US
+12950,Lewis,NY,518,US
+12952,Lyon Mountain,NY,518,US
+12953,Malone,NY,518,US
+12955,Lyon Mountain,NY,518,US
+12956,Mineville,NY,518,US
+12957,Moira,NY,518,US
+12958,Mooers,NY,518,US
+12959,Mooers Forks,NY,518,US
+12960,Moriah,NY,518,US
+12961,Moriah Center,NY,518,US
+12962,Morrisonville,NY,518,US
+12964,New Russia,NY,518,US
+12965,Nicholville,NY,315,US
+12966,North Bangor,NY,518,US
+12967,North Lawrence,NY,315,US
+12969,Owls Head,NY,518,US
+12970,Paul Smiths,NY,518,US
+12972,Peru,NY,518,US
+12973,Piercefield,NY,518,US
+12974,Port Henry,NY,518,US
+12975,Port Kent,NY,518,US
+12976,Rainbow Lake,NY,518,US
+12977,Ray Brook,NY,518,US
+12978,Redford,NY,518,US
+12979,Rouses Point,NY,518,US
+12980,Saint Regis Falls,NY,"5,18,315",US
+12981,Saranac,NY,518,US
+12983,Saranac Lake,NY,518,US
+12985,Schuyler Falls,NY,518,US
+12986,Tupper Lake,NY,518,US
+12987,Upper Jay,NY,518,US
+12989,Vermontville,NY,518,US
+12992,West Chazy,NY,518,US
+12993,Westport,NY,518,US
+12995,Whippleville,NY,518,US
+12996,Willsboro,NY,518,US
+12997,Wilmington,NY,518,US
+12998,Witherbee,NY,518,US
+13020,Apulia Station,NY,315,US
+13021,Auburn,NY,"3,15,607",US
+13022,Auburn,NY,315,US
+13024,Auburn,NY,315,US
+13026,Aurora,NY,315,US
+13027,Baldwinsville,NY,315,US
+13028,Bernhards Bay,NY,315,US
+13029,Brewerton,NY,315,US
+13030,Bridgeport,NY,315,US
+13031,Camillus,NY,315,US
+13032,Canastota,NY,315,US
+13033,Cato,NY,315,US
+13034,Cayuga,NY,"3,15,607",US
+13035,Cazenovia,NY,315,US
+13036,Central Square,NY,315,US
+13037,Chittenango,NY,315,US
+13039,Cicero,NY,315,US
+13040,Cincinnatus,NY,607,US
+13041,Clay,NY,315,US
+13042,Cleveland,NY,315,US
+13043,Clockville,NY,315,US
+13044,Constantia,NY,315,US
+13045,Cortland,NY,"3,15,607",US
+13051,Delphi Falls,NY,315,US
+13052,De Ruyter,NY,315,US
+13053,Dryden,NY,607,US
+13054,Durhamville,NY,315,US
+13056,East Homer,NY,607,US
+13057,East Syracuse,NY,315,US
+13060,Elbridge,NY,315,US
+13061,Erieville,NY,315,US
+13062,Etna,NY,607,US
+13063,Fabius,NY,315,US
+13064,Fair Haven,NY,315,US
+13065,Fayette,NY,315,US
+13066,Fayetteville,NY,315,US
+13068,Freeville,NY,607,US
+13069,Fulton,NY,315,US
+13071,Genoa,NY,315,US
+13072,Georgetown,NY,315,US
+13073,Groton,NY,607,US
+13074,Hannibal,NY,315,US
+13076,Hastings,NY,315,US
+13077,Homer,NY,607,US
+13078,Jamesville,NY,315,US
+13080,Jordan,NY,315,US
+13081,King Ferry,NY,315,US
+13082,Kirkville,NY,315,US
+13083,Lacona,NY,315,US
+13084,La Fayette,NY,315,US

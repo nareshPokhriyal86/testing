@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- @author Naresh Pokhriyal This is a struts config file for any kind of reporting in application
+ 	 @createdOn Oct 21, 2014 -->
+<struts>
+
+	<package name="reporting" namespace="/"
+		extends="struts-default">
+		<interceptors>
+
+			<interceptor name="gaeFileUploadInterceptor"
+				class="com.struts2.gae.interceptor.GaeFileUploadInterceptor" />
+			<interceptor-stack name="fileUploadStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="gaeFileUploadInterceptor"></interceptor-ref>
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+			</interceptor-stack>
+
+			<interceptor name="SessionCheckInterceptor"
+				class="com.lin.web.interceptor.SessionCheckInterceptor" />
+			<interceptor-stack name="tstSessionCheckStack">
+				<interceptor-ref name="SessionCheckInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+
+			<interceptor name="AdminSessionCheckInterceptor"
+				class="com.lin.web.interceptor.AdminSessionCheckInterceptor" />
+			<interceptor-stack name="adminSessionCheckStack">
+				<interceptor-ref name="SessionCheckInterceptor" />
+				<interceptor-ref name="AdminSessionCheckInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+
+		</interceptors>
+
+		<default-interceptor-ref name="fileUploadStack" />
+
+		<global-results>
+			<result name="sessionExpired">jsp/sessionExpired.jsp</result>
+			<result name="unAuthorisedAccess">jsp/unauthorisedAccess.jsp
+			</result>
+		</global-results>
+
+		<action name="reporting" class="com.lin.web.action.CampaignReportingAction">
+			<interceptor-ref name="tstSessionCheckStack" />
+			<result name="success">jsp/campaignReporting.jsp</result>
+		</action>
+		
+		<action name="billingReport" class="com.lin.web.action.CampaignReportingAction" method="billingReport"/>
+
+	</package>
+	<package name="reportingJson" extends="json-default">
+		<interceptors>
+			<interceptor-stack name="fileUploadStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+
+				<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+					<param name="excludeProperties">
+						login.password,
+						studentList.*\.sin
+					</param>
+				</interceptor-ref>
+			</interceptor-stack>
+
+      </interceptors>
+      
+      
+       <action name="searchCampaigns" class="com.lin.web.action.CampaignReportingAction" method="searchCampaigns">
+            <param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">jsonObject</param>
+            </result>
+       </action>
+       
+       <action name="searchPlacements" class="com.lin.web.action.CampaignReportingAction" method="searchPlacements">
+            <param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">jsonObject</param>
+            </result>
+       </action>
+       
+       <action name="selectedPlacements" class="com.lin.web.action.CampaignReportingAction" method="selectedPlacements">
+            <param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">jsonObject</param>
+            </result>
+       </action>
+       
+       <action name="searchAccountsForCampaignReport" class="com.lin.web.action.CampaignReportingAction" method="searchAccounts">
+            <param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">jsonObject</param>
+            </result>
+       </action>
+       
+       <action name="selectedPartners" class="com.lin.web.action.CampaignReportingAction" method="selectedPartners">
+            <param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">jsonObject</param>
+            </result>
+       </action>
+       
+       <action name="runCampaignReport" class="com.lin.web.action.CampaignReportingAction" method="runCampaignReport">
+            <param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">jsonObject</param>
+            </result>
+       </action>
+       
+       <action name="checkBillingReport" class="com.lin.web.action.CampaignReportingAction" method="checkBillingReport">
+            <param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">jsonObject</param>
+            </result>
+       </action>
+   </package>
+</struts>

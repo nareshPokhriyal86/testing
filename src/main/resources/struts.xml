@@ -1,0 +1,1710 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+	<constant name="struts.devMode" value="true"/>
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources"/>
+    <constant name="struts.action.excludePattern" value="/_ah/admin"/>
+    <constant name="struts.action.extension" value="lin"/>
+
+
+     <package name="default" namespace="/" extends="struts-default"> 
+        <interceptors>
+        
+			<interceptor name="gaeFileUploadInterceptor" class="com.struts2.gae.interceptor.GaeFileUploadInterceptor" />
+			<interceptor-stack name="fileUploadStack">				
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="gaeFileUploadInterceptor"></interceptor-ref>
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>				
+			</interceptor-stack>
+
+			<interceptor name="SessionCheckInterceptor" class="com.lin.web.interceptor.SessionCheckInterceptor"/>
+            <interceptor-stack name="tstSessionCheckStack">
+                <interceptor-ref name="SessionCheckInterceptor" />
+                <interceptor-ref name="fileUploadStack" />
+            </interceptor-stack> 
+            
+            <interceptor name="SuperAdminSessionCheckInterceptor" class="com.lin.web.interceptor.SuperAdminSessionCheckInterceptor"/>
+            <interceptor-stack name="superAdminSessionCheckStack">
+                <interceptor-ref name="SessionCheckInterceptor" />
+                <interceptor-ref name="SuperAdminSessionCheckInterceptor" />
+                <interceptor-ref name="fileUploadStack" />
+            </interceptor-stack>
+            
+            <interceptor name="AdminSessionCheckInterceptor" class="com.lin.web.interceptor.AdminSessionCheckInterceptor"/>
+            <interceptor-stack name="adminSessionCheckStack">
+                <interceptor-ref name="SessionCheckInterceptor" />
+                <interceptor-ref name="AdminSessionCheckInterceptor" />
+                <interceptor-ref name="fileUploadStack" />
+            </interceptor-stack>
+
+		</interceptors>
+
+		<default-interceptor-ref name="fileUploadStack" />
+
+	    <global-results>
+           <result name="sessionExpired" >jsp/sessionExpired.jsp</result>
+           <result name="unAuthorisedAccess" >jsp/unauthorisedAccess.jsp</result>
+           <result name="noAppView" >jsp/noAppView.jsp</result>
+        </global-results>
+      	
+      	<action name="newAdvertiserView" class="com.lin.web.action.AdvertiserViewAction" method="newAdvertiserView">
+	   	      <interceptor-ref name="tstSessionCheckStack" />
+		      <result name="input">jsp/newAdvertiserView.jsp</result>
+              <result name="performanceSummary">jsp/newAdvertiserView.jsp</result>
+              <result name="campaignSummary">jsp/campaignGrid.jsp</result>
+        </action>
+      	
+      	<action name="entityDataUploader" class="com.lin.web.action.DfpDataAction" method="uploadEntityData">
+	   	     <!-- <interceptor-ref name="adminSessionCheckStack" />  -->
+		      <result name="input">CSVReader.jsp</result>
+              <result name="success">CSVReader.jsp</result>
+        </action>
+        
+      	<action name="cityDataUploader" class="com.lin.web.action.DfpDataAction" method="uploadCityData">
+      	</action>
+        
+      	<action name="loadCityDataThroughTaskQueue" class="com.lin.web.action.DfpDataAction" method="loadCityDataThroughTaskQueue">
+      	</action>
+      
+      	<action name="adUnitUploader" class="com.lin.web.action.DfpDataAction" method="uploadAdUnitData">
+      	</action>
+        
+      	<action name="loadAdUnitDataThroughTaskQueue" class="com.lin.web.action.DfpDataAction" method="loadAdUnitDataThroughTaskQueue">
+      	</action>      
+        
+	    <action name="uploadLinOneDataFromDFPDashboard" class="com.lin.web.action.DataCorrectorReportAction" method="uploadLinOneData">
+	   	       <!-- <interceptor-ref name="adminSessionCheckStack" /> -->
+		       <result name="input">CSVReader.jsp</result>
+               <result name="success">CSVReader.jsp</result>
+        </action>
+        
+	   <action name="richMediaXAdTraffickingReport" class="com.lin.web.action.XAdAction" >
+              <!-- <interceptor-ref name="adminSessionCheckStack" />   -->  
+		       <result name="input">CSVReader.jsp</result>
+               <result name="success">CSVReader.jsp</result>
+        </action>
+        
+        <action name="richMediaXAdCustomEventReport" class="com.lin.web.action.XAdAction" method="customEvent">
+              <!--  <interceptor-ref name="adminSessionCheckStack" /> -->
+		       <result name="input">CSVReader.jsp</result>
+               <result name="success">CSVReader.jsp</result>
+        </action>
+        
+        <action name="celtraReportCorePerformanceRM" class="com.lin.web.action.CeltraAction" method="uploadCeltra">
+              <!--  <interceptor-ref name="adminSessionCheckStack" />	    -->	       
+		       <result name="input">CSVReader.jsp</result>
+               <result name="success">CSVReader.jsp</result>
+        </action>
+        
+	   	<action name="richMediaCeltraTraffickingReport" class="com.lin.web.action.CeltraAction" >	
+	   	      <!--  <interceptor-ref name="adminSessionCheckStack" />   	        -->
+		       <result name="input">CSVReader.jsp</result>
+               <result name="success">CSVReader.jsp</result>
+        </action>
+        
+        <action name="richMediaCeltraCustomEventReport" class="com.lin.web.action.CeltraAction" method="customEvent">
+              <!--  <interceptor-ref name="adminSessionCheckStack" />	 -->   	       
+		       <result name="input">CSVReader.jsp</result>
+               <result name="success">CSVReader.jsp</result>
+        </action>
+        
+	   	<action name="lsnReport" class="com.lin.web.action.LSNAction" >
+	   	       <!-- <interceptor-ref name="adminSessionCheckStack" /> -->
+		       <result name="input">CSVReader.jsp</result>
+               <result name="success">CSVReader.jsp</result>
+        </action>
+        
+	   	 <action name="dataCorrector" class="com.lin.web.action.DataCorrectorReportAction" >
+	   	       <!-- <interceptor-ref name="adminSessionCheckStack" /> -->
+		       <result name="input">CSVReader.jsp</result>
+               <result name="success">CSVReader.jsp</result>
+        </action>
+        
+	   	<action name="sellThroughReport" class="com.lin.web.action.SellThroughReportAction">
+	   	       <!-- <interceptor-ref name="adminSessionCheckStack" /> -->
+	   		   <result name="input">CSVReader.jsp</result>
+               <result name="success">CSVReader.jsp</result>
+        </action>
+        
+	   	<action name="undertoneReport" class="com.lin.web.action.UndertoneAction">
+	   	      <!--  <interceptor-ref name="adminSessionCheckStack" /> -->
+	   		   <result name="input">CSVReader.jsp</result>
+               <result name="success">CSVReader.jsp</result>
+        </action>
+        
+	   	<action name="advertiser" class="com.lin.web.action.AdvertiserViewAction">
+	   		<interceptor-ref name="tstSessionCheckStack" />
+		      <result name="input">jsp/advertiserView.jsp</result>
+              <result name="success">jsp/advertiserView.jsp</result>
+        </action>
+        
+        <action name="publisher" class="com.lin.web.action.PublisherViewAction">
+        	<interceptor-ref name="tstSessionCheckStack" />
+		      <result name="input">jsp/publisherView.jsp</result>
+              <result name="success">jsp/publisherView.jsp</result>
+        </action>
+        
+        <action name="operational" class="com.lin.web.action.OperationalViewAction">
+        	<interceptor-ref name="tstSessionCheckStack" />
+		      <result name="input">jsp/operationalView.jsp</result>
+              <result name="success">jsp/operationalView.jsp</result>
+        </action>
+        
+	   	<action name="DataUploader" class="com.lin.web.action.DfpDataAction">
+	   	     <!-- <interceptor-ref name="adminSessionCheckStack" />  -->
+		      <result name="input">CSVReader.jsp</result>
+              <result name="success">CSVReader.jsp</result>
+        </action>
+     
+        <action name="UploadAgencyAdvertiserData" class="com.lin.web.action.DfpDataAction" method="loadAdvertiserAgencyDataFromCSV">
+            <interceptor-ref name="adminSessionCheckStack" />
+		      <result name="input">CSVReader.jsp</result>
+              <result name="success">CSVReader.jsp</result>
+        </action>
+        
+        <action name="LoadAdvertiserReportData" class="com.lin.web.action.DfpDataAction" method="loadAdvertiserReportFromCSV">
+        <interceptor-ref name="adminSessionCheckStack" />
+		      <result name="input">CSVReader.jsp</result>
+              <result name="success">CSVReader.jsp</result>
+        </action>
+        <action name="UploadOrderLineItemData" class="com.lin.web.action.DfpDataAction" method="loadOrderLineItemDataFromCSV">
+		     <interceptor-ref name="adminSessionCheckStack" />
+		      <result name="input">CSVReader.jsp</result>
+              <result name="success">CSVReader.jsp</result>
+        </action>      
+       <action name="MostActiveData" class="com.lin.web.action.DfpDataAction" method="loadMostActiveDataFromCSV">
+		      <interceptor-ref name="adminSessionCheckStack" />
+		      <result name="input">CSVReader.jsp</result>
+              <result name="success">CSVReader.jsp</result>
+        </action>  
+         <action name="PerformanceMetrics" class="com.lin.web.action.DfpDataAction" method="loadPerformanceMetricsDataFromCSV">
+		      <interceptor-ref name="adminSessionCheckStack" />
+		      <result name="input">CSVReader.jsp</result>
+              <result name="success">CSVReader.jsp</result>
+        </action>  
+        <action name="UploadByMarketData" class="com.lin.web.action.DfpDataAction" method="loadCSVForByMarket">
+		      <interceptor-ref name="adminSessionCheckStack" />
+		      <result name="input">CSVReader.jsp</result>
+              <result name="success">CSVReader.jsp</result>
+        </action>
+        
+        <action name="UploadByLocationData" class="com.lin.web.action.DfpDataAction" method="loadCSVForByLocation">
+		      <interceptor-ref name="adminSessionCheckStack" />
+		      <result name="input">CSVReader.jsp</result>
+              <result name="success">CSVReader.jsp</result>
+        </action>
+        
+       <action name="UploadChannelPerformance" class="com.lin.web.action.DfpDataAction" method="loadChannelPerformanceDataFromCSV">
+		      <interceptor-ref name="adminSessionCheckStack" />
+		      <result name="input">CSVReader.jsp</result>
+              <result name="success">CSVReader.jsp</result>
+        </action>
+        
+        <action name="UploadPerformanceByProperty" class="com.lin.web.action.DfpDataAction" method="loadPerformanceByPropertyFromCSV">
+		      <interceptor-ref name="adminSessionCheckStack" />
+		      <result name="input">CSVReader.jsp</result>
+              <result name="success">CSVReader.jsp</result>
+        </action>       
+
+        <action name="UploadSellThroughData" class="com.lin.web.action.DfpDataAction" method="loadSellThroughDataFromCSV">
+		      <interceptor-ref name="adminSessionCheckStack" />
+		      <result name="input">CSVReader.jsp</result>
+              <result name="success">CSVReader.jsp</result>
+        </action>
+        
+        <!-- <action name="uploadPublisherChannels" class="com.lin.web.action.DfpDataAction" method="loadPublisherChannelsFromCSV">
+		      <result name="input">CSVReader.jsp</result>
+              <result name="success">CSVReader.jsp</result>
+        </action> -->   
+
+		<action name="UploadPublisherData" class="com.lin.web.action.DfpDataAction" method="loadPublisherDataFromCSV">
+			<interceptor-ref name="adminSessionCheckStack" />
+			<result name="input">CSVReader.jsp</result>
+            <result name="success">CSVReader.jsp</result>
+		</action>
+
+        <action name="UploadReallocationData" class="com.lin.web.action.DfpDataAction" method="loadReallocationDataFromCSV">
+			<interceptor-ref name="adminSessionCheckStack" />
+			<result name="input">CSVReader.jsp</result>
+            <result name="success">CSVReader.jsp</result>
+		</action>
+
+	   <action name="UploadActiveAdviserData" class="com.lin.web.action.DfpDataAction" method="loadActiveAdvertiserCSV">
+			<interceptor-ref name="adminSessionCheckStack" />
+			<result name="input">CSVReader.jsp</result>
+            <result name="success">CSVReader.jsp</result>
+		</action>
+
+	   <action name="UploadForcastAdviserData" class="com.lin.web.action.DfpDataAction" method="loadForcastAdvertiserCSV">
+			<interceptor-ref name="adminSessionCheckStack" />
+			<result name="input">CSVReader.jsp</result>
+            <result name="success">CSVReader.jsp</result>
+		</action>
+		<action name="UploadActualPublisherData" class="com.lin.web.action.DfpDataAction" method="loadActualPublisherCSV">
+			<interceptor-ref name="adminSessionCheckStack" />
+			<result name="input">CSVReader.jsp</result>
+            <result name="success">CSVReader.jsp</result>
+		</action>
+
+		 <action name="uploadProductEntities" class="com.lin.web.action.ProductAction" method="uploadProductEntities">
+			<result name="input">CSVReader.jsp</result>
+            <result name="success">CSVReader.jsp</result>
+		 </action>
+
+		  <action name="uploadDfpSitesWithDMA" class="com.lin.web.action.PoolMapAction" method="uploadDFPSitesWithDMA">
+	   	     <!-- <interceptor-ref name="adminSessionCheckStack" />  -->
+		      <result name="input">CSVReader.jsp</result>
+              <result name="success">CSVReader.jsp</result>
+        </action>
+		<!-- User Management Starts -->
+
+		<action name="login" class="com.lin.web.action.LoginAction" method="login">
+			<result name="PUBLISHERDASHBOARD" type="redirectAction">
+				<param name="actionName">publisher</param>
+			</result>
+			<result name="PERFORMANCEANDMONITORING" type="redirectAction">
+				<param name="actionName">campaignPerformanceListing</param>
+			</result>
+			<result name="PLANNING" type="redirectAction">
+				<param name="actionName">smartPlanner</param>
+			</result>
+			<result name="NEWSANDRESEARCH" type="redirectAction">
+				<param name="actionName">newsAndResearch</param>
+			</result>
+			<result name="ONEAUDIENCE" type="redirectAction">
+				<param name="actionName">poolMap</param>
+			</result>
+			<result name="CAMPAIGNPERFORMANCE" type="redirectAction">
+				<param name="actionName">newAdvertiserView</param>
+			</result>
+			<result name="GEOTARGET" type="redirectAction">
+				<param name="actionName">mapEngine</param>
+			</result>
+			<result name="REPORT" type="redirectAction">
+				<param name="actionName">reporting</param>
+			</result>
+			<result name="ADMIN" type="redirectAction">
+				<param name="actionName">userSetup</param>
+			</result>
+			<result name="invalidUser">jsp/login.jsp</result>
+			<result name="error">jsp/loginError.jsp</result>
+			<result name="loginPage">jsp/login.jsp</result>
+			<result name="alreadyLoggedIn" type="redirectAction">
+				<param name="actionName">alreadyLoggedIn</param>
+			</result>
+		</action>
+		<action name="newsAndResearch" class="com.lin.web.action.UserAction" method="newsAndResearch">
+			<result name="success">jsp/newsAndResearchPage.jsp</result>
+		</action>
+		<action name="loginPage" class="com.lin.web.action.LoginAction" method="loginPage">
+			<result name="success">jsp/login.jsp</result>
+		</action>
+		<action name="alreadyLoggedIn" class="com.lin.web.action.LoginAction" method="alreadyLoggedIn">
+			<result name="success">jsp/login.jsp</result>
+		</action>
+		<action name="logout" class="com.lin.web.action.LogoutAction" method="logout">
+			<interceptor-ref name="tstSessionCheckStack" />
+			<result name="success">jsp/login.jsp</result>
+			<result name="error">jsp/loginError.jsp</result>
+		</action>
+		<action name="sessionExpired" class="com.lin.web.action.SessionExpiredAction" method="sessionExpired">			
+			<result name="sessionExpired">jsp/sessionExpired.jsp</result>
+		</action>
+
+        <action name="initCreateUser" class="com.lin.web.action.UserAction" method="initCreateUser">
+        	<interceptor-ref name="adminSessionCheckStack" />
+              <result name="success">jsp/userCreate.jsp</result>
+        </action>
+        <action name="createNewUser" class="com.lin.web.action.UserAction" method="createUser">
+        	  <interceptor-ref name="adminSessionCheckStack" />
+              <result name="success">jsp/userCreate.jsp</result>
+        </action>
+        <action name="authorizeEmail" class="com.lin.web.action.UserAction" method="authorizeEmail">
+			<result name="success">jsp/authoriseUser.jsp</result>
+			<result name="loginPage">jsp/login.jsp</result>
+		</action>
+		<action name="authorizeUser" class="com.lin.web.action.UserAction" method="authorizeUser">
+			<result name="success">jsp/authoriseUser.jsp</result>			
+		</action>
+		<action name="userSetup" class="com.lin.web.action.UserAction" method="userSetup">
+			<interceptor-ref name="adminSessionCheckStack" />
+			<result name="success">jsp/userSetup.jsp</result>			
+		</action>
+		<action name="initUserOwnProfileUpdate" class="com.lin.web.action.UserAction" method="initUserOwnProfileUpdate">
+			<interceptor-ref name="tstSessionCheckStack" />
+			<result name="success">jsp/userProfileView.jsp</result>	
+			<result name="failed">jsp/userProfileView.jsp</result>		
+		</action>
+		<action name="userOwnProfileUpdate" class="com.lin.web.action.UserAction" method="userOwnProfileUpdate">
+			<interceptor-ref name="tstSessionCheckStack" />
+			<result name="success">jsp/userProfileView.jsp</result>
+			<result name="failed">jsp/userProfileView.jsp</result>			
+		</action>
+		<action name="forgetPassword" class="com.lin.web.action.UserAction" method="forgetPassword">
+			<result name="success">jsp/login.jsp</result>			
+		</action>
+		<action name="forgetPasswordEmail" class="com.lin.web.action.UserAction" method="forgetPasswordEmail">
+			<result name="success">jsp/resetPassword.jsp</result>
+			<result name="loginPage">jsp/login.jsp</result>
+		</action>
+		<action name="resetPassword" class="com.lin.web.action.UserAction" method="resetPassword">
+			<result name="success">jsp/resetPassword.jsp</result>
+		</action>
+		<action name="initEditUser" class="com.lin.web.action.UserAction" method="initEditUser">
+			<interceptor-ref name="adminSessionCheckStack" />
+			<result name="failed" type="redirectAction">
+				<param name="actionName">userSetup</param>
+				<param name="updateUserStatus">0</param>
+			</result>
+			<result name="success">jsp/userUpdate.jsp</result>			
+		</action>
+		<action name="userUpdate" class="com.lin.web.action.UserAction" method="userUpdate">
+			<interceptor-ref name="adminSessionCheckStack" />
+			<result name="success" type="redirectAction">
+				<param name="actionName">userSetup</param>
+				<param name="updateUserStatus">1</param>
+			</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">userSetup</param>
+				<param name="updateUserStatus">0</param>
+			</result>
+			<result name="exists" type="redirectAction">
+				<param name="actionName">userSetup</param>
+				<param name="updateUserStatus">2</param>
+			</result>
+			<result name="inappropriate" type="redirectAction">
+				<param name="actionName">userSetup</param>
+				<param name="updateUserStatus">3</param>
+			</result>			
+		</action>
+
+        <action name="teamSetup" class="com.lin.web.action.UserAction" method="teamSetup">
+        	<interceptor-ref name="adminSessionCheckStack" />
+            <result name="success">jsp/teamSetup.jsp</result>
+        </action>
+        <action name="initCreateTeam" class="com.lin.web.action.UserAction" method="initCreateTeam">
+        	<interceptor-ref name="adminSessionCheckStack" />
+            <result name="success">jsp/teamCreate.jsp</result>
+        </action>
+        <action name="createTeam" class="com.lin.web.action.UserAction" method="createTeam">
+        	<interceptor-ref name="adminSessionCheckStack" />
+            <result name="success">jsp/teamCreate.jsp</result>
+        </action>
+        <action name="initEditTeam" class="com.lin.web.action.UserAction" method="initEditTeam">
+        	<interceptor-ref name="adminSessionCheckStack" />
+            <result name="success">jsp/teamUpdate.jsp</result>
+            <result name="failed" type="redirectAction">
+				<param name="actionName">teamSetup</param>
+				<param name="updateTeamStatus">0</param>
+			</result>
+        </action>
+        <action name="updateTeam" class="com.lin.web.action.UserAction" method="updateTeam">
+        	<interceptor-ref name="adminSessionCheckStack" />
+			<result name="success" type="redirectAction">
+				<param name="actionName">teamSetup</param>
+				<param name="updateTeamStatus">1</param>
+			</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">teamSetup</param>
+				<param name="updateTeamStatus">0</param>
+			</result>
+        </action>
+
+        <action name="roleSetup" class="com.lin.web.action.UserAction" method="roleSetup">
+        	<interceptor-ref name="adminSessionCheckStack" />
+            <result name="success">jsp/roleSetup.jsp</result>
+        </action>
+        <action name="initCreateRole" class="com.lin.web.action.UserAction" method="initCreateRole">
+        	<interceptor-ref name="adminSessionCheckStack" />
+            <result name="success">jsp/roleCreate.jsp</result>
+        </action>
+        <action name="createRole" class="com.lin.web.action.UserAction" method="createRole">
+        	<interceptor-ref name="adminSessionCheckStack" />
+            <result name="success">jsp/roleCreate.jsp</result>
+        </action>
+        <action name="initEditRole" class="com.lin.web.action.UserAction" method="initEditRole">
+        	<interceptor-ref name="adminSessionCheckStack" />
+            <result name="success">jsp/roleUpdate.jsp</result>
+            <result name="failed" type="redirectAction">
+				<param name="actionName">roleSetup</param>
+				<param name="updateRoleStatus">0</param>
+			</result>
+        </action>
+        <action name="updateRole" class="com.lin.web.action.UserAction" method="updateRole">
+        	<interceptor-ref name="adminSessionCheckStack" />
+			<result name="success" type="redirectAction">
+				<param name="actionName">roleSetup</param>
+				<param name="updateRoleStatus">1</param>
+			</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">roleSetup</param>
+				<param name="updateRoleStatus">0</param>
+			</result>
+        </action>
+		<action name="copyRole" class="com.lin.web.action.UserAction" method="copyRole">
+			<interceptor-ref name="adminSessionCheckStack" />
+			<result name="success">jsp/roleCreate.jsp</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">initCreateRole</param>
+			</result>			
+		</action>
+        <action name="copyRoleUpdate" class="com.lin.web.action.UserAction" method="copyRoleUpdate">
+			<interceptor-ref name="adminSessionCheckStack" />
+			<result name="success">jsp/roleUpdate.jsp</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">roleSetup</param>
+				<param name="copyPermissionStatus">0</param>
+			</result>			
+		</action>
+        
+         <action name="companySetup" class="com.lin.web.action.UserAction" method="companySetup">
+        	<interceptor-ref name="superAdminSessionCheckStack" />
+            <result name="success">jsp/companySetup.jsp</result>
+        </action>
+        <action name="initCreateNewCompany" class="com.lin.web.action.UserAction" method="initCreateNewCompany">
+        	<interceptor-ref name="superAdminSessionCheckStack" />
+            <result name="success">jsp/companyCreate.jsp</result>
+        </action>
+        <action name="createNewCompany" class="com.lin.web.action.UserAction" method="createNewCompany">
+        	<interceptor-ref name="superAdminSessionCheckStack" />
+            <result name="success">jsp/companyCreate.jsp</result>
+        </action>
+        <action name="initEditCompany" class="com.lin.web.action.UserAction" method="initEditCompany">
+			<interceptor-ref name="superAdminSessionCheckStack" />
+			<result name="failed" type="redirectAction">
+				<param name="actionName">companySetup</param>
+				<param name="updateCompanyStatus">0</param>
+			</result>
+			<result name="success">jsp/companyUpdate.jsp</result>			
+		</action>
+		<action name="updateCompany" class="com.lin.web.action.UserAction" method="updateCompany">
+			<interceptor-ref name="superAdminSessionCheckStack" />
+			<result name="success" type="redirectAction">
+				<param name="actionName">companySetup</param>
+				<param name="updateCompanyStatus">1</param>
+			</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">companySetup</param>
+				<param name="updateCompanyStatus">0</param>
+			</result>
+		</action>
+        
+        <action name="propertySetup" class="com.lin.web.action.UserAction" method="propertySetup">
+        	<interceptor-ref name="adminSessionCheckStack" />
+           	<result name="success">jsp/propertySetup.jsp</result>
+        </action>
+        <action name="initCreateProperty" class="com.lin.web.action.UserAction" method="initCreateProperty">
+        	<interceptor-ref name="adminSessionCheckStack" />
+			<result name="success">jsp/propertyCreate.jsp</result>
+       	</action>
+       	<action name="createProperty" class="com.lin.web.action.UserAction" method="createProperty">
+        	<interceptor-ref name="adminSessionCheckStack" />
+			<result name="success">jsp/propertyCreate.jsp</result>
+       	</action>
+       	<action name="initEditProperty" class="com.lin.web.action.UserAction" method="initEditProperty">
+			<interceptor-ref name="adminSessionCheckStack" />
+			<result name="failed" type="redirectAction">
+				<param name="actionName">propertySetup</param>
+				<param name="updatePropertyStatus">0</param>
+			</result>
+			<result name="success">jsp/propertyUpdate.jsp</result>			
+		</action>
+		<action name="updateProperty" class="com.lin.web.action.UserAction" method="updateProperty">
+        	<interceptor-ref name="adminSessionCheckStack" />
+			<result name="success" type="redirectAction">
+				<param name="actionName">propertySetup</param>
+				<param name="updatePropertyStatus">1</param>
+			</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">propertySetup</param>
+				<param name="updatePropertyStatus">0</param>
+			</result>
+        </action>
+        
+        <action name="accountSetup" class="com.lin.web.action.UserAction" method="accountSetup">
+        	<interceptor-ref name="adminSessionCheckStack" />
+            <result name="success">jsp/accountSetup.jsp</result>
+        </action>
+        <action name="initCreateAccount" class="com.lin.web.action.UserAction" method="initCreateAccount">
+        	<interceptor-ref name="adminSessionCheckStack" />
+            <result name="success">jsp/accountCreate.jsp</result>
+        </action>
+        <action name="createAccount" class="com.lin.web.action.UserAction" method="createAccount">
+        	<interceptor-ref name="adminSessionCheckStack" />
+            <result name="success">jsp/accountCreate.jsp</result>
+        </action>
+        <action name="initEditAccount" class="com.lin.web.action.UserAction" method="initEditAccount">
+			<interceptor-ref name="adminSessionCheckStack" />
+			<result name="failed" type="redirectAction">
+				<param name="actionName">accountSetup</param>
+				<param name="updateAccountStatus">0</param>
+			</result>
+			<result name="success">jsp/accountUpdate.jsp</result>			
+		</action>
+		<action name="updateAccount" class="com.lin.web.action.UserAction" method="updateAccount">
+			<interceptor-ref name="adminSessionCheckStack" />
+			<result name="success" type="redirectAction">
+				<param name="actionName">accountSetup</param>
+				<param name="updateAccountStatus">1</param>
+			</result>
+			<result name="failed" type="redirectAction">
+				<param name="actionName">accountSetup</param>
+				<param name="updateAccountStatus">0</param>
+			</result>
+		</action>
+
+        <action name="companySettings" class="com.lin.web.action.UserAction" method="companySettings">
+			<interceptor-ref name="tstSessionCheckStack" />
+			<result name="success">jsp/companySettings.jsp</result>			
+		</action>
+
+		<action name="companySettingsUpdate" class="com.lin.web.action.UserAction" method="companySettingsUpdate">
+			<interceptor-ref name="tstSessionCheckStack" />
+			<result name="success">jsp/companySettingsSaved.jsp</result>			
+		</action>
+		
+		<action name="replaceAccountCompanyId" class="com.lin.web.action.UserAction" method="replaceAccountCompanyId">
+		  	<result name="input">CSVReader.jsp</result>
+            <result name="success">CSVReader.jsp</result>
+        </action>
+
+		 <action name="deliveryMetricsReport" class="com.lin.web.action.NewAdvertiserViewAction" method="deliveryMetricsReport">
+        
+        <result name="success" type="stream">
+           <param name="contentDisposition">attachment;filename=MetricReport.xls</param>
+           <param name="contentType">application/vnd.ms-excel</param>
+           <param name="inputName">inputStream</param>
+           <param name="bufferSize">1024</param>
+        </result>
+       </action>
+       
+       <action name="headerReportObject" class="com.lin.web.action.NewAdvertiserViewAction" method="headerReportObject">
+        <result name="success" type="stream">
+           <param name="contentDisposition">attachment;filename=SummaryReport.xls</param>
+           <param name="contentType">application/vnd.ms-excel</param>
+           <param name="inputName">inputStream</param>
+           <param name="bufferSize">1024</param>
+        </result>
+       </action>
+       
+       <action name="performanceBySiteReportObject" class="com.lin.web.action.NewAdvertiserViewAction" method="performanceBySiteReportObject">
+        
+        <result name="success" type="stream">
+           <param name="contentDisposition">attachment;filename=PerformanceBySiteReport.xls</param>
+           <param name="contentType">application/vnd.ms-excel</param>
+           <param name="inputName">inputStream</param>
+           <param name="bufferSize">1024</param>
+        </result>
+       </action>
+       
+       <action name="advertiserReportObject" class="com.lin.web.action.NewAdvertiserViewAction" method="advertiserReportObject">
+        
+        <result name="success" type="stream">
+           <param name="contentDisposition">attachment;filename="${fileName}"</param>
+           <param name="contentType">application/vnd.ms-excel</param>
+           <param name="inputName">inputStream</param>
+           <param name="bufferSize">1024</param>
+        </result>
+       </action>
+        
+		<!-- User Management Ends -->
+
+
+		<!--  RichMediaAdvertiserView Starts -->
+
+		<action name="richMediaAdvertiser" class="com.lin.web.action.RichMediaAdvertiserViewAction">
+	   		<interceptor-ref name="tstSessionCheckStack" />
+		      <result name="input">jsp/richMediaAdvertiserView.jsp</result>
+              <result name="success">jsp/richMediaAdvertiserView.jsp</result>
+        </action>
+       
+       <!--  RichMediaAdvertiserView Ends -->
+       
+ 		<!--  alertEngine Starts -->
+ 		<action name="alertEngine" class="com.lin.web.action.AlertEngineAction" method="alertEngine">
+        </action>
+        
+        <action name="generateCampaignAlert" class="com.lin.web.action.AlertEngineAction" method="generateCampaignAlert">
+        </action>
+        
+         <action name="campaignStatusAlertMail" class="com.lin.web.action.AlertEngineAction" method="campaignStatusAlertMail">
+         <!-- <result name="success" type="stream">
+           <param name="contentDisposition">attachment;filename=CampaignStatusAlertReport.xls</param>
+           <param name="contentType">application/vnd.ms-excel</param>
+           <param name="inputName">inputStream</param>
+           <param name="bufferSize">1024</param>
+        </result> -->
+
+        </action>
+        
+        <action name="campaignAlertListing" class="com.lin.web.action.AlertEngineAction" method="campaignAlertListing">
+			<interceptor-ref name="tstSessionCheckStack" />
+			<result name="success">jsp/campaignAlertListing.jsp</result>
+		</action>
+        
+        <!--  alertEngine Ends -->
+         <action name="updateProductDataGME" class="com.lin.web.action.MapEngineAction" method="updateProductDataGME">
+		</action>
+        <!-- Map Engine Starts  -->
+        
+        <!-- Map Engine Ends  -->
+	  </package>
+
+	 <package name="example"  extends="json-default">
+	  <interceptors>
+	  <interceptor-stack name="fileUploadStack">
+
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />				
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+
+				 <interceptor-ref name="json">
+                   <param name="enableSMD">true</param>
+                   <param name="excludeProperties">
+                       login.password,
+                       studentList.*\.sin
+                  </param>
+                </interceptor-ref>      
+			</interceptor-stack>
+      </interceptors>
+      	
+      	<action name="deleteUser" class="com.lin.web.action.UserJSONAction" method="deleteUser">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <action name="resendAuthorizeEmail" class="com.lin.web.action.UserJSONAction" method="resendAuthorizeEmail">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json">
+              <param name="root">jsonObject</param>
+            </result>
+        </action>
+	  	<action name="emailIdAvailable" class="com.lin.web.action.UserJSONAction" method="emailIdAvailable">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <action name="roleNameAvailable" class="com.lin.web.action.UserJSONAction" method="roleNameAvailable">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <action name="teamNameAvailable" class="com.lin.web.action.UserJSONAction" method="teamNameAvailable">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <action name="companyNameAvailable" class="com.lin.web.action.UserJSONAction" method="companyNameAvailable">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <action name="propertyNameAvailable" class="com.lin.web.action.UserJSONAction" method="propertyNameAvailable">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <action name="accountNameAvailable" class="com.lin.web.action.UserJSONAction" method="accountNameAvailable">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <action name="dfpAccountAvailable" class="com.lin.web.action.UserJSONAction" method="dfpAccountAvailable">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <action name="dfpPropertyAvailable" class="com.lin.web.action.UserJSONAction" method="dfpPropertyAvailable">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        
+        <action name="loadPublisherPartnerDataForTeam" class="com.lin.web.action.UserJSONAction" method="loadPublisherPartnerDataForTeam">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <action name="loadSelectedAccountsFromBigQuery" class="com.lin.web.action.UserJSONAction" method="loadSelectedAccountsFromBigQuery">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <action name="fetchTeamsByCompanyId" class="com.lin.web.action.UserJSONAction" method="fetchTeamsByCompanyId">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <!-- <action name="loadPublisherIdsForBigQueryByCompanyId" class="com.lin.web.action.UserJSONAction" method="loadPublisherIdsForBigQueryByCompanyId">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action> -->
+        <action name="loadAccountsForTeam" class="com.lin.web.action.UserJSONAction" method="loadAccountsForTeam">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <action name="fetchActiveRolesByCompanyId" class="com.lin.web.action.UserJSONAction" method="fetchActiveRolesByCompanyId">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <action name="loadSitesForProperty" class="com.lin.web.action.UserJSONAction" method="loadSitesForProperty">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <action name="searchAccounts" class="com.lin.web.action.UserJSONAction" method="searchAccounts">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <action name="loadDefaultAppViewsForCompanyType" class="com.lin.web.action.UserJSONAction" method="loadDefaultAppViewsForCompanyType">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <action name="loadTeamDataByCompany" class="com.lin.web.action.UserJSONAction" method="loadTeamDataByCompany">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        <action name="loadAdserverCredentialsByCompanyId" class="com.lin.web.action.UserJSONAction" method="loadAdserverCredentialsByCompanyId">
+        	  <param name="contentType">text/html</param>
+        	  <result type="json"/>
+        </action>
+        
+        <action name="updateAccountsFromDFP" class="com.lin.web.action.UserJSONAction" method="updateAccountsFromDFP">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="loadAccountsFromDFP" class="com.lin.web.action.UserJSONAction" method="loadAccountsFromDFP">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="refreshDFPAccountMemcache" class="com.lin.web.action.UserJSONAction" method="refreshDFPAccountMemcache">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="checkDFPAccountMemcache" class="com.lin.web.action.UserJSONAction" method="checkDFPAccountMemcache">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="loadPropertiesFromDFP" class="com.lin.web.action.UserJSONAction" method="loadPropertiesFromDFP">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="refreshDFPPropertyMemcache" class="com.lin.web.action.UserJSONAction" method="refreshDFPPropertyMemcache">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="checkDFPPropertyMemcache" class="com.lin.web.action.UserJSONAction" method="checkDFPPropertyMemcache">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="loadAdUnitChilds" class="com.lin.web.action.UserJSONAction" method="loadAdUnitChilds">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+       
+      <action name="LoadAdvertiserReportDataByCron" class="com.lin.web.action.DfpDataAction" method="loadAdvertiserReportFromCSVBYCron">
+
+		      <param name="contentType">text/html</param>
+              <result type="json"/>
+        </action> 
+
+        <action name="loadPublisherInventoryRevenueHeaderDate" class="com.lin.web.action.PublisherViewAction"	method="loadInventoryRevenueHeaderData">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="loadPublisherSummaryList" class="com.lin.web.action.PublisherViewAction"	method="loadPublisherSummaryList">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="loadAllPerformanceByPropertyCurrent" class="com.lin.web.action.PublisherViewAction"	method="loadAllPerformanceByPropertyCurrent">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="loadAllPerformanceByPropertyCompare" class="com.lin.web.action.PublisherViewAction"	method="loadAllPerformanceByPropertyCompare">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+       <action name="loadPublisherTrendsAnalysisHeaderDate" class="com.lin.web.action.PublisherViewAction"	method="loadTrendAnalysisHeaderData">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="loadPublisherReallocationHeaderDate" class="com.lin.web.action.PublisherViewAction"	method="loadReallocationHeaderData">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="loadAdvertiserTrendsAnalysisHeaderDate" class="com.lin.web.action.AdvertiserViewAction"	method="loadTrendAnalysisHeaderDataAdvertiserView">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="loadInvAndRevFilterData" class="com.lin.web.action.PublisherViewAction" method="loadInvAndRevFilterData">
+        <param name="contentType">text/html</param>
+        <result type="json"/>
+       </action>
+       
+       <action name="loadInvAndRevFilterDataByPublisherName" class="com.lin.web.action.PublisherViewAction" method="loadInvAndRevFilterDataByPublisherName">
+        <param name="contentType">text/html</param>
+        <result type="json"/>
+       </action>
+       
+       <action name="downloadPublisherReport" class="com.lin.web.action.PublisherViewAction" method="downloadPublisherReport">
+			<!-- <param name="contentType">text/html</param>
+            <result type="json"/> -->
+            
+           <result name="success" type="stream">
+           <param name="contentDisposition">attachment;filename=PublisherReport.xls</param>
+           <param name="contentType">application/vnd.ms-excel</param>
+           <param name="inputName">inputStream</param>
+           <param name="bufferSize">1024</param>
+        </result>
+       </action>
+       <action name="downloadPublisherReportFromBackend" class="com.lin.web.action.PublisherViewAction" method="downloadPublisherReportFromBackend">
+			<!-- <param name="contentType">text/html</param>
+            <result type="json"/> -->
+            
+           <result name="success" type="stream">
+           <param name="contentDisposition">attachment;filename=PublisherReport.xls</param>
+           <param name="contentType">application/vnd.ms-excel</param>
+           <param name="inputName">inputStream</param>
+           <param name="bufferSize">1024</param>
+        </result>
+       </action>
+                
+       <action name="serverTime" class="com.lin.web.action.HomeAction" method="getLatestTime">
+        <param name="contentType">text/html</param>
+        <result type="json"/>
+       </action>
+       
+       <action name="barGraphData" class="com.lin.web.action.GraphAction" method="barGraphData">
+        <param name="contentType">text/html</param>
+        <result type="json"/>
+       </action>
+       
+       <action name="lineGraphData" class="com.lin.web.action.GraphAction" method="lineGraphData">
+        <param name="contentType">text/html</param>
+        <result type="json"/>
+       </action>
+       
+       <action name="pieGraphData" class="com.lin.web.action.GraphAction" method="pieGraphData">
+        <param name="contentType">text/html</param>
+        <result type="json"/>
+       </action>
+       
+       <action name="geoGraphData" class="com.lin.web.action.GraphAction" method="geoGraphData">
+        <param name="contentType">text/html</param>
+        <result type="json"/>
+       </action>
+       
+       <action name="areaGraphData" class="com.lin.web.action.GraphAction" method="areaGraphData">
+        <param name="contentType">text/html</param>
+        <result type="json"/>
+       </action>
+       
+       
+       <action name="publisherRelocationData" class="com.lin.web.action.PublisherViewAction" method="publisherRelocationData">
+        <param name="contentType">text/html</param>
+        <result type="json"/>
+       </action>
+       
+       <action name="changeCallPriority" class="com.lin.web.action.PublisherViewAction" method="changeCallPriority">
+        <param name="contentType">text/html</param>
+        <result type="json"/>
+       </action>
+       
+       <action name="relocationDataTableSaveOrUpdate" class="com.lin.web.action.PublisherViewAction" method="relocationDataTableSaveOrUpdate">
+        <param name="contentType">text/html</param>
+        <result type="json"/>
+       </action>
+       
+        <action name="loadTotalPublisher" class="com.lin.web.action.PaginationDataAction" method="loadPublisherTotal">
+           <param name="contentType">text/html</param>
+           <result type="json"/>
+       </action>
+       
+       
+       
+       <action name="getTimePeriod" class="com.lin.web.action.PublisherViewAction" method="getTimePeriod">
+        <param name="contentType">text/html</param>
+        <result type="json"/>
+       </action>
+
+       <action name="loadAgencies" class="com.lin.web.action.AdvertiserViewAction" method="loadAllAgencies">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadAdvertisers" class="com.lin.web.action.AdvertiserViewAction" method="loadAllAdvertisers">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       
+       <action name="publisherSellThroughData" class="com.lin.web.action.PaginationDataAction" method="loadPublisherSellThroughData">
+        <param name="contentType">text/html</param>
+        <result type="json"/>
+       </action>
+       
+       <action name="insertPublisher" class="com.lin.web.action.PaginationDataAction" method="insertPublisherView">
+        <param name="contentType">text/html</param>
+        <result type="json"/>
+       </action>
+
+       <action name="insertMenuItems" class="com.lin.web.action.MenuAction" method="insertMenuItems">
+        <param name="contentType">text/html</param>
+        <result type="json"/>
+       </action>
+       
+       <action name="getLeftMenu" class="com.lin.web.action.MenuAction" method="getLeftMenuList">
+        <param name="contentType">text/html</param>
+        <result type="json"/>
+       </action>            
+        
+        <action name="loadAdvertiserById" class="com.lin.web.action.AdvertiserViewAction" method="advertiserById">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+          <action name="channelPerformance" class="com.lin.web.action.PublisherViewAction" method="loadChannelPerformance">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       
+       <action name="performanceByProperty" class="com.lin.web.action.PublisherViewAction" method="loadPerformanceByProperty">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       
+       <action name="sellThroughData" class="com.lin.web.action.PublisherViewAction" method="loadSellThroughData">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       
+             <action name="loadOrderName" class="com.lin.web.action.AdvertiserViewAction" method="loadAllOrders">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       
+       <action name="loadLineItemName" class="com.lin.web.action.AdvertiserViewAction" method="loadAllLineItemName">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+
+        <action name="reallocationItem" class="com.lin.web.action.AdvertiserViewAction" method="reallocationItem">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       
+        <action name="actualAdvertiser" class="com.lin.web.action.AdvertiserViewAction" method="loadTrendAnalysisActualDataAdvertiserView">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       
+      <action name="forcastAdvertiser" class="com.lin.web.action.AdvertiserViewAction" method="loadTrendAnalysisForcastDataAdvertiserView">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+        <action name="acualLineChart" class="com.lin.web.action.AdvertiserViewAction" method="actualLineGraphAdvertiser">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="forcastLineChart" class="com.lin.web.action.AdvertiserViewAction" method="forcastLineGraphAdvertiser">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadPerformanceSummaryHeaderData" class="com.lin.web.action.AdvertiserViewAction" method="loadPerformanceSummaryHeaderData">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadPerformerLineItems" class="com.lin.web.action.AdvertiserViewAction" method="loadPerformerLineItems">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadNonPerformerLineItems" class="com.lin.web.action.AdvertiserViewAction" method="loadNonPerformerLineItems">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadMostActiveLineItems" class="com.lin.web.action.AdvertiserViewAction" method="loadMostActiveLineItems">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadTopGainers" class="com.lin.web.action.AdvertiserViewAction" method="loadTopGainers">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadTopLosers" class="com.lin.web.action.AdvertiserViewAction" method="loadTopLosers">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadPerformanceMetrics" class="com.lin.web.action.AdvertiserViewAction" method="loadPerformanceMetrics">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadAdvertiserBylocationGraphData" class="com.lin.web.action.AdvertiserViewAction" method="loadAdvertiserBylocationGraphData">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>       
+       <action name="loadAdvertiserByMarketGraphData" class="com.lin.web.action.AdvertiserViewAction" method="loadAdvertiserByMarketGraphData">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadPopUpData" class="com.lin.web.action.AdvertiserViewAction" method="loadLineItemForPopup">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       
+        <action name="actualPublisherData" class="com.lin.web.action.PublisherViewAction" method="loadActualPublisherData">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       
+        <action name="lineItemDetails" class="com.lin.web.action.AdvertiserViewAction" method="lineItemById">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+         <action name="acualLineChartPublisher" class="com.lin.web.action.PublisherViewAction" method="actualLineGraphPublisher">
+		       <param name="contentType">text/html</param>
+               <result type="json">
+                <param name="root">headerMap</param>
+                </result>
+       </action>
+       
+       <action name="loadPublisher" class="com.lin.web.action.PublisherViewAction" method="loadPublisherData">
+          <param name="contentType">text/html</param>
+          <result type="json"/>
+       </action>
+       
+        <action name="loadChannels" class="com.lin.web.action.PublisherViewAction" method="loadChannels">
+          <param name="contentType">text/html</param>
+          <result type="json"/>
+       </action>
+       <action name="loadChannelPerformancePopup" class="com.lin.web.action.PublisherViewAction" method="channelPerformancePopup">
+          <param name="contentType">text/html</param>
+          <result type="json"/>
+       </action>
+       
+       <action name="reallocationPublisherData" class="com.lin.web.action.PublisherViewAction" method="loadReallocationPublisherData">
+          <param name="contentType">text/html</param>
+          <result type="json"/>
+       </action>
+       
+       <action name="loadCampainTotalDataPublisherViewListCurrent" class="com.lin.web.action.PublisherViewAction"	method="loadCampainTotalDataPublisherViewListCurrent">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="loadCampainTotalDataPublisherViewListCompare" class="com.lin.web.action.PublisherViewAction"	method="loadCampainTotalDataPublisherViewListCompare">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="loadCampainTotalDataPublisherViewListMTD" class="com.lin.web.action.PublisherViewAction"	method="loadCampainTotalDataPublisherViewListMTD">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="loadCampainPerformanceDeliveryIndicatorData" class="com.lin.web.action.PublisherViewAction"	method="loadCampainPerformanceDeliveryIndicatorData">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>       
+       
+        <action name="nexageReport" class="com.lin.web.action.NexageAction">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="nexageNewReport" class="com.lin.web.action.NexageAction" method="dailyReportNewAPI">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action> 
+        
+        <action name="mojivaReport" class="com.lin.web.action.MojivaAction">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+         <action name="adExReport" class="com.lin.web.action.AdExchangeAction">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        
+        <action name="adExAuthorization" class="com.lin.web.action.AdExchangeAction" method="authorizeUsingOauth2">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="adExCallback" class="com.lin.web.action.AdExchangeAction" method="oauth2Callback">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        
+        <action name="dataProcessor" class="com.lin.web.action.DataModularAction" method="processReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+          <action name="dataUploaderOnBQ" class="com.lin.web.action.DataModularAction" method="uploadReportOnBQ">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+         
+         
+        <action name="adExReportByCron" class="com.lin.web.action.AdExchangeAction" method="fetchReportByCron">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+
+        <action name="getAgencyDropDownList" class="com.lin.web.action.AdvertiserViewAction" method="loadAgencyDropDownList">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>        
+
+         <action name="getAdvertiserDropDownList" class="com.lin.web.action.AdvertiserViewAction" method="loadAdvertiserDropDownList">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+
+        <action name="getOrderDropDownList" class="com.lin.web.action.AdvertiserViewAction" method="loadOrderDropDownList">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="getLineItemDropDownList" class="com.lin.web.action.AdvertiserViewAction" method="loadLineItemDropDownList">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="getPublisherPropertyDropDownList" class="com.lin.web.action.PublisherViewAction" method="loadPublisherPropertyDropDownList">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+         <action name="getAdvertiserReallocation" class="com.lin.web.action.AdvertiserViewAction" method="loadReallocationHeaderDataAdvertiserView">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action> 
+        
+        <action name="saveAdvertiserReallocation" class="com.lin.web.action.AdvertiserViewAction" method="updateReallocationLineItem">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action> 
+        
+         <action name="loadOneYrData" class="com.lin.web.action.PublisherViewAction" method="loadOneYearTrendsAnalysisData">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="loadAllReconciliationData" class="com.lin.web.action.OperationalViewAction" method="loadAllReconciliationData">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        
+         <action name="performanceByLocationReportLinMedia" class="com.lin.web.action.PerformanceByLocationAction" method="performanceByLocationReportLinMedia">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="performanceByLocationReportLinDigital" class="com.lin.web.action.PerformanceByLocationAction" method="performanceByLocationLinDigital">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="performanceByLocationReportTribune" class="com.lin.web.action.PerformanceByLocationAction" method="performanceByLocationTribune">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+                        
+         <action name="loadAdvertiserPropertyList" class="com.lin.web.action.AdvertiserViewAction" 
+                 method="loadAdvertiserPropertyDropDownList">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+         <action name="dfpReportLinDigital" class="com.lin.web.action.LinDigitalDFPAction">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="richMediaCustomEventLinMediaReport" class="com.lin.web.action.RichMediaDataAction" method="fetchLinMediaRichMediaCustomEventReport">
+            <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+         <action name="richMediaCustomEventLinDigitalReport" class="com.lin.web.action.RichMediaDataAction" method="fetchLinDigitalRichMediaCustomEventReport">
+            <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="richMediaCustomEventTribuneReport" class="com.lin.web.action.RichMediaDataAction" method="fetchTribuneRichMediaCustomEventReport">
+            <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+                
+        <action name="loadAdvertiserTotalDataListCurrent" class="com.lin.web.action.AdvertiserViewAction"	method="loadAdvertiserTotalDataListCurrent">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="loadAdvertiserTotalDataListCompare" class="com.lin.web.action.AdvertiserViewAction"	method="loadAdvertiserTotalDataListCompare">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="loadAdvertiserTotalDataListMTD" class="com.lin.web.action.AdvertiserViewAction"	method="loadAdvertiserTotalDataListMTD">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+       <action name="loadDeliveryIndicatorData" class="com.lin.web.action.AdvertiserViewAction"	method="loadDeliveryIndicatorData">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+       </action>
+       
+       <action name="loadLineItemForcast" class="com.lin.web.action.AdvertiserViewAction" method="loadLineItemForcast">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+       </action>
+       
+       <action name="loadForcasts" class="com.lin.web.action.OperationalViewAction" method="loadForcasts">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+       </action>
+       
+         <!--  RichMediaAdvertiserView Starts -->
+       
+       		<action name="loadRichMediaAdvertiserTotalDataListCurrent" class="com.lin.web.action.RichMediaAdvertiserViewAction"	method="loadAdvertiserTotalDataListCurrent">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <!-- 
+        
+		<action name="lineItemDetails" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="lineItemById">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+	   
+	   <action name="loadOrderName" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadAllOrders">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       
+       <action name="loadLineItemName" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadAllLineItemName">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+
+        <action name="reallocationItem" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="reallocationItem">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="forcastAdvertiser" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadTrendAnalysisForcastDataAdvertiserView">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadAdvertiserById" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="advertiserById">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+	   
+	   <action name="loadAgencies" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadAllAgencies">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadAdvertisers" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadAllAdvertisers">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+         -->
+        
+        <action name="getRichMediaAgencyDropDownList" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadAgencyDropDownList">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+         <action name="getRichMediaAdvertiserDropDownList" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadAdvertiserDropDownList">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="getRichMediaOrderDropDownList" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadOrderDropDownList">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="getRichMediaLineItemDropDownList" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadLineItemDropDownList">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="loadRichMediaAdvertiserTotalDataListCompare" class="com.lin.web.action.RichMediaAdvertiserViewAction"	method="loadAdvertiserTotalDataListCompare">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="loadRichMediaAdvertiserTotalDataListMTD" class="com.lin.web.action.RichMediaAdvertiserViewAction"	method="loadAdvertiserTotalDataListMTD">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+       <action name="loadRichMediaDeliveryIndicatorData" class="com.lin.web.action.RichMediaAdvertiserViewAction"	method="loadDeliveryIndicatorData">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+       </action>
+	   <action name="loadRichMediaAdvertiserPropertyList" class="com.lin.web.action.RichMediaAdvertiserViewAction" 
+                 method="loadAdvertiserPropertyDropDownList">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+		<action name="getRichMediaAdvertiserReallocation" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadReallocationHeaderDataAdvertiserView">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="saveRichMediaAdvertiserReallocation" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="updateReallocationLineItem">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+		<action name="actualRichMediaAdvertiser" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadTrendAnalysisActualDataAdvertiserView">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+        <action name="acualRichMediaLineChart" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="actualLineGraphAdvertiser">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="forcastRichMediaLineChart" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="forcastLineGraphAdvertiser">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadRichMediaPerformanceSummaryHeaderData" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadPerformanceSummaryHeaderData">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadRichMediaPerformerLineItems" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadPerformerLineItems">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadRichMediaNonPerformerLineItems" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadNonPerformerLineItems">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadRichMediaMostActiveLineItems" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadMostActiveLineItems">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadRichMediaTopGainers" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadTopGainers">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadRichMediaTopLosers" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadTopLosers">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadRichMediaPerformanceMetrics" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadPerformanceMetrics">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadRichMediaAdvertiserBylocationGraphData" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadAdvertiserBylocationGraphData">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>       
+       <action name="loadRichMediaAdvertiserByMarketGraphData" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadAdvertiserByMarketGraphData">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       <action name="loadRichMediaPopUpData" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadLineItemForPopup">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+	   <action name="loadRichMediaAdvertiserTrendsAnalysisHeaderDate" class="com.lin.web.action.RichMediaAdvertiserViewAction"	method="loadTrendAnalysisHeaderDataAdvertiserView">
+			<param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+         <action name="loadRichMediaEventPopup" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadRichMediaEventPopup">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+      <action name="loadRichMediaEventGraph" class="com.lin.web.action.RichMediaAdvertiserViewAction" method="loadRichMediaEventGraph">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action> 
+       <!--  RichMediaAdvertiserView Ends -->
+       
+        <action name="loadCampaignTraffickingData" class="com.lin.web.action.OperationalViewAction" method="loadCampaignTraffickingData">
+		   <param name="contentType">text/html</param>
+           <result type="json"/>
+       </action>  
+       
+          <action name="tribuneDfpReport" class="com.lin.web.action.TribuneAction">
+		   <param name="contentType">text/html</param>
+           <result type="json"/>
+       </action>
+        
+        
+       <!-- Target report starts --> 
+       
+       <action name="dfpLinMediaTargetReport" class="com.lin.web.action.DFPTargetReportAction" method="linMediaDfpTargetReport">
+		   <param name="contentType">text/html</param>
+           <result type="json"/>
+       </action>
+       <action name="dfpLinDigitalTargetReport" class="com.lin.web.action.DFPTargetReportAction" method="linDigitalDfpTargetReport">
+		   <param name="contentType">text/html</param>
+           <result type="json"/>
+       </action>
+       <action name="dfpTribuneTargetReport" class="com.lin.web.action.DFPTargetReportAction" method="tribuneDfpTargetReport">
+		   <param name="contentType">text/html</param>
+           <result type="json"/>
+       </action>
+       
+       <!-- Target report ends -->
+       
+       
+        <!--  NewAdvertiserView Starts -->    
+        
+        <action name="getHeaderData" class="com.lin.web.action.NewAdvertiserViewAction" method="headerData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	 <param name="root">headerDataList</param>
+           </result>
+       </action>
+       
+        <action name="performarData" class="com.lin.web.action.NewAdvertiserViewAction" method="performarData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	  <param name="root">
+         	   performerDataStr 
+    		</param> 
+           </result>
+       </action>
+       
+       <action name="mostActiveData" class="com.lin.web.action.NewAdvertiserViewAction" method="mostActiveData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	  <param name="root">mostActiveDataStr </param> 
+           </result>
+       </action>
+       
+          <action name="deliveryMetrics" class="com.lin.web.action.NewAdvertiserViewAction" method="deliveryMetrics">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	  <param name="root"> deliveryMetricsStr </param> 
+           </result>
+       </action>
+       
+        <action name="performanceByLocationChartData" class="com.lin.web.action.NewAdvertiserViewAction" method="performanceByLocationChartData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	  <param name="root">
+         	   performanceByLocationChartDatajsonStr 
+    		</param> 
+           </result>
+       </action>
+       
+       <action name="getUserAccounts" class="com.lin.web.action.NewAdvertiserViewAction" method="loadUserAccounts">
+            <param name="contentType">text/html</param>
+            <result type="json">
+             <param name="root">dataMap</param> 
+           </result>
+       </action>
+       
+       <action name="getOrdersByAdvertiserOrAgency" class="com.lin.web.action.NewAdvertiserViewAction" method="loadOrders">
+            <param name="contentType">text/html</param>
+            <result type="json">
+             <param name="root">dataMap</param> 
+           </result>
+       </action>
+       <action name="performanceByAdSizeChartData" class="com.lin.web.action.NewAdvertiserViewAction" method="performanceByAdSizeChartData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	  <param name="root"> performanceByAdSizeChartDataJsonStr </param> 
+           </result>
+       </action>
+       
+       <action name="performanceByOSChartData" class="com.lin.web.action.NewAdvertiserViewAction" method="performanceByOSChartData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	  <param name="root">
+         	   performanceByOSeChartDataJsonStr 
+    		</param> 
+           </result>
+       </action>
+       
+       <action name="performanceByDeviceChartData" class="com.lin.web.action.NewAdvertiserViewAction" method="performanceByDeviceChartData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	  <param name="root">
+         	   performanceByDeviceChartDataJsonStr 
+    		</param> 
+           </result>
+       </action>
+       
+       <action name="mobileWebVsAppChartData" class="com.lin.web.action.NewAdvertiserViewAction" method="mobileWebVsAppChartData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	  <param name="root">
+         	   mobileWebVsAppChartDataJsonStr 
+    		</param> 
+           </result>
+       </action>
+       
+       <action name="performanceByAdSizeChartData" class="com.lin.web.action.NewAdvertiserViewAction" method="performanceByAdSizeChartData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	  <param name="root">
+         	   performanceByAdSizeChartDataJsonStr 
+    		</param> 
+           </result>
+       </action>
+       
+       <action name="impressionByOSChartData" class="com.lin.web.action.NewAdvertiserViewAction" method="impressionByOSChartData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	  <param name="root">
+         	   impressionByOSeChartDataJsonStr 
+    		</param> 
+           </result>
+       </action>
+       
+       <action name="impressionByDeviceChartData" class="com.lin.web.action.NewAdvertiserViewAction" method="impressionByDeviceChartData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	  <param name="root">
+         	   impressionByDeviceChartDataJsonStr 
+    		</param> 
+           </result>
+       </action>
+       
+       <action name="impressionBymobileWebVsAppChartData" class="com.lin.web.action.NewAdvertiserViewAction" method="impressionBymobileWebVsAppChartData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	  <param name="root">
+         	   impressionBymobileWebVsAppChartDataJsonStr 
+    		</param> 
+           </result>
+       </action>
+       
+       <action name="lineChartData" class="com.lin.web.action.NewAdvertiserViewAction" method="loadLineCharts">
+            <param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">dataMap</param> 
+            </result>
+       </action>
+       
+       <action name="richMediaEventGraph" class="com.lin.web.action.NewAdvertiserViewAction" method="richMediaEventGraph">
+		       <param name="contentType">text/html</param>
+               <result type="json"/>
+       </action>
+       
+       <action name="loadLineItemForcastPopupData" class="com.lin.web.action.NewAdvertiserViewAction" method="loadLineItemForcastPopupData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">newAdvertiserViewDTO</param> 
+            </result>
+       </action>
+       
+       <action name="performanceByOSBarChartData" class="com.lin.web.action.NewAdvertiserViewAction" method="performanceByOSBarChartData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	  <param name="root">
+         	   performanceByOSeChartDataJsonStr 
+    		</param> 
+           </result>
+       </action>
+       
+       <action name="performanceByDeviceBarChartData" class="com.lin.web.action.NewAdvertiserViewAction" method="performanceByDeviceBarChartData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	  <param name="root">
+         	   performanceByDeviceChartDataJsonStr 
+    		</param> 
+           </result>
+       </action>
+       
+       <action name="mobileWebVsAppBarChartData" class="com.lin.web.action.NewAdvertiserViewAction" method="mobileWebVsAppBarChartData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	  <param name="root">
+         	   mobileWebVsAppChartDataJsonStr 
+    		</param> 
+           </result>
+       </action>
+        
+         <action name="impressionsByAdSizeChartData" class="com.lin.web.action.NewAdvertiserViewAction" method="impressionsByAdSizeChartData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+         	  <param name="root">
+         	   impressionByAdSizeChartDataJsonStr 
+    		</param> 
+           </result>
+       </action>
+       
+       <action name="videoCampaignData" class="com.lin.web.action.NewAdvertiserViewAction" method="videoCampaignData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">videoCampaignDataMap</param> 
+            </result>
+       </action>
+       
+       <action name="campaignGridData" class="com.lin.web.action.NewAdvertiserViewAction" method="campaignGridData">
+            <param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">campaignGridArray</param> 
+            </result>
+       </action>
+      
+      	<action name="createChannelAfterLogin" class="com.lin.web.action.LoginAction" method="createChannel">
+         	<param name="contentType">text/html</param>
+         	 <result type="json" > <param name="root">channelToken</param></result>			       	
+		</action>
+		
+        <!--  NewAdvertiserView Ends -->
+           <action name="loadAllCampaignAlert" class="com.lin.web.action.AlertEngineAction" method="loadAllCampaignAlert">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonArray</param> 
+	            </result>
+        </action>
+     </package>
+
+	<include file="struts-mediaPlan.xml"></include>
+	<include file="struts-poolMap.xml"></include>
+	<include file="struts-dataUploader.xml"></include>
+	<include file="struts-smartCampaignPlanner.xml"></include>
+	<include file="struts-PublisherProduct.xml"></include>
+	<include file="struts-campaignSetup.xml"></include>
+	<include file="struts-performanceMonitoring.xml"></include>
+	<include file="struts-reporting.xml"></include>
+	
+</struts>

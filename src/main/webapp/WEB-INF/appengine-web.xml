@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0"> 
+  <application>dev-linmobile</application>
+  <version>ad3</version>
+  <!--
+    allows app engine to send multiple requests to one instance in parallel:
+  -->
+  <threadsafe>true</threadsafe>
+  <sessions-enabled>true</sessions-enabled>
+
+  <!-- configure system properties -->
+  <system-properties>
+     <!-- <property name="com.sun.xml.bind.v2.bytecode.classtailor.nooptimize" value="true" />
+     <property name="com.sun.xml.bind.v2.runtime.jaxbcontextimpl.fastboot" value="true"/> -->
+     <property name="java.util.logging.config.file" value="web-inf/logging.properties"/>
+  </system-properties>
+   <static-files>
+      <include path="/**.png" expiration="30d" />
+      <include path="/**.jpg" expiration="30d" />
+      <include path="/**.gif" expiration="30d" />
+      <include path="/**.jpeg" expiration="30d" />
+      <include path="/**.js" expiration="30d" />
+      <include path="/**.css" expiration="30d" />
+      <include path="/**.ico" expiration="30d" />
+      <include path="/**.woff"/>
+      <include path="/**.swf"/>
+      <include path="/**.html"/>
+      <include path="/**.kml"/>
+      <include path="/**.mp3"/>
+      <include path="/**.json"/>
+      <include path="/**.csv"/>
+  </static-files>
+  <inbound-services>
+    <service>channel_presence</service>
+  </inbound-services>
+</appengine-web-app>

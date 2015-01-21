@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- 
+  @author Naresh Pokhriyal
+  This is a struts config file for publisher product module
+  @createdOn 16/05/2014 
+-->
+<struts>    
+	  
+    <package name="publisherProductPackage" namespace="/" extends="struts-default"> 
+        <interceptors>
+        
+			<interceptor name="gaeFileUploadInterceptor" class="com.struts2.gae.interceptor.GaeFileUploadInterceptor" />
+			<interceptor-stack name="fileUploadStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="gaeFileUploadInterceptor"></interceptor-ref>
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>				
+			</interceptor-stack>
+			
+			<interceptor name="SessionCheckInterceptor" class="com.lin.web.interceptor.SessionCheckInterceptor"/>
+            <interceptor-stack name="tstSessionCheckStack">
+                <interceptor-ref name="SessionCheckInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack> 
+            
+            <interceptor name="AdminSessionCheckInterceptor" class="com.lin.web.interceptor.AdminSessionCheckInterceptor"/>
+            <interceptor-stack name="adminSessionCheckStack">
+                <interceptor-ref name="SessionCheckInterceptor" />
+                <interceptor-ref name="AdminSessionCheckInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+		
+		</interceptors>
+		
+		<default-interceptor-ref name="fileUploadStack" />
+	   
+	    <global-results>
+           <result name="sessionExpired" >jsp/sessionExpired.jsp</result>
+           <result name="unAuthorisedAccess" >jsp/unauthorisedAccess.jsp</result>
+        </global-results>
+   
+        <action name="createProduct" class="com.lin.web.action.ProductAction" method="initProduct">
+        	<interceptor-ref name="adminSessionCheckStack" />
+		    <result name="success">jsp/productCreate.jsp</result>
+		    <!-- <result name="success">jsp/newProduct.jsp</result> -->
+        </action>
+        
+        <action name="publisherProduct" class="com.lin.web.action.ProductAction" method="productSetup">
+        	<interceptor-ref name="adminSessionCheckStack" />
+		    <result name="success">jsp/productSetup.jsp</result>
+		    <!-- <result name="success">jsp/newProductSetup.jsp</result> -->
+        </action>   
+        
+       
+   </package>  	
+   <package name="publisherProductJson"  extends="json-default">
+	  <interceptors>
+	  <interceptor-stack name="fileUploadStack">				
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />				
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				
+				 <interceptor-ref name="json">
+                   <param name="enableSMD">true</param>
+                   <param name="excludeProperties">
+                       login.password,
+                       studentList.*\.sin
+                  </param>
+                </interceptor-ref>      
+			</interceptor-stack>
+      </interceptors>
+
+        <action name="loadTopLevelAdUnits" class="com.lin.web.action.ProductAction" method="loadTopLevelAdUnits">
+	        <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonArray</param> 
+	            </result>
+        </action>
+        
+        <action name="loadChildAdUnits" class="com.lin.web.action.ProductAction" method="loadChildAdUnits">
+	        <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonArray</param> 
+	            </result>
+        </action>
+        
+        <action name="loadAllActiveAdUnits" class="com.lin.web.action.ProductAction" method="loadAllActiveAdUnits">
+	        <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        
+        <action name="loadContextualConsistencies" class="com.lin.web.action.ProductAction" method="loadContextualConsistencies">
+	        <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonArray</param> 
+	            </result>
+        </action>
+        
+        <action name="loadProductCreatives" class="com.lin.web.action.ProductAction" method="loadProductCreatives">
+	        <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonArray</param> 
+	            </result>
+        </action>
+        
+        <action name="loadProductDevices" class="com.lin.web.action.ProductAction" method="loadProductDevices">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonArray</param> 
+	            </result>
+        </action>
+        
+        <action name="loadProductDmas" class="com.lin.web.action.ProductAction" method="loadProductDmas">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonArray</param> 
+	            </result>
+        </action>
+        
+        <action name="loadProductPlatforms" class="com.lin.web.action.ProductAction" method="loadProductPlatforms">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonArray</param> 
+	            </result>
+        </action> 
+        
+        <action name="saveProductData" class="com.lin.web.action.ProductAction" method="saveProductData">
+	        <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonArray</param> 
+	            </result>
+        </action>
+        
+        <action name="initEditProduct" class="com.lin.web.action.ProductAction" method="initEditProduct">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonObject</param> 
+	            </result>
+        </action>
+        
+        <action name="loadAllProducts" class="com.lin.web.action.ProductAction" method="loadAllProducts">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonArray</param> 
+	            </result>
+        </action>
+        <action name="loadStates" class="com.lin.web.action.ProductAction" method="loadStates">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonObject</param> 
+	            </result>
+        </action>
+        <action name="loadCities" class="com.lin.web.action.ProductAction" method="loadCities">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonObject</param> 
+	            </result>
+        </action>
+        <action name="searchCities" class="com.lin.web.action.ProductAction" method="searchCities">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonObject</param> 
+	            </result>
+        </action>
+        <action name="searchAdUnits" class="com.lin.web.action.ProductAction" method="searchAdUnits">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonObject</param> 
+	            </result>
+        </action>
+        <action name="searchZips" class="com.lin.web.action.ProductAction" method="searchZips">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonObject</param> 
+	            </result>
+        </action>
+        <action name="deleteProduct" class="com.lin.web.action.ProductAction" method="deleteProduct">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">deleted</param> 
+	            </result>
+        </action>
+        
+        <action name="searchProduct" class="com.lin.web.action.ProductAction" method="searchProduct">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonObject</param> 
+	            </result>
+        </action>
+        
+        <action name="loadCreatives" class="com.lin.web.action.ProductAction" method="loadCreatives">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonObject</param> 
+	            </result>
+        </action>
+        
+        <action name="checkProductNameAvailability" class="com.lin.web.action.ProductAction" method="checkProductNameAvailability">
+		    <param name="contentType">text/html</param>
+		     <result type="json">
+		              <param name="root">jsonArray</param> 
+		     </result>
+        </action>
+ 
+        <action name="loadProductAdUnitsPerformanceViaTaskQueue" class="com.lin.web.action.ProductPerformanceAction" >
+        	  <param name="contentType">text/html</param>
+	          <result type="json"><param name="root">response</param></result>
+        </action>
+        
+        <action name="loadProductAdUnitsPerformanceData" class="com.lin.web.action.ProductPerformanceAction" method="loadProductAdUnitsPerformanceData">
+        	  <param name="contentType">text/html</param>
+	          <result type="json"><param name="root">response</param></result>
+        </action>
+       
+   </package>
+	
+</struts>

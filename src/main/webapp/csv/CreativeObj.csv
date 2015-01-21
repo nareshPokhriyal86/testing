@@ -1,0 +1,69 @@
+creative_id,creative_format,creative_size
+1,Standard,1037x30
+2,Standard,1024x768
+3,Standard,1024x90
+4,Standard,1000x45
+5,Standard,1000x1
+6,Standard,970x265
+7,Standard,970x90
+8,Standard,768x1024
+9,Standard,728x90
+10,Standard,640x480
+11,Standard,638x60
+12,Standard,480x320
+13,Standard,468x60
+14,Standard,336x280
+15,Standard,320x480
+16,Standard,320x240
+17,Standard,320x50
+18,Standard,300x600
+19,Standard,300x350
+20,Standard,300x250
+21,Standard,300x100
+22,Standard,300x75
+23,Standard,300x60
+24,Standard,300x50
+25,Standard,250x250
+26,Standard,240x400
+27,Standard,234x60
+28,Standard,216x54
+29,Standard,216x36
+30,Standard,200x200
+31,Standard,180x150
+32,Standard,176x62
+33,Standard,168x42
+34,Standard,168x28
+35,Standard,160x600
+36,Standard,125x125
+37,Standard,120x600
+38,Standard,120x240
+39,Standard,120x90
+40,Standard,120x60
+41,Standard,120x30
+42,Standard,120x20
+43,Standard,88x31
+44,Standard,50x25
+45,Standard,5x1000
+46,Standard,3x1000
+47,Standard,2x40
+48,Standard,1x1000
+49,Standard,1x1
+50,Video,1024x768v
+51,Video,640x480v
+52,Video,480x360v
+53,Video,480x70v
+54,Video,400x300v
+55,Video,320x480v
+56,Video,320x240v
+57,Video,300x250v
+58,Video,9x1000v
+59,Video,3x1000v
+60,Video,2x40v
+61,Video,1x1000v
+62,Video,1x1v
+63,Rich Media,300x250
+64,Rich Media,180x150
+65,Rich Media,160x600
+66,Rich Media,728x90
+67,Rich Media,300x600
+68,Rich Media,550x480

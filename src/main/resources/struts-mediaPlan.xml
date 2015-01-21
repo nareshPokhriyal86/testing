@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- 
+  @author Youdhveer Panwar
+  This is a struts config file for MediaPlan module
+  @createdOn 08,Oct 2013 
+-->
+
+<struts>    
+	  
+    <package name="mediaPlan" namespace="/" extends="struts-default"> 
+        <interceptors>
+        
+			<interceptor name="gaeFileUploadInterceptor" class="com.struts2.gae.interceptor.GaeFileUploadInterceptor" />
+			<interceptor-stack name="fileUploadStack">				
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="gaeFileUploadInterceptor"></interceptor-ref>
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>				
+			</interceptor-stack>
+			
+			<interceptor name="SessionCheckInterceptor" class="com.lin.web.interceptor.SessionCheckInterceptor"/>
+            <interceptor-stack name="tstSessionCheckStack">
+                <interceptor-ref name="SessionCheckInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack> 
+            
+            <interceptor name="AdminSessionCheckInterceptor" class="com.lin.web.interceptor.AdminSessionCheckInterceptor"/>
+            <interceptor-stack name="adminSessionCheckStack">
+                <interceptor-ref name="SessionCheckInterceptor" />
+                <interceptor-ref name="AdminSessionCheckInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+		
+		</interceptors>
+		
+		<default-interceptor-ref name="fileUploadStack" />
+	   
+	    <global-results>
+           <result name="sessionExpired" >jsp/sessionExpired.jsp</result>
+           <result name="unAuthorisedAccess" >jsp/unauthorisedAccess.jsp</result>
+        </global-results>
+        
+        <action name="proposals" class="com.lin.web.action.ProposalAction" >
+               <interceptor-ref name="tstSessionCheckStack" />  
+		       <result name="input">jsp/Proposals.jsp</result>
+               <result name="success">jsp/Proposals.jsp</result>
+               <result name="edit">jsp/CreateProposal.jsp</result>
+        </action>
+   
+        <action name="newProposal" class="com.lin.web.action.ProposalAction" method="createProposal">
+              <interceptor-ref name="tstSessionCheckStack" />  
+		       <result name="input">jsp/CreateProposal.jsp</result>
+               <result name="success">jsp/CreateProposal.jsp</result>
+        </action>
+	   
+	   <action name="mediaPlanner" class="com.lin.web.action.MediaPlanAction" >
+              <interceptor-ref name="tstSessionCheckStack" />   
+              <result name="error">jsp/mediaPlanner.jsp</result>
+		       <result name="input">jsp/mediaPlanner.jsp</result>
+               <result name="success">jsp/mediaPlanner.jsp</result>
+        </action>
+        
+        <action name="newInsertionOrder" class="com.lin.web.action.MediaPlanAction" method="createInsertionOrder">
+              <interceptor-ref name="tstSessionCheckStack" />  
+		       <result name="input">jsp/CreateInsertionOrder.jsp</result>
+               <result name="success">jsp/CreateInsertionOrder.jsp</result>
+        </action>
+        
+        <action name="newMediaPlanner" class="com.lin.web.action.MediaPlanAction" method="newMediaPlanner">
+        	   <interceptor-ref name="tstSessionCheckStack" />
+               <result name="success">jsp/newMediaPlanner.jsp</result>
+        </action>
+        
+        <action name="smartMediaPlan" class="com.lin.web.action.MediaPlanAction" method="smartMediaPlanner">
+        	   <interceptor-ref name="tstSessionCheckStack" />
+               <result name="success">jsp/SmartMediaPlan.jsp</result>
+               <result name="success">jsp/SmartMediaPlan.jsp</result>
+        </action>
+        
+        <action name="clientIOReport" class="com.lin.web.action.ProposalAction" method="clientIOReport">
+        <result name="success" type="stream">
+           <param name="contentDisposition">attachment;filename=ClientIOReport.xls</param>
+           <param name="contentType">application/vnd.ms-excel</param>
+           <param name="inputName">inputStream</param>
+           <param name="bufferSize">1024</param>
+        </result>
+       </action>
+       
+       <action name="publisherIOReport" class="com.lin.web.action.ProposalAction" method="publisherIOReport">
+        <result name="success" type="stream">
+           <param name="contentDisposition">attachment;filename=PublisherIOReport.xls</param>
+           <param name="contentType">application/vnd.ms-excel</param>
+           <param name="inputName">inputStream</param>
+           <param name="bufferSize">1024</param>
+        </result>
+       </action>
+       
+       <action name="clientIOExcelReport" class="com.lin.web.action.MediaPlanAction" method="clientIOExcelReport">
+        <result name="success" type="stream">
+           <param name="contentDisposition">attachment;filename="${fileName}"</param>
+           <param name="contentType">${contentType}</param>
+           <param name="inputName">inputStream</param>
+           <param name="bufferSize">1024</param>
+        </result>
+       </action>
+       
+       <action name="POExcelReport" class="com.lin.web.action.MediaPlanAction" method="POExcelReport">
+        <result name="success" type="stream">
+           <param name="contentDisposition">attachment;filename="${fileName}"</param>
+           <param name="contentType">${contentType}</param>
+           <param name="inputName">inputStream</param>
+           <param name="bufferSize">1024</param>
+        </result>
+       </action>
+       
+   </package>  	
+   <package name="mediaPlanJson"  extends="json-default">
+	  <interceptors>
+	  <interceptor-stack name="fileUploadStack">				
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />				
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				
+				 <interceptor-ref name="json">
+                   <param name="enableSMD">true</param>
+                   <param name="excludeProperties">
+                       login.password,
+                       studentList.*\.sin
+                  </param>
+                </interceptor-ref>      
+			</interceptor-stack>
+      </interceptors>
+       
+        <action name="savePlacement" class="com.lin.web.action.MediaPlanAction" method="savePlacement">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        <action name="deletePlacement" class="com.lin.web.action.MediaPlanAction" method="deletePlacement">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        <action name="deleteSite" class="com.lin.web.action.MediaPlanAction" method="deleteSite">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+	    <action name="loadMediaPlanDropDowns" class="com.lin.web.action.MediaPlanAction" method="fetchMediaPlanDropDowns">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+         <action name="findSiteAndLoadForecastingData" class="com.lin.web.action.MediaPlanAction" method="loadForcastedData">
+                <param name="contentType">text/html</param>
+                <result type="json"/>
+        </action>
+        <action name="autoSaveProposal" class="com.lin.web.action.ProposalAction" method="autoSave">
+              <param name="contentType">text/html</param>
+              <result type="json"/>
+        </action>
+        
+        <action name="loadAgenciesByCompany" class="com.lin.web.action.ProposalAction" method="loadAgenciesByCompany">
+                <param name="contentType">text/html</param>
+                <result type="json"/>
+        </action>
+        <action name="loadAdvertisersByCompany" class="com.lin.web.action.ProposalAction" method="loadAdvertisersByCompany">
+                <param name="contentType">text/html</param>
+                <result type="json"/>
+        </action>
+        
+        <action name="saveSmartMediaPlan" class="com.lin.web.action.MediaPlanAction" method="saveSmartMediaPlan">
+                <param name="contentType">text/html</param>
+                 <result type="json"><param name="root">status</param> </result>
+        </action>
+        <action name="createSmartMediaPlan" class="com.lin.web.action.MediaPlanAction" method="createSmartMediaPlan">
+                <param name="contentType">text/html</param>
+                 <result type="json"><param name="root">status</param> </result>
+        </action>
+        <action name="checkSmartMediaPlan" class="com.lin.web.action.MediaPlanAction" method="checkSmartMediaPlan">
+                <param name="contentType">text/html</param>
+                 <result type="json"><param name="root">status</param> </result>
+        </action>
+         <action name="loadSmartMediaPlanStatus" class="com.lin.web.action.MediaPlanAction" method="loadSmartMediaPlanStatus">
+                <param name="contentType">text/html</param>
+                 <result type="json"><param name="root">status</param> </result>
+        </action>
+        
+         <action name="checkUpdateSmartMediaPlan" class="com.lin.web.action.MediaPlanAction" method="checkUpdateSmartMediaPlan">
+                <param name="contentType">text/html</param>
+                 <result type="json"><param name="root">status</param> </result>
+        </action>
+        
+         <action name="updateSmartMediaPlan" class="com.lin.web.action.MediaPlanAction" method="updateSmartMediaPlan">
+                <param name="contentType">text/html</param>
+                 <result type="json"><param name="root">status</param> </result>
+        </action>
+                 <action name="testForecastService" class="com.lin.web.action.MediaPlanAction" method="testForecastService" /> 
+         <action name="loadPartners" class="com.lin.web.action.MediaPlanAction" method="loadPartners">
+                <param name="contentType">text/html</param>
+                 <result type="json"><param name="root">jsonData</param> </result>
+        </action>
+   </package>
+	
+</struts>

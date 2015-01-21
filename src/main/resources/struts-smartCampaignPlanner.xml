@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- 
+  @author Shubham Goel
+  This is a struts config file forSmart Campaign Planner module
+  @createdOn 09,may 2014 
+-->
+<struts>    
+	  
+    <package name="smartCampaignPlanner" namespace="/" extends="struts-default"> 
+        <interceptors>
+        
+			<interceptor name="gaeFileUploadInterceptor" class="com.struts2.gae.interceptor.GaeFileUploadInterceptor" />
+			<interceptor-stack name="fileUploadStack">				
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="gaeFileUploadInterceptor"></interceptor-ref>
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>				
+			</interceptor-stack>
+			
+			<interceptor name="SessionCheckInterceptor" class="com.lin.web.interceptor.SessionCheckInterceptor"/>
+            <interceptor-stack name="tstSessionCheckStack">
+                <interceptor-ref name="SessionCheckInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack> 
+            
+            <interceptor name="AdminSessionCheckInterceptor" class="com.lin.web.interceptor.AdminSessionCheckInterceptor"/>
+            <interceptor-stack name="adminSessionCheckStack">
+                <interceptor-ref name="SessionCheckInterceptor" />
+                <interceptor-ref name="AdminSessionCheckInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+		
+		</interceptors>
+		
+		<default-interceptor-ref name="fileUploadStack" />
+	   
+	    <global-results>
+           <result name="sessionExpired" >jsp/sessionExpired.jsp</result>
+           <result name="unAuthorisedAccess" >jsp/unauthorisedAccess.jsp</result>
+        </global-results>
+   
+   
+      <!-- <action name="smartPlanner" class="com.lin.web.action.SmartCampaignPlannerAction" >
+	   		  <interceptor-ref name="tstSessionCheckStack" />  
+		      <result name="input">jsp/SmartCampaignList.jsp</result>
+              <result name="success">jsp/SmartCampaignList.jsp</result>
+       </action> -->
+       <action name="smartPlanner" class="com.lin.web.action.SmartCampaignPlannerAction" >
+	   		  <interceptor-ref name="tstSessionCheckStack" />  
+		      <result name="input">jsp/unifiedCampaignSetup.jsp</result>
+              <result name="success">jsp/unifiedCampaignSetup.jsp</result>
+       </action>
+      <action name="initCampaign" class="com.lin.web.action.SmartCampaignPlannerAction" method="initCampaign">
+	   		  <interceptor-ref name="tstSessionCheckStack" />  
+		      <result name="input">jsp/campaignPlanning.jsp</result>
+              <result name="success">jsp/campaignPlanning.jsp</result>
+        </action>
+          <action name="initCampaignFromMap" class="com.lin.web.action.SmartCampaignPlannerAction" method="initCampaignFromMap">
+		      <result name="input">jsp/campaignPlanning.jsp</result>
+              <result name="success">jsp/campaignPlanning.jsp</result>
+        </action>
+        
+        
+        <action name="saveCampaign" class="com.lin.web.action.SmartCampaignPlannerAction" method="saveCampaign">
+	   		  <interceptor-ref name="tstSessionCheckStack" /> 
+		      <result name="input">jsp/SmartCampaignList.jsp</result>
+              <result name="success">jsp/campaignPlanningEdit.jsp</result>
+               <result name="error">jsp/unifiedCampaign.jsp</result>
+        </action>
+        
+         <action name="initEditCampaign" class="com.lin.web.action.SmartCampaignPlannerAction" method="initEditCampaign">
+	   		  <interceptor-ref name="tstSessionCheckStack" /> 
+		      <result name="input">jsp/unifiedCampaign.jsp</result>
+              <result name="success">jsp/campaignPlanningEdit.jsp</result>
+               <result name="error">jsp/SmartCampaignList.jsp</result>
+        </action>
+        
+          <action name="initEditPlacement" class="com.lin.web.action.SmartCampaignPlannerAction" method="initEditPlacement">
+	   		  <interceptor-ref name="tstSessionCheckStack" /> 
+		      <result name="input">jsp/unifiedCampaign.jsp</result>
+              <result name="success">jsp/campaignPlacementEdit.jsp</result>
+               <result name="error">jsp/SmartCampaignList.jsp</result>
+        </action>
+        
+         <action name="deletePlacement" class="com.lin.web.action.SmartCampaignPlannerAction" method="deletePlacement">
+         <interceptor-ref name="tstSessionCheckStack" /> 
+		  <result name="input">jsp/unifiedCampaign.jsp</result>
+              <result name="success">jsp/campaignPlanningEdit.jsp</result>
+               <result name="error">jsp/unifiedCampaignSetup.jsp</result>
+        </action>
+        
+        <action name="mapEngine" class="com.lin.web.action.PoolMapAction" method="authenticateMap">
+		    <interceptor-ref name="tstSessionCheckStack" />
+		  	<result name="success">jsp/mapEngine.jsp</result>
+       </action>
+       
+         <action name="loadHistoricalDataForDataStoreCampaigns" class="com.lin.web.action.HistoricalDataLoaderAction" method="loadHistoricalDataForDataStoreCampaigns">
+		    <interceptor-ref name="tstSessionCheckStack" />
+       </action>
+       
+       
+   </package>  	
+   <package name="smartCampaignPlannerJson"  extends="json-default">
+	  <interceptors>
+	  <interceptor-stack name="fileUploadStack">				
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />				
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				
+				 <interceptor-ref name="json">
+                   <param name="enableSMD">true</param>
+                   <param name="excludeProperties">
+                       login.password,
+                       studentList.*\.sin
+                  </param>
+                </interceptor-ref>      
+			</interceptor-stack>
+      </interceptors>
+       
+<!--        <action name="plateFormObj" class="com.lin.web.action.SmartCampaignPlannerAction" method="getPlatformObjs">
+            <param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">platformObjList</param> 
+            </result>
+       </action>
+       
+       <action name="deviceObj" class="com.lin.web.action.SmartCampaignPlannerAction" method="getDeviceObjs">
+            <param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">deviceObjList</param> 
+            </result>
+       </action>
+       
+        <action name="creativeObj" class="com.lin.web.action.SmartCampaignPlannerAction" method="getCreativeObjs">
+            <param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">creativeObjList</param> 
+            </result>
+       </action> -->
+        
+        <!-- <action name="allCampaigns" class="com.lin.web.action.SmartCampaignPlannerAction" method="AllCampaignsList">
+            <param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">cmapaignObjList</param> 
+            </result>
+       </action> -->
+       
+       <action name="loadAllCampaigns" class="com.lin.web.action.SmartCampaignPlannerAction" method="loadAllCampaigns">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonArray</param> 
+	            </result>
+        </action>
+        
+          <action name="deleteCampaign" class="com.lin.web.action.SmartCampaignPlannerAction" method="deleteCampaign">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">deleted</param> 
+	            </result>
+        </action>
+        
+        
+            <!-- <action name="savePlacement" class="com.lin.web.action.SmartCampaignPlannerAction" method="savePlacement">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">deleted</param> 
+	            </result>
+        </action>
+         -->
+           <action name="addAdvertiser" class="com.lin.web.action.SmartCampaignPlannerAction" method="addAdvertiser">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">advertisersObj</param> 
+	            </result>
+        </action>
+         <action name="addAgency" class="com.lin.web.action.SmartCampaignPlannerAction" method="addAgency">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">agenciesObj</param> 
+	            </result>
+        </action>
+        
+           <action name="unarchiveCampaign" class="com.lin.web.action.SmartCampaignPlannerAction" method="unarchiveCampaign">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">unarchived</param> 
+	            </result>
+        </action>
+        
+         <action name="loadCampaignProgress" class="com.lin.web.action.SmartCampaignPlannerAction" method="checkCampaignInProgress">
+		       <param name="contentType">text/html</param>
+	           <result type="json"> <param name="root">status</param></result>
+        </action>
+        
+            <action name="pauseCampaign" class="com.lin.web.action.SmartCampaignPlannerAction" method="pauseCampaign">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">paused</param> 
+	            </result>
+        </action>
+        
+            <action name="resumeCampaign" class="com.lin.web.action.SmartCampaignPlannerAction" method="resumeCampaign">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">resumed</param> 
+	            </result>
+        </action>
+        
+         <action name="cancelCampaign" class="com.lin.web.action.SmartCampaignPlannerAction" method="cancelCampaign">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">canceled</param> 
+	            </result>
+        </action>
+        
+        <action name="unCancelCampaign" class="com.lin.web.action.SmartCampaignPlannerAction" method="unCancelCampaign">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">unCanceled</param> 
+	            </result>
+        </action>
+        
+        <action name="loadCampaignHistory" class="com.lin.web.action.SmartCampaignPlannerAction" method="loadCampaignHistory">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonObject</param> 
+	            </result>
+        </action>
+         <action name="createOrUpdateCampaignObjFromDFP" class="com.lin.web.action.SmartCampaignPlannerAction" method="createOrUpdateCampaignObjFromDFP">
+		    <param name="contentType">text/html</param>
+	        <result type="json">
+	            <param name="root">status</param> 
+	         </result>
+		 </action>
+		          <action name="syncAccountAdertiserAgencies" class="com.lin.web.action.SmartCampaignPlannerAction" method="syncAccountAdertiserAgencies">
+		    <param name="contentType">text/html</param>
+	        <result type="json">
+	            <param name="root">status</param> 
+	         </result>
+		 </action>
+		 
+		 <!-- Added By Anup as a webservice to get rank of zip -->
+		  <action name="getLocationRank" class="com.lin.web.action.SmartCampaignPlannerAction" method="getLocationRank">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonArray</param> 
+	            </result>
+        </action>
+        
+        <action name="productPerformance" class="com.lin.web.action.SmartCampaignPlannerAction" method="productPerfomance">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonArray</param> 
+	            </result>
+        </action>
+        
+        <action name="checkPlacementNameAvailability" class="com.lin.web.action.SmartCampaignPlannerAction" method="checkPlacementNameAvailability">
+            <param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">jsonObject</param> 
+            </result>
+       </action>
+       
+       <action name="copyPlacement" class="com.lin.web.action.SmartCampaignPlannerAction" method="copyPlacement">
+         	<param name="contentType">text/html</param>
+            <result type="json">
+              <param name="root">jsonObject</param> 
+            </result>
+       </action>
+       
+       <action name="getAllProductsForcast" class="com.lin.web.action.SmartCampaignPlannerAction" method="getAllProductsForcast" />
+        
+       <action name="getProductForcast" class="com.lin.web.action.SmartCampaignPlannerAction" method="getProductForcast" />
+        
+        <action name="productForecastPerformance" class="com.lin.web.action.SmartCampaignPlannerAction" method="productForecastPerfomance">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">jsonArray</param> 
+	            </result>
+        </action>
+       
+   </package>
+	
+</struts>

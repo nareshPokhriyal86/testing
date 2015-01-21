@@ -1,0 +1,16 @@
+A1,View Revenue & Fill Summary,publisherInvRevView,Active,Publisher Dashboard
+A2,View Trends and Analysis,publisherTreAnsView,Active,Publisher Dashboard
+A3,View Trafficking,publisherTrafView,Active,Publisher Dashboard
+A4,View Diagnostics Tools,publisherDiagToolView,Active,Publisher Dashboard
+A5,Download Publisher Report,publisherDownloadReport,Active,Publisher Dashboard
+A6,View Campaign Summary,cpCampaignView,Active,Campaign Performance
+A7,View Rich Media,cpRichMediaView,Active,Campaign Performance
+A8,Campaign Settings,cpCampaignSettings,Active,Campaign Performance
+A9,Download Campaign Report,cpDownloadReport,Active,Campaign Performance
+A10,Create Campaign,cmpCreateCampaign,Active,Campaign Planning
+A11,Edit Campaign,cmpEditCampaign,Active,Campaign Planning
+A12,Media Plan,cmpMediaPlan,Active,Campaign Planning
+A13,Insertion Order,cmpInsertionOrder,Active,Campaign Planning
+A14,Search Inventory,oaSearchInventory,Active,One Audience
+A15,Process Order,oaProcessOrder,Active,One Audience
+A16,Create Proposal,oaCampaignPlanning,Active,One Audience

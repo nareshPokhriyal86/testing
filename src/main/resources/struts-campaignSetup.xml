@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- 
+  @author Youdhveer Panwar
+  This is a struts config file for campaign setup
+  @createdOn 19 May, 2014
+-->
+
+<struts>    
+	  
+    <package name="campaignSetup" namespace="/" extends="struts-default"> 
+        <interceptors>
+        
+			<interceptor name="gaeFileUploadInterceptor" class="com.struts2.gae.interceptor.GaeFileUploadInterceptor" />
+			<interceptor-stack name="fileUploadStack">				
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="gaeFileUploadInterceptor"></interceptor-ref>
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>				
+			</interceptor-stack>
+			
+			<interceptor name="SessionCheckInterceptor" class="com.lin.web.interceptor.SessionCheckInterceptor"/>
+            <interceptor-stack name="tstSessionCheckStack">
+                <interceptor-ref name="SessionCheckInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack> 
+            
+            <interceptor name="AdminSessionCheckInterceptor" class="com.lin.web.interceptor.AdminSessionCheckInterceptor"/>
+            <interceptor-stack name="adminSessionCheckStack">
+                <interceptor-ref name="SessionCheckInterceptor" />
+                <interceptor-ref name="AdminSessionCheckInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+		
+		</interceptors>
+		
+		<default-interceptor-ref name="fileUploadStack" />
+	   
+	    <global-results>
+           <result name="sessionExpired" >jsp/sessionExpired.jsp</result>
+           <result name="unAuthorisedAccess" >jsp/unauthorisedAccess.jsp</result>
+        </global-results>
+       <action name="campaignSetup" class="com.lin.web.action.CampaignSetupAction" >
+		     <result name="success">jsp/CampaignSetupAdmin.jsp</result>
+        </action>
+        
+   </package>  	
+   <package name="campaignSetupJson"  extends="json-default">
+	  <interceptors>
+	  <interceptor-stack name="fileUploadStack">				
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />				
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				
+				  <interceptor-ref name="json">
+                   <param name="enableSMD">true</param>
+                   <param name="excludeProperties">
+                       login.password,
+                       studentList.*\.sin
+                  </param>
+                </interceptor-ref>      
+			</interceptor-stack>
+      </interceptors>
+        
+        
+        <action name="setUpOrder" class="com.lin.web.action.CampaignSetupAction" method="setUpOrder">
+		    <param name="contentType">text/html</param>
+            <result type="json">
+               <param name="root"> status </param>
+            </result>
+        </action>
+        <action name="setUpAdUnit" class="com.lin.web.action.CampaignSetupAction" method="setUpAdUnit">
+		    <param name="contentType">text/html</param>
+            <result type="json">
+               <param name="root"> status </param>
+            </result>
+        </action>
+         <action name="setUpCompany" class="com.lin.web.action.CampaignSetupAction" method="setUpCompany">
+		    <param name="contentType">text/html</param>
+            <result type="json">
+               <param name="root"> status </param>
+            </result>
+        </action>
+       
+        <action name="generateTag" class="com.lin.web.action.CampaignSetupAction" method="tagGenerator">
+		    <param name="contentType">text/html</param>
+            <result type="json">
+               <param name="root"> status </param>
+            </result>
+        </action>
+        <action name="forecastInventory" class="com.lin.web.action.CampaignSetupAction" method="forecastInventory">
+		    <param name="contentType">text/html</param>
+            <result type="json">
+               <param name="root"> jsonObject </param>
+            </result>
+        </action>
+        
+        <action name="setupCampaignOnDFP" class="com.lin.web.action.CampaignSetupAction" method="setupCampaign">
+		    <param name="contentType">text/html</param>
+            <result type="json">
+               <param name="root"> status </param>
+            </result>
+        </action>
+        <action name="setupPlacementsOnDFP" class="com.lin.web.action.CampaignSetupAction" method="setupLineItems">
+		    <param name="contentType">text/html</param>
+            <result type="json">
+               <param name="root"> status </param>
+            </result>
+        </action>
+        <action name="addCampaignSetupInQueue" class="com.lin.web.action.CampaignSetupAction" method="addCampaignSetupInQueue">
+		    <param name="contentType">text/html</param>
+            <result type="json">
+               <param name="root"> status </param>
+            </result>
+        </action>
+        <action name="launchCampaignViaTaskQueue" class="com.lin.web.action.CampaignSetupAction" method="approveOrderViaTaskQueue">
+		    <param name="contentType">text/html</param>
+            <result type="json">
+               <param name="root"> status </param>
+            </result>
+        </action>
+         <action name="launchCampaignOnDFP" class="com.lin.web.action.CampaignSetupAction" method="approveOrder">
+		    <param name="contentType">text/html</param>
+            <result type="json">
+               <param name="root"> status </param>
+            </result>
+        </action>
+        <action name="migrateCampaign" class="com.lin.web.action.MigrateCampaignAction" method="migrateCampaign">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="updateCampaignDetailFromDFP" class="com.lin.web.action.SmartCampaignPlannerAction" method="updateCampaignDetailFromDFP">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">status</param>
+			</result>
+		</action>
+		<action name="updatePlacementDetailFromDFP" class="com.lin.web.action.SmartCampaignPlannerAction" method="updatePlacementDetailFromDFP">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">status</param>
+			</result>
+		</action>
+		<action name="updateAllCampaignFromDFP" class="com.lin.web.action.SmartCampaignPlannerAction" method="updateAllCampaignFromDFP">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">status</param>
+			</result>
+		</action>
+		
+		<action name="loadGptTags" class="com.lin.web.action.CampaignSetupAction" method="loadGPTTags">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		
+		<action name="checkCampaignSetupStatus" class="com.lin.web.action.CampaignSetupAction" method="checkCampaignSetupStatus">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">status</param>
+			</result>
+		</action>
+   </package>
+	
+</struts>

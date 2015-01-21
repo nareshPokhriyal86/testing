@@ -1,0 +1,674 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en" data-ng-app="analyticApp">
+<head>
+
+<title>Campaign Summary</title>
+
+<!-- Meta Tags -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.js"></script>
+<script
+	src="http://bouil.github.io/angular-google-chart/ng-google-chart.js"></script>
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-sanitize.min.js"></script>
+ <script src="../js/angular/ng-csv.js"></script>
+ <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.4.0.js"></script>
+ <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+ 
+ <script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+<script>
+	var dspDataUrl = "/getPartner.lin?orderId=171538902&publisherIdInBQ=5&campaignid=171538902&partner=Run%20DSP";
+	var rundspDataUrl = "/getrundspcampaigndetail.lin?campaignid=53b45e2869702d21aa930200&groupby=day&start=2014-07-02-00&end=2014-08-17-24";
+	var rundspCampaignListUrl = "/getrundspcampaignlist.lin";
+	
+	var analyticApp = angular.module('analyticApp',
+			[ "ngRoute", "googlechart","ngSanitize", "ngCsv","ui.bootstrap"]);
+
+	//Factory
+	analyticApp.factory('analyticAppFactory', function($http) {
+		var factory = {};
+
+		factory.getRUNDspData = function(scope) {
+			$http.get(rundspDataUrl).then(function(result) {
+				scope.RUNDspData = result.data;
+				scope.isRunDspAvail = true;
+				scope.displayMessage("Data from RUN is available");
+				scope.MapData();
+			});
+		};
+
+		factory.getDspData = function(scope) {
+			$http.get(dspDataUrl).then(function(result) {
+				scope.DspData = result.data;
+				scope.isDspAvail = true;
+				scope.displayMessage("Data from DFP is available");
+				scope.MapData();
+			});
+		};
+		
+		factory.getCampaignList = function(scope){
+			$http.get(rundspCampaignListUrl).then(function(result) {
+				scope.CampaignList = result.data;
+				scope.isCampaignListAvail = true;
+			});
+		};
+		
+		return factory;
+	});
+
+	//Controller
+	analyticApp
+			.controller(
+					'analyticController',
+					function($scope, $http, analyticAppFactory) {
+
+						$scope.selectedCampaign = null;
+						
+						$scope.isDspAvail = false;
+						$scope.isRunDspAvail = false;
+						$scope.isCampaignListAvail = false;
+						
+						$scope.DspData = null;
+						$scope.RUNDspData = null;
+						$scope.CampaignList = null;
+						
+						$scope.compareDataTable = [];
+						$scope.total = {
+							dspImp : 0,
+							dspClick : 0,
+							runImp : 0,
+							runClick : 0
+						};
+						
+						$scope.getHeader = function(){
+							//console.log(Object.keys($scope.compareDataTable[0]));
+							return ["Date", "DFP Impression", "DFP Click", "RUN Impression", "RUN Click", "Impression Diff.", "Click Diff.", "Impression Diff. %", "Click Diff. %"];
+						};
+						
+						$scope.MapData = function() {
+							if ($scope.isDspAvail && $scope.isRunDspAvail) {
+								$scope.displayMessage("Comparing data");
+								var maxLength = $scope.DspData.length > $scope.RUNDspData.length ? $scope.DspData.length : $scope.RUNDspData.length;
+
+								//console.log(maxLength);
+
+								var mainArry = [];
+								var subArry = [];
+
+								if ($scope.DspData.length == maxLength) {
+									mainArry = $scope.DspData;
+									subArry = $scope.RUNDspData;
+								} else {
+									subArry = $scope.DspData;
+									mainArry = $scope.RUNDspData;
+								}
+
+								var hcClickConfig = angular.copy($scope.highChartClickConfig);
+								var hcImpConfig = angular.copy($scope.highChartClickConfig);
+								var hcClickDiffConfig = angular.copy($scope.highChartClickConfig);
+								var hcImpDiffConfig = angular.copy($scope.highChartClickConfig);
+								
+								var hcClickData = [];
+								var hcImpData = [];
+								var hcClickDiffData = [];
+								var hcImpDiffData = [];
+								
+								
+								hcClickData.push(["Date","DFP","RUN"]);
+								hcImpData.push(["Date","DFP","RUN"]);
+								hcClickDiffData.push(["Date","Click Difference %"]);
+								hcImpDiffData.push(["Date","Impression Difference %"]);
+								
+								
+								for (var j = 0; j < maxLength; j++) {
+									var obj = mainArry[j];
+									var tempObj = $scope.getDataByDate(obj.date, subArry);
+									var newObj = {
+										date : obj.date,
+										dspImp : null,
+										dspClick : null,
+										runImp : null,
+										runClick : null,
+										
+										impDiff: null,
+										clickDiff : null,
+										impDiffPer: null,
+										clickDiffPer : null
+									};
+
+									var clickChartRow = {
+										c : []
+									};
+
+									var impsChartRow = {
+										c : []
+									};
+
+									var cmpImpsChartRow = {
+											c : []
+									};
+									
+									var cmpClickChartRow = {
+											c : []
+									};
+									
+									//Column 1
+									clickChartRow.c.push({
+										v : newObj.date
+									});
+									impsChartRow.c.push({
+										v : newObj.date
+									});
+									cmpImpsChartRow.c.push({
+										v : newObj.date
+									});
+									cmpClickChartRow.c.push({
+										v : newObj.date
+									});
+
+									if ($scope.DspData.length == maxLength) {
+										newObj.dspClick = obj.click;
+										newObj.dspImp = obj.impression;
+
+										if (tempObj != null) {
+											newObj.runClick = tempObj.click;
+											newObj.runImp = tempObj.impression;
+										}
+
+									} else {
+										newObj.runClick = obj.click;
+										newObj.runImp = obj.impression;
+
+										if (tempObj != null) {
+											newObj.dspClick = tempObj.click;
+											newObj.dspImp = tempObj.impression;
+										}
+									}
+
+									newObj.impDiff =  newObj.dspImp - newObj.runImp;
+									newObj.clickDiff =  newObj.dspClick - newObj.runClick;
+									
+									if(newObj.runImp != 0)
+										newObj.impDiffPer =  ((newObj.dspImp - newObj.runImp) / newObj.runImp) * 100;
+									else
+										newObj.impDiffPer = 0;
+									
+									if(newObj.runClick != 0)
+										newObj.clickDiffPer = ((newObj.dspClick - newObj.runClick) / newObj.runClick) * 100;
+									else
+										newObj.clickDiffPer = 0;
+									
+									$scope.total.dspImp += newObj.dspImp;
+									$scope.total.dspClick += newObj.dspClick;
+									$scope.total.runImp += newObj.runImp;
+									$scope.total.runClick += newObj.runClick;
+
+									//Column 2
+									clickChartRow.c.push({
+										v : newObj.dspClick
+									});
+									impsChartRow.c.push({
+										v : newObj.dspImp
+									});
+
+									var impPercnt = newObj.impDiffPer;
+									if(isNaN(impPercnt))
+										impPercnt = -100;
+									
+									cmpImpsChartRow.c.push({
+										v : impPercnt
+									});
+									
+									var clkPercnt = newObj.clickDiffPer;
+									if(isNaN(clkPercnt))
+										clkPercnt = -100;
+									
+									cmpClickChartRow.c.push({
+										v : clkPercnt
+									});
+
+									//Column 3
+									clickChartRow.c.push({
+										v : newObj.runClick
+									});
+									impsChartRow.c.push({
+										v : newObj.runImp
+									});
+
+									var content1 = "Date : "+newObj.date+"\nDFP Impression : "+newObj.dspImp+" \nRUN Impression : "+newObj.runImp+" \nDiff. : "+ newObj.impDiff +"\nDiff. %: "+newObj.impDiffPer.toFixed(3) + "%" ;
+									
+									var content2 = "Date : "+newObj.date+"\nDFP Click : "+newObj.dspClick +" \nRUN Click : "+newObj.runClick+" \nDiff. : "+ newObj.clickDiff +"\nDiff. %: "+ newObj.clickDiffPer.toFixed(3) + "%" ;
+									
+										
+									cmpImpsChartRow.c.push({
+										v : content1,
+										p : {}
+									});
+
+									cmpClickChartRow.c.push({
+										v : content2,
+										p : {}
+									});
+									
+									hcClickData.push([newObj.date,newObj.dspClick,newObj.runClick]);
+									hcImpData.push([newObj.date,newObj.dspImp,newObj.runImp]);
+									hcClickDiffData.push([newObj.date,newObj.clickDiffPer]);
+									hcImpDiffData.push([newObj.date,newObj.impDiffPer]);
+									
+									//Data for table
+									$scope.compareDataTable.push(newObj);
+
+									//Data for Chart
+									$scope.chartClickObj.data.rows.push(clickChartRow);
+									$scope.chartImpsObj.data.rows.push(impsChartRow);
+									$scope.chartCmpClickObj.data.rows.push(cmpClickChartRow);
+									$scope.chartCmpImpsObj.data.rows.push(cmpImpsChartRow);
+								}
+								
+								hcClickConfig.data.rows = hcClickData;
+								hcClickConfig.title.text = "Click comparision between DFP & RUN";
+								
+								hcImpConfig.data.rows = hcImpData;
+								hcImpConfig.title.text = "Impression comparision between DFP & RUN";
+								
+								hcClickDiffConfig.data.rows = hcClickDiffData;
+								hcClickDiffConfig.title.text = "Click Difference comparision between DFP & RUN";
+								hcClickDiffConfig.chart.type = "area";
+								
+								hcImpDiffConfig.data.rows = hcImpDiffData;
+								hcImpDiffConfig.title.text = "Impression Difference comparision between DFP & RUN";
+								hcImpDiffConfig.chart.type = "area";
+								
+								$('#clkCompContainer').highcharts(hcClickConfig);
+								$('#impCompContainer').highcharts(hcImpConfig);
+								$('#clkDiffCompContainer').highcharts(hcClickDiffConfig);
+								$('#impDiffCompContainer').highcharts(hcImpDiffConfig);
+								
+								//console.log($scope.compareDataTable);
+								$scope.displayMessage("Result Available");
+								$("#resultTable").show();
+							} else {
+								console.log("Not yet found");
+							}
+						};
+
+						$scope.getCampaignData = function() {
+							$scope.isDspAvail = false;
+							$scope.isRunDspAvail = false;
+
+							$scope.DspData = null;
+							$scope.RUNDspData = null;
+							
+							$scope.chartClickObj.data.rows = [];
+							$scope.chartImpsObj.data.rows = [];
+							$scope.chartCmpClickObj.data.rows = [];
+							$scope.chartCmpImpsObj.data.rows = [];
+							
+							$('#statusBar').html("");
+							$scope.displayMessage("Loading data ...");
+							
+							$("#resultTable").hide();
+							$scope.compareDataTable = [];
+							$scope.displayMessage("Loading Data from DFP");
+							analyticAppFactory.getDspData($scope);
+							$scope.displayMessage("Loading Data from RUN");
+							analyticAppFactory.getRUNDspData($scope);
+						};
+
+						$scope.getDataByDate = function(key, arry) {
+							for (var i = 0; i < arry.length; i++) {
+								var row = arry[i];
+								if (key == row.date) {
+									return row;
+								}
+							}
+							return null;
+						};
+
+						// Start Chart Data
+						$scope.chartClickObj = {
+							type : "AreaChart",
+							displayed : true,
+							data : {
+								cols : [ {
+									id : "date",
+									label : "Date",
+									type : "string",
+									p : {}
+								}, {
+									id : "dfp",
+									label : "DFP",
+									type : "number",
+									p : {}
+								}, {
+									id : "run",
+									label : "RUN",
+									type : "number",
+									p : {}
+								} ],
+								rows : [],
+								options : {
+									title : "Click Comparision DFP v/s RUN",
+									vAxis : {
+										title : "Clicks",
+										gridlines : {
+											count : 10
+										}
+									},
+									hAxis : {
+										title : "Date"
+									},
+									tooltip : {
+										isHtml : false
+									}
+								}
+							},
+							formatters : {}
+						};
+
+						$scope.chartImpsObj = {
+							type : "AreaChart",
+							displayed : true,
+							data : {
+								cols : [ {
+									id : "date",
+									label : "Date",
+									type : "string",
+									p : {}
+								}, {
+									id : "dfp",
+									label : "DFP",
+									type : "number",
+									p : {}
+								}, {
+									id : "run",
+									label : "RUN",
+									type : "number",
+									p : {}
+								} ],
+								rows : [],
+								options : {
+									title : "Impression Comparision DFP v/s RUN",
+									vAxis : {
+										title : "Impressions",
+										gridlines : {
+											count : 10
+										}
+									},
+									hAxis : {
+										title : "Date"
+									},
+									tooltip : {
+										isHtml : false
+									}
+								}
+							},
+							formatters : {}
+						};
+
+						$scope.chartCmpClickObj = {
+							type : "AreaChart",
+							displayed : true,
+							data : {
+								cols : [ {
+									id : "date",
+									label : "Date",
+									type : "string",
+									p : {}
+								}, {
+									id : "click",
+									label : "click",
+									type : "number",
+									p : {}
+								}, {
+									id : "",
+									role : "tooltip",
+									type : "string",
+									p : {
+										role : "tooltip",
+										html : true
+									}
+								} ],
+								rows : [],
+								options : {
+								    title: "Diff. Comparision",
+								    isStacked: "true",
+								    fill: 20,
+								    displayExactValues: true,
+								    vAxis: {
+								      title: "Percentage",
+								      gridlines: {
+								        count: 17
+								      }
+								    },
+								    hAxis: {
+								      title: "Date"
+								    },
+								    tooltip: {
+								      isHtml: true
+								    }
+								  }
+							},
+							formatters : {}
+						};
+						
+						
+						$scope.chartCmpImpsObj = {
+								type : "AreaChart",
+								displayed : true,
+								data : {
+									cols : [ {
+										id : "date",
+										label : "Date",
+										type : "string",
+										p : {}
+									}, {
+										id : "impression",
+										label : "impression",
+										type : "number",
+										p : {}
+									}, {
+										id : "",
+										role : "tooltip",
+										type : "string",
+										p : {
+											role : "tooltip",
+											html : true
+										}
+									} ],
+									rows : [],
+									options : {
+									    title: "Diff. Comparision",
+									    isStacked: "true",
+									    fill: 20,
+									    displayExactValues: true,
+									    vAxis: {
+									      title: "Percentage",
+									      gridlines: {
+									        count: 17
+									      }
+									    },
+									    hAxis: {
+									      title: "Date"
+									    },
+									    tooltip: {
+									      isHtml: true
+									    }
+									  }
+								},
+								formatters : {}
+							};
+						
+						// End of chart data
+						
+						$scope.displayMessage = function(content){
+							var currentdate = new Date(); 
+							var datetime = "[" + currentdate.getDate() + "-"
+							                + (currentdate.getMonth()+1)  + "-" 
+							                + currentdate.getFullYear() + "  "  
+							                + currentdate.getHours() + ":"  
+							                + currentdate.getMinutes() + ":" 
+							                + currentdate.getSeconds()+"]  ";
+							$('#statusBar').append(datetime + content +"<br />");
+							$("#statusBar").animate({ scrollTop: $('#statusBar')[0].scrollHeight}, 250);
+						};
+						
+						
+						//highchartVariable
+						
+						$scope.highChartClickConfig = {
+						       chart: {
+						           type: 'line',
+						       },
+						       data : {
+						       	rows:[]
+						       },
+						       title: {
+						           text: ''
+						       },
+						       loading: false,
+						       credits:{
+						    	   enabled:false
+						       }
+						};	
+						analyticAppFactory.getCampaignList($scope);
+					});
+	
+
+</script>
+</head>
+<style>
+.row {
+	float: left;
+	display: block;
+	width: 100%;
+	font-size: 12px;
+}
+
+.col {
+	float: left;
+	display: block;
+	width: 50%;
+}
+.chart{
+	width:100%;
+	float:left;
+	border:1px solid #cdcdcd
+}
+.statusBar{
+	width:100%;
+	float:left;
+	border:1px solid #cdcdcd;
+	overflow:auto;
+	height:40px;
+	font-size: 14px;
+}
+
+</style>
+<body>
+	<div data-ng-controller="analyticController">
+		<button data-ng-click="getCampaignData()">Compare DFP v/s RUN</button>
+		<div id="statusBar" class="statusBar"></div>
+		<div class="row">
+			<div class="col">
+				<table width="100%" cellpadding="1" border="1" id="resultTable" cellspacing="0"
+					style="display: none;font-size: 11px;">
+					<tr>
+						<td colspan="9" align="right">
+						<button class="btn btn-default" ng-csv="compareDataTable" csv-header="getHeader()" filename="report.csv" field-separator="," >Export to CSV</button>
+              			</td>
+					</tr>
+					<tr>
+						<th align="center" rowspan="2">Date</th>
+						<th colspan="2" align="center">Google DFP</th>
+						<th colspan="2" align="center">RUN DSP</th>
+						<th colspan="2" align="center">Diff.</th>
+						<th colspan="2" align="center">Diff. %</th>
+					</tr>
+					<tr>
+						<th>Impression</th>
+						<th>Click</th>
+						<th>Impression</th>
+						<th>Click</th>
+
+						<th>Impression</th>
+						<th>Click</th>
+						<th>Impression</th>
+						<th>Click</th>
+					</tr>
+
+					<tr data-ng-repeat="data in compareDataTable">
+						<td>{{data.date}}</td>
+						<td>{{data.dspImp}}</td>
+						<td>{{data.dspClick}}</td>
+						<td>{{data.runImp}}</td>
+						<td>{{data.runClick}}</td>
+						
+						<td>{{data.impDiff}}</td>
+						<td>{{data.clickDiff}}</td>
+
+						<td>{{data.impDiffPer | number:3}}%</td>
+						<td>{{data.clickDiffPer | number:3}}%</td>
+					</tr>
+
+					<tr>
+						<td>Total</td>
+						<td>{{total.dspImp}}</td>
+						<td>{{total.dspClick}}</td>
+						<td>{{total.runImp}}</td>
+						<td>{{total.runClick}}</td>
+
+
+						<td>{{total.dspImp - total.runImp}}</td>
+						<td>{{total.dspClick - total.runClick}}</td>
+
+						<td>{{(total.dspImp - total.runImp)/total.runImp*100 |
+							number:3}}%</td>
+						<td>{{(total.dspClick - total.runClick)/total.runClick*100 |
+							number:3}}%</td>
+					</tr>
+
+				</table>&nbsp;
+			</div>
+			<div class="col">
+				<div>Clicks Comparision : DFP v/s RUN</div>
+				<div google-chart chart="chartClickObj" class="chart"></div>
+				
+				<div>Impression Comparision : DFP v/s RUN</div>
+				<div google-chart chart="chartImpsObj" class="chart"></div>
+				
+				<div>Click Difference Comparision : DFP v/s RUN </div>
+				<div google-chart chart="chartCmpClickObj"class="chart"></div>
+				
+				<div>Impression Difference Comparision : DFP v/s RUN </div>
+				<div google-chart chart="chartCmpImpsObj"class="chart"></div>
+				
+				
+				<div>Clicks Comparision : DFP v/s RUN [High Chart]</div>
+				<div id="clkCompContainer" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+				
+				<div>Impression Comparision : DFP v/s RUN  [High Chart]</div>
+				<div id="impCompContainer" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+				
+				<div>Click Difference Comparision : DFP v/s RUN  [High Chart]</div>
+				<div id="clkDiffCompContainer" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+				
+				<div>Impression Difference Comparision : DFP v/s RUN [High Chart]</div>
+				<div id="impDiffCompContainer" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

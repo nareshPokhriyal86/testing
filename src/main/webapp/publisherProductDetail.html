@@ -1,0 +1,541 @@
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">&nbsp;</div>
+	</div>
+
+	<div class="row-fluid">
+		<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12 well">
+
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Brief</h3>
+				</div>
+				<div class="panel-body">
+
+					<div class="container-fluid">
+
+						<div class="row-fluid">
+							<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Product
+								Name :</div>
+							<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+								<input type="text" ng-model="productNameModel"
+									ng-change="modified(true);" class="form-control"
+									placeholder="Product Name">
+							</div>
+							<div class="col-md-1 col-xs-1 col-sm-1 col-lg-1">&nbsp;</div>
+							<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Site Name
+								:</div>
+							<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+								<input type="text" ng-model="siteNameModel"
+									ng-change="modified(true);" class="form-control"
+									placeholder="Site Name">
+							</div>
+						</div>
+
+						<div class="row-fluid">
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">&nbsp;</div>
+						</div>
+
+						<div class="row-fluid">
+							<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Publisher
+								ID :</div>
+							<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+								<input ng-model="networkIdModel" type="text"
+									class="form-control" ng-change="modified(true);"
+									placeholder="Publisher ID">
+							</div>
+							<div class="col-md-1 col-xs-1 col-sm-1 col-lg-1">&nbsp;</div>
+							<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Publisher
+								Name :</div>
+							<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+								<input ng-model="publisherNameModel" type="text"
+									class="form-control" ng-change="modified(true);"
+									placeholder="Publisher Name">
+							</div>
+						</div>
+
+						<div class="row-fluid">
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">&nbsp;</div>
+						</div>
+
+						<div class="row-fluid">
+							<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Note :</div>
+							<div class="col-md-9 col-xs-9 col-sm-9 col-lg-9">
+								<textarea class="form-control" rows="3" ng-model="noteModel"
+									ng-change="modified(true);">
+								</textarea>
+							</div>
+						</div>
+
+						<div class="row-fluid">
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">&nbsp;</div>
+						</div>
+
+						<!-- select adunit Starts-->
+						<!-- <div class="row-fluid">
+							<div id="lvl1"><div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Ad Unit Level 1 :</div>
+							<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+								<select id="adUnitL1Id" ng-change="getAdUnitL2(); modified(true);" ng-model="adUnitL1Model" ng-options="item.id as item.name for item in AdUnitL1List">
+								    <option value="">Select Ad Unit</option>
+								</select>
+							</div></div>
+							<div class="col-md-1 col-xs-1 col-sm-1 col-lg-1">&nbsp;</div>
+							<div class="displayNone" id="lvl2"><div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Ad Unit Level 2 :</div>
+							<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+								<select id="adUnitL2Id" ng-change="getAdUnitL3(); modified(true);" ng-model="adUnitL2Model" ng-options="item.id as item.name for item in AdUnitL2List">
+								    <option value="">Select Ad Unit</option>
+								</select>
+							</div></div>
+						</div>
+
+						<div class="row-fluid">
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">&nbsp;</div>
+						</div>
+
+						<div class="row-fluid">
+							<div class="displayNone" id="lvl3"><div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Ad Unit Level 3 :</div>
+							<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+								<select id="adUnitL3Id" ng-change="getAdUnitL4(); modified(true);" ng-model="adUnitL3Model" ng-options="item.id as item.name for item in AdUnitL3List">
+								    <option value="">Select Ad Unit</option>
+								</select>
+							</div></div>
+							<div class="col-md-1 col-xs-1 col-sm-1 col-lg-1">&nbsp;</div>
+							<div class="displayNone" id="lvl4"><div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Ad Unit Level 4 :</div>
+							<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+								<select id="adUnitL4Id" ng-change="getAdUnitL5(); modified(true);" ng-model="adUnitL4Model" ng-options="item.id as item.name for item in AdUnitL4List">
+								    <option value="">Select Ad Unit</option>
+								</select>
+							</div></div>
+						</div>
+						
+						<div class="row-fluid">
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">&nbsp;</div>
+						</div>
+						
+						<div class="row-fluid">
+							<div class="displayNone" id="lvl5"><div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Ad Unit Level 5 :</div>
+							<div class="col-md-3 col-xs-3 col-sm-3 col-lg-3">
+								<select id="adUnitL5Id" ng-change="setAdUnitAtL5(); modified(true);" ng-model="adUnitL5Model" ng-options="item.id as item.name for item in AdUnitL5List">
+								    <option value="">Select Ad Unit</option>
+								</select>
+							</div></div>
+						</div>
+						<div class="row-fluid">
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">&nbsp;</div>
+						</div>
+						<div id="adUnitLoader" class="displayNone"><img src="img/loaders/type3/light/24.gif" alt="Loading Childs..." /></div> -->
+						<!-- select adunit Ends-->
+
+						<!-- Ad Unit Starts -->
+						<div class="row-fluid">
+							<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">Ad Units :</div>
+						</div>
+						<div class="row-fluid">
+							<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">&nbsp;</div>
+						</div>
+						<div class="container-fluid">
+							<div class="row-fluid">
+								<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2">
+									<table class="table  well">
+										<tr>
+											<td><input type="text" data-ng-model="srchlvl1"></td>
+										</tr>
+										<tr>
+											<td>
+												<div class="listBox">
+													<div
+														data-ng-repeat="adunit in commonAdUnitList | filter:{name:srchlvl1} | filter:{pid:level1PID}"
+														data-ng-class="{ 'selected-class-name': $index == selectedIndexlvl1 }">
+														<div class="adunitName" data-ng-click="setPidlvl1()">{{adunit.name}}</div>
+														<span class="glyphicon glyphicon-plus adUnitAddButton"
+															data-ng-click="addUnit()"></span>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" id="lvl2">
+									<table class="table  well">
+										<tr>
+											<td><input type="text" data-ng-model="srchlvl2"></td>
+										</tr>
+										<tr>
+											<td>
+												<div class="listBox">
+													<div
+														data-ng-repeat="adunit in commonAdUnitList_level2 | filter:{name:srchlvl2} | filter:{pid:level2PID}"
+														data-ng-class="{ 'selected-class-name': $index == selectedIndexlvl2 }">
+														<div class="adunitName" data-ng-click="setPidlvl2()">{{adunit.name}}</div>
+														<span class="glyphicon glyphicon-plus adUnitAddButton"
+															data-ng-click="addUnit()"></span>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" id="lvl3">
+									<table class="table  well">
+										<tr>
+											<td><input type="text" data-ng-model="srchlvl3"></td>
+										</tr>
+										<tr>
+											<td>
+												<div class="listBox">
+													<div
+														data-ng-repeat="adunit in commonAdUnitList_level3 | filter:{name:srchlvl3} | filter:{pid:level3PID}"
+														data-ng-class="{ 'selected-class-name': $index == selectedIndexlvl3 }">
+														<div class="adunitName" data-ng-click="setPidlvl3()">{{adunit.name}}</div>
+														<span class="glyphicon glyphicon-plus adUnitAddButton"
+															data-ng-click="addUnit()"></span>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" id="lvl4">
+									<table class="table  well">
+										<tr>
+											<td><input type="text" data-ng-model="srchlvl4"></td>
+										</tr>
+										<tr>
+											<td>
+												<div class="listBox">
+													<div
+														data-ng-repeat="adunit in commonAdUnitList_level4 | filter:{name:srchlvl4} | filter:{pid:level4PID}"
+														data-ng-class="{ 'selected-class-name': $index == selectedIndexlvl4 }">
+														<div class="adunitName" data-ng-click="setPidlvl4()">{{adunit.name}}</div>
+														<span class="glyphicon glyphicon-plus adUnitAddButton"
+															data-ng-click="addUnit()"></span>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+
+								<div class="col-md-2 col-xs-2 col-sm-2 col-lg-2" id="lvl5">
+									<table class="table  well">
+										<tr>
+											<td><input type="text" data-ng-model="srchlvl5"></td>
+										</tr>
+										<tr>
+											<td>
+												<div class="listBox">
+													<div
+														data-ng-repeat="adunit in commonAdUnitList_level5 | filter:{name:srchlvl5} | filter:{pid:level5PID}"
+														data-ng-class="{ 'selected-class-name': $index == selectedIndexlvl5 }">
+														<div class="adunitName" data-ng-click="setPidlvl5()">{{adunit.name}}</div>
+														<span class="glyphicon glyphicon-plus adUnitAddButton"
+															data-ng-click="addUnit()"></span>
+													</div>
+												</div>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<!-- <div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">&nbsp;</div>
+							<div class="row-fluid">
+								<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+									<bootstrap-tagsinput data-ng-model="selectedAdUnits"
+										itemvalue="id"
+										itemtext="fullpath"
+										tagclass="getTagClass"
+										textdisable=true></bootstrap-tagsinput> -->
+
+							<!-- new -->
+							<div class="row-fluid">
+								<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">&nbsp;
+							<!-- new -->
+								</div>
+							</div>
+
+							<div class="row-fluid">
+								<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+
+									<bootstrap-tagsinput data-ng-change="modified(true);"
+										data-ng-model="selectedAdUnits" itemvalue="id"
+										itemtext="fullpath" tagclass="getTagClass" textdisable=true></bootstrap-tagsinput>
+								</div>
+							</div>
+							
+							<div class="row-fluid">
+								<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+									<center>
+										<div id="adUnitLoader" class="displayNone">
+											<img src="img/loaders/type1/light/24.gif"
+												alt="Loading Childs..." />
+										</div>
+									</center>
+								</div>
+							</div>
+
+						</div>
+						<!-- Ad Unit Ends -->
+					</div>
+				</div>
+			</div>
+
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title">Detail</h3>
+					</div>
+					<div class="panel-body">
+
+						<div id="tabs">
+							<ul>
+								<li><a href="#tabs-1">Context Category</a></li>
+								<li><a href="#tabs-2">Creative</a></li>
+								<li><a href="#tabs-3">Geo Targeting</a></li>
+								<li><a href="#tabs-4">Platform</a></li>
+								<li><a href="#tabs-5">Device</a></li>
+								<li><a href="#tabs-6">City</a></li>
+								<li><a href="#tabs-7">Others</a></li>
+							</ul>
+							<div id="tabs-1">			<!-- Context Category -->
+								<div class="panel panel-default"
+									data-ng-repeat="iabContextGrp in getIABContextList() | filter:IABContextGroup"
+									bind-click-on-checkbox bind-click-on-toggle>
+									<div class="panel-heading">
+										<div class="container">
+											<div class="row">
+												<div class="col-md-11 col-xs-11 col-sm-11 col-lg-11">
+													<h3 class="panel-title">
+														<label><input id="parentGrp{{$index}}"
+															type="checkbox" class="groupChkbox"
+															ng-click="iabGroupClick(iabContextGrp.group , $index)"
+															grpId="{{$index}}"> {{iabContextGrp.group}}</label>
+
+													</h3>
+												</div>
+												<div class="col-md-1 col-xs-1 col-sm-1 col-lg-1">
+													<span class="customtoggle glyphicon glyphicon-plus"
+														grpId="{{$index}}"></span>
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+									<div class="panel-body parent{{$index}} childBox"
+										id="child_{{$index}}">
+										<div class="container">
+											<div class="row"
+												data-ng-repeat="iabContext in IABContextList | filter:{group:iabContextGrp.group}">
+												<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+													<div class="checkbox">
+														<label> <input ng-model="iabContext.selected"
+															type="checkbox" class="">{{iabContext.subgroup}}
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+							<div id="tabs-2">			<!-- Creatives -->
+								<div class="panel panel-default"
+									data-ng-repeat="creativeFormatGrp in getCreativeList() | filter:creativeFormats"
+									bind-click-on-checkbox bind-click-on-toggle>
+									<div class="panel-heading">
+										<div class="container">
+											<div class="row">
+												<div class="col-md-11 col-xs-11 col-sm-11 col-lg-11">
+													<h3 class="panel-title">
+														<label><input id="parentGrpCreative{{$index}}"
+															type="checkbox" class="groupChkbox"
+															ng-click="creativeGroupClick(creativeFormatGrp.format , 'Creative'+$index)"
+															grpId="Creative{{$index}}">
+															{{creativeFormatGrp.format}}</label>
+
+													</h3>
+												</div>
+												<div class="col-md-1 col-xs-1 col-sm-1 col-lg-1">
+													<span class="customtoggle glyphicon glyphicon-plus"
+														grpId="Creative{{$index}}"></span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="panel-body parentCreative{{$index}} childBox"
+										id="child_Creative{{$index}}">
+										<div class="container">
+											<div class="row"
+												data-ng-repeat="creative in creativeList | filter:{group:creativeFormatGrp.format}">
+												<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+													<div class="checkbox">
+														<label> <input ng-model="creative.selected"
+															type="checkbox" class="">{{creative.size}}
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="tabs-3">				<!-- Geo targeting -->
+								<!-- <div data-ng-repeat="dma in dmaList | filter:noFormat">
+									<div class="container">
+										<div class="row">
+											<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+												<div class="checkbox">
+													<label> <input ng-model="dma.selected"
+														type="checkbox"> {{dma.region}}
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div> -->
+    							<input id="geoSelect" ui-select2="multi" ng-model="selectedGeoTargets" ng-change="dmaChanged();" style="width:100%" />
+							</div>
+							<div id="tabs-4">				<!-- Platform -->
+								<div data-ng-repeat="platform in platformList | filter:noFormat" >
+									<div class="container">
+										<div class="row">
+											<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+												<div class="checkbox">
+													<label> <input ng-model="platform.selected"
+														type="checkbox"> {{platform.text}}
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="tabs-5"> 				<!-- Device -->
+								<div data-ng-repeat="device in deviceList | filter:noFormat">
+									<div class="container">
+										<div class="row">
+											<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+												<div class="checkbox">
+													<label> <input ng-model="device.selected"
+														type="checkbox"> {{device.text}}
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="tabs-6">
+								<!-- City -->
+								<div class="panel panel-default"
+									data-ng-repeat="state in getCityList() | filter:stateGroup"
+									bind-click-on-checkbox bind-click-on-toggle>
+									<div class="panel-heading">
+										<div class="container">
+											<div class="row">
+												<div class="col-md-11 col-xs-11 col-sm-11 col-lg-11">
+													<h3 class="panel-title">
+														<label><input id="parentGrpState{{$index}}"
+															type="checkbox" class="groupChkbox"
+															ng-click="stateClick(state.stateId , 'State'+$index)"
+															grpId="State{{$index}}"> {{state.stateName}}</label>
+
+													</h3>
+												</div>
+												<div class="col-md-1 col-xs-1 col-sm-1 col-lg-1">
+													<span class="customtoggle glyphicon glyphicon-plus"
+														grpId="State{{$index}}"></span>
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+									<div class="panel-body parentState{{$index}} childBox"
+										id="child_State{{$index}}">
+										<div class="container">
+											<div class="row"
+												data-ng-repeat="city in cityList | filter:{group:state.stateId}">
+												<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+													<div class="checkbox">
+														<label> <input ng-model="city.selected"
+															type="checkbox" class="">{{city.text}}
+														</label>
+													</div>
+												</div>
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+							<div id="tabs-7">
+								<!-- Others -->
+								<div class="container">
+									<div class="row">
+										<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+											<div class="checkbox">
+												<label><input type="checkbox" id="statusId"
+													ng-change="modified(true);" ng-model="statusModel"
+													ng-true-value="true" ng-false-value="false"> Status</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="container">
+									<div class="row">
+										<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+											<div class="checkbox">
+												<label><input type="checkbox" id="geoFencingId"
+													ng-change="modified(true);" ng-model="geoFencingModel"
+													ng-true-value="true" ng-false-value="false"> Geo
+													Fencing</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="container">
+									<div class="row">
+										<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+											<div class="checkbox">
+												<label><input type="checkbox" id="demographicId"
+													ng-change="modified(true);" ng-model="demographicModel"
+													ng-true-value="true" ng-false-value="false">
+													Demographic</label>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="container">
+									<div class="row">
+										<div class="col-md-12 col-xs-12 col-sm-12 col-lg-12">
+											<div class="checkbox">
+												<label><input type="checkbox" id="behaviourId"
+													ng-change="modified(true);" ng-model="behaviourModel"
+													ng-true-value="true" ng-false-value="false">
+													Behaviour</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<button id="saveButtonId" ng-click="saveData(false)">Save</button>
+		
+		<h4>Product data</h4>
+		<pre>{{productdata|json}}</pre>
+
+
+	</div>

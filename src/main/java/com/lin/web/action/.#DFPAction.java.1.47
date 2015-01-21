@@ -1,0 +1,556 @@
+package com.lin.web.action;
+
+import java.io.IOException;
+import java.security.GeneralSecurityException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Logger;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.ServletResponseAware;
+import org.apache.struts2.interceptor.SessionAware;
+
+import com.google.api.ads.common.lib.exception.ValidationException;
+import com.google.api.ads.dfp.jaxws.factory.DfpServices;
+import com.google.api.ads.dfp.lib.client.DfpSession;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeRequestUrl;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeTokenRequest;
+import com.google.api.client.googleapis.auth.oauth2.GoogleTokenResponse;
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.jackson.JacksonFactory;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.EntityNotFoundException;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+import com.lin.dfp.api.DFPReportService;
+import com.lin.dfp.api.IDFPReportService;
+import com.lin.server.bean.DataCollectorReport;
+import com.lin.server.bean.FinalisedTableDetailsObj;
+import com.lin.server.bean.PropertyChildObj;
+import com.lin.server.bean.PropertyObj;
+import com.lin.server.bean.TrackCronJobReport;
+import com.lin.web.gaebigquery.BigQueryUtil;
+import com.lin.web.service.IPoolMapService;
+import com.lin.web.service.IReportService;
+import com.lin.web.service.IUserService;
+import com.lin.web.service.impl.BusinessServiceLocator;
+import com.lin.web.util.DateUtil;
+import com.lin.web.util.LinMobileConstants;
+import com.lin.web.util.LinMobileProperties;
+import com.lin.web.util.LinMobileUtil;
+import com.lin.web.util.LinMobileVariables;
+import com.lin.web.util.ReportUtil;
+import com.lin.web.util.StringUtil;
+import com.opensymphony.xwork2.Action;
+
+/*
+ * @author Youdhveer Panwar(youdhveer.panwar@mediaagility.com)
+ * 
+ * DFP action which have all method to download 
+ * report from DFP API for CorePerformance
+ */
+public class DFPAction implements ServletRequestAware,ServletResponseAware,SessionAware{
+
+	
+	private static final Logger log = Logger.getLogger(DFPAction.class.getName());
+	
+	private String reportsResponse;	
+
+	private HttpServletRequest request;
+	private HttpServletResponse response;
+	private Map session;
+	private String clientLoginToken = null;
+	private DfpSession dfpSession;
+    private DfpServices dfpServices;
+	
+	
+	public String execute(){		
+		return Action.SUCCESS;
+	}
+
+
+	public String loadLinMediaDFPReport(){
+		log.info("dfpReportLinMedia action executes..");
+		String startDate=request.getParameter("start");		
+		String endDate=request.getParameter("end");	
+		String accountId=request.getParameter("accountId");
+		String adUnitId=request.getParameter("adUnitId");
+		
+		log.info("startDate : "+startDate+", endDate : "+endDate+", accountId : "+accountId+", adUnitId : "+adUnitId);
+		reportsResponse=linMediaDfpReport(startDate,endDate,accountId, adUnitId);
+	    return Action.SUCCESS;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public String linMediaDfpReport(String startDate,String endDate,String accountId, String adUnitId){
+		    boolean dateCheck=true;			
+			
+			if(startDate !=null && !DateUtil.isDateFormatYYYYMMDD(startDate)){
+				reportsResponse="Invalid startDate :"+startDate+", Please provide yyyy-MM-dd format.";
+				dateCheck=false;
+			}
+			if(endDate !=null && !DateUtil.isDateFormatYYYYMMDD(endDate)){
+				reportsResponse="Invalid endDate :"+startDate+", Please provide yyyy-MM-dd format.";
+				dateCheck=false;
+			}
+			
+			if(startDate ==null && endDate==null){
+				Date currentDate=new Date();
+				startDate=DateUtil.getModifiedDateByDays(currentDate,-1, "yyyy-MM-dd");
+				endDate=DateUtil.getCurrentTimeStamp("yyyy-MM-dd");
+			}
+			
+			clientLoginToken = ReportUtil.regenerateAuthToken();
+			log.info(" clientLoginToken : "+clientLoginToken);
+		    if(dateCheck){
+		      try {
+		    	log.info(" now going to build dfpSession ...");
+				dfpSession = new DfpSession.Builder()
+				  				.withClientLoginToken(clientLoginToken)					
+				  				.withNetworkCode(LinMobileConstants.DFP_NETWORK_CODE)
+				  				.withApplicationName(LinMobileConstants.DFP_APPLICATION_NAME)
+				  				.build();
+				log.info(" getting DfpServices instance from properties...");
+				dfpServices = LinMobileProperties.getInstance().getDfpServices();
+				
+				IReportService service = (IReportService) BusinessServiceLocator.locate(IReportService.class);
+				IDFPReportService dfpReportService=new DFPReportService();
+				List<String> advertiserIdList=new ArrayList<String>();
+				String downloadUrl = null;
+				List<String> accountIds=new ArrayList<String>();
+				if(accountId !=null ){
+					if(LinMobileUtil.isNumeric(accountId)){
+						accountIds.add(accountId);
+						downloadUrl = dfpReportService.getDFPReportByAccountIds(dfpServices, dfpSession, startDate, endDate, accountIds);
+					}else{
+						reportsResponse="Invalid accountId :"+accountId;
+						accountId=null;
+						throw new Exception(reportsResponse); 
+					}
+				}else if(adUnitId !=null ){
+					if(LinMobileUtil.isNumeric(adUnitId)){
+						List<String> adUnitIds=new ArrayList<String>();
+						adUnitIds.add(adUnitId);
+						downloadUrl=dfpReportService.getDFPReportByAdUnitIds(dfpServices, dfpSession,startDate, 
+								endDate, adUnitIds);
+					}else{
+						reportsResponse="Invalid adUnitId :"+adUnitId;
+						adUnitId=null;
+						throw new Exception(reportsResponse); 
+					}
+				}else{
+					IUserService userService =  (IUserService) BusinessServiceLocator.locate(IUserService.class);
+					List<String> adUnitIds = new ArrayList<String>();
+					List<PropertyObj> propertyObjList = userService.getSiteIdsByBqIdentifier(LinMobileConstants.LIN_MEDIA_PUBLISHER_ID);
+					if(propertyObjList == null || propertyObjList.size() == 0){
+						reportsResponse="No sites found for Lin Media in datastore, please check AdUnitObj entity:";					
+						throw new Exception(reportsResponse); 
+					}
+					for (PropertyObj propertyObj : propertyObjList) {
+						List<PropertyChildObj> childObjList = propertyObj.getChilds();
+						for(PropertyChildObj childObj : childObjList) {
+							if(!adUnitIds.contains(childObj.getChildId())) {
+								adUnitIds.add(childObj.getChildId());
+							}
+						}
+					}
+					downloadUrl=dfpReportService.getDFPReportByAdUnitIds(dfpServices, dfpSession,startDate, 
+							endDate, adUnitIds);
+				}
+				
+				log.info("DFP report downloadUrl:"+downloadUrl);
+				reportsResponse=downloadUrl;
+		    	String csvData=dfpReportService.readCSVGZFile(downloadUrl);
+		    	String timestamp=DateUtil.getCurrentTimeStamp("yyyyMMddHHmmss");
+		    	if(csvData !=null){
+		    		String rawFileName=timestamp+"_DFP_LinMedia_CorePerformance_"+startDate+"_"+endDate+"_raw"+".csv";
+		    	    String dirName=LinMobileConstants.REPORT_FOLDER+"/"+
+		    		        LinMobileConstants.DFP_LIN_MEDIA_REPORT_BUCKET+"/"+ 
+		    	    		DateUtil.getFormatedDate(startDate, "yyyy-MM-dd", "yyyy_MM");
+		    		String reportPathOnStorage=ReportUtil.uploadReportOnCloudStorage(csvData, rawFileName,dirName);
+		    		log.info("Report saved :"+reportPathOnStorage);
+		    		reportsResponse=service.generateDFPReport(startDate, endDate,rawFileName,dirName,timestamp);
+		    		log.info("Going to save this data on bigquery: reportsResponse:"+reportsResponse);
+		    		String schemaFile=LinMobileConstants.CORE_PERFORMANCE_TABLE_SCHEMA;
+					String tableId=LinMobileConstants.CORE_PERFORMANCE_TABLE_ID;
+		    		BigQueryUtil.uploadDataOnBigQuery(reportsResponse, schemaFile, tableId);
+		    		
+		    	}else{
+		    		log.warning("Failed to create report, please check log ....");
+		    		reportsResponse="Failed to create report";
+		    	}
+			 } catch (ValidationException e) {
+				log.severe("DFP session exception: ValidationException :"+e.getMessage());
+				reportsResponse=e.getMessage();
+				e.printStackTrace();
+			 } catch (Exception e) {
+				log.severe("DFP report exception: Exception :"+e.getMessage());
+				reportsResponse=e.getMessage();
+				e.printStackTrace();
+			 }
+		   }	
+		  return reportsResponse;  
+	}
+
+	
+	public String dailyLinMediaReport(){		
+		log.info("dailyLinMediaReport action executes..");		
+	    boolean dateCheck=true;
+		String startDate=request.getParameter("start");		
+		String endDate=request.getParameter("end");		
+		String adUnitId=request.getParameter("adUnitId");
+		
+		if(startDate !=null && !DateUtil.isDateFormatYYYYMMDD(startDate)){
+			reportsResponse="Invalid startDate :"+startDate+", Please provide yyyy-MM-dd format.";
+			dateCheck=false;
+		}
+		if(endDate !=null && !DateUtil.isDateFormatYYYYMMDD(endDate)){
+			reportsResponse="Invalid endDate :"+startDate+", Please provide yyyy-MM-dd format.";
+			dateCheck=false;
+		}
+		
+		if(startDate ==null && endDate==null){			
+			startDate=DateUtil.getCurrentTimeStamp("yyyy-MM-dd"); //DateUtil.getModifiedDateByDays(currentDate,-1, "yyyy-MM-dd");
+			endDate=startDate;
+		}
+		
+	    if(dateCheck){
+	    	reportsResponse=runNonFinaliseReport(startDate, endDate,adUnitId);
+	   }else{
+		   reportsResponse="Invalid dates...";
+		   log.info(reportsResponse);
+	   }
+	   return Action.SUCCESS;
+	}	
+	
+	/*
+	 * This action will reload all non-Finalise tables again once in a day
+	 */
+	public String updateDailyNonFinaliseReport(){
+		log.info("dfpNonFinaliseLinMediaReport action starts...");
+		IReportService service = (IReportService) BusinessServiceLocator.locate(IReportService.class);
+		Date currentDate=new Date();		
+		int i=1;
+		while(i<LinMobileConstants.CHANGE_WINDOW_SIZE){
+			String startDate=DateUtil.getModifiedDateByDays(currentDate,-i, "yyyy-MM-dd");
+			String endDate=startDate;
+			String nonFinaliseTimestamp=DateUtil.getCurrentTimeStamp("yyyyMMdd");
+			log.info("startDate:"+startDate+" and endDate:"+endDate+" and nonFinaliseTimestamp:"+nonFinaliseTimestamp);
+			String nonFinaliseTableId="CorePerformance_"+LinMobileConstants.DFP_DATA_SOURCE+"_"+startDate.replaceAll("-", "_");
+			FinalisedTableDetailsObj tableObj=service.loadFinaliseNonFinaliseObject(nonFinaliseTableId,
+					LinMobileConstants.LIN_MEDIA_PUBLISHER_ID);
+			if(tableObj !=null ){
+				log.info(" Object found with tableId:"+nonFinaliseTableId+" and lastUpdatedOn:"+tableObj.getLastUpdatedOn()+
+						" and nonFinaliseTimestamp:"+nonFinaliseTimestamp);
+				if(tableObj.getLastUpdatedOn().contains(nonFinaliseTimestamp)){
+					log.info("This tableId has already updated today.."+nonFinaliseTableId);
+				}else{
+					log.info("Going to relaod this non-finalised table with tableId.."+nonFinaliseTableId);					
+					reportsResponse=runNonFinaliseReport(startDate, endDate,null);
+					log.info("Relaod this non-finalised table successfully. Exit this job as only one table allowed at a time.");
+					break;
+				}
+			}else{
+				reportsResponse="This table id not found in datastore :"+nonFinaliseTableId;				
+			}
+			i++;
+		}
+		log.info("dfpNonFinaliseLinMediaReport action ends...reportsResponse:"+reportsResponse);
+		return Action.SUCCESS;
+	}
+	
+    private String runNonFinaliseReport(String startDate,String endDate,String adUnitId){
+    	String response="";
+    	try {
+	    	  
+	        IReportService service = (IReportService) BusinessServiceLocator.locate(IReportService.class);	    	
+	    	String csvData=getDFPReportURL(startDate, endDate,adUnitId);
+	    	String timestamp=DateUtil.getCurrentTimeStamp("yyyyMMddHHmmss");
+	    	String month=DateUtil.getFormatedDate(startDate, "yyyy-MM-dd", "yyyy_MM");
+	    	String bucketName=LinMobileVariables.LIN_MEDIA_CLOUD_STORAGE_BUCKET;
+	    	if(csvData !=null){
+	    		String rawFileName=timestamp+"_DFP_CorePerformance_"+startDate+"_"+endDate+"_raw"+".csv";    		
+	    		
+	    	    String dirName=LinMobileConstants.REPORT_FOLDER+"/"
+	    	                  +LinMobileConstants.DFP_LIN_MEDIA_REPORT_BUCKET+"/non_finalise/"
+	    	                  +month;
+	    		String reportPathOnStorage=ReportUtil.uploadReportOnCloudStorage(csvData, rawFileName,dirName,bucketName);
+	    		log.info("Report saved :"+reportPathOnStorage);	    		
+	    		
+	    		response=service.generateFinilisedDFPReport(startDate, endDate,rawFileName,dirName,
+	    				LinMobileConstants.DFP_NETWORK_CODE,null,null,bucketName);
+	    						
+		    	String tableId="CorePerformance_"+LinMobileConstants.DFP_DATA_SOURCE+"_"+startDate.replaceAll("-", "_");
+				
+	    		String processedFilePath=response;
+	    		String bqResponse=service.uploadProcessFileAtBQ(tableId, response, startDate, endDate, timestamp, 
+	    				processedFilePath,
+	    				LinMobileConstants.DFP_DATA_SOURCE, 0, 
+	    				LinMobileConstants.LIN_MEDIA_PUBLISHER_ID, LinMobileConstants.LIN_MEDIA_PUBLISHER_NAME,
+	    				LinMobileConstants.LIN_MEDIA_GOOGLE_API_SERVICE_ACCOUNT_EMAIL_ADDRESS,
+	    				LinMobileConstants.LIN_MEDIA_GOOGLE_BQ_SERVICE_ACCOUNT_PRIVATE_KEY, 
+	    				LinMobileConstants.LIN_MEDIA_GOOGLE_API_PROJECT_ID);	    			    		
+	    		
+	    		response=response+" and bigQuery response:"+bqResponse;
+	    		
+	    		
+	    	}else{
+	    		log.warning("Failed to create report, please check log ....");
+	    		response="Failed to create report";
+	    	}	
+		 } catch (ValidationException e) {
+			log.severe("DFP session exception: ValidationException :"+e.getMessage());
+			response=e.getMessage();
+			e.printStackTrace();
+		 } catch (Exception e) {
+			log.severe("DFP report exception: Exception :"+e.getMessage());
+			response=e.getMessage();
+			e.printStackTrace();
+		 }
+    	return response;
+	}
+	
+
+	/*
+	 * update monthly finalise table for LinMedia non-finalised data
+	 */
+	public String updateMonthwiseFinaliseReport(){		
+		log.info("updateMonthwiseFinaliseLinMediaReport action executes..");		
+	    boolean dateCheck=true;
+		String startDate=request.getParameter("start");		
+		String endDate=request.getParameter("end");		
+				
+		if(startDate !=null && !DateUtil.isDateFormatYYYYMMDD(startDate)){
+			reportsResponse="Invalid startDate :"+startDate+", Please provide yyyy-MM-dd format.";
+			dateCheck=false;
+		}
+		if(endDate !=null && !DateUtil.isDateFormatYYYYMMDD(endDate)){
+			reportsResponse="Invalid endDate :"+startDate+", Please provide yyyy-MM-dd format.";
+			dateCheck=false;
+		}
+		
+		if(startDate ==null && endDate==null){
+			Date currentDate=new Date();
+			startDate=DateUtil.getModifiedDateByDays(currentDate,-LinMobileConstants.CHANGE_WINDOW_SIZE, "yyyy-MM-dd");
+			endDate=startDate;
+		}else if(startDate !=null && endDate !=null){
+			String currentDate=DateUtil.getCurrentTimeStamp("yyyy-MM-dd");
+			long days=DateUtil.getDifferneceBetweenTwoDates(endDate,currentDate, "yyyy-MM-dd");
+			if(days < LinMobileConstants.CHANGE_WINDOW_SIZE){
+				dateCheck=false;
+				reportsResponse="Invalid end date, you can not merge the data within change window days. Change Widow size:"+
+				    LinMobileConstants.CHANGE_WINDOW_SIZE;
+			}
+			
+		}		
+		
+		
+	    if(dateCheck){
+	      try {
+	    	  
+	    	String timestamp=DateUtil.getCurrentTimeStamp("yyyyMMddHHmmss");
+		    String month=DateUtil.getFormatedDate(startDate, "yyyy-MM-dd", "yyyy_MM");
+		    	
+	        IReportService service = (IReportService) BusinessServiceLocator.locate(IReportService.class);	        
+	        String readyToMergeTableId="CorePerformance_"+LinMobileConstants.DFP_DATA_SOURCE+"_"+startDate.replaceAll("-", "_");
+	        String finaliseTableId="CorePerformance_"+month.replaceAll("-", "_");
+			
+	        
+	        FinalisedTableDetailsObj tableObj=service.loadFinaliseNonFinaliseObject(readyToMergeTableId,
+	        		LinMobileConstants.LIN_MEDIA_PUBLISHER_ID);	   
+	        
+	        if(tableObj !=null){
+	        	log.info("Loaded data : "+tableObj.toString());
+	        	String processedFilePath= tableObj.getProcessedFilePath();	        
+	    		if(tableObj.getMergeStatus()==1){
+	    			log.warning("This table has already been merged to finalised table..");
+		    		reportsResponse="This table has already been merged to finalised table..readyToMergeTableId:"+readyToMergeTableId;
+	    		}else{
+	    			log.info("Going to save this data on bigquery: reportsResponse:"+reportsResponse);
+		    		reportsResponse=service.uploadProcessFileAtBQ(finaliseTableId,processedFilePath, startDate, endDate, timestamp, 
+		    				processedFilePath, LinMobileConstants.DFP_DATA_SOURCE, 1, 
+		    				LinMobileConstants.LIN_MEDIA_PUBLISHER_ID, LinMobileConstants.LIN_MEDIA_PUBLISHER_NAME,
+		    				LinMobileConstants.LIN_MEDIA_GOOGLE_API_SERVICE_ACCOUNT_EMAIL_ADDRESS,
+		    				LinMobileConstants.LIN_MEDIA_GOOGLE_BQ_SERVICE_ACCOUNT_PRIVATE_KEY, 
+		    				LinMobileConstants.LIN_MEDIA_GOOGLE_API_PROJECT_ID);
+		    		
+		    		log.info("This table has been merged to finalised table successfully..");
+	    		}
+	    		
+	    	}else{
+	    		log.warning("Failed to find table for merging.."+readyToMergeTableId);
+	    		reportsResponse="Failed to find table for merging..readyToMergeTableId:"+readyToMergeTableId;
+	    	}	
+		 } catch (Exception e) {
+			log.severe("DFP report exception: Exception :"+e.getMessage());
+			reportsResponse=e.getMessage();
+			e.printStackTrace();
+		 }
+	   }	
+	   return Action.SUCCESS;
+	}
+	
+	
+	@SuppressWarnings("deprecation")
+	private String getDFPReportURL(String startDate,String endDate,String adUnitId) throws Exception{
+		clientLoginToken = ReportUtil.regenerateAuthToken();
+    	log.info(" now going to build dfpSession ...");
+		dfpSession = new DfpSession.Builder()
+		  				.withClientLoginToken(clientLoginToken)					
+		  				.withNetworkCode(LinMobileConstants.DFP_NETWORK_CODE)
+		  				.withApplicationName(LinMobileConstants.DFP_APPLICATION_NAME)
+		  				.build();
+		log.info(" getting DfpServices instance from properties...");
+		dfpServices = LinMobileProperties.getInstance().getDfpServices();
+		
+		
+		IUserService userService =  (IUserService) BusinessServiceLocator.locate(IUserService.class);
+		List<String> adUnitIds = new ArrayList<String>();
+		if(adUnitId !=null ){
+			adUnitIds.add(adUnitId);
+		}else{
+			List<PropertyObj> propertyObjList = userService.getSiteIdsByBqIdentifier(LinMobileConstants.LIN_MEDIA_PUBLISHER_ID);
+			if(propertyObjList == null || propertyObjList.size() == 0){
+				reportsResponse="No sites found for Lin Media in datastore, please check AdUnitObj entity:";					
+				throw new Exception(reportsResponse); 
+			}
+			for (PropertyObj propertyObj : propertyObjList) {
+				if(propertyObj != null && propertyObj.getChilds() != null) {
+					List<PropertyChildObj> childObjList = propertyObj.getChilds();
+					for(PropertyChildObj childObj : childObjList) {
+						if(!adUnitIds.contains(childObj.getChildId())) {
+							adUnitIds.add(childObj.getChildId());
+						}
+					}
+				}
+			}
+		}
+		
+		String downloadUrl=null;
+		IDFPReportService dfpReportService=new DFPReportService();
+		downloadUrl=dfpReportService.getDFPReportByAdUnitIds(dfpServices, dfpSession,startDate, 
+				endDate, adUnitIds);		
+		
+		log.info("DFP report downloadUrl:"+downloadUrl);
+    	String csvData=dfpReportService.readCSVGZFile(downloadUrl);
+    	return csvData;
+	}
+		
+	
+	public String authorizeUsingOauth2(){
+    	try {
+   	      Entity credentials = null;   	     
+   	      DatastoreService ds = DatastoreServiceFactory.getDatastoreService();
+   	      Key creds_key = KeyFactory.createKey("Credentials", "DFPCredentials");
+   	      credentials = ds.get(creds_key);
+   	      
+   	      log.info("found credential in datastore, going to adExReport..");
+  	      try {
+			 response.sendRedirect("/dfpReports.lin");
+		  } catch (IOException e) {
+			 log.severe("IOException: "+e.getMessage());
+			 e.printStackTrace();
+		  }
+		
+   	    } catch (EntityNotFoundException ex) {
+   	      log.warning("No credentials availble, create new...");      
+   	    
+   	      GoogleAuthorizationCodeRequestUrl requestUrl = 
+   	        new GoogleAuthorizationCodeRequestUrl(
+   	        		LinMobileVariables.AD_EXCHANGE_CLIENT_ID, 
+   	        		LinMobileVariables.AD_EXCHANGE_CALLBACK_URL, 
+   	        		Arrays.asList(LinMobileConstants.DFP_API_SCOPE));
+   	      
+   	      requestUrl.setAccessType("offline");
+   	      requestUrl.setApprovalPrompt("force");
+   	      System.out.println("before sendRedirect:"+requestUrl.build());
+   	      try {
+			response.sendRedirect(requestUrl.build());
+		  } catch (IOException e) {
+			  log.severe("IOException: "+e.getMessage());
+			e.printStackTrace();
+		  }
+   	      
+   	    }
+   	   
+		return null;
+    }
+	
+    
+    public String oauth2Callback(){
+    	System.out.println("DFP Callback action called....");
+		
+		String code = request.getParameter("code");
+		log.info("Callback action: authCode:" + code);
+		HttpTransport transport = new NetHttpTransport();
+		JacksonFactory jsonFactory = new JacksonFactory();
+
+		// Exchange auth code for access and refresh tokens
+		GoogleAuthorizationCodeTokenRequest tokenRequest = new GoogleAuthorizationCodeFlow(
+				transport, jsonFactory, LinMobileVariables.AD_EXCHANGE_CLIENT_ID,
+				LinMobileVariables.AD_EXCHANGE_CLIENT_SECRET,
+				Arrays.asList(LinMobileConstants.DFP_API_SCOPE))
+		        .newTokenRequest(code)
+				.setRedirectUri(LinMobileVariables.AD_EXCHANGE_CALLBACK_URL);
+
+		GoogleTokenResponse tokens;
+		try {
+			tokens = tokenRequest.execute();
+
+			DatastoreService datastore = DatastoreServiceFactory
+					.getDatastoreService();
+			Entity credentials = new Entity("Credentials", "DFPCredentials");
+			credentials.setProperty("accessToken", tokens.getAccessToken());
+			credentials.setProperty("expiresIn", tokens.getExpiresInSeconds());
+			credentials.setProperty("refreshToken", tokens.getRefreshToken());
+			credentials.setProperty("clientId", LinMobileConstants.CLIENT_ID);
+			credentials.setProperty("clientSecret",
+					LinMobileConstants.CLIENT_SECRET);
+			datastore.put(credentials);
+
+			response.sendRedirect("/dfpReports.lin");
+
+		} catch (IOException e) {
+			log.severe("IOException: " + e.getMessage());
+			e.printStackTrace();
+		}
+		return null;
+    }
+    
+
+	@Override
+	public void setSession(Map session) {
+		this.session=session;
+		
+	}
+	public void setServletRequest(HttpServletRequest request) {
+		this.request=request;
+	}
+	public void setServletResponse(HttpServletResponse response) {
+		this.response=response;
+	}
+
+	public void setReportsResponse(String reportsResponse) {
+		this.reportsResponse = reportsResponse;
+	}
+
+
+	public String getReportsResponse() {
+		return reportsResponse;
+	}
+
+
+
+}
+
+

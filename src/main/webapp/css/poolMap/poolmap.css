@@ -1,0 +1,47 @@
+  #map_canvas {
+	float: left;
+    height: 600px;
+    margin-top: 78px ;
+    /* margin-left:-120px; */
+    padding: 0;
+    width: 782px; 
+  }
+  
+  .infoWindowDiv{
+     padding:0 0 0 5px;
+     margin-bottom:5px;
+     width: 97%;
+  }
+  .contentRow{
+     border-bottom: 1px solid #DDDDDD;
+     padding-top:2px;
+     padding-bottom:2px;
+  }
+  #head{
+     font-weight:bold;
+  }
+  .inputDiv{    
+    margin-top:4px;
+    width: 75px;
+  }
+  #creativeDiv{
+    margin-top:10px;
+  }
+  
+  #creativeDiv span{
+    float:left;
+  }
+  
+  #bookOrdertable{
+    height: 500px;
+    margin-left: 73%;
+    margin-top: 78px;
+    width: 600px;
+   
+  }
+  
+  .bookOrdertableGrid{
+    /* float: right; */
+    height: 400px;    
+    width: 600px;
+  }

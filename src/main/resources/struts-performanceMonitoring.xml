@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- @author Naresh Pokhriyal This is a struts config file for Performance 
+	And Monitoring module @createdOn 02/07/2014 -->
+<struts>
+
+	<package name="performanceMonitoring" namespace="/"
+		extends="struts-default">
+		<interceptors>
+
+			<interceptor name="gaeFileUploadInterceptor"
+				class="com.struts2.gae.interceptor.GaeFileUploadInterceptor" />
+			<interceptor-stack name="fileUploadStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="gaeFileUploadInterceptor"></interceptor-ref>
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+			</interceptor-stack>
+
+			<interceptor name="SessionCheckInterceptor"
+				class="com.lin.web.interceptor.SessionCheckInterceptor" />
+			<interceptor-stack name="tstSessionCheckStack">
+				<interceptor-ref name="SessionCheckInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+
+			<interceptor name="AdminSessionCheckInterceptor"
+				class="com.lin.web.interceptor.AdminSessionCheckInterceptor" />
+			<interceptor-stack name="adminSessionCheckStack">
+				<interceptor-ref name="SessionCheckInterceptor" />
+				<interceptor-ref name="AdminSessionCheckInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+
+		</interceptors>
+
+		<default-interceptor-ref name="fileUploadStack" />
+
+		<global-results>
+			<result name="sessionExpired">jsp/sessionExpired.jsp</result>
+			<result name="unAuthorisedAccess">jsp/unauthorisedAccess.jsp
+			</result>
+		</global-results>
+
+		<action name="campaignPerformanceListing" class="com.lin.web.action.PerformanceMonitoringAction">
+			<interceptor-ref name="tstSessionCheckStack" />
+			<result name="success">jsp/performanceAndMonitoringSetup.jsp</result>
+		</action>
+
+		<action name="performanceAndMonitoring" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="performanceAndMonitoringView">
+			<interceptor-ref name="tstSessionCheckStack" />
+			<result name="success">jsp/performanceAndMonitoring.jsp</result>
+		</action>
+
+		<action name="addLineItemInfo" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="addLineItemInfo">
+			<result name="input">CSVReader.jsp</result>
+			<result name="success">CSVReader.jsp</result>
+		</action>
+
+
+	</package>
+	<package name="performanceMonitoringJson" extends="json-default">
+		<interceptors>
+			<interceptor-stack name="fileUploadStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+
+				<interceptor-ref name="json">
+					<param name="enableSMD">true</param>
+					<param name="excludeProperties">
+						login.password,
+						studentList.*\.sin
+					</param>
+				</interceptor-ref>
+			</interceptor-stack>
+
+		</interceptors>
+
+
+		<action name="performanceDeliveryMetricsData" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="deliveryMetricsData">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="performanceMonitoringHeaderData" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="headerData">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="performanceClicksLineChartData" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="clicksLineChartData">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="performanceImpressionsLineChartData" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="impressionsLineChartData">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="performanceCTRLineChartData" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="ctrLineChartData">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="performanceLocationCompleteData" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="locationCompleteData">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="performanceLocationTargetData" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="locationTargetData">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="performanceLocationTopCitiesData" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="locationTopCitiesData">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="performanceFlightsLineChartData" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="flightLineChartData">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="performanceRichMediaLineChartData" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="richMediaLineChartData">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+		<action name="performanceVideoData" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="videoData">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonObject</param>
+			</result>
+		</action>
+
+		<action name="loadAllRunningCampaigns" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="loadAllRunningCampaigns">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonArray</param>
+			</result>
+		</action>
+
+		<action name="performanceCreativeBarChartData" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="creativeBarChartData">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+
+		<action name="performanceDeviceBarChartData" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="deviceBarChartData">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+
+		<action name="performanceOSChartData" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="osChartData">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+
+		<action name="performanceRichMediaDonutChartData" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="richMediaDonutChartData">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonArray</param>
+			</result>
+		</action>
+
+		<action name="updateCampaignData" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="updateCampaignData">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonArray</param>
+			</result>
+		</action>
+		
+		<action name="runUrlbyTQ" class="com.lin.web.action.PerformanceMonitoringAction"
+			method="runUrlbyTQ">
+			<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonArray</param>
+			</result>
+		</action>
+		
+		 <action name="getPartner" class="com.lin.web.action.PerformanceMonitoringAction" method="getPartner">
+		 	<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonArray</param>
+			</result>
+		</action>
+		 
+		 <action name="getrundspcampaignlist" class="com.lin.web.action.PerformanceMonitoringAction" method="getRUNDspCampaignList">
+		 	<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonArray</param>
+			</result>
+		</action>
+		
+		<action name="getrundspcampaigndetail" class="com.lin.web.action.PerformanceMonitoringAction" method="getRUNDspCampaignDetail">
+		 	<param name="contentType">text/html</param>
+			<result type="json">
+				<param name="root">jsonArray</param>
+			</result>
+		</action>
+	</package>
+</struts>

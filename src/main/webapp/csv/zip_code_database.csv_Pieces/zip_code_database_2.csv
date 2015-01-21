@@ -1,0 +1,5001 @@
+zip,primary_city,state,area_codes,country
+13087,Little York,NY,607,US
+13088,Liverpool,NY,315,US
+13089,Liverpool,NY,315,US
+13090,Liverpool,NY,315,US
+13092,Locke,NY,"3,15,607",US
+13093,Lycoming,NY,315,US
+13101,Mc Graw,NY,607,US
+13102,Mc Lean,NY,607,US
+13103,Mallory,NY,315,US
+13104,Manlius,NY,315,US
+13107,Maple View,NY,315,US
+13108,Marcellus,NY,315,US
+13110,Marietta,NY,315,US
+13111,Martville,NY,315,US
+13112,Memphis,NY,315,US
+13113,Meridian,NY,315,US
+13114,Mexico,NY,315,US
+13115,Minetto,NY,315,US
+13116,Minoa,NY,315,US
+13117,Montezuma,NY,315,US
+13118,Moravia,NY,315,US
+13119,Mottville,NY,315,US
+13120,Nedrow,NY,"9,17,315",US
+13121,New Haven,NY,315,US
+13122,New Woodstock,NY,315,US
+13123,North Bay,NY,315,US
+13124,North Pitcher,NY,315,US
+13126,Oswego,NY,315,US
+13131,Parish,NY,315,US
+13132,Pennellville,NY,315,US
+13134,Peterboro,NY,315,US
+13135,Phoenix,NY,315,US
+13136,Pitcher,NY,"6,07,315",US
+13137,Plainville,NY,315,US
+13138,Pompey,NY,315,US
+13139,Poplar Ridge,NY,315,US
+13140,Port Byron,NY,315,US
+13141,Preble,NY,"3,15,607",US
+13142,Pulaski,NY,315,US
+13143,Red Creek,NY,315,US
+13144,Richland,NY,315,US
+13145,Sandy Creek,NY,315,US
+13146,Savannah,NY,315,US
+13147,Scipio Center,NY,315,US
+13148,Seneca Falls,NY,315,US
+13152,Skaneateles,NY,315,US
+13153,Skaneateles Falls,NY,315,US
+13154,South Butler,NY,315,US
+13155,South Otselic,NY,315,US
+13156,Sterling,NY,315,US
+13157,Sylvan Beach,NY,315,US
+13158,Truxton,NY,"6,07,315",US
+13159,Tully,NY,"3,15,607",US
+13160,Union Springs,NY,315,US
+13162,Verona Beach,NY,315,US
+13163,Wampsville,NY,315,US
+13164,Warners,NY,315,US
+13165,Waterloo,NY,315,US
+13166,Weedsport,NY,315,US
+13167,West Monroe,NY,315,US
+13201,Syracuse,NY,315,US
+13202,Syracuse,NY,315,US
+13203,Syracuse,NY,315,US
+13204,Syracuse,NY,315,US
+13205,Syracuse,NY,315,US
+13206,Syracuse,NY,315,US
+13207,Syracuse,NY,315,US
+13208,Syracuse,NY,315,US
+13209,Syracuse,NY,315,US
+13210,Syracuse,NY,315,US
+13211,Syracuse,NY,315,US
+13212,Syracuse,NY,315,US
+13214,Syracuse,NY,315,US
+13215,Syracuse,NY,315,US
+13217,Syracuse,NY,315,US
+13218,Syracuse,NY,315,US
+13219,Syracuse,NY,315,US
+13220,Syracuse,NY,315,US
+13221,Syracuse,NY,315,US
+13224,Syracuse,NY,315,US
+13225,Syracuse,NY,315,US
+13235,Syracuse,NY,315,US
+13244,Syracuse,NY,315,US
+13250,Syracuse,NY,315,US
+13251,Syracuse,NY,315,US
+13252,Syracuse,NY,315,US
+13261,Syracuse,NY,315,US
+13290,Syracuse,NY,315,US
+13301,Alder Creek,NY,315,US
+13302,Altmar,NY,315,US
+13303,Ava,NY,315,US
+13304,Barneveld,NY,315,US
+13305,Beaver Falls,NY,315,US
+13308,Blossvale,NY,315,US
+13309,Boonville,NY,315,US
+13310,Bouckville,NY,315,US
+13312,Brantingham,NY,315,US
+13313,Bridgewater,NY,315,US
+13314,Brookfield,NY,315,US
+13315,Burlington Flats,NY,607,US
+13316,Camden,NY,315,US
+13317,Canajoharie,NY,518,US
+13318,Cassville,NY,315,US
+13319,Chadwicks,NY,315,US
+13320,Cherry Valley,NY,"6,07,518",US
+13321,Clark Mills,NY,315,US
+13322,Clayville,NY,315,US
+13323,Clinton,NY,315,US
+13324,Cold Brook,NY,315,US
+13325,Constableville,NY,315,US
+13326,Cooperstown,NY,607,US
+13327,Croghan,NY,315,US
+13328,Deansboro,NY,315,US
+13329,Dolgeville,NY,"3,15,518",US
+13331,Eagle Bay,NY,315,US
+13332,Earlville,NY,315,US
+13333,East Springfield,NY,607,US
+13334,Eaton,NY,315,US
+13335,Edmeston,NY,"6,07,315",US
+13337,Fly Creek,NY,607,US
+13338,Forestport,NY,315,US
+13339,Fort Plain,NY,518,US
+13340,Frankfort,NY,315,US
+13341,Franklin Springs,NY,315,US
+13342,Garrattsville,NY,607,US
+13343,Glenfield,NY,315,US
+13345,Greig,NY,315,US
+13346,Hamilton,NY,315,US
+13348,Hartwick,NY,607,US
+13350,Herkimer,NY,315,US
+13352,Hinckley,NY,315,US
+13353,Hoffmeister,NY,315,US
+13354,Holland Patent,NY,315,US
+13355,Hubbardsville,NY,315,US
+13357,Ilion,NY,315,US
+13360,Inlet,NY,315,US
+13361,Jordanville,NY,315,US
+13362,Knoxboro,NY,315,US
+13363,Lee Center,NY,315,US
+13364,Leonardsville,NY,315,US
+13365,Little Falls,NY,315,US
+13367,Lowville,NY,315,US
+13368,Lyons Falls,NY,315,US
+13401,Mc Connellsville,NY,315,US
+13402,Madison,NY,315,US
+13403,Marcy,NY,315,US
+13404,Martinsburg,NY,315,US
+13406,Middleville,NY,315,US
+13407,Mohawk,NY,315,US
+13408,Morrisville,NY,315,US
+13409,Munnsville,NY,315,US
+13410,Nelliston,NY,518,US
+13411,New Berlin,NY,607,US
+13413,New Hartford,NY,315,US
+13415,New Lisbon,NY,607,US
+13416,Newport,NY,315,US
+13417,New York Mills,NY,315,US
+13418,North Brookfield,NY,315,US
+13420,Old Forge,NY,315,US
+13421,Oneida,NY,315,US
+13424,Oriskany,NY,315,US
+13425,Oriskany Falls,NY,315,US
+13426,Orwell,NY,315,US
+13428,Palatine Bridge,NY,518,US
+13431,Poland,NY,315,US
+13433,Port Leyden,NY,315,US
+13435,Prospect,NY,315,US
+13436,Raquette Lake,NY,315,US
+13437,Redfield,NY,315,US
+13438,Remsen,NY,315,US
+13439,Richfield Springs,NY,315,US
+13440,Rome,NY,315,US
+13441,Rome,NY,315,US
+13442,Rome,NY,315,US
+13449,Rome,NY,315,US
+13450,Roseboom,NY,607,US
+13452,Saint Johnsville,NY,518,US
+13454,Salisbury Center,NY,315,US
+13455,Sangerfield,NY,315,US
+13456,Sauquoit,NY,315,US
+13457,Schuyler Lake,NY,315,US
+13459,Sharon Springs,NY,518,US
+13460,Sherburne,NY,607,US
+13461,Sherrill,NY,315,US
+13464,Smyrna,NY,607,US
+13465,Solsville,NY,315,US
+13468,Springfield Center,NY,"3,15,607",US
+13469,Stittville,NY,315,US
+13470,Stratford,NY,315,US
+13471,Taberg,NY,315,US
+13472,Thendara,NY,315,US
+13473,Turin,NY,315,US
+13475,Van Hornesville,NY,315,US
+13476,Vernon,NY,315,US
+13477,Vernon Center,NY,315,US
+13478,Verona,NY,315,US
+13479,Washington Mills,NY,315,US
+13480,Waterville,NY,315,US
+13482,West Burlington,NY,607,US
+13483,Westdale,NY,315,US
+13484,West Eaton,NY,315,US
+13485,West Edmeston,NY,315,US
+13486,Westernville,NY,315,US
+13488,Westford,NY,607,US
+13489,West Leyden,NY,315,US
+13490,Westmoreland,NY,315,US
+13491,West Winfield,NY,315,US
+13492,Whitesboro,NY,315,US
+13493,Williamstown,NY,315,US
+13494,Woodgate,NY,315,US
+13495,Yorkville,NY,315,US
+13501,Utica,NY,315,US
+13502,Utica,NY,315,US
+13503,Utica,NY,315,US
+13504,Utica,NY,315,US
+13505,Utica,NY,315,US
+13599,Utica,NY,315,US
+13601,Watertown,NY,315,US
+13602,Fort Drum,NY,315,US
+13603,Watertown,NY,315,US
+13605,Adams,NY,315,US
+13606,Adams Center,NY,315,US
+13607,Alexandria Bay,NY,315,US
+13608,Antwerp,NY,315,US
+13611,Belleville,NY,315,US
+13612,Black River,NY,315,US
+13613,Brasher Falls,NY,315,US
+13614,Brier Hill,NY,315,US
+13615,Brownville,NY,315,US
+13616,Calcium,NY,315,US
+13617,Canton,NY,315,US
+13618,Cape Vincent,NY,315,US
+13619,Carthage,NY,315,US
+13620,Castorland,NY,315,US
+13621,Chase Mills,NY,315,US
+13622,Chaumont,NY,315,US
+13623,Chippewa Bay,NY,315,US
+13624,Clayton,NY,315,US
+13625,Colton,NY,315,US
+13626,Copenhagen,NY,315,US
+13627,Deer River,NY,315,US
+13628,Deferiet,NY,315,US
+13630,De Kalb Junction,NY,315,US
+13631,Denmark,NY,315,US
+13632,Depauville,NY,315,US
+13633,De Peyster,NY,315,US
+13634,Dexter,NY,315,US
+13635,Edwards,NY,315,US
+13636,Ellisburg,NY,315,US
+13637,Evans Mills,NY,315,US
+13638,Felts Mills,NY,315,US
+13639,Fine,NY,315,US
+13640,Wellesley Island,NY,315,US
+13641,Fishers Landing,NY,315,US
+13642,Gouverneur,NY,315,US
+13643,Great Bend,NY,315,US
+13645,Hailesboro,NY,315,US
+13646,Hammond,NY,315,US
+13647,Hannawa Falls,NY,315,US
+13648,Harrisville,NY,315,US
+13649,Helena,NY,315,US
+13650,Henderson,NY,315,US
+13651,Henderson Harbor,NY,315,US
+13652,Hermon,NY,315,US
+13654,Heuvelton,NY,315,US
+13655,Hogansburg,NY,518,US
+13656,La Fargeville,NY,315,US
+13657,Limerick,NY,315,US
+13658,Lisbon,NY,315,US
+13659,Lorraine,NY,315,US
+13660,Madrid,NY,315,US
+13661,Mannsville,NY,315,US
+13662,Massena,NY,315,US
+13664,Morristown,NY,315,US
+13665,Natural Bridge,NY,315,US
+13666,Newton Falls,NY,315,US
+13667,Norfolk,NY,315,US
+13668,Norwood,NY,315,US
+13669,Ogdensburg,NY,315,US
+13670,Oswegatchie,NY,315,US
+13671,Oxbow,NY,315,US
+13672,Parishville,NY,315,US
+13673,Philadelphia,NY,315,US
+13674,Pierrepont Manor,NY,315,US
+13675,Plessis,NY,315,US
+13676,Potsdam,NY,315,US
+13677,Pyrites,NY,315,US
+13678,Raymondville,NY,315,US
+13679,Redwood,NY,315,US
+13680,Rensselaer Falls,NY,315,US
+13681,Richville,NY,315,US
+13682,Rodman,NY,315,US
+13683,Rooseveltown,NY,315,US
+13684,Russell,NY,315,US
+13685,Sackets Harbor,NY,315,US
+13687,South Colton,NY,315,US
+13690,Star Lake,NY,315,US
+13691,Theresa,NY,315,US
+13692,Thousand Island Park,NY,315,US
+13693,Three Mile Bay,NY,315,US
+13694,Waddington,NY,315,US
+13695,Wanakena,NY,315,US
+13696,West Stockholm,NY,315,US
+13697,Winthrop,NY,315,US
+13699,Potsdam,NY,315,US
+13730,Afton,NY,607,US
+13731,Andes,NY,845,US
+13732,Apalachin,NY,607,US
+13733,Bainbridge,NY,607,US
+13734,Barton,NY,607,US
+13736,Berkshire,NY,607,US
+13737,Bible School Park,NY,607,US
+13738,Blodgett Mills,NY,607,US
+13739,Bloomville,NY,607,US
+13740,Bovina Center,NY,607,US
+13743,Candor,NY,607,US
+13744,Castle Creek,NY,607,US
+13745,Chenango Bridge,NY,607,US
+13746,Chenango Forks,NY,607,US
+13747,Colliersville,NY,,US
+13748,Conklin,NY,607,US
+13749,Corbettsville,NY,607,US
+13750,Davenport,NY,607,US
+13751,Davenport Center,NY,607,US
+13752,Delancey,NY,607,US
+13753,Delhi,NY,607,US
+13754,Deposit,NY,607,US
+13755,Downsville,NY,607,US
+13756,East Branch,NY,607,US
+13757,East Meredith,NY,607,US
+13758,East Pharsalia,NY,607,US
+13760,Endicott,NY,"6,07,585",US
+13761,Endicott,NY,607,US
+13762,Endwell,NY,607,US
+13763,Endicott,NY,607,US
+13774,Fishs Eddy,NY,607,US
+13775,Franklin,NY,607,US
+13776,Gilbertsville,NY,607,US
+13777,Glen Aubrey,NY,607,US
+13778,Greene,NY,607,US
+13780,Guilford,NY,607,US
+13782,Hamden,NY,607,US
+13783,Hancock,NY,"6,07,845",US
+13784,Harford,NY,607,US
+13786,Harpersfield,NY,607,US
+13787,Harpursville,NY,607,US
+13788,Hobart,NY,607,US
+13790,Johnson City,NY,607,US
+13794,Killawog,NY,607,US
+13795,Kirkwood,NY,607,US
+13796,Laurens,NY,607,US
+13797,Lisle,NY,607,US
+13801,Mc Donough,NY,607,US
+13802,Maine,NY,607,US
+13803,Marathon,NY,607,US
+13804,Masonville,NY,607,US
+13806,Meridale,NY,607,US
+13807,Milford,NY,607,US
+13808,Morris,NY,607,US
+13809,Mount Upton,NY,607,US
+13810,Mount Vision,NY,607,US
+13811,Newark Valley,NY,607,US
+13812,Nichols,NY,607,US
+13813,Nineveh,NY,607,US
+13814,North Norwich,NY,607,US
+13815,Norwich,NY,607,US
+13820,Oneonta,NY,607,US
+13825,Otego,NY,607,US
+13826,Ouaquaga,NY,607,US
+13827,Owego,NY,607,US
+13830,Oxford,NY,607,US
+13832,Plymouth,NY,"6,07,315",US
+13833,Port Crane,NY,607,US
+13834,Portlandville,NY,607,US
+13835,Richford,NY,607,US
+13837,Shinhopple,NY,,US
+13838,Sidney,NY,607,US
+13839,Sidney Center,NY,607,US
+13840,Smithboro,NY,607,US
+13841,Smithville Flats,NY,607,US
+13842,South Kortright,NY,607,US
+13843,South New Berlin,NY,607,US
+13844,South Plymouth,NY,607,US
+13845,Tioga Center,NY,607,US
+13846,Treadwell,NY,607,US
+13847,Trout Creek,NY,607,US
+13848,Tunnel,NY,607,US
+13849,Unadilla,NY,607,US
+13850,Vestal,NY,607,US
+13851,Vestal,NY,607,US
+13856,Walton,NY,607,US
+13859,Wells Bridge,NY,607,US
+13860,West Davenport,NY,,US
+13861,West Oneonta,NY,607,US
+13862,Whitney Point,NY,607,US
+13863,Willet,NY,607,US
+13864,Willseyville,NY,607,US
+13865,Windsor,NY,607,US
+13901,Binghamton,NY,607,US
+13902,Binghamton,NY,607,US
+13903,Binghamton,NY,607,US
+13904,Binghamton,NY,607,US
+13905,Binghamton,NY,607,US
+14001,Akron,NY,"7,16,585",US
+14004,Alden,NY,"7,16,585",US
+14005,Alexander,NY,585,US
+14006,Angola,NY,716,US
+14008,Appleton,NY,716,US
+14009,Arcade,NY,"5,85,716",US
+14010,Athol Springs,NY,,US
+14011,Attica,NY,585,US
+14012,Barker,NY,716,US
+14013,Basom,NY,585,US
+14020,Batavia,NY,"5,85,716",US
+14021,Batavia,NY,585,US
+14024,Bliss,NY,585,US
+14025,Boston,NY,716,US
+14026,Bowmansville,NY,716,US
+14027,Brant,NY,716,US
+14028,Burt,NY,716,US
+14029,Centerville,NY,585,US
+14030,Chaffee,NY,"7,16,585",US
+14031,Clarence,NY,716,US
+14032,Clarence Center,NY,716,US
+14033,Colden,NY,716,US
+14034,Collins,NY,716,US
+14035,Collins Center,NY,,US
+14036,Corfu,NY,"5,85,716",US
+14037,Cowlesville,NY,585,US
+14038,Crittenden,NY,,US
+14039,Dale,NY,585,US
+14040,Darien Center,NY,585,US
+14041,Dayton,NY,716,US
+14042,Delevan,NY,716,US
+14043,Depew,NY,716,US
+14047,Derby,NY,716,US
+14048,Dunkirk,NY,716,US
+14051,East Amherst,NY,716,US
+14052,East Aurora,NY,"7,16,585",US
+14054,East Bethany,NY,585,US
+14055,East Concord,NY,716,US
+14056,East Pembroke,NY,585,US
+14057,Eden,NY,716,US
+14058,Elba,NY,585,US
+14059,Elma,NY,716,US
+14060,Farmersville Station,NY,,US
+14061,Farnham,NY,,US
+14062,Forestville,NY,716,US
+14063,Fredonia,NY,716,US
+14065,Freedom,NY,585,US
+14066,Gainesville,NY,585,US
+14067,Gasport,NY,716,US
+14068,Getzville,NY,716,US
+14069,Glenwood,NY,716,US
+14070,Gowanda,NY,716,US
+14072,Grand Island,NY,716,US
+14075,Hamburg,NY,"7,16,718",US
+14080,Holland,NY,716,US
+14081,Irving,NY,716,US
+14082,Java Center,NY,"5,85,716",US
+14083,Java Village,NY,585,US
+14085,Lake View,NY,716,US
+14086,Lancaster,NY,716,US
+14091,Lawtons,NY,716,US
+14092,Lewiston,NY,716,US
+14094,Lockport,NY,"7,16,585",US
+14095,Lockport,NY,716,US
+14098,Lyndonville,NY,"5,85,716",US
+14101,Machias,NY,"7,16,585",US
+14102,Marilla,NY,716,US
+14103,Medina,NY,"5,85,716",US
+14105,Middleport,NY,"7,16,585",US
+14107,Model City,NY,716,US
+14108,Newfane,NY,716,US
+14109,Niagara University,NY,716,US
+14110,North Boston,NY,,US
+14111,North Collins,NY,716,US
+14112,North Evans,NY,,US
+14113,North Java,NY,585,US
+14120,North Tonawanda,NY,716,US
+14125,Oakfield,NY,585,US
+14126,Olcott,NY,716,US
+14127,Orchard Park,NY,716,US
+14129,Perrysburg,NY,716,US
+14130,Pike,NY,585,US
+14131,Ransomville,NY,716,US
+14132,Sanborn,NY,716,US
+14133,Sandusky,NY,,US
+14134,Sardinia,NY,716,US
+14135,Sheridan,NY,716,US
+14136,Silver Creek,NY,716,US
+14138,South Dayton,NY,716,US
+14139,South Wales,NY,716,US
+14140,Spring Brook,NY,,US
+14141,Springville,NY,716,US
+14143,Stafford,NY,585,US
+14144,Stella Niagara,NY,716,US
+14145,Strykersville,NY,"5,85,716",US
+14150,Tonawanda,NY,716,US
+14151,Tonawanda,NY,716,US
+14166,Van Buren Point,NY,716,US
+14167,Varysburg,NY,585,US
+14168,Versailles,NY,,US
+14169,Wales Center,NY,716,US
+14170,West Falls,NY,716,US
+14171,West Valley,NY,716,US
+14172,Wilson,NY,716,US
+14173,Yorkshire,NY,"5,85,716",US
+14174,Youngstown,NY,716,US
+14201,Buffalo,NY,716,US
+14202,Buffalo,NY,716,US
+14203,Buffalo,NY,716,US
+14204,Buffalo,NY,"5,85,716",US
+14205,Buffalo,NY,716,US
+14206,Buffalo,NY,716,US
+14207,Buffalo,NY,716,US
+14208,Buffalo,NY,716,US
+14209,Buffalo,NY,716,US
+14210,Buffalo,NY,716,US
+14211,Buffalo,NY,716,US
+14212,Buffalo,NY,716,US
+14213,Buffalo,NY,716,US
+14214,Buffalo,NY,716,US
+14215,Buffalo,NY,716,US
+14216,Buffalo,NY,716,US
+14217,Buffalo,NY,716,US
+14218,Buffalo,NY,716,US
+14219,Buffalo,NY,716,US
+14220,Buffalo,NY,716,US
+14221,Buffalo,NY,"5,85,716",US
+14222,Buffalo,NY,716,US
+14223,Buffalo,NY,"7,16,917",US
+14224,Buffalo,NY,716,US
+14225,Buffalo,NY,716,US
+14226,Buffalo,NY,716,US
+14227,Buffalo,NY,716,US
+14228,Buffalo,NY,716,US
+14231,Buffalo,NY,716,US
+14233,Buffalo,NY,716,US
+14240,Buffalo,NY,716,US
+14241,Buffalo,NY,716,US
+14260,Buffalo,NY,716,US
+14261,Buffalo,NY,716,US
+14263,Buffalo,NY,716,US
+14264,Buffalo,NY,716,US
+14265,Buffalo,NY,716,US
+14267,Buffalo,NY,716,US
+14269,Buffalo,NY,716,US
+14270,Buffalo,NY,716,US
+14272,Buffalo,NY,716,US
+14273,Buffalo,NY,716,US
+14276,Buffalo,NY,716,US
+14280,Buffalo,NY,"5,85,716",US
+14301,Niagara Falls,NY,716,US
+14302,Niagara Falls,NY,716,US
+14303,Niagara Falls,NY,716,US
+14304,Niagara Falls,NY,716,US
+14305,Niagara Falls,NY,716,US
+14410,Adams Basin,NY,585,US
+14411,Albion,NY,585,US
+14413,Alton,NY,315,US
+14414,Avon,NY,585,US
+14415,Bellona,NY,585,US
+14416,Bergen,NY,585,US
+14418,Branchport,NY,"3,15,607",US
+14420,Brockport,NY,585,US
+14422,Byron,NY,585,US
+14423,Caledonia,NY,585,US
+14424,Canandaigua,NY,585,US
+14425,Farmington,NY,"71,65,85,315",US
+14427,Castile,NY,585,US
+14428,Churchville,NY,585,US
+14429,Clarendon,NY,585,US
+14430,Clarkson,NY,585,US
+14432,Clifton Springs,NY,"3,15,585",US
+14433,Clyde,NY,315,US
+14435,Conesus,NY,585,US
+14437,Dansville,NY,"5,85,607",US
+14441,Dresden,NY,315,US
+14443,East Bloomfield,NY,585,US
+14445,East Rochester,NY,585,US
+14449,East Williamson,NY,315,US
+14450,Fairport,NY,"5,85,716",US
+14452,Fancher,NY,585,US
+14453,Fishers,NY,585,US
+14454,Geneseo,NY,"5,85,716",US
+14456,Geneva,NY,"3,15,585",US
+14461,Gorham,NY,585,US
+14462,Groveland,NY,585,US
+14463,Hall,NY,585,US
+14464,Hamlin,NY,585,US
+14466,Hemlock,NY,585,US
+14467,Henrietta,NY,585,US
+14468,Hilton,NY,585,US
+14469,Bloomfield,NY,585,US
+14470,Holley,NY,585,US
+14471,Honeoye,NY,585,US
+14472,Honeoye Falls,NY,585,US
+14475,Ionia,NY,585,US
+14476,Kendall,NY,585,US
+14477,Kent,NY,585,US
+14478,Keuka Park,NY,315,US
+14479,Knowlesville,NY,585,US
+14480,Lakeville,NY,585,US
+14481,Leicester,NY,585,US
+14482,Le Roy,NY,585,US
+14485,Lima,NY,585,US
+14486,Linwood,NY,585,US
+14487,Livonia,NY,585,US
+14488,Livonia Center,NY,585,US
+14489,Lyons,NY,315,US
+14502,Macedon,NY,"5,85,315",US
+14504,Manchester,NY,585,US
+14505,Marion,NY,315,US
+14506,Mendon,NY,585,US
+14507,Middlesex,NY,585,US
+14508,Morton,NY,585,US
+14510,Mount Morris,NY,585,US
+14511,Mumford,NY,585,US
+14512,Naples,NY,585,US
+14513,Newark,NY,"3,15,585",US
+14514,North Chili,NY,585,US
+14515,North Greece,NY,585,US
+14516,North Rose,NY,315,US
+14517,Nunda,NY,585,US
+14518,Oaks Corners,NY,,US
+14519,Ontario,NY,"3,15,585",US
+14520,Ontario Center,NY,315,US
+14521,Ovid,NY,607,US
+14522,Palmyra,NY,315,US
+14525,Pavilion,NY,585,US
+14526,Penfield,NY,585,US
+14527,Penn Yan,NY,"31,55,85,607",US
+14529,Perkinsville,NY,585,US
+14530,Perry,NY,585,US
+14532,Phelps,NY,315,US
+14533,Piffard,NY,585,US
+14534,Pittsford,NY,585,US
+14536,Portageville,NY,585,US
+14537,Port Gibson,NY,315,US
+14538,Pultneyville,NY,315,US
+14539,Retsof,NY,585,US
+14541,Romulus,NY,"3,15,607",US
+14542,Rose,NY,315,US
+14543,Rush,NY,585,US
+14544,Rushville,NY,585,US
+14545,Scottsburg,NY,585,US
+14546,Scottsville,NY,585,US
+14547,Seneca Castle,NY,"3,15,585",US
+14548,Shortsville,NY,"5,85,315",US
+14549,Silver Lake,NY,585,US
+14550,Silver Springs,NY,585,US
+14551,Sodus,NY,315,US
+14555,Sodus Point,NY,315,US
+14556,Sonyea,NY,585,US
+14557,South Byron,NY,585,US
+14558,South Lima,NY,585,US
+14559,Spencerport,NY,585,US
+14560,Springwater,NY,585,US
+14561,Stanley,NY,585,US
+14563,Union Hill,NY,315,US
+14564,Victor,NY,585,US
+14568,Walworth,NY,"3,15,585",US
+14569,Warsaw,NY,585,US
+14571,Waterport,NY,585,US
+14572,Wayland,NY,585,US
+14580,Webster,NY,"5,85,716",US
+14585,West Bloomfield,NY,585,US
+14586,West Henrietta,NY,585,US
+14588,Willard,NY,607,US
+14589,Williamson,NY,315,US
+14590,Wolcott,NY,315,US
+14591,Wyoming,NY,585,US
+14592,York,NY,585,US
+14602,Rochester,NY,585,US
+14603,Rochester,NY,585,US
+14604,Rochester,NY,585,US
+14605,Rochester,NY,585,US
+14606,Rochester,NY,585,US
+14607,Rochester,NY,585,US
+14608,Rochester,NY,585,US
+14609,Rochester,NY,585,US
+14610,Rochester,NY,585,US
+14611,Rochester,NY,585,US
+14612,Rochester,NY,585,US
+14613,Rochester,NY,"3,15,585",US
+14614,Rochester,NY,"5,85,315",US
+14615,Rochester,NY,585,US
+14616,Rochester,NY,585,US
+14617,Rochester,NY,585,US
+14618,Rochester,NY,585,US
+14619,Rochester,NY,585,US
+14620,Rochester,NY,585,US
+14621,Rochester,NY,585,US
+14622,Rochester,NY,585,US
+14623,Rochester,NY,585,US
+14624,Rochester,NY,585,US
+14625,Rochester,NY,585,US
+14626,Rochester,NY,585,US
+14627,Rochester,NY,585,US
+14638,Rochester,NY,585,US
+14639,Rochester,NY,585,US
+14642,Rochester,NY,585,US
+14643,Rochester,NY,585,US
+14644,Rochester,NY,585,US
+14645,Rochester,NY,585,US
+14646,Rochester,NY,585,US
+14647,Rochester,NY,585,US
+14649,Rochester,NY,585,US
+14650,Rochester,NY,585,US
+14651,Rochester,NY,585,US
+14652,Rochester,NY,585,US
+14653,Rochester,NY,585,US
+14664,Rochester,NY,585,US
+14673,Rochester,NY,585,US
+14683,Rochester,NY,585,US
+14692,Rochester,NY,585,US
+14694,Rochester,NY,585,US
+14701,Jamestown,NY,716,US
+14702,Jamestown,NY,716,US
+14706,Allegany,NY,,US
+14707,Allentown,NY,585,US
+14708,Alma,NY,585,US
+14709,Angelica,NY,585,US
+14710,Ashville,NY,716,US
+14711,Belfast,NY,585,US
+14712,Bemus Point,NY,716,US
+14714,Black Creek,NY,585,US
+14715,Bolivar,NY,585,US
+14716,Brocton,NY,716,US
+14717,Caneadea,NY,585,US
+14718,Cassadaga,NY,716,US
+14719,Cattaraugus,NY,716,US
+14720,Celoron,NY,716,US
+14721,Ceres,NY,"5,85,716",US
+14722,Chautauqua,NY,716,US
+14723,Cherry Creek,NY,716,US
+14724,Clymer,NY,716,US
+14726,Conewango Valley,NY,716,US
+14727,Cuba,NY,"5,85,716",US
+14728,Dewittville,NY,716,US
+14729,East Otto,NY,716,US
+14730,East Randolph,NY,716,US
+14731,Ellicottville,NY,716,US
+14732,Ellington,NY,716,US
+14733,Falconer,NY,716,US
+14735,Fillmore,NY,585,US
+14736,Findley Lake,NY,716,US
+14737,Franklinville,NY,716,US
+14738,Frewsburg,NY,716,US
+14739,Friendship,NY,585,US
+14740,Gerry,NY,716,US
+14741,Great Valley,NY,716,US
+14742,Greenhurst,NY,716,US
+14743,Hinsdale,NY,716,US
+14744,Houghton,NY,585,US
+14745,Hume,NY,585,US
+14747,Kennedy,NY,716,US
+14748,Kill Buck,NY,716,US
+14750,Lakewood,NY,716,US
+14751,Leon,NY,716,US
+14752,Lily Dale,NY,716,US
+14753,Limestone,NY,716,US
+14754,Little Genesee,NY,585,US
+14755,Little Valley,NY,716,US
+14756,Maple Springs,NY,716,US
+14757,Mayville,NY,716,US
+14758,Niobe,NY,716,US
+14760,Olean,NY,"5,85,716",US
+14766,Otto,NY,,US
+14767,Panama,NY,716,US
+14769,Portland,NY,716,US
+14770,Portville,NY,585,US
+14772,Randolph,NY,716,US
+14774,Richburg,NY,585,US
+14775,Ripley,NY,716,US
+14777,Rushford,NY,"5,85,716",US
+14778,Saint Bonaventure,NY,,US
+14779,Salamanca,NY,716,US
+14781,Sherman,NY,716,US
+14782,Sinclairville,NY,716,US
+14783,Steamburg,NY,716,US
+14784,Stockton,NY,716,US
+14785,Stow,NY,716,US
+14786,West Clarksville,NY,,US
+14787,Westfield,NY,716,US
+14788,Westons Mills,NY,,US
+14801,Addison,NY,607,US
+14802,Alfred,NY,607,US
+14803,Alfred Station,NY,607,US
+14804,Almond,NY,"6,07,585",US
+14805,Alpine,NY,607,US
+14806,Andover,NY,607,US
+14807,Arkport,NY,607,US
+14808,Atlanta,NY,585,US
+14809,Avoca,NY,607,US
+14810,Bath,NY,607,US
+14812,Beaver Dams,NY,607,US
+14813,Belmont,NY,585,US
+14814,Big Flats,NY,607,US
+14815,Bradford,NY,607,US
+14816,Breesport,NY,607,US
+14817,Brooktondale,NY,607,US
+14818,Burdett,NY,607,US
+14819,Cameron,NY,607,US
+14820,Cameron Mills,NY,607,US
+14821,Campbell,NY,607,US
+14822,Canaseraga,NY,607,US
+14823,Canisteo,NY,607,US
+14824,Cayuta,NY,607,US
+14825,Chemung,NY,607,US
+14826,Cohocton,NY,585,US
+14827,Coopers Plains,NY,,US
+14830,Corning,NY,607,US
+14831,Corning,NY,607,US
+14836,Dalton,NY,585,US
+14837,Dundee,NY,"6,07,315",US
+14838,Erin,NY,607,US
+14839,Greenwood,NY,607,US
+14840,Hammondsport,NY,607,US
+14841,Hector,NY,607,US
+14842,Himrod,NY,607,US
+14843,Hornell,NY,607,US
+14845,Horseheads,NY,607,US
+14846,Hunt,NY,585,US
+14847,Interlaken,NY,607,US
+14850,Ithaca,NY,607,US
+14851,Ithaca,NY,607,US
+14852,Ithaca,NY,607,US
+14853,Ithaca,NY,607,US
+14854,Jacksonville,NY,607,US
+14855,Jasper,NY,607,US
+14856,Kanona,NY,607,US
+14857,Lakemont,NY,607,US
+14858,Lindley,NY,607,US
+14859,Lockwood,NY,607,US
+14860,Lodi,NY,607,US
+14861,Lowman,NY,607,US
+14863,Mecklenburg,NY,607,US
+14864,Millport,NY,607,US
+14865,Montour Falls,NY,607,US
+14867,Newfield,NY,607,US
+14869,Odessa,NY,607,US
+14870,Painted Post,NY,607,US
+14871,Pine City,NY,607,US
+14872,Pine Valley,NY,607,US
+14873,Prattsburgh,NY,607,US
+14874,Pulteney,NY,607,US
+14876,Reading Center,NY,607,US
+14877,Rexville,NY,607,US
+14878,Rock Stream,NY,607,US
+14879,Savona,NY,607,US
+14880,Scio,NY,585,US
+14881,Slaterville Springs,NY,607,US
+14882,Lansing,NY,607,US
+14883,Spencer,NY,607,US
+14884,Swain,NY,"6,07,585",US
+14885,Troupsburg,NY,607,US
+14886,Trumansburg,NY,607,US
+14887,Tyrone,NY,607,US
+14889,Van Etten,NY,607,US
+14891,Watkins Glen,NY,607,US
+14892,Waverly,NY,607,US
+14893,Wayne,NY,607,US
+14894,Wellsburg,NY,607,US
+14895,Wellsville,NY,"5,85,607",US
+14897,Whitesville,NY,607,US
+14898,Woodhull,NY,607,US
+14901,Elmira,NY,607,US
+14902,Elmira,NY,607,US
+14903,Elmira,NY,607,US
+14904,Elmira,NY,607,US
+14905,Elmira,NY,607,US
+14925,Elmira,NY,607,US
+15001,Aliquippa,PA,"4,12,724",US
+15003,Ambridge,PA,"4,12,724",US
+15004,Atlasburg,PA,724,US
+15005,Baden,PA,724,US
+15006,Bairdford,PA,724,US
+15007,Bakerstown,PA,724,US
+15009,Beaver,PA,"4,12,724",US
+15010,Beaver Falls,PA,"7,24,412",US
+15012,Belle Vernon,PA,724,US
+15014,Brackenridge,PA,724,US
+15015,Bradfordwoods,PA,"7,24,412",US
+15017,Bridgeville,PA,"4,12,724",US
+15018,Buena Vista,PA,412,US
+15019,Bulger,PA,724,US
+15020,Bunola,PA,412,US
+15021,Burgettstown,PA,"4,12,724",US
+15022,Charleroi,PA,724,US
+15024,Cheswick,PA,"7,24,412",US
+15025,Clairton,PA,412,US
+15026,Clinton,PA,"7,24,412",US
+15027,Conway,PA,724,US
+15028,Coulters,PA,878,US
+15030,Creighton,PA,724,US
+15031,Cuddy,PA,412,US
+15032,Curtisville,PA,724,US
+15033,Donora,PA,724,US
+15034,Dravosburg,PA,412,US
+15035,East Mc Keesport,PA,412,US
+15037,Elizabeth,PA,"4,12,724",US
+15038,Elrama,PA,412,US
+15042,Freedom,PA,724,US
+15043,Georgetown,PA,724,US
+15044,Gibsonia,PA,"4,12,724",US
+15045,Glassport,PA,412,US
+15046,Crescent,PA,"4,12,724",US
+15047,Greenock,PA,412,US
+15049,Harwick,PA,724,US
+15050,Hookstown,PA,724,US
+15051,Indianola,PA,412,US
+15052,Industry,PA,724,US
+15053,Joffre,PA,724,US
+15054,Langeloth,PA,724,US
+15055,Lawrence,PA,724,US
+15056,Leetsdale,PA,"7,24,412",US
+15057,Mc Donald,PA,"7,24,412",US
+15059,Midland,PA,724,US
+15060,Midway,PA,724,US
+15061,Monaca,PA,"7,24,412",US
+15062,Monessen,PA,724,US
+15063,Monongahela,PA,"7,24,412",US
+15064,Morgan,PA,412,US
+15065,Natrona Heights,PA,"4,12,724",US
+15066,New Brighton,PA,724,US
+15067,New Eagle,PA,724,US
+15068,New Kensington,PA,"4,12,724",US
+15069,New Kensington,PA,724,US
+15071,Oakdale,PA,"7,24,412",US
+15072,Pricedale,PA,878,US
+15074,Rochester,PA,"7,24,412",US
+15075,Rural Ridge,PA,724,US
+15076,Russellton,PA,"7,24,412",US
+15077,Shippingport,PA,724,US
+15078,Slovan,PA,724,US
+15081,South Heights,PA,"4,12,724",US
+15082,Sturgeon,PA,724,US
+15083,Sutersville,PA,724,US
+15084,Tarentum,PA,724,US
+15085,Trafford,PA,412,US
+15086,Warrendale,PA,724,US
+15087,Webster,PA,724,US
+15088,West Elizabeth,PA,412,US
+15089,West Newton,PA,724,US
+15090,Wexford,PA,"7,24,412",US
+15091,Wildwood,PA,724,US
+15095,Warrendale,PA,724,US
+15096,Warrendale,PA,724,US
+15101,Allison Park,PA,"4,12,724",US
+15102,Bethel Park,PA,412,US
+15104,Braddock,PA,412,US
+15106,Carnegie,PA,"41,27,24,216",US
+15108,Coraopolis,PA,"4,12,724",US
+15110,Duquesne,PA,"4,12,724",US
+15112,East Pittsburgh,PA,"7,24,412",US
+15116,Glenshaw,PA,"4,12,724",US
+15120,Homestead,PA,412,US
+15122,West Mifflin,PA,412,US
+15123,West Mifflin,PA,412,US
+15126,Imperial,PA,724,US
+15127,Ingomar,PA,878,US
+15129,South Park,PA,"4,12,724",US
+15131,Mckeesport,PA,412,US
+15132,Mckeesport,PA,412,US
+15133,Mckeesport,PA,"7,24,412",US
+15134,Mckeesport,PA,412,US
+15135,Mckeesport,PA,412,US
+15136,Mc Kees Rocks,PA,412,US
+15137,North Versailles,PA,412,US
+15139,Oakmont,PA,412,US
+15140,Pitcairn,PA,412,US
+15142,Presto,PA,412,US
+15143,Sewickley,PA,"4,12,724",US
+15144,Springdale,PA,724,US
+15145,Turtle Creek,PA,412,US
+15146,Monroeville,PA,"4,12,724",US
+15147,Verona,PA,412,US
+15148,Wilmerding,PA,412,US
+15201,Pittsburgh,PA,"4,12,724",US
+15202,Pittsburgh,PA,"4,12,724",US
+15203,Pittsburgh,PA,412,US
+15204,Pittsburgh,PA,412,US
+15205,Pittsburgh,PA,"4,12,724",US
+15206,Pittsburgh,PA,412,US
+15207,Pittsburgh,PA,412,US
+15208,Pittsburgh,PA,412,US
+15209,Pittsburgh,PA,"4,12,724",US
+15210,Pittsburgh,PA,"4,12,724",US
+15211,Pittsburgh,PA,412,US
+15212,Pittsburgh,PA,412,US
+15213,Pittsburgh,PA,"4,12,724",US
+15214,Pittsburgh,PA,412,US
+15215,Pittsburgh,PA,412,US
+15216,Pittsburgh,PA,412,US
+15217,Pittsburgh,PA,412,US
+15218,Pittsburgh,PA,412,US
+15219,Pittsburgh,PA,"4,12,724",US
+15220,Pittsburgh,PA,412,US
+15221,Pittsburgh,PA,412,US
+15222,Pittsburgh,PA,"41,27,24,215",US
+15223,Pittsburgh,PA,"4,12,724",US
+15224,Pittsburgh,PA,412,US
+15225,Pittsburgh,PA,412,US
+15226,Pittsburgh,PA,412,US
+15227,Pittsburgh,PA,412,US
+15228,Pittsburgh,PA,412,US
+15229,Pittsburgh,PA,412,US
+15230,Pittsburgh,PA,412,US
+15231,Pittsburgh,PA,412,US
+15232,Pittsburgh,PA,"4,12,724",US
+15233,Pittsburgh,PA,412,US
+15234,Pittsburgh,PA,412,US
+15235,Pittsburgh,PA,"4,12,724",US
+15236,Pittsburgh,PA,"4,12,724",US
+15237,Pittsburgh,PA,"4,12,724",US
+15238,Pittsburgh,PA,"4,12,724",US
+15239,Pittsburgh,PA,"4,12,724",US
+15240,Pittsburgh,PA,412,US
+15241,Pittsburgh,PA,"4,12,724",US
+15242,Pittsburgh,PA,412,US
+15243,Pittsburgh,PA,"4,12,724",US
+15244,Pittsburgh,PA,412,US
+15250,Pittsburgh,PA,412,US
+15251,Pittsburgh,PA,412,US
+15252,Pittsburgh,PA,412,US
+15253,Pittsburgh,PA,412,US
+15254,Pittsburgh,PA,412,US
+15255,Pittsburgh,PA,412,US
+15257,Pittsburgh,PA,412,US
+15258,Pittsburgh,PA,412,US
+15259,Pittsburgh,PA,412,US
+15260,Pittsburgh,PA,"4,12,724",US
+15261,Pittsburgh,PA,412,US
+15262,Pittsburgh,PA,412,US
+15263,Pittsburgh,PA,412,US
+15264,Pittsburgh,PA,412,US
+15265,Pittsburgh,PA,412,US
+15266,Pittsburgh,PA,,US
+15267,Pittsburgh,PA,412,US
+15268,Pittsburgh,PA,412,US
+15270,Pittsburgh,PA,412,US
+15272,Pittsburgh,PA,"4,12,724",US
+15273,Pittsburgh,PA,,US
+15274,Pittsburgh,PA,412,US
+15275,Pittsburgh,PA,412,US
+15276,Pittsburgh,PA,"4,12,724",US
+15277,Pittsburgh,PA,412,US
+15278,Pittsburgh,PA,412,US
+15279,Pittsburgh,PA,412,US
+15281,Pittsburgh,PA,412,US
+15282,Pittsburgh,PA,412,US
+15283,Pittsburgh,PA,412,US
+15285,Pittsburgh,PA,412,US
+15286,Pittsburgh,PA,412,US
+15288,Pittsburgh,PA,,US
+15289,Pittsburgh,PA,412,US
+15290,Pittsburgh,PA,"4,12,724",US
+15295,Pittsburgh,PA,"4,12,724",US
+15301,Washington,PA,724,US
+15310,Aleppo,PA,724,US
+15311,Amity,PA,724,US
+15312,Avella,PA,"7,24,412",US
+15313,Beallsville,PA,724,US
+15314,Bentleyville,PA,724,US
+15315,Bobtown,PA,724,US
+15316,Brave,PA,724,US
+15317,Canonsburg,PA,"4,12,724",US
+15320,Carmichaels,PA,724,US
+15321,Cecil,PA,"7,24,412",US
+15322,Clarksville,PA,724,US
+15323,Claysville,PA,724,US
+15324,Cokeburg,PA,724,US
+15325,Crucible,PA,724,US
+15327,Dilliner,PA,724,US
+15329,Prosperity,PA,724,US
+15330,Eighty Four,PA,724,US
+15331,Ellsworth,PA,724,US
+15332,Finleyville,PA,"7,24,412",US
+15333,Fredericktown,PA,724,US
+15334,Garards Fort,PA,724,US
+15336,Gastonville,PA,724,US
+15337,Graysville,PA,724,US
+15338,Greensboro,PA,724,US
+15339,Hendersonville,PA,724,US
+15340,Hickory,PA,724,US
+15341,Holbrook,PA,724,US
+15342,Houston,PA,"7,24,412",US
+15344,Jefferson,PA,"7,24,412",US
+15345,Marianna,PA,"4,12,724",US
+15346,Mather,PA,724,US
+15347,Meadow Lands,PA,724,US
+15348,Millsboro,PA,724,US
+15349,Mount Morris,PA,"4,12,724",US
+15350,Muse,PA,724,US
+15351,Nemacolin,PA,724,US
+15352,New Freeport,PA,724,US
+15353,Nineveh,PA,724,US
+15357,Rices Landing,PA,724,US
+15358,Richeyville,PA,724,US
+15359,Rogersville,PA,724,US
+15360,Scenery Hill,PA,724,US
+15361,Southview,PA,724,US
+15362,Spraggs,PA,724,US
+15363,Strabane,PA,724,US
+15364,Sycamore,PA,724,US
+15365,Taylorstown,PA,724,US
+15366,Van Voorhis,PA,724,US
+15367,Venetia,PA,724,US
+15368,Vestaburg,PA,724,US
+15370,Waynesburg,PA,724,US
+15376,West Alexander,PA,724,US
+15377,West Finley,PA,724,US
+15378,Westland,PA,724,US
+15379,West Middletown,PA,724,US
+15380,Wind Ridge,PA,724,US
+15401,Uniontown,PA,"4,12,724",US
+15410,Adah,PA,724,US
+15411,Addison,PA,814,US
+15412,Allenport,PA,724,US
+15413,Allison,PA,724,US
+15415,Brier Hill,PA,724,US
+15416,Brownfield,PA,724,US
+15417,Brownsville,PA,724,US
+15419,California,PA,724,US
+15420,Cardale,PA,724,US
+15421,Chalk Hill,PA,724,US
+15422,Chestnut Ridge,PA,724,US
+15423,Coal Center,PA,724,US
+15424,Confluence,PA,"8,14,724",US
+15425,Connellsville,PA,724,US
+15427,Daisytown,PA,724,US
+15428,Dawson,PA,724,US
+15429,Denbo,PA,724,US
+15430,Dickerson Run,PA,724,US
+15431,Dunbar,PA,724,US
+15432,Dunlevy,PA,724,US
+15433,East Millsboro,PA,724,US
+15434,Elco,PA,724,US
+15435,Fairbank,PA,724,US
+15436,Fairchance,PA,724,US
+15437,Farmington,PA,724,US
+15438,Fayette City,PA,724,US
+15439,Gans,PA,724,US
+15440,Gibbon Glade,PA,724,US
+15442,Grindstone,PA,724,US
+15443,Hibbs,PA,724,US
+15444,Hiller,PA,724,US
+15445,Hopwood,PA,"7,24,412",US
+15446,Indian Head,PA,724,US
+15447,Isabella,PA,724,US
+15448,Jacobs Creek,PA,878,US
+15449,Keisterville,PA,724,US
+15450,La Belle,PA,724,US
+15451,Lake Lynn,PA,724,US
+15454,Leckrone,PA,724,US
+15455,Leisenring,PA,724,US
+15456,Lemont Furnace,PA,"7,24,412",US
+15458,Mc Clellandtown,PA,724,US
+15459,Markleysburg,PA,724,US
+15460,Martin,PA,724,US
+15461,Masontown,PA,724,US
+15462,Melcroft,PA,724,US
+15463,Merrittstown,PA,724,US
+15464,Mill Run,PA,724,US
+15465,Mount Braddock,PA,724,US
+15466,Newell,PA,724,US
+15467,New Geneva,PA,724,US
+15468,New Salem,PA,724,US
+15469,Normalville,PA,724,US
+15470,Ohiopyle,PA,724,US
+15472,Oliver,PA,724,US
+15473,Perryopolis,PA,724,US
+15474,Point Marion,PA,724,US
+15475,Republic,PA,724,US
+15476,Ronco,PA,724,US
+15477,Roscoe,PA,724,US
+15478,Smithfield,PA,724,US
+15479,Smithton,PA,724,US
+15480,Smock,PA,724,US
+15482,Star Junction,PA,724,US
+15483,Stockdale,PA,724,US
+15484,Uledi,PA,724,US
+15485,Ursina,PA,814,US
+15486,Vanderbilt,PA,724,US
+15488,Waltersburg,PA,724,US
+15489,West Leisenring,PA,724,US
+15490,White,PA,724,US
+15492,Wickhaven,PA,724,US
+15501,Somerset,PA,"8,14,724",US
+15502,Hidden Valley,PA,814,US
+15510,Somerset,PA,814,US
+15520,Acosta,PA,814,US
+15521,Alum Bank,PA,814,US
+15522,Bedford,PA,814,US
+15530,Berlin,PA,814,US
+15531,Boswell,PA,"8,14,724",US
+15532,Boynton,PA,814,US
+15533,Breezewood,PA,814,US
+15534,Buffalo Mills,PA,814,US
+15535,Clearville,PA,814,US
+15536,Crystal Spring,PA,814,US
+15537,Everett,PA,814,US
+15538,Fairhope,PA,814,US
+15539,Fishertown,PA,814,US
+15540,Fort Hill,PA,814,US
+15541,Friedens,PA,814,US
+15542,Garrett,PA,814,US
+15544,Gray,PA,814,US
+15545,Hyndman,PA,814,US
+15546,Jenners,PA,814,US
+15547,Jennerstown,PA,814,US
+15548,Kantner,PA,814,US
+15549,Listie,PA,814,US
+15550,Manns Choice,PA,814,US
+15551,Markleton,PA,814,US
+15552,Meyersdale,PA,814,US
+15553,New Baltimore,PA,814,US
+15554,New Paris,PA,814,US
+15555,Quecreek,PA,814,US
+15557,Rockwood,PA,814,US
+15558,Salisbury,PA,814,US
+15559,Schellsburg,PA,814,US
+15560,Shanksville,PA,814,US
+15561,Sipesville,PA,814,US
+15562,Springs,PA,814,US
+15563,Stoystown,PA,814,US
+15564,Wellersburg,PA,814,US
+15565,West Salisbury,PA,814,US
+15601,Greensburg,PA,"4,12,724",US
+15605,Greensburg,PA,724,US
+15606,Greensburg,PA,724,US
+15610,Acme,PA,724,US
+15611,Adamsburg,PA,724,US
+15612,Alverton,PA,724,US
+15613,Apollo,PA,724,US
+15615,Ardara,PA,724,US
+15616,Armbrust,PA,724,US
+15617,Arona,PA,878,US
+15618,Avonmore,PA,724,US
+15619,Bovard,PA,878,US
+15620,Bradenville,PA,724,US
+15621,Calumet,PA,724,US
+15622,Champion,PA,"8,14,724",US
+15623,Claridge,PA,724,US
+15624,Crabtree,PA,878,US
+15625,Darragh,PA,724,US
+15626,Delmont,PA,724,US
+15627,Derry,PA,724,US
+15628,Donegal,PA,724,US
+15629,East Vandergrift,PA,724,US
+15631,Everson,PA,724,US
+15632,Export,PA,724,US
+15633,Forbes Road,PA,878,US
+15634,Grapeville,PA,"7,24,412",US
+15635,Hannastown,PA,878,US
+15636,Harrison City,PA,724,US
+15637,Herminie,PA,724,US
+15638,Hostetter,PA,724,US
+15639,Hunker,PA,724,US
+15640,Hutchinson,PA,724,US
+15641,Hyde Park,PA,724,US
+15642,Irwin,PA,"7,24,412",US
+15644,Jeannette,PA,"7,24,412",US
+15646,Jones Mills,PA,724,US
+15647,Larimer,PA,"7,24,878",US
+15650,Latrobe,PA,724,US
+15655,Laughlintown,PA,724,US
+15656,Leechburg,PA,724,US
+15658,Ligonier,PA,"4,12,724",US
+15660,Lowber,PA,724,US
+15661,Loyalhanna,PA,724,US
+15662,Luxor,PA,878,US
+15663,Madison,PA,724,US
+15664,Mammoth,PA,724,US
+15665,Manor,PA,"4,12,724",US
+15666,Mount Pleasant,PA,724,US
+15668,Murrysville,PA,"4,12,724",US
+15670,New Alexandria,PA,"7,24,412",US
+15671,New Derry,PA,724,US
+15672,New Stanton,PA,724,US
+15673,North Apollo,PA,724,US
+15674,Norvelt,PA,724,US
+15675,Penn,PA,724,US
+15676,Pleasant Unity,PA,724,US
+15677,Rector,PA,724,US
+15678,Rillton,PA,724,US
+15679,Ruffs Dale,PA,724,US
+15680,Salina,PA,724,US
+15681,Saltsburg,PA,724,US
+15682,Schenley,PA,724,US
+15683,Scottdale,PA,724,US
+15684,Slickville,PA,724,US
+15685,Southwest,PA,724,US
+15686,Spring Church,PA,724,US
+15687,Stahlstown,PA,724,US
+15688,Tarrs,PA,724,US
+15689,United,PA,724,US
+15690,Vandergrift,PA,"4,12,724",US
+15691,Wendel,PA,878,US
+15692,Westmoreland City,PA,"7,24,878",US
+15693,Whitney,PA,724,US
+15695,Wyano,PA,724,US
+15696,Youngstown,PA,724,US
+15697,Youngwood,PA,724,US
+15698,Yukon,PA,724,US
+15701,Indiana,PA,"4,12,724",US
+15705,Indiana,PA,724,US
+15710,Alverda,PA,814,US
+15711,Anita,PA,814,US
+15712,Arcadia,PA,814,US
+15713,Aultman,PA,724,US
+15714,Northern Cambria,PA,814,US
+15715,Big Run,PA,814,US
+15716,Black Lick,PA,724,US
+15717,Blairsville,PA,724,US
+15720,Brush Valley,PA,724,US
+15721,Burnside,PA,814,US
+15722,Carrolltown,PA,"8,14,724",US
+15723,Chambersville,PA,,US
+15724,Cherry Tree,PA,"8,14,724",US
+15725,Clarksburg,PA,724,US
+15727,Clune,PA,724,US
+15728,Clymer,PA,724,US
+15729,Commodore,PA,"4,12,724",US
+15730,Coolspring,PA,814,US
+15731,Coral,PA,724,US
+15732,Creekside,PA,"7,24,412",US
+15733,De Lancey,PA,814,US
+15734,Dixonville,PA,724,US
+15736,Elderton,PA,724,US
+15737,Elmora,PA,814,US
+15738,Emeigh,PA,814,US
+15739,Ernest,PA,724,US
+15740,Frostburg,PA,814,US
+15741,Gipsy,PA,814,US
+15742,Glen Campbell,PA,"8,14,724",US
+15744,Hamilton,PA,814,US
+15745,Heilwood,PA,814,US
+15746,Hillsdale,PA,814,US
+15747,Home,PA,724,US
+15748,Homer City,PA,"72,48,14,412",US
+15750,Josephine,PA,724,US
+15752,Kent,PA,724,US
+15753,La Jose,PA,814,US
+15754,Lucernemines,PA,724,US
+15756,Mc Intyre,PA,724,US
+15757,Mahaffey,PA,814,US
+15758,Marchand,PA,724,US
+15759,Marion Center,PA,724,US
+15760,Marsteller,PA,814,US
+15761,Mentcle,PA,,US
+15762,Nicktown,PA,814,US
+15763,Northpoint,PA,,US
+15764,Oliveburg,PA,814,US
+15765,Penn Run,PA,724,US
+15767,Punxsutawney,PA,"8,14,724",US
+15770,Ringgold,PA,814,US
+15771,Rochester Mills,PA,724,US
+15772,Rossiter,PA,"8,14,724",US
+15773,Saint Benedict,PA,814,US
+15774,Shelocta,PA,724,US
+15775,Spangler,PA,814,US
+15776,Sprankle Mills,PA,814,US
+15777,Starford,PA,724,US
+15778,Timblin,PA,814,US
+15779,Torrance,PA,724,US
+15780,Valier,PA,724,US
+15781,Walston,PA,814,US
+15783,West Lebanon,PA,"4,12,724",US
+15784,Worthville,PA,814,US
+15801,Du Bois,PA,814,US
+15821,Benezett,PA,814,US
+15822,Brandy Camp,PA,814,US
+15823,Brockport,PA,814,US
+15824,Brockway,PA,814,US
+15825,Brookville,PA,814,US
+15827,Byrnedale,PA,814,US
+15828,Clarington,PA,814,US
+15829,Corsica,PA,814,US
+15831,Dagus Mines,PA,814,US
+15832,Driftwood,PA,814,US
+15834,Emporium,PA,814,US
+15840,Falls Creek,PA,814,US
+15841,Force,PA,814,US
+15845,Johnsonburg,PA,814,US
+15846,Kersey,PA,814,US
+15847,Knox Dale,PA,814,US
+15848,Luthersburg,PA,814,US
+15849,Penfield,PA,814,US
+15851,Reynoldsville,PA,814,US
+15853,Ridgway,PA,814,US
+15856,Rockton,PA,814,US
+15857,Saint Marys,PA,814,US
+15860,Sigel,PA,814,US
+15861,Sinnamahoning,PA,814,US
+15863,Stump Creek,PA,814,US
+15864,Summerville,PA,814,US
+15865,Sykesville,PA,814,US
+15866,Troutville,PA,814,US
+15868,Weedville,PA,814,US
+15870,Wilcox,PA,814,US
+15901,Johnstown,PA,814,US
+15902,Johnstown,PA,814,US
+15904,Johnstown,PA,814,US
+15905,Johnstown,PA,814,US
+15906,Johnstown,PA,814,US
+15907,Johnstown,PA,814,US
+15909,Johnstown,PA,814,US
+15915,Johnstown,PA,814,US
+15920,Armagh,PA,"8,14,724",US
+15921,Beaverdale,PA,814,US
+15922,Belsano,PA,814,US
+15923,Bolivar,PA,724,US
+15924,Cairnbrook,PA,814,US
+15925,Cassandra,PA,814,US
+15926,Central City,PA,814,US
+15927,Colver,PA,814,US
+15928,Davidsville,PA,814,US
+15929,Dilltown,PA,814,US
+15930,Dunlo,PA,814,US
+15931,Ebensburg,PA,814,US
+15934,Elton,PA,814,US
+15935,Hollsopple,PA,814,US
+15936,Hooversville,PA,814,US
+15937,Jerome,PA,814,US
+15938,Lilly,PA,814,US
+15940,Loretto,PA,814,US
+15942,Mineral Point,PA,814,US
+15943,Nanty Glo,PA,814,US
+15944,New Florence,PA,724,US
+15945,Parkhill,PA,814,US
+15946,Portage,PA,814,US
+15948,Revloc,PA,814,US
+15949,Robinson,PA,724,US
+15951,Saint Michael,PA,814,US
+15952,Salix,PA,814,US
+15953,Seanor,PA,814,US
+15954,Seward,PA,814,US
+15955,Sidman,PA,814,US
+15956,South Fork,PA,814,US
+15957,Strongstown,PA,814,US
+15958,Summerhill,PA,814,US
+15959,Tire Hill,PA,814,US
+15960,Twin Rocks,PA,814,US
+15961,Vintondale,PA,814,US
+15962,Wilmore,PA,814,US
+15963,Windber,PA,814,US
+16001,Butler,PA,"4,12,724",US
+16002,Butler,PA,"7,24,412",US
+16003,Butler,PA,724,US
+16016,Boyers,PA,724,US
+16017,Boyers,PA,724,US
+16018,Boyers,PA,724,US
+16020,Boyers,PA,"7,24,814",US
+16021,Branchton,PA,724,US
+16022,Bruin,PA,724,US
+16023,Cabot,PA,724,US
+16024,Callery,PA,724,US
+16025,Chicora,PA,724,US
+16027,Connoquenessing,PA,724,US
+16028,East Brady,PA,724,US
+16029,East Butler,PA,724,US
+16030,Eau Claire,PA,724,US
+16033,Evans City,PA,724,US
+16034,Fenelton,PA,724,US
+16035,Forestville,PA,724,US
+16036,Foxburg,PA,724,US
+16037,Harmony,PA,724,US
+16038,Harrisville,PA,"7,24,814",US
+16039,Herman,PA,724,US
+16040,Hilliards,PA,724,US
+16041,Karns City,PA,724,US
+16045,Lyndora,PA,"7,24,412",US
+16046,Mars,PA,"7,24,814",US
+16048,North Washington,PA,724,US
+16049,Parker,PA,"7,24,814",US
+16050,Petrolia,PA,724,US
+16051,Portersville,PA,724,US
+16052,Prospect,PA,724,US
+16053,Renfrew,PA,724,US
+16054,Saint Petersburg,PA,724,US
+16055,Sarver,PA,"4,12,724",US
+16056,Saxonburg,PA,724,US
+16057,Slippery Rock,PA,724,US
+16058,Turkey City,PA,,US
+16059,Valencia,PA,724,US
+16061,West Sunbury,PA,724,US
+16063,Zelienople,PA,"4,12,724",US
+16066,Cranberry Twp,PA,"7,24,412",US
+16101,New Castle,PA,724,US
+16102,New Castle,PA,724,US
+16103,New Castle,PA,724,US
+16105,New Castle,PA,724,US
+16107,New Castle,PA,724,US
+16108,New Castle,PA,724,US
+16110,Adamsville,PA,724,US
+16111,Atlantic,PA,"7,24,814",US
+16112,Bessemer,PA,724,US
+16113,Clark,PA,724,US
+16114,Clarks Mills,PA,724,US
+16115,Darlington,PA,724,US
+16116,Edinburg,PA,724,US
+16117,Ellwood City,PA,724,US
+16120,Enon Valley,PA,724,US
+16121,Farrell,PA,724,US
+16123,Fombell,PA,724,US
+16124,Fredonia,PA,724,US
+16125,Greenville,PA,724,US
+16127,Grove City,PA,"7,24,814",US
+16130,Hadley,PA,724,US
+16131,Hartstown,PA,"8,14,724",US
+16132,Hillsville,PA,724,US
+16133,Jackson Center,PA,"8,14,724",US
+16134,Jamestown,PA,724,US
+16136,Koppel,PA,724,US
+16137,Mercer,PA,"7,24,814",US
+16140,New Bedford,PA,724,US
+16141,New Galilee,PA,724,US
+16142,New Wilmington,PA,724,US
+16143,Pulaski,PA,724,US
+16145,Sandy Lake,PA,724,US
+16146,Sharon,PA,724,US
+16148,Hermitage,PA,724,US
+16150,Sharpsville,PA,724,US
+16151,Sheakleyville,PA,724,US
+16153,Stoneboro,PA,"7,24,814",US
+16154,Transfer,PA,724,US
+16155,Villa Maria,PA,724,US
+16156,Volant,PA,724,US
+16157,Wampum,PA,724,US
+16159,West Middlesex,PA,724,US
+16160,West Pittsburg,PA,724,US
+16161,Wheatland,PA,724,US
+16172,New Wilmington,PA,724,US
+16201,Kittanning,PA,"7,24,814",US
+16210,Adrian,PA,"7,24,412",US
+16211,Beyer,PA,724,US
+16212,Cadogan,PA,724,US
+16213,Callensburg,PA,814,US
+16214,Clarion,PA,814,US
+16215,Kittanning,PA,724,US
+16217,Cooksburg,PA,814,US
+16218,Cowansville,PA,724,US
+16220,Crown,PA,814,US
+16221,Curllsville,PA,814,US
+16222,Dayton,PA,"8,14,724",US
+16223,Distant,PA,814,US
+16224,Fairmount City,PA,814,US
+16225,Fisher,PA,814,US
+16226,Ford City,PA,"7,24,412",US
+16228,Ford Cliff,PA,724,US
+16229,Freeport,PA,724,US
+16230,Hawthorn,PA,814,US
+16232,Knox,PA,814,US
+16233,Leeper,PA,814,US
+16234,Limestone,PA,814,US
+16235,Lucinda,PA,814,US
+16236,Mc Grann,PA,724,US
+16238,Manorville,PA,724,US
+16239,Marienville,PA,814,US
+16240,Mayport,PA,814,US
+16242,New Bethlehem,PA,814,US
+16244,Nu Mine,PA,724,US
+16245,Oak Ridge,PA,814,US
+16246,Plumville,PA,724,US
+16248,Rimersburg,PA,"8,14,724",US
+16249,Rural Valley,PA,724,US
+16250,Sagamore,PA,724,US
+16253,Seminole,PA,814,US
+16254,Shippenville,PA,814,US
+16255,Sligo,PA,814,US
+16256,Smicksburg,PA,"7,24,814",US
+16257,Snydersburg,PA,,US
+16258,Strattanville,PA,814,US
+16259,Templeton,PA,"7,24,814",US
+16260,Vowinckel,PA,814,US
+16261,Widnoon,PA,724,US
+16262,Worthington,PA,724,US
+16263,Yatesboro,PA,724,US
+16301,Oil City,PA,814,US
+16311,Carlton,PA,814,US
+16312,Chandlers Valley,PA,814,US
+16313,Clarendon,PA,814,US
+16314,Cochranton,PA,814,US
+16316,Conneaut Lake,PA,814,US
+16317,Cooperstown,PA,814,US
+16319,Cranberry,PA,814,US
+16321,East Hickory,PA,814,US
+16322,Endeavor,PA,814,US
+16323,Franklin,PA,814,US
+16326,Fryburg,PA,814,US
+16327,Guys Mills,PA,814,US
+16328,Hydetown,PA,,US
+16329,Irvine,PA,814,US
+16331,Kossuth,PA,814,US
+16332,Lickingville,PA,814,US
+16333,Ludlow,PA,814,US
+16334,Marble,PA,814,US
+16335,Meadville,PA,814,US
+16340,Pittsfield,PA,814,US
+16341,Pleasantville,PA,814,US
+16342,Polk,PA,"8,14,724",US
+16343,Reno,PA,814,US
+16344,Rouseville,PA,814,US
+16345,Russell,PA,814,US
+16346,Seneca,PA,814,US
+16347,Sheffield,PA,814,US
+16350,Sugar Grove,PA,814,US
+16351,Tidioute,PA,814,US
+16352,Tiona,PA,814,US
+16353,Tionesta,PA,814,US
+16354,Titusville,PA,814,US
+16360,Townville,PA,814,US
+16361,Tylersburg,PA,814,US
+16362,Utica,PA,"8,14,724",US
+16364,Venus,PA,814,US
+16365,Warren,PA,814,US
+16366,Warren,PA,814,US
+16367,Warren,PA,814,US
+16368,Warren,PA,814,US
+16369,Warren,PA,814,US
+16370,West Hickory,PA,814,US
+16371,Youngsville,PA,814,US
+16372,Clintonville,PA,814,US
+16373,Emlenton,PA,"7,24,814",US
+16374,Kennerdell,PA,814,US
+16375,Lamartine,PA,,US
+16388,Meadville,PA,814,US
+16401,Albion,PA,814,US
+16402,Bear Lake,PA,814,US
+16403,Cambridge Springs,PA,814,US
+16404,Centerville,PA,814,US
+16405,Columbus,PA,814,US
+16406,Conneautville,PA,814,US
+16407,Corry,PA,814,US
+16410,Cranesville,PA,814,US
+16411,East Springfield,PA,814,US
+16412,Edinboro,PA,814,US
+16413,Elgin,PA,814,US
+16415,Fairview,PA,814,US
+16416,Garland,PA,814,US
+16417,Girard,PA,814,US
+16420,Grand Valley,PA,814,US
+16421,Harborcreek,PA,814,US
+16422,Harmonsburg,PA,814,US
+16423,Lake City,PA,814,US
+16424,Linesville,PA,"8,14,724",US
+16426,Mc Kean,PA,814,US
+16427,Mill Village,PA,814,US
+16428,North East,PA,814,US
+16430,North Springfield,PA,814,US
+16432,Riceville,PA,,US
+16433,Saegertown,PA,814,US
+16434,Spartansburg,PA,814,US
+16435,Springboro,PA,814,US
+16436,Spring Creek,PA,814,US
+16438,Union City,PA,814,US
+16440,Venango,PA,814,US
+16441,Waterford,PA,814,US
+16442,Wattsburg,PA,814,US
+16443,West Springfield,PA,814,US
+16444,Edinboro,PA,814,US
+16475,Albion,PA,814,US
+16501,Erie,PA,814,US
+16502,Erie,PA,814,US
+16503,Erie,PA,814,US
+16504,Erie,PA,814,US
+16505,Erie,PA,814,US
+16506,Erie,PA,814,US
+16507,Erie,PA,814,US
+16508,Erie,PA,814,US
+16509,Erie,PA,814,US
+16510,Erie,PA,814,US
+16511,Erie,PA,814,US
+16512,Erie,PA,814,US
+16514,Erie,PA,814,US
+16515,Erie,PA,814,US
+16522,Erie,PA,814,US
+16530,Erie,PA,814,US
+16531,Erie,PA,814,US
+16532,Erie,PA,814,US
+16533,Erie,PA,814,US
+16534,Erie,PA,814,US
+16538,Erie,PA,814,US
+16541,Erie,PA,814,US
+16544,Erie,PA,814,US
+16546,Erie,PA,814,US
+16550,Erie,PA,814,US
+16553,Erie,PA,814,US
+16554,Erie,PA,814,US
+16563,Erie,PA,814,US
+16565,Erie,PA,814,US
+16601,Altoona,PA,814,US
+16602,Altoona,PA,814,US
+16603,Altoona,PA,814,US
+16611,Alexandria,PA,814,US
+16613,Ashville,PA,814,US
+16616,Beccaria,PA,814,US
+16617,Bellwood,PA,814,US
+16619,Blandburg,PA,814,US
+16620,Brisbin,PA,814,US
+16621,Broad Top,PA,814,US
+16622,Calvin,PA,814,US
+16623,Cassville,PA,814,US
+16624,Chest Springs,PA,814,US
+16625,Claysburg,PA,814,US
+16627,Coalport,PA,814,US
+16629,Coupon,PA,814,US
+16630,Cresson,PA,814,US
+16631,Curryville,PA,814,US
+16633,Defiance,PA,814,US
+16634,Dudley,PA,814,US
+16635,Duncansville,PA,814,US
+16636,Dysart,PA,814,US
+16637,East Freedom,PA,814,US
+16638,Entriken,PA,814,US
+16639,Fallentimber,PA,814,US
+16640,Flinton,PA,814,US
+16641,Gallitzin,PA,814,US
+16644,Glasgow,PA,814,US
+16645,Glen Hope,PA,814,US
+16646,Hastings,PA,814,US
+16647,Hesston,PA,814,US
+16648,Hollidaysburg,PA,814,US
+16650,Hopewell,PA,814,US
+16651,Houtzdale,PA,814,US
+16652,Huntingdon,PA,814,US
+16654,Huntingdon,PA,814,US
+16655,Imler,PA,814,US
+16656,Irvona,PA,814,US
+16657,James Creek,PA,814,US
+16659,Loysburg,PA,814,US
+16660,Mc Connellstown,PA,814,US
+16661,Madera,PA,814,US
+16662,Martinsburg,PA,814,US
+16663,Morann,PA,814,US
+16664,New Enterprise,PA,814,US
+16665,Newry,PA,814,US
+16666,Osceola Mills,PA,814,US
+16667,Osterburg,PA,814,US
+16668,Patton,PA,814,US
+16669,Petersburg,PA,814,US
+16670,Queen,PA,814,US
+16671,Ramey,PA,814,US
+16672,Riddlesburg,PA,814,US
+16673,Roaring Spring,PA,814,US
+16674,Robertsdale,PA,814,US
+16675,Saint Boniface,PA,814,US
+16677,Sandy Ridge,PA,814,US
+16678,Saxton,PA,814,US
+16679,Six Mile Run,PA,814,US
+16680,Smithmill,PA,814,US
+16681,Smokerun,PA,814,US
+16682,Sproul,PA,814,US
+16683,Spruce Creek,PA,814,US
+16684,Tipton,PA,814,US
+16685,Todd,PA,814,US
+16686,Tyrone,PA,814,US
+16689,Waterfall,PA,"8,14,717",US
+16691,Wells Tannery,PA,814,US
+16692,Westover,PA,814,US
+16693,Williamsburg,PA,814,US
+16694,Wood,PA,814,US
+16695,Woodbury,PA,814,US
+16698,Houtzdale,PA,814,US
+16699,Cresson,PA,814,US
+16701,Bradford,PA,814,US
+16720,Austin,PA,814,US
+16724,Crosby,PA,814,US
+16725,Custer City,PA,814,US
+16726,Cyclone,PA,814,US
+16727,Derrick City,PA,814,US
+16728,De Young,PA,814,US
+16729,Duke Center,PA,814,US
+16730,East Smethport,PA,814,US
+16731,Eldred,PA,814,US
+16732,Gifford,PA,814,US
+16733,Hazel Hurst,PA,814,US
+16734,James City,PA,814,US
+16735,Kane,PA,814,US
+16738,Lewis Run,PA,814,US
+16740,Mount Jewett,PA,814,US
+16743,Port Allegany,PA,814,US
+16744,Rew,PA,814,US
+16745,Rixford,PA,814,US
+16746,Roulette,PA,814,US
+16748,Shinglehouse,PA,814,US
+16749,Smethport,PA,814,US
+16750,Turtlepoint,PA,814,US
+16801,State College,PA,814,US
+16802,University Park,PA,814,US
+16803,State College,PA,814,US
+16804,State College,PA,814,US
+16805,State College,PA,814,US
+16820,Aaronsburg,PA,814,US
+16821,Allport,PA,814,US
+16822,Beech Creek,PA,570,US
+16823,Bellefonte,PA,814,US
+16825,Bigler,PA,814,US
+16826,Blanchard,PA,570,US
+16827,Boalsburg,PA,814,US
+16828,Centre Hall,PA,814,US
+16829,Clarence,PA,814,US
+16830,Clearfield,PA,814,US
+16832,Coburn,PA,814,US
+16833,Curwensville,PA,814,US
+16834,Drifting,PA,814,US
+16835,Fleming,PA,814,US
+16836,Frenchville,PA,814,US
+16837,Glen Richey,PA,814,US
+16838,Grampian,PA,814,US
+16839,Grassflat,PA,814,US
+16840,Hawk Run,PA,814,US
+16841,Howard,PA,"8,14,570",US
+16843,Hyde,PA,814,US
+16844,Julian,PA,814,US
+16845,Karthaus,PA,814,US
+16847,Kylertown,PA,814,US
+16848,Lamar,PA,570,US
+16849,Lanse,PA,814,US
+16850,Lecontes Mills,PA,814,US
+16851,Lemont,PA,814,US
+16852,Madisonburg,PA,814,US
+16853,Milesburg,PA,814,US
+16854,Millheim,PA,814,US
+16855,Mineral Springs,PA,814,US
+16856,Mingoville,PA,814,US
+16858,Morrisdale,PA,814,US
+16859,Moshannon,PA,814,US
+16860,Munson,PA,814,US
+16861,New Millport,PA,814,US
+16863,Olanta,PA,814,US
+16864,Orviston,PA,570,US
+16865,Pennsylvania Furnace,PA,814,US
+16866,Philipsburg,PA,814,US
+16868,Pine Grove Mills,PA,814,US
+16870,Port Matilda,PA,814,US
+16871,Pottersdale,PA,814,US
+16872,Rebersburg,PA,814,US
+16873,Shawville,PA,814,US
+16874,Snow Shoe,PA,814,US
+16875,Spring Mills,PA,814,US
+16876,Wallaceton,PA,814,US
+16877,Warriors Mark,PA,814,US
+16878,West Decatur,PA,814,US
+16879,Winburne,PA,814,US
+16881,Woodland,PA,814,US
+16882,Woodward,PA,814,US
+16901,Wellsboro,PA,"5,70,814",US
+16910,Alba,PA,570,US
+16911,Arnot,PA,570,US
+16912,Blossburg,PA,570,US
+16914,Columbia Cross Roads,PA,570,US
+16915,Coudersport,PA,814,US
+16917,Covington,PA,570,US
+16918,Cowanesque,PA,814,US
+16920,Elkland,PA,814,US
+16921,Gaines,PA,814,US
+16922,Galeton,PA,814,US
+16923,Genesee,PA,814,US
+16925,Gillett,PA,570,US
+16926,Granville Summit,PA,570,US
+16927,Harrison Valley,PA,814,US
+16928,Knoxville,PA,814,US
+16929,Lawrenceville,PA,570,US
+16930,Liberty,PA,570,US
+16932,Mainesburg,PA,570,US
+16933,Mansfield,PA,570,US
+16935,Middlebury Center,PA,570,US
+16936,Millerton,PA,570,US
+16937,Mills,PA,814,US
+16938,Morris,PA,570,US
+16939,Morris Run,PA,570,US
+16940,Nelson,PA,570,US
+16941,Genesee,PA,814,US
+16942,Osceola,PA,814,US
+16943,Sabinsville,PA,814,US
+16945,Sylvania,PA,570,US
+16946,Tioga,PA,570,US
+16947,Troy,PA,570,US
+16948,Ulysses,PA,814,US
+16950,Westfield,PA,"8,14,570",US
+17001,Camp Hill,PA,717,US
+17002,Allensville,PA,"7,17,814",US
+17003,Annville,PA,717,US
+17004,Belleville,PA,717,US
+17005,Berrysburg,PA,717,US
+17006,Blain,PA,717,US
+17007,Boiling Springs,PA,717,US
+17008,Bowmansdale,PA,717,US
+17009,Burnham,PA,717,US
+17010,Campbelltown,PA,717,US
+17011,Camp Hill,PA,717,US
+17012,Camp Hill,PA,717,US
+17013,Carlisle,PA,717,US
+17014,Cocolamus,PA,717,US
+17015,Carlisle,PA,717,US
+17016,Cornwall,PA,717,US
+17017,Dalmatia,PA,570,US
+17018,Dauphin,PA,717,US
+17019,Dillsburg,PA,717,US
+17020,Duncannon,PA,717,US
+17021,East Waterford,PA,717,US
+17022,Elizabethtown,PA,717,US
+17023,Elizabethville,PA,717,US
+17024,Elliottsburg,PA,717,US
+17025,Enola,PA,717,US
+17026,Fredericksburg,PA,717,US
+17027,Grantham,PA,717,US
+17028,Grantville,PA,717,US
+17029,Granville,PA,717,US
+17030,Gratz,PA,717,US
+17032,Halifax,PA,717,US
+17033,Hershey,PA,717,US
+17034,Highspire,PA,717,US
+17035,Honey Grove,PA,717,US
+17036,Hummelstown,PA,717,US
+17037,Ickesburg,PA,717,US
+17038,Jonestown,PA,717,US
+17039,Kleinfeltersville,PA,717,US
+17040,Landisburg,PA,717,US
+17041,Lawn,PA,717,US
+17042,Lebanon,PA,717,US
+17043,Lemoyne,PA,717,US
+17044,Lewistown,PA,717,US
+17045,Liverpool,PA,"7,17,570",US
+17046,Lebanon,PA,717,US
+17047,Loysville,PA,717,US
+17048,Lykens,PA,717,US
+17049,Mc Alisterville,PA,717,US
+17050,Mechanicsburg,PA,717,US
+17051,Mc Veytown,PA,"7,17,814",US
+17052,Mapleton Depot,PA,814,US
+17053,Marysville,PA,717,US
+17054,Mattawana,PA,717,US
+17055,Mechanicsburg,PA,717,US
+17056,Mexico,PA,717,US
+17057,Middletown,PA,717,US
+17058,Mifflin,PA,717,US
+17059,Mifflintown,PA,717,US
+17060,Mill Creek,PA,717,US
+17061,Millersburg,PA,717,US
+17062,Millerstown,PA,717,US
+17063,Milroy,PA,717,US
+17064,Mount Gretna,PA,717,US
+17065,Mount Holly Springs,PA,717,US
+17066,Mount Union,PA,814,US
+17067,Myerstown,PA,717,US
+17068,New Bloomfield,PA,717,US
+17069,New Buffalo,PA,717,US
+17070,New Cumberland,PA,717,US
+17071,New Germantown,PA,717,US
+17072,New Kingstown,PA,717,US
+17073,Newmanstown,PA,"7,17,610",US
+17074,Newport,PA,717,US
+17075,Newton Hamilton,PA,814,US
+17076,Oakland Mills,PA,717,US
+17077,Ono,PA,717,US
+17078,Palmyra,PA,717,US
+17080,Pillow,PA,717,US
+17081,Plainfield,PA,717,US
+17082,Port Royal,PA,717,US
+17083,Quentin,PA,717,US
+17084,Reedsville,PA,717,US
+17085,Rexmont,PA,717,US
+17086,Richfield,PA,"7,17,570",US
+17087,Richland,PA,"7,17,215",US
+17088,Schaefferstown,PA,717,US
+17089,Camp Hill,PA,717,US
+17090,Shermans Dale,PA,717,US
+17091,Lebanon,PA,717,US
+17093,Summerdale,PA,717,US
+17094,Thompsontown,PA,717,US
+17097,Wiconisco,PA,717,US
+17098,Williamstown,PA,717,US
+17099,Yeagertown,PA,717,US
+17101,Harrisburg,PA,717,US
+17102,Harrisburg,PA,717,US
+17103,Harrisburg,PA,717,US
+17104,Harrisburg,PA,717,US
+17105,Harrisburg,PA,717,US
+17106,Harrisburg,PA,717,US
+17107,Harrisburg,PA,717,US
+17108,Harrisburg,PA,717,US
+17109,Harrisburg,PA,717,US
+17110,Harrisburg,PA,717,US
+17111,Harrisburg,PA,717,US
+17112,Harrisburg,PA,717,US
+17113,Harrisburg,PA,717,US
+17120,Harrisburg,PA,717,US
+17121,Harrisburg,PA,717,US
+17122,Harrisburg,PA,717,US
+17123,Harrisburg,PA,717,US
+17124,Harrisburg,PA,717,US
+17125,Harrisburg,PA,717,US
+17126,Harrisburg,PA,717,US
+17127,Harrisburg,PA,717,US
+17128,Harrisburg,PA,717,US
+17129,Harrisburg,PA,717,US
+17130,Harrisburg,PA,717,US
+17140,Harrisburg,PA,717,US
+17177,Harrisburg,PA,717,US
+17201,Chambersburg,PA,717,US
+17202,Chambersburg,PA,717,US
+17210,Amberson,PA,717,US
+17211,Artemas,PA,814,US
+17212,Big Cove Tannery,PA,717,US
+17213,Blairs Mills,PA,"8,14,717",US
+17214,Blue Ridge Summit,PA,717,US
+17215,Burnt Cabins,PA,"8,14,717",US
+17217,Concord,PA,717,US
+17219,Doylesburg,PA,717,US
+17220,Dry Run,PA,717,US
+17221,Fannettsburg,PA,717,US
+17222,Fayetteville,PA,717,US
+17223,Fort Littleton,PA,717,US
+17224,Fort Loudon,PA,717,US
+17225,Greencastle,PA,717,US
+17228,Harrisonville,PA,"7,17,814",US
+17229,Hustontown,PA,"7,17,814",US
+17231,Lemasters,PA,717,US
+17232,Lurgan,PA,717,US
+17233,Mc Connellsburg,PA,717,US
+17235,Marion,PA,717,US
+17236,Mercersburg,PA,717,US
+17237,Mont Alto,PA,717,US
+17238,Needmore,PA,717,US
+17239,Neelyton,PA,814,US
+17240,Newburg,PA,717,US
+17241,Newville,PA,717,US
+17243,Orbisonia,PA,814,US
+17244,Orrstown,PA,717,US
+17246,Pleasant Hall,PA,717,US
+17247,Quincy,PA,717,US
+17249,Rockhill Furnace,PA,814,US
+17250,Rouzerville,PA,717,US
+17251,Roxbury,PA,717,US
+17252,Saint Thomas,PA,717,US
+17253,Saltillo,PA,814,US
+17254,Scotland,PA,717,US
+17255,Shade Gap,PA,814,US
+17256,Shady Grove,PA,717,US
+17257,Shippensburg,PA,717,US
+17260,Shirleysburg,PA,814,US
+17261,South Mountain,PA,717,US
+17262,Spring Run,PA,717,US
+17263,State Line,PA,717,US
+17264,Three Springs,PA,814,US
+17265,Upperstrasburg,PA,717,US
+17266,Walnut Bottom,PA,717,US
+17267,Warfordsburg,PA,717,US
+17268,Waynesboro,PA,717,US
+17270,Williamson,PA,717,US
+17271,Willow Hill,PA,717,US
+17272,Zullinger,PA,717,US
+17301,Abbottstown,PA,717,US
+17302,Airville,PA,717,US
+17303,Arendtsville,PA,717,US
+17304,Aspers,PA,717,US
+17306,Bendersville,PA,717,US
+17307,Biglerville,PA,717,US
+17309,Brogue,PA,717,US
+17310,Cashtown,PA,717,US
+17311,Codorus,PA,717,US
+17312,Craley,PA,717,US
+17313,Dallastown,PA,717,US
+17314,Delta,PA,717,US
+17315,Dover,PA,717,US
+17316,East Berlin,PA,717,US
+17317,East Prospect,PA,717,US
+17318,Emigsville,PA,717,US
+17319,Etters,PA,717,US
+17320,Fairfield,PA,717,US
+17321,Fawn Grove,PA,717,US
+17322,Felton,PA,717,US
+17323,Franklintown,PA,717,US
+17324,Gardners,PA,717,US
+17325,Gettysburg,PA,717,US
+17326,Gettysburg,PA,717,US
+17327,Glen Rock,PA,717,US
+17329,Glenville,PA,717,US
+17331,Hanover,PA,717,US
+17332,Hanover,PA,717,US
+17333,Hanover,PA,717,US
+17334,Hanover,PA,717,US
+17335,Hanover,PA,717,US
+17337,Idaville,PA,717,US
+17339,Lewisberry,PA,717,US
+17340,Littlestown,PA,717,US
+17342,Loganville,PA,717,US
+17343,Mc Knightstown,PA,717,US
+17344,Mc Sherrystown,PA,717,US
+17345,Manchester,PA,717,US
+17347,Mount Wolf,PA,717,US
+17349,New Freedom,PA,717,US
+17350,New Oxford,PA,717,US
+17352,New Park,PA,717,US
+17353,Orrtanna,PA,717,US
+17354,Porters Sideling,PA,717,US
+17355,Railroad,PA,717,US
+17356,Red Lion,PA,717,US
+17358,Rossville,PA,717,US
+17360,Seven Valleys,PA,717,US
+17361,Shrewsbury,PA,717,US
+17362,Spring Grove,PA,717,US
+17363,Stewartstown,PA,717,US
+17364,Thomasville,PA,717,US
+17365,Wellsville,PA,717,US
+17366,Windsor,PA,717,US
+17368,Wrightsville,PA,717,US
+17370,York Haven,PA,717,US
+17371,York New Salem,PA,717,US
+17372,York Springs,PA,717,US
+17375,Peach Glen,PA,717,US
+17401,York,PA,717,US
+17402,York,PA,717,US
+17403,York,PA,717,US
+17404,York,PA,717,US
+17405,York,PA,717,US
+17406,York,PA,717,US
+17407,York,PA,717,US
+17408,York,PA,717,US
+17415,York,PA,717,US
+17501,Akron,PA,717,US
+17502,Bainbridge,PA,717,US
+17503,Bart,PA,717,US
+17504,Bausman,PA,717,US
+17505,Bird In Hand,PA,717,US
+17506,Blue Ball,PA,717,US
+17507,Bowmansville,PA,717,US
+17508,Brownstown,PA,717,US
+17509,Christiana,PA,"6,10,717",US
+17512,Columbia,PA,717,US
+17516,Conestoga,PA,717,US
+17517,Denver,PA,"4,84,717",US
+17518,Drumore,PA,717,US
+17519,East Earl,PA,717,US
+17520,East Petersburg,PA,717,US
+17521,Elm,PA,717,US
+17522,Ephrata,PA,717,US
+17527,Gap,PA,"7,17,610",US
+17528,Goodville,PA,717,US
+17529,Gordonville,PA,717,US
+17532,Holtwood,PA,717,US
+17533,Hopeland,PA,717,US
+17534,Intercourse,PA,717,US
+17535,Kinzers,PA,717,US
+17536,Kirkwood,PA,717,US
+17537,Lampeter,PA,717,US
+17538,Landisville,PA,717,US
+17540,Leola,PA,717,US
+17543,Lititz,PA,717,US
+17545,Manheim,PA,717,US
+17547,Marietta,PA,717,US
+17549,Martindale,PA,717,US
+17550,Maytown,PA,717,US
+17551,Millersville,PA,717,US
+17552,Mount Joy,PA,717,US
+17554,Mountville,PA,717,US
+17555,Narvon,PA,"6,10,717",US
+17557,New Holland,PA,717,US
+17560,New Providence,PA,717,US
+17562,Paradise,PA,717,US
+17563,Peach Bottom,PA,717,US
+17564,Penryn,PA,717,US
+17565,Pequea,PA,717,US
+17566,Quarryville,PA,717,US
+17567,Reamstown,PA,717,US
+17568,Refton,PA,717,US
+17569,Reinholds,PA,"7,17,610",US
+17570,Rheems,PA,717,US
+17572,Ronks,PA,717,US
+17573,Lancaster,PA,717,US
+17575,Silver Spring,PA,717,US
+17576,Smoketown,PA,717,US
+17578,Stevens,PA,717,US
+17579,Strasburg,PA,717,US
+17580,Talmage,PA,717,US
+17581,Terre Hill,PA,717,US
+17582,Washington Boro,PA,717,US
+17583,West Willow,PA,717,US
+17584,Willow Street,PA,717,US
+17585,Witmer,PA,717,US
+17601,Lancaster,PA,717,US
+17602,Lancaster,PA,717,US
+17603,Lancaster,PA,717,US
+17604,Lancaster,PA,717,US
+17605,Lancaster,PA,717,US
+17606,Lancaster,PA,717,US
+17607,Lancaster,PA,717,US
+17608,Lancaster,PA,717,US
+17611,Lancaster,PA,717,US
+17622,Lancaster,PA,717,US
+17699,Lancaster,PA,717,US
+17701,Williamsport,PA,"5,70,717",US
+17702,Williamsport,PA,570,US
+17703,Williamsport,PA,570,US
+17705,Williamsport,PA,570,US
+17720,Antes Fort,PA,570,US
+17721,Avis,PA,570,US
+17723,Cammal,PA,570,US
+17724,Canton,PA,570,US
+17726,Castanea,PA,570,US
+17727,Cedar Run,PA,570,US
+17728,Cogan Station,PA,570,US
+17729,Cross Fork,PA,"5,70,814",US
+17730,Dewart,PA,570,US
+17731,Eagles Mere,PA,570,US
+17735,Grover,PA,570,US
+17737,Hughesville,PA,570,US
+17738,North Bend,PA,570,US
+17739,Jersey Mills,PA,570,US
+17740,Jersey Shore,PA,570,US
+17742,Lairdsville,PA,570,US
+17744,Linden,PA,570,US
+17745,Lock Haven,PA,570,US
+17747,Loganton,PA,570,US
+17748,Mc Elhattan,PA,570,US
+17749,Mc Ewensville,PA,570,US
+17750,Mackeyville,PA,570,US
+17751,Mill Hall,PA,570,US
+17752,Montgomery,PA,570,US
+17754,Montoursville,PA,"5,70,814",US
+17756,Muncy,PA,570,US
+17758,Muncy Valley,PA,570,US
+17760,North Bend,PA,570,US
+17762,Picture Rocks,PA,570,US
+17763,Ralston,PA,570,US
+17764,Renovo,PA,570,US
+17765,Roaring Branch,PA,570,US
+17767,Salona,PA,570,US
+17768,Shunk,PA,570,US
+17769,Slate Run,PA,570,US
+17771,Trout Run,PA,570,US
+17772,Turbotville,PA,570,US
+17773,Tylersville,PA,570,US
+17774,Unityville,PA,570,US
+17776,Waterville,PA,570,US
+17777,Watsontown,PA,570,US
+17778,Westport,PA,"8,14,570",US
+17779,Woolrich,PA,570,US
+17801,Sunbury,PA,570,US
+17810,Allenwood,PA,570,US
+17812,Beaver Springs,PA,570,US
+17813,Beavertown,PA,570,US
+17814,Benton,PA,570,US
+17815,Bloomsburg,PA,570,US
+17820,Catawissa,PA,570,US
+17821,Danville,PA,"5,70,717",US
+17822,Danville,PA,"7,17,570",US
+17823,Dornsife,PA,570,US
+17824,Elysburg,PA,570,US
+17827,Freeburg,PA,570,US
+17829,Hartleton,PA,570,US
+17830,Herndon,PA,570,US
+17831,Hummels Wharf,PA,570,US
+17832,Marion Heights,PA,570,US
+17833,Kreamer,PA,570,US
+17834,Kulpmont,PA,570,US
+17835,Laurelton,PA,570,US
+17836,Leck Kill,PA,570,US
+17837,Lewisburg,PA,570,US
+17839,Lightstreet,PA,570,US
+17840,Locust Gap,PA,570,US
+17841,Mc Clure,PA,"7,17,570",US
+17842,Middleburg,PA,570,US
+17843,Beaver Springs,PA,570,US
+17844,Mifflinburg,PA,570,US
+17845,Millmont,PA,570,US
+17846,Millville,PA,570,US
+17847,Milton,PA,570,US
+17850,Montandon,PA,570,US
+17851,Mount Carmel,PA,570,US
+17853,Mount Pleasant Mills,PA,"5,70,717",US
+17855,New Berlin,PA,570,US
+17856,New Columbia,PA,570,US
+17857,Northumberland,PA,570,US
+17858,Numidia,PA,570,US
+17859,Orangeville,PA,570,US
+17860,Paxinos,PA,570,US
+17861,Paxtonville,PA,570,US
+17862,Penns Creek,PA,570,US
+17864,Port Trevorton,PA,570,US
+17865,Potts Grove,PA,570,US
+17866,Coal Township,PA,570,US
+17867,Rebuck,PA,570,US
+17868,Riverside,PA,570,US
+17870,Selinsgrove,PA,570,US
+17872,Shamokin,PA,570,US
+17876,Shamokin Dam,PA,570,US
+17877,Snydertown,PA,570,US
+17878,Stillwater,PA,570,US
+17880,Swengel,PA,570,US
+17881,Trevorton,PA,570,US
+17882,Troxelville,PA,570,US
+17883,Vicksburg,PA,570,US
+17884,Washingtonville,PA,570,US
+17885,Weikert,PA,570,US
+17886,West Milton,PA,570,US
+17887,White Deer,PA,570,US
+17888,Wilburton,PA,570,US
+17889,Winfield,PA,570,US
+17901,Pottsville,PA,"5,70,610",US
+17920,Aristes,PA,570,US
+17921,Ashland,PA,570,US
+17922,Auburn,PA,570,US
+17923,Branchdale,PA,570,US
+17925,Brockton,PA,570,US
+17929,Cressona,PA,570,US
+17930,Cumbola,PA,570,US
+17931,Frackville,PA,570,US
+17932,Frackville,PA,570,US
+17933,Friedensburg,PA,570,US
+17934,Gilberton,PA,570,US
+17935,Girardville,PA,570,US
+17936,Gordon,PA,570,US
+17938,Hegins,PA,570,US
+17941,Klingerstown,PA,570,US
+17942,Landingville,PA,570,US
+17943,Lavelle,PA,570,US
+17944,Llewellyn,PA,570,US
+17945,Locustdale,PA,570,US
+17946,Lost Creek,PA,570,US
+17948,Mahanoy City,PA,570,US
+17949,Mahanoy Plane,PA,570,US
+17951,Mar Lin,PA,570,US
+17952,Mary D,PA,570,US
+17953,Middleport,PA,570,US
+17954,Minersville,PA,570,US
+17957,Muir,PA,717,US
+17959,New Philadelphia,PA,570,US
+17960,New Ringgold,PA,570,US
+17961,Orwigsburg,PA,570,US
+17963,Pine Grove,PA,570,US
+17964,Pitman,PA,570,US
+17965,Port Carbon,PA,570,US
+17966,Ravine,PA,,US
+17967,Ringtown,PA,570,US
+17968,Sacramento,PA,570,US
+17970,Saint Clair,PA,570,US
+17972,Schuylkill Haven,PA,570,US
+17974,Seltzer,PA,570,US
+17976,Shenandoah,PA,570,US
+17978,Spring Glen,PA,"7,17,570",US
+17979,Summit Station,PA,570,US
+17980,Tower City,PA,"7,17,570",US
+17981,Tremont,PA,570,US
+17982,Tuscarora,PA,570,US
+17983,Valley View,PA,570,US
+17985,Zion Grove,PA,570,US
+18001,Lehigh Valley,PA,484,US
+18002,Lehigh Valley,PA,610,US
+18003,Lehigh Valley,PA,484,US
+18010,Ackermanville,PA,610,US
+18011,Alburtis,PA,"6,10,484",US
+18012,Aquashicola,PA,,US
+18013,Bangor,PA,"6,10,570",US
+18014,Bath,PA,"4,84,610",US
+18015,Bethlehem,PA,"4,84,610",US
+18016,Bethlehem,PA,"4,84,610",US
+18017,Bethlehem,PA,"48,46,10,215",US
+18018,Bethlehem,PA,"26,76,10,484",US
+18020,Bethlehem,PA,"6,10,484",US
+18025,Bethlehem,PA,484,US
+18030,Bowmanstown,PA,610,US
+18031,Breinigsville,PA,610,US
+18032,Catasauqua,PA,"6,10,484",US
+18034,Center Valley,PA,"6,10,484",US
+18035,Cherryville,PA,610,US
+18036,Coopersburg,PA,"6,10,484",US
+18037,Coplay,PA,"6,10,484",US
+18038,Danielsville,PA,610,US
+18039,Durham,PA,610,US
+18040,Easton,PA,"4,84,610",US
+18041,East Greenville,PA,"2,15,610",US
+18042,Easton,PA,"6,10,484",US
+18043,Easton,PA,610,US
+18044,Easton,PA,484,US
+18045,Easton,PA,"6,10,484",US
+18046,East Texas,PA,484,US
+18049,Emmaus,PA,"6,10,484",US
+18050,Flicksville,PA,,US
+18051,Fogelsville,PA,610,US
+18052,Whitehall,PA,"6,10,484",US
+18053,Germansville,PA,610,US
+18054,Green Lane,PA,"2,15,267",US
+18055,Hellertown,PA,"6,10,484",US
+18056,Hereford,PA,215,US
+18058,Kunkletown,PA,"6,10,570",US
+18059,Laurys Station,PA,610,US
+18060,Limeport,PA,484,US
+18062,Macungie,PA,"6,10,484",US
+18063,Martins Creek,PA,610,US
+18064,Nazareth,PA,"6,10,484",US
+18065,Neffs,PA,484,US
+18066,New Tripoli,PA,"4,84,610",US
+18067,Northampton,PA,"61,02,67,484",US
+18068,Old Zionsville,PA,484,US
+18069,Orefield,PA,610,US
+18070,Palm,PA,215,US
+18071,Palmerton,PA,610,US
+18072,Pen Argyl,PA,610,US
+18073,Pennsburg,PA,"21,56,10,267",US
+18074,Perkiomenville,PA,"6,10,215",US
+18076,Red Hill,PA,215,US
+18077,Riegelsville,PA,"6,10,484",US
+18078,Schnecksville,PA,610,US
+18079,Slatedale,PA,484,US
+18080,Slatington,PA,"6,10,484",US
+18081,Springtown,PA,610,US
+18083,Stockertown,PA,610,US
+18084,Sumneytown,PA,215,US
+18085,Tatamy,PA,,US
+18086,Treichlers,PA,,US
+18087,Trexlertown,PA,"6,10,484",US
+18088,Walnutport,PA,"6,10,570",US
+18091,Wind Gap,PA,610,US
+18092,Zionsville,PA,"61,02,15,484",US
+18098,Emmaus,PA,484,US
+18099,Emmaus,PA,484,US
+18101,Allentown,PA,"6,10,484",US
+18102,Allentown,PA,"6,10,484",US
+18103,Allentown,PA,"61,04,84,215",US
+18104,Allentown,PA,"4,84,610",US
+18105,Allentown,PA,610,US
+18106,Allentown,PA,610,US
+18109,Allentown,PA,"21,56,10,484",US
+18175,Allentown,PA,484,US
+18195,Allentown,PA,610,US
+18201,Hazleton,PA,570,US
+18202,Hazleton,PA,570,US
+18210,Albrightsville,PA,570,US
+18211,Andreas,PA,570,US
+18212,Ashfield,PA,,US
+18214,Barnesville,PA,570,US
+18216,Beaver Meadows,PA,570,US
+18218,Coaldale,PA,570,US
+18219,Conyngham,PA,570,US
+18220,Delano,PA,570,US
+18221,Drifton,PA,570,US
+18222,Drums,PA,570,US
+18223,Ebervale,PA,570,US
+18224,Freeland,PA,570,US
+18225,Harleigh,PA,570,US
+18229,Jim Thorpe,PA,570,US
+18230,Junedale,PA,,US
+18231,Kelayres,PA,570,US
+18232,Lansford,PA,570,US
+18234,Lattimer Mines,PA,570,US
+18235,Lehighton,PA,"61,05,70,484",US
+18237,Mcadoo,PA,570,US
+18239,Milnesville,PA,570,US
+18240,Nesquehoning,PA,570,US
+18241,Nuremberg,PA,570,US
+18242,Oneida,PA,570,US
+18244,Parryville,PA,610,US
+18245,Quakake,PA,570,US
+18246,Rock Glen,PA,570,US
+18247,Saint Johns,PA,570,US
+18248,Sheppton,PA,570,US
+18249,Sugarloaf,PA,570,US
+18250,Summit Hill,PA,570,US
+18251,Sybertsville,PA,570,US
+18252,Tamaqua,PA,570,US
+18254,Tresckow,PA,570,US
+18255,Weatherly,PA,570,US
+18256,Weston,PA,570,US
+18301,East Stroudsburg,PA,"5,70,610",US
+18302,East Stroudsburg,PA,570,US
+18320,Analomink,PA,570,US
+18321,Bartonsville,PA,570,US
+18322,Brodheadsville,PA,"5,70,610",US
+18323,Buck Hill Falls,PA,570,US
+18324,Bushkill,PA,570,US
+18325,Canadensis,PA,570,US
+18326,Cresco,PA,570,US
+18327,Delaware Water Gap,PA,570,US
+18328,Dingmans Ferry,PA,570,US
+18330,Effort,PA,"5,70,610",US
+18331,Gilbert,PA,"6,10,570",US
+18332,Henryville,PA,570,US
+18333,Kresgeville,PA,"6,10,570",US
+18334,Long Pond,PA,570,US
+18335,Marshalls Creek,PA,570,US
+18336,Matamoras,PA,570,US
+18337,Milford,PA,570,US
+18340,Millrift,PA,570,US
+18341,Minisink Hills,PA,,US
+18342,Mountainhome,PA,570,US
+18343,Mount Bethel,PA,"5,70,610",US
+18344,Mount Pocono,PA,570,US
+18346,Pocono Summit,PA,570,US
+18347,Pocono Lake,PA,570,US
+18348,Pocono Lake Preserve,PA,570,US
+18349,Pocono Manor,PA,,US
+18350,Pocono Pines,PA,570,US
+18351,Portland,PA,570,US
+18352,Reeders,PA,570,US
+18353,Saylorsburg,PA,"6,10,570",US
+18354,Sciota,PA,570,US
+18355,Scotrun,PA,570,US
+18356,Shawnee On Delaware,PA,570,US
+18357,Skytop,PA,570,US
+18360,Stroudsburg,PA,570,US
+18370,Swiftwater,PA,570,US
+18371,Tamiment,PA,570,US
+18372,Tannersville,PA,570,US
+18373,Unity House,PA,570,US
+18403,Archbald,PA,570,US
+18405,Beach Lake,PA,570,US
+18407,Carbondale,PA,570,US
+18410,Chinchilla,PA,570,US
+18411,Clarks Summit,PA,570,US
+18413,Clifford,PA,570,US
+18414,Dalton,PA,570,US
+18415,Damascus,PA,570,US
+18416,Elmhurst,PA,570,US
+18417,Equinunk,PA,570,US
+18419,Factoryville,PA,570,US
+18420,Fleetville,PA,570,US
+18421,Forest City,PA,570,US
+18424,Gouldsboro,PA,570,US
+18425,Greeley,PA,570,US
+18426,Greentown,PA,570,US
+18427,Hamlin,PA,570,US
+18428,Hawley,PA,570,US
+18430,Herrick Center,PA,570,US
+18431,Honesdale,PA,570,US
+18433,Jermyn,PA,570,US
+18434,Jessup,PA,570,US
+18435,Lackawaxen,PA,570,US
+18436,Lake Ariel,PA,570,US
+18437,Lake Como,PA,570,US
+18438,Lakeville,PA,570,US
+18439,Lakewood,PA,570,US
+18440,La Plume,PA,570,US
+18441,Lenoxville,PA,570,US
+18443,Milanville,PA,570,US
+18444,Moscow,PA,570,US
+18445,Newfoundland,PA,570,US
+18446,Nicholson,PA,570,US
+18447,Olyphant,PA,570,US
+18448,Olyphant,PA,570,US
+18449,Orson,PA,570,US
+18451,Paupack,PA,570,US
+18452,Peckville,PA,570,US
+18453,Pleasant Mount,PA,570,US
+18454,Poyntelle,PA,570,US
+18455,Preston Park,PA,570,US
+18456,Prompton,PA,570,US
+18457,Rowland,PA,570,US
+18458,Shohola,PA,570,US
+18459,South Canaan,PA,570,US
+18460,South Sterling,PA,570,US
+18461,Starlight,PA,570,US
+18462,Starrucca,PA,570,US
+18463,Sterling,PA,570,US
+18464,Tafton,PA,570,US
+18465,Thompson,PA,570,US
+18466,Tobyhanna,PA,570,US
+18469,Tyler Hill,PA,570,US
+18470,Union Dale,PA,570,US
+18471,Waverly,PA,570,US
+18472,Waymart,PA,570,US
+18473,White Mills,PA,570,US
+18501,Scranton,PA,570,US
+18502,Scranton,PA,570,US
+18503,Scranton,PA,570,US
+18504,Scranton,PA,570,US
+18505,Scranton,PA,570,US
+18507,Moosic,PA,"5,70,717",US
+18508,Scranton,PA,"7,17,570",US
+18509,Scranton,PA,570,US
+18510,Scranton,PA,570,US
+18512,Scranton,PA,570,US
+18514,Scranton,PA,570,US
+18515,Scranton,PA,570,US
+18517,Taylor,PA,570,US
+18518,Old Forge,PA,570,US
+18519,Scranton,PA,570,US
+18522,Scranton,PA,570,US
+18540,Scranton,PA,570,US
+18577,Scranton,PA,570,US
+18601,Beach Haven,PA,570,US
+18602,Bear Creek,PA,570,US
+18603,Berwick,PA,570,US
+18610,Blakeslee,PA,570,US
+18611,Cambra,PA,570,US
+18612,Dallas,PA,"5,70,610",US
+18614,Dushore,PA,570,US
+18615,Falls,PA,570,US
+18616,Forksville,PA,570,US
+18617,Glen Lyon,PA,570,US
+18618,Harveys Lake,PA,570,US
+18619,Hillsgrove,PA,570,US
+18621,Hunlock Creek,PA,570,US
+18622,Huntington Mills,PA,570,US
+18623,Laceyville,PA,570,US
+18624,Lake Harmony,PA,570,US
+18625,Lake Winola,PA,570,US
+18626,Laporte,PA,570,US
+18627,Lehman,PA,570,US
+18628,Lopez,PA,570,US
+18629,Mehoopany,PA,570,US
+18630,Meshoppen,PA,570,US
+18631,Mifflinville,PA,570,US
+18632,Mildred,PA,570,US
+18634,Nanticoke,PA,570,US
+18635,Nescopeck,PA,570,US
+18636,Noxen,PA,570,US
+18640,Pittston,PA,570,US
+18641,Pittston,PA,570,US
+18642,Duryea,PA,570,US
+18643,Pittston,PA,570,US
+18644,Wyoming,PA,570,US
+18651,Plymouth,PA,570,US
+18653,Ransom,PA,570,US
+18654,Shawanese,PA,570,US
+18655,Shickshinny,PA,570,US
+18656,Sweet Valley,PA,570,US
+18657,Tunkhannock,PA,570,US
+18660,Wapwallopen,PA,570,US
+18661,White Haven,PA,570,US
+18690,Dallas,PA,570,US
+18701,Wilkes Barre,PA,570,US
+18702,Wilkes Barre,PA,570,US
+18703,Wilkes Barre,PA,570,US
+18704,Kingston,PA,570,US
+18705,Wilkes Barre,PA,570,US
+18706,Wilkes Barre,PA,570,US
+18707,Mountain Top,PA,570,US
+18708,Shavertown,PA,570,US
+18709,Luzerne,PA,570,US
+18710,Wilkes Barre,PA,570,US
+18711,Wilkes Barre,PA,570,US
+18762,Wilkes Barre,PA,570,US
+18764,Wilkes Barre,PA,570,US
+18765,Wilkes Barre,PA,570,US
+18766,Wilkes Barre,PA,570,US
+18767,Wilkes Barre,PA,570,US
+18769,Wilkes Barre,PA,570,US
+18773,Wilkes Barre,PA,570,US
+18801,Montrose,PA,570,US
+18810,Athens,PA,570,US
+18812,Brackney,PA,570,US
+18813,Brooklyn,PA,570,US
+18814,Burlington,PA,570,US
+18815,Camptown,PA,570,US
+18816,Dimock,PA,570,US
+18817,East Smithfield,PA,570,US
+18818,Friendsville,PA,570,US
+18820,Gibson,PA,570,US
+18821,Great Bend,PA,570,US
+18822,Hallstead,PA,570,US
+18823,Harford,PA,570,US
+18824,Hop Bottom,PA,570,US
+18825,Jackson,PA,570,US
+18826,Kingsley,PA,570,US
+18827,Lanesboro,PA,570,US
+18828,Lawton,PA,570,US
+18829,Le Raysville,PA,570,US
+18830,Little Meadows,PA,570,US
+18831,Milan,PA,570,US
+18832,Monroeton,PA,570,US
+18833,New Albany,PA,570,US
+18834,New Milford,PA,570,US
+18837,Rome,PA,570,US
+18840,Sayre,PA,570,US
+18842,South Gibson,PA,570,US
+18843,South Montrose,PA,570,US
+18844,Springville,PA,570,US
+18845,Stevensville,PA,570,US
+18846,Sugar Run,PA,570,US
+18847,Susquehanna,PA,570,US
+18848,Towanda,PA,570,US
+18850,Ulster,PA,570,US
+18851,Warren Center,PA,570,US
+18853,Wyalusing,PA,570,US
+18854,Wysox,PA,570,US
+18901,Doylestown,PA,"21,52,67,717",US
+18902,Doylestown,PA,215,US
+18910,Bedminster,PA,215,US
+18911,Blooming Glen,PA,215,US
+18912,Buckingham,PA,"2,15,267",US
+18913,Carversville,PA,"2,15,267",US
+18914,Chalfont,PA,215,US
+18915,Colmar,PA,215,US
+18916,Danboro,PA,215,US
+18917,Dublin,PA,"2,15,267",US
+18918,Earlington,PA,,US
+18920,Erwinna,PA,610,US
+18921,Ferndale,PA,610,US
+18922,Forest Grove,PA,,US
+18923,Fountainville,PA,"2,15,267",US
+18924,Franconia,PA,,US
+18925,Furlong,PA,"2,15,267",US
+18926,Gardenville,PA,,US
+18927,Hilltown,PA,,US
+18928,Holicong,PA,215,US
+18929,Jamison,PA,"2,15,267",US
+18930,Kintnersville,PA,"6,10,484",US
+18931,Lahaska,PA,215,US
+18932,Line Lexington,PA,"2,15,267",US
+18933,Lumberville,PA,"2,15,267",US
+18934,Mechanicsville,PA,215,US
+18935,Milford Square,PA,,US
+18936,Montgomeryville,PA,215,US
+18938,New Hope,PA,"61,02,15,267",US
+18940,Newtown,PA,"2,15,267",US
+18942,Ottsville,PA,"21,56,10,267",US
+18943,Penns Park,PA,,US
+18944,Perkasie,PA,"2,15,267",US
+18946,Pineville,PA,215,US
+18947,Pipersville,PA,"21,52,67,610",US
+18949,Plumsteadville,PA,215,US
+18950,Point Pleasant,PA,215,US
+18951,Quakertown,PA,"2,15,26,74,84,610",US
+18953,Revere,PA,610,US
+18954,Richboro,PA,"2,15,267",US
+18955,Richlandtown,PA,"2,15,610",US
+18956,Rushland,PA,215,US
+18957,Salford,PA,,US
+18958,Salfordville,PA,,US
+18960,Sellersville,PA,215,US
+18962,Silverdale,PA,,US
+18963,Solebury,PA,"2,15,212",US
+18964,Souderton,PA,"26,72,15,610",US
+18966,Southampton,PA,"2,15,267",US
+18968,Spinnerstown,PA,,US
+18969,Telford,PA,"2,15,267",US
+18970,Trumbauersville,PA,,US
+18971,Tylersport,PA,,US
+18972,Upper Black Eddy,PA,"6,10,484",US
+18974,Warminster,PA,"2,15,267",US
+18976,Warrington,PA,"2,15,267",US
+18977,Washington Crossing,PA,215,US
+18979,Woxall,PA,215,US
+18980,Wycombe,PA,215,US
+18981,Zionhill,PA,,US
+18991,Warminster,PA,215,US
+19001,Abington,PA,"21,56,10,267",US
+19002,Ambler,PA,"2,15,267",US
+19003,Ardmore,PA,610,US
+19004,Bala Cynwyd,PA,"2,67,61,02,15,484",US
+19006,Huntingdon Valley,PA,"21,52,67,484",US
+19007,Bristol,PA,"2,15,267",US
+19008,Broomall,PA,"4,84,610",US
+19009,Bryn Athyn,PA,215,US
+19010,Bryn Mawr,PA,"48,46,10,215",US
+19012,Cheltenham,PA,"2,15,267",US
+19013,Chester,PA,"21,56,10,484",US
+19014,Aston,PA,"4,84,610",US
+19015,Brookhaven,PA,610,US
+19016,Chester,PA,484,US
+19017,Chester Heights,PA,610,US
+19018,Clifton Heights,PA,"61,04,84,215",US
+19019,Philadelphia,PA,"21,56,10,484",US
+19020,Bensalem,PA,"2,15,267",US
+19021,Croydon,PA,215,US
+19022,Crum Lynne,PA,"4,84,610",US
+19023,Darby,PA,"6,10,484",US
+19025,Dresher,PA,"2,67,215",US
+19026,Drexel Hill,PA,"6,10,484",US
+19027,Elkins Park,PA,215,US
+19028,Edgemont,PA,484,US
+19029,Essington,PA,610,US
+19030,Fairless Hills,PA,"2,15,267",US
+19031,Flourtown,PA,215,US
+19032,Folcroft,PA,"4,84,610",US
+19033,Folsom,PA,"6,10,484",US
+19034,Fort Washington,PA,"2,15,26,76,10,484",US
+19035,Gladwyne,PA,610,US
+19036,Glenolden,PA,"6,10,484",US
+19037,Glen Riddle Lima,PA,484,US
+19038,Glenside,PA,"26,76,10,215",US
+19039,Gradyville,PA,484,US
+19040,Hatboro,PA,"2,15,267",US
+19041,Haverford,PA,"6,10,484",US
+19043,Holmes,PA,"6,10,484",US
+19044,Horsham,PA,"2,15,267",US
+19046,Jenkintown,PA,"2,15,267",US
+19047,Langhorne,PA,"2,15,267",US
+19048,Fort Washington,PA,215,US
+19049,Fort Washington,PA,215,US
+19050,Lansdowne,PA,"2,15,610",US
+19052,Lenni,PA,484,US
+19053,Feasterville Trevose,PA,"21,56,10,267",US
+19054,Levittown,PA,"2,67,215",US
+19055,Levittown,PA,"2,15,267",US
+19056,Levittown,PA,"2,15,267",US
+19057,Levittown,PA,"2,67,215",US
+19058,Levittown,PA,267,US
+19060,Garnet Valley,PA,484,US
+19061,Marcus Hook,PA,"6,10,484",US
+19063,Media,PA,"4,84,610",US
+19064,Springfield,PA,610,US
+19065,Media,PA,484,US
+19066,Merion Station,PA,"61,02,15,484",US
+19067,Morrisville,PA,"2,15,267",US
+19070,Morton,PA,"6,10,484",US
+19072,Narberth,PA,"61,02,15,484",US
+19073,Newtown Square,PA,"6,10,215",US
+19074,Norwood,PA,"6,10,484",US
+19075,Oreland,PA,"21,56,10,267",US
+19076,Prospect Park,PA,"6,10,484",US
+19078,Ridley Park,PA,"26,76,10,484",US
+19079,Sharon Hill,PA,"6,10,484",US
+19080,Wayne,PA,484,US
+19081,Swarthmore,PA,"4,84,610",US
+19082,Upper Darby,PA,"21,54,84,610",US
+19083,Havertown,PA,"6,10,484",US
+19085,Villanova,PA,"6,10,484",US
+19086,Wallingford,PA,"6,10,484",US
+19087,Wayne,PA,"21,56,10,484",US
+19088,Wayne,PA,484,US
+19089,Wayne,PA,484,US
+19090,Willow Grove,PA,"21,52,67,610",US
+19091,Media,PA,484,US
+19092,Philadelphia,PA,215,US
+19093,Philadelphia,PA,215,US
+19094,Woodlyn,PA,"6,10,484",US
+19095,Wyncote,PA,"2,15,267",US
+19096,Wynnewood,PA,"6,10,484",US
+19098,Holmes,PA,484,US
+19099,Philadelphia,PA,215,US
+19101,Philadelphia,PA,"21,56,10,267",US
+19102,Philadelphia,PA,"2,15,26,74,84,610",US
+19103,Philadelphia,PA,"21,52,67,61,02,12,484",US
+19104,Philadelphia,PA,"21,52,67,610",US
+19105,Philadelphia,PA,215,US
+19106,Philadelphia,PA,"2,67,48,42,15,610",US
+19107,Philadelphia,PA,"21,52,67,484",US
+19108,Philadelphia,PA,215,US
+19109,Philadelphia,PA,"21,52,67,610",US
+19110,Philadelphia,PA,"2,15,26,74,84,610",US
+19111,Philadelphia,PA,215,US
+19112,Philadelphia,PA,215,US
+19113,Philadelphia,PA,610,US
+19114,Philadelphia,PA,"2,15,267",US
+19115,Philadelphia,PA,"2,15,267",US
+19116,Philadelphia,PA,"2,15,267",US
+19118,Philadelphia,PA,"2,15,267",US
+19119,Philadelphia,PA,215,US
+19120,Philadelphia,PA,"21,52,67,610",US
+19121,Philadelphia,PA,"2,15,267",US
+19122,Philadelphia,PA,"2,15,610",US
+19123,Philadelphia,PA,"2,15,26,76,10,484",US
+19124,Philadelphia,PA,215,US
+19125,Philadelphia,PA,215,US
+19126,Philadelphia,PA,"6,10,215",US
+19127,Philadelphia,PA,"26,72,15,610",US
+19128,Philadelphia,PA,"2,15,267",US
+19129,Philadelphia,PA,215,US
+19130,Philadelphia,PA,"21,52,67,71,74,84,610",US
+19131,Philadelphia,PA,215,US
+19132,Philadelphia,PA,215,US
+19133,Philadelphia,PA,215,US
+19134,Philadelphia,PA,215,US
+19135,Philadelphia,PA,215,US
+19136,Philadelphia,PA,"2,15,267",US
+19137,Philadelphia,PA,215,US
+19138,Philadelphia,PA,"2,15,267",US
+19139,Philadelphia,PA,"2,15,267",US
+19140,Philadelphia,PA,215,US
+19141,Philadelphia,PA,215,US
+19142,Philadelphia,PA,215,US
+19143,Philadelphia,PA,"2,15,267",US
+19144,Philadelphia,PA,"21,56,10,267",US
+19145,Philadelphia,PA,"2,15,267",US
+19146,Philadelphia,PA,"2,15,267",US
+19147,Philadelphia,PA,"2,15,267",US
+19148,Philadelphia,PA,"2,67,215",US
+19149,Philadelphia,PA,215,US
+19150,Philadelphia,PA,215,US
+19151,Philadelphia,PA,"2,15,610",US
+19152,Philadelphia,PA,"2,67,215",US
+19153,Philadelphia,PA,215,US
+19154,Philadelphia,PA,"2,15,267",US
+19155,Philadelphia,PA,215,US
+19160,Philadelphia,PA,215,US
+19161,Philadelphia,PA,215,US
+19162,Philadelphia,PA,215,US
+19170,Philadelphia,PA,215,US
+19171,Philadelphia,PA,215,US
+19172,Philadelphia,PA,215,US
+19173,Philadelphia,PA,215,US
+19175,Philadelphia,PA,215,US
+19176,Philadelphia,PA,215,US
+19177,Philadelphia,PA,215,US
+19178,Philadelphia,PA,215,US
+19179,Philadelphia,PA,215,US
+19181,Philadelphia,PA,215,US
+19182,Philadelphia,PA,215,US
+19183,Philadelphia,PA,215,US
+19184,Philadelphia,PA,215,US
+19185,Philadelphia,PA,215,US
+19187,Philadelphia,PA,215,US
+19188,Philadelphia,PA,215,US
+19190,Philadelphia,PA,215,US
+19191,Philadelphia,PA,215,US
+19192,Philadelphia,PA,215,US
+19193,Philadelphia,PA,215,US
+19194,Philadelphia,PA,215,US
+19195,Philadelphia,PA,215,US
+19196,Philadelphia,PA,215,US
+19197,Philadelphia,PA,215,US
+19244,Philadelphia,PA,215,US
+19255,Philadelphia,PA,215,US
+19301,Paoli,PA,"6,10,484",US
+19310,Atglen,PA,610,US
+19311,Avondale,PA,"6,10,484",US
+19312,Berwyn,PA,"6,10,484",US
+19316,Brandamore,PA,610,US
+19317,Chadds Ford,PA,"4,84,610",US
+19318,Chatham,PA,,US
+19319,Cheyney,PA,610,US
+19320,Coatesville,PA,"6,10,484",US
+19330,Cochranville,PA,"6,10,717",US
+19331,Concordville,PA,610,US
+19333,Devon,PA,"61,02,15,484",US
+19335,Downingtown,PA,"6,10,484",US
+19339,Concordville,PA,484,US
+19340,Concordville,PA,484,US
+19341,Exton,PA,"2,15,48,46,10,717",US
+19342,Glen Mills,PA,"30,26,10,484",US
+19343,Glenmoore,PA,"26,76,10,484",US
+19344,Honey Brook,PA,"6,10,484",US
+19345,Immaculata,PA,,US
+19346,Kelton,PA,,US
+19347,Kemblesville,PA,610,US
+19348,Kennett Square,PA,"30,26,10,484",US
+19350,Landenberg,PA,"6,10,484",US
+19351,Lewisville,PA,,US
+19352,Lincoln University,PA,"6,10,484",US
+19353,Lionville,PA,,US
+19354,Lyndell,PA,610,US
+19355,Malvern,PA,"21,54,84,610",US
+19357,Mendenhall,PA,302,US
+19358,Modena,PA,,US
+19360,New London,PA,,US
+19362,Nottingham,PA,"7,17,610",US
+19363,Oxford,PA,"61,07,17,484",US
+19365,Parkesburg,PA,"48,46,10,717",US
+19366,Pocopson,PA,,US
+19367,Pomeroy,PA,,US
+19369,Sadsburyville,PA,,US
+19371,Suplee,PA,,US
+19372,Thorndale,PA,"6,10,484",US
+19373,Thornton,PA,"6,10,484",US
+19374,Toughkenamon,PA,"6,10,484",US
+19375,Unionville,PA,610,US
+19376,Wagontown,PA,,US
+19380,West Chester,PA,"4,84,610",US
+19381,West Chester,PA,484,US
+19382,West Chester,PA,"6,10,484",US
+19383,West Chester,PA,484,US
+19388,West Chester,PA,484,US
+19390,West Grove,PA,"6,10,484",US
+19395,Westtown,PA,,US
+19397,Southeastern,PA,484,US
+19398,Southeastern,PA,484,US
+19399,Southeastern,PA,484,US
+19401,Norristown,PA,"48,46,10,215",US
+19403,Norristown,PA,"4,84,610",US
+19404,Norristown,PA,"6,10,484",US
+19405,Bridgeport,PA,"48,46,10,267",US
+19406,King Of Prussia,PA,"4,84,61,02,15,267",US
+19407,Audubon,PA,,US
+19408,Eagleville,PA,484,US
+19409,Fairview Village,PA,,US
+19415,Eagleville,PA,610,US
+19420,Arcola,PA,,US
+19421,Birchrunville,PA,610,US
+19422,Blue Bell,PA,"2,15,26,74,84,610",US
+19423,Cedars,PA,610,US
+19424,Blue Bell,PA,215,US
+19425,Chester Springs,PA,"6,10,484",US
+19426,Collegeville,PA,"6,10,484",US
+19428,Conshohocken,PA,"48,46,10,215",US
+19429,Conshohocken,PA,484,US
+19430,Creamery,PA,,US
+19432,Devault,PA,,US
+19435,Frederick,PA,610,US
+19436,Gwynedd,PA,"2,15,267",US
+19437,Gwynedd Valley,PA,215,US
+19438,Harleysville,PA,"21,56,10,267",US
+19440,Hatfield,PA,"26,76,10,215",US
+19441,Harleysville,PA,215,US
+19442,Kimberton,PA,610,US
+19443,Kulpsville,PA,,US
+19444,Lafayette Hill,PA,"61,02,15,484",US
+19446,Lansdale,PA,"21,52,67,610",US
+19450,Lederach,PA,215,US
+19451,Mainland,PA,,US
+19453,Mont Clare,PA,"6,10,484",US
+19454,North Wales,PA,"26,76,10,215",US
+19455,North Wales,PA,215,US
+19456,Oaks,PA,610,US
+19457,Parker Ford,PA,610,US
+19460,Phoenixville,PA,"48,46,10,215",US
+19462,Plymouth Meeting,PA,"6,10,21,54,84,412",US
+19464,Pottstown,PA,"4,84,610",US
+19465,Pottstown,PA,"6,10,484",US
+19468,Royersford,PA,"2,67,61,02,15,484",US
+19470,Saint Peters,PA,610,US
+19472,Sassamansville,PA,610,US
+19473,Schwenksville,PA,"6,10,484",US
+19474,Skippack,PA,610,US
+19475,Spring City,PA,610,US
+19477,Spring House,PA,"2,15,267",US
+19478,Spring Mount,PA,610,US
+19480,Uwchland,PA,610,US
+19481,Valley Forge,PA,610,US
+19482,Valley Forge,PA,610,US
+19483,Valley Forge,PA,484,US
+19484,Valley Forge,PA,484,US
+19485,Valley Forge,PA,484,US
+19486,West Point,PA,"6,10,215",US
+19487,King Of Prussia,PA,484,US
+19488,Norristown,PA,484,US
+19489,Norristown,PA,484,US
+19490,Worcester,PA,610,US
+19492,Zieglerville,PA,610,US
+19493,Valley Forge,PA,484,US
+19494,Valley Forge,PA,484,US
+19495,Valley Forge,PA,484,US
+19496,Valley Forge,PA,484,US
+19501,Adamstown,PA,717,US
+19503,Bally,PA,610,US
+19504,Barto,PA,610,US
+19505,Bechtelsville,PA,610,US
+19506,Bernville,PA,"6,10,717",US
+19507,Bethel,PA,"7,17,610",US
+19508,Birdsboro,PA,610,US
+19510,Blandon,PA,610,US
+19511,Bowers,PA,610,US
+19512,Boyertown,PA,610,US
+19516,Centerport,PA,610,US
+19518,Douglassville,PA,"6,10,484",US
+19519,Earlville,PA,610,US
+19520,Elverson,PA,610,US
+19522,Fleetwood,PA,"6,10,484",US
+19523,Geigertown,PA,610,US
+19525,Gilbertsville,PA,"21,56,10,484",US
+19526,Hamburg,PA,"4,84,610",US
+19529,Kempton,PA,610,US
+19530,Kutztown,PA,"6,10,484",US
+19533,Leesport,PA,"21,56,10,484",US
+19534,Lenhartsville,PA,"6,10,484",US
+19535,Limekiln,PA,610,US
+19536,Lyon Station,PA,610,US
+19538,Maxatawny,PA,610,US
+19539,Mertztown,PA,610,US
+19540,Mohnton,PA,"6,10,717",US
+19541,Mohrsville,PA,610,US
+19542,Monocacy Station,PA,610,US
+19543,Morgantown,PA,610,US
+19544,Mount Aetna,PA,717,US
+19545,New Berlinville,PA,610,US
+19547,Oley,PA,610,US
+19548,Pine Forge,PA,,US
+19549,Port Clinton,PA,"4,84,610",US
+19550,Rehrersburg,PA,717,US
+19551,Robesonia,PA,610,US
+19554,Shartlesville,PA,610,US
+19555,Shoemakersville,PA,"6,10,484",US
+19559,Strausstown,PA,610,US
+19560,Temple,PA,"6,10,215",US
+19562,Topton,PA,610,US
+19564,Virginville,PA,,US
+19565,Wernersville,PA,610,US
+19567,Womelsdorf,PA,"6,10,717",US
+19601,Reading,PA,"6,10,484",US
+19602,Reading,PA,"4,84,610",US
+19603,Reading,PA,"48,42,15,610",US
+19604,Reading,PA,610,US
+19605,Reading,PA,"6,10,484",US
+19606,Reading,PA,610,US
+19607,Reading,PA,"2,15,610",US
+19608,Reading,PA,"6,10,484",US
+19609,Reading,PA,610,US
+19610,Reading,PA,"4,84,610",US
+19611,Reading,PA,"6,10,484",US
+19612,Reading,PA,484,US
+19640,Reading,PA,484,US
+19701,Bear,DE,302,US
+19702,Newark,DE,302,US
+19703,Claymont,DE,302,US
+19706,Delaware City,DE,302,US
+19707,Hockessin,DE,302,US
+19708,Kirkwood,DE,302,US
+19709,Middletown,DE,302,US
+19710,Montchanin,DE,302,US
+19711,Newark,DE,302,US
+19712,Newark,DE,302,US
+19713,Newark,DE,302,US
+19714,Newark,DE,302,US
+19715,Newark,DE,302,US
+19716,Newark,DE,302,US
+19717,Newark,DE,302,US
+19718,Newark,DE,302,US
+19720,New Castle,DE,302,US
+19721,New Castle,DE,302,US
+19725,Newark,DE,302,US
+19726,Newark,DE,302,US
+19730,Odessa,DE,302,US
+19731,Port Penn,DE,302,US
+19732,Rockland,DE,302,US
+19733,Saint Georges,DE,302,US
+19734,Townsend,DE,302,US
+19735,Winterthur,DE,302,US
+19736,Yorklyn,DE,302,US
+19801,Wilmington,DE,302,US
+19802,Wilmington,DE,302,US
+19803,Wilmington,DE,302,US
+19804,Wilmington,DE,302,US
+19805,Wilmington,DE,302,US
+19806,Wilmington,DE,302,US
+19807,Wilmington,DE,302,US
+19808,Wilmington,DE,302,US
+19809,Wilmington,DE,302,US
+19810,Wilmington,DE,302,US
+19850,Wilmington,DE,302,US
+19880,Wilmington,DE,302,US
+19884,Wilmington,DE,302,US
+19885,Wilmington,DE,302,US
+19886,Wilmington,DE,302,US
+19887,Wilmington,DE,302,US
+19889,Wilmington,DE,302,US
+19890,Wilmington,DE,302,US
+19891,Wilmington,DE,302,US
+19892,Wilmington,DE,302,US
+19893,Wilmington,DE,302,US
+19894,Wilmington,DE,302,US
+19895,Wilmington,DE,302,US
+19896,Wilmington,DE,302,US
+19897,Wilmington,DE,302,US
+19898,Wilmington,DE,302,US
+19899,Wilmington,DE,302,US
+19901,Dover,DE,302,US
+19902,Dover Afb,DE,302,US
+19903,Dover,DE,302,US
+19904,Dover,DE,302,US
+19905,Dover,DE,302,US
+19906,Dover,DE,302,US
+19930,Bethany Beach,DE,302,US
+19931,Bethel,DE,302,US
+19933,Bridgeville,DE,302,US
+19934,Camden Wyoming,DE,302,US
+19936,Cheswold,DE,302,US
+19938,Clayton,DE,302,US
+19939,Dagsboro,DE,302,US
+19940,Delmar,DE,302,US
+19941,Ellendale,DE,302,US
+19943,Felton,DE,302,US
+19944,Fenwick Island,DE,302,US
+19945,Frankford,DE,302,US
+19946,Frederica,DE,302,US
+19947,Georgetown,DE,302,US
+19950,Greenwood,DE,302,US
+19951,Harbeson,DE,302,US
+19952,Harrington,DE,302,US
+19953,Hartly,DE,302,US
+19954,Houston,DE,302,US
+19955,Kenton,DE,302,US
+19956,Laurel,DE,302,US
+19958,Lewes,DE,302,US
+19960,Lincoln,DE,302,US
+19961,Little Creek,DE,302,US
+19962,Magnolia,DE,302,US
+19963,Milford,DE,302,US
+19964,Marydel,DE,302,US
+19966,Millsboro,DE,302,US
+19967,Millville,DE,302,US
+19968,Milton,DE,302,US
+19969,Nassau,DE,302,US
+19970,Ocean View,DE,302,US
+19971,Rehoboth Beach,DE,302,US
+19973,Seaford,DE,302,US
+19975,Selbyville,DE,302,US
+19977,Smyrna,DE,302,US
+19979,Viola,DE,302,US
+19980,Woodside,DE,302,US
+20001,Washington,DC,"2,02,703",US
+20002,Washington,DC,202,US
+20003,Washington,DC,202,US
+20004,Washington,DC,202,US
+20005,Washington,DC,202,US
+20006,Washington,DC,"2,02,301",US
+20007,Washington,DC,202,US
+20008,Washington,DC,202,US
+20009,Washington,DC,202,US
+20010,Washington,DC,202,US
+20011,Washington,DC,202,US
+20012,Washington,DC,202,US
+20013,Washington,DC,202,US
+20015,Washington,DC,202,US
+20016,Washington,DC,"2,02,703",US
+20017,Washington,DC,202,US
+20018,Washington,DC,202,US
+20019,Washington,DC,202,US
+20020,Washington,DC,202,US
+20022,Washington,DC,202,US
+20023,Washington,DC,202,US
+20024,Washington,DC,"2,02,301",US
+20026,Washington,DC,202,US
+20027,Washington,DC,202,US
+20029,Washington,DC,202,US
+20030,Washington,DC,202,US
+20032,Washington,DC,202,US
+20033,Washington,DC,202,US
+20035,Washington,DC,202,US
+20036,Washington,DC,202,US
+20037,Washington,DC,202,US
+20038,Washington,DC,202,US
+20039,Washington,DC,202,US
+20040,Washington,DC,202,US
+20041,Washington,DC,703,US
+20042,Washington,DC,202,US
+20043,Washington,DC,202,US
+20044,Washington,DC,202,US
+20045,Washington,DC,202,US
+20046,Washington,DC,202,US
+20047,Washington,DC,202,US
+20049,Washington,DC,202,US
+20050,Washington,DC,703,US
+20051,Washington,DC,202,US
+20052,Washington,DC,202,US
+20053,Washington,DC,202,US
+20055,Washington,DC,202,US
+20056,Washington,DC,202,US
+20057,Washington,DC,202,US
+20058,Washington,DC,"2,02,301",US
+20059,Washington,DC,202,US
+20060,Washington,DC,202,US
+20061,Washington,DC,202,US
+20062,Washington,DC,202,US
+20063,Washington,DC,202,US
+20064,Washington,DC,202,US
+20065,Washington,DC,202,US
+20066,Washington,DC,202,US
+20067,Washington,DC,202,US
+20068,Washington,DC,202,US
+20069,Washington,DC,202,US
+20070,Washington,DC,202,US
+20071,Washington,DC,202,US
+20073,Washington,DC,202,US
+20074,Washington,DC,202,US
+20075,Washington,DC,202,US
+20076,Washington,DC,202,US
+20077,Washington,DC,202,US
+20078,Washington,DC,202,US
+20080,Washington,DC,202,US
+20081,Washington,DC,202,US
+20082,Washington,DC,202,US
+20088,Washington,DC,202,US
+20090,Washington,DC,202,US
+20091,Washington,DC,202,US
+20097,Washington,DC,202,US
+20098,Washington,DC,202,US
+20101,Dulles,VA,703,US
+20102,Dulles,VA,571,US
+20103,Dulles,VA,571,US
+20104,Dulles,VA,571,US
+20105,Aldie,VA,703,US
+20106,Amissville,VA,540,US
+20107,Arcola,VA,,US
+20108,Manassas,VA,703,US
+20109,Manassas,VA,"7,03,571",US
+20110,Manassas,VA,"7,03,571",US
+20111,Manassas,VA,"7,03,571",US
+20112,Manassas,VA,"7,03,571",US
+20113,Manassas,VA,703,US
+20115,Marshall,VA,540,US
+20116,Marshall,VA,540,US
+20117,Middleburg,VA,"5,40,703",US
+20118,Middleburg,VA,"7,03,540",US
+20119,Catlett,VA,"5,40,703",US
+20120,Centreville,VA,"70,35,71,202",US
+20121,Centreville,VA,"7,03,571",US
+20122,Centreville,VA,703,US
+20124,Clifton,VA,703,US
+20128,Orlean,VA,540,US
+20129,Paeonian Springs,VA,"7,03,540",US
+20130,Paris,VA,540,US
+20131,Philomont,VA,"7,03,540",US
+20132,Purcellville,VA,"7,03,540",US
+20134,Purcellville,VA,"5,40,703",US
+20135,Bluemont,VA,540,US
+20136,Bristow,VA,703,US
+20137,Broad Run,VA,"5,40,703",US
+20138,Calverton,VA,540,US
+20139,Casanova,VA,540,US
+20140,Rectortown,VA,540,US
+20141,Round Hill,VA,"5,40,703",US
+20142,Round Hill,VA,540,US
+20143,Catharpin,VA,703,US
+20144,Delaplane,VA,"5,40,703",US
+20146,Ashburn,VA,703,US
+20147,Ashburn,VA,703,US
+20148,Ashburn,VA,703,US
+20149,Ashburn,VA,571,US
+20151,Chantilly,VA,703,US
+20152,Chantilly,VA,703,US
+20153,Chantilly,VA,571,US
+20155,Gainesville,VA,703,US
+20156,Gainesville,VA,571,US
+20158,Hamilton,VA,"5,40,703",US
+20159,Hamilton,VA,540,US
+20160,Lincoln,VA,540,US
+20163,Sterling,VA,703,US
+20164,Sterling,VA,"5,71,703",US
+20165,Sterling,VA,"7,03,571",US
+20166,Sterling,VA,"7,03,571",US
+20167,Sterling,VA,571,US
+20168,Haymarket,VA,571,US
+20169,Haymarket,VA,"7,03,571",US
+20170,Herndon,VA,"7,03,571",US
+20171,Herndon,VA,"70,35,71,202",US
+20172,Herndon,VA,703,US
+20175,Leesburg,VA,"70,35,40,571",US
+20176,Leesburg,VA,"70,35,40,571",US
+20177,Leesburg,VA,703,US
+20178,Leesburg,VA,571,US
+20180,Lovettsville,VA,"5,40,703",US
+20181,Nokesville,VA,703,US
+20182,Nokesville,VA,703,US
+20184,Upperville,VA,"5,40,703",US
+20185,Upperville,VA,540,US
+20186,Warrenton,VA,"7,03,540",US
+20187,Warrenton,VA,"7,03,540",US
+20188,Warrenton,VA,540,US
+20189,Dulles,VA,571,US
+20190,Reston,VA,"7,03,571",US
+20191,Reston,VA,703,US
+20192,Herndon,VA,571,US
+20193,Reston,VA,571,US
+20194,Reston,VA,"7,03,571",US
+20195,Reston,VA,703,US
+20196,Reston,VA,571,US
+20197,Waterford,VA,"5,40,703",US
+20198,The Plains,VA,"5,40,703",US
+20199,Dulles,VA,571,US
+20201,Washington,DC,202,US
+20202,Washington,DC,202,US
+20203,Washington,DC,202,US
+20204,Washington,DC,202,US
+20206,Washington,DC,202,US
+20207,Washington,DC,202,US
+20208,Washington,DC,202,US
+20210,Washington,DC,202,US
+20211,Washington,DC,202,US
+20212,Washington,DC,202,US
+20213,Washington,DC,202,US
+20214,Washington,DC,202,US
+20215,Washington,DC,202,US
+20216,Washington,DC,202,US
+20217,Washington,DC,202,US
+20218,Washington,DC,202,US
+20219,Washington,DC,202,US
+20220,Washington,DC,202,US
+20221,Washington,DC,202,US
+20222,Washington,DC,202,US
+20223,Washington,DC,202,US
+20224,Washington,DC,202,US
+20226,Washington,DC,202,US
+20227,Washington,DC,202,US
+20228,Washington,DC,202,US
+20229,Washington,DC,202,US
+20230,Washington,DC,202,US
+20232,Washington,DC,202,US
+20233,Washington,DC,301,US
+20235,Washington,DC,202,US
+20237,Washington,DC,202,US
+20238,Washington,DC,202,US
+20239,Washington,DC,202,US
+20240,Washington,DC,202,US
+20241,Washington,DC,202,US
+20242,Washington,DC,202,US
+20244,Washington,DC,202,US
+20245,Washington,DC,202,US
+20250,Washington,DC,202,US
+20251,Washington,DC,202,US
+20254,Washington,DC,202,US
+20260,Washington,DC,202,US
+20261,Washington,DC,202,US
+20262,Washington,DC,202,US
+20265,Washington,DC,202,US
+20266,Washington,DC,202,US
+20268,Washington,DC,202,US
+20270,Washington,DC,202,US
+20277,Washington,DC,202,US
+20289,Washington,DC,202,US
+20299,Washington,DC,202,US
+20301,Washington,DC,703,US
+20303,Washington,DC,202,US
+20306,Washington,DC,202,US
+20307,Washington,DC,202,US
+20310,Washington,DC,202,US
+20314,Washington,DC,202,US
+20317,Washington,DC,202,US
+20318,Washington,DC,202,US
+20319,Washington,DC,202,US
+20330,Washington,DC,"7,03,202",US
+20340,Washington,DC,202,US
+20350,Washington,DC,703,US
+20355,Washington,DC,202,US
+20370,Washington,DC,202,US
+20372,Washington,DC,202,US
+20373,Naval Anacost Annex,DC,202,US
+20374,Washington Navy Yard,DC,202,US
+20375,Washington,DC,202,US
+20376,Washington Navy Yard,DC,202,US
+20380,Washington,DC,202,US
+20388,Washington Navy Yard,DC,202,US
+20389,Washington,DC,202,US
+20390,Washington,DC,202,US
+20391,Washington Navy Yard,DC,202,US
+20392,Washington,DC,202,US
+20393,Washington,DC,202,US
+20394,Washington,DC,202,US
+20395,Washington,DC,202,US
+20398,Washington Navy Yard,DC,202,US
+20401,Washington,DC,202,US
+20402,Washington,DC,202,US
+20403,Washington,DC,202,US
+20404,Washington,DC,202,US
+20405,Washington,DC,202,US
+20406,Washington,DC,202,US
+20407,Washington,DC,202,US
+20408,Washington,DC,202,US
+20409,Washington,DC,202,US
+20410,Washington,DC,202,US
+20411,Washington,DC,202,US
+20412,Washington,DC,202,US
+20413,Washington,DC,202,US
+20414,Washington,DC,202,US
+20415,Washington,DC,202,US
+20416,Washington,DC,202,US
+20417,Washington,DC,,US
+20418,Washington,DC,202,US
+20419,Washington,DC,202,US
+20420,Washington,DC,202,US
+20421,Washington,DC,202,US
+20422,Washington,DC,202,US
+20423,Washington,DC,202,US
+20424,Washington,DC,202,US
+20425,Washington,DC,202,US
+20426,Washington,DC,202,US
+20427,Washington,DC,202,US
+20428,Washington,DC,202,US
+20429,Washington,DC,202,US
+20431,Washington,DC,202,US
+20433,Washington,DC,202,US
+20434,Washington,DC,202,US
+20435,Washington,DC,202,US
+20436,Washington,DC,202,US
+20437,Washington,DC,202,US
+20439,Washington,DC,202,US
+20440,Washington,DC,202,US
+20441,Washington,DC,202,US
+20442,Washington,DC,202,US
+20444,Washington,DC,202,US
+20447,Washington,DC,202,US
+20451,Washington,DC,202,US
+20453,Washington,DC,202,US
+20456,Washington,DC,202,US
+20460,Washington,DC,202,US
+20463,Washington,DC,202,US
+20468,Washington,DC,202,US
+20469,Washington,DC,202,US
+20470,Washington,DC,202,US
+20472,Washington,DC,202,US
+20500,Washington,DC,"2,02,301",US
+20501,Washington,DC,202,US
+20502,Washington,DC,202,US
+20503,Washington,DC,202,US
+20504,Washington,DC,202,US
+20505,Washington,DC,202,US
+20506,Washington,DC,202,US
+20507,Washington,DC,202,US
+20508,Washington,DC,202,US
+20509,Washington,DC,202,US
+20510,Washington,DC,202,US
+20511,Washington,DC,202,US
+20515,Washington,DC,202,US
+20520,Washington,DC,202,US
+20521,Washington,DC,202,US
+20522,Washington,DC,202,US
+20523,Washington,DC,202,US
+20524,Washington,DC,202,US
+20525,Washington,DC,202,US
+20526,Washington,DC,202,US
+20527,Washington,DC,202,US
+20528,Washington,DC,202,US
+20529,Washington,DC,202,US
+20530,Washington,DC,202,US
+20531,Washington,DC,202,US
+20532,Washington,DC,202,US
+20533,Washington,DC,202,US
+20534,Washington,DC,202,US
+20535,Washington,DC,202,US
+20536,Washington,DC,202,US
+20537,Washington,DC,202,US
+20538,Washington,DC,202,US
+20539,Washington,DC,202,US
+20540,Washington,DC,202,US
+20541,Washington,DC,202,US
+20542,Washington,DC,202,US
+20543,Washington,DC,202,US
+20544,Washington,DC,202,US
+20546,Washington,DC,202,US
+20547,Washington,DC,202,US
+20548,Washington,DC,202,US
+20549,Washington,DC,202,US
+20551,Washington,DC,202,US
+20552,Washington,DC,202,US
+20553,Washington,DC,202,US
+20554,Washington,DC,202,US
+20555,Washington,DC,202,US
+20557,Washington,DC,202,US
+20558,Washington,DC,202,US
+20559,Washington,DC,202,US
+20560,Washington,DC,202,US
+20565,Washington,DC,202,US
+20566,Washington,DC,202,US
+20570,Washington,DC,202,US
+20571,Washington,DC,202,US
+20572,Washington,DC,202,US
+20573,Washington,DC,202,US
+20575,Washington,DC,202,US
+20576,Washington,DC,202,US
+20577,Washington,DC,202,US
+20578,Washington,DC,202,US
+20579,Washington,DC,202,US
+20580,Washington,DC,202,US
+20581,Washington,DC,202,US
+20585,Washington,DC,202,US
+20586,Washington,DC,202,US
+20588,Dhs,MD,410,US
+20590,Washington,DC,202,US
+20591,Washington,DC,202,US
+20593,Washington,DC,202,US
+20594,Washington,DC,202,US
+20597,Washington,DC,202,US
+20598,Dhs,VA,571,US
+20599,Washington,DC,202,US
+20601,Waldorf,MD,"3,04,301",US
+20602,Waldorf,MD,"3,01,240",US
+20603,Waldorf,MD,"3,01,240",US
+20604,Waldorf,MD,240,US
+20606,Abell,MD,301,US
+20607,Accokeek,MD,301,US
+20608,Aquasco,MD,301,US
+20609,Avenue,MD,301,US
+20610,Barstow,MD,410,US
+20611,Bel Alton,MD,"3,01,240",US
+20612,Benedict,MD,301,US
+20613,Brandywine,MD,"3,01,240",US
+20615,Broomes Island,MD,410,US
+20616,Bryans Road,MD,"3,01,240",US
+20617,Bryantown,MD,301,US
+20618,Bushwood,MD,301,US
+20619,California,MD,"3,01,240",US
+20620,Callaway,MD,"3,01,240",US
+20621,Chaptico,MD,301,US
+20622,Charlotte Hall,MD,301,US
+20623,Cheltenham,MD,"3,01,240",US
+20624,Clements,MD,301,US
+20625,Cobb Island,MD,301,US
+20626,Coltons Point,MD,301,US
+20627,Compton,MD,301,US
+20628,Dameron,MD,301,US
+20629,Dowell,MD,410,US
+20630,Drayden,MD,301,US
+20632,Faulkner,MD,"3,01,240",US
+20634,Great Mills,MD,"3,01,240",US
+20635,Helen,MD,240,US
+20636,Hollywood,MD,301,US
+20637,Hughesville,MD,"3,01,240",US
+20639,Huntingtown,MD,"41,03,01,443",US
+20640,Indian Head,MD,"3,01,240",US
+20643,Ironsides,MD,301,US
+20645,Issue,MD,"20,23,01,240",US
+20646,La Plata,MD,"3,01,240",US
+20650,Leonardtown,MD,"20,23,01,240",US
+20653,Lexington Park,MD,"2,40,301",US
+20656,Loveville,MD,301,US
+20657,Lusby,MD,"4,10,301",US
+20658,Marbury,MD,301,US
+20659,Mechanicsville,MD,"2,40,301",US
+20660,Morganza,MD,240,US
+20661,Mount Victoria,MD,301,US
+20662,Nanjemoy,MD,"3,01,240",US
+20664,Newburg,MD,301,US
+20667,Park Hall,MD,301,US
+20670,Patuxent River,MD,"3,01,240",US
+20674,Piney Point,MD,301,US
+20675,Pomfret,MD,301,US
+20676,Port Republic,MD,"41,03,01,443",US
+20677,Port Tobacco,MD,"2,40,301",US
+20678,Prince Frederick,MD,"24,04,10,301",US
+20680,Ridge,MD,"2,40,301",US
+20682,Rock Point,MD,240,US
+20684,Saint Inigoes,MD,301,US
+20685,Saint Leonard,MD,"4,10,301",US
+20686,Saint Marys City,MD,301,US
+20687,Scotland,MD,301,US
+20688,Solomons,MD,"4,10,443",US
+20689,Sunderland,MD,"4,10,301",US
+20690,Tall Timbers,MD,301,US
+20692,Valley Lee,MD,301,US
+20693,Welcome,MD,301,US
+20695,White Plains,MD,301,US
+20697,Southern Md Facility,MD,240,US
+20701,Annapolis Junction,MD,"30,14,10,443",US
+20703,Lanham,MD,301,US
+20704,Beltsville,MD,240,US
+20705,Beltsville,MD,"30,12,02,410",US
+20706,Lanham,MD,"30,14,10,240",US
+20707,Laurel,MD,"24,03,01,410",US
+20708,Laurel,MD,"3,01,24,04,10,443",US
+20709,Laurel,MD,"30,12,02,410",US
+20710,Bladensburg,MD,301,US
+20711,Lothian,MD,"41,03,01,240",US
+20712,Mount Rainier,MD,"24,03,01,202",US
+20714,North Beach,MD,"30,14,10,443",US
+20715,Bowie,MD,"3,01,410",US
+20716,Bowie,MD,"3,01,410",US
+20717,Bowie,MD,301,US
+20718,Bowie,MD,301,US
+20719,Bowie,MD,240,US
+20720,Bowie,MD,"30,14,10,240",US
+20721,Bowie,MD,"3,01,20,22,40,410",US
+20722,Brentwood,MD,"3,01,240",US
+20723,Laurel,MD,"2,40,30,14,10,443",US
+20724,Laurel,MD,"3,01,24,04,10,443",US
+20725,Laurel,MD,410,US
+20726,Laurel,MD,240,US
+20731,Capitol Heights,MD,240,US
+20732,Chesapeake Beach,MD,"4,10,301",US
+20733,Churchton,MD,"4,10,301",US
+20735,Clinton,MD,"24,03,01,410",US
+20736,Owings,MD,"44,33,01,410",US
+20737,Riverdale,MD,"30,12,02,240",US
+20738,Riverdale,MD,240,US
+20740,College Park,MD,"3,01,24,07,03,202",US
+20741,College Park,MD,301,US
+20742,College Park,MD,301,US
+20743,Capitol Heights,MD,"2,02,301",US
+20744,Fort Washington,MD,"3,01,240",US
+20745,Oxon Hill,MD,"3,01,240",US
+20746,Suitland,MD,"3,01,240",US
+20747,District Heights,MD,"2,40,301",US
+20748,Temple Hills,MD,"30,12,02,240",US
+20749,Fort Washington,MD,240,US
+20750,Oxon Hill,MD,301,US
+20751,Deale,MD,"3,01,410",US
+20752,Suitland,MD,240,US
+20753,District Heights,MD,301,US
+20754,Dunkirk,MD,"3,01,410",US
+20755,Fort George G Meade,MD,"3,01,410",US
+20757,Temple Hills,MD,240,US
+20758,Friendship,MD,"4,10,301",US
+20759,Fulton,MD,"4,10,301",US
+20762,Andrews Air Force Base,MD,"2,40,301",US
+20763,Savage,MD,"3,01,41,02,40,443",US
+20764,Shady Side,MD,"30,14,10,240",US
+20765,Galesville,MD,"4,10,301",US
+20768,Greenbelt,MD,240,US
+20769,Glenn Dale,MD,"3,01,410",US
+20770,Greenbelt,MD,"30,12,40,410",US
+20771,Greenbelt,MD,301,US
+20772,Upper Marlboro,MD,"30,12,02,410",US
+20773,Upper Marlboro,MD,240,US
+20774,Upper Marlboro,MD,"2,02,24,03,01,410",US
+20775,Upper Marlboro,MD,301,US
+20776,Harwood,MD,"4,10,301",US
+20777,Highland,MD,"3,01,410",US
+20778,West River,MD,"41,03,01,443",US
+20779,Tracys Landing,MD,"4,10,301",US
+20781,Hyattsville,MD,"2,40,301",US
+20782,Hyattsville,MD,"2,40,30,14,10,202",US
+20783,Hyattsville,MD,"24,04,10,30,12,02,443",US
+20784,Hyattsville,MD,301,US
+20785,Hyattsville,MD,"2,40,301",US
+20787,Hyattsville,MD,240,US
+20788,Hyattsville,MD,240,US
+20790,Capitol Heights,MD,240,US
+20791,Capitol Heights,MD,240,US
+20792,Upper Marlboro,MD,240,US
+20794,Jessup,MD,"3,01,41,04,43,240",US
+20797,Southern Md Facility,MD,240,US
+20799,Capitol Heights,MD,240,US
+20810,Bethesda,MD,240,US
+20811,Bethesda,MD,240,US
+20812,Glen Echo,MD,301,US
+20813,Bethesda,MD,"2,40,301",US
+20814,Bethesda,MD,"20,22,40,301",US
+20815,Chevy Chase,MD,"2,40,301",US
+20816,Bethesda,MD,"30,12,02,240",US
+20817,Bethesda,MD,"30,12,40,202",US
+20818,Cabin John,MD,301,US
+20824,Bethesda,MD,240,US
+20825,Chevy Chase,MD,240,US
+20827,Bethesda,MD,240,US
+20830,Olney,MD,301,US
+20832,Olney,MD,301,US
+20833,Brookeville,MD,301,US
+20837,Poolesville,MD,"3,01,240",US
+20838,Barnesville,MD,301,US
+20839,Beallsville,MD,301,US
+20841,Boyds,MD,301,US
+20842,Dickerson,MD,301,US
+20847,Rockville,MD,240,US
+20848,Rockville,MD,240,US
+20849,Rockville,MD,240,US
+20850,Rockville,MD,"2,40,30,14,10,202",US
+20851,Rockville,MD,"3,01,240",US
+20852,Rockville,MD,"24,03,01,703",US
+20853,Rockville,MD,"3,01,240",US
+20854,Potomac,MD,"2,40,301",US
+20855,Derwood,MD,"3,01,240",US
+20857,Rockville,MD,301,US
+20859,Potomac,MD,301,US
+20860,Sandy Spring,MD,"3,01,240",US
+20861,Ashton,MD,"3,01,240",US
+20862,Brinklow,MD,301,US
+20866,Burtonsville,MD,301,US
+20868,Spencerville,MD,301,US
+20871,Clarksburg,MD,"3,01,240",US
+20872,Damascus,MD,"3,01,240",US
+20874,Germantown,MD,"2,40,301",US
+20875,Germantown,MD,301,US
+20876,Germantown,MD,301,US
+20877,Gaithersburg,MD,"30,12,40,202",US
+20878,Gaithersburg,MD,"30,12,40,202",US
+20879,Gaithersburg,MD,"3,01,240",US
+20880,Washington Grove,MD,301,US
+20882,Gaithersburg,MD,"2,40,301",US
+20883,Gaithersburg,MD,240,US
+20884,Gaithersburg,MD,240,US
+20885,Gaithersburg,MD,"2,02,240",US
+20886,Montgomery Village,MD,"2,40,301",US
+20889,Bethesda,MD,"3,01,202",US
+20891,Kensington,MD,240,US
+20892,Bethesda,MD,301,US
+20894,Bethesda,MD,240,US
+20895,Kensington,MD,"2,40,301",US
+20896,Garrett Park,MD,301,US
+20897,Suburb Maryland Fac,MD,240,US
+20898,Gaithersburg,MD,240,US
+20899,Gaithersburg,MD,240,US
+20901,Silver Spring,MD,"30,12,40,410",US
+20902,Silver Spring,MD,"30,12,40,410",US
+20903,Silver Spring,MD,"4,10,301",US
+20904,Silver Spring,MD,"20,22,40,30,17,03,410",US
+20905,Silver Spring,MD,"30,12,02,410",US
+20906,Silver Spring,MD,"24,03,01,410",US
+20907,Silver Spring,MD,301,US
+20908,Silver Spring,MD,240,US
+20910,Silver Spring,MD,"24,03,01,202",US
+20911,Silver Spring,MD,240,US
+20912,Takoma Park,MD,"3,01,240",US
+20913,Takoma Park,MD,240,US
+20914,Silver Spring,MD,240,US
+20915,Silver Spring,MD,240,US
+20916,Silver Spring,MD,240,US
+20918,Silver Spring,MD,240,US
+20993,Silver Spring,MD,240,US
+20997,Silver Spring,MD,240,US
+21001,Aberdeen,MD,"4,43,410",US
+21005,Aberdeen Proving Ground,MD,"41,02,02,443",US
+21009,Abingdon,MD,"4,43,410",US
+21010,Gunpowder,MD,410,US
+21012,Arnold,MD,"4,10,301",US
+21013,Baldwin,MD,410,US
+21014,Bel Air,MD,"4,10,443",US
+21015,Bel Air,MD,"4,10,443",US
+21017,Belcamp,MD,410,US
+21018,Benson,MD,410,US
+21020,Boring,MD,410,US
+21022,Brooklandville,MD,410,US
+21023,Butler,MD,410,US
+21027,Chase,MD,410,US
+21028,Churchville,MD,"4,10,443",US
+21029,Clarksville,MD,"30,14,43,410",US
+21030,Cockeysville,MD,"4,10,443",US
+21031,Hunt Valley,MD,"4,10,443",US
+21032,Crownsville,MD,"41,04,43,301",US
+21034,Darlington,MD,"4,43,410",US
+21035,Davidsonville,MD,"30,14,10,443",US
+21036,Dayton,MD,"41,04,43,301",US
+21037,Edgewater,MD,"41,04,43,301",US
+21040,Edgewood,MD,"4,10,443",US
+21041,Ellicott City,MD,410,US
+21042,Ellicott City,MD,"41,04,43,301",US
+21043,Ellicott City,MD,"2,02,41,04,43,301",US
+21044,Columbia,MD,"41,04,43,301",US
+21045,Columbia,MD,"3,01,41,04,43,240",US
+21046,Columbia,MD,"4,10,44,33,01,240",US
+21047,Fallston,MD,"4,10,443",US
+21048,Finksburg,MD,"4,10,443",US
+21050,Forest Hill,MD,"4,10,443",US
+21051,Fork,MD,"4,10,443",US
+21052,Fort Howard,MD,410,US
+21053,Freeland,MD,410,US
+21054,Gambrills,MD,"3,01,410",US
+21056,Gibson Island,MD,410,US
+21057,Glen Arm,MD,410,US
+21060,Glen Burnie,MD,"41,04,43,301",US
+21061,Glen Burnie,MD,"41,04,43,301",US
+21062,Glen Burnie,MD,410,US
+21065,Hunt Valley,MD,410,US
+21071,Glyndon,MD,"4,10,443",US
+21074,Hampstead,MD,"4,10,443",US
+21075,Elkridge,MD,"4,10,44,33,01,240",US
+21076,Hanover,MD,"4,10,443",US
+21077,Harmans,MD,410,US
+21078,Havre De Grace,MD,"4,43,410",US
+21082,Hydes,MD,410,US
+21084,Jarrettsville,MD,"4,10,443",US
+21085,Joppa,MD,"4,10,443",US
+21087,Kingsville,MD,"4,43,410",US
+21088,Lineboro,MD,410,US
+21090,Linthicum Heights,MD,"41,02,02,443",US
+21092,Long Green,MD,410,US
+21093,Lutherville Timonium,MD,"4,10,443",US
+21094,Lutherville Timonium,MD,410,US
+21098,Hanover,MD,410,US
+21102,Manchester,MD,"4,43,410",US
+21104,Marriottsville,MD,"4,43,410",US
+21105,Maryland Line,MD,410,US
+21106,Mayo,MD,410,US
+21108,Millersville,MD,"30,14,10,443",US
+21111,Monkton,MD,"3,01,410",US
+21113,Odenton,MD,"4,10,30,14,43,240",US
+21114,Crofton,MD,"4,10,44,33,01,240",US
+21117,Owings Mills,MD,"4,10,443",US
+21120,Parkton,MD,"4,10,443",US
+21122,Pasadena,MD,"41,04,43,202",US
+21123,Pasadena,MD,410,US
+21128,Perry Hall,MD,"4,43,410",US
+21130,Perryman,MD,410,US
+21131,Phoenix,MD,"2,02,410",US
+21132,Pylesville,MD,410,US
+21133,Randallstown,MD,"4,10,443",US
+21136,Reisterstown,MD,"4,10,443",US
+21139,Riderwood,MD,410,US
+21140,Riva,MD,"4,10,301",US
+21144,Severn,MD,"44,34,10,301",US
+21146,Severna Park,MD,"4,10,443",US
+21150,Simpsonville,MD,410,US
+21152,Sparks Glencoe,MD,"4,10,443",US
+21153,Stevenson,MD,410,US
+21154,Street,MD,410,US
+21155,Upperco,MD,410,US
+21156,Upper Falls,MD,410,US
+21157,Westminster,MD,410,US
+21158,Westminster,MD,"4,10,443",US
+21160,Whiteford,MD,"4,43,410",US
+21161,White Hall,MD,410,US
+21162,White Marsh,MD,"4,10,443",US
+21163,Woodstock,MD,410,US
+21201,Baltimore,MD,"41,04,43,301",US
+21202,Baltimore,MD,"30,14,10,443",US
+21203,Baltimore,MD,"41,04,43,301",US
+21204,Towson,MD,"30,14,10,443",US
+21205,Baltimore,MD,"4,10,443",US
+21206,Baltimore,MD,"4,10,443",US
+21207,Gwynn Oak,MD,"4,10,443",US
+21208,Pikesville,MD,"4,10,443",US
+21209,Baltimore,MD,410,US
+21210,Baltimore,MD,"4,10,443",US
+21211,Baltimore,MD,"4,10,443",US
+21212,Baltimore,MD,"4,10,443",US
+21213,Baltimore,MD,"30,14,10,202",US
+21214,Baltimore,MD,410,US
+21215,Baltimore,MD,"4,10,443",US
+21216,Baltimore,MD,410,US
+21217,Baltimore,MD,410,US
+21218,Baltimore,MD,"41,02,02,443",US
+21219,Sparrows Point,MD,"4,10,443",US
+21220,Middle River,MD,"4,43,410",US
+21221,Essex,MD,"4,10,443",US
+21222,Dundalk,MD,"4,43,410",US
+21223,Baltimore,MD,410,US
+21224,Baltimore,MD,410,US
+21225,Brooklyn,MD,"4,43,410",US
+21226,Curtis Bay,MD,"4,10,443",US
+21227,Halethorpe,MD,"41,04,43,240",US
+21228,Catonsville,MD,"4,10,44,32,02,301",US
+21229,Baltimore,MD,"4,10,443",US
+21230,Baltimore,MD,"4,10,301",US
+21231,Baltimore,MD,"4,10,443",US
+21233,Baltimore,MD,"4,10,443",US
+21234,Parkville,MD,"4,10,443",US
+21235,Baltimore,MD,410,US
+21236,Nottingham,MD,"4,10,443",US
+21237,Rosedale,MD,"4,43,410",US
+21239,Baltimore,MD,"4,10,443",US
+21240,Baltimore,MD,410,US
+21241,Baltimore,MD,410,US
+21244,Windsor Mill,MD,"41,04,43,301",US
+21250,Baltimore,MD,410,US
+21251,Baltimore,MD,443,US
+21252,Towson,MD,410,US
+21260,Baltimore,MD,410,US
+21261,Baltimore,MD,410,US
+21263,Baltimore,MD,410,US
+21264,Baltimore,MD,410,US
+21265,Baltimore,MD,410,US
+21268,Baltimore,MD,410,US
+21270,Baltimore,MD,410,US
+21273,Baltimore,MD,410,US
+21274,Baltimore,MD,410,US
+21275,Baltimore,MD,410,US
+21278,Baltimore,MD,410,US
+21279,Baltimore,MD,410,US
+21280,Baltimore,MD,410,US
+21281,Baltimore,MD,410,US
+21282,Baltimore,MD,410,US
+21283,Baltimore,MD,410,US
+21284,Baltimore,MD,410,US
+21285,Baltimore,MD,410,US
+21286,Towson,MD,"4,10,443",US
+21287,Baltimore,MD,410,US
+21288,Baltimore,MD,410,US
+21289,Baltimore,MD,410,US
+21290,Baltimore,MD,410,US
+21297,Baltimore,MD,410,US
+21298,Baltimore,MD,410,US
+21401,Annapolis,MD,"41,03,01,44,32,02,703",US
+21402,Annapolis,MD,"4,10,443",US
+21403,Annapolis,MD,"41,04,43,70,32,40,301",US
+21404,Annapolis,MD,410,US
+21405,Annapolis,MD,"41,03,01,443",US
+21409,Annapolis,MD,410,US
+21411,Annapolis,MD,410,US
+21412,Annapolis,MD,410,US
+21501,Cumberland,MD,240,US
+21502,Cumberland,MD,"3,01,240",US
+21503,Cumberland,MD,301,US
+21504,Cumberland,MD,240,US
+21505,Cumberland,MD,240,US
+21520,Accident,MD,301,US
+21521,Barton,MD,301,US
+21522,Bittinger,MD,301,US
+21523,Bloomington,MD,301,US
+21524,Corriganville,MD,301,US
+21528,Eckhart Mines,MD,301,US
+21529,Ellerslie,MD,301,US
+21530,Flintstone,MD,301,US
+21531,Friendsville,MD,301,US
+21532,Frostburg,MD,"3,01,240",US
+21536,Grantsville,MD,"3,01,240",US
+21538,Kitzmiller,MD,301,US
+21539,Lonaconing,MD,301,US
+21540,Luke,MD,301,US
+21541,Mc Henry,MD,301,US
+21542,Midland,MD,301,US
+21543,Midlothian,MD,301,US
+21545,Mount Savage,MD,301,US
+21550,Oakland,MD,"3,01,240",US
+21555,Oldtown,MD,301,US
+21556,Pinto,MD,240,US
+21557,Rawlings,MD,"3,01,240",US
+21560,Spring Gap,MD,240,US
+21561,Swanton,MD,301,US
+21562,Westernport,MD,"3,01,240",US
+21601,Easton,MD,"4,10,443",US
+21606,Easton,MD,410,US
+21607,Barclay,MD,410,US
+21609,Bethlehem,MD,410,US
+21610,Betterton,MD,410,US
+21612,Bozman,MD,410,US
+21613,Cambridge,MD,"4,10,443",US
+21617,Centreville,MD,"4,43,410",US
+21619,Chester,MD,410,US
+21620,Chestertown,MD,"4,10,443",US
+21622,Church Creek,MD,410,US
+21623,Church Hill,MD,410,US
+21624,Claiborne,MD,410,US
+21625,Cordova,MD,410,US
+21626,Crapo,MD,410,US
+21627,Crocheron,MD,410,US
+21628,Crumpton,MD,410,US
+21629,Denton,MD,"4,10,443",US
+21631,East New Market,MD,410,US
+21632,Federalsburg,MD,"4,10,443",US
+21634,Fishing Creek,MD,410,US
+21635,Galena,MD,410,US
+21636,Goldsboro,MD,410,US
+21638,Grasonville,MD,410,US
+21639,Greensboro,MD,410,US
+21640,Henderson,MD,410,US
+21641,Hillsboro,MD,410,US
+21643,Hurlock,MD,410,US
+21644,Ingleside,MD,410,US
+21645,Kennedyville,MD,410,US
+21647,Mcdaniel,MD,410,US
+21648,Madison,MD,410,US
+21649,Marydel,MD,410,US
+21650,Massey,MD,410,US
+21651,Millington,MD,410,US
+21652,Neavitt,MD,410,US
+21653,Newcomb,MD,410,US
+21654,Oxford,MD,410,US
+21655,Preston,MD,410,US
+21656,Price,MD,410,US
+21657,Queen Anne,MD,"4,10,443",US
+21658,Queenstown,MD,"4,10,443",US
+21659,Rhodesdale,MD,"4,10,443",US
+21660,Ridgely,MD,410,US
+21661,Rock Hall,MD,410,US
+21662,Royal Oak,MD,410,US
+21663,Saint Michaels,MD,410,US
+21664,Secretary,MD,410,US
+21665,Sherwood,MD,410,US
+21666,Stevensville,MD,"4,43,410",US
+21667,Still Pond,MD,410,US
+21668,Sudlersville,MD,410,US
+21669,Taylors Island,MD,410,US
+21670,Templeville,MD,410,US
+21671,Tilghman,MD,410,US
+21672,Toddville,MD,410,US
+21673,Trappe,MD,"4,10,443",US
+21675,Wingate,MD,410,US
+21676,Wittman,MD,410,US
+21677,Woolford,MD,410,US
+21678,Worton,MD,410,US
+21679,Wye Mills,MD,"4,43,410",US
+21681,Ridgely,MD,410,US
+21682,Ridgely,MD,410,US
+21683,Ridgely,MD,410,US
+21684,Ridgely,MD,410,US
+21685,Ridgely,MD,410,US
+21686,Ridgely,MD,410,US
+21687,Ridgely,MD,410,US
+21688,Ridgely,MD,410,US
+21690,Chestertown,MD,410,US
+21701,Frederick,MD,"30,14,10,240",US
+21702,Frederick,MD,"3,01,240",US
+21703,Frederick,MD,"2,40,301",US
+21704,Frederick,MD,"2,40,301",US
+21705,Frederick,MD,240,US
+21709,Frederick,MD,240,US
+21710,Adamstown,MD,301,US
+21711,Big Pool,MD,301,US
+21713,Boonsboro,MD,301,US
+21714,Braddock Heights,MD,240,US
+21715,Brownsville,MD,240,US
+21716,Brunswick,MD,"3,01,240",US
+21717,Buckeystown,MD,301,US
+21718,Burkittsville,MD,240,US
+21719,Cascade,MD,"3,01,240",US
+21720,Cavetown,MD,240,US
+21721,Chewsville,MD,240,US
+21722,Clear Spring,MD,301,US
+21723,Cooksville,MD,410,US
+21727,Emmitsburg,MD,"3,01,240",US
+21733,Fairplay,MD,301,US
+21734,Funkstown,MD,240,US
+21737,Glenelg,MD,"3,01,410",US
+21738,Glenwood,MD,"44,34,10,301",US
+21740,Hagerstown,MD,"2,40,301",US
+21741,Hagerstown,MD,240,US
+21742,Hagerstown,MD,"3,01,240",US
+21746,Hagerstown,MD,240,US
+21747,Hagerstown,MD,240,US
+21748,Hagerstown,MD,240,US
+21749,Hagerstown,MD,240,US
+21750,Hancock,MD,"3,01,240",US
+21754,Ijamsville,MD,"3,01,240",US
+21755,Jefferson,MD,301,US
+21756,Keedysville,MD,301,US
+21757,Keymar,MD,"4,10,301",US
+21758,Knoxville,MD,301,US
+21759,Ladiesburg,MD,240,US
+21762,Libertytown,MD,"3,01,240",US
+21765,Lisbon,MD,410,US
+21766,Little Orleans,MD,301,US
+21767,Maugansville,MD,301,US
+21769,Middletown,MD,"3,01,240",US
+21770,Monrovia,MD,"3,01,240",US
+21771,Mount Airy,MD,"3,01,44,34,10,240",US
+21773,Myersville,MD,"30,43,01,240",US
+21774,New Market,MD,"3,01,240",US
+21775,New Midway,MD,240,US
+21776,New Windsor,MD,"4,10,443",US
+21777,Point Of Rocks,MD,301,US
+21778,Rocky Ridge,MD,301,US
+21779,Rohrersville,MD,301,US
+21780,Sabillasville,MD,"3,01,240",US
+21781,Saint James,MD,240,US
+21782,Sharpsburg,MD,301,US
+21783,Smithsburg,MD,"3,01,240",US
+21784,Sykesville,MD,"41,03,01,443",US
+21787,Taneytown,MD,"41,03,01,443",US
+21788,Thurmont,MD,"3,01,240",US
+21790,Tuscarora,MD,301,US
+21791,Union Bridge,MD,"41,04,43,301",US
+21792,Unionville,MD,240,US
+21793,Walkersville,MD,"3,01,240",US
+21794,West Friendship,MD,"41,04,43,301",US
+21795,Williamsport,MD,"3,01,240",US
+21797,Woodbine,MD,"4,10,301",US
+21798,Woodsboro,MD,"30,12,40,410",US
+21801,Salisbury,MD,"41,03,02,443",US
+21802,Salisbury,MD,410,US
+21803,Salisbury,MD,410,US
+21804,Salisbury,MD,"41,04,43,302",US
+21810,Allen,MD,410,US
+21811,Berlin,MD,"4,43,410",US
+21813,Bishopville,MD,"4,10,443",US
+21814,Bivalve,MD,410,US
+21817,Crisfield,MD,"4,43,410",US
+21821,Deal Island,MD,410,US
+21822,Eden,MD,"4,10,443",US
+21824,Ewell,MD,410,US
+21826,Fruitland,MD,"4,10,443",US
+21829,Girdletree,MD,410,US
+21830,Hebron,MD,"4,10,443",US
+21835,Linkwood,MD,"4,10,443",US
+21836,Manokin,MD,410,US
+21837,Mardela Springs,MD,"4,10,443",US
+21838,Marion Station,MD,410,US
+21840,Nanticoke,MD,"4,10,443",US
+21841,Newark,MD,410,US
+21842,Ocean City,MD,"30,24,10,443",US
+21843,Ocean City,MD,410,US
+21849,Parsonsburg,MD,"4,43,410",US
+21850,Pittsville,MD,410,US
+21851,Pocomoke City,MD,"4,10,443",US
+21852,Powellville,MD,410,US
+21853,Princess Anne,MD,"4,10,443",US
+21856,Quantico,MD,410,US
+21857,Rehobeth,MD,410,US
+21861,Sharptown,MD,410,US
+21862,Showell,MD,410,US
+21863,Snow Hill,MD,"4,10,443",US
+21864,Stockton,MD,410,US
+21865,Tyaskin,MD,410,US
+21866,Tylerton,MD,410,US
+21867,Upper Fairmount,MD,410,US
+21869,Vienna,MD,410,US
+21871,Westover,MD,410,US
+21872,Whaleyville,MD,410,US
+21874,Willards,MD,"4,10,443",US
+21875,Delmar,MD,"4,10,443",US
+21890,Westover,MD,410,US
+21901,North East,MD,"4,10,443",US
+21902,Perry Point,MD,410,US
+21903,Perryville,MD,"4,10,443",US
+21904,Port Deposit,MD,"4,10,443",US
+21911,Rising Sun,MD,410,US
+21912,Warwick,MD,410,US
+21913,Cecilton,MD,410,US
+21914,Charlestown,MD,"4,43,410",US
+21915,Chesapeake City,MD,"4,10,443",US
+21916,Childs,MD,410,US
+21917,Colora,MD,410,US
+21918,Conowingo,MD,410,US
+21919,Earleville,MD,410,US
+21920,Elk Mills,MD,410,US
+21921,Elkton,MD,"4,43,410",US
+21922,Elkton,MD,410,US
+21930,Georgetown,MD,410,US
+22003,Annandale,VA,"70,35,71,202",US
+22009,Burke,VA,703,US
+22015,Burke,VA,703,US
+22025,Dumfries,VA,571,US
+22026,Dumfries,VA,"5,40,703",US
+22027,Dunn Loring,VA,"7,03,571",US
+22030,Fairfax,VA,"7,03,571",US
+22031,Fairfax,VA,"20,25,71,703",US
+22032,Fairfax,VA,703,US
+22033,Fairfax,VA,"5,71,703",US
+22034,Fairfax,VA,571,US
+22035,Fairfax,VA,"2,02,703",US
+22036,Fairfax,VA,571,US
+22037,Fairfax,VA,571,US
+22038,Fairfax,VA,703,US
+22039,Fairfax Station,VA,703,US
+22040,Falls Church,VA,571,US
+22041,Falls Church,VA,703,US
+22042,Falls Church,VA,"2,02,703",US
+22043,Falls Church,VA,"7,03,571",US
+22044,Falls Church,VA,"2,02,703",US
+22046,Falls Church,VA,"7,03,571",US
+22047,Falls Church,VA,571,US
+22060,Fort Belvoir,VA,703,US
+22066,Great Falls,VA,"7,03,571",US
+22067,Greenway,VA,571,US
+22079,Lorton,VA,703,US
+22081,Merrifield,VA,571,US
+22082,Merrifield,VA,571,US
+22092,Herndon,VA,571,US
+22093,Ashburn,VA,571,US
+22095,Herndon,VA,571,US
+22096,Reston,VA,571,US
+22101,Mc Lean,VA,"20,27,03,571",US
+22102,Mc Lean,VA,"5,40,70,35,71,202",US
+22103,West Mclean,VA,571,US
+22106,Mc Lean,VA,571,US
+22107,Mc Lean,VA,571,US
+22108,Mc Lean,VA,571,US
+22109,Mc Lean,VA,571,US
+22116,Merrifield,VA,703,US
+22118,Merrifield,VA,571,US
+22119,Merrifield,VA,571,US
+22120,Merrifield,VA,571,US
+22121,Mount Vernon,VA,703,US
+22122,Newington,VA,571,US
+22124,Oakton,VA,"20,27,03,571",US
+22125,Occoquan,VA,703,US
+22134,Quantico,VA,703,US
+22135,Quantico,VA,703,US
+22150,Springfield,VA,"2,02,703",US
+22151,Springfield,VA,"7,03,202",US
+22152,Springfield,VA,"7,03,571",US
+22153,Springfield,VA,"7,03,571",US
+22156,Springfield,VA,571,US
+22158,Springfield,VA,571,US
+22159,Springfield,VA,571,US
+22160,Springfield,VA,571,US
+22161,Springfield,VA,703,US
+22172,Triangle,VA,"7,03,571",US
+22180,Vienna,VA,"70,32,02,571",US
+22181,Vienna,VA,"5,71,703",US
+22182,Vienna,VA,"70,32,02,571",US
+22183,Vienna,VA,703,US
+22184,Vienna,VA,571,US
+22185,Vienna,VA,571,US
+22191,Woodbridge,VA,703,US
+22192,Woodbridge,VA,703,US
+22193,Woodbridge,VA,"7,03,571",US
+22194,Woodbridge,VA,703,US
+22195,Woodbridge,VA,571,US
+22199,Lorton,VA,571,US
+22201,Arlington,VA,"20,27,03,571",US
+22202,Arlington,VA,"7,03,202",US
+22203,Arlington,VA,"20,27,03,571",US
+22204,Arlington,VA,703,US
+22205,Arlington,VA,"7,03,571",US
+22206,Arlington,VA,"7,03,202",US
+22207,Arlington,VA,"2,02,703",US
+22209,Arlington,VA,"70,32,02,571",US
+22210,Arlington,VA,571,US
+22211,Fort Myer,VA,"7,03,571",US
+22212,Arlington,VA,571,US
+22213,Arlington,VA,"7,03,571",US
+22214,Arlington,VA,"7,03,571",US
+22215,Arlington,VA,571,US
+22216,Arlington,VA,571,US
+22217,Arlington,VA,571,US
+22218,Arlington,VA,571,US
+22219,Arlington,VA,571,US
+22222,Arlington,VA,571,US
+22223,Arlington,VA,571,US
+22225,Arlington,VA,571,US
+22226,Arlington,VA,571,US
+22227,Arlington,VA,703,US
+22229,Arlington,VA,571,US
+22230,Arlington,VA,703,US
+22234,Arlington,VA,571,US
+22240,Arlington,VA,571,US
+22241,Arlington,VA,571,US
+22242,Arlington,VA,571,US
+22243,Arlington,VA,571,US
+22244,Arlington,VA,571,US
+22245,Arlington,VA,571,US
+22246,Arlington,VA,571,US
+22301,Alexandria,VA,"7,03,202",US
+22302,Alexandria,VA,"20,27,03,301",US
+22303,Alexandria,VA,"2,02,703",US
+22304,Alexandria,VA,"2,02,703",US
+22305,Alexandria,VA,703,US
+22306,Alexandria,VA,703,US
+22307,Alexandria,VA,703,US
+22308,Alexandria,VA,703,US
+22309,Alexandria,VA,"2,02,703",US
+22310,Alexandria,VA,703,US
+22311,Alexandria,VA,703,US
+22312,Alexandria,VA,"7,03,202",US
+22313,Alexandria,VA,571,US
+22314,Alexandria,VA,"20,27,03,571",US
+22315,Alexandria,VA,703,US
+22320,Alexandria,VA,571,US
+22321,Alexandria,VA,571,US
+22331,Alexandria,VA,703,US
+22332,Alexandria,VA,703,US
+22333,Alexandria,VA,571,US
+22334,Alexandria,VA,571,US
+22336,Alexandria,VA,571,US
+22350,Alexandria,VA,,US
+22401,Fredericksburg,VA,540,US
+22402,Fredericksburg,VA,540,US
+22403,Fredericksburg,VA,540,US
+22404,Fredericksburg,VA,540,US
+22405,Fredericksburg,VA,540,US
+22406,Fredericksburg,VA,540,US
+22407,Fredericksburg,VA,540,US
+22408,Fredericksburg,VA,"5,40,804",US
+22412,Fredericksburg,VA,540,US
+22427,Bowling Green,VA,804,US
+22428,Bowling Green,VA,804,US
+22430,Brooke,VA,540,US
+22432,Burgess,VA,804,US
+22433,Burr Hill,VA,540,US
+22435,Callao,VA,804,US
+22436,Caret,VA,804,US
+22437,Center Cross,VA,804,US
+22438,Champlain,VA,804,US
+22442,Coles Point,VA,804,US
+22443,Colonial Beach,VA,804,US
+22446,Corbin,VA,804,US
+22448,Dahlgren,VA,540,US
+22451,Dogue,VA,540,US
+22454,Dunnsville,VA,804,US
+22456,Edwardsville,VA,804,US
+22460,Farnham,VA,804,US
+22463,Garrisonville,VA,540,US
+22469,Hague,VA,804,US
+22471,Hartwood,VA,540,US
+22472,Haynesville,VA,804,US
+22473,Heathsville,VA,804,US
+22476,Hustle,VA,804,US
+22480,Irvington,VA,804,US
+22481,Jersey,VA,540,US
+22482,Kilmarnock,VA,804,US
+22485,King George,VA,540,US
+22488,Kinsale,VA,804,US
+22501,Ladysmith,VA,804,US
+22503,Lancaster,VA,804,US
+22504,Laneview,VA,804,US
+22507,Lively,VA,804,US
+22508,Locust Grove,VA,540,US
+22509,Loretto,VA,804,US
+22511,Lottsburg,VA,804,US
+22513,Merry Point,VA,804,US
+22514,Milford,VA,804,US
+22517,Mollusk,VA,804,US
+22520,Montross,VA,804,US
+22523,Morattico,VA,804,US
+22524,Mount Holly,VA,804,US
+22526,Ninde,VA,540,US
+22528,Nuttsville,VA,804,US
+22529,Oldhams,VA,804,US
+22530,Ophelia,VA,804,US
+22534,Partlow,VA,"5,40,804",US
+22535,Port Royal,VA,804,US
+22538,Rappahannock Academy,VA,804,US
+22539,Reedville,VA,804,US
+22542,Rhoadesville,VA,540,US
+22544,Rollins Fork,VA,540,US
+22545,Ruby,VA,540,US
+22546,Ruther Glen,VA,804,US
+22547,Sealston,VA,540,US
+22548,Sharps,VA,804,US
+22551,Spotsylvania,VA,540,US
+22552,Sparta,VA,804,US
+22553,Spotsylvania,VA,540,US
+22554,Stafford,VA,"54,07,03,202",US
+22555,Stafford,VA,"5,40,703",US
+22556,Stafford,VA,540,US
+22558,Stratford,VA,804,US
+22560,Tappahannock,VA,804,US
+22565,Thornburg,VA,540,US
+22567,Unionville,VA,540,US
+22570,Village,VA,,US
+22572,Warsaw,VA,804,US
+22576,Weems,VA,804,US
+22577,Sandy Point,VA,804,US
+22578,White Stone,VA,804,US
+22579,Wicomico Church,VA,804,US
+22580,Woodford,VA,"8,04,540",US
+22581,Zacata,VA,804,US
+22601,Winchester,VA,540,US
+22602,Winchester,VA,540,US
+22603,Winchester,VA,"5,40,703",US
+22604,Winchester,VA,540,US
+22610,Bentonville,VA,540,US
+22611,Berryville,VA,540,US
+22620,Boyce,VA,540,US
+22622,Brucetown,VA,540,US
+22623,Chester Gap,VA,540,US
+22624,Clear Brook,VA,540,US
+22625,Cross Junction,VA,540,US
+22626,Fishers Hill,VA,540,US
+22627,Flint Hill,VA,540,US
+22630,Front Royal,VA,"5,40,703",US
+22637,Gore,VA,540,US
+22639,Hume,VA,540,US
+22640,Huntly,VA,540,US
+22641,Strasburg,VA,540,US
+22642,Linden,VA,540,US
+22643,Markham,VA,540,US
+22644,Maurertown,VA,540,US
+22645,Middletown,VA,540,US
+22646,Millwood,VA,540,US
+22649,Middletown,VA,540,US
+22650,Rileyville,VA,540,US
+22652,Fort Valley,VA,540,US
+22654,Star Tannery,VA,540,US
+22655,Stephens City,VA,540,US
+22656,Stephenson,VA,540,US
+22657,Strasburg,VA,540,US
+22660,Toms Brook,VA,540,US
+22663,White Post,VA,540,US
+22664,Woodstock,VA,540,US
+22701,Culpeper,VA,"5,40,202",US
+22709,Aroda,VA,540,US
+22711,Banco,VA,540,US
+22712,Bealeton,VA,"8,04,540",US
+22713,Boston,VA,540,US
+22714,Brandy Station,VA,540,US
+22715,Brightwood,VA,540,US
+22716,Castleton,VA,540,US
+22718,Elkwood,VA,540,US
+22719,Etlan,VA,540,US
+22720,Goldvein,VA,540,US
+22721,Graves Mill,VA,540,US
+22722,Haywood,VA,540,US
+22723,Hood,VA,540,US
+22724,Jeffersonton,VA,540,US
+22725,Leon,VA,540,US
+22726,Lignum,VA,540,US
+22727,Madison,VA,"5,40,434",US
+22728,Midland,VA,540,US
+22729,Mitchells,VA,540,US
+22730,Oakpark,VA,540,US
+22731,Pratts,VA,540,US
+22732,Radiant,VA,540,US
+22733,Rapidan,VA,540,US
+22734,Remington,VA,"7,03,540",US
+22735,Reva,VA,540,US
+22736,Richardsville,VA,540,US
+22737,Rixeyville,VA,540,US
+22738,Rochelle,VA,540,US
+22739,Somerville,VA,,US
+22740,Sperryville,VA,540,US
+22741,Stevensburg,VA,540,US
+22742,Sumerduck,VA,540,US
+22743,Syria,VA,540,US
+22746,Viewtown,VA,,US
+22747,Washington,VA,540,US
+22748,Wolftown,VA,540,US
+22749,Woodville,VA,540,US
+22801,Harrisonburg,VA,540,US
+22802,Harrisonburg,VA,540,US
+22803,Harrisonburg,VA,540,US
+22807,Harrisonburg,VA,540,US
+22810,Basye,VA,540,US
+22811,Bergton,VA,540,US
+22812,Bridgewater,VA,540,US
+22815,Broadway,VA,540,US
+22820,Criders,VA,540,US
+22821,Dayton,VA,540,US
+22824,Edinburg,VA,540,US
+22827,Elkton,VA,540,US
+22830,Fulks Run,VA,540,US
+22831,Hinton,VA,540,US
+22832,Keezletown,VA,540,US
+22833,Lacey Spring,VA,540,US
+22834,Linville,VA,540,US
+22835,Luray,VA,540,US
+22840,Mc Gaheysville,VA,540,US
+22841,Mount Crawford,VA,540,US
+22842,Mount Jackson,VA,540,US
+22843,Mount Solon,VA,540,US
+22844,New Market,VA,540,US
+22845,Orkney Springs,VA,540,US
+22846,Penn Laird,VA,540,US
+22847,Quicksburg,VA,540,US
+22848,Pleasant Valley,VA,540,US
+22849,Shenandoah,VA,540,US
+22850,Singers Glen,VA,540,US
+22851,Stanley,VA,540,US
+22853,Timberville,VA,540,US
+22901,Charlottesville,VA,434,US
+22902,Charlottesville,VA,434,US
+22903,Charlottesville,VA,"4,34,540",US
+22904,Charlottesville,VA,434,US
+22905,Charlottesville,VA,434,US
+22906,Charlottesville,VA,434,US
+22907,Charlottesville,VA,434,US
+22908,Charlottesville,VA,434,US
+22909,Charlottesville,VA,434,US
+22910,Charlottesville,VA,434,US
+22911,Charlottesville,VA,434,US
+22920,Afton,VA,"5,40,434",US
+22922,Arrington,VA,434,US
+22923,Barboursville,VA,"5,40,434",US
+22924,Batesville,VA,540,US
+22931,Covesville,VA,434,US
+22932,Crozet,VA,"4,34,540",US
+22935,Dyke,VA,434,US
+22936,Earlysville,VA,434,US
+22937,Esmont,VA,434,US
+22938,Faber,VA,434,US
+22939,Fishersville,VA,540,US
+22940,Free Union,VA,434,US
+22942,Gordonsville,VA,540,US
+22943,Greenwood,VA,540,US
+22945,Ivy,VA,,US
+22946,Keene,VA,434,US
+22947,Keswick,VA,"5,40,434",US
+22948,Locust Dale,VA,540,US
+22949,Lovingston,VA,434,US
+22952,Lyndhurst,VA,540,US
+22957,Montpelier Station,VA,,US
+22958,Nellysford,VA,434,US
+22959,North Garden,VA,434,US
+22960,Orange,VA,540,US
+22963,Palmyra,VA,434,US
+22964,Piney River,VA,434,US
+22965,Quinque,VA,434,US
+22967,Roseland,VA,434,US
+22968,Ruckersville,VA,434,US
+22969,Schuyler,VA,434,US
+22971,Shipman,VA,434,US
+22972,Somerset,VA,540,US
+22973,Stanardsville,VA,434,US
+22974,Troy,VA,434,US
+22976,Tyro,VA,"4,34,540",US
+22980,Waynesboro,VA,"4,34,540",US
+22987,White Hall,VA,,US
+22989,Woodberry Forest,VA,,US
+23001,Achilles,VA,804,US
+23002,Amelia Court House,VA,804,US
+23003,Ark,VA,804,US
+23004,Arvonia,VA,"4,34,804",US
+23005,Ashland,VA,804,US
+23009,Aylett,VA,804,US
+23011,Barhamsville,VA,757,US
+23014,Beaumont,VA,804,US
+23015,Beaverdam,VA,"8,04,434",US
+23018,Bena,VA,804,US
+23021,Bohannon,VA,804,US
+23022,Bremo Bluff,VA,434,US
+23023,Bruington,VA,804,US
+23024,Bumpass,VA,"5,40,804",US
+23025,Cardinal,VA,804,US
+23027,Cartersville,VA,804,US
+23030,Charles City,VA,804,US
+23031,Christchurch,VA,804,US
+23032,Church View,VA,804,US
+23035,Cobbs Creek,VA,804,US
+23038,Columbia,VA,"8,04,434",US
+23039,Crozier,VA,804,US
+23040,Cumberland,VA,"8,04,434",US
+23043,Deltaville,VA,804,US
+23045,Diggs,VA,804,US
+23047,Doswell,VA,804,US
+23050,Dutton,VA,804,US
+23055,Fork Union,VA,434,US
+23056,Foster,VA,804,US
+23058,Glen Allen,VA,804,US
+23059,Glen Allen,VA,804,US
+23060,Glen Allen,VA,804,US
+23061,Gloucester,VA,804,US
+23062,Gloucester Point,VA,804,US
+23063,Goochland,VA,804,US
+23064,Grimstead,VA,804,US
+23065,Gum Spring,VA,804,US
+23066,Gwynn,VA,804,US
+23067,Hadensville,VA,804,US
+23068,Hallieford,VA,804,US
+23069,Hanover,VA,804,US
+23070,Hardyville,VA,804,US
+23071,Hartfield,VA,804,US
+23072,Hayes,VA,"8,04,757",US
+23075,Henrico,VA,804,US
+23076,Hudgins,VA,804,US
+23079,Jamaica,VA,804,US
+23081,Jamestown,VA,757,US
+23083,Jetersville,VA,804,US
+23084,Kents Store,VA,"43,48,04,540",US
+23085,King And Queen Court House,VA,804,US
+23086,King William,VA,804,US
+23089,Lanexa,VA,"8,04,757",US
+23090,Lightfoot,VA,757,US
+23091,Little Plymouth,VA,804,US
+23092,Locust Hill,VA,804,US
+23093,Louisa,VA,"54,08,04,434",US
+23101,Macon,VA,804,US
+23102,Maidens,VA,804,US
+23103,Manakin Sabot,VA,804,US
+23105,Mannboro,VA,804,US
+23106,Manquin,VA,804,US
+23107,Maryus,VA,804,US
+23108,Mascot,VA,804,US
+23109,Mathews,VA,804,US
+23110,Mattaponi,VA,804,US
+23111,Mechanicsville,VA,804,US
+23112,Midlothian,VA,804,US
+23113,Midlothian,VA,804,US
+23114,Midlothian,VA,804,US
+23115,Millers Tavern,VA,804,US
+23116,Mechanicsville,VA,804,US
+23117,Mineral,VA,"5,40,804",US
+23119,Moon,VA,804,US
+23120,Moseley,VA,804,US
+23123,New Canton,VA,434,US
+23124,New Kent,VA,804,US
+23125,New Point,VA,804,US
+23126,Newtown,VA,804,US
+23127,Norge,VA,757,US
+23128,North,VA,804,US
+23129,Oilville,VA,804,US
+23130,Onemo,VA,804,US
+23131,Ordinary,VA,804,US
+23138,Port Haywood,VA,804,US
+23139,Powhatan,VA,804,US
+23140,Providence Forge,VA,804,US
+23141,Quinton,VA,804,US
+23146,Rockville,VA,804,US
+23147,Ruthville,VA,804,US
+23148,Saint Stephens Church,VA,804,US
+23149,Saluda,VA,804,US
+23150,Sandston,VA,804,US
+23153,Sandy Hook,VA,804,US
+23154,Schley,VA,804,US
+23155,Severn,VA,804,US
+23156,Shacklefords,VA,804,US
+23160,State Farm,VA,804,US
+23161,Stevensville,VA,804,US
+23162,Studley,VA,804,US
+23163,Susan,VA,804,US
+23168,Toano,VA,757,US
+23169,Topping,VA,804,US
+23170,Trevilians,VA,,US
+23173,University Of Richmond,VA,804,US
+23175,Urbanna,VA,804,US
+23176,Wake,VA,804,US
+23177,Walkerton,VA,804,US
+23178,Ware Neck,VA,804,US
+23180,Water View,VA,804,US
+23181,West Point,VA,804,US
+23183,White Marsh,VA,804,US
+23184,Wicomico,VA,804,US
+23185,Williamsburg,VA,"7,57,202",US
+23186,Williamsburg,VA,757,US
+23187,Williamsburg,VA,757,US
+23188,Williamsburg,VA,757,US
+23190,Woods Cross Roads,VA,804,US
+23192,Montpelier,VA,"8,04,540",US
+23218,Richmond,VA,804,US
+23219,Richmond,VA,804,US
+23220,Richmond,VA,804,US
+23221,Richmond,VA,804,US
+23222,Richmond,VA,804,US
+23223,Richmond,VA,"7,57,804",US
+23224,Richmond,VA,"8,04,757",US
+23225,Richmond,VA,"54,08,04,757",US
+23226,Richmond,VA,804,US
+23227,Richmond,VA,804,US
+23228,Henrico,VA,804,US
+23229,Henrico,VA,804,US
+23230,Richmond,VA,804,US
+23231,Henrico,VA,804,US
+23232,Richmond,VA,804,US
+23233,Henrico,VA,804,US
+23234,Richmond,VA,804,US
+23235,Richmond,VA,"8,04,703",US
+23236,Richmond,VA,804,US
+23237,Richmond,VA,804,US
+23238,Henrico,VA,804,US
+23240,Richmond,VA,804,US
+23241,Richmond,VA,804,US
+23242,Henrico,VA,804,US
+23249,Richmond,VA,804,US
+23250,Richmond,VA,804,US
+23255,Henrico,VA,804,US
+23260,Richmond,VA,804,US
+23261,Richmond,VA,804,US
+23269,Richmond,VA,804,US
+23273,Henrico,VA,804,US
+23274,Richmond,VA,804,US
+23276,Richmond,VA,804,US
+23278,Richmond,VA,804,US
+23279,Richmond,VA,804,US
+23282,Richmond,VA,804,US
+23284,Richmond,VA,804,US
+23285,Richmond,VA,804,US
+23286,Richmond,VA,804,US
+23288,Henrico,VA,804,US
+23289,Richmond,VA,804,US
+23290,Richmond,VA,804,US
+23291,Richmond,VA,804,US
+23292,Richmond,VA,804,US
+23293,Richmond,VA,804,US
+23294,Henrico,VA,804,US
+23295,Richmond,VA,804,US
+23297,Richmond,VA,804,US
+23298,Richmond,VA,804,US
+23301,Accomac,VA,757,US
+23302,Assawoman,VA,757,US
+23303,Atlantic,VA,757,US
+23304,Battery Park,VA,757,US
+23306,Belle Haven,VA,757,US
+23307,Birdsnest,VA,757,US
+23308,Bloxom,VA,757,US
+23310,Cape Charles,VA,757,US
+23313,Capeville,VA,757,US
+23314,Carrollton,VA,757,US
+23315,Carrsville,VA,757,US
+23316,Cheriton,VA,757,US
+23320,Chesapeake,VA,757,US
+23321,Chesapeake,VA,757,US
+23322,Chesapeake,VA,757,US
+23323,Chesapeake,VA,757,US
+23324,Chesapeake,VA,757,US
+23325,Chesapeake,VA,757,US
+23326,Chesapeake,VA,757,US
+23327,Chesapeake,VA,757,US
+23328,Chesapeake,VA,757,US
+23336,Chincoteague Island,VA,757,US
+23337,Wallops Island,VA,757,US
+23341,Craddockville,VA,757,US
+23345,Davis Wharf,VA,757,US
+23347,Eastville,VA,757,US
+23350,Exmore,VA,757,US
+23354,Franktown,VA,757,US
+23356,Greenbackville,VA,757,US
+23357,Greenbush,VA,757,US
+23358,Hacksneck,VA,757,US
+23359,Hallwood,VA,757,US
+23389,Harborton,VA,757,US
+23395,Horntown,VA,757,US
+23396,Oak Hall,VA,757,US
+23397,Isle Of Wight,VA,757,US
+23398,Jamesville,VA,757,US
+23399,Jenkins Bridge,VA,757,US
+23401,Keller,VA,757,US
+23404,Locustville,VA,757,US
+23405,Machipongo,VA,757,US
+23407,Mappsville,VA,757,US
+23408,Marionville,VA,757,US
+23409,Mears,VA,757,US
+23410,Melfa,VA,757,US
+23412,Modest Town,VA,757,US
+23413,Nassawadox,VA,757,US
+23414,Nelsonia,VA,757,US
+23415,New Church,VA,757,US
+23416,Oak Hall,VA,757,US
+23417,Onancock,VA,757,US
+23418,Onley,VA,757,US
+23419,Oyster,VA,757,US
+23420,Painter,VA,757,US
+23421,Parksley,VA,757,US
+23422,Pungoteague,VA,757,US
+23423,Quinby,VA,757,US
+23424,Rescue,VA,757,US
+23426,Sanford,VA,757,US
+23427,Saxis,VA,757,US
+23429,Seaview,VA,757,US
+23430,Smithfield,VA,757,US
+23431,Smithfield,VA,757,US
+23432,Suffolk,VA,757,US
+23433,Suffolk,VA,757,US
+23434,Suffolk,VA,757,US
+23435,Suffolk,VA,757,US
+23436,Suffolk,VA,757,US
+23437,Suffolk,VA,757,US
+23438,Suffolk,VA,757,US
+23439,Suffolk,VA,757,US
+23440,Tangier,VA,757,US
+23441,Tasley,VA,757,US
+23442,Temperanceville,VA,757,US
+23443,Townsend,VA,757,US
+23450,Virginia Beach,VA,757,US
+23451,Virginia Beach,VA,757,US
+23452,Virginia Beach,VA,757,US
+23453,Virginia Beach,VA,757,US
+23454,Virginia Beach,VA,757,US
+23455,Virginia Beach,VA,757,US
+23456,Virginia Beach,VA,757,US
+23457,Virginia Beach,VA,757,US
+23458,Virginia Beach,VA,757,US
+23459,Virginia Beach,VA,757,US
+23460,Virginia Beach,VA,757,US
+23461,Virginia Beach,VA,757,US
+23462,Virginia Beach,VA,757,US
+23463,Virginia Beach,VA,757,US
+23464,Virginia Beach,VA,757,US
+23465,Virginia Beach,VA,757,US
+23466,Virginia Beach,VA,757,US
+23467,Virginia Beach,VA,757,US
+23471,Virginia Beach,VA,757,US
+23479,Virginia Beach,VA,757,US
+23480,Wachapreague,VA,757,US
+23482,Wardtown,VA,757,US
+23483,Wattsville,VA,757,US
+23486,Willis Wharf,VA,757,US
+23487,Windsor,VA,757,US
+23488,Withams,VA,757,US
+23501,Norfolk,VA,757,US
+23502,Norfolk,VA,757,US
+23503,Norfolk,VA,757,US
+23504,Norfolk,VA,757,US
+23505,Norfolk,VA,757,US
+23506,Norfolk,VA,757,US
+23507,Norfolk,VA,757,US
+23508,Norfolk,VA,757,US
+23509,Norfolk,VA,757,US
+23510,Norfolk,VA,757,US
+23511,Norfolk,VA,757,US
+23512,Norfolk,VA,757,US
+23513,Norfolk,VA,757,US
+23514,Norfolk,VA,757,US
+23515,Norfolk,VA,757,US
+23517,Norfolk,VA,757,US
+23518,Norfolk,VA,757,US
+23519,Norfolk,VA,757,US
+23520,Norfolk,VA,757,US
+23521,Norfolk,VA,757,US
+23523,Norfolk,VA,757,US
+23529,Norfolk,VA,757,US
+23541,Norfolk,VA,757,US
+23551,Norfolk,VA,757,US
+23601,Newport News,VA,757,US
+23602,Newport News,VA,757,US
+23603,Newport News,VA,757,US
+23604,Fort Eustis,VA,757,US
+23605,Newport News,VA,757,US
+23606,Newport News,VA,757,US
+23607,Newport News,VA,"8,04,757",US
+23608,Newport News,VA,"7,57,301",US
+23609,Newport News,VA,757,US
+23612,Newport News,VA,757,US
+23628,Newport News,VA,757,US
+23630,Hampton,VA,757,US
+23651,Fort Monroe,VA,757,US
+23661,Hampton,VA,757,US
+23662,Poquoson,VA,757,US
+23663,Hampton,VA,"7,57,804",US
+23664,Hampton,VA,757,US
+23665,Hampton,VA,757,US
+23666,Hampton,VA,757,US
+23667,Hampton,VA,757,US
+23668,Hampton,VA,757,US
+23669,Hampton,VA,757,US
+23670,Hampton,VA,757,US
+23681,Hampton,VA,757,US
+23690,Yorktown,VA,757,US
+23691,Yorktown,VA,757,US
+23692,Yorktown,VA,757,US
+23693,Yorktown,VA,757,US
+23694,Lackey,VA,757,US
+23696,Seaford,VA,757,US
+23701,Portsmouth,VA,757,US
+23702,Portsmouth,VA,757,US
+23703,Portsmouth,VA,757,US
+23704,Portsmouth,VA,757,US
+23705,Portsmouth,VA,757,US
+23707,Portsmouth,VA,757,US
+23708,Portsmouth,VA,"7,57,804",US
+23709,Portsmouth,VA,757,US
+23801,Fort Lee,VA,804,US
+23803,Petersburg,VA,"80,44,34,757",US
+23804,Petersburg,VA,804,US
+23805,Petersburg,VA,"8,04,434",US
+23806,Virginia State University,VA,804,US
+23821,Alberta,VA,434,US
+23822,Ammon,VA,804,US
+23824,Blackstone,VA,"4,34,804",US
+23825,Blackstone,VA,434,US
+23827,Boykins,VA,"75,78,04,434",US
+23828,Branchville,VA,757,US
+23829,Capron,VA,"4,34,757",US
+23830,Carson,VA,"4,34,804",US
+23831,Chester,VA,804,US
+23832,Chesterfield,VA,804,US
+23833,Church Road,VA,804,US
+23834,Colonial Heights,VA,804,US
+23836,Chester,VA,804,US
+23837,Courtland,VA,"75,74,34,804",US
+23838,Chesterfield,VA,804,US
+23839,Dendron,VA,757,US
+23840,Dewitt,VA,804,US
+23841,Dinwiddie,VA,804,US
+23842,Disputanta,VA,804,US
+23843,Dolphin,VA,434,US
+23844,Drewryville,VA,434,US
+23845,Ebony,VA,434,US
+23846,Elberon,VA,757,US
+23847,Emporia,VA,434,US
+23850,Ford,VA,804,US
+23851,Franklin,VA,757,US
+23856,Freeman,VA,"8,04,434",US
+23857,Gasburg,VA,434,US
+23860,Hopewell,VA,804,US
+23866,Ivor,VA,757,US
+23867,Jarratt,VA,434,US
+23868,Lawrenceville,VA,"4,34,804",US
+23870,Jarratt,VA,434,US
+23872,Mc Kenney,VA,804,US
+23873,Meredithville,VA,434,US
+23874,Newsoms,VA,757,US
+23875,Prince George,VA,804,US
+23876,Rawlings,VA,"4,34,804",US
+23878,Sedley,VA,757,US
+23879,Skippers,VA,434,US
+23881,Spring Grove,VA,"7,57,804",US
+23882,Stony Creek,VA,"4,34,804",US
+23883,Surry,VA,757,US
+23884,Sussex,VA,,US
+23885,Sutherland,VA,804,US
+23887,Valentines,VA,434,US
+23888,Wakefield,VA,757,US
+23889,Warfield,VA,"4,34,804",US
+23890,Waverly,VA,"80,47,57,434",US
+23891,Waverly,VA,804,US
+23893,White Plains,VA,434,US
+23894,Wilsons,VA,804,US
+23897,Yale,VA,"8,04,434",US
+23898,Zuni,VA,757,US
+23899,Claremont,VA,757,US
+23901,Farmville,VA,434,US
+23909,Farmville,VA,434,US
+23915,Baskerville,VA,434,US
+23917,Boydton,VA,434,US
+23919,Bracey,VA,434,US
+23920,Brodnax,VA,434,US
+23921,Buckingham,VA,434,US
+23922,Burkeville,VA,434,US
+23923,Charlotte Court House,VA,434,US
+23924,Chase City,VA,434,US
+23927,Clarksville,VA,434,US
+23930,Crewe,VA,434,US
+23934,Cullen,VA,434,US
+23936,Dillwyn,VA,"4,34,804",US
+23937,Drakes Branch,VA,434,US
+23938,Dundas,VA,434,US
+23939,Evergreen,VA,434,US
+23941,Fort Mitchell,VA,434,US
+23942,Green Bay,VA,434,US
+23943,Hampden Sydney,VA,434,US
+23944,Kenbridge,VA,434,US
+23947,Keysville,VA,434,US
+23950,La Crosse,VA,434,US
+23952,Lunenburg,VA,434,US
+23954,Meherrin,VA,434,US
+23955,Nottoway,VA,434,US
+23958,Pamplin,VA,434,US
+23959,Phenix,VA,434,US
+23960,Prospect,VA,434,US
+23962,Randolph,VA,434,US
+23963,Red House,VA,434,US
+23964,Red Oak,VA,434,US
+23966,Rice,VA,"4,34,804",US
+23967,Saxe,VA,434,US
+23968,Skipwith,VA,434,US
+23970,South Hill,VA,434,US
+23974,Victoria,VA,434,US
+23976,Wylliesburg,VA,434,US
+24001,Roanoke,VA,540,US
+24002,Roanoke,VA,540,US
+24003,Roanoke,VA,540,US
+24004,Roanoke,VA,540,US
+24005,Roanoke,VA,540,US
+24006,Roanoke,VA,540,US
+24007,Roanoke,VA,540,US
+24008,Roanoke,VA,540,US
+24009,Roanoke,VA,540,US
+24010,Roanoke,VA,540,US
+24011,Roanoke,VA,540,US
+24012,Roanoke,VA,540,US
+24013,Roanoke,VA,540,US
+24014,Roanoke,VA,540,US
+24015,Roanoke,VA,540,US
+24016,Roanoke,VA,540,US
+24017,Roanoke,VA,540,US
+24018,Roanoke,VA,540,US
+24019,Roanoke,VA,540,US
+24020,Roanoke,VA,540,US
+24022,Roanoke,VA,540,US
+24023,Roanoke,VA,540,US
+24024,Roanoke,VA,540,US
+24025,Roanoke,VA,540,US
+24026,Roanoke,VA,540,US
+24027,Roanoke,VA,540,US
+24028,Roanoke,VA,540,US
+24029,Roanoke,VA,540,US
+24030,Roanoke,VA,540,US
+24031,Roanoke,VA,540,US
+24032,Roanoke,VA,540,US
+24033,Roanoke,VA,540,US
+24034,Roanoke,VA,540,US
+24035,Roanoke,VA,540,US
+24036,Roanoke,VA,540,US
+24037,Roanoke,VA,540,US
+24038,Roanoke,VA,540,US
+24040,Roanoke,VA,540,US
+24042,Roanoke,VA,540,US
+24043,Roanoke,VA,540,US

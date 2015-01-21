@@ -1,0 +1,586 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- 
+  @author Youdhveer Panwar
+  This is a struts config file for data uploader module
+  @createdOn 04,Feb,2014
+-->
+
+<struts>    
+	  
+    <package name="dateUploader" namespace="/" extends="struts-default"> 
+        <interceptors>
+        
+			<interceptor name="gaeFileUploadInterceptor" class="com.struts2.gae.interceptor.GaeFileUploadInterceptor" />
+			<interceptor-stack name="fileUploadStack">				
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="gaeFileUploadInterceptor"></interceptor-ref>
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>				
+			</interceptor-stack>
+			
+			<interceptor name="SessionCheckInterceptor" class="com.lin.web.interceptor.SessionCheckInterceptor"/>
+            <interceptor-stack name="tstSessionCheckStack">
+                <interceptor-ref name="SessionCheckInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack> 
+            
+            <interceptor name="AdminSessionCheckInterceptor" class="com.lin.web.interceptor.AdminSessionCheckInterceptor"/>
+            <interceptor-stack name="adminSessionCheckStack">
+                <interceptor-ref name="SessionCheckInterceptor" />
+                <interceptor-ref name="AdminSessionCheckInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+		
+		</interceptors>
+		
+		<default-interceptor-ref name="fileUploadStack" />
+	   
+	    <global-results>
+           <result name="sessionExpired" >jsp/sessionExpired.jsp</result>
+           <result name="unAuthorisedAccess" >jsp/unauthorisedAccess.jsp</result>
+        </global-results>
+   
+        <action name="undertoneDailyLinMediaReport" class="com.lin.web.action.UndertoneAction" method="dailyReport">
+	   	      <!--  <interceptor-ref name="adminSessionCheckStack" /> -->
+	   		   <result name="input">CSVReader.jsp</result>
+               <result name="success">CSVReader.jsp</result>
+        </action>    
+       
+        <action name="sellThroughDailyReport" class="com.lin.web.action.SellThroughReportAction" method="finaliseOrNonFinalise">
+		       <result name="input">CSVReader.jsp</result>
+               <result name="success">CSVReader.jsp</result>
+        </action>
+               
+        
+       <action name="copyFinaliseEntity" class="com.lin.web.action.DfpDataAction" method="copyFinalisedData">
+	   		   <result name="input">CSVReader.jsp</result>
+               <result name="success">CSVReader.jsp</result>
+        </action>   
+        
+        <action name="uploadAdminEntities" class="com.lin.web.action.UserAction" method="uploadAdminEntities">
+			<result name="input">CSVReader.jsp</result>
+            <result name="success">CSVReader.jsp</result>
+		 </action>
+		 
+		 <action name="updateEntities" class="com.lin.web.action.UserAction" method="updateEntities">
+			<result name="input">CSVReader.jsp</result>
+            <result name="success">CSVReader.jsp</result>
+		 </action>
+        
+        <action name="updateCensus" class="com.lin.web.action.UserAction" method="updateCensus">
+			<result name="input">CSVReader.jsp</result>
+            <result name="success">CSVReader.jsp</result>
+		 </action>	
+        
+     <!--    <action name="testStorage" class="com.lin.web.servlet.StorageSample" >	        
+	        <result name="success" type="stream">
+	           <param name="contentDisposition">attachment;filename="test.csv.gz"</param>
+	           <param name="contentType">application/zip</param>
+	           <param name="inputName">zipOutputStream</param>
+	           <param name="bufferSize">1024</param>
+	        </result>
+       </action> -->
+       
+       
+   </package>  	
+   <package name="dataUploaderJson"  extends="json-default">
+	  <interceptors>
+	  <interceptor-stack name="fileUploadStack">				
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />				
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				
+				 <interceptor-ref name="json">
+                   <param name="enableSMD">true</param>
+                   <param name="excludeProperties">
+                       login.password,
+                       studentList.*\.sin
+                  </param>
+                </interceptor-ref>      
+			</interceptor-stack>
+      </interceptors>
+        
+         
+        <action name="mojivaDailyReport" class="com.lin.web.action.MojivaAction" method="dailyReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+         <action name="adExDailyReport" class="com.lin.web.action.AdExchangeAction" method="dailyReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+               
+        <action name="dfpDailyLinMediaReport" class="com.lin.web.action.DFPAction" method="dailyLinMediaReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>        
+        <action name="dfpNonFinaliseLinMediaReport" class="com.lin.web.action.DFPAction" method="updateDailyNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="dfpFinaliseLinMediaReport" class="com.lin.web.action.DFPAction" method="updateMonthwiseFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="nexageDailyLinMediaReport" class="com.lin.web.action.NexageAction" method="dailyReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"> <!-- <param name="root"> reportsResponse</param> --></result>
+        </action>
+        <action name="nexageNonFinaliseLinMediaReport" class="com.lin.web.action.NexageAction" method="updateDailyNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="nexageFinaliseLinMediaReport" class="com.lin.web.action.NexageAction" method="updateMonthwiseFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+                        
+        <action name="mojivaDailyLinMediaReport" class="com.lin.web.action.MojivaAction" method="dailyReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="mojivaNonFinaliseLinMediaReport" class="com.lin.web.action.MojivaAction" method="updateDailyNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="mojivaFinaliseLinMediaReport" class="com.lin.web.action.MojivaAction" method="updateMonthwiseFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        
+        <action name="adExDailyLinMediaReport" class="com.lin.web.action.AdExchangeAction" method="dailyReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="adExNonFinaliseLinMediaReport" class="com.lin.web.action.AdExchangeAction" method="updateDailyNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="adExFinaliseLinMediaReport" class="com.lin.web.action.AdExchangeAction" method="updateMonthwiseFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        
+        <action name="locationDailyLinMediaReport" class="com.lin.web.action.PerformanceByLocationAction" method="dailyLinMediaReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="locationNonFinaliseLinMediaReport" class="com.lin.web.action.PerformanceByLocationAction" method="updateDailyLinMediaNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action> 
+        <action name="locationFinaliseLinMediaReport" class="com.lin.web.action.PerformanceByLocationAction" method="updateMonthwiseLinMediaFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        
+        <action name="targetDailyLinMediaReport" class="com.lin.web.action.DFPTargetReportAction" method="dailyLinMediaReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="targetNonFinaliseLinMediaReport" class="com.lin.web.action.DFPTargetReportAction" method="updateDailyLinMediaNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="targetFinaliseLinMediaReport" class="com.lin.web.action.DFPTargetReportAction" method="updateMonthwiseLinMediaFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        
+         <action name="customEventDailyLinMediaReport" class="com.lin.web.action.RichMediaDataAction" method="dailyLinMediaReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="customEventNonFinaliseLinMediaReport" class="com.lin.web.action.RichMediaDataAction" method="updateDailyLinMediaNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="customEventFinaliseLinMediaReport" class="com.lin.web.action.RichMediaDataAction" method="updateMonthwiseLinMediaFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        
+         <action name="loadQueryFromClause" class="com.lin.web.action.DfpDataAction" method="queryTest">
+		    <param name="contentType">text/html</param>
+            <result type="json"><param name="root"> status</param></result>
+        </action>
+        
+        
+        <!-- LinDigital client data loader actions -->
+        
+        <action name="dfpDailyLinDigitalReport" class="com.lin.web.action.LinDigitalDFPAction" method="dailyReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="dfpNonFinaliseLinDigitalReport" class="com.lin.web.action.LinDigitalDFPAction" method="updateDailyNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+         <action name="dfpFinaliseLinDigitalReport" class="com.lin.web.action.LinDigitalDFPAction" method="updateMonthwiseFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>        
+         <action name="locationDailyLinDigitalReport" class="com.lin.web.action.LinDigitalPerformanceByLocationAction" method="dailyLinDigitalReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="locationNonFinaliseLinDigitalReport" class="com.lin.web.action.LinDigitalPerformanceByLocationAction" method="updateDailyLinDigitalNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="locationFinaliseLinDigitalReport" class="com.lin.web.action.LinDigitalPerformanceByLocationAction" method="updateMonthwiseLinDigitalFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+         <action name="targetDailyLinDigitalReport" class="com.lin.web.action.LinDigitalDFPTargetReportAction" method="dailyLinDigitalReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="targetNonFinaliseLinDigitalReport" class="com.lin.web.action.LinDigitalDFPTargetReportAction" method="updateDailyLinDigitalNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="targetFinaliseLinDigitalReport" class="com.lin.web.action.LinDigitalDFPTargetReportAction" method="updateMonthwiseLinDigitalFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+         <action name="customEventDailyLinDigitalReport" class="com.lin.web.action.LinDigitalRichMediaDataAction" method="dailyLinDigitalReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="customEventNonFinaliseLinDigitalReport" class="com.lin.web.action.LinDigitalRichMediaDataAction" method="updateDailyLinDigitalNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="customEventFinaliseLinDigitalReport" class="com.lin.web.action.LinDigitalRichMediaDataAction" method="updateMonthwiseLinDigitalFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <!-- LinDigital client data loader actions ends -->
+        
+        <!-- LinMobile client data loader jobs -->
+        <action name="dfpDailyLinMobileReport" class="com.lin.web.action.LinMobileDFPAction" method="dailyReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>        
+        <action name="dfpNonFinaliseLinMobileReport" class="com.lin.web.action.LinMobileDFPAction" method="updateDailyNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="dfpFinaliseLinMobileReport" class="com.lin.web.action.LinMobileDFPAction" method="updateMonthwiseFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+         <action name="locationDailyLinMobileReport" class="com.lin.web.action.LinMobilePerformanceByLocationAction" method="dailyLinMobileReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="locationNonFinaliseLinMobileReport" class="com.lin.web.action.LinMobilePerformanceByLocationAction" method="updateDailyLinMobileNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+         <action name="locationNonFinaliseLinMobileReportByTaskQueue" class="com.lin.web.action.LinMobilePerformanceByLocationAction" 
+         			method="addLinMobileLocationJobInTaskQueue">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="locationFinaliseLinMobileReport" class="com.lin.web.action.LinMobilePerformanceByLocationAction" method="updateMonthwiseLinMobileFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+         <action name="targetDailyLinMobileReport" class="com.lin.web.action.LinMobileDFPTargetReportAction" method="dailyLinMobileReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="targetNonFinaliseLinMobileReport" class="com.lin.web.action.LinMobileDFPTargetReportAction" method="updateDailyLinMobileNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="targetFinaliseLinMobileReport" class="com.lin.web.action.LinMobileDFPTargetReportAction" method="updateMonthwiseLinMobileFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+         <action name="customEventDailyLinMobileReport" class="com.lin.web.action.LinMobileRichMediaDataAction" method="dailyLinMobileReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="customEventNonFinaliseLinMobileReport" class="com.lin.web.action.LinMobileRichMediaDataAction" method="updateDailyLinMobileNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="customEventFinaliseLinMobileReport" class="com.lin.web.action.LinMobileRichMediaDataAction" method="updateMonthwiseLinMobileFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        
+        <action name="videoCampaignDailyLinMobileReport" class="com.lin.web.action.LinMobileRichMediaDataAction" method="videoCampaignDailyLinMobileReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="videoCampaignNonFinaliseLinMobileReport" class="com.lin.web.action.LinMobileRichMediaDataAction" method="updateVideoCampaignDailyLinMobileNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="videoCampaignFinaliseLinMobileReport" class="com.lin.web.action.LinMobileRichMediaDataAction" method="updateVideoCampaignMonthwiseLinMobileFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        
+        <!-- LinMobile client data loader jobs ends-->
+        
+        
+        <!-- LinMobile new dfp instance data loader jobs -->
+        <action name="dfpDailyLinMobileNewReport" class="com.lin.web.action.LinMobileDFPAction" method="dailyLinMobileNewReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>        
+        <action name="dfpNonFinaliseLinMobileNewReport" class="com.lin.web.action.LinMobileDFPAction" method="updateDailyNonFinaliseLinMobileNewReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="dfpFinaliseLinMobileNewReport" class="com.lin.web.action.LinMobileDFPAction" method="updateMonthwiseFinaliseLinMobileNewReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+       <action name="locationDailyLinMobileNewReport" class="com.lin.web.action.LinMobilePerformanceByLocationAction" method="dailyLinMobileNewReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="locationNonFinaliseLinMobileNewReport" class="com.lin.web.action.LinMobilePerformanceByLocationAction" method="updateDailyLinMobileNonFinaliseNewReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="locationFinaliseLinMobileNewReport" class="com.lin.web.action.LinMobilePerformanceByLocationAction" method="updateMonthwiseLinMobileFinaliseNewReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        
+         <action name="targetDailyLinMobileNewReport" class="com.lin.web.action.LinMobileDFPTargetReportAction" method="dailyLinMobileNewReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="targetNonFinaliseLinMobileNewReport" class="com.lin.web.action.LinMobileDFPTargetReportAction" method="updateDailyLinMobileNonFinaliseNewReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="targetFinaliseLinMobileNewReport" class="com.lin.web.action.LinMobileDFPTargetReportAction" method="updateMonthwiseLinMobileFinaliseNewReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+         
+         <action name="customEventDailyLinMobileNewReport" class="com.lin.web.action.LinMobileRichMediaDataAction" method="dailyLinMobileNewReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="customEventNonFinaliseLinMobileNewReport" class="com.lin.web.action.LinMobileRichMediaDataAction" method="updateDailyLinMobileNonFinaliseNewReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="customEventFinaliseLinMobileNewReport" class="com.lin.web.action.LinMobileRichMediaDataAction" method="updateMonthwiseLinMobileFinaliseNewReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        
+        <action name="videoCampaignDailyLinMobileNewReport" class="com.lin.web.action.LinMobileRichMediaDataAction" method="videoCampaignDailyLinMobileNewReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="videoCampaignNonFinaliseLinMobileNewReport" class="com.lin.web.action.LinMobileRichMediaDataAction" method="updateVideoCampaignDailyLinMobileNonFinaliseNewReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <action name="videoCampaignFinaliseLinMobileNewReport" class="com.lin.web.action.LinMobileRichMediaDataAction" method="updateVideoCampaignMonthwiseLinMobileFinaliseNewReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action> 
+        
+        <!-- LinMobile new dfp instance data loader jobs ends-->
+        
+        <!-- Tribune finalised actions -->
+        <action name="dfpDailyTribuneReport" class="com.lin.web.action.TribuneDFPAction" method="dailyReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>        
+        <action name="dfpNonFinaliseTribuneReport" class="com.lin.web.action.TribuneDFPAction" method="updateDailyNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="dfpFinaliseTribuneReport" class="com.lin.web.action.TribuneDFPAction" method="updateMonthwiseFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="locationDailyTribuneReport" class="com.lin.web.action.TribunePerformanceByLocationAction" method="dailyReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>        
+        <action name="locationNonFinaliseTribuneReport" class="com.lin.web.action.TribunePerformanceByLocationAction" method="updateDailyNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="locationFinaliseTribuneReport" class="com.lin.web.action.TribunePerformanceByLocationAction" method="updateMonthwiseFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="targetDailyTribuneReport" class="com.lin.web.action.TribuneDFPTargetReportAction" method="dailyReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>        
+        <action name="targetNonFinaliseTribuneReport" class="com.lin.web.action.TribuneDFPTargetReportAction" method="updateDailyNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="targetFinaliseTribuneReport" class="com.lin.web.action.TribuneDFPTargetReportAction" method="updateMonthwiseFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="customEventDailyTribuneReport" class="com.lin.web.action.TribuneRichMediaDataAction" method="dailyReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>        
+        <action name="customEventNonFinaliseTribuneReport" class="com.lin.web.action.TribuneRichMediaDataAction" method="updateDailyNonFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <action name="customEventFinaliseTribuneReport" class="com.lin.web.action.TribuneRichMediaDataAction" method="updateMonthwiseFinaliseReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        <!-- Tribune finalised actions ends-->
+        
+        <!-- Client DEMO data upload -->
+        <action name="uploadClientDemoData" class="com.lin.web.action.ClientDemoDataAction" >
+		    <param name="contentType">text/html</param>
+            <result type="json"></result>
+        </action>
+        <!-- Client DEMO data upload ends-->
+         
+         <action name="deleteAllDocuments" class="com.lin.web.action.DfpDataAction" method="deleteAllDocuments">
+		    <param name="contentType">text/html</param>
+            <result type="json"><param name="root">status</param> </result>
+        </action>
+       
+       
+       <!-- AdUnitHierarchy update jobs -->
+        <action name="dailyUpdateAdUnitsLinMedia" class="com.lin.web.action.DFPAction" method="dailyUpdateAdUnits">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>  
+         <action name="dailyUpdateAdUnitsTribune" class="com.lin.web.action.TribuneDFPAction" method="dailyUpdateAdUnits">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>  
+         <action name="dailyUpdateAdUnitsLinMobile" class="com.lin.web.action.LinMobileDFPAction" method="dailyUpdateAdUnits">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action> 
+         <action name="dailyUpdateAdUnitsExaminer" class="com.lin.web.action.ExaminerDFPAction" method="dailyUpdateAdUnits">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>  
+
+         <action name="loadHistoricalData" class="com.lin.web.action.HistoricalDataLoaderAction" method="loadHistoricalData">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>  
+         <action name="executeFullHistoricalLoad" class="com.lin.web.action.HistoricalDataLoaderAction" method="executeFullHistoricalLoad">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>  
+        <action name="runHistoricalDataTask" class="com.lin.web.action.HistoricalDataLoaderAction" method="loadFinalizeNonFinalizeDataAsTask">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>  
+        <action name="loadFullHistorical" class="com.lin.web.action.HistoricalDataLoaderAction" method="startFullHistoricalLoad">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>  
+        
+        <action name="runSmartDataLoader" class="com.lin.web.action.HistoricalDataLoaderAction" method="loadSmartDataFromDFP" />
+        <action name="runSmartDataLoaderTask" class="com.lin.web.action.HistoricalDataLoaderAction" method="loadSmartDataFromDFPTask" />  
+
+ 	<!-- 	<action name="runDailyDataTask" class="com.lin.web.action.DailyDataLoaderAction" method="runNonFinaliseDailyReport">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action> -->
+        
+       	<action name="runDailyDataTask" class="com.lin.web.action.HistoricalDataLoaderAction" method="loadSmartDataFromDFPTask">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="addDailyDataTask" class="com.lin.web.action.DailyDataLoaderAction" method="loadDailyDataTasks">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+		 <action name="loadDailyData" class="com.lin.web.action.DailyDataLoaderAction" method="loadDailyData">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+       <!-- Mapping for Topix -->
+        <action name="dailyUpdateAdUnitsTopix" class="com.lin.web.action.TopixDFPAction" method="dailyUpdateAdUnits">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action> 
+         <!-- Mapping for Topix -->
+        <action name="checkBigQueryJob" class="com.lin.web.action.HistoricalDataLoaderAction" method="checkBigQueryJob">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action> 
+        
+        <!-- Mapping for ad sdk request -->
+                <action name="uploadSdkData" class="com.lin.web.action.AdSdkAction" method="getUserDataFromSDK" /> 
+   </package>
+	
+</struts>

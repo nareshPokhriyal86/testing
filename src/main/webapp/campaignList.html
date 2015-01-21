@@ -1,0 +1,23 @@
+<div class="table-responsive">
+	<table class="table table-striped table-hover">
+		<tr>
+			<td style="font-weight:bold;cursor:pointer;cursor:hand;" data-ng-click="predicate = 'name'; reverse=!reverse">Campaign Name</td>
+			<td style="font-weight:bold;cursor:pointer;cursor:hand;" data-ng-click="predicate = 'impression'; reverse=!reverse">Impression</td>
+			<td style="font-weight:bold;cursor:pointer;cursor:hand;" data-ng-click="predicate = 'click'; reverse=!reverse">Click</td>
+			<td style="font-weight:bold;cursor:pointer;cursor:hand;" data-ng-click="predicate = 'ctr'; reverse=!reverse">CTR</td>
+			<td style="font-weight:bold;cursor:pointer;cursor:hand;" data-ng-click="predicate = 'spend'; reverse=!reverse">Spend</td>
+			<td style="font-weight:bold;cursor:pointer;cursor:hand;" data-ng-click="predicate = 'pacing'; reverse=!reverse">Pacing</td>
+			<td></td>
+		</tr>
+		<tr
+			data-ng-repeat="campaign in campaigns | filter:searchCampaign | orderBy:predicate:reverse">
+			<td style="cursor:pointer;cursor:hand;white-space: normal !important;" data-ng-click="getCampaignDetails(campaign.advertiserId, campaign.id)">{{ campaign.name }}</td>
+			<td style="cursor:pointer;cursor:hand;" data-ng-click="getCampaignDetails(campaign.advertiserId, campaign.id)">{{ campaign.impression | number}}</td>
+			<td style="cursor:pointer;cursor:hand;" data-ng-click="getCampaignDetails(campaign.advertiserId, campaign.id)">{{ campaign.click | number }}</td>
+			<td style="cursor:pointer;cursor:hand;" data-ng-click="getCampaignDetails(campaign.advertiserId, campaign.id)">{{ campaign.ctr }}</td>
+			<td style="cursor:pointer;cursor:hand;" data-ng-click="getCampaignDetails(campaign.advertiserId, campaign.id)">{{ campaign.spend | currency }}</td>
+			<td style="cursor:pointer;cursor:hand;" data-ng-click="getCampaignDetails(campaign.advertiserId, campaign.id)">{{ campaign.pacing | number }}%</td>
+			<td><span class="glyphicon glyphicon-bell" data-ng-click="showPopUp(campaign)"></span></td>
+		</tr>
+	</table>
+</div>

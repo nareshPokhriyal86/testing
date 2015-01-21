@@ -1,0 +1,40 @@
+code,Id,Property_Name,PublisherId,DFP_Property_Name,Address,Zip_Code,State,name,Publisher_Name
+507,19,WJCL-TV,1,lin.wjcl,1375 Chatham Pkwy 3rd Floor Savannah GA 31405,31405,Georgia,Savannah,Lin Media
+509,7,WANE-TV,1,lin.wane,2915 W. State Blvd Fort Wayne IN 46808,46808,Indiana,Ft. Wayne,Lin Media
+514,5,WIVB-TV,1,lin.wivb,2077 Elmwood Ave Buffalo NY 14207,14207,New York,Buffalo,Lin Media
+521,18,WPRI-TV,1,lin.wpri,25 Catamore Blvd East Providence RI 02914,2914,Rhode Island,Providence,Lin Media
+527,11,WISH-TV,1,lin.wish,1950 N. Meridian St Indianapolis IN 46202,46202,Indiana,Indianapolis,Lin Media
+533,15,WTNH-TV,1,lin.wtnh,8 Elm Street New Haven CT 06510,6510,Connecticut,Hartford & New Haven,Lin Media
+536,24,WKBN-TV,1,lin.wkbn,3930 Sunset Blvd. Youngstown OH 44512,44512,Ohio,Youngstown,Lin Media
+542,6,WDTN-TV,1,lin.wdtn,4595 South Dixie Dr Dayton OH 45439,45439,Ohio,Dayton,Lin Media
+543,20,WWLP-TV,1,lin.wwlp,One Broadcast Center Chicopee MA 01013,1013,Massachusetts,Springfield-Holyoke,Lin Media
+544,17,WAVY-TV,1,lin.wavy,300 Wavy St Portsmouth VA 23704,23704,Virginia,Norfolk-Portsmouth-Newport News,Lin Media
+563,8,WOOD-TV,1,lin.wood,120 College Ave. SE Grand Rapids MI 49503,49503,Michigan,Grand Rapids-Kalamazoo-Battle Creek,Lin Media
+581,21,WTHI-TV,1,lin.wthi,800 Ohio St Terre Haute IN 47808,47808,Indiana,Terre Haute,Lin Media
+582,12,WLFI-TV,1,lin.wlfi,2605 Yeager Rd West Lafayette IN 47906,47906,Indiana,Lafayette,Lin Media
+605,22,KSNT-TV,1,lin.ksnt,6835 Northwest Hwy 24 Topeka KS 66618,66618,Kansas,Topeka,Lin Media
+611,13,KIMT-TV,1,lin.kimt,112 North Pennsylvania Mason City IA 50401,50401,Iowa,Rochester,Lin Media
+630,4,WIAT-TV,1,lin.wiat,2075 Golden Crest Drive Birmingham AL 35209,35209,Alabama,Birmingham (Anniston and Tuscaloosa),Lin Media
+635,3,KXAN-TV,1,lin.kxan,908 W. Martin Luther King Blvd Austin TX 78701,78701,Texas,Austin,Lin Media
+658,9,WLUK-TV,1,lin.wluk,787 Lombardi Ave Green Bay WI 54304,54304,Wisconsin,Green Bay-Appleton,Lin Media
+678,23,KSNW-TV,1,lin.ksnw,833 N. Main Street Wichita KS 67203,67203,Kansas,Wichita-Hutchinson,Lin Media
+686,14,WALA-TV,1,lin.wala,1501 Satchel Paige Dr Mobile AL 36606,36606,Alabama,Mobile,Lin Media
+744,10,KHON-TV,1,lin.khon,88 Piikoi Street Honolulu HI 96814,96814,Hawaii,,Lin Media
+790,1,KASA-TV,1,lin.kasa,13 Broadcast Plaza SW Albuquerque NM 87104,87104,New Mexico,Albuquerque-Santa Fe,Lin Media
+790,2,KRQE-TV,1,lin.krqe,13 Broadcast Plaza SW Albuquerque NM 87104,87104,New Mexico,Albuquerque-Santa Fe,Lin Media
+820,16,KOIN-TV,1,lin.koin,222 SW Columbia Street Portland OR 97201,97201,Oregon,Portland,Lin Media
+501,1,WPIX - CW,4,m.wpix,,,New York,New York,Tribune
+504,15,WPHL - MNT,4,m.wphl,,,Pennsylvania,Philadelphia,Tribune
+511,5,WDCW - CW,4,m.wdcw,,,Columbia,Washington,Tribune
+527,9,WXIN - FOX,4,m.wxin,,,Indiana,Indianapolis,Tribune
+533,11,WTIC - FOX,4,m.wtic,,,Connecticut,Hartford & New Haven,Tribune
+563,13,WXMI - FOX,4,m.wxmi,,,Michigan,Grand Rapids-Kalamazoo-Battle Creek,Tribune
+566,12,WPMT - FOX,4,m.wpmt,,,Pennsylvania,Harrisburg-Lancaster-Lebanon-York,Tribune
+602,3,WGN - CW,4,m.wgntv,,,Illinois,Chicago,Tribune
+618,6,KIAH - CW,4,m.kiah,,,Texas,Houston,Tribune
+622,14,WGNO - ABC,4,m.wgno,,,Louisiana,New Orleans,Tribune
+623,4,KDAF - CW,4,m.kdaf,,,Texas,Dallas-Ft. Worth,Tribune
+803,2,KTLA - CW,4,m.ktla,,,California,Los Angeles,Tribune
+819,7,KCPQ - FOX,4,m.kcpq,,,Washington,Seattle-Tacoma,Tribune
+825,10,KSWB - FOX,4,m.kswb,,,California,San Diego,Tribune
+862,8,KTXL - FOX,4,m.ktxl,,,California,Sacramento-Stockton-Modesto,Tribune

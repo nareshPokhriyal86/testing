@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<datastore-indexes autoGenerate="true">
+
+ <datastore-index kind="DataCollectorReport" ancestor="false">
+   <property name="downloadStatus" direction="asc" />
+   <property name="processedStatus" direction="asc" />
+   <property name="updatedOn" direction="asc" />
+ </datastore-index>
+
+<datastore-index kind="DataProcessorReport" ancestor="false">
+  <property name="processedStatus" direction="asc" />
+  <property name="uploadBQStatus" direction="asc" />
+  <property name="updatedOn" direction="asc" />
+</datastore-index>
+
+<datastore-index kind="DataUploaderReport" ancestor="false">  
+  <property name="uploadBQStatus" direction="asc" />
+  <property name="updatedOn" direction="asc" />
+</datastore-index>
+
+  <datastore-index kind="AdvertiserReportObj" ancestor="false">
+    <property name="date" direction="desc" />
+    <property name="adServerCTR" direction="desc" />
+  </datastore-index>
+   <datastore-index kind="AdvertiserReportObj" ancestor="false">
+    <property name="date" direction="desc" />
+    <property name="adServerCTR" direction="asc" />
+  </datastore-index>
+
+  <datastore-index kind="AgencyAdvertiserObj" ancestor="false">
+    <property name="agencyName" direction="asc" />
+    <property name="advertiserName" direction="asc" />
+  
+  </datastore-index>
+  
+  <datastore-index kind="OrderLineItemObj" ancestor="false">
+    <property name="orderId" direction="asc" />
+    <property name="lineItemName" direction="asc" />
+  </datastore-index>
+  
+  <datastore-index kind="OrderLineItemObj" ancestor="false">
+    <property name="orderName" direction="asc" />
+    <property name="lineItemName" direction="asc" />
+  </datastore-index>
+  
+ <datastore-index kind="AdvertiserReportObj" ancestor="false">
+  <property name="lineItemId" direction="asc" />
+  <property name="date" direction="desc" />
+ </datastore-index>
+
+ <datastore-index kind="CustomLineItemObj" ancestor="false">
+  <property name="lineItemName" direction="asc" />
+  <property name="date" direction="desc" />
+ </datastore-index>
+
+<datastore-index kind="PerformanceMetricsObj" ancestor="false">
+  <property name="lineItemName" direction="asc" />
+  <property name="date" direction="desc" />
+</datastore-index>
+
+<datastore-index kind="PublisherChannelObj" ancestor="false">
+  <property name="channelName" direction="asc" />
+  <property name="date" direction="desc" />
+</datastore-index>
+
+<datastore-index kind="PublisherChannelObj" ancestor="false">
+  <property name="publisherName" direction="asc" />
+  <property name="date" direction="desc" />
+</datastore-index>
+
+<datastore-index kind="SellThroughDataObj" ancestor="false">
+  <property name="property" direction="asc" />
+  <property name="date" direction="desc" />
+</datastore-index>
+
+<datastore-index kind="PublisherPropertiesObj" ancestor="false">
+  <property name="name" direction="asc" />
+  <property name="date" direction="desc" />
+</datastore-index>
+
+<datastore-index kind="ProposalObj" ancestor="false">
+  <property name="createdBy" direction="asc" />
+  <property name="proposalId" direction="asc" />
+</datastore-index>
+
+<!-- <datastore-index kind="RolesAndAuthorisation" ancestor="false">
+  <property name="roleType" direction="asc" />
+  <property name="roleName" direction="asc" />
+</datastore-index> -->
+
+<datastore-index kind="PlacementObj" ancestor="false">
+  <property name="placementId" direction="asc" />
+  <property name="siteNumberPerPlacement" direction="asc" />
+</datastore-index>
+
+<datastore-index kind="PlacementObj" ancestor="false">
+  <property name="proposalId" direction="asc" />
+  <property name="siteNumberPerPlacement" direction="desc" />
+</datastore-index>
+
+<datastore-index kind="PlacementObj" ancestor="false">
+  <property name="proposalId" direction="asc" />
+  <property name="placementNumber" direction="desc" />
+</datastore-index>
+
+<datastore-index kind="PlacementObj" ancestor="false">
+    <property name="proposalId" direction="asc"/>
+    <property name="placementName" direction="asc"/>
+</datastore-index>
+
+ <datastore-index kind="PropertyObj" ancestor="false" source="manual">
+        <property name="adServerId" direction="asc"/>
+        <property name="adServerUserName" direction="asc"/>
+        <property name="propertyName" direction="asc"/>
+ </datastore-index>
+ 
+ <datastore-index kind="ForcastInventoryObj" ancestor="false" source="manual">
+        <property name="code" direction="asc" />
+        <property name="startDate" direction="asc"/>
+  </datastore-index>
+    
+  <datastore-index kind="PropertyObj" ancestor="false" source="manual">
+        <property name="companyId" direction="asc"/>
+        <property name="propertyName" direction="asc"/>
+  </datastore-index>
+  
+  <datastore-index kind="DropdownDataObj" ancestor="false" source="manual">
+        <property name="valueType" direction="asc"/>
+        <property name="objectId" direction="asc"/>
+  </datastore-index>
+    
+  <datastore-index kind="SmartCampaignObj" ancestor="false" source="manual">
+        <property name="companyId" direction="asc"/>
+        <property name="campaignStatus" direction="asc"/>
+  </datastore-index>
+    
+  <datastore-index kind="AlertEngineObj" ancestor="false">
+  		<property name="campaignId" direction="asc" />
+  		<property name="alertDate" direction="desc" />
+  </datastore-index>
+
+  <datastore-index kind="UserDetailsObj" ancestor="false" source="manual">
+    	<property name="deleted" direction="asc"/>
+    	<property name="userName" direction="asc"/>
+  </datastore-index>
+  
+  <datastore-index kind="AlertEngineObj" ancestor="false" source="manual">
+        <property name="companyId" direction="asc"/>
+        <property name="alertDate" direction="desc"/>
+   </datastore-index>
+    
+   <datastore-index kind="AlertEngineObj" ancestor="false" source="manual">
+        <property name="alertDate" direction="desc"/>
+        <property name="campaignName" direction="asc"/>
+    </datastore-index>
+    
+    <datastore-index kind="AlertEngineObj" ancestor="false" source="manual">
+     	 <property name="companyId" direction="asc"/>
+     	 <property name="alertDate" direction="desc"/> 
+     	 <property name="campaignName" direction="asc"/> 
+    </datastore-index>
+     
+     <datastore-index kind="SmartCampaignObj" ancestor="false" source="manual">
+        <property name="campaignStatus" direction="asc"/>
+        <property name="companyId" direction="asc"/>
+        <property name="sDate" direction="asc"/>
+    </datastore-index>
+    
+    <datastore-index kind="SmartCampaignObj" ancestor="false" source="manual">
+        <property name="campaignStatus" direction="asc"/>
+        <property name="companyId" direction="asc"/>
+        <property name="sDate" direction="desc"/>
+    </datastore-index>
+    
+    <datastore-index kind="SmartCampaignObj" ancestor="false" source="manual">
+        <property name="companyId" direction="asc"/>
+        <property name="sDate" direction="asc"/>
+    </datastore-index>
+    
+    <datastore-index kind="SmartCampaignObj" ancestor="false" source="manual">
+        <property name="companyId" direction="asc"/>
+        <property name="sDate" direction="desc"/>
+    </datastore-index>
+    
+    <datastore-index kind="SmartCampaignObj" ancestor="false" source="manual">
+        <property name="adServerId" direction="asc"/>
+        <property name="dfpOrderId" direction="asc"/>
+    </datastore-index>
+    
+    <datastore-index kind="SmartCampaignObj" ancestor="false">
+    <property name="adServerId" direction="asc" />
+    <property name="eDate" direction="asc" />
+  </datastore-index>
+  
+  <datastore-index kind="SmartCampaignObj" ancestor="false" source="manual">
+        <property name="campaignStatus" direction="asc"/>
+        <property name="edate" direction="asc"/>
+    </datastore-index>
+    
+  
+</datastore-indexes>  

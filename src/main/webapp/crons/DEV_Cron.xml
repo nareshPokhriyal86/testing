@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+ 
+ <cron>
+    <url>/loadOneYrData.lin</url>
+    <description>Load one year data in memcache</description>
+    <schedule>every day 04:00</schedule>
+ </cron>
+ 
+  <cron>
+    <url>/uploadAllForecastInventory.lin</url>
+    <description>Update LinMedia and Tribune forecast data for 12 months in datastore(every day)</description>
+    <schedule>every day 04:00</schedule>
+  </cron> 
+ 
+ <!-- Dfp Accounts cron Jobs  -->
+<cron>
+    <url>/updateAccountsFromDFP.lin</url>
+    <description>Updates Datastore Accounts from DFP</description>
+    <schedule>every day 03:30</schedule>
+</cron>
+<cron>
+    <url>/loadAccountsFromDFP.lin</url>
+    <description>Creates Memcache for Accounts from DFP</description>
+    <schedule>every day 03:35</schedule>
+    <target>linbackend</target>
+</cron>
+<cron>
+    <url>/loadPropertiesFromDFP.lin</url>
+    <description>Creates Memcache for Properties from DFP</description>
+    <schedule>every day 03:40</schedule>
+    <target>linbackend</target>
+</cron>
+<!-- Dfp Accounts cron Jobs  -->
+
+<!-- Added for daily adunit update for Topix  -->
+<cron>
+    <url>/dailyUpdateAdUnitsTopix.lin</url>
+    <description>Topix daily adunit update </description>
+    <schedule>every day 4:25</schedule>
+</cron>
+
+<!-- Daily AdUnit update jobs -->
+<cron>
+    <url>/dailyUpdateAdUnitsLinMedia.lin</url>
+    <description>LinMedia customEvent daily non-finalised cron</description>
+    <schedule>every day 4:00</schedule>
+</cron>
+<cron>
+    <url>/dailyUpdateAdUnitsTribune.lin</url>
+    <description>Tribune customEvent daily non-finalised cron</description>
+    <schedule>every day 4:10</schedule>
+</cron>
+<cron>
+    <url>/dailyUpdateAdUnitsLinMobile.lin</url>
+    <description>LinMobile daily adunit update </description>
+    <schedule>every day 4:15</schedule>
+</cron> 
+<cron>
+    <url>/dailyUpdateAdUnitsExaminer.lin</url>
+    <description>Examiner daily adunit update </description>
+    <schedule>every day 4:20</schedule>
+</cron> 
+<!--  Daily AdUnit update jobs ends -->
+  <cron>
+    <url>/alertEngine.lin</url>
+    <description>Generate Alerts for Placements and Flights in DataStore(every day)</description>
+    <schedule>every day 09:00</schedule>
+    <target>linbackend</target>
+ </cron>
+ 
+ <!--  sends campaign status alert mail daily -->
+ <cron>
+    <url>/campaignStatusAlertMail.lin</url>
+    <description>Email notification about campaign status to all users who have opted in for the status email(Every morning 9am EST on weekdays)</description>
+    <schedule>every day 09:30</schedule>
+ </cron>
+ 
+ <cron>
+    <url>/updateAllCampaignFromDFP.lin</url>
+    <description>Update DataStore with Order Status and LineItem Status on DFP(Every 15 minutes)</description>
+    <schedule>every 15 minutes</schedule>
+ </cron>
+  
+  
+ <!-- Data uploader Nonfinalise/Finalise cron Jobs starts-->
+ 
+<!-- <cron>
+    <url>/dfpDailyLinMediaReport.lin</url>
+    <description>LinMedia daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:01 to 23:59</schedule>
+</cron> -->
+<cron>
+    <url>/nexageDailyLinMediaReport.lin</url>
+    <description>Nexage daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:02 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/adExDailyLinMediaReport.lin</url>
+    <description>AdExchange daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:03 to 23:59</schedule>
+</cron>
+<!-- <cron>
+    <url>/locationDailyLinMediaReport.lin</url>
+    <description>LinMedia Location daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:04 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/targetDailyLinMediaReport.lin</url>
+    <description>LinMedia Target daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:05 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/customEventDailyLinMediaReport.lin</url>
+    <description>LinMedia customEvent daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:06 to 23:59</schedule>
+</cron> -->
+
+<cron>
+    <url>/dfpFinaliseLinMediaReport.lin</url>
+    <description>LinMedia finalised cron</description>
+    <schedule>every day 4:30</schedule>
+</cron>
+<cron>
+    <url>/nexageFinaliseLinMediaReport.lin</url>
+    <description>Nexage finalised cron</description>
+    <schedule>every day 4:31</schedule>
+</cron>
+<cron>
+    <url>/adExFinaliseLinMediaReport.lin</url>
+    <description>AdExchange finalised cron</description>
+    <schedule>every day 4:32</schedule>
+</cron>
+<cron>
+    <url>/locationFinaliseLinMediaReport.lin</url>
+    <description>LinMedia Location finalised cron</description>
+    <schedule>every day 4:33</schedule>
+</cron>
+<cron>
+    <url>/targetFinaliseLinMediaReport.lin</url>
+    <description>LinMedia Target finalised cron</description>
+    <schedule>every day 4:34</schedule>
+</cron>
+<cron>
+    <url>/customEventFinaliseLinMediaReport.lin</url>
+    <description>LinMedia customEvent finalised cron</description>
+    <schedule>every day 4:35</schedule>
+</cron>
+
+<cron>
+    <url>/dfpNonFinaliseLinMediaReport.lin</url>
+    <description>LinMedia daily non-finalised cron</description>
+     <schedule>every 30 minutes from 05:00 to 6:00</schedule>
+</cron>
+<cron>
+    <url>/nexageNonFinaliseLinMediaReport.lin</url>
+    <description>Nexage daily non-finalised cron</description>
+     <schedule>every 30 minutes from 05:01 to 20:00</schedule>
+</cron>
+<cron>
+    <url>/adExNonFinaliseLinMediaReport.lin</url>
+    <description>AdExchange daily non-finalised cron</description>
+    <schedule>every 30 minutes from 05:02 to 20:00</schedule>
+</cron>
+<cron>
+    <url>/locationNonFinaliseLinMediaReport.lin</url>
+    <description>LinMedia location daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:03 to 6:00</schedule>
+</cron>
+<cron>
+    <url>/targetNonFinaliseLinMediaReport.lin</url>
+    <description>LinMedia target daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:04 to 6:00</schedule>
+</cron>
+<cron>
+    <url>/customEventNonFinaliseLinMediaReport.lin</url>
+    <description>LinMedia custom event daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:05 to 6:00</schedule>
+</cron>
+
+<!-- LinMobile client cron jobs -->
+ <!-- <cron>
+    <url>/dfpDailyLinMobileReport.lin</url>
+    <description>LinMobile daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:01 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/locationDailyLinMobileReport.lin</url>
+    <description>LinMobile Location daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:02 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/targetDailyLinMobileReport.lin</url>
+    <description>LinMobile Target daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:03 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/customEventDailyLinMobileReport.lin</url>
+    <description>LinMobile customEvent daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:04 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/videoCampaignDailyLinMobileReport.lin</url>
+    <description>LinMobile Video Campaign daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:05 to 23:59</schedule>
+</cron> -->
+<cron>
+    <url>/dfpFinaliseLinMobileReport.lin</url>
+    <description>LinMobile finalised cron</description>
+    <schedule>every day 4:20</schedule>
+</cron>
+<cron>
+    <url>/locationFinaliseLinMobileReport.lin</url>
+    <description>LinMobile Location finalised cron</description>
+    <schedule>every day 4:21</schedule>
+</cron>
+<cron>
+    <url>/targetFinaliseLinMobileReport.lin</url>
+    <description>LinMobile Target finalised cron</description>
+    <schedule>every day 4:22</schedule>
+</cron>
+<cron>
+    <url>/customEventFinaliseLinMobileReport.lin</url>
+    <description>LinMobile customEvent finalised cron</description>
+    <schedule>every day 4:23</schedule>
+</cron>
+<cron>
+    <url>/videoCampaignFinaliseLinMobileReport.lin</url>
+    <description>LinMobile Video Campaign finalised cron</description>
+    <schedule>every day 4:24</schedule>
+</cron>
+<cron>
+    <url>/dfpNonFinaliseLinMobileReport.lin</url>
+    <description>Lin Mobile daily non-finalised cron</description>
+    <schedule>every 10 minutes from 05:01 to 6:00</schedule>
+</cron>
+<!-- <cron>
+    <url>/locationNonFinaliseLinMobileReport.lin</url>
+    <description>LinMobile daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:02 to 6:00</schedule>
+</cron> -->
+
+<cron>
+    <url>/locationNonFinaliseLinMobileReportByTaskQueue.lin</url>
+    <description>LinMobile daily Location non-finalised cron</description>
+     <schedule>every day 05:02</schedule>
+</cron> 
+
+<cron>
+    <url>/targetNonFinaliseLinMobileReport.lin</url>
+    <description>LinMobile target daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:03 to 6:00</schedule>
+</cron>
+<cron>
+    <url>/customEventNonFinaliseLinMobileReport.lin</url>
+    <description>LinMobile customEvent daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:04 to 6:00</schedule>
+</cron>
+<cron>
+    <url>/videoCampaignNonFinaliseLinMobileReport.lin</url>
+    <description>LinMobile Video Campaign daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:05 to 6:00</schedule>
+</cron>
+
+<!-- LinMobile client cron jobs ends -->
+
+
+<!-- LinMobile new dfp instance cron jobs -->
+
+ <!-- <cron>
+    <url>/dfpDailyLinMobileNewReport.lin</url>
+    <description>LinMobile new DFP daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:01 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/locationDailyLinMobileNewReport.lin</url>
+    <description>LinMobile new DFP Location daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:02 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/targetDailyLinMobileNewReport.lin</url>
+    <description>LinMobile new DFP Target daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:03 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/customEventDailyLinMobileNewReport.lin</url>
+    <description>LinMobile new DFP customEvent daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:04 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/videoCampaignDailyLinMobileNewReport.lin</url>
+    <description>LinMobile new DFP Video Campaign daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:05 to 23:59</schedule>
+</cron> -->
+<cron>
+    <url>/dfpFinaliseLinMobileNewReport.lin</url>
+    <description>LinMobile new DFP CorePerformance finalised cron</description>
+    <schedule>every day 4:10</schedule>
+</cron>
+<cron>
+    <url>/locationFinaliseLinMobileNewReport.lin</url>
+    <description>LinMobile new DFP Location finalised cron</description>
+    <schedule>every day 4:11</schedule>
+</cron>
+<cron>
+    <url>/targetFinaliseLinMobileNewReport.lin</url>
+    <description>LinMobile new DFP Target finalised cron</description>
+    <schedule>every day 4:12</schedule>
+</cron>
+<cron>
+    <url>/customEventFinaliseLinMobileNewReport.lin</url>
+    <description>LinMobile new DFP customEvent finalised cron</description>
+    <schedule>every day 4:13</schedule>
+</cron>
+<cron>
+    <url>/videoCampaignFinaliseLinMobileNewReport.lin</url>
+    <description>LinMobile new DFP Video Campaign finalised cron</description>
+    <schedule>every day 4:14</schedule>
+</cron>
+<cron>
+    <url>/dfpNonFinaliseLinMobileNewReport.lin</url>
+    <description>Lin Mobile new DFP CorePerformance daily non-finalised cron</description>
+    <schedule>every 10 minutes from 05:00 to 6:00</schedule>
+</cron>
+<cron>
+    <url>/locationNonFinaliseLinMobileNewReport.lin</url>
+    <description>LinMobile new DFP location daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:01 to 6:00</schedule>
+</cron>
+<cron>
+    <url>/targetNonFinaliseLinMobileNewReport.lin</url>
+    <description>LinMobile new DFP target daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:02 to 6:00</schedule>
+</cron>
+<cron>
+    <url>/customEventNonFinaliseLinMobileNewReport.lin</url>
+    <description>LinMobile new DFP customEvent daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:03 to 6:00</schedule>
+</cron>
+<cron>
+    <url>/videoCampaignNonFinaliseLinMobileNewReport.lin</url>
+    <description>LinMobile new DFP Video Campaign daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:04 to 6:00</schedule>
+</cron>
+<!-- LinMobile new dfp instance cron jobs ends -->
+
+
+<!-- LinDigital client cron jobs -->
+ <!-- <cron>
+    <url>/dfpDailyLinDigitalReport.lin</url>
+    <description>LinDigital daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:01 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/locationDailyLinDigitalReport.lin</url>
+    <description>LinDigital Location daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:02 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/targetDailyLinDigitalReport.lin</url>
+    <description>LinDigital Target daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:03 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/customEventDailyLinDigitalReport.lin</url>
+    <description>LinDigital customEvent daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:04 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/dfpFinaliseLinDigitalReport.lin</url>
+    <description>LinDigital finalised cron</description>
+    <schedule>every day 4:30</schedule>
+</cron> -->
+<cron>
+    <url>/locationFinaliseLinDigitalReport.lin</url>
+    <description>LinDigital Location finalised cron</description>
+    <schedule>every day 4:31</schedule>
+</cron>
+<cron>
+    <url>/targetFinaliseLinDigitalReport.lin</url>
+    <description>LinDigital Target finalised cron</description>
+    <schedule>every day 4:32</schedule>
+</cron>
+<cron>
+    <url>/customEventFinaliseLinDigitalReport.lin</url>
+    <description>LinDigital customEvent finalised cron</description>
+    <schedule>every day 4:33</schedule>
+</cron>
+<cron>
+    <url>/dfpNonFinaliseLinDigitalReport.lin</url>
+    <description>Lin Mobile daily non-finalised cron</description>
+    <schedule>every 10 minutes from 05:00 to 6:00</schedule>
+</cron>
+<cron>
+    <url>/locationNonFinaliseLinDigitalReport.lin</url>
+    <description>LinDigital daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:01 to 6:00</schedule>
+</cron>
+<cron>
+    <url>/targetNonFinaliseLinDigitalReport.lin</url>
+    <description>LinDigital target daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:02 to 6:00</schedule>
+</cron>
+<cron>
+    <url>/customEventNonFinaliseLinDigitalReport.lin</url>
+    <description>LinDigital customEvent daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:03 to 6:00</schedule>
+</cron> 
+<!-- LinDigital client cron jobs ends -->
+
+
+<!-- Tribune client cron jobs -->
+ <!-- <cron>
+    <url>/dfpDailyTribuneReport.lin</url>
+    <description>Tribune daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:01 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/locationDailyTribuneReport.lin</url>
+    <description>Tribune Location daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:02 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/targetDailyTribuneReport.lin</url>
+    <description>Tribune Target daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:03 to 23:59</schedule>
+</cron>
+<cron>
+    <url>/customEventDailyTribuneReport.lin</url>
+    <description>Tribune customEvent daily non-finalised cron</description>
+    <schedule>every 60 minutes from 00:04 to 23:59</schedule>
+</cron> -->
+<cron>
+    <url>/dfpFinaliseTribuneReport.lin</url>
+    <description>Tribune finalised cron</description>
+    <schedule>every day 4:30</schedule>
+</cron>
+<cron>
+    <url>/targetFinaliseTribuneReport.lin</url>
+    <description>Tribune Target finalised cron</description>
+    <schedule>every day 4:31</schedule>
+</cron>
+<cron>
+    <url>/locationFinaliseTribuneReport.lin</url>
+    <description>Tribune Location finalised cron</description>
+    <schedule>every day 4:32</schedule>
+</cron>
+<cron>
+    <url>/dfpNonFinaliseTribuneReport.lin</url>
+    <description>Tribune daily non-finalised cron</description>
+    <schedule>every 10 minutes from 05:00 to 6:00</schedule>
+</cron>
+<cron>
+    <url>/locationNonFinaliseTribuneReport.lin</url>
+    <description>Tribune daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:01 to 6:00</schedule>
+</cron>
+<cron>
+    <url>/targetNonFinaliseTribuneReport.lin</url>
+    <description>Tribune target daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:02 to 6:00</schedule>
+</cron>
+<!-- <cron>
+    <url>/customEventNonFinaliseTribuneReport.lin</url>
+    <description>Tribune customEvent daily non-finalised cron</description>
+     <schedule>every 10 minutes from 05:03 to 6:00</schedule>
+</cron>
+<cron>
+    <url>/customEventFinaliseTribuneReport.lin</url>
+    <description>Tribune customEvent finalised cron</description>
+    <schedule>every day 4:33</schedule>
+</cron>  -->
+
+ <!-- Data uploader Nonfinalise/Finalise cron Jobs starts-->
+
+ <cron>
+    <url>/loadProductAdUnitsPerformanceViaTaskQueue.lin</url>
+    <description>Load product's adUnit last month historical data</description>
+     <schedule>every day 00:01</schedule>
+</cron>
+
+<!-- Update product data in GME state wise -->
+
+<cron>
+    <url>/updateProductDataGME.lin</url>
+    <description>Update product wise data on GME vector table "new_us_state_prod" every 4th day of a Month </description>
+    <schedule>4 of month 00:00</schedule>
+</cron>
+
+<!-- Latest updated account cron on DFP  -->
+	<cron>
+   	 <url>/createOrUpdateCampaignObjFromDFP.lin</url>
+  	  <description>Update Campaign/Placement recently updated on DFP Every 2 hours</description>
+   	 <schedule>every 300 minutes</schedule>
+	</cron>
+
+<cron>
+    <url>/loadDailyData.lin</url>
+    <description>Daily Data Upload Cronn</description>
+    <schedule>every 60 minutes from 00:01 to 23:59</schedule>
+</cron>
+
+<!-- Daily cron to update forecast of all the products in Datastore -->
+<cron>
+	<url>/getAllProductsForcast.lin</url>
+	<description>Daily Product Forecast Update Cron </description>
+	<schedule>every day 13:00</schedule>
+</cron>
+
+ </cronentries>

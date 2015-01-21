@@ -1,0 +1,339 @@
+.controlBox {
+	width: 30%;
+	display: block;
+	float: left;
+}
+
+.mapContainer {
+	display: block;
+	float: left;
+	width: 100%;
+	height: 90%;
+	position: relative;
+}
+
+.mapController {
+	display: block;
+	width: 350px;
+	left: 7px;
+	position: absolute;
+	top: 7px;
+	font-family: "Lato";
+	color: #3d3f41;
+}
+
+.productContainer {
+	display: block;;
+	float: left;
+}
+
+.productDetail {
+	width: 100%;
+	height: 100px;
+}
+
+.productCart {
+	width: 200px;
+	height: 200px;
+	border: 1px solid black;
+	bottom: 0px;
+	left: 0px;
+	position: absolute;
+	box-shadow: 0px 1px black;
+	border-radius: 4px;
+	overflow: auto;
+	box-shadow: 0px 1px black;
+	left: 0px;
+	display: none;
+}
+
+.mapExplorer {
+	width: 40%;
+	float: left;
+	display: block;
+	border-right: 1px solid #cdcdcd;
+	padding: 2px;
+	margin: 2px;
+}
+
+.mapCensusButton {
+	width: auto;
+	float: left;
+	display: block;
+	padding: 2px;
+	margin: 2px;
+	cursor: pointer;
+}
+
+.mapProductButton {
+	width: auto;
+	float: left;
+	display: block;
+	padding: 2px;
+	margin: 2px;
+	cursor: pointer;
+}
+
+.mapRow {
+	width: 100%;
+	display: block;
+	float: left;
+	background-color: white;
+	border: 1px solid #cdcdcd;
+	box-shadow: 1px 1px black;
+	margin: 2px 0px;
+	padding: 9px 7px;
+}
+
+.containerRow {
+	width: 100%;
+	display: block;
+	float: left;
+	margin: 2px 0px;
+}
+
+.containerColumn {
+	width: auto;
+	display: block;
+	float: left;
+}
+
+.columnlast {
+	float: right;
+	margin: 0px 3px 0px 0px;
+}
+
+.columnFirst {
+	margin: 0px 0px 0px 3px;
+}
+
+/* New Styles*/
+.headerText {
+	font-size: 16px;
+	vertical-align: top;
+	display: block;
+	float: left;
+	text-align: center;
+}
+
+.divider {
+	background-color: #cdcdcd;
+	width: 1px;
+	height: 30px;
+	display: block;
+	float: left;
+	margin: 0px 10px;
+}
+
+.prodDetail {
+	display: block;
+	float: left;
+	width: 100%;
+}
+
+.pdDetail {
+	display: block;
+	float: left;
+	width: 75%;
+}
+
+.pdAction {
+	display: block;
+	float: left;
+	width: 25%;
+	cursor: pointer;
+}
+
+.addProductButton {
+	display: block;
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+	background: url('/img/Add_to_Campaign_Planner.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.removeProductButton {
+	display: block;
+	width: 30px;
+	height: 30px;
+	margin: 0 auto;
+	background-image: url('/img/remove_from_campaignplanner.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+.actionText {
+	color: #6a6a6a;
+	font-size: 10px;
+	font-family: 'Lato-Light';
+	text-align: center;
+	width: auto;
+	margin: 0 auto;
+	font-family: 'Lato-Light';
+	text-align: center;
+	width: auto;
+}
+
+.contentTitle {
+	color: #222222;
+	font-size: 16px;
+}
+
+.contentDesc {
+	color: #4c4c4c;
+	font-size: 14px;
+}
+
+.contentNumber {
+	color: #e7711b;
+	font-size: 14px;
+}
+
+.noteContent {
+	font-size: 12px;
+	color - #747476
+}
+
+.availImps {
+	font-size: 17px;
+	font-weight: bold;
+	color:#d26730;
+}
+
+.loader {
+	display: none;
+	float:left;
+	width: 16px;
+	height: 16px;
+	background-image: url('/img/ajaxloader.gif');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+#customInfoWindow {
+	display: block;
+	width: 400px;
+	height:auto;
+	background-color: white;
+	border: 0px solid #cdcdcd;
+	box-shadow: 1px 1px black;
+	border-radius: 9px;
+	position: absolute;
+	font-family: "Lato";
+	color: #3d3f41;
+	z-index: 4;
+}
+
+.processScreen{
+	z-index: 5;
+	position: absolute;
+	top:0;
+	background-image: url('/img/bg.png');
+	background-repeat: repeat;
+}
+
+.processingContent{
+	display: block;
+	background-color: white;
+	border: 0px solid #cdcdcd;
+	box-shadow: 1px 1px black;
+	border-radius: 9px;
+	float: left;
+	width: auto;
+	padding: 2px 20px;
+	margin: 20% 44%;
+}
+
+.locationTitle{
+	font-size: 15px;
+	font-weight: bold; 
+}
+
+.locationProd{
+	background-color: #FFD2BF; 
+}
+
+.sliderHolder{
+	width: 90%;
+	float: left;
+	margin: 10px 0px 7px 19px;
+	display: block;
+}
+
+.lineBreak{
+	float:left;
+	display:block;
+	width:80%;
+	background:#cdcdcd;
+	height:1px;
+	margin:3px 3px;
+}
+
+
+/* Legend Bar*/
+
+.mapLegend{
+	display: block;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: auto;
+	border: 1px solid black;
+	background-color: white;
+}
+
+.legendGroup{
+	display: block;
+	float: left;
+	width: 100%;
+	margin: 0px 0px 4px 8px;
+}
+
+.legendColorGroup{
+	display: block;
+	float: left;
+	width: 17%;
+	margin: 0px 1px 0px 1px;
+}
+
+.legendText{
+	display: block;
+	float: left;
+	width: 100%;
+	font-size: 8px;
+	text-align: center;
+}
+
+.legendColorBox{
+	display: block;
+	float: left;
+	width: 68%;
+	height: 4px;
+}
+
+.range1{
+	background-color: #74c7e3;
+	opacity : 0.7;
+}
+
+.range2{
+	background-color: #84afe3;
+	opacity : 0.7;
+}
+
+.range3{
+	background-color: #f7d183;
+	opacity : 0.7;
+}
+
+.range4{
+	background-color: #60cc9a;
+	opacity : 0.7;
+}
+
+.range5{
+	background-color: #e67253;
+	opacity : 0.7;
+}

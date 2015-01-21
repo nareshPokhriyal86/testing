@@ -1,0 +1,172 @@
+/* #page-content {padding: 20px 25px 0;} - Remove */
+/* .nav-tabs>.active>a, .nav-tabs>.active>a:hover, .nav-tabs>.active>a:focus { color: #005580; height: inherit; padding-top: 20px;} - add
+
+.nav-tabs>li {
+background: url('../img/li_right_border_gray.png') no-repeat;
+background-position: right;
+}
+
+ */
+
+
+/* New Navigation tab CSS */
+@media only screen and (min-width: 0px) and (max-width: 1200px) {
+.main-nav{
+	margin:0px;
+	width: 100%;
+	position: relative;
+	list-style-type: none;
+	height: 66px;
+	font-size: 15px;
+	font-family: arial;
+	color: #000;
+	font-weight: normal;
+	text-transform: uppercase;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    overflow: hidden;
+    display:none;
+
+	background: #eed17c; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: -moz-linear-gradient(#eed17c, #fdc525);
+	background: -webkit-gradient(linear, left top, left bottom, from(#eed17c), to(#fdc525));
+	background: -webkit-linear-gradient(#eed17c, ##fdc525);
+	background: -o-linear-gradient(#eed17c, ##fdc525);
+	background: -ms-linear-gradient(#eed17c, ##fdc525);
+	background: linear-gradient(#eed17c, ##fdc525);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eed17c', endColorstr='#fdc525',GradientType=0 ); /* IE6-8 */
+
+}
+}
+
+@media only screen and (min-width: 1200px) {
+.main-nav{
+	margin:0px;
+	width: 100%;
+	position: relative;
+	list-style-type: none;
+	height: 55px;
+	font-size: 15px;
+	font-family: arial;
+	color: #000;
+	font-weight: normal;
+	text-transform: uppercase;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    overflow: hidden;
+
+	background: #eed17c; /* Old browsers */
+/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: -moz-linear-gradient(#eed17c, #fdc525);
+	background: -webkit-gradient(linear, left top, left bottom, from(#eed17c), to(#fdc525));
+	background: -webkit-linear-gradient(#eed17c, ##fdc525);
+	background: -o-linear-gradient(#eed17c, ##fdc525);
+	background: -ms-linear-gradient(#eed17c, ##fdc525);
+	background: linear-gradient(#eed17c, ##fdc525);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eed17c', endColorstr='#fdc525',GradientType=0 ); /* IE6-8 */
+
+}
+}
+
+.main-nav-li_selected{
+float: left;
+display: inline;
+padding: 24px 12px 22px 20px;
+border-left: 1px solid #dda609;
+border-right: 1px solid #dda609;
+font-weight: 600;
+background: #fdc525 url('../img/li_selected_tab_arrow.png') center bottom no-repeat;
+margin-top: -7px;
+margin-left: -1px;
+
+}
+
+.main-nav-li{
+float: left;
+display: inline;
+padding: 14px 12px;
+border-right: 1px solid #dda609;
+font-weight: normal;
+/* height: 20px; */
+}
+
+.main-nav-li-lastChild
+{
+	border-left: 1px solid #dda609;
+    padding: 14px 12px;
+	float: right;
+	display: inline;
+}
+
+.main-nav-li_selected_last{
+float: right;
+display: inline;
+margin-top: -6px;
+padding: 24px 12px 22px 20px;
+border-left: 1px solid #dda609;
+font-weight: bold;
+background: #fdc525 url('../img/li_selected_tab_arrow.png') center bottom no-repeat;
+}
+
+
+	.responsiveDiv {
+	display: none;
+	}
+	.adminMenu {
+	display: block;
+	}
+
+@media only screen and (min-width: 0px) and (max-width: 1200px) {
+	.responsiveShowDiv{
+	display: block;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.responsiveShowDiv{
+	display: none;
+	}
+}
+
+@media only screen and (min-width: 0px) and (max-width: 1200px) {
+	.responsiveHideDiv{
+	display: none;
+	}
+}
+
+@media only screen and (min-width: 1200px) {
+	.responsiveHideDiv{
+	display: block;
+	}
+}
+
+/* ul li:last-child
+{
+	float: right;
+	display: inline;
+	padding: 23px 20px;
+	border-left: 3px solid #dda609;
+} */
+
+.navigationForNewBootstrap  {
+	float: left !important;
+	display: inline !important;
+	padding: 24px 20px 22px 20px !important;
+	border-left: 1px solid #dda609 !important;
+	border-right: 1px solid #dda609 !important;
+	font-weight: 600 !important;
+	background: #fdc525 url('../img/li_selected_tab_arrow.png') center bottom no-repeat !important;
+	margin-top: -13px !important;
+	margin-left: -1px !important;
+}
+
+.navigationForNewBootstrapLastChild  {
+	float: right !important;
+	display: inline !important;
+	margin-top: -13px !important;
+	padding: 24px 20px 22px 20px !important;
+	border-left: 1px solid #dda609 !important;
+	font-weight: bold !important;
+	background: #fdc525 url('../img/li_selected_tab_arrow.png') center bottom no-repeat !important;
+}

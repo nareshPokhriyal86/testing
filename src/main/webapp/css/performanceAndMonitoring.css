@@ -1,0 +1,66 @@
+/* **************************************************************
+					Media Query For Donuts 
+************************************************************** */
+
+@media (max-width: 767px){
+#donut2ChartlagendDiv {float: left!important;margin-top: -450px!important;}
+#creativelast{margin-left: -6px;}
+#donutChartlagendDiv{margin-top: -87%;}
+#donutChartlagendDiv{float: left!important;}
+#richMediaDonutChartlagendDiv{float: left!important;margin-top: -81%;}
+}
+
+@media (max-width: 720px){
+#donut2ChartlagendDiv {float: left!important;}
+#creativelast{margin-left: -6px;}
+#donutChartlagendDiv{margin-top: -87%;}
+#donutChartlagendDiv{float: left!important;}
+#richMediaDonutChartlagendDiv{float: left!important;margin-top: -81%;}
+}
+
+@media (max-width: 640px){
+#donut2ChartlagendDiv {float: left!important;}
+#creativelast{margin-left: -6px;}
+#donutChartlagendDiv{margin-top: -87%;}
+#donutChartlagendDiv{float: left!important;}
+#richMediaDonutChartlagendDiv{float: left!important;margin-top: -81%;}
+}
+
+@media (max-width: 767px){
+#donut2ChartlagendDiv {float: left!important;}
+#creativelast{margin-left: -6px;}
+#donutChartlagendDiv{margin-top: -87%;}
+#donutChartlagendDiv{float: left!important;}
+#richMediaDonutChartlagendDiv{float: left!important;margin-top: -81%;}
+}
+
+@media only screen and (max-width: 1280px) and (min-width: 768px){
+#creativeleftwidth{width: 104%;}
+#richrespo { width: 100%;width: 98%; margin-left: 2%;}
+#donutupper { width: 98%; }    
+#richMediaDonutsDivId{width: 100%!important;}
+#richMediaDonutChartlagendDiv{background: #FAFAFA;height: 390px;float: right;width: 149px;overflow: auto;padding-right: 17px;}
+#donutChartsDiv{float: left;position: relative;margin-top: 36px;width: 98%;}
+.row-fluid .span6 {width: 98%;!important}
+#creativeleftdiv {width: 99%;margin-left: 2px;}
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 768px){
+#richMediaDonutsDivId{width: 100%!important;}
+#creativemarg{margin-left: -11px!important; }
+#richrespo {margin-left: 2%;}
+#donutupper {width: 98%;}
+}
+
+@media only screen and (max-width: 880px) and (min-width: 768px){
+#richMediaDonutChartlagendDiv{float: none!important;}
+#donut2ChartlagendDiv{float: left!important;}
+#donutupper {width: 98%;}
+#colorB{margin-left: 29px!important;}
+#richrespo {margin-left: 2%;}
+#donutChartlagendDiv{float: none!important;width: 186px!important;}
+#richMediaDonutsDivId{width: 100%!important;}
+#creativelast{margin-left: -7px;}
+#donutChartsDiv{margin-left: -7px;}
+#aaa{margin-left: -9px !important;}
+}

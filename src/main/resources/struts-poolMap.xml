@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- 
+  @author Youdhveer Panwar
+  This is a struts config file for PoolMap module
+  @createdOn 11,Nov 2013 
+-->
+
+<struts>
+	  
+    <package name="poolMap" namespace="/" extends="struts-default"> 
+        <interceptors>
+        
+			<interceptor name="gaeFileUploadInterceptor" class="com.struts2.gae.interceptor.GaeFileUploadInterceptor" />
+			<interceptor-stack name="fileUploadStack">				
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />
+				<interceptor-ref name="gaeFileUploadInterceptor"></interceptor-ref>
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>				
+			</interceptor-stack>
+			
+			<interceptor name="SessionCheckInterceptor" class="com.lin.web.interceptor.SessionCheckInterceptor"/>
+            <interceptor-stack name="tstSessionCheckStack">
+                <interceptor-ref name="SessionCheckInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack> 
+            
+            <interceptor name="AdminSessionCheckInterceptor" class="com.lin.web.interceptor.AdminSessionCheckInterceptor"/>
+            <interceptor-stack name="adminSessionCheckStack">
+                <interceptor-ref name="SessionCheckInterceptor" />
+                <interceptor-ref name="AdminSessionCheckInterceptor" />
+                <interceptor-ref name="defaultStack" />
+            </interceptor-stack>
+		
+		</interceptors>
+		
+		<default-interceptor-ref name="fileUploadStack" />
+	   
+	    <global-results>
+           <result name="sessionExpired" >jsp/sessionExpired.jsp</result>
+           <result name="unAuthorisedAccess" >jsp/unauthorisedAccess.jsp</result>
+        </global-results>
+   
+        <action name="poolMap" class="com.lin.web.action.PoolMapAction" >
+              <interceptor-ref name="tstSessionCheckStack" />
+		       <result name="input">jsp/poolMap.jsp</result>
+               <result name="success">jsp/poolMap.jsp</result>
+        </action>        
+        <action name="newPoolMap" class="com.lin.web.action.PoolMapAction" method="newPoolMap">
+              <interceptor-ref name="tstSessionCheckStack" /> 
+		       <result name="input">jsp/PoolMap2.jsp</result>
+               <result name="success">jsp/PoolMap2.jsp</result>
+        </action>     
+       
+   </package>  	
+   <package name="poolMapJson"  extends="json-default">
+	  <interceptors>
+	  <interceptor-stack name="fileUploadStack">				
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="alias" />
+				<interceptor-ref name="servletConfig" />
+				<interceptor-ref name="prepare" />
+				<interceptor-ref name="i18n" />
+				<interceptor-ref name="chain" />
+				<interceptor-ref name="debugging" />
+				<interceptor-ref name="profiling" />
+				<interceptor-ref name="scopedModelDriven" />
+				<interceptor-ref name="modelDriven" />				
+				<interceptor-ref name="basicStack"></interceptor-ref>
+				<interceptor-ref name="checkbox" />
+				<interceptor-ref name="staticParams" />
+				<interceptor-ref name="actionMappingParams" />
+				<interceptor-ref name="params">
+					<param name="excludeParams">dojo\..*,^struts\..*</param>
+				</interceptor-ref>
+				<interceptor-ref name="conversionError" />
+				<interceptor-ref name="validation">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				<interceptor-ref name="workflow">
+					<param name="excludeMethods">input,back,cancel,browse</param>
+				</interceptor-ref>
+				
+				 <interceptor-ref name="json">
+                   <param name="enableSMD">true</param>
+                   <param name="excludeProperties">
+                       login.password,
+                       studentList.*\.sin
+                  </param>
+                </interceptor-ref>      
+			</interceptor-stack>
+      </interceptors>
+       
+       <!-- <action name="savePoolMap" class="com.lin.web.action.PoolMapAction" method="save">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action> -->
+        
+        <action name="forecastInventory" class="com.lin.web.action.PoolMapAction" method="forecastInventory">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="loadTribuneInventory" class="com.lin.web.action.FusionTableAction" method="loadTribuneInventory">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="uploadAllForecastInventory" class="com.lin.web.action.FusionTableAction" method="uploadForecastInventoryByTaskQueue">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="uploadLinMediaInventory1" class="com.lin.web.action.FusionTableAction">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="uploadLinMediaInventory2" class="com.lin.web.action.FusionTableAction" method="cronJob2">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="uploadLinMediaInventory3" class="com.lin.web.action.FusionTableAction" method="cronJob3">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="uploadLinMediaInventory4" class="com.lin.web.action.FusionTableAction" method="cronJob4">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="uploadLinMediaInventory5" class="com.lin.web.action.FusionTableAction" method="cronJob5">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="uploadLinMediaInventory6" class="com.lin.web.action.FusionTableAction" method="cronJob6">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="uploadLinMediaInventory7" class="com.lin.web.action.FusionTableAction" method="cronJob7">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="uploadLinMediaInventory8" class="com.lin.web.action.FusionTableAction" method="cronJob8">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="uploadLinMediaInventory9" class="com.lin.web.action.FusionTableAction" method="cronJob9">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="uploadLinMediaInventory10" class="com.lin.web.action.FusionTableAction" method="cronJob10">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="uploadLinMediaInventory11" class="com.lin.web.action.FusionTableAction" method="cronJob11">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="uploadLinMediaInventory12" class="com.lin.web.action.FusionTableAction" method="cronJob12">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+     
+        <action name="uploadTribuneInventoryQ1" class="com.lin.web.action.FusionTableAction" method="uploadTribuneInventoryQ1">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="uploadTribuneInventoryQ2" class="com.lin.web.action.FusionTableAction" method="uploadTribuneInventoryQ2">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="uploadTribuneInventoryQ3" class="com.lin.web.action.FusionTableAction" method="uploadTribuneInventoryQ3">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="authorizeFusionOauth2" class="com.lin.web.action.FusionTableAction" method="authorizeUsingOauth2">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+        
+        <action name="fusionCallback" class="com.lin.web.action.FusionTableAction" method="oauth2Callback">
+               <param name="contentType">text/html</param>
+               <result type="json"/>
+        </action>
+
+        <action name="uploadDMAsWithInventory" class="com.lin.web.action.PoolMapAction" method="loadAllDMAsWithInventory">
+               <param name="contentType">text/html</param>
+               <result type="json">
+               <param name="root">
+         	   forcastInventoryDTOList 
+    		</param> 
+    		</result>
+        </action>
+        
+         <action name="loadAllocateInventry" class="com.lin.web.action.PoolMapAction" method="loadAllocateInventry">
+               <param name="contentType">text/html</param>
+               <result type="json">
+               <param name="root">
+         	   forcastInventoryDTOList 
+    		</param> 
+    		</result>
+        </action>
+   </package>
+	
+</struts>

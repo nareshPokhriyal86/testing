@@ -496,8 +496,14 @@
 
 <cron>
     <url>/loadDailyData.lin</url>
-    <description>Daily Data Upload Cronn</description>
+    <description>Daily Data Upload Cron</description>
     <schedule>every 60 minutes from 00:01 to 23:59</schedule>
+</cron>
+
+<cron>
+    <url>/updateDailyNonFinaliseData.lin</url>
+    <description>This Cron will reload all non-Finalise tables again once in a day</description>
+    <schedule>every day 05:00</schedule>
 </cron>
 
 <!-- Daily cron to update forecast of all the products in Datastore -->

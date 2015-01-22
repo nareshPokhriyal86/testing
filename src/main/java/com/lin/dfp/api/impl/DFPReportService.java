@@ -1253,10 +1253,10 @@ public class DFPReportService implements IDFPReportService{
 			reader.close();
 		} catch (MalformedURLException e) {
 			log.severe("MalformedURLException:"+e.getMessage());
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			log.severe("IOException:"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 
 		return dataList;
@@ -2836,7 +2836,7 @@ public class DFPReportService implements IDFPReportService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in updateAccounts of DFPReportService : " + e.getMessage()+" at : "+DateUtil.getCurrentTimeStamp("yyyy-MM-dd HH:mm:ss.SSS"));
-			e.printStackTrace();
+			
 			throw e;
 		}
 		  
@@ -2872,7 +2872,7 @@ public class DFPReportService implements IDFPReportService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in searchAccounts of DFPReportService : " + e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}
 		return accountsList;
@@ -3587,7 +3587,7 @@ public boolean getAccountsFromDFP(DfpServices dfpServices, DfpSession dfpSession
 			downloadUrl = downloadReport(dfpServices, session, reportQuery);
 		} catch (ApiException_Exception | InterruptedException e) {
 			log.severe("Download report exception -- "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 	     return downloadUrl;
 	}
@@ -3674,7 +3674,7 @@ public boolean getAccountsFromDFP(DfpServices dfpServices, DfpSession dfpSession
 			downloadUrl = downloadReport(dfpServices, session, reportQuery);
 		} catch (ApiException_Exception | InterruptedException e) {
 			log.severe("Download report exception -- "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 	     return downloadUrl;
 	}
@@ -4207,7 +4207,7 @@ public boolean getAccountsFromDFP(DfpServices dfpServices, DfpSession dfpSession
 		catch (Exception e) {
 			str = "Exception in updateCampaignDetailFromDFP of DFPReportService : " + e.getMessage();
 			log.severe(str);
-			e.printStackTrace();
+			
 			summary.append(str+"<br>");
 		}
 		return result;
@@ -4254,7 +4254,7 @@ public boolean getAccountsFromDFP(DfpServices dfpServices, DfpSession dfpSession
 			
 		}catch(Exception e){
 			log.severe("Exception in convertDFPStatus in DFPReportService"+e.toString());
-			e.printStackTrace();
+			
 		}
 		return campaignStatus;
 	}
@@ -4350,7 +4350,7 @@ public boolean getAccountsFromDFP(DfpServices dfpServices, DfpSession dfpSession
 			}
 		}catch(Exception e){
 			log.severe("Exception in campaignStatus in DFPReportService"+e.toString());
-			e.printStackTrace();
+			
 		}
 		return campaignStatus;
 		
@@ -4456,7 +4456,7 @@ public boolean getAccountsFromDFP(DfpServices dfpServices, DfpSession dfpSession
 		catch (Exception e) {
 			str = "Exception in updatePlacementDetailFromDFP of DFPReportService : " + e.getMessage();
 			log.severe(str);
-			//e.printStackTrace();
+			//
 			summary.append(str+"<br>");
 		}
 		return result;

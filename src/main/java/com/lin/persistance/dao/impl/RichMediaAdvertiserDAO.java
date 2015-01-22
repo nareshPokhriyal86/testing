@@ -212,7 +212,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -431,7 +431,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -581,7 +581,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -719,7 +719,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -746,7 +746,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadAdvertisersByLocationData of RichMediaAdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return advertiserByLocationObjList;
 	}
@@ -835,7 +835,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -862,7 +862,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadAdvertiserByMarketGraphData of RichMediaAdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return advertiserByLocationObjList;
 	}
@@ -993,7 +993,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 					queryResponse1 = BigQueryUtil.getBigQueryData(QUERY1);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse1.getJobComplete() && j<=3);
@@ -1004,7 +1004,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 					queryResponse2 = BigQueryUtil.getBigQueryData(QUERY2);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse2.getJobComplete() && j<=3);
@@ -1058,7 +1058,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 			 }
 		}catch(Exception e) {
 			log.severe("Exception getLineItemForPopUP of RichMediaAdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 	}
 	
@@ -1187,7 +1187,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY.toString());
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -1206,7 +1206,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 					}
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 
 			}
@@ -1305,7 +1305,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY.toString());
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -1324,7 +1324,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 					}
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 
 			}
@@ -1358,7 +1358,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -1377,7 +1377,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 					}
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 
 			}
@@ -1417,7 +1417,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -1438,7 +1438,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 					}
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 
 			}
@@ -1539,7 +1539,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 			}
 			 catch (Exception e) {
 				log.severe("Exception in loadAdvertiserDFPPropertyList in AdvertiserDAO"+e.getMessage());
-				e.printStackTrace();
+				
 			}
 		 	return siteList;
 		
@@ -1561,7 +1561,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 			}
 		}catch (Exception e) {
 			log.severe("Exception in getPropertyObjByName of RichMediaAdvertiserDAO"+e.getMessage());
-			e.printStackTrace();
+			
 		}*/
 		return propertyObj;
 	}
@@ -1653,7 +1653,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -1704,7 +1704,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadAdvertiserTotalDataList of RichMediaAdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return advertiserTotalDataList;
 	}
@@ -1816,7 +1816,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -1845,7 +1845,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadDeliveryIndicatorData of RichMediaAdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return advertiserTotalDataList;
 	
@@ -1892,7 +1892,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -1928,7 +1928,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadRichMediaEventPopup of RichMediaAdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return richMediaEventPopupList;
 	}
@@ -1970,7 +1970,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -2000,7 +2000,7 @@ public class RichMediaAdvertiserDAO implements IRichMediaAdvertiserDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadRichMediaEventGraph of RichMediaAdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return richMediaEventGraphList;
 		

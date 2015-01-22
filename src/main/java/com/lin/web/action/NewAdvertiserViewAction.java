@@ -140,7 +140,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			}
 		} catch(Exception e) {
 			log.info("Exception in getPublisherId in NewAdvertiserViewAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		log.info("publisherIdInBQ : "+publisherIdInBQ);
 		return publisherIdInBQ;
@@ -165,7 +165,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 	    	 
 	     }catch(Exception e){
 	    	 log.severe("Exception in HeaderData()  in NewAdvertiserViewAction : "+e.getMessage());
-				e.printStackTrace();
+				
 	     }
 	   
 	     return Action.SUCCESS;
@@ -187,7 +187,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			 }			 
 	     }catch(Exception e){
 	    	 log.severe("Exception in performarData()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 	     }
 		return Action.SUCCESS;
 	}
@@ -208,7 +208,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			 }			 
 	     }catch(Exception e){
 	    	 log.severe("Exception in mostActiveData()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 	     }
 		return Action.SUCCESS;
 	}
@@ -230,7 +230,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			 }
 	     }catch(Exception e){
 	    	 log.severe("Exception in deliveryMetrics()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 	     }
 		return Action.SUCCESS;
 	}
@@ -260,7 +260,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			 }			 
 		 }catch(Exception e){
 			 log.severe("Exception in performanceByLocationChartData()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		 }
 		 
 		 return Action.SUCCESS;
@@ -292,7 +292,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			 
 		 }catch(Exception e){
 			 log.severe("Exception in performanceByAdSizeChartData()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		 }
 		 
 		 return Action.SUCCESS;
@@ -315,7 +315,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			 }
 		 }catch(Exception e){
 			 log.severe("Exception in performanceByOSChartData()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		 }
 		 
 		 return Action.SUCCESS;
@@ -338,7 +338,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			 } 
 		 }catch(Exception e){
 			 log.severe("Exception in performanceByDeviceChartData()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		 }
 		 
 		 return Action.SUCCESS;
@@ -361,7 +361,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			} 
 		 }catch(Exception e){
 			 log.severe("Exception in mobileWebVsAppChartData()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		 }
 		 
 		 return Action.SUCCESS;
@@ -376,7 +376,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			dataMap=service.getSelectedAccountsByUserId(userId, true, true);
 		} catch(Exception e) {
 			log.severe("Exception in loadUserAccounts : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		log.info("dataMap size:"+dataMap.size());		
 		return Action.SUCCESS;
@@ -448,7 +448,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			 }
     	}catch(Exception e){
     		log.severe("Exception in richMediaEventGraph in NewAdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 			return Action.ERROR;
     	}
     	return Action.SUCCESS;
@@ -471,12 +471,12 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
     		
     	}catch (ValidationException e) {
 			log.severe("DFP session exception: ValidationException :"+e.getMessage());				
-			e.printStackTrace();
+			
 			setErrorStatus("validationError");
 			 
 	   }catch(Exception e){
 			log.severe("Exception in updateReallocationLineItem in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 			setErrorStatus("DFPAPIError");
 		  
     	}
@@ -511,7 +511,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			 
 		 }catch(Exception e){
 			 log.severe("Exception in performanceByAdSizeChartData()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		 }
 		 
 		 return Action.SUCCESS;
@@ -544,7 +544,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			 
 		 }catch(Exception e){
 			 log.severe("Exception in performanceByAdSizeChartData()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		 }
 		 
 		 return Action.SUCCESS;
@@ -575,7 +575,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			 }
 		 }catch(Exception e){
 			 log.severe("Exception in performanceByAdSizeChartData()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		 }
 		 
 		 return Action.SUCCESS;
@@ -599,7 +599,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			 }
 	     }catch(Exception e){
 	    	 log.severe("Exception in deliveryMetricsReport()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 	     }
         ExcelReportGenerator erGen = new ExcelReportGenerator();
         
@@ -613,7 +613,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 	    	   response.getOutputStream().write(excelbytes);
 	    	   response.getOutputStream().flush();*/
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 		}       
      
 		return "success";
@@ -639,7 +639,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			 }
 	     }catch(Exception e){
 	    	 log.severe("Exception in headerReportObject()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 	     }
        ExcelReportGenerator erGen = new ExcelReportGenerator();
        byte[] excelbytes = null;
@@ -647,7 +647,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			excelbytes = erGen.generateReport("SummaryReport.xls","SummaryReportDTO", summaryReportObjectList);
 			inputStream = new ByteArrayInputStream(excelbytes);
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 		}     
 		return "success";
 	}
@@ -745,7 +745,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			 }
 	     }catch(Exception e){
 	    	 log.severe("Exception in advertiserReportObject()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 	     }
       ExcelReportGenerator erGen = new ExcelReportGenerator();
       byte[] excelbytes = null;
@@ -753,7 +753,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			excelbytes = erGen.advertiserReportGenerate("AdvertiserReport.xls",map);
 			inputStream = new ByteArrayInputStream(excelbytes);
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 		}     
 		return "success";
 	}
@@ -776,7 +776,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			 }
 	     }catch(Exception e){
 	    	 log.severe("Exception in performanceBySiteReportObject()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 	     }
      ExcelReportGenerator erGen = new ExcelReportGenerator();
      byte[] excelbytes = null;
@@ -784,7 +784,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			excelbytes = erGen.generateReport("PerformanceBySite.xls","NewAdvertiserViewDTO", performanceBySiteReportList);
 			inputStream = new ByteArrayInputStream(excelbytes);
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 		}     
 		return "success";
 	}
@@ -806,7 +806,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			 } 
 		 }catch(Exception e){
 			 log.severe("Exception in impressionsByAdSizeChartData()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		 }
 		 
 		 return Action.SUCCESS;
@@ -828,7 +828,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			}
 		} catch(Exception e) {
 			 log.severe("Exception in videoCampaignData()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -873,7 +873,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			}
 		} catch(Exception e) {
 			 log.severe("Exception in campaignGridData()  in NewAdvertiserViewAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -949,7 +949,7 @@ public class NewAdvertiserViewAction implements  ServletRequestAware,ServletResp
 			}
 		}catch (Exception e) {
 			log.severe("Exception in loadTopLevelAdUnits of ProductAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
    }*/

@@ -195,11 +195,11 @@ public class ProductPerformanceAction extends ActionSupport
 				} catch (ValidationException e) {
 					log.severe(" Creating dfp session exception : "+e.getMessage());
 					response=response+" : exception: "+e.getMessage();
-					e.printStackTrace();
+					
 				} catch (Exception e) {
 					log.severe(" fetching report from dfp - exception : "+e.getMessage());
 					response=response+" : exception: "+e.getMessage();
-					e.printStackTrace();
+					
 				}finally{
 					log.info("DFP reports ends...response: "+response);
 				}

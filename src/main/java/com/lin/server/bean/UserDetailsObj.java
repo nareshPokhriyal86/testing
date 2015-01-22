@@ -192,6 +192,10 @@ public class UserDetailsObj implements Serializable, Comparable<UserDetailsObj>{
 		this.deleted = deleted;
 	}
 
-	
+@Override
+public boolean equals(Object arg0) {
+	// TODO Auto-generated method stub
+	return super.equals(arg0);
+}	
 		
 }

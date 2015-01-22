@@ -358,8 +358,10 @@ public class LinMobileConstants {
 	public static final int LOAD_TYPE_RICH_MEDIA_ORDER_COUNT = 50;
 	public static final int LOAD_TYPE_PRODUCT_PERFORMANCE_ORDER_COUNT = 50;
 	public static final int LOAD_TYPE_SELL_THROUGH_ORDER_COUNT = 50;
-	public static final int DAILY_REPORT_ORDER_COUNT = 36;
 	
+	public static final int DAILY_REPORT_ORDER_COUNT = 36;
+	public static final String DAILY_TASK_TYPE = "daily";
+	public static final String NON_FINALISE_TASK_TYPE = "nonfinalise";
 	public static final int[] PRODUCT_FORCAST_DAY = {30};
 	
 }

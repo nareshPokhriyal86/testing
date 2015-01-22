@@ -162,11 +162,11 @@ public class TribuneAction implements ServletRequestAware,ServletResponseAware,S
 		 } catch (ValidationException e) {
 			log.severe("DFP session exception: ValidationException :"+e.getMessage());
 			reportsResponse=e.getMessage();
-			e.printStackTrace();
+			
 		 } catch (Exception e) {
 			log.severe("DFP report exception: Exception :"+e.getMessage());
 			reportsResponse=e.getMessage();
-			e.printStackTrace();
+			
 		 }
 	   }	
 	    

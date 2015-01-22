@@ -95,12 +95,12 @@ public class BigQueryUtil {
 					credential=null;
 					bigquery=null;
 					log.severe("initBigQueryData:GeneralSecurityException:"+e.getMessage());
-					e.printStackTrace();
+					
 				} catch (IOException e) {
 					credential=null;
 					bigquery=null;
 					log.severe("initBigQueryData:IOException:"+e.getMessage());
-					e.printStackTrace();
+					
 				}
 		  }
 		  
@@ -145,10 +145,10 @@ public class BigQueryUtil {
 					 
 				} catch (GeneralSecurityException e) {
 					log.severe("initBigQueryData:GeneralSecurityException:"+e.getMessage());
-					//e.printStackTrace();
+					//
 				} catch (IOException e) {
 					log.severe("initBigQueryData:IOException:"+e.getMessage());
-					//e.printStackTrace();
+					//
 				}
 				  }
 			  }
@@ -273,7 +273,7 @@ public class BigQueryUtil {
 				  } catch (InterruptedException e) {
 				 	log.severe("InterruptedException:"+e.getMessage());
 				 	queryStatus=e.getMessage();
-					e.printStackTrace();
+					
 				  }			      
 			  	 
 		      }
@@ -341,7 +341,7 @@ public class BigQueryUtil {
 			} catch (InterruptedException e) {
 				log.severe("InterruptedException:" + e.getMessage());
 				queryStatus = e.getMessage();
-				e.printStackTrace();
+				
 			} 
 
 		}
@@ -467,10 +467,10 @@ public class BigQueryUtil {
 				
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 			} catch (GeneralSecurityException e) {
 				log.severe("Exception in saving data in bigquery: GeneralSecurityException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
 		}else{
 			log.warning("Cron job failed : Sending mail...");
@@ -521,10 +521,10 @@ public class BigQueryUtil {
 				
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 			} catch (GeneralSecurityException e) {
 				log.severe("Exception in saving data in bigquery: GeneralSecurityException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
 		}else{
 			log.warning("Cron job failed : Sending mail...");
@@ -564,7 +564,7 @@ public class BigQueryUtil {
 			return true;
 		} catch (IOException e) {
 			log.severe("IOException:"+e.getMessage());
-			e.printStackTrace();
+			
 			return false;
 		}			    
 	}
@@ -585,7 +585,7 @@ public class BigQueryUtil {
 			return true;
 		} catch (IOException e) {
 			log.severe("IOException:"+e.getMessage());
-			e.printStackTrace();
+			
 			return false;
 		}			    
 	}
@@ -611,7 +611,7 @@ public class BigQueryUtil {
 			response="Success";
 		} catch (IOException e) {
 			log.severe("IOException:"+e.getMessage());
-			//e.printStackTrace();
+			//
 			response="Failed : "+e.getMessage();
 		}	
 		return response;
@@ -635,7 +635,7 @@ public class BigQueryUtil {
 			response=true;
 		} catch (IOException e) {
 			log.severe("IOException:"+e.getMessage());
-			//e.printStackTrace();
+			//
 			response=false;
 		}	
 		return response;
@@ -671,7 +671,7 @@ public class BigQueryUtil {
 			response=true;
 		} catch (IOException e) {
 			log.severe("IOException:"+e.getMessage());
-			//e.printStackTrace();
+			//
 			response=false;
 		}	
 		return response;
@@ -720,7 +720,7 @@ public class BigQueryUtil {
 			
 		} catch (IOException e) {
 			log.severe("IOException:"+e.getMessage());
-			e.printStackTrace();
+			
 		}	
 		
 		return tableList;
@@ -791,10 +791,10 @@ public class BigQueryUtil {
 				
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				//e.printStackTrace();
+				//
 			} catch (GeneralSecurityException e) {
 				log.severe("Exception in saving data in bigquery: GeneralSecurityException:"+e.getMessage());
-				//e.printStackTrace();
+				//
 			} catch (Exception e) {
 				log.severe("Exception--"+e.getMessage());
 				bigQueryJobResponse=e.getMessage();
@@ -877,7 +877,7 @@ public class BigQueryUtil {
 				  } catch (InterruptedException e) {
 				 	log.severe("InterruptedException:"+e.getMessage());
 				 	queryStatus=e.getMessage();
-					e.printStackTrace();
+					
 				  }			      
 			  	 
 		      }

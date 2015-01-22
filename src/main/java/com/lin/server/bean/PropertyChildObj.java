@@ -39,5 +39,8 @@ public class PropertyChildObj  implements Serializable{
 		PropertyChildObj tempObj = (PropertyChildObj)obj;
 		return tempObj.childId.equals(this.childId);
 	}
-
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
 }

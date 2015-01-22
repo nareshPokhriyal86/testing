@@ -216,7 +216,7 @@ public class FusionTableAction implements ServletRequestAware,ServletResponseAwa
 		} catch (Exception e) {
 			log.severe("Exception:"+e.getMessage());
 			reportsResponse=e.getMessage();
-			e.printStackTrace();
+			
 		}
     }
     
@@ -409,7 +409,7 @@ public class FusionTableAction implements ServletRequestAware,ServletResponseAwa
 	    } catch (IOException e) {
 			log.severe("IOException :"+e.getMessage());
 			error=e.getMessage();
-			e.printStackTrace();				
+							
 		} 
 	    
 	}
@@ -426,7 +426,7 @@ public class FusionTableAction implements ServletRequestAware,ServletResponseAwa
   	    	response.sendRedirect("/fusionTableAccess.lin");;
 		  } catch (IOException e) {
 			 log.severe("IOException: "+e.getMessage());
-			 e.printStackTrace();
+			 
 		  }
 		
    	    } catch (EntityNotFoundException ex) {
@@ -445,7 +445,7 @@ public class FusionTableAction implements ServletRequestAware,ServletResponseAwa
 			response.sendRedirect(requestUrl.build());
 		  } catch (IOException e) {
 			  log.severe("IOException: "+e.getMessage());
-			e.printStackTrace();
+			
 		  }
    	      
    	    }
@@ -490,7 +490,7 @@ public class FusionTableAction implements ServletRequestAware,ServletResponseAwa
 
 		} catch (IOException e) {
 			log.severe("IOException: " + e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return null;
     }

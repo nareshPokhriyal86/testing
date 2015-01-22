@@ -714,7 +714,7 @@ public class CampaignSetupAction implements ServletRequestAware,SessionAware{
 	    	}
 	 	}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in execution of isAuthorised : " + e.getMessage());
 		}
 		return false;

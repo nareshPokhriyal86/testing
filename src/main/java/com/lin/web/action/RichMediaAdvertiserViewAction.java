@@ -135,7 +135,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 	    	}
 	 	}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in execution of RichMediaAdvertiserViewAction : " + e.getMessage());
 		}
 		return "unAuthorisedAccess";
@@ -506,7 +506,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
     	}
     	catch (Exception e) {
 			log.severe("Exception in loadAdvertiserBylocationGraphData in RichMediaAdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 	    return Action.SUCCESS;
     }
@@ -566,7 +566,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
     	}
     	catch (Exception e) {
 			log.severe("Exception in loadAdvertiserByMarketGraphData in RichMediaAdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 	    return Action.SUCCESS;
     }
@@ -619,7 +619,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 			}
     	} catch (Exception e) {
     		log.severe("Exception in loadLineItemForPopup in RichMediaAdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
     	return Action.SUCCESS;
     }
@@ -673,7 +673,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 			 headerMap=createActualLineGraph(advertiserTrendAnalysisActualDataGraphList);
     	}catch (Exception e) {
     		log.severe("Exception in actualLineGraphAdvertiser in RichMediaAdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return Action.SUCCESS;
 	 }
@@ -957,7 +957,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 			 headerMap=createForcastLineGraph(advertiserTrendAnalysisForcastlDatarList);
     	}catch (Exception e) {
     		log.severe("Exception in actualLineGraphAdvertiser in RichMediaAdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return Action.SUCCESS;
 	 }
@@ -1305,7 +1305,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 	    }
 		catch (Exception e) {
 			log.severe("Exception in getAgencyDropDownList in RichMediaAdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
     	
@@ -1328,7 +1328,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 	    }
 		catch (Exception e) {
 			log.severe("Exception in loadAdvertiserDropDownList in RichMediaAdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
     
@@ -1351,7 +1351,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 	    }
 		catch (Exception e) {
 			log.severe("Exception in loadOrderDropDownList in RichMediaAdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
     
@@ -1374,7 +1374,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 	    }
 		catch (Exception e) {
 			log.severe("Exception in loadNonPerformerLineItems in RichMediaAdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
     
@@ -1419,12 +1419,12 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 	    }
 		} catch (ValidationException e) {
 				log.severe("DFP session exception: ValidationException :"+e.getMessage());				
-				e.printStackTrace();
+				
 				setErrorStatus("validationError");
 				 return Action.SUCCESS;
 		} catch (Exception e) {
 				log.severe(" Exception :"+e.getMessage());
-				e.printStackTrace();
+				
 				setErrorStatus("DFPAPIError");
 				 return Action.SUCCESS;
 	   }
@@ -1461,12 +1461,12 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
     		
     	}catch (ValidationException e) {
 			log.severe("DFP session exception: ValidationException :"+e.getMessage());				
-			e.printStackTrace();
+			
 			setErrorStatus("validationError");
 			 
 	   }catch(Exception e){
 			log.severe("Exception in updateReallocationLineItem in RichMediaAdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 			setErrorStatus("DFPAPIError");
 		  
     	}
@@ -1497,7 +1497,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 		    }
 			catch (Exception e) {
 				log.severe("Exception in loadPublisherPropertyDropDownList in PublisherViewAction"+e.getMessage());
-				e.printStackTrace();
+				
 			}
 			return Action.SUCCESS;
 	    }
@@ -1520,7 +1520,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 			advertiserTotalDataListCurrentMap = service.loadAdvertiserTotalDataList(lowerDate, upperDate,publisher,advertiser,agency,properties);
 	    	}catch (Exception e) {
 	    		log.severe("Exception in loadAdvertiserTotalDataListCurrent in RichMediaAdvertiserViewAction class");
-	    		e.printStackTrace();
+	    		
 			}
 			return Action.SUCCESS;
 	    }
@@ -1543,7 +1543,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 			advertiserTotalDataListCompareMap = service.loadAdvertiserTotalDataList(lowerDate, upperDate,publisher,advertiser,agency,properties);
 	    	}catch (Exception e) {
 	    		log.severe("Exception in loadAdvertiserTotalDataListCompare in RichMediaAdvertiserViewAction class");
-	    		e.printStackTrace();
+	    		
 			}
 			return Action.SUCCESS;
 	    }
@@ -1566,7 +1566,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 			advertiserTotalDataListMTDMap = service.loadAdvertiserTotalDataList(lowerDate, upperDate,publisher,advertiser,agency,properties);
 	    	}catch (Exception e) {
 	    		log.severe("Exception in loadAdvertiserTotalDataListMTD in RichMediaAdvertiserViewAction class");
-	    		e.printStackTrace();
+	    		
 			}
 			return Action.SUCCESS;
 	    }
@@ -1585,7 +1585,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 			deliveryIndicatorDataList = service.loadDeliveryIndicatorData(lowerDate, upperDate, publisher, advertiser, agency, properties);
 	    	}catch (Exception e) {
 	    		log.severe("Exception in loadDeliveryIndicatorData in RichMediaAdvertiserViewAction class");
-	    		e.printStackTrace();
+	    		
 			}
 			return Action.SUCCESS;
 	    }
@@ -1609,12 +1609,12 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 	    		
 	    	}catch (ValidationException e) {
 				log.severe("DFP session exception: ValidationException :"+e.getMessage());				
-				e.printStackTrace();
+				
 				setErrorStatus("validationError");
 				 
 		   }catch(Exception e){
 				log.severe("Exception in updateReallocationLineItem in RichMediaAdvertiserViewAction"+e.getMessage());
-				e.printStackTrace();
+				
 				setErrorStatus("DFPAPIError");
 			  
 	    	}
@@ -1647,7 +1647,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 	    	}
 	    	catch (Exception e) {
 				log.severe("Exception in loadRichMediaEventPopup in RichMediaAdvertiserViewAction"+e.getMessage());
-				e.printStackTrace();
+				
 				return Action.ERROR;
 			}
 			return Action.SUCCESS;
@@ -1673,7 +1673,7 @@ ModelDriven<UserDetailsDTO>, ServletRequestAware, SessionAware{
 				richMediaGraphTable = service.loadRichMediaEventGraph(customEvents, lowerDate, upperDate,advertiser,agency);
 	    	}catch(Exception e){
 	    		log.severe("Exception in loadRichMediaEventGraph in RichMediaAdvertiserViewAction"+e.getMessage());
-				e.printStackTrace();
+				
 				return Action.ERROR;
 	    	}
 	    	return Action.SUCCESS;

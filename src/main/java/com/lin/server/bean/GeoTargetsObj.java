@@ -62,7 +62,10 @@ public class GeoTargetsObj implements Serializable {
 		return true;
 	}
 	
-	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}	
 	
 	
 }

@@ -82,7 +82,7 @@ public String deploymentVersion = LinMobileConstants.DEPLOYMENT_VERSION;
 	    	}
 	 	}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in execution of isAuthorised : " + e.getMessage());
 		}
 		return false;
@@ -110,7 +110,7 @@ public String deploymentVersion = LinMobileConstants.DEPLOYMENT_VERSION;
 		
 		}catch(Exception e){
 			log.severe("Exception in alertEngine()  in AlertEngineAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -155,7 +155,7 @@ public String deploymentVersion = LinMobileConstants.DEPLOYMENT_VERSION;
 		
 		}catch(Exception e){
 			log.severe("Exception in campaignStatusAlertMail()  in AlertEngineAction : "+e.toString());
-			 e.printStackTrace();
+			 
 		}
 	      
 			//return "success";
@@ -221,7 +221,7 @@ public String deploymentVersion = LinMobileConstants.DEPLOYMENT_VERSION;
 				 }
 		}catch(Exception e){
 			log.severe("Exception in loadAllCampaigns()  in AlertEngineAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	} 

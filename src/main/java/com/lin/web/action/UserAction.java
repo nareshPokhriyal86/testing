@@ -103,7 +103,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 	    	}
 	 	}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in execution of isAuthorised : " + e.getMessage());
 		}
 		return false;
@@ -208,7 +208,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			userDetailsDTO.setSelectedRoleType(userDetailsDTO.getRoleList().get(0).getValue().trim());
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in initCreateUser of UserAction" + e.getMessage());
 		}
 		return "success";
@@ -258,7 +258,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			userDetailsDTO.setAdminTeam("");
 			userDetailsDTO.setNonAdminTeam("");
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in createUser of UserAction"+e.getMessage());
 		}	
@@ -279,7 +279,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				return "loginPage";
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in authorizeEmail of UserAction"+e.getMessage());
 		}
 		return "success";
@@ -307,7 +307,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				setLinStatus("inappropriate");
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in authorizeUser of UserAction"+e.getMessage());
 		}
@@ -325,7 +325,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			IUserService service =  (IUserService) BusinessServiceLocator.locate(IUserService.class);
 			service.userSetup(userDetailsDTO, sessionDTO.getUserId(), sessionDTO.isSuperAdmin());
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in userSetup of UserAction"+e.getMessage());
 		}	
@@ -381,7 +381,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				return "failed";
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in initEditUser of UserAction"+e.getMessage());
 			return "failed";
@@ -452,7 +452,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				return "inappropriate";
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			setUpdateUserStatus(0);
 			log.severe("Exception in userUpdate of UserAction"+e.getMessage());
 		}	
@@ -477,7 +477,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				return "failed";
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in initUserOwnProfileUpdate of UserAction"+e.getMessage());
 			return "failed";
@@ -517,7 +517,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				setLinStatus("inappropriate");
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in userOwnProfileUpdate of UserAction"+e.getMessage());
 		}
@@ -544,7 +544,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			}
 		}catch (Exception e) {
 			setForgetPasswordStatus("tryAgain");
-			e.printStackTrace();
+			
 			log.severe("Exception in forgetPassword of UserAction"+e.getMessage());
 		}
 		return "success";
@@ -564,7 +564,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				return "loginPage";
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in forgetPasswordEmail of UserAction"+e.getMessage());
 		}
 		return "success";
@@ -592,7 +592,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				setLinStatus("inappropriate");
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in resetPassword of UserAction"+e.getMessage());
 		}
@@ -609,7 +609,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			}
 			service.roleSetup(userDetailsDTO, sessionDTO.getUserId(), sessionDTO.isSuperAdmin());
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in roleSetup of UserAction"+e.getMessage());
 		}	
@@ -648,7 +648,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			userDetailsDTO.setRole("");
 			userDetailsDTO.setCompanyId("");
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in createRole of UserAction"+e.getMessage());
 		}
@@ -674,7 +674,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			fetchAllStatus();
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in initCreateRole of UserAction" + e.getMessage());
 		}
 		return "success";
@@ -708,7 +708,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				return "failed";
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in initEditRole of UserAction"+e.getMessage());
 			return "failed";
 		}
@@ -738,7 +738,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				return "failed";
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in updateRole of UserAction"+e.getMessage());
 			return "failed";
 		}
@@ -772,7 +772,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				return "failed";
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in copyRole of UserAction"+e.getMessage());
 			return "failed";
 		}
@@ -806,7 +806,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				return "failed";
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in copyRoleUpdate of UserAction"+e.getMessage());
 			return "failed";
 		}
@@ -822,7 +822,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			IUserService service =  (IUserService) BusinessServiceLocator.locate(IUserService.class);
 			service.teamSetup(userDetailsDTO, sessionDTO.getUserId(), sessionDTO.isSuperAdmin());
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in teamSetup of UserAction"+e.getMessage());
 		}	
@@ -902,7 +902,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			
 		}catch (Exception e) {
 			log.severe("Exception in initCreateTeam of UserAction "+e.getMessage());
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 		}	
 		return "success";
@@ -1002,7 +1002,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			userDetailsDTO.setAccounts("");
 			userDetailsDTO.setAppViews("");
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in createTeam of UserAction"+e.getMessage());
 		}
@@ -1065,7 +1065,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
  				}
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in initEditTeam of UserAction : "+e.getMessage());
 		}
 		return "failed";
@@ -1095,7 +1095,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				return "failed";
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in updateTeam of UserAction"+e.getMessage());
 			return "failed";
 		}
@@ -1114,7 +1114,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			}
 			userDetailsDTO.setCompanySetupList(MemcacheUtil.getAllCompanyList());
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in companySetup of UserAction"+e.getMessage());
 		}	
@@ -1139,7 +1139,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			userDetailsDTO.setAppViewsList(service.getAllAppViewsforCompany());
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in initCreateNewCompany of UserAction" + e.getMessage());
 		}
@@ -1180,7 +1180,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			userDetailsDTO.setDemandPartnerType("");
 			userDetailsDTO.setAppViews("");
 		}catch(Exception e){
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in createNewCompany of UserAction"+ e.getMessage());
 		}
@@ -1211,7 +1211,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			}
 		}catch(Exception e){
 			log.severe("Exception in initEditCompany userAction "+ e.getMessage());
-			e.printStackTrace();
+			
 			return "failed";
 		}
 	}
@@ -1240,7 +1240,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			}
 		}catch(Exception e){
 			log.severe("Exception in updateCompany userAction "+ e.getMessage());
-			e.printStackTrace();
+			
 			return "failed";
 		}
 	}
@@ -1258,7 +1258,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			IUserService service =  (IUserService) BusinessServiceLocator.locate(IUserService.class);
 			service.propertySetup(userDetailsDTO, sessionDTO.isSuperAdmin(), sessionDTO.getUserId());
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in propertySetup of UserAction"+e.getMessage());
 		}
@@ -1298,7 +1298,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			userDetailsDTO.setPublishersList(publishersList);
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in initCreateProperty of UserAction" + e.getMessage());
 		}
 		return "success";
@@ -1340,7 +1340,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			}
 			userDetailsDTO.setPublisherId("");
 		}catch(Exception e){
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in createProperty of UserAction"+ e.getMessage());
 		}
@@ -1372,7 +1372,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				return "failed";
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in initEditProperty of UserAction"+e.getMessage());
 			return "failed";
 		}
@@ -1407,7 +1407,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				return "failed";
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in updateProperty of UserAction"+e.getMessage());
 			return "failed";
 		}
@@ -1435,7 +1435,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			}
 		}catch(Exception e){
 			log.severe("Exception in companySettings userAction "+ e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return "success";
 	}
@@ -1472,7 +1472,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			}
 		}catch(Exception e){
 			log.severe("Exception in companySettingsUpdate userAction "+ e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return "success";
 	}
@@ -1486,7 +1486,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			IUserService service =  (IUserService) BusinessServiceLocator.locate(IUserService.class);
 			service.accountSetup(userDetailsDTO, sessionDTO.getUserId(), sessionDTO.isSuperAdmin());
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in accountSetup of UserAction"+e.getMessage());
 		}	
@@ -1521,7 +1521,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			}
 		}catch (Exception e) {
 			log.severe("Exception in initCreateAccount of UserAction "+e.getMessage());
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 		}
 		userDetailsDTO.setCompanyId(companyId);
@@ -1577,7 +1577,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 			}
 							    /***  init create  ****/
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			setLinStatus("failed");
 			log.severe("Exception in createAccount of UserAction"+e.getMessage());
 		}
@@ -1617,7 +1617,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				return "success";
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in initEditTeam of UserAction : "+e.getMessage());
 		}
 		return "failed";
@@ -1651,7 +1651,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 				return "failed";
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in updateTeam of UserAction"+e.getMessage());
 			return "failed";
 		}
@@ -1771,7 +1771,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
     	}
 		catch (Exception e) {
     		log.severe("Exception in execution of newsAndResearch Action : "+e.getMessage());
-    		e.printStackTrace();
+    		
     		return "unAuthorisedAccess";
 		}
 		return Action.SUCCESS;
@@ -1817,7 +1817,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 		} catch(Exception e) {
 			 log.severe("Exception in replaceAccountCompanyId()  in PerformanceMonitoringAction : "+e.getMessage());
 			 log.warning(status);
-			 e.printStackTrace();
+			 
 		}
 		request.setAttribute("status", status);
 		return Action.SUCCESS;

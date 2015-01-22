@@ -1896,7 +1896,7 @@ public String savePlacements(String placementData,String userId, String proposal
 			}
 		}catch(Exception e) {
 			log.severe("Exception in clientIOExcelReport of MediaPlanService : "+e.getMessage());
-			e.printStackTrace();
+			
 			//throw e;
 		}
 		excelMap.put("dataBean", clientIOReportDTOList);
@@ -2252,7 +2252,7 @@ public String savePlacements(String placementData,String userId, String proposal
 			}
 		}catch(Exception e) {
 			log.severe("Exception in POExcelReport of MediaPlanService : "+e.getMessage());
-			e.printStackTrace();
+			
 			//throw e;
 		}
 		excelMap.put("partnerNameFound", partnerNameFound);

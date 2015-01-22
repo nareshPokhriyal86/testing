@@ -61,7 +61,7 @@ public class StorageSample extends HttpServlet {
   static final int BUFFER_SIZE = 2* 1024 * 1024;
   
   
-  public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException  {
+  public void doGet(HttpServletRequest req, HttpServletResponse res)  {
 	   System.out.println("here........");
 	   ByteArrayOutputStream zipBaos = new ByteArrayOutputStream();
 	    try {
@@ -103,12 +103,11 @@ public class StorageSample extends HttpServlet {
 			    res.getOutputStream().write(zipData);	
 	        }
 	        
-		  } catch (Throwable e) {
-			  e.printStackTrace();
+		  } catch (IOException e) {
 		      // Creation of the zip file failed; inform the browser about it
-		      res.sendError(500, "Creation of the zip file failed with exception:\n\n" + e.getLocalizedMessage());
-		     return;
-	    }
+				log.severe("Creation of the zip file failed with exception:\n\n" + e.getLocalizedMessage());
+			
+	    }  
     
 	   
   }
@@ -173,10 +172,10 @@ public class StorageSample extends HttpServlet {
 	      writer.flush();
 	      resp.setStatus(200);
 	    
-		  } catch (Throwable e) {
+		  } catch (Exception e) {
 	    	System.out.println("error:"+e.getMessage());
 	        resp.sendError(404, e.getMessage());
-	        e.printStackTrace();
+	        
 	    }
   }
   

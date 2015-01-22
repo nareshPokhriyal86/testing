@@ -101,7 +101,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
 	    	}
 	 	}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in execution of isAuthorised : " + e.getMessage());
 		}
 		return false;
@@ -124,7 +124,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
     	}
     	catch (Exception e) {
     		log.severe("Exception in initProduct of ProductAction : "+e.getMessage());
-    		e.printStackTrace();
+    		
     		return "unAuthorisedAccess";
 		}
 		return Action.SUCCESS;
@@ -143,7 +143,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
     	}
     	catch (Exception e) {
     		log.severe("Exception in productSetup of ProductAction : "+e.getMessage());
-    		e.printStackTrace();
+    		
     		return "unAuthorisedAccess";
 		}
 		return Action.SUCCESS;
@@ -183,7 +183,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
     	}
     	catch (Exception e) {
     		log.severe("Exception in loadAllProducts of ProductAction : "+e.getMessage());
-    		e.printStackTrace();
+    		
     		return Action.ERROR;
 		}
 		return Action.SUCCESS;
@@ -198,7 +198,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
     	}
     	catch (Exception e) {
     		log.severe("Exception in initEditProduct of ProductAction : "+e.getMessage());
-    		e.printStackTrace();
+    		
     		return Action.ERROR;
 		}
 		return Action.SUCCESS;
@@ -221,7 +221,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
     	}
     	catch (Exception e) {
     		log.severe("Exception in deleteProduct of ProductAction : "+e.getMessage());
-    		e.printStackTrace();
+    		
     		return Action.ERROR;
 		}
 		return Action.SUCCESS;
@@ -264,7 +264,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
 			linStatus = productService.loadAllActiveAdUnits(adServerId, adServerUsername);
 		}catch (Exception e) {
 			log.severe("Exception in loadAllActiveAdUnits of ProductAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
    }
@@ -281,7 +281,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
 			
 		}catch (Exception e) {
 			log.severe("Exception in loadTopLevelAdUnits of ProductAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
    }
@@ -299,7 +299,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
 			}
 		}catch (Exception e) {
 			log.severe("Exception in loadChildAdUnits of ProductAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
    }
@@ -311,7 +311,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
 			jsonArray = productService.getContextualConsistencies();
 		}catch (Exception e) {
 			log.severe("Exception in loadContextualConsistencies of ProductAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -322,7 +322,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
 			jsonArray = productService.getProductCreatives();
 		}catch (Exception e) {
 			log.severe("Exception in loadProductCreatives of ProductAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -333,7 +333,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
 			jsonArray = productService.getDevices();
 		}catch (Exception e) {
 			log.severe("Exception in loadProductDevices of ProductAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -344,7 +344,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
 			jsonArray = productService.getGeoTargets();
 		}catch (Exception e) {
 			log.severe("Exception in loadProductDmas of ProductAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -355,7 +355,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
 			jsonArray = productService.getPlatforms();
 		}catch (Exception e) {
 			log.severe("Exception in loadProductPlatforms of ProductAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -373,7 +373,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
 			 }
 		}catch (Exception e) {
 			log.severe("Exception in saveProductData of ProductAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.ERROR;
    }
@@ -445,7 +445,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
 			}
 		} catch(Exception e) {
 			log.info("Exception in searchCities : "+e.getMessage());
-			e.printStackTrace();
+			
 			jsonObject.put("cities", new JSONArray());
 		}
 		return Action.SUCCESS;
@@ -465,7 +465,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
 			}
 		} catch(Exception e) {
 			log.info("Exception in searchZips : "+e.getMessage());
-			e.printStackTrace();
+			
 			jsonObject.put("zips", new JSONArray());
 		}
 		return Action.SUCCESS;
@@ -528,7 +528,7 @@ public class ProductAction extends ActionSupport implements SessionAware, Servle
 	    	}
     	} catch (Exception e) {
     		log.severe("Exception in checkProductNameAvailability in ProductAction : "+e.getMessage());
-			e.printStackTrace();
+			
 			return Action.ERROR;
 		}
 	}

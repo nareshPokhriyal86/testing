@@ -259,7 +259,7 @@ public class StringUtil {
 			return date;
 		} catch (ParseException e) {
 			System.out.println("Exception in converting string to date:"+e);
-			e.printStackTrace();
+			
 			return null;
 		} 
 	   
@@ -280,7 +280,7 @@ public class StringUtil {
 		Date time = gc.getTime();		
 		return time;
 	} catch (ParseException e) {	
-		e.printStackTrace();
+		
 		return null;
 	} 
 	
@@ -310,7 +310,7 @@ public class StringUtil {
 			return sqlDate;
 		} catch (ParseException e) {
 			System.out.println("Exception in converting string to date:"+e);
-			e.printStackTrace();
+			
 			return null;
 		} 
 	}

@@ -12,7 +12,6 @@ test-output/
 .DS_Store
 .classpath
 .settings
-.project
 temp-testng-customsuite.xml
 test-output
 .externalToolBuilders

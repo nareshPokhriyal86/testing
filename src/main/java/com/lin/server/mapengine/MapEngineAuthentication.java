@@ -13,6 +13,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Collections;
 
+import javax.servlet.ServletException;
+
 public class MapEngineAuthentication {
   /** Provide the ID of the map you wish to read. */
   private static final String MAP_ID = "YOUR_MAP_ID_HERE";
@@ -56,7 +58,7 @@ public class MapEngineAuthentication {
 
     } catch (IOException e) {
       System.out.println(e.getMessage());
-    } catch (Throwable t) {
+    } catch (Exception t) {
       t.printStackTrace();
     }
   }

@@ -456,6 +456,9 @@ mapexplorerApp.controller('mapexplorerController',function($scope, $http, mapexp
 		if(prodCreativeArry.length>0){
 			$("#creativeError").hide();
 		}
+		
+		$("#geographicId").collapse('show');
+		
 		$scope.$apply();
 	};
 	

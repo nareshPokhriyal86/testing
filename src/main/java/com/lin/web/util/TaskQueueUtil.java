@@ -328,7 +328,7 @@ public class TaskQueueUtil{
     	
     }
     
-    public static void addDailyDataTask(String taskURL, String startDate, String endDate, String loadType){
+    public static void addDailyDataTask(String taskURL, String startDate, String endDate, String loadType, String taskType){
     	log.info("Add task in taskQueue with taskURL:"+taskURL);
     	
     	Queue queue = queueMap.get("default");
@@ -339,7 +339,8 @@ public class TaskQueueUtil{
         queue.add(withUrl(taskURL)
     			.param("startDate", startDate)
     			.param("loadType", loadType)
-    			.param("endDate", endDate));
+    			.param("endDate", endDate)
+    			.param("taskType", taskType));
     }
     
     /*public static void dailyDataUpload(String taskURL, String startDate, String endDate, String orderIds, String loadTypeElem
@@ -377,9 +378,14 @@ public class TaskQueueUtil{
     }*/
     
     public static String dailyDataUpload(String taskURL, String startDate, String endDate, String orderIds, String dfpNetworkCode , String publisherIdInBQ,
-    		String loadTypeElem, boolean historical,String dfpTaskKey, Long entityId){
+    		String loadTypeElem, boolean historical,String dfpTaskKey, Long entityId, String taskType){
     	log.info("Add task in taskQueue with taskURL:"+taskURL);
-    	String taskQueueType = "dailyDataLoad";
+    	String taskQueueType = "";
+    	if(taskType!=null && taskType.equals(LinMobileConstants.DAILY_TASK_TYPE)){
+    		taskQueueType = "dailyDataLoadQueue";
+    	}else if(taskType!=null && taskType.equals(LinMobileConstants.NON_FINALISE_TASK_TYPE)){
+    		taskQueueType = "updateDailyNonFinaliseQueue";
+    	}
     	
     	Queue queue = queueMap.get(taskQueueType);
         if(queue == null){

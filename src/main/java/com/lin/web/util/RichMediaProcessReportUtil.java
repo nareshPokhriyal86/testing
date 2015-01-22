@@ -272,15 +272,15 @@ public class RichMediaProcessReportUtil {
 				  
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:"+e.getMessage());
-				e.printStackTrace();
+				
 				
 			} catch (LockException e) {
 				log.severe("LockException:"+e.getMessage());
-				e.printStackTrace();
+				
 				
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 				
 			}
 			return dataList;
@@ -701,15 +701,15 @@ public class RichMediaProcessReportUtil {
 				  
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:"+e.getMessage());
-				e.printStackTrace();
+				
 				
 			} catch (LockException e) {
 				log.severe("LockException:"+e.getMessage());
-				e.printStackTrace();
+				
 				
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 				
 			}
 			return dataList;
@@ -846,15 +846,15 @@ public class RichMediaProcessReportUtil {
 				readChannel.close();
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:" + e.getMessage());
-				e.printStackTrace();
+				
 
 			} catch (LockException e) {
 				log.severe("LockException:" + e.getMessage());
-				e.printStackTrace();
+				
 
 			} catch (IOException e) {
 				log.severe("IOException:" + e.getMessage());
-				e.printStackTrace();
+				
 
 			}
 			return reportList;
@@ -1019,15 +1019,15 @@ public class RichMediaProcessReportUtil {
 				readChannel.close();
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:" + e.getMessage());
-				e.printStackTrace();
+				
 
 			} catch (LockException e) {
 				log.severe("LockException:" + e.getMessage());
-				e.printStackTrace();
+				
 
 			} catch (IOException e) {
 				log.severe("IOException:" + e.getMessage());
-				e.printStackTrace();
+				
 
 			}
 			return reportList;

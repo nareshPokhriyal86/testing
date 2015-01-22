@@ -51,13 +51,13 @@ public class EmailUtil {
 			Transport.send(msg); 
 			logger.info("Email Successfuly sent.");
 		} catch (AddressException e) {
-			e.printStackTrace();
+			
 			logger.severe("Exception Found in MailSending."+e.getMessage());
 		} catch (MessagingException e) {
-			e.printStackTrace();
+			
 			logger.severe("Exception Found in MailSending."+e.getMessage());
 		}catch(Exception e){
-			e.printStackTrace();
+			
 			logger.severe("Exception Found in MailSending."+e.getMessage());
 		}
 	
@@ -90,13 +90,13 @@ public class EmailUtil {
 			Transport.send(msg); 
 			logger.info("Email Successfuly sent.");
 		} catch (AddressException e) {
-			e.printStackTrace();
+			
 			logger.severe("Exception Found in MailSending to "+toField+"."+e.toString());
 		} catch (MessagingException e) {
-			e.printStackTrace();
+			
 			logger.severe("Exception Found in MailSending to "+toField+"."+e.toString());
 		}catch(Exception e){
-			e.printStackTrace();
+			
 			logger.severe("Exception Found in MailSending to "+toField+"."+e.toString());
 		}
 	
@@ -126,7 +126,7 @@ public class EmailUtil {
 			logger.info("Email Successfuly sent.");
 		
 		}catch(Exception e){
-			e.printStackTrace();
+			
 			logger.severe("Exception Found in MailSending."+e.getMessage());
 		}
 	}
@@ -154,7 +154,7 @@ public class EmailUtil {
 			Transport.send(msg); 
 			}catch(Exception e){ 
 	            logger.severe("Exception Found in mail Sending"+e.getMessage());
-				e.printStackTrace(); 
+				 
 			} 
 	}
 	public static boolean validateEmailAddress(String emailAddress){

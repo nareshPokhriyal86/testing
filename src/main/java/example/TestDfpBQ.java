@@ -217,7 +217,7 @@ return downloadUrl;
 			} catch (InterruptedException e) {
 				log.severe("InterruptedException:" + e.getMessage());
 				queryStatus = e.getMessage();
-				e.printStackTrace();
+				
 			} 
 
 		}
@@ -355,7 +355,7 @@ return downloadUrl;
 		try {
 		    bigQuery.tables().insert(projectId, "LIN_DEV", table).execute();
 		} catch (IOException e) {
-			e.printStackTrace();
+			
 		}
 */
 		 
@@ -394,87 +394,12 @@ return downloadUrl;
 		try {
 		    bigQuery.tables().insert(projectId, "LIN", table).execute();
 		} catch (IOException e) {
-			e.printStackTrace();
+			
 		}
 	*/}
 	public static void main(String[] args) throws Exception {
-	 String downloadUrl = testDownload() ;
-	 System.out.println(downloadUrl);
-/*		String projectId = LinMobileConstants.LIN_MOBILE_GOOGLE_API_PROJECT_ID;
 		Bigquery bigQuery = getBigQuery();
-		Job job = new Job();
-		JobConfiguration config = new JobConfiguration();
-		 String queryStatus = null;
-		JobConfigurationLink loadConfig = new JobConfigurationLink();
-		
-		loadConfig.setSourceUri(Arrays.asList(new String[]{
-				
-		 		downloadUrl
-		//	"https://console.developers.google.com/m/cloudstorage/b/dev_linmobile/o/inbox/advanced/2015_01/location/PerformanceByLocation_2015_01_06_2015_01_06_1420636581992.gz"	
-		}));
-		job.setConfiguration(config);
-		JobConfigurationQuery query = new JobConfigurationQuery();
-		query.setWriteDisposition("WRITE_APPEND");
-		query.setQuery(ProcessQueryBuilder.getCorePerformanceRawToProcQuery(null, "5678","1", "LinMedia", "[LIN_DEV.a_raw_coreperformance_2014_12_15_2014_12_15_new]", null));
-		
-//		loadConfig.setSourceUris(sources);
- 
-		
-		
-		TableReference tableRef = new TableReference();
-		tableRef.setDatasetId("LIN_RAW");
-		tableRef.setTableId("test_1");
-		tableRef.setProjectId(projectId);
-		loadConfig.setDestinationTable(tableRef);
-		config.setLink(loadConfig);
-		// Always create raw table with common load type.
-		TableSchema schema = DFPTableSchemaUtil.getRawSchema(LinMobileConstants.LOAD_TYPE_COMMON);
-		if (schema == null) {
-			log.warning("no schem found...");
-			queryStatus = "Failed: Schema not found.";
-		} else {
-			log.info("Going to insert data....");
-			//Dont skip headers... we require them to convert to actual columns
-			//loadConfig.setSkipLeadingRows(1);
-			Insert insert = bigQuery.jobs().insert(projectId, job);
-			insert.setProjectId(projectId);
-
-			job = insert.execute();
-
-			JobReference jobRef = job.getJobReference();
-			JobStatus jobStatus = job.getStatus();
-			String state = jobStatus.getState();
-			log.info("after insert : state:" + state);
-			String jobId = jobRef.getJobId();
-			log.info("after insert : JobId: " + jobId);
-
- 	try {
-				job = checkQueryResults(bigQuery, projectId, jobRef);
-				jobStatus = job.getStatus();
-				state = jobStatus.getState();
-				log.info("after checkQueryResults(): state:" + state);
-				if (jobStatus.getErrorResult() != null) {
-					queryStatus = jobStatus.getErrorResult().getMessage();
-					for(ErrorProto proto: jobStatus.getErrors()){
-						log.info("Proto Message ["+proto.getMessage()+"] ");
-						log.info("Proto Reason ["+proto.getReason()+"] ");
-					}
-					
-					log.info("Error ::queryStatus::" + queryStatus);
-				} else {
-					queryStatus = "Success";
-				}
-
-			} catch (InterruptedException e) {
-				log.severe("InterruptedException:" + e.getMessage());
-				queryStatus = e.getMessage();
-				e.printStackTrace();
-			} 
-
-		}*/
-
-		
-//		loadCorePerfDataFromDFP() ;
+		bigQuery.datasets().delete("", "").setDeleteContents(true);
 		
 	}
 
@@ -585,10 +510,10 @@ return downloadUrl;
 					.build();
 		} catch (GeneralSecurityException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		}
 
 		Bigquery bigQuery = new Bigquery.Builder(TRANSPORT, JSON_FACTORY,
@@ -597,5 +522,6 @@ return downloadUrl;
 				.setHttpRequestInitializer(credentials).build();
 		return bigQuery;
 	}
-	
+
+	 
 }

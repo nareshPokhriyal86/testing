@@ -243,7 +243,7 @@ public class ProductService implements IProductService {
 				}
 			} catch (DataServiceException e) {
 				log.severe("DataServiceException : "+e.getMessage());
-				e.printStackTrace();
+				
 			}
     	}
     	else {
@@ -613,11 +613,10 @@ public class ProductService implements IProductService {
 			}
 		} catch (JSONException je) {
 			log.severe("JSONException in saveProductData of ProductService : "+je.getMessage());
-			je.printStackTrace();
 			throw je;
 		}catch (Exception e) {
 			log.severe("Exception in saveProductData of ProductService : "+e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}
 		
@@ -775,7 +774,7 @@ public class ProductService implements IProductService {
 			}
 		}catch (Exception e) {
 			log.severe("Exception in loadAllProducts of ProductService : "+e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}
 		return jsonArray;
@@ -818,7 +817,7 @@ public class ProductService implements IProductService {
 			//}
 		}catch (Exception e) {
 			log.severe("Exception in loadAllProducts of ProductService : "+e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}
 		return jsonArray;
@@ -1032,16 +1031,14 @@ public class ProductService implements IProductService {
 			}
 		} catch (JSONException je) {
 			log.severe("JSONException : initEditProduct: "+je.getMessage());
-			je.printStackTrace();
 			throw je;
 		}catch (DataServiceException de) {
 			log.severe("DataServiceException : initEditProduct: "+de.getMessage());
-			de.printStackTrace();
 			throw de;
 		}
 		catch (Exception e) {
 			log.severe("Exception : initEditProduct: "+e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}
 		return jsonObject;
@@ -1063,11 +1060,11 @@ public class ProductService implements IProductService {
 		}
 		catch(DataServiceException e) {
 			log.severe("DataServiceException : deleteProduct: "+e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}catch(Exception e) {
 			log.severe("Exception : deleteProduct: "+e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}
 		return isDeleted;
@@ -2408,7 +2405,7 @@ public class ProductService implements IProductService {
 			}
 		}catch (Exception e) {	
 		    log.severe("Exception in updateProductObjMemcache of MemcacheUtil: "+e.getMessage());
-			e.printStackTrace();
+			
 			result = false;
 		}
 		return result;
@@ -2498,7 +2495,7 @@ public class ProductService implements IProductService {
 			}
 	    }catch (Exception e) {
 			log.severe("Exception in loadTopLevelAdUnits of ProductService : "+e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}
 		return jsonArray;
@@ -2560,7 +2557,7 @@ public class ProductService implements IProductService {
 			}
 	    }catch (Exception e) {
 			log.severe("Exception in loadChildAdUnits of ProductService : "+e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}
 		return jsonArray;
@@ -2660,7 +2657,7 @@ public class ProductService implements IProductService {
 			EmailUtil.sendAuthMail("naresh.pokhriyal@mediaagility.com", LinMobileVariables.SENDER_EMAIL_ADDRESS, "DFP AdUnits fetch Status - " + LinMobileVariables.APPLICATION_TYPE, summary.toString(), "");
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			String errorMessage = "Exception generated in DFP AdUnits caching : "+e.getMessage();
 			log.severe(errorMessage);
 			summary.append(errorMessage+"<br>");
@@ -3016,7 +3013,7 @@ public class ProductService implements IProductService {
 			}
 		}catch (Exception e) {
 			log.severe("Exception in productSetup of ProductService : "+e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}
 		return productsObjList;
@@ -3150,12 +3147,11 @@ public class ProductService implements IProductService {
 		}
 		catch(DataServiceException de) {
 			log.severe("DataServiceException : "+de.getMessage());
-			de.printStackTrace();
 			throw de;
 		}
 		catch (Exception e) {
 			log.severe("Exception : "+e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}
 		return productsObj;
@@ -3633,7 +3629,7 @@ public class ProductService implements IProductService {
 					//}
 				}
 				catch(Exception e){
-					e.printStackTrace();
+					
 				}
 				
 				jsonrow.put("forecast", jsonForecastArray);
@@ -3642,7 +3638,7 @@ public class ProductService implements IProductService {
 			}
 		}catch(Exception e){
 			log.info("error :" + e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return jsonArray;
 	}

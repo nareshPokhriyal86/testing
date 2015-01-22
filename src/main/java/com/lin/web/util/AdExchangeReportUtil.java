@@ -222,10 +222,10 @@ public class AdExchangeReportUtil {
 			log.info("resp:"+httpResponse.getResponseCode()+" \n content : "+response);
 		} catch (UnsupportedEncodingException e) {
 			log.severe("UnsupportedEncodingException:" + e.getMessage());
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			log.severe("IOException:" + e.getMessage());
-			e.printStackTrace();
+			
 		} finally {
 			if (output != null)
 				try {
@@ -260,13 +260,13 @@ public class AdExchangeReportUtil {
 
 		} catch (MalformedURLException e) {
 			log.severe("MalformedURLException :" + e.getMessage());
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			log.severe("IOException:" + e.getMessage());
-			e.printStackTrace();
+			
 		}catch(Exception e){
 			log.severe("Exception:" + e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return dataBuffer;
 	}
@@ -285,10 +285,10 @@ public class AdExchangeReportUtil {
 
 		} catch (MalformedURLException  e) {
 			log.severe("MalformedURLException :" + e.getMessage());
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			log.severe("IOException:" + e.getMessage());
-			e.printStackTrace();
+			
 		} 
 		return dataBuffer;
 	}

@@ -1695,7 +1695,7 @@ public class DFPCampaignSetupService implements IDFPCampaignSetupService {
 				log.severe("Failed to save account-accountId:"+accountId+": "+e.getMessage());
 			} catch (Exception e) {
 				log.severe("Failed to load account from datastore accountId:"+accountId+": "+e.getMessage());
-				e.printStackTrace();
+				
 			}				
 		}else{
 			log.warning("Invalid account for update ..");

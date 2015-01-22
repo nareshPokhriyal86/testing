@@ -129,7 +129,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 	    	}
 	 	}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in execution of AdvertiserViewAction : " + e.getMessage());
 		}
 	    return "unAuthorisedAccess";
@@ -516,7 +516,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 	    }
 		catch (Exception e) {
 			log.severe("Exception in loadPerformerLineItems in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
     	
@@ -574,7 +574,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 	    }
 		catch (Exception e) {
 			log.severe("Exception in loadNonPerformerLineItems in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
     	
@@ -626,7 +626,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
     	}
     	catch (Exception e) {
 			log.severe("Exception in loadPerformanceSummaryHeaderData in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -683,7 +683,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
     	}
     	catch (Exception e) {
 			log.severe("Exception in loadMostActiveLineItems in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -740,7 +740,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
     	}
     	catch (Exception e) {
 			log.severe("Exception in loadTopGainers in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -797,7 +797,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
     	}
     	catch (Exception e) {
 			log.severe("Exception in loadTopLosers in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -849,7 +849,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
     	}
     	catch (Exception e) {
 			log.severe("Exception in loadPerformanceMetrics in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -909,7 +909,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
     	}
     	catch (Exception e) {
 			log.severe("Exception in loadAdvertiserBylocationGraphData in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 	    return Action.SUCCESS;
     }
@@ -968,7 +968,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
     	}
     	catch (Exception e) {
 			log.severe("Exception in loadAdvertiserByMarketGraphData in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 	    return Action.SUCCESS;
     }
@@ -1021,7 +1021,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 			}
     	} catch (Exception e) {
     		log.severe("Exception in loadLineItemForPopup in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
     	return Action.SUCCESS;
     }
@@ -1074,7 +1074,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 			 headerMap=createActualLineGraph(advertiserTrendAnalysisActualDataGraphList);
     	}catch (Exception e) {
     		log.severe("Exception in actualLineGraphAdvertiser in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return Action.SUCCESS;
 	 }
@@ -1346,7 +1346,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 			 headerMap=createForcastLineGraph(advertiserTrendAnalysisForcastlDatarList);
     	}catch (Exception e) {
     		log.severe("Exception in actualLineGraphAdvertiser in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return Action.SUCCESS;
 	 }
@@ -1694,7 +1694,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 	    }
 		catch (Exception e) {
 			log.severe("Exception in getAgencyDropDownList in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
     	
@@ -1717,7 +1717,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 	    }
 		catch (Exception e) {
 			log.severe("Exception in loadAdvertiserDropDownList in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
     
@@ -1740,7 +1740,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 	    }
 		catch (Exception e) {
 			log.severe("Exception in loadOrderDropDownList in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
     
@@ -1763,7 +1763,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 	    }
 		catch (Exception e) {
 			log.severe("Exception in loadNonPerformerLineItems in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
     
@@ -1808,12 +1808,12 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 	    }
 		} catch (ValidationException e) {
 				log.severe("DFP session exception: ValidationException :"+e.getMessage());				
-				e.printStackTrace();
+				
 				setErrorStatus("validationError");
 				 return Action.SUCCESS;
 		} catch (Exception e) {
 				log.severe(" Exception :"+e.getMessage());
-				e.printStackTrace();
+				
 				setErrorStatus("DFPAPIError");
 				 return Action.SUCCESS;
 	   }
@@ -1850,12 +1850,12 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
     		
     	}catch (ValidationException e) {
 			log.severe("DFP session exception: ValidationException :"+e.getMessage());				
-			e.printStackTrace();
+			
 			setErrorStatus("validationError");
 			 
 	   }catch(Exception e){
 			log.severe("Exception in updateReallocationLineItem in AdvertiserViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 			setErrorStatus("DFPAPIError");
 		  
     	}
@@ -1886,7 +1886,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 		    }
 			catch (Exception e) {
 				log.severe("Exception in loadPublisherPropertyDropDownList in PublisherViewAction"+e.getMessage());
-				e.printStackTrace();
+				
 			}
 			return Action.SUCCESS;
 	    }
@@ -1909,7 +1909,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 			advertiserTotalDataListCurrent = service.loadAdvertiserTotalDataList(lowerDate, upperDate,publisher,advertiser,agency,properties);
 	    	}catch (Exception e) {
 	    		log.severe("Exception in loadAdvertiserTotalDataListCurrent in AdvertiserViewAction class");
-	    		e.printStackTrace();
+	    		
 			}
 			return Action.SUCCESS;
 	    }
@@ -1932,7 +1932,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 			advertiserTotalDataListCompare = service.loadAdvertiserTotalDataList(lowerDate, upperDate,publisher,advertiser,agency,properties);
 	    	}catch (Exception e) {
 	    		log.severe("Exception in loadAdvertiserTotalDataListCompare in AdvertiserViewAction class");
-	    		e.printStackTrace();
+	    		
 			}
 			return Action.SUCCESS;
 	    }
@@ -1955,7 +1955,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 			advertiserTotalDataListMTD = service.loadAdvertiserTotalDataList(lowerDate, upperDate,publisher,advertiser,agency,properties);
 	    	}catch (Exception e) {
 	    		log.severe("Exception in loadAdvertiserTotalDataListMTD in AdvertiserViewAction class");
-	    		e.printStackTrace();
+	    		
 			}
 			return Action.SUCCESS;
 	    }
@@ -1974,7 +1974,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 			deliveryIndicatorDataList = service.loadDeliveryIndicatorData(lowerDate, upperDate, publisher, advertiser, agency, properties);
 	    	}catch (Exception e) {
 	    		log.severe("Exception in loadDeliveryIndicatorData in AdvertiserViewAction class");
-	    		e.printStackTrace();
+	    		
 			}
 			return Action.SUCCESS;
 	    }
@@ -1995,12 +1995,12 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 	    		
 	    	}catch (ValidationException e) {
 				log.severe("DFP session exception: ValidationException :"+e.getMessage());				
-				e.printStackTrace();
+				
 				setErrorStatus("validationError");
 				 
 		   }catch(Exception e){
 				log.severe("Exception in updateReallocationLineItem in AdvertiserViewAction"+e.getMessage());
-				e.printStackTrace();
+				
 				setErrorStatus("DFPAPIError");
 			  
 	    	}
@@ -2030,7 +2030,7 @@ public class AdvertiserViewAction implements ModelDriven<UserDetailsDTO>, Servle
 		    	}
 		 	}
 			catch (Exception e) {
-				e.printStackTrace();
+				
 				log.severe("Exception in execution of AdvertiserViewAction : " + e.getMessage());
 			}
 		    return "unAuthorisedAccess";	    

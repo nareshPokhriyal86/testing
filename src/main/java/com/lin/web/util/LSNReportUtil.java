@@ -122,15 +122,15 @@ public class LSNReportUtil {
 			reader.close();
 		} catch (FileNotFoundException e) {
 			log.severe("FileNotFoundException:" + e.getMessage());
-			e.printStackTrace();
+			
 
 		} catch (LockException e) {
 			log.severe("LockException:" + e.getMessage());
-			e.printStackTrace();
+			
 
 		} catch (IOException e) {
 			log.severe("IOException:" + e.getMessage());
-			e.printStackTrace();
+			
 
 		}
 		return reportList;
@@ -178,15 +178,15 @@ public class LSNReportUtil {
 			reader.close();
 		} catch (FileNotFoundException e) {
 			log.severe("FileNotFoundException:" + e.getMessage());
-			e.printStackTrace();
+			
 
 		} catch (LockException e) {
 			log.severe("LockException:" + e.getMessage());
-			e.printStackTrace();
+			
 
 		} catch (IOException e) {
 			log.severe("IOException:" + e.getMessage());
-			e.printStackTrace();
+			
 
 		}
 		return reportList;

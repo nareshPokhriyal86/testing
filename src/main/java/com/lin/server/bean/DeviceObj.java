@@ -54,7 +54,10 @@ public class DeviceObj implements Serializable {
 			return false;
 		return true;
 	}
-	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}	
 	
 	
 	

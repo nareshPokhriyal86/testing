@@ -102,7 +102,7 @@ public class PoolMapAction implements ServletRequestAware,SessionAware,ModelDriv
 	    	}
 	 	}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in execution of isAuthorised : " + e.getMessage());
 		}
 		return false;
@@ -125,7 +125,7 @@ public class PoolMapAction implements ServletRequestAware,SessionAware,ModelDriv
     	}
     	catch (Exception e) {
     		log.severe("Exception in execution of Poolmap Action : "+e.getMessage());
-    		e.printStackTrace();
+    		
     		return "unAuthorisedAccess";
 		}
 		//accessToken=validateAccessToken();
@@ -158,7 +158,7 @@ public class PoolMapAction implements ServletRequestAware,SessionAware,ModelDriv
     	}
     	catch (Exception e) {
     		log.severe("Exception in execution of Poolmap Action : "+e.getMessage());
-    		e.printStackTrace();
+    		
     		return "unAuthorisedAccess";
 		}
 		
@@ -203,7 +203,7 @@ public class PoolMapAction implements ServletRequestAware,SessionAware,ModelDriv
 			
 		} catch (Exception e) {
 			log.severe("forecastInventory:Exception:"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -259,7 +259,7 @@ public class PoolMapAction implements ServletRequestAware,SessionAware,ModelDriv
 	    } catch (IOException e) {
 			log.severe("IOException :"+e.getMessage());		
 			accessToken=null;
-			e.printStackTrace();				
+							
 		} 
 		
 		return accessToken;
@@ -291,7 +291,7 @@ public class PoolMapAction implements ServletRequestAware,SessionAware,ModelDriv
 			forcastInventoryDTOList = poolMapService.loadAllDMAsWithInventory(startDate, endtDate);
 		}catch(Exception e){
 			log.severe("Exception in loadAllDMAsWithInventory() of PoolMapAction "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -306,7 +306,7 @@ public class PoolMapAction implements ServletRequestAware,SessionAware,ModelDriv
 			forcastInventoryDTOList = poolMapService.loadAllocateInventry(startDate, endDate, dmaCode);
 		}catch(Exception e){
 			log.severe("Exception in loadAllocateInventry  of PoolMapAction "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -348,7 +348,7 @@ public class PoolMapAction implements ServletRequestAware,SessionAware,ModelDriv
     	}
     	catch (Exception e) {
     		log.severe("Exception in execution of Poolmap Action : "+e.getMessage());
-    		e.printStackTrace();
+    		
 		}
 		//accessToken=validateAccessToken();
 		//request.setAttribute("FusionAccessToken", accessToken);

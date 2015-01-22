@@ -340,6 +340,10 @@ public class AccountsEntity implements Serializable, Comparable<AccountsEntity>{
 		}
 		return false;
 	}
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
 	public String getState() {
 		return state;
 	}

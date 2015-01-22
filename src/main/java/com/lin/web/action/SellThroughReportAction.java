@@ -218,7 +218,7 @@ public class SellThroughReportAction implements ServletRequestAware,SessionAware
 			} catch (Exception e) {
 				log.severe("DFP report exception: Exception :"+e.getMessage());
 				response=e.getMessage();
-				e.printStackTrace();
+				
 			 }
 	    	return response;
 	}
@@ -286,7 +286,7 @@ public class SellThroughReportAction implements ServletRequestAware,SessionAware
 		} catch (Exception e) {
 			log.severe("DFP report exception: Exception :"+e.getMessage());
 			response=e.getMessage();
-			e.printStackTrace();
+			
 		 }
     	return response;
    }

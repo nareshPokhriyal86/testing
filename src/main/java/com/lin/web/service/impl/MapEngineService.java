@@ -118,7 +118,7 @@ public class MapEngineService implements IMapEngineService {
 			
 		}catch(Exception e){
 			log.severe("Exception updateProductDataGME of MapEngineService."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return true;
 		

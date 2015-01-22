@@ -165,7 +165,7 @@ public class GoogleLoginCallbackServlet extends HttpServlet{
         		}
             }
         }catch(Exception e) {
-        	e.printStackTrace(); 
+        	 
         	log("Exception found in GoogleLoginCallbackServlet.doGet");
         	response.sendRedirect("/loginPage.lin"); 
         }   

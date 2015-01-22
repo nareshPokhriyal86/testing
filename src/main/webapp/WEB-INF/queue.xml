@@ -72,7 +72,18 @@
   </queue>
   
    <queue>
-  <name>dailyDataLoad</name>
+  <name>dailyDataLoadQueue</name>
+    <rate>5/s</rate>
+    <max-concurrent-requests>5</max-concurrent-requests>
+    <bucket-size>100</bucket-size>
+    <retry-parameters>
+      <min-backoff-seconds>10</min-backoff-seconds>
+      <task-retry-limit>1</task-retry-limit>
+    </retry-parameters>
+  </queue>
+  
+   <queue>
+  <name>updateDailyNonFinaliseQueue</name>
     <rate>5/s</rate>
     <max-concurrent-requests>5</max-concurrent-requests>
     <bucket-size>100</bucket-size>

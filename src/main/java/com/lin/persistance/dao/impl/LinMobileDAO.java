@@ -317,7 +317,7 @@ public class LinMobileDAO implements ILinMobileDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				i++;
 			}while(queryResponse == null || (!queryResponse.getJobComplete() && i<=3));
@@ -450,7 +450,7 @@ public class LinMobileDAO implements ILinMobileDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				i++;
 			}while(queryResponse == null || (!queryResponse.getJobComplete() && i<=3));
@@ -538,7 +538,7 @@ public class LinMobileDAO implements ILinMobileDAO {
 				}
 				catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 				}
 				i++;
 				}while(queryResponse == null || (!queryResponse.getJobComplete() && i<=3));
@@ -566,7 +566,7 @@ public class LinMobileDAO implements ILinMobileDAO {
 				}
 			}
 			catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in  loadAllPerformanceByProperty in LinMobileDAO: "+e.getMessage());
 			}
 			log.info("All performanceByPropertyObjList.size() = "+performanceByPropertyObjList.size());
@@ -629,7 +629,7 @@ public class LinMobileDAO implements ILinMobileDAO {
 		             } 
 		            catch (Exception e) {
 						log.severe("Query Exception = " + e.getMessage());
-						e.printStackTrace();
+						
 					}
 					i++;
 				}while(queryResponse == null || (!queryResponse.getJobComplete() && i<=3));
@@ -659,7 +659,7 @@ public class LinMobileDAO implements ILinMobileDAO {
 			}
 	} catch (Exception e) {
 		log.severe("Exception in loadSellThroughDataList of LinMobileDAO = " + e.getMessage());
-		e.printStackTrace();
+		
 	}
 		return sellThroughDataList;
 
@@ -794,7 +794,7 @@ public class LinMobileDAO implements ILinMobileDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				i++;
 			}while(queryResponse == null || (!queryResponse.getJobComplete() && i<=3));
@@ -829,13 +829,13 @@ public class LinMobileDAO implements ILinMobileDAO {
 				}
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 
 		}
 	  }
 	  catch (Exception e) {
-		e.printStackTrace();
+		
 		log.severe("Exception in  loadActualDataForPublisher in LinMobileDAO : " + e.getMessage());
 	 }
 		return actualPublisherList;
@@ -940,7 +940,7 @@ public class LinMobileDAO implements ILinMobileDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);;
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				i++;
 			}while(queryResponse == null || (!queryResponse.getJobComplete() && i<=3));
@@ -965,7 +965,7 @@ public class LinMobileDAO implements ILinMobileDAO {
 		}
 	  }
 	  catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in  loadTrendAnalysisHeaderData in LinMobileDAO: "+e.getMessage());
 	  }
 		return trendAnalysisHeaderList;
@@ -1095,7 +1095,7 @@ query = query+ "  and data_source = '"+LinMobileConstants.DFP_DATA_SOURCE+"' and
 					queryResponse = BigQueryUtil.getBigQueryData(query);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				i++;
 			}while(queryResponse == null || (!queryResponse.getJobComplete() && i<=3));
@@ -1116,7 +1116,7 @@ query = query+ "  and data_source = '"+LinMobileConstants.DFP_DATA_SOURCE+"' and
 		}
 	  }
 	  catch (Exception e) {
-		  e.printStackTrace();
+		  
 		  log.severe("Exception in  loadInventoryRevenueHeaderData in LinMobileDAO: "+e.getMessage());
 	 }
 		return inventoryRevenueHeaderList;
@@ -1152,7 +1152,7 @@ query = query+ "  and data_source = '"+LinMobileConstants.DFP_DATA_SOURCE+"' and
 					queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				i++;
 			} while (queryResponse == null
@@ -1177,12 +1177,12 @@ query = query+ "  and data_source = '"+LinMobileConstants.DFP_DATA_SOURCE+"' and
 					}
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in  loadPublisherSummaryData in LinMobileDAO: "
 					+ e.getMessage());
 		}
@@ -1234,7 +1234,7 @@ query = query+ "  and data_source = '"+LinMobileConstants.DFP_DATA_SOURCE+"' and
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);;
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				i++;
 			}while(queryResponse == null || (!queryResponse.getJobComplete() && i<=3));
@@ -1282,7 +1282,7 @@ query = query+ "  and data_source = '"+LinMobileConstants.DFP_DATA_SOURCE+"' and
 					queryResponse = BigQueryUtil.getBigQueryData(queryDTO);;
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(queryResponse == null || (!queryResponse.getJobComplete() && j<=3));
@@ -1338,7 +1338,7 @@ query = query+ "  and data_source = '"+LinMobileConstants.DFP_DATA_SOURCE+"' and
 					queryResponse = BigQueryUtil.getBigQueryData(queryDTO);;
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(queryResponse == null || (!queryResponse.getJobComplete() && j<=3));
@@ -1371,7 +1371,7 @@ query = query+ "  and data_source = '"+LinMobileConstants.DFP_DATA_SOURCE+"' and
 			 }
 		}catch(Exception e) {
 			log.severe("Exception in loadAllRecociliationData of LinMobileDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return reconciliationDataDTOList;
 	}
@@ -1522,7 +1522,7 @@ query = query+ "  and data_source = '"+LinMobileConstants.DFP_DATA_SOURCE+"' and
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);;
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(queryResponse == null || (!queryResponse.getJobComplete() && j<=3));
@@ -1577,7 +1577,7 @@ query = query+ "  and data_source = '"+LinMobileConstants.DFP_DATA_SOURCE+"' and
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadAdvertiserTotalDataList of RichMediaAdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return advertiserTotalDataList;
 	}
@@ -1689,7 +1689,7 @@ query = query+ "  and data_source = '"+LinMobileConstants.DFP_DATA_SOURCE+"' and
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);;
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(queryResponse == null || (!queryResponse.getJobComplete() && j<=3));
@@ -1718,7 +1718,7 @@ query = query+ "  and data_source = '"+LinMobileConstants.DFP_DATA_SOURCE+"' and
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadDeliveryIndicatorData of RichMediaAdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return advertiserTotalDataList;
 	
@@ -1805,7 +1805,7 @@ query = query+ "  and data_source = '"+LinMobileConstants.DFP_DATA_SOURCE+"' and
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);;
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(queryResponse == null || (!queryResponse.getJobComplete() && i<=10));
@@ -1835,7 +1835,7 @@ query = query+ "  and data_source = '"+LinMobileConstants.DFP_DATA_SOURCE+"' and
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadDeliveryIndicatorData of RichMediaAdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return advertiserTotalDataList;
 	

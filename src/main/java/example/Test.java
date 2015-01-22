@@ -143,7 +143,7 @@ public class Test {
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		}
 
 	}
@@ -493,7 +493,7 @@ public class Test {
 					System.out.println("Async process completed.");
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					
 				}
 
 			}
@@ -512,7 +512,7 @@ public class Test {
 
 			@Override
 			public void onException(Exception e) {
-				e.printStackTrace();
+				
 
 			}
 		});
@@ -671,7 +671,7 @@ public class Test {
 						System.out.println("done.");
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+						
 					}
 
 				}
@@ -696,7 +696,7 @@ public class Test {
 			});
 		} catch (Exception e) {
 
-			e.printStackTrace();
+			
 		}
 
 	}
@@ -730,7 +730,7 @@ public class Test {
 								LinMobileConstants.LIN_DIGITAL_DFP_APPLICATION_NAME)
 						.withOAuth2Credential(credential).build();
 			} catch (Exception e) {
-				e.printStackTrace();
+				
 			}
 		}
 

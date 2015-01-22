@@ -383,7 +383,7 @@ public class NexageAction implements ServletRequestAware{
 		 } catch (Exception e) {
 			log.severe("Exception :"+e.getMessage());
 			reportsResponse=e.getMessage();
-			e.printStackTrace();
+			
 		 }
 	  	
          log.info("nexageFinaliseLinMediaReport action ends..reportsResponse:"+reportsResponse);	
@@ -442,7 +442,7 @@ public class NexageAction implements ServletRequestAware{
 		 } catch (Exception e) {
 			log.severe("Exception :"+e.getMessage());
 			reportsResponse=e.getMessage();
-			e.printStackTrace();
+			
 		 }
 	  	
          log.info("nexageFinaliseLinMediaReport action ends..reportsResponse:"+reportsResponse);	
@@ -484,11 +484,11 @@ public class NexageAction implements ServletRequestAware{
 			} catch (GeneralSecurityException  e) {
 				log.severe("uploadDataOnBigQuery exception:"+e.getMessage());
 				responseURL=responseURL+" And BigQueryResponse:"+e.getMessage();
-				e.printStackTrace();
+				
 			} catch (IOException e) {
 				log.severe("uploadDataOnBigQuery exception:"+e.getMessage());
 				responseURL=responseURL+" And BigQueryResponse:"+e.getMessage();
-				e.printStackTrace();
+				
 			}
 		}else{
 			log.severe("Cron job failed : Sending mail...");

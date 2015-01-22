@@ -205,7 +205,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 			}
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.info("Exception in getMaxCount of UserDetailsDAO");
 			maxCount = -1;
 			throw e;
@@ -236,7 +236,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 	//		obfy.getTxn().commit();							// Commit transaction
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.info("Exception in authorizeEmail of UserDetailsDAO");
 			throw e;
 		}
@@ -277,7 +277,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 	//		obfy.getTxn().commit();							// Commit transaction
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.info("Exception in authorizeUser of UserDetailsDAO");
 			throw e;
 		}
@@ -323,7 +323,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 			}
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.info("Exception in forgetPasswordEmail of UserDetailsDAO");
 			throw e;
 		}
@@ -356,7 +356,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 			log.info("resultList : "+resultList.size());
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.info("Exception in resetPassword of UserDetailsDAO");
 			throw e;
 		}
@@ -1159,7 +1159,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 		}
 		catch (Exception e) {
 			log.severe("Exception in loadPropertyDropDownList in UserDetailDAO"+e.getMessage());
-			e.printStackTrace();
+			
 	}
  	return siteList;	
 }
@@ -1338,7 +1338,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 				queryResponse = BigQueryUtil.getBigQueryData(QUERY.toString());
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -1355,7 +1355,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 				}
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 
 		}
@@ -1389,7 +1389,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 				queryResponse = BigQueryUtil.getBigQueryData(QUERY.toString());
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -1406,7 +1406,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 				}
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 
 		}
@@ -1562,7 +1562,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 				queryResponse = BigQueryUtil.getBigQueryData(QUERY.toString());
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -1579,7 +1579,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 				}
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 
 		}
@@ -1630,7 +1630,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 				queryResponse = BigQueryUtil.getBigQueryData(QUERY.toString());
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -1647,7 +1647,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 				}
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 
 		}
@@ -1766,7 +1766,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 			 }
 		 }
 		 catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in getAccountsInfoForBQ : "+e.getMessage());
 		}
 	 }*/
@@ -1837,7 +1837,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 				queryResponse = BigQueryUtil.getBigQueryData(QUERY.toString());
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -1853,7 +1853,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 				}
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 
 		}
@@ -1895,7 +1895,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 				queryResponse = BigQueryUtil.getBigQueryData(QUERY.toString());
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -1911,7 +1911,7 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 				}
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 
 		}

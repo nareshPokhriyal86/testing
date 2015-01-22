@@ -68,7 +68,10 @@ public class CreativeObj implements Serializable {
 		return true;
 	}
 	
-	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}	
 	
 	
 }

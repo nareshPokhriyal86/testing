@@ -148,11 +148,9 @@ public class CloudStorageUtil {
 
 		} catch (FileNotFoundException e) {
 			log.severe(this.getClass() + ":FileNotFoundException::"+ e.getMessage());
-			e.printStackTrace();
 			return null;
 		} catch (Exception e) {
 			log.severe(this.getClass() + ":Exception::" + e.getMessage());
-			e.printStackTrace();
 			return null;
 		}
 
@@ -200,15 +198,12 @@ public class CloudStorageUtil {
 				    return schemaDTO;
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:"+e.getMessage());
-				e.printStackTrace();
 				return null;
 			} catch (LockException e) {
 				log.severe("LockException:"+e.getMessage());
-				e.printStackTrace();
 				return null;
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
 				return null;
 			} 
 	}	
@@ -579,15 +574,12 @@ public class CloudStorageUtil {
 
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
 
 			}
 			return allDataMap;
@@ -916,15 +908,12 @@ public class CloudStorageUtil {
 
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
 
 			}
 			return allDataMap;
@@ -1253,15 +1242,12 @@ public class CloudStorageUtil {
 
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
 
 			}
 			return allDataMap;
@@ -1532,15 +1518,12 @@ public class CloudStorageUtil {
 
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage()+" : line count:"+count);
-				e.printStackTrace();
 
 			}
 			return reportList;
@@ -1757,15 +1740,12 @@ public class CloudStorageUtil {
 
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage()+" : line count:"+count);
-				e.printStackTrace();
 
 			}
 			return reportList;
@@ -1860,15 +1840,12 @@ public class CloudStorageUtil {
 				readChannel.close();
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:" + e.getMessage());
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:" + e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:" + e.getMessage());
-				e.printStackTrace();
 
 			}
 			return reportList;
@@ -1997,15 +1974,12 @@ public class CloudStorageUtil {
 				readChannel.close();
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:" + e.getMessage());
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:" + e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:" + e.getMessage());
-				e.printStackTrace();
 
 			}
 			return reportList;
@@ -2106,15 +2080,12 @@ public class CloudStorageUtil {
 				readChannel.close();
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:" + e.getMessage());
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:" + e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:" + e.getMessage());
-				e.printStackTrace();
 
 			}
 			return reportList;
@@ -2405,15 +2376,12 @@ public class CloudStorageUtil {
 
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:" + e.getMessage()+" and fileURL:"+fileName);
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:" + e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:" + e.getMessage());
-				e.printStackTrace();
 
 			}
 			return reportList;
@@ -2597,15 +2565,12 @@ public class CloudStorageUtil {
 				readChannel.close();
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:" + e.getMessage());
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:" + e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:" + e.getMessage());
-				e.printStackTrace();
 
 			}
 			return reportList;
@@ -2736,15 +2701,12 @@ public class CloudStorageUtil {
 				readChannel.close();
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:" + e.getMessage());
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:" + e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:" + e.getMessage());
-				e.printStackTrace();
 
 			}
 			return reportList;
@@ -2999,15 +2961,12 @@ public class CloudStorageUtil {
 
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
 
 			}
 			return dataList;
@@ -3212,15 +3171,12 @@ public class CloudStorageUtil {
 
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
 
 			}
 			return dataList;
@@ -3414,15 +3370,12 @@ public class CloudStorageUtil {
 
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
 
 			}
 			return dataList;
@@ -3563,15 +3516,12 @@ public class CloudStorageUtil {
 				readChannel.close();
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:" + e.getMessage());
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:" + e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:" + e.getMessage());
-				e.printStackTrace();
 
 			}
 			return reportList;
@@ -3952,15 +3902,12 @@ public class CloudStorageUtil {
 
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
 
 			}
 			return allDataMap;
@@ -4174,15 +4121,12 @@ public class CloudStorageUtil {
 
 			} catch (FileNotFoundException e) {
 				log.severe("FileNotFoundException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (LockException e) {
 				log.severe("LockException:"+e.getMessage());
-				e.printStackTrace();
 
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
 
 			}
 			return correctDataList;
@@ -4588,15 +4532,12 @@ public static Map<String,List<CorePerformanceReportObj>> readNewCorePerformanceD
 
 		} catch (FileNotFoundException e) {
 			log.severe("FileNotFoundException:"+e.getMessage());
-			//e.printStackTrace();
 
 		} catch (LockException e) {
 			log.severe("LockException:"+e.getMessage());
-			//e.printStackTrace();
 
 		} catch (IOException e) {
 			log.severe("IOException:"+e.getMessage());
-			//e.printStackTrace();
 
 		}
 		return allDataMap;

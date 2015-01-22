@@ -125,7 +125,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 	    	}
 	 	}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in execution of isAuthorised : " + e.getMessage());
 		}
 		return false;
@@ -144,7 +144,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
     	}
     	catch (Exception e) {
     		log.severe("Exception in SmartCampaignPlannerAction : "+e.getMessage());
-    		e.printStackTrace();
+    		
 		}
     	return "unAuthorisedAccess";
     }
@@ -181,7 +181,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
     	}
     	catch (Exception e) {
     		log.severe("Exception in loadAllCampaigns of ProductAction : "+e.getMessage());
-    		e.printStackTrace();
+    		
     		return Action.ERROR;
 		}
 		return Action.SUCCESS;
@@ -428,7 +428,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			
 		}catch(Exception e){
 			log.severe("Exception in initCampaign of SmartCampaignPlannerAction : "+e.getMessage());
-    		e.printStackTrace();	
+    			
 		}
 		return Action.SUCCESS;
 		
@@ -441,7 +441,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			cmapaignObjList = service.getAllCampaignList();
 		}catch(Exception e){
 			log.severe("Exception in execution of getAllCampaigns() in  SmartCampaignPlannerAction: " + e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return "success";
 		
@@ -476,7 +476,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 		
 		}catch(Exception e){
 			log.severe("Exception in saveCampaign method of SmartCampaignPlannerAction"+e.getMessage());
-			e.printStackTrace();
+			
 			return Action.ERROR;
 		}
 		
@@ -489,7 +489,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			platformObjList = service.getPlatformObjs();
 		}catch(Exception e){
 			log.severe("Exception in getPlatformObjs method of SmartCampaignPlannerAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return "success";
 		
@@ -502,7 +502,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			deviceObjList = service.getDeviceObjs();
 		}catch(Exception e){
 			log.severe("Exception in getDeviceObjs method of SmartCampaignPlannerAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return "success";
 		
@@ -516,7 +516,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			creativeObjList = service.getCreativeSizeList(format);
 		}catch(Exception e){
 			log.severe("Exception in getCreativeObjs method of SmartCampaignPlannerAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return "success";
 		
@@ -549,7 +549,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			System.out.println("unifiedCampaignDTO----"+unifiedCampaignDTO.isHasMigrated());
 		}catch(Exception e){
 			log.severe("Exception in initEditCampaign method of SmartCampaignPlannerAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 		
@@ -586,7 +586,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			
 		}catch(Exception e){
 			log.severe("Exception in initEditCampaign method of SmartCampaignPlannerAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 		
@@ -604,7 +604,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			}
 		}catch(Exception e){
 			log.severe("Exception in deleteCampaign method of SmartCampaignPlannerAction"+e.getMessage());
-			e.printStackTrace();
+			
 			return Action.ERROR;
 		}
 		return Action.SUCCESS;
@@ -620,7 +620,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			isSave = service.savePlacement( unifiedCampaignDTO,campaignId);
 	}catch(Exception e){
 		log.severe("Exception in savePlacement method of SmartCampaignPlannerAction"+e.getMessage());
-		e.printStackTrace();
+		
 		return Action.ERROR;
 	}
 		return Action.SUCCESS;
@@ -658,7 +658,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			}
 		}catch(Exception e){
 			log.severe("Exception in deletePlacement method of SmartCampaignPlannerAction"+e.getMessage());
-			e.printStackTrace();
+			
 			return Action.ERROR;
 		}
 		return Action.SUCCESS;
@@ -696,7 +696,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			}
 		}catch(Exception e){
 			log.severe("Exception in copyPlacement method of SmartCampaignPlannerAction"+e.getMessage());
-			e.printStackTrace();
+			
 			jsonObject.put("error", e.getMessage());
 		}
 		return Action.SUCCESS;
@@ -733,7 +733,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			}
 		}catch(Exception e){
 			log.severe("Exception in checkPlacementNameAvailability method of SmartCampaignPlannerAction"+e.getMessage());
-			e.printStackTrace();
+			
 			jsonObject.put("error", e.getMessage());
 		}
 		return Action.SUCCESS;
@@ -750,7 +750,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			}
 		}catch(Exception e){
 			log.severe("Exception in unarchivePlacement method of SmartCampaignPlannerAction"+e.getMessage());
-			e.printStackTrace();
+			
 			return Action.ERROR;
 		}
 		return Action.SUCCESS;
@@ -788,7 +788,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 		
 		}catch(Exception e){
 			log.severe("Exception in addAdvertiser method of SmartCampaignPlannerAction"+e.getMessage());
-			e.printStackTrace();
+			
 			return Action.ERROR;
 		}
 		
@@ -863,7 +863,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			
 			}catch(Exception e){
 				log.severe("Exception in addAdvertiser method of SmartCampaignPlannerAction"+e.getMessage());
-				e.printStackTrace();
+				
 				return Action.ERROR;
 			}		
 	}
@@ -888,7 +888,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			
 			}catch(Exception e){
 				log.severe("Exception in addAgency method of SmartCampaignPlannerAction"+e.getMessage());
-				e.printStackTrace();
+				
 				return Action.ERROR;
 			}
 	}
@@ -955,7 +955,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			}
 		}catch(Exception e){
 			log.severe("Exception in pauseCampaign method of SmartCampaignPlannerAction"+e.getMessage());
-			e.printStackTrace();
+			
 			return Action.ERROR;
 		}
 		return Action.SUCCESS;
@@ -972,7 +972,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			}
 		}catch(Exception e){
 			log.severe("Exception in resumeCampaign method of SmartCampaignPlannerAction"+e.getMessage());
-			e.printStackTrace();
+			
 			return Action.ERROR;
 		}
 		return Action.SUCCESS;
@@ -989,7 +989,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			}
 		}catch(Exception e){
 			log.severe("Exception in cancelCampaign method of SmartCampaignPlannerAction"+e.getMessage());
-			e.printStackTrace();
+			
 			return Action.ERROR;
 		}
 		return Action.SUCCESS;
@@ -1008,7 +1008,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			}
 		}catch(Exception e){
 			log.severe("Exception in unCancelCampaign method of SmartCampaignPlannerAction"+e.getMessage());
-			e.printStackTrace();
+			
 			return Action.ERROR;
 		}
 		return Action.SUCCESS;
@@ -1036,7 +1036,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			}
 		} catch(Exception e) {
 			log.severe("Exception in loadCampaignHistory : "+e.getMessage());
-			e.printStackTrace();
+			
 			jsonObject.put("campaignHistoryData", new JSONArray());
 		}
 		return Action.SUCCESS;
@@ -1069,7 +1069,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 		}catch(Exception e){
 			log.severe("Exception in createOrUpdateCampaignObjFromDFP : "+e.getMessage());
 			status="Campaigns updated : exception : "+e.getMessage();
-			e.printStackTrace();
+			
 			
 		}
 		return Action.SUCCESS;
@@ -1328,7 +1328,7 @@ public class SmartCampaignPlannerAction implements ModelDriven<UserDetailsDTO>, 
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		}
 		 
 		}

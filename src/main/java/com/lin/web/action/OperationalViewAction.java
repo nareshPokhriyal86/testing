@@ -66,7 +66,7 @@ public class OperationalViewAction implements ModelDriven<UserDetailsDTO>, Servl
     	}
     	catch (Exception e) {
     		log.severe("Exception in OperationalViewAction : "+e.getMessage());
-    		e.printStackTrace();
+    		
 		}
     	return "unAuthorisedAccess";
 	   
@@ -80,7 +80,7 @@ public class OperationalViewAction implements ModelDriven<UserDetailsDTO>, Servl
     		campaignTraffickingDataList = MemcacheUtil.getCampaignTraffickingData();
     	}catch(Exception e){
     		log.info("Exception found in getting CampaignTraffickingData from memcache...");
-    		e.printStackTrace();
+    		
     	}
     	if(campaignTraffickingDataList == null || campaignTraffickingDataList.size() <= 0)
 		{*/
@@ -112,7 +112,7 @@ public class OperationalViewAction implements ModelDriven<UserDetailsDTO>, Servl
 				//MemcacheUtil.setCampaignTraffickingData(campaignTraffickingDataList);
 			}catch(Exception e){
 				log.info("Exception found in getting CampaignTrafficking Data from DFP...");
-				e.printStackTrace();
+				
 			}
     //	}
 
@@ -174,7 +174,7 @@ public class OperationalViewAction implements ModelDriven<UserDetailsDTO>, Servl
     		forcastLineItemDTOList = MemcacheUtil.getLineItemForcasts(IdsList);
     	}catch(Exception e){
     		log.info("Exception found in getting Trafficking Forecasted Data from memcache...");
-    		e.printStackTrace();
+    		
     	}
     	if(forcastLineItemDTOList == null || forcastLineItemDTOList.size() <= 0)
     	{
@@ -198,11 +198,11 @@ public class OperationalViewAction implements ModelDriven<UserDetailsDTO>, Servl
     		
     	}catch (ValidationException e) {
 			log.severe("DFP session exception: ValidationException :"+e.getMessage());				
-			e.printStackTrace();
+			
 			//setErrorStatus("validationError");
 	   }catch(Exception e){
 			log.severe("Exception in loadForcasts() in PublisherViewAction "+e.getMessage());
-			e.printStackTrace();
+			
 			//setErrorStatus("DFPAPIError");
     	}
     }
@@ -229,7 +229,7 @@ public class OperationalViewAction implements ModelDriven<UserDetailsDTO>, Servl
     	}
     	catch (Exception e) {
     		log.severe("Exception in loadAllReconciliationData in publisherViewAction");
-    		e.printStackTrace();
+    		
 		}
     	return Action.SUCCESS;
     }

@@ -104,7 +104,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 				return Action.SUCCESS;
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in resendAuthorizeEmail of UserJSONAction : "+e.getMessage());
 		}
 		return Action.ERROR;
@@ -126,7 +126,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 				log.warning("Either session is null or user is not a Super Admin");
 			}
 		}catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in deleteUser of UserJSONAction : "+e.getMessage());
 		}
 		return Action.ERROR;
@@ -147,7 +147,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 	    	}
     	} catch (Exception e) {
     		log.severe("Exception in emailIdAvailable in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 			return Action.ERROR;
 		}
 	}
@@ -180,7 +180,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 	    	}
     	} catch (Exception e) {
     		log.severe("Exception in roleNameAvailable in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
     	return Action.ERROR;
 	}
@@ -208,7 +208,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 	    	}
     	} catch (Exception e) {
     		log.severe("Exception in teamNameAvailable in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
     	return Action.ERROR;
 	}
@@ -232,7 +232,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 	    	}
     	} catch (Exception e) {
     		log.severe("Exception in companyNameAvailable in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
     	return Action.ERROR;
 	}
@@ -261,7 +261,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 	    	}
     	} catch (Exception e) {
     		log.severe("Exception in propertyNameAvailable in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
     	return Action.ERROR;
 	}
@@ -283,7 +283,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 	    	}
     	} catch (Exception e) {
     		log.severe("Exception in dfpPropertyAvailable in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
     	return Action.ERROR;
 	}
@@ -307,7 +307,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 	    	}
     	} catch (Exception e) {
     		log.severe("Exception in dfpAccountAvailable in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
     	return Action.ERROR;
 	}
@@ -329,7 +329,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 	    	}
     	} catch (Exception e) {
     		log.severe("Exception in dfpAccountAvailable in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
     	return Action.ERROR;
 	}
@@ -348,7 +348,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 		}
 		catch (Exception e) {
 			log.severe("Exception in loadPublisherPartnerDataForTeam in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
    }
@@ -365,7 +365,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 		}
 		catch (Exception e) {
 			log.severe("Exception in loadPublisherIdsForBigQueryByCompanyId in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
   }*/
@@ -386,7 +386,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 		}
 		catch (Exception e) {
 			log.severe("Exception in loadAccountsForTeam in UserJSONAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		if(accountList == null) {
 			accountList = new ArrayList<LineItemDTO>();
@@ -405,7 +405,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 		}
 		catch (Exception e) {
 			log.severe("Exception in loadSelectedAgenciesFromBigQuery in UserJSONAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
    }
@@ -428,7 +428,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 		}
 		catch (Exception e) {
 			log.severe("Exception in loadSelectedAccountsFromBigQuery in UserJSONAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
    }
@@ -448,7 +448,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 		}
 		catch (Exception e) {
 			log.severe("Exception in fetchTeamsByCompanyId in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -467,7 +467,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 		}
 		catch (Exception e) {
 			log.severe("Exception in fetchActiveRolesByCompanyId in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -488,7 +488,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 		}
 		catch (Exception e) {
 			log.severe("Exception in loadSitesForProperty in UserJSONAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		if(siteList == null) {
 			siteList = new ArrayList<LineItemDTO>();
@@ -547,7 +547,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 			}
 		}catch (Exception e) {
 			log.severe("Exception in loadSitesForProperty of UserJSONAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
    }
@@ -568,7 +568,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 		}
 		catch (Exception e) {
 			log.severe("Exception in loadTeamDataByCompany in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
    }
@@ -590,7 +590,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 			}
 			catch (Exception e) {
 				log.severe("Exception in loadAdserverCredentialsByCompanyId in UserJSONAction"+e.getMessage());
-				e.printStackTrace();
+				
 			}
 			return Action.SUCCESS;
 	  }
@@ -646,7 +646,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 			}
 		}catch (Exception e) {
 			log.severe("Exception in searchAccounts of UserJSONAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -720,7 +720,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 			//EmailUtil.sendAuthMail("naresh.pokhriyal@mediaagility.com", LinMobileVariables.SENDER_EMAIL_ADDRESS, "DFP Accounts caching Status - " + LinMobileVariables.APPLICATION_TYPE, summary.toString(), "");
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			String errorMessage = "Exception generated in DFP Accounts caching : "+e.getMessage();
 			log.severe(errorMessage);
 			summary.append(errorMessage+"<br>");
@@ -793,7 +793,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 			//EmailUtil.sendAuthMail("naresh.pokhriyal@mediaagility.com", LinMobileVariables.SENDER_EMAIL_ADDRESS, "Accounts update Status - " + LinMobileVariables.APPLICATION_TYPE, summary.toString(), "");
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			String errorMessage = "Exception generated in Accounts update : "+e.getMessage();
 			log.severe(errorMessage);
 			summary.append(errorMessage+"<br>");
@@ -832,7 +832,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 		}
 		catch (Exception e) {
 			log.severe("Exception in refreshDFPAccountMemcache in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.ERROR;
 	}
@@ -857,7 +857,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 		}
 		catch (Exception e) {
 			log.severe("Exception in checkDFPAccountMemcache in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.ERROR;
 	}
@@ -935,7 +935,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 			//EmailUtil.sendAuthMail("naresh.pokhriyal@mediaagility.com", LinMobileVariables.SENDER_EMAIL_ADDRESS, "DFP Properties caching Status - " + LinMobileVariables.APPLICATION_TYPE, summary.toString(), "");
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			String errorMessage = "Exception generated in DFP Properties caching : "+e.getMessage();
 			log.severe(errorMessage);
 			summary.append(errorMessage+"<br>");
@@ -973,7 +973,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 		}
 		catch (Exception e) {
 			log.severe("Exception in refreshDFPPropertyMemcache in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.ERROR;
 	}
@@ -998,7 +998,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 		}
 		catch (Exception e) {
 			log.severe("Exception in checkDFPPropertyMemcache in UserJSONAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.ERROR;
 	}
@@ -1034,7 +1034,7 @@ public class UserJSONAction implements ServletRequestAware, SessionAware{
 			}
 		}catch (Exception e) {
 			log.severe("Exception in loadSitesForProperty of UserJSONAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}

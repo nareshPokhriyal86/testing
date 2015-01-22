@@ -62,7 +62,10 @@ public class CountryObj implements Serializable {
 	}
 	
 	
-	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}	
 	
 	
 }

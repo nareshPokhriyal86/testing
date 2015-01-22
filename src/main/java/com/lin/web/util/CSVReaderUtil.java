@@ -219,11 +219,9 @@ public class CSVReaderUtil {
 			return true;
 		}catch (IOException e) {
 			log.severe("IOException:"+e.getMessage());
-			e.printStackTrace();
 			return false;
 		} catch (Exception e) {		
 			log.severe("Exception:"+e.getMessage());
-			e.printStackTrace();
 			return false;
 		}
 		
@@ -274,11 +272,9 @@ public class CSVReaderUtil {
 			return true;
 		}catch (IOException e) {
 			log.severe("IOException:"+e.getMessage());
-			e.printStackTrace();
 			return false;
 		} catch (Exception e) {		
 			log.severe("Exception:"+e.getMessage());
-			e.printStackTrace();
 			return false;
 		}
 		
@@ -338,11 +334,9 @@ public class CSVReaderUtil {
 			return true;
 		}catch (IOException e) {
 			log.severe("IOException:"+e.getMessage());
-			e.printStackTrace();
 			return false;
 		} catch (Exception e) {		
 			log.severe("Exception:"+e.getMessage());
-			e.printStackTrace();
 			return false;
 		}
 		
@@ -389,11 +383,9 @@ public class CSVReaderUtil {
 			return true;
 		}catch (IOException e) {
 			log.severe("IOException:"+e.getMessage());
-			e.printStackTrace();
 			return false;
 		} catch (Exception e) {		
 			log.severe("Exception:"+e.getMessage());
-			e.printStackTrace();
 			return false;
 		}
 		
@@ -446,11 +438,9 @@ public class CSVReaderUtil {
 			return true;
 		}catch (IOException e) {
 			log.severe("IOException:"+e.getMessage());
-			e.printStackTrace();
 			return false;
 		} catch (Exception e) {		
 			log.severe("Exception:"+e.getMessage());
-			e.printStackTrace();
 			return false;
 		}
 		
@@ -496,11 +486,9 @@ public class CSVReaderUtil {
 			return true;
 		}catch (IOException e) {
 			log.severe("IOException:"+e.getMessage());
-			e.printStackTrace();
 			return false;
 		} catch (Exception e) {		
 			log.severe("Exception:"+e.getMessage());
-			e.printStackTrace();
 			return false;
 		}
 		
@@ -546,11 +534,9 @@ public static boolean readCSVForByMarket(String fileName,int startCounter,int en
 			return true;
 		}catch (IOException e) {
 			log.severe("IOException:"+e.getMessage());
-			e.printStackTrace();
 			return false;
 		} catch (Exception e) {		
 			log.severe("Exception:"+e.getMessage());
-			e.printStackTrace();
 			return false;
 		}
 		
@@ -609,11 +595,9 @@ public static boolean readCSVForChannelPerformance(String fileName,int startCoun
 		return true;
 	}catch (IOException e) {
 		log.severe("IOException:"+e.getMessage());
-		e.printStackTrace();
 		return false;
 	} catch (Exception e) {		
 		log.severe("Exception:"+e.getMessage());
-		e.printStackTrace();
 		return false;
 	}
 	
@@ -662,11 +646,9 @@ public static boolean readCSVForPerformanceByProperty(String fileName,int startC
 		return true;
 	}catch (IOException e) {
 		log.severe("IOException:"+e.getMessage());
-		e.printStackTrace();
 		return false;
 	} catch (Exception e) {		
 		log.severe("Exception:"+e.getMessage());
-		e.printStackTrace();
 		return false;
 	}
 	
@@ -715,11 +697,9 @@ public static boolean readCSVForSellThroughData(String fileName,int startCounter
 		return true;
 	}catch (IOException e) {
 		log.severe("IOException:"+e.getMessage());
-		e.printStackTrace();
 		return false;
 	} catch (Exception e) {		
 		log.severe("Exception:"+e.getMessage());
-		e.printStackTrace();
 		return false;
 	}
 	
@@ -776,11 +756,9 @@ public static boolean readCSVForReallocationData(String fileName,int startCounte
 		return true;
 	}catch (IOException e) {
 		log.severe("IOException:"+e.getMessage());
-		e.printStackTrace();
 		return false;
 	} catch (Exception e) {		
 		log.severe("Exception:"+e.getMessage());
-		e.printStackTrace();
 		return false;
 	}
 	
@@ -832,11 +810,9 @@ public static boolean readCSVForActiveAdvertiserData(String fileName,int startCo
 		return true;
 	}catch (IOException e) {
 		log.severe("IOException:"+e.getMessage());
-		e.printStackTrace();
 		return false;
 	} catch (Exception e) {		
 		log.severe("Exception:"+e.getMessage());
-		e.printStackTrace();
 		return false;
 	}
 	
@@ -889,11 +865,9 @@ public static boolean readCSVForForcastAdvertiserData(String fileName,int startC
 		return true;
 	}catch (IOException e) {
 		log.severe("IOException:"+e.getMessage());
-		e.printStackTrace();
 		return false;
 	} catch (Exception e) {		
 		log.severe("Exception:"+e.getMessage());
-		e.printStackTrace();
 		return false;
 	}
 	
@@ -938,11 +912,9 @@ public static boolean readCSVForForcastAdvertiserData(String fileName,int startC
 		return true;
 	} catch (IOException e) {
 		log.severe("IOException:" + e.getMessage());
-		e.printStackTrace();
 		return false;
 	} catch (Exception e) {
 		log.severe("Exception:" + e.getMessage());
-		e.printStackTrace();
 		return false;
 	}
  }*/
@@ -989,11 +961,9 @@ public static boolean readCSVForForcastAdvertiserData(String fileName,int startC
 		return true;
 	} catch (IOException e) {
 		log.severe("IOException:" + e.getMessage());
-		e.printStackTrace();
 		return false;
 	} catch (Exception e) {
 		log.severe("Exception:" + e.getMessage());
-		e.printStackTrace();
 		return false;
 	}
  }*/
@@ -1126,7 +1096,6 @@ public static boolean readCSVForRolesAndAuthorisation(String fileName, int start
 				}
 				catch (Exception e) {
 					log.severe("Exception in readCSVForRolesAndAuthorisation of CSVReaderUtil. : "+e.getMessage());
-					e.printStackTrace();
 				}
 
 				log.info("Going to save this object...");
@@ -1148,11 +1117,10 @@ public static boolean readCSVForRolesAndAuthorisation(String fileName, int start
 		return true;
 	} catch (IOException e) {
 		log.severe("IOException:" + e.getMessage());
-		e.printStackTrace();
 		return false;
 	} catch (Exception e) {
 		log.severe("Exception:" + e.getMessage());
-		e.printStackTrace();
+		
 		return false;
 	}
 }
@@ -1199,11 +1167,11 @@ public static boolean readCSVForAuthorisationText(String fileName, int startCoun
 		return true;
 	} catch (IOException e) {
 		log.severe("IOException:" + e.getMessage());
-		e.printStackTrace();
+		
 		return false;
 	} catch (Exception e) {
 		log.severe("Exception:" + e.getMessage());
-		e.printStackTrace();
+		
 		return false;
 	}
 }
@@ -1334,11 +1302,11 @@ public static boolean uploadCompany(String fileName) {
 		return true;
 	} catch (IOException e) {
 		log.severe("IOException:" + e.getMessage());
-		e.printStackTrace();
+		
 		return false;
 	} catch (Exception e) {
 		log.severe("Exception:" + e.getMessage());
-		e.printStackTrace();
+		
 		return false;
 	}
 }
@@ -1423,11 +1391,11 @@ public static boolean uploadProperties(String fileName) {
 		return true;
 	} catch (IOException e) {
 		log.severe("IOException:" + e.getMessage());
-		e.printStackTrace();
+		
 		return false;
 	} catch (Exception e) {
 		log.severe("Exception:" + e.getMessage());
-		e.printStackTrace();
+		
 		return false;
 	}
 }
@@ -1486,11 +1454,11 @@ public static boolean uploadAccounts(String fileName) {
 		return true;
 	} catch (IOException e) {
 		log.severe("IOException:" + e.getMessage());
-		e.printStackTrace();
+		
 		return false;
 	} catch (Exception e) {
 		log.severe("Exception:" + e.getMessage());
-		e.printStackTrace();
+		
 		return false;
 	}
 }
@@ -1533,11 +1501,11 @@ public static boolean readCSVForUserDetails(String fileName) {
 		return true;
 	} catch (IOException e) {
 		log.severe("IOException:" + e.getMessage());
-		e.printStackTrace();
+		
 		return false;
 	} catch (Exception e) {
 		log.severe("Exception:" + e.getMessage());
-		e.printStackTrace();
+		
 		return false;
 	}
  }
@@ -1586,12 +1554,12 @@ public static boolean readCSVForUserDetails(String fileName) {
 		
 	} catch (IOException e) {
   		log.severe("IOException:" + e.getMessage());
-  		e.printStackTrace();
+  		
   		response="IOException:" + e.getMessage();
   	} catch (Exception e) {
   		log.severe("Exception:" + e.getMessage());
   		response=" Exception:" + e.getMessage();
-  		e.printStackTrace();		
+  				
   	}
   	return response;
    }
@@ -1641,12 +1609,12 @@ public static boolean readCSVForUserDetails(String fileName) {
  		
  	} catch (IOException e) {
   		log.severe("IOException:" + e.getMessage());
-  		e.printStackTrace();
+  		
   		response="IOException:" + e.getMessage();
   	} catch (Exception e) {
   		log.severe("Exception:" + e.getMessage());
   		response=" Exception:" + e.getMessage();
-  		e.printStackTrace();		
+  				
   	}
   	return response;
    }
@@ -1695,12 +1663,12 @@ public static boolean readCSVForUserDetails(String fileName) {
   		
   	} catch (IOException e) {
   		log.severe("IOException:" + e.getMessage());
-  		e.printStackTrace();
+  		
   		response="IOException:" + e.getMessage();
   	} catch (Exception e) {
   		log.severe("Exception:" + e.getMessage());
   		response=" Exception:" + e.getMessage();
-  		e.printStackTrace();		
+  				
   	}
   	return response;
    }
@@ -1759,12 +1727,12 @@ public static boolean readCSVForUserDetails(String fileName) {
  		
  	} catch (IOException e) {
  		log.severe("readCSVAndUploadGeoTargets:IOException:" + e.getMessage());
- 		e.printStackTrace();
+ 		
  		response="readCSVAndUploadGeoTargets: IOException:" + e.getMessage();
  	} catch (Exception e) {
  		log.severe("readCSVAndUploadGeoTargets :Exception:" + e.getMessage());
  		response="readCSVAndUploadGeoTargets: Exception:" + e.getMessage();
- 		e.printStackTrace();		
+ 				
  	}
  	return response;
   }
@@ -1814,12 +1782,12 @@ public static boolean readCSVForUserDetails(String fileName) {
   		
   	} catch (IOException e) {
   		log.severe("IOException:" + e.getMessage());
-  		e.printStackTrace();
+  		
   		response="IOException:" + e.getMessage();
   	} catch (Exception e) {
   		log.severe("Exception:" + e.getMessage());
   		response=" Exception:" + e.getMessage();
-  		e.printStackTrace();		
+  				
   	}
   	return response;
    }
@@ -1869,12 +1837,12 @@ public static boolean readCSVForUserDetails(String fileName) {
    		
    	} catch (IOException e) {
    		log.severe("IOException:" + e.getMessage());
-   		e.printStackTrace();
+   		
    		response="IOException:" + e.getMessage();
    	} catch (Exception e) {
    		log.severe("Exception:" + e.getMessage());
    		response=" Exception:" + e.getMessage();
-   		e.printStackTrace();		
+   				
    	}
    	return response;
     }
@@ -1917,12 +1885,12 @@ public static boolean readCSVForUserDetails(String fileName) {
      		
      	} catch (IOException e) {
       		log.severe("IOException:" + e.getMessage());
-      		e.printStackTrace();
+      		
       		response="IOException:" + e.getMessage();
       	} catch (Exception e) {
       		log.severe("Exception:" + e.getMessage());
       		response=" Exception:" + e.getMessage();
-      		e.printStackTrace();		
+      				
       	}
       	return response;
     }
@@ -1966,12 +1934,12 @@ public static boolean readCSVForUserDetails(String fileName) {
      		
      	} catch (IOException e) {
       		log.severe("IOException:" + e.getMessage());
-      		e.printStackTrace();
+      		
       		response="IOException:" + e.getMessage();
       	} catch (Exception e) {
       		log.severe("Exception:" + e.getMessage());
       		response=" Exception:" + e.getMessage();
-      		e.printStackTrace();		
+      				
       	}
       	return response;
     }
@@ -2029,12 +1997,12 @@ public static boolean readCSVForUserDetails(String fileName) {
     		
     	} catch (IOException e) {
     		log.severe("IOException:" + e.getMessage());
-    		e.printStackTrace();
+    		
     		response="IOException:" + e.getMessage();
     	} catch (Exception e) {
     		log.severe("Exception:" + e.getMessage());
     		response=" Exception:" + e.getMessage();
-    		e.printStackTrace();		
+    				
     	}
     	return response;
      }
@@ -2092,12 +2060,12 @@ public static boolean readCSVForUserDetails(String fileName) {
      		
      	} catch (IOException e) {
      		log.severe("readCSVAndUploadGeoTargets:IOException:" + e.getMessage());
-     		e.printStackTrace();
+     		
      		response="readCSVAndUploadGeoTargets: IOException:" + e.getMessage();
      	} catch (Exception e) {
      		log.severe("readCSVAndUploadGeoTargets :Exception:" + e.getMessage());
      		response="readCSVAndUploadGeoTargets: Exception:" + e.getMessage();
-     		e.printStackTrace();		
+     				
      	}
      	return response;
       }
@@ -2139,12 +2107,12 @@ public static boolean readCSVForUserDetails(String fileName) {
      		
      	} catch (IOException e) {
      		log.severe("uploadContextualCategories:IOException:" + e.getMessage());
-     		e.printStackTrace();
+     		
      		response="uploadContextualCategories: IOException:" + e.getMessage();
      	} catch (Exception e) {
      		log.severe("uploadContextualCategories :Exception:" + e.getMessage());
      		response="uploadContextualCategories: Exception:" + e.getMessage();
-     		e.printStackTrace();		
+     				
      	}
      	return response;
 	}
@@ -2511,12 +2479,12 @@ public static boolean readCSVForUserDetails(String fileName) {
      		
      	} catch (IOException e) {
       		log.severe("IOException:" + e.getMessage());
-      		e.printStackTrace();
+      		
       		response="IOException:" + e.getMessage();
       	} catch (Exception e) {
       		log.severe("Exception:" + e.getMessage());
       		response=" Exception:" + e.getMessage();
-      		e.printStackTrace();		
+      				
       	}
       	return response;
     }
@@ -2559,12 +2527,12 @@ public static boolean readCSVForUserDetails(String fileName) {
      		
      	} catch (IOException e) {
       		log.severe("IOException:" + e.getMessage());
-      		e.printStackTrace();
+      		
       		response="IOException:" + e.getMessage();
       	} catch (Exception e) {
       		log.severe("Exception:" + e.getMessage());
       		response=" Exception:" + e.getMessage();
-      		e.printStackTrace();		
+      				
       	}
       	return response;
     }
@@ -2652,12 +2620,12 @@ public static boolean readCSVForUserDetails(String fileName) {
      		
      	} catch (IOException e) {
       		log.severe("IOException:" + e.getMessage());
-      		e.printStackTrace();
+      		
       		response="IOException:" + e.getMessage();
       	} catch (Exception e) {
       		log.severe("Exception:" + e.getMessage());
       		response=" Exception:" + e.getMessage();
-      		e.printStackTrace();		
+      				
       	}finally{
       		log.info("Row count :"+ count);
       	}

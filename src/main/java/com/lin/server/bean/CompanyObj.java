@@ -323,7 +323,11 @@ public class CompanyObj implements Serializable, Comparable<CompanyObj> {
 	
 	
 	
-
+	@Override
+	public boolean equals(Object arg0) {
+		// TODO Auto-generated method stub
+		return super.equals(arg0);
+	}	
 
 	
 }

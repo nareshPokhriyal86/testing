@@ -102,7 +102,7 @@ public class ProposalAction implements ServletRequestAware,ServletResponseAware,
     	}
     	catch (Exception e) {
     		log.severe("Exception in execution of Proposal Action : "+e.getMessage());
-    		e.printStackTrace();
+    		
     		return "unAuthorisedAccess";
 		}
 		String userId=sessionDTO.getUserId()+"";
@@ -168,7 +168,7 @@ public class ProposalAction implements ServletRequestAware,ServletResponseAware,
 			}
 			catch (Exception e) {
 	    		log.severe("Exception in execute of Proposal Action : "+e.getMessage());
-	    		e.printStackTrace();
+	    		
 			}
 			return "edit";
 		}
@@ -194,7 +194,7 @@ public class ProposalAction implements ServletRequestAware,ServletResponseAware,
     	}
     	catch (Exception e) {
     		log.severe("Exception in execution of Proposal Action : "+e.getMessage());
-    		e.printStackTrace();
+    		
     		return "unAuthorisedAccess";
 		}
 		IMediaPlanService mediaPlanService=(IMediaPlanService) BusinessServiceLocator.locate(IMediaPlanService.class);
@@ -325,7 +325,7 @@ public class ProposalAction implements ServletRequestAware,ServletResponseAware,
 					}*/
 				}catch (IOException e) {
 					log.severe(" IOException : "+e.getMessage());
-					e.printStackTrace();
+					
 				}
 			}else{
 				log.info("no proposal data found....please fill form...");				
@@ -363,7 +363,7 @@ public class ProposalAction implements ServletRequestAware,ServletResponseAware,
 			}
 	    	catch (Exception e) {
 	    		log.severe("Exception in createProposal of Proposal Action : "+e.getMessage());
-	    		e.printStackTrace();
+	    		
 			}
 		}
 		log.info("end of action...");
@@ -493,7 +493,7 @@ public class ProposalAction implements ServletRequestAware,ServletResponseAware,
 		}
 		catch (Exception e) {
 			log.severe("Exception in loadAdvertisersByCompany in ProposalAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -526,7 +526,7 @@ public class ProposalAction implements ServletRequestAware,ServletResponseAware,
 		}
 		catch (Exception e) {
 			log.severe("Exception in loadAgenciesByCompany in ProposalAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
 	}
@@ -567,7 +567,7 @@ public class ProposalAction implements ServletRequestAware,ServletResponseAware,
 	    	}
 	    }catch(Exception e){
 	    	 log.severe("Exception in ClientIOReportDTO() in ProposalAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 	    }
 		return Action.SUCCESS;
 	}
@@ -605,7 +605,7 @@ public class ProposalAction implements ServletRequestAware,ServletResponseAware,
 			 inputStream = new ByteArrayInputStream(excelbytes);
 	    }catch(Exception e){
 	    	 log.severe("Exception in publisherIOReport()  in ProposalAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 	    }
 		return Action.SUCCESS;
 	}

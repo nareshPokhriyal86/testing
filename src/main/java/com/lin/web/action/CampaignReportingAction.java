@@ -108,7 +108,7 @@ public class CampaignReportingAction extends ActionSupport implements SessionAwa
 	    	}
 	 	}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in execution of isAuthorised : " + e.getMessage());
 		}
 		return false;
@@ -134,7 +134,7 @@ public class CampaignReportingAction extends ActionSupport implements SessionAwa
 			}
 		} catch(Exception e) {
 			log.info("Exception in getPublisherIdInBQ in CampaignReportingAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		log.info("publisherIdInBQ : "+publisherIdInBQ);
 		return publisherIdInBQ;
@@ -162,7 +162,7 @@ public class CampaignReportingAction extends ActionSupport implements SessionAwa
     	}
     	catch (Exception e) {
     		log.severe("Exception in ReportingAction : "+e.getMessage());
-    		e.printStackTrace();
+    		
 		}
     	return "unAuthorisedAccess";
     }
@@ -191,7 +191,7 @@ public class CampaignReportingAction extends ActionSupport implements SessionAwa
 			}
 		} catch(Exception e) {
 			log.info("Exception in searchCampaigns : "+e.getMessage());
-			e.printStackTrace();
+			
 			jsonObject.put("campaigns", new JSONArray());
 		}
 		return Action.SUCCESS;
@@ -221,7 +221,7 @@ public class CampaignReportingAction extends ActionSupport implements SessionAwa
 			}
 		} catch(Exception e) {
 			log.info("Exception in searchPlacements : "+e.getMessage());
-			e.printStackTrace();
+			
 			jsonObject.put("placements", new JSONArray());
 		}
 		return Action.SUCCESS;
@@ -250,7 +250,7 @@ public class CampaignReportingAction extends ActionSupport implements SessionAwa
 			}
 		} catch(Exception e) {
 			log.info("Exception in selectedPlacements : "+e.getMessage());
-			e.printStackTrace();
+			
 			jsonObject.put("placements", new JSONArray());
 		}
 		return Action.SUCCESS;
@@ -274,7 +274,7 @@ public class CampaignReportingAction extends ActionSupport implements SessionAwa
 			}
 		} catch(Exception e) {
 			log.info("Exception in searchPlacements : "+e.getMessage());
-			e.printStackTrace();
+			
 			jsonObject.put("accounts", new JSONArray());
 		}
 		return Action.SUCCESS;
@@ -293,7 +293,7 @@ public class CampaignReportingAction extends ActionSupport implements SessionAwa
 			}
 		} catch(Exception e) {
 			log.info("Exception in selectedPartners : "+e.getMessage());
-			e.printStackTrace();
+			
 			jsonObject.put("partners", new JSONArray());
 		}
 		return Action.SUCCESS;
@@ -322,7 +322,7 @@ public class CampaignReportingAction extends ActionSupport implements SessionAwa
 			}
 		} catch(Exception e) {
 			log.info("Exception in runCampaignReport : "+e.getMessage());
-			e.printStackTrace();
+			
 			jsonObject.put("campaignReport", new JSONArray());
 		}
 		return Action.SUCCESS;
@@ -360,7 +360,7 @@ public class CampaignReportingAction extends ActionSupport implements SessionAwa
 			}
 		} catch(Exception e) {
 			log.info("Exception in checkBillingReport : "+e.getMessage());
-			e.printStackTrace();
+			
 			jsonObject = new JSONObject();
 			jsonObject.put("error", e.getMessage());
 		}
@@ -414,7 +414,7 @@ public class CampaignReportingAction extends ActionSupport implements SessionAwa
 			}
 		} catch(Exception e) {
 			log.info("Exception in billingReport : "+e.getMessage());
-			e.printStackTrace();
+			
 			Workbook wb = new HSSFWorkbook();
 			Sheet sheet = wb.createSheet(e.getMessage());
 			Row row = sheet.createRow(2);

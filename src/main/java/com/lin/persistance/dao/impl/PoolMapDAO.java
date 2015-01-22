@@ -55,7 +55,7 @@ public class PoolMapDAO implements IPoolMapDAO{
 			}
 		}catch(Exception e){
 			log.severe("Exception in loadAllDMAsWithInventory  of poolMapDAO "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		if(forcastInventoryObjList != null) {
 			log.info("forcastInventoryObjList  size : "+forcastInventoryObjList.size());
@@ -82,7 +82,7 @@ public class PoolMapDAO implements IPoolMapDAO{
 			}
 		}catch(Exception e){
 			log.severe("Exception in loadAllocateInventry of poolMapDAO "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return forcastInventoryObjList;
 		

@@ -97,10 +97,10 @@ public class LSNAction implements ServletRequestAware,SessionAware{
 				
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 			} catch (GeneralSecurityException e) {
 				log.severe("Exception in saving data in bigquery: GeneralSecurityException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
 		}else{
 			log.warning("Cron job failed : Sending mail...");

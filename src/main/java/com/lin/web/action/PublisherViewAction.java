@@ -117,7 +117,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
     	}
     	catch (Exception e) {
     		log.severe("Exception in PublisherViewAction : "+e.getMessage());
-    		e.printStackTrace();
+    		
 		}
     	return "unAuthorisedAccess";
     }
@@ -250,7 +250,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 		}
 		}catch(Exception e){
     		log.severe("exception in loadPerformanceByProperty of PublisherViewAction class"+e.getMessage());
-    		e.printStackTrace();
+    		
     	}
 		return Action.SUCCESS;
 	}
@@ -289,7 +289,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 		}*/
 		}catch(Exception e){
     		log.severe("exception in loadSellThroughData of PublisherViewAction class : "+e.getMessage());
-    		e.printStackTrace();
+    		
     	}
 		
 		return Action.SUCCESS;
@@ -311,7 +311,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 		}
 		}catch(Exception e){
     		log.severe("exception in loadPublisherData of PublisherViewAction class"+e.getMessage());
-    		e.printStackTrace();
+    		
     	}
 		return Action.SUCCESS;
 	}
@@ -349,7 +349,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 		}
 		catch (Exception e) {
 			log.severe("exception in loadChannels of PublisherViewAction"+e.getMessage());
-    		e.printStackTrace();
+    		
 		}
 		return Action.SUCCESS;
 	}
@@ -367,7 +367,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 			actualPublisherDataList = 	service.loadActualPublisherData(lowerDate, upperDate, publisher, channelName);
     	}catch(Exception e){
     		log.severe("exception in loadActualPublisherData"+e.getMessage());
-    		e.printStackTrace();
+    		
     	}
 		 return Action.SUCCESS;
 	}
@@ -504,7 +504,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 			 
 		}catch(Exception e){
 			log.severe("Exception in actualLineGraphPublisher  : " + e.getMessage() );
-			e.printStackTrace();
+			
 		}
 		 return Action.SUCCESS;
     }
@@ -534,7 +534,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
         }
     	}catch(Exception e){
     		log.severe("exception in channelPerformancePopup of PublisherViewAction class"+e.getMessage());
-    		e.printStackTrace();
+    		
     	}
         
     	return Action.SUCCESS;
@@ -868,7 +868,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 			graphMap.put("ctr", ctrStr.toString());
     	}catch(Exception e){
     		log.severe("Exception in createAllLineGraph : "+e.getMessage());
-    		e.printStackTrace();
+    		
     		throw e;
     	}
     	log.info("eCPM : "+ecpmStr.toString());
@@ -968,7 +968,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 		publisherInventoryRevenurList = service.loadInventoryRevenueHeaderData(lowerDate, upperDate, publisher,channelName);
     	}catch (Exception e) {
     		log.severe("Exception in loadInventoryRevenueHeaderData in publisherViewAction");
-    		e.printStackTrace();
+    		
 		}
 		return Action.SUCCESS;
     }
@@ -991,7 +991,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 			}
     	}catch (Exception e) {
     		log.severe("Exception in loadPublisherSummaryList in publisherViewAction");
-    		e.printStackTrace();
+    		
 		}
 		return Action.SUCCESS;
     }
@@ -1015,7 +1015,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 		}
     	}catch (Exception e) {
     		log.severe("Exception in loadAllPerformanceByProperty in publisherViewAction class");
-    		e.printStackTrace();
+    		
 		}
 		return Action.SUCCESS;
     }
@@ -1039,7 +1039,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 		}
     	}catch (Exception e) {
     		log.severe("Exception in loadAllPerformanceByProperty in publisherViewAction class");
-    		e.printStackTrace();
+    		
 		}
 		return Action.SUCCESS;
     }
@@ -1054,7 +1054,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
     	}
     	catch (Exception e) {
     		log.severe("Exception in loadFilterData in publisherViewAction");
-    		e.printStackTrace();
+    		
 		}
     	return Action.SUCCESS;
     }
@@ -1072,7 +1072,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
     	}
     	catch (Exception e) {
     		log.severe("Exception in loadFilterData in publisherViewAction");
-    		e.printStackTrace();
+    		
 		}
     	return Action.SUCCESS;
     }
@@ -1153,7 +1153,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
     	
     	}catch(Exception e){
     		log.severe("Exception in loadOneYearTrendsAnalysisData :  "+ e.getMessage());
-    		e.printStackTrace();
+    		
     	}
     	return Action.SUCCESS;
     }
@@ -1210,7 +1210,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
     	}
     	catch (Exception e) {
     		log.severe("Exception in loadOneYearTrendsAnalysisData in PublisherViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
     }
@@ -1237,7 +1237,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 	    }
 		catch (Exception e) {
 			log.severe("Exception in loadPublisherPropertyDropDownList in PublisherViewAction"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return Action.SUCCESS;
     
@@ -1273,7 +1273,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 			}
     	}catch (Exception e) {
     		log.severe("Exception in loadAdvertiserTotalDataListCurrent in AdvertiserViewAction class");
-    		e.printStackTrace();
+    		
 		}
 		return Action.SUCCESS;
     }
@@ -1298,7 +1298,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 			}
     	}catch (Exception e) {
     		log.severe("Exception in loadAdvertiserTotalDataListCompare in RichMediaAdvertiserViewAction class");
-    		e.printStackTrace();
+    		
 		}
 		return Action.SUCCESS;
     }
@@ -1323,7 +1323,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 		}
     	}catch (Exception e) {
     		log.severe("Exception in loadAdvertiserTotalDataListMTD in RichMediaAdvertiserViewAction class");
-    		e.printStackTrace();
+    		
 		}
 		return Action.SUCCESS;
     }
@@ -1344,7 +1344,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 			}
     	}catch (Exception e) {
     		log.severe("Exception in loadDeliveryIndicatorData in RichMediaAdvertiserViewAction class");
-    		e.printStackTrace();
+    		
 		}
 		return Action.SUCCESS;
     }
@@ -1429,7 +1429,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 					  			excelbytes = erGen.advertiserReportGenerate("PublisherReport.xls",map);
 					  			setInputStream(new ByteArrayInputStream(excelbytes));
 					  		}catch (Exception e) {
-					  			e.printStackTrace();
+					  			
 					  		}
 						}
 					}
@@ -1439,7 +1439,7 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 		}
     	catch (Exception e) {
     		log.severe("Exception in downloadPublisherReport in PublisherViewAction");
-    		e.printStackTrace();
+    		
 		}
 		return Action.SUCCESS;
     }
@@ -1483,13 +1483,13 @@ public class PublisherViewAction implements ModelDriven<UserDetailsDTO>, Servlet
 			  			excelbytes = erGen.advertiserReportGenerate("PublisherReport.xls",map);
 			  			setInputStream(new ByteArrayInputStream(excelbytes));
 			  		}catch (Exception e) {
-			  			e.printStackTrace();
+			  			
 			  		}
 				}
 			}
     	}catch (Exception e) {
     		log.severe("Exception in downloadPublisherReportFromBackend in PublisherViewAction");
-    		e.printStackTrace();
+    		
 		}*/
 		return Action.SUCCESS;
     }

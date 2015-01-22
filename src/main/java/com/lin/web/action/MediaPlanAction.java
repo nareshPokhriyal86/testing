@@ -150,7 +150,7 @@ public class MediaPlanAction implements ServletRequestAware,SessionAware{
 			}
 		} catch(Exception e) {
 			log.info("Exception in getPublisherId in NewAdvertiserViewAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		log.info("publisherIdInBQ : "+publisherIdInBQ);
 		return publisherIdInBQ;
@@ -168,7 +168,7 @@ public class MediaPlanAction implements ServletRequestAware,SessionAware{
 	    	}
 	 	}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in execution of isAuthorised : " + e.getMessage());
 		}
 		return false;
@@ -767,7 +767,7 @@ public class MediaPlanAction implements ServletRequestAware,SessionAware{
 			}
     	} catch (Exception e) {
     		log.severe("Exception in clientIOExcelReport in MediaPlanAction");
-    		e.printStackTrace();
+    		
 		}
     	log.info("fileName : "+fileName);
 		return Action.SUCCESS;
@@ -825,7 +825,7 @@ public class MediaPlanAction implements ServletRequestAware,SessionAware{
 			}
     	} catch (Exception e) {
     		log.severe("Exception in POExcelReport in MediaPlanAction");
-    		e.printStackTrace();
+    		
 		}
 		return Action.SUCCESS;
     }

@@ -167,5 +167,9 @@ public class TeamPropertiesObj implements Serializable, Comparable<TeamPropertie
 		return propertyId;
 	}
 
-	
+	@Override
+	public boolean equals(Object arg0) {
+		// TODO Auto-generated method stub
+		return super.equals(arg0);
+	}		
 }

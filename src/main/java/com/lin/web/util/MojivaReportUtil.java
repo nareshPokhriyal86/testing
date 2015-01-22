@@ -124,10 +124,10 @@ public class MojivaReportUtil {
 			
 		} catch (UnsupportedEncodingException e) {
 			log.severe("UnsupportedEncodingException:" + e.getMessage());
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			log.severe("IOException:" + e.getMessage());
-			e.printStackTrace();
+			
 		} 
 		return dataBuffer;
 	}
@@ -217,7 +217,7 @@ public class MojivaReportUtil {
 		} catch (Exception e) {
 			log.severe("MojiveReportWebServiceResponse:parseXMLResponse: Exception:"+ e.getMessage()+"\n response:"+xml.toString());
 			response=null;
-			e.printStackTrace();
+			
 		}		
 		return response;
 	}
@@ -298,7 +298,7 @@ public class MojivaReportUtil {
 		} catch (Exception e) {
 			log.severe("MojiveReportWebServiceResponse:parseXMLResponse: Exception:"+ e.getMessage()+"\n response:"+xml.toString());
 			response=null;
-			e.printStackTrace();
+			
 		}		
 		return response;
 	}

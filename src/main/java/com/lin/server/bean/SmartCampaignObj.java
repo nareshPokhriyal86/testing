@@ -4,10 +4,12 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Index;
+import com.lin.persistance.dao.impl.PerformanceMonitoringDAO;
 
 @Entity
 /*
@@ -17,6 +19,7 @@ import com.googlecode.objectify.annotation.Index;
  */
 @Index
 public class SmartCampaignObj implements Serializable {
+	private static final Logger log = Logger.getLogger(SmartCampaignObj.class.getName());
 
 	@Id
 	private Long id;
@@ -105,7 +108,7 @@ public class SmartCampaignObj implements Serializable {
 			}
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.severe("Error Ocurred: "+ e.getMessage());
 		}
 	}
 
@@ -145,7 +148,7 @@ public class SmartCampaignObj implements Serializable {
 			this.sDate = formatter.parse(startDate);
 			this.eDate = formatter.parse(endDate);
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.severe("Error Ocurred: "+ e.getMessage());
 		}
 	}
 
@@ -233,7 +236,7 @@ public class SmartCampaignObj implements Serializable {
 			SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
 			this.sDate = formatter.parse(startDate);
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.severe("Error Ocurred: "+ e.getMessage());
 		}
 	}
 
@@ -248,7 +251,7 @@ public class SmartCampaignObj implements Serializable {
 			SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
 			this.eDate = formatter.parse(endDate);
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.severe("Error Ocurred: "+ e.getMessage());
 		}
 	}
 

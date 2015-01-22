@@ -204,7 +204,7 @@ public class MojivaAction implements ServletRequestAware,ServletResponseAware,Se
 		 } catch (Exception e) {
 			log.severe(" Exception :"+e.getMessage());
 			reportsResponse=e.getMessage();
-			e.printStackTrace();
+			
 		 }
 	  	
          log.info("mojivaFinaliseLinMediaReport action ends..reportsResponse:"+reportsResponse);	

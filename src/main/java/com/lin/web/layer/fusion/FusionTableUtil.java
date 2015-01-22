@@ -157,7 +157,7 @@ public class FusionTableUtil {
 		  }
 	   } catch (Exception e) {
 		  log.severe("selectResponse:Exception :"+e.getMessage());
-		  e.printStackTrace();
+		  
 	   }
 	   return rowIds;	   
    }
@@ -194,7 +194,7 @@ public class FusionTableUtil {
 	   } catch (Exception e) {
 		   responseStr=null;
 		   log.severe("Exception :"+e.getMessage());
-		   e.printStackTrace();
+		   
 	   }
 	  return responseStr;
    }
@@ -363,13 +363,13 @@ public class FusionTableUtil {
 
 		} catch (MalformedURLException e) {
 			log.severe("MalformedURLException :" + e.getMessage());
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			log.severe("IOException:" + e.getMessage());
-			e.printStackTrace();
+			
 		}catch(Exception e){
 			log.severe("Exception:" + e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return dataBuffer;
 	}
@@ -388,10 +388,10 @@ public class FusionTableUtil {
 
 		} catch (MalformedURLException  e) {
 			log.severe("MalformedURLException :" + e.getMessage());
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			log.severe("IOException:" + e.getMessage());
-			e.printStackTrace();
+			
 		} 
 		return dataBuffer;
 	}

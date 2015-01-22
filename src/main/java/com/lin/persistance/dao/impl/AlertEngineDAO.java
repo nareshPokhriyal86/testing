@@ -63,7 +63,7 @@ public class AlertEngineDAO implements IAlertEngineDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -91,7 +91,7 @@ public class AlertEngineDAO implements IAlertEngineDAO {
 	 }	
 		}catch(Exception e){
 			log.info("Exception in loadAllCampaigns of PerformanceMonitoringDAO : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 
 		return campaignList;
@@ -129,7 +129,7 @@ public class AlertEngineDAO implements IAlertEngineDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -156,7 +156,7 @@ public class AlertEngineDAO implements IAlertEngineDAO {
 	 }	
 		}catch(Exception e){
 			log.info("Exception in loadAllLineItemsForOrderId of AlertEngineDAO : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 
 		return campaignList;
@@ -187,7 +187,7 @@ public class AlertEngineDAO implements IAlertEngineDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -214,7 +214,7 @@ public class AlertEngineDAO implements IAlertEngineDAO {
 	 }	
 		}catch(Exception e){
 			log.info("Exception in loadAllLineItemsForFlights of AlertEngineDAO : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 
 		return campaignList;

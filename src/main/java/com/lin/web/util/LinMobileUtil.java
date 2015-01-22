@@ -43,15 +43,15 @@ public class LinMobileUtil {
 	         return true;
 	     }catch (AddressException e) {
 	    	 log.severe("sendMailGAE: AddressException:"+e.getMessage());
-	     	 e.printStackTrace();
+	     	 
 	     	 return false;
 	     } catch (MessagingException e) {
 	    	 log.severe("sendMailGAE: MessagingException:"+e.getMessage());
-	     	 e.printStackTrace();
+	     	 
 	     	 return false;
 	     } catch (UnsupportedEncodingException e) {
 	    	 log.severe("sendMailGAE: UnsupportedEncodingException:"+e.getMessage());
-			 e.printStackTrace();
+			 
 			 return false;
 		 }
 	}
@@ -85,15 +85,15 @@ public class LinMobileUtil {
 	         return true;
 	     }catch (AddressException e) {
 	    	 log.severe("sendMailGAE: AddressException:"+e.getMessage());
-	     	 e.printStackTrace();
+	     	 
 	     	 return false;
 	     } catch (MessagingException e) {
 	    	 log.severe("sendMailGAE: MessagingException:"+e.getMessage());
-	     	 e.printStackTrace();
+	     	 
 	     	 return false;
 	     } catch (UnsupportedEncodingException e) {
 	    	 log.severe("sendMailGAE: UnsupportedEncodingException:"+e.getMessage());
-			 e.printStackTrace();
+			 
 			 return false;
 			}
 	}
@@ -125,15 +125,15 @@ public class LinMobileUtil {
 	         return true;
 	     }catch (AddressException e) {
 	    	 log.severe("sendMailGAE: AddressException:"+e.getMessage());
-	     	 e.printStackTrace();
+	     	 
 	     	 return false;
 	     } catch (MessagingException e) {
 	    	 log.severe("sendMailGAE: MessagingException:"+e.getMessage());
-	     	 e.printStackTrace();
+	     	 
 	     	 return false;
 	     } catch (UnsupportedEncodingException e) {
 	    	 log.severe("sendMailGAE: UnsupportedEncodingException:"+e.getMessage());
-			 e.printStackTrace();
+			 
 			 return false;
 			}
 	}
@@ -207,7 +207,7 @@ public class LinMobileUtil {
 			 return sb.toString();
 		} catch (NoSuchAlgorithmException e) {
 			 log.severe("NoSuchAlgorithmException():: :"+e.getMessage());
-			 e.printStackTrace();
+			 
 			 return null;
 		}
 	}

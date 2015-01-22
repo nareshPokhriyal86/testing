@@ -134,8 +134,7 @@ public class QueryService implements IQueryService{
 		String tableId;
 		
 		List<String> monthList=getFinaliseMonthlyDate(startDate, endDate);
-		//List<String> datastoreList=getFinaliseTablesFromDataStore(publisherId, projectId, dataSetId, schemaName);
-		List<String> bigQueryTableList=getFinaliseNonFinaliseTablesFromBigQuery(serviceAccountEmail, servicePrivateKey, publisherId,
+ 		List<String> bigQueryTableList=getFinaliseNonFinaliseTablesFromBigQuery(serviceAccountEmail, servicePrivateKey, publisherId,
 				projectId, dataSetId, schemaName, true);
 		if(bigQueryTableList!=null && bigQueryTableList.size()>0){
 			int matchCount=0;

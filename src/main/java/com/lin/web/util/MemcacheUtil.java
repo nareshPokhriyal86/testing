@@ -197,7 +197,7 @@ public class MemcacheUtil {
 		}
 		catch (Exception e) {
 			log.severe("Exception in MemcacheUtil's setAccountAuthToken : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 	}
 	
@@ -212,7 +212,7 @@ public class MemcacheUtil {
 		}
 		catch (Exception e) {
 			log.severe("Exception in MemcacheUtil's getAccountAuthToken : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return authorizationToken;
 	}
@@ -275,7 +275,7 @@ public class MemcacheUtil {
 				memcache.put(ALL_DFP_AGENCIES, dfpAgencyObjList);
 	      }catch (Exception e) {	
 	    	    log.severe("Exception in MemcacheUtil's getAllDFPAgencyObjFromDB"+e.getMessage());
-				e.printStackTrace();
+				
 		  }
 	    
 	      return dfpAgencyObjList;
@@ -295,7 +295,7 @@ public class MemcacheUtil {
 		}
 		catch (Exception e) {
 			log.severe("Exception in MemcacheUtil's updateMemcacheDFPAgencyObj : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		log.warning("DFPAgencyObj List Size: "+dfpAgencyObjList.size());
        
@@ -333,7 +333,7 @@ public class MemcacheUtil {
 				memcache.put(ALL_DFPADVERTISERS, dfpAdvertisersObjList);
 	      }catch (Exception e) {	
 	    	    log.severe("Exception in MemcacheUtil's getAllDFPAdvertisersObjFromDB : "+e.getMessage());
-				e.printStackTrace();
+				
 		  }
 	    
 	      return dfpAdvertisersObjList;
@@ -353,7 +353,7 @@ public class MemcacheUtil {
 		}
 		catch (Exception e) {
 			log.severe("Exception in MemcacheUtil's updateMemcacheDFPAdvertisersObj : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		log.warning("DFPAdvertisersObj List Size: "+dfpAgencyObjList.size());
        
@@ -391,7 +391,7 @@ public class MemcacheUtil {
 				memcache.put(ALL_ORDERS, ordersObjList);
 	      }catch (Exception e) {	
 	    	    log.severe("Exception in MemcacheUtil's getAllOrdersObjFromDB : "+e.getMessage());
-				e.printStackTrace();
+				
 		  }
 	    
 	      return ordersObjList;
@@ -429,7 +429,7 @@ public class MemcacheUtil {
 				memcache.put(ALL_DROPDOWNS_OBJ, dropdownDataObjList);
 	      }catch (Exception e) {	
 	    	    log.severe("Exception in MemcacheUtil's getAllDropdownDataObjFromDB : "+e.getMessage());
-				e.printStackTrace();
+				
 		  }
 	    
 	      return dropdownDataObjList;
@@ -468,7 +468,7 @@ public class MemcacheUtil {
 				memcache.put(ALL_ADSERVER_TO_PUBLISHER_IN_BIGQUERY, adServerToPublisherInBigQueryObjList);
 	      }catch (Exception e) {	
 	    	    log.severe("Exception in MemcacheUtil's getAllAdServerToPublisherInBigQueryObjFromDB : "+e.getMessage());
-				e.printStackTrace();
+				
 		  }
 	    
 	      return adServerToPublisherInBigQueryObjList;
@@ -507,7 +507,7 @@ public class MemcacheUtil {
 				memcache.put(ALL_INDUSTRIES_LIST, industryObjList);
 	      }catch (Exception e) {	
 	    	    log.severe("Exception in MemcacheUtil's getAllIndustryObjFromDB : "+e.getMessage());
-				e.printStackTrace();
+				
 		  }
 	    
 	      return industryObjList;
@@ -599,7 +599,7 @@ public class MemcacheUtil {
 				memcache.put(ALL_USERS, userDetailsObjList);
 	      }catch (Exception e) {	
 	    	    log.severe("getPostFromDB:DataServiceException:"+e.getMessage());
-				e.printStackTrace();
+				
 		  }
 	    
 	      return userDetailsObjList;
@@ -662,7 +662,7 @@ public class MemcacheUtil {
 			}
 		}catch (Exception e) {	
 		    log.severe("Exception in selfUpdateMemcacheUserDetails of MemcacheUtil: "+e.getMessage());
-			e.printStackTrace();
+			
 			result = false;
 		}
 		return result;
@@ -775,7 +775,7 @@ public class MemcacheUtil {
 				memcache.put(ALL_AUTHORISATION_TEXT, authorisationTextList);
 	      }catch (Exception e) {	
 	    	    log.severe("getPostFromDB:DataServiceException:"+e.getMessage());
-				e.printStackTrace();
+				
 		  }
 	    
 	      return authorisationTextList;
@@ -821,7 +821,7 @@ public class MemcacheUtil {
 				}
 	      }catch (Exception e) {	
 	    	    log.severe("getPostFromDB:DataServiceException:"+e.getMessage());
-				e.printStackTrace();
+				
 		  }
 	    
 	      return rolesAndAuthorisationsList;
@@ -877,7 +877,7 @@ public class MemcacheUtil {
 			}
 		}catch (Exception e) {	
 		    log.severe("Exception in selfUpdateMemcacheRolesAndAuthorisation of MemcacheUtil: "+e.getMessage());
-			e.printStackTrace();
+			
 			result = false;
 		}
 		return result;
@@ -915,7 +915,7 @@ public class MemcacheUtil {
 				}
 	      }catch (Exception e) {	
 	    	    log.severe("getPostFromDB:DataServiceException:"+e.getMessage());
-				e.printStackTrace();
+				
 		  }
 	    
 	      return teamPropertiesObjList;
@@ -971,7 +971,7 @@ public class MemcacheUtil {
 			}
 		}catch (Exception e) {	
 		    log.severe("Exception in selfUpdateMemcacheTeamPropertiesObj of MemcacheUtil: "+e.getMessage());
-			e.printStackTrace();
+			
 			result = false;
 		}
 		return result;
@@ -1009,7 +1009,7 @@ public class MemcacheUtil {
 				}
 	      }catch (Exception e) {	
 	    	    log.severe("getAllCompanyFromDB :"+e.getMessage());
-				e.printStackTrace();
+				
 		  }
 	    
 	      return companyList;
@@ -1065,7 +1065,7 @@ public class MemcacheUtil {
 			}
 		}catch (Exception e) {	
 		    log.severe("Exception in selfUpdateMemcacheCompany of MemcacheUtil: "+e.getMessage());
-			e.printStackTrace();
+			
 			result = false;
 		}
 		return result;
@@ -1105,7 +1105,7 @@ public class MemcacheUtil {
 				}
 	      }catch (Exception e) {	
 	    	    log.severe("getPostFromDB:DataServiceException:"+e.getMessage());
-				e.printStackTrace();
+				
 		  }
 	    
 	      return accountsObjList;
@@ -1184,7 +1184,7 @@ public class MemcacheUtil {
 			}
 		}catch (Exception e) {	
 		    log.severe("Exception in selfUpdateMemcacheAccountsObj of MemcacheUtil: "+e.getMessage());
-			e.printStackTrace();
+			
 			result = false;
 		}
 		return result;
@@ -1207,7 +1207,7 @@ public class MemcacheUtil {
 		}
 		catch (Exception e) {
 			log.severe("Exception in MemcacheUtil's getAllAccountsObjList"+e.getMessage());
-			e.printStackTrace();
+			
 			accountsObjList=getAllAccountsObjFromDB(companyId);
 		}
 		return accountsObjList;
@@ -1225,7 +1225,7 @@ public class MemcacheUtil {
 				}
 	      }catch (Exception e) {	
 	    	    log.severe("getPostFromDB:DataServiceException:"+e.getMessage());
-				e.printStackTrace();
+				
 		  }
 	    
 	      return accountsObjList;
@@ -1274,7 +1274,7 @@ public class MemcacheUtil {
 			}
 		}catch (Exception e) {	
 		    log.severe("Exception in selfUpdateMemcacheAccountsObj of MemcacheUtil: "+e.getMessage());
-			e.printStackTrace();
+			
 			result = false;
 		}
 		return result;
@@ -1692,7 +1692,7 @@ public class MemcacheUtil {
 				}
 	      }catch (Exception e) {	
 	    	    log.severe("getAllCompanyFromDB :"+e.getMessage());
-				e.printStackTrace();
+				
 		  }
 	    
 	      return propertyObjList;
@@ -1741,7 +1741,7 @@ public class MemcacheUtil {
 			}
 		}catch (Exception e) {	
 		    log.severe("Exception in selfUpdateMemcachePropertyObj of MemcacheUtil: "+e.getMessage());
-			e.printStackTrace();
+			
 			result = false;
 		}
 		return result;

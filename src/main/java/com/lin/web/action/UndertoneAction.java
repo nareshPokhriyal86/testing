@@ -155,7 +155,7 @@ public class UndertoneAction implements ServletRequestAware,SessionAware{
 		 } catch (Exception e) {
 			log.severe(" Exception :"+e.getMessage());
 			response=e.getMessage();
-			e.printStackTrace();
+			
 		 }       	
 	     return response;
     }

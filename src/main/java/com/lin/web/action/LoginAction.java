@@ -151,7 +151,7 @@ public class LoginAction extends ActionSupport implements
 				}
 			}
 		} catch (Exception e) {
-		 e.printStackTrace();
+		 
 		 log.severe("Exception in login() of LoginAction : "+e.getMessage()); 
 		 login.setLoginStatus(".....");
 		 return "error";

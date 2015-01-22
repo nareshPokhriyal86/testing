@@ -514,7 +514,7 @@ public class SmartCampaignPlannerDAO implements ISmartCampaignPlannerDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 				} catch (Exception e) {
 					log.severe("getAllCampaignsForMigration Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -682,7 +682,7 @@ public class SmartCampaignPlannerDAO implements ISmartCampaignPlannerDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -713,7 +713,7 @@ public class SmartCampaignPlannerDAO implements ISmartCampaignPlannerDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);

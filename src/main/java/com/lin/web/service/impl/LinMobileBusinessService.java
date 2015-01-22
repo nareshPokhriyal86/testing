@@ -397,7 +397,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}		
 		
@@ -442,7 +442,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			}
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}		
 	}
@@ -464,7 +464,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			}
 		} catch (DataServiceException e) {
 			log.severe("Falied to load all agencies: DataServiceException:"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return agencyList;
 	}
@@ -476,7 +476,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			agencyAdvertiserList=linDAO.loadAllAdvertisers(agencyName);			
 		} catch (DataServiceException e) {
 			log.severe("Falied to load all advertisers: DataServiceException:"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return agencyAdvertiserList;
 	}
@@ -508,7 +508,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}		
 		
@@ -540,7 +540,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}		
 		
@@ -573,7 +573,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}		
 		
@@ -588,7 +588,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 				linDao.saveObject(publisherView);
 			} catch (DataServiceException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
 			}
 		}
 		
@@ -600,7 +600,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 		try {
 			return linDao.getPublisherViewDTO();
 		} catch (DataServiceException e) {			
-			e.printStackTrace();
+			
 			log.info(":exception: "+e.getMessage());
 			return null;
 		}
@@ -614,7 +614,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			return linDao.getPublisherView(pageNo);
 		} catch (DataServiceException e) {
 			log.info(":exception: "+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -628,7 +628,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 				linDao.saveObject(leftMenuDTO);
 			} catch (DataServiceException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
 			}
 		}
 	}
@@ -641,7 +641,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			return linDao.getLeftMenuList();
 		} catch (DataServiceException e) {
 			log.info(":exception: "+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -654,7 +654,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			return resultList;
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -667,7 +667,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			return resultList;
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -688,7 +688,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			}
 			sbStr.append("]");
 	    }catch(Exception e){
-	    	e.printStackTrace();
+	    	
 	    	log.severe("Exception :"+e.getMessage());
 	    }	
 	}
@@ -708,7 +708,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			}
 			sbStr.append("]");
 	    }catch(Exception e){
-	    	e.printStackTrace();
+	    	
 	    	log.severe("Exception :"+e.getMessage());
 	    }	
 	}
@@ -725,7 +725,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 				agencyAdvertiserList=linDAO.loadAdvertiserById(advertiserId);			
 			} catch (DataServiceException e) {
 				log.severe("Falied to load all advertisers: DataServiceException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
 			return agencyAdvertiserList;
 	}
@@ -763,7 +763,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			return publisherList;
 		} catch (Exception e) {
 			log.severe("Exception in getChannelPerformanceList in LinMobileBusinessService :"+e.getMessage());
-			e.printStackTrace();
+			
 			return publisherList;
 		}
 	}*/
@@ -777,7 +777,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			return resultList;
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -790,7 +790,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			return resultList;
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -806,7 +806,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			return resultList;
 		} catch (Exception e) {
 			log.severe("Exception :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -831,7 +831,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			return resultList;
 		} catch (Exception e) {
 			log.severe("Exception : "+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -881,7 +881,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			
 		} catch (DataServiceException e) {
 			log.severe("Exception in loading lineItem with id:"+lineItemId+" : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return popUpObj;
 	}
@@ -901,7 +901,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			return publisherList;
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -924,7 +924,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			return publisherObjList;
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -947,7 +947,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			return channelObjList;
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -961,7 +961,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			return resultList;
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -1026,7 +1026,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			
 		} catch (DataServiceException e) {
 			log.severe("Exception in loading lineItem with lineItemName:"+lineItemName+" : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return popUpObj;
 	}
@@ -1093,7 +1093,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			
 		} catch (DataServiceException e) {
 			log.severe("Exception in loading lineItem with lineItemName:"+lineItemName+" : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return popUpObj;
 	}
@@ -1113,7 +1113,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			}
 		} catch (DataServiceException e) {
 			log.severe("Falied to load all agencies: DataServiceException:"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return orderList;
 	}
@@ -1127,7 +1127,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			lineItemList=linDAO.loadAllLineItems(orderName);			
 		} catch (DataServiceException e) {
 			log.severe("Falied to load all advertisers: DataServiceException:"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return lineItemList;
 	}
@@ -1139,7 +1139,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 				lineItemList=linDAO.loadAllLineItems(orderId);			
 			} catch (DataServiceException e) {
 				log.severe("Falied to load all advertisers: DataServiceException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
 			return lineItemList;
 	}
@@ -1151,7 +1151,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 				lineItemList=linDAO.loadLineItem(lineItemId);			
 			} catch (DataServiceException e) {
 				log.severe("Falied to load all advertisers: DataServiceException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
 			return lineItemList;
 	}
@@ -1182,7 +1182,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}		
 		
@@ -1214,7 +1214,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}		
 		
@@ -1246,7 +1246,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}		
 		
@@ -1285,7 +1285,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 
 		} catch (Exception e) {
 			log.severe("Exception :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}		
 		
@@ -1328,7 +1328,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}		
 		
@@ -1344,7 +1344,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			return reallocationPublisherList;
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}		
 		
@@ -1379,7 +1379,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			
 		}catch (Exception e) {
 			log.severe("Exception in loading channel:"+channelName+" : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return popUpObj;
 	}
@@ -1414,14 +1414,14 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 					}
 				} catch (Exception e) {
 					log.severe("Exception :"+e.getMessage());
-					e.printStackTrace();
+					
 				}			
 			}else{
 				log.info("Chart data found from memcache:"+chartData);
 			}
 		}catch (Exception e) {
 			log.severe("Exception in loadPerformanceChannelPopUpGraphDataFromBigQuery : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return chartData;
 	}
@@ -1437,7 +1437,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			resultList=linDAO.loadChannels(lowerDate, upperDate, channelName);
 		}catch (DataServiceException e) {
 			log.severe("Exception in loadActualPublisherData :"+channelName+" : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return resultList;
 	}
@@ -1482,7 +1482,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			
 		} catch (DataServiceException e) {
 			log.severe("Exception in loading property:"+propertyName+" : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return popUpObj;
 	}
@@ -1522,7 +1522,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			
 		} catch (DataServiceException e) {
 			log.severe("Exception in loading property:"+propertyName+" : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return popUpObj;
 	   
@@ -1547,7 +1547,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			list = linDAO.loadTrendAnalysisHeaderData(lowerDate, upperDate, publisherName, channelName, channelAndDataSourceQuery);
 		} catch (Exception e) {
 			log.severe("Exception in loadTrendAnalysisHeaderData of  LinMobileBusinessService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return list;
 		
@@ -1566,7 +1566,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			list = linDAO.loadInventoryRevenueHeaderData(lowerDate, upperDate, publisherName, ChannelsStr, channelAndDataSourceQuery);
 		} catch (Exception e) {
 			log.severe("Exception in loadInventoryRevenueHeaderData of  LinMobileBusinessService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return list;
 		
@@ -1602,7 +1602,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			}
 		} catch (Exception e) {
 			log.severe("Exception in loadPublisherSummaryData of  LinMobileBusinessService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return list;
 		
@@ -1909,7 +1909,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			}
 		} catch (Exception e) {
 			log.severe("Exception in getAllPublishersByPublisherIdAndUserId of LinMobileBusinessService"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return allPublishersList;
 	}
@@ -2343,7 +2343,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 	  }catch(Exception e)
 	  {
 				 log.severe("exception in loadCampaignTraffickingData LinMobileBusinessService (DELIVERING): "+e.getMessage());
-				 e.printStackTrace();
+				 
 	  } 
           
 		  
@@ -2383,7 +2383,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 		}catch(Exception e)
 		{
 			 log.severe("exception in loadCampaignTraffickingData LinMobileBusinessService (READY): "+e.getMessage());
-			 e.printStackTrace();
+			 
 		} 
         
 		
@@ -2426,7 +2426,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 	  }catch(Exception e)
 	  {
 				 log.severe("exception in loadCampaignTraffickingData RichMediaAdvertiserService (DRAFT & NEEDS_CREATIVES): "+e.getMessage());
-				 e.printStackTrace();
+				 
 	  } 
       
 	  
@@ -2469,7 +2469,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 	  }catch(Exception e)
 	  {
 				 log.severe("exception in loadCampaignTraffickingData LinMobileBusinessService (PAUSED & PAUSED_INVENTORY_RELEASED): "+e.getMessage());
-				 e.printStackTrace();
+				 
 	  }
 
 	  
@@ -2508,7 +2508,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 		}catch(Exception e)
 		{
 			 log.severe("exception in loadCampaignTraffickingData LinMobileBusinessService (PENDING_APPROVAL): "+e.getMessage());
-			 e.printStackTrace();
+			 
 		} 
 
 		return totalLineItemDTOList;
@@ -2564,7 +2564,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			}catch(Exception e)
 			{
 					 log.severe("exception in loadCampaignTraffickingData LinMobileBusinessService : "+e.getMessage());
-					 e.printStackTrace();
+					 
 			}
 			  
 			return list;
@@ -2588,7 +2588,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 	    		}while(lineItemService == null && j < 3);
 	    	}catch(Exception e)
 	    	{
-	    		e.printStackTrace();
+	    		
 	    	}
 	    	try{
 	    		int k=0;
@@ -2596,7 +2596,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 	    			forecastService = dfpServices.get(session, ForecastServiceInterface.class);
 	    		}while(forecastService == null && k < 3);
 	    	}catch(Exception e){
-	    		e.printStackTrace();
+	    		
 	    	}
 	    	
 	    	
@@ -2809,7 +2809,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 				 MemcacheUtil.setPublisherCampaignTotalDataList(lineItemCalculatedList,lowerDate, upperDate, publisherName,advertiser,agency,properties);
 				}catch (Exception e) {
 					log.severe("DataServiceException :"+e.getMessage());
-					e.printStackTrace();
+					
 				}			
 			}else{
 				log.info("Advertiser Total Data found from memcache:");
@@ -2864,7 +2864,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 				campainTotalDataPublisherMap.put("lineItemCalculated",lineItemCalculatedList);	
 				
 			}catch(Exception e){
-				e.printStackTrace();
+				
 			}
 			
 			return campainTotalDataPublisherMap;
@@ -2898,7 +2898,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 				
 				}catch (Exception e) {
 					log.severe("DataServiceException :"+e.getMessage());
-					e.printStackTrace();
+					
 				}			
 			}else{
 				log.info("Delivery Indicator Data found from memcache:");
@@ -2993,7 +2993,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			}
 		}catch (Exception e) {
 			log.severe("Exception in getHeaderData of LinMobileService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return publisherReportHeaderDTO;
 	}
@@ -3129,7 +3129,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			}
 		}catch (Exception e) {
 			log.severe("Exception in getChannelPerformanceDate of LinMobileService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		channelperformanceMap.put("PublisherReportChannelPerformanceDTO", pubReportChannelPerformanceDTOList);
 		channelperformanceMap.put("PublisherReportComputedValuesDTO", publisherReportComputedValuesDTOList);
@@ -3274,7 +3274,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 			}
 		}catch (Exception e) {
 			log.severe("Exception in getPerformanceByPropertyData of LinMobileService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}	
 		performanceByPropertyMap.put("PublisherReportPerformanceByPropertyDTO", publisherReportPerformanceByPropertyDTOList);
 		performanceByPropertyMap.put("PublisherReportPerformanceComputedValuesDTO", publisherReportComputedValuesDTOList);
@@ -3417,7 +3417,7 @@ public class LinMobileBusinessService implements ILinMobileBusinessService{
 
 	}catch (Exception e) {
 		log.severe("Exception :"+e.getMessage());
-		e.printStackTrace();
+		
 		return null;
 	}
 	  return jsonChartMap;

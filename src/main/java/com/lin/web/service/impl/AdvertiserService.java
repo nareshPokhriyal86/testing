@@ -89,7 +89,7 @@ public class AdvertiserService implements IAdvertiserService{
 			
 			}catch (Exception e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("TrendAnalysis Header Data for Advertiser View found from memcache:");
@@ -131,7 +131,7 @@ public class AdvertiserService implements IAdvertiserService{
 			
 			}catch (Exception e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("TrendAnalysis Actual Data for Advertiser View found from memcache:");
@@ -169,7 +169,7 @@ public class AdvertiserService implements IAdvertiserService{
 			
 			}catch (DataServiceException e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Performance Summary Header Data found from memcache:");
@@ -210,7 +210,7 @@ public class AdvertiserService implements IAdvertiserService{
 			
 			}catch (Exception e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Trend Analysis Forcasted Data found from memcache:");
@@ -248,7 +248,7 @@ public class AdvertiserService implements IAdvertiserService{
 			
 			}catch (DataServiceException e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Top Performer Line Items found from memcache:");
@@ -285,7 +285,7 @@ public class AdvertiserService implements IAdvertiserService{
 			
 			}catch (DataServiceException e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Top Non Performer Line Items found from memcache:");
@@ -321,7 +321,7 @@ public class AdvertiserService implements IAdvertiserService{
 			
 			}catch (DataServiceException e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Top Most Active Line Items found from memcache:");
@@ -359,7 +359,7 @@ public class AdvertiserService implements IAdvertiserService{
 			
 			}catch (DataServiceException e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Top Gainer Line Items found from memcache:");
@@ -396,7 +396,7 @@ public class AdvertiserService implements IAdvertiserService{
 			
 			}catch (DataServiceException e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Top Looser Line Items found from memcache:");
@@ -433,7 +433,7 @@ public class AdvertiserService implements IAdvertiserService{
 			
 			}catch (DataServiceException e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Performance Metrics found from memcache:");
@@ -480,7 +480,7 @@ public class AdvertiserService implements IAdvertiserService{
 			
 			}catch (DataServiceException e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Advertiser By Location Data found from memcache:");
@@ -535,7 +535,7 @@ public class AdvertiserService implements IAdvertiserService{
 			
 			}catch (DataServiceException e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Advertiser By Market Data found from memcache:");
@@ -1106,7 +1106,7 @@ public class AdvertiserService implements IAdvertiserService{
     		  
 		}catch(Exception e){
 			log.severe("Exception in updateReallocationLineItem in advertiserService"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return advertiserReallocationTableList;
 		
@@ -1213,7 +1213,7 @@ public class AdvertiserService implements IAdvertiserService{
 			
 			}catch (Exception e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Advertiser Total Data found from memcache:");
@@ -1250,7 +1250,7 @@ public class AdvertiserService implements IAdvertiserService{
 			
 			}catch (Exception e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Delivery Indicator Data found from memcache:");

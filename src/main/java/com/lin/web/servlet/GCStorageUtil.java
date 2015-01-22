@@ -277,11 +277,11 @@ public  String uploadFileAtCloudStorageViaZip(String csvData,
 		return uploadedFileURL;
 	} catch (FileNotFoundException e) {
 		log.severe(":FileNotFoundException::" + e.getMessage());
-		e.printStackTrace();
+		
 		return null;
 	} catch (Exception e) {
 		log.severe(":Exception::" + e.getMessage());
-		e.printStackTrace();
+		
 		return null;
 	}
 }

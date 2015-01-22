@@ -144,11 +144,11 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			}
 		} catch (ParseException e) {
 			log.severe("ParseException in dayDurationInFlights in PerformanceMonitoringService"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in dayDurationInFlights in PerformanceMonitoringService"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		log.info("numberOfDays for flights : "+numberOfDays);
 		return numberOfDays;
@@ -584,11 +584,11 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		}
 		catch (JSONException e) {
 			log.severe("JSONException in getPlacementInformation of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in getPlacementInformation of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		log.info("placementInfo size : "+placementInfo.size());
 		return placementInfo;
@@ -834,7 +834,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			
 		}catch(Exception e){
 			log.severe("Exception in loadAllCampaigns of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return jsonArray;
 	}
@@ -968,15 +968,15 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		}
 		catch (NumberFormatException e) {
 			log.severe("NumberFormatException in headerData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (JSONException e) {
 			log.severe("JSONException in headerData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in headerData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		JSONObject retunJson = new JSONObject();
 		if(jsonObject != null && jsonObject.size() > 0) {
@@ -1157,11 +1157,11 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		}
 		catch (JSONException e) {
 			log.severe("JSONException in deliveryMetricsData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in deliveryMetricsData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		JSONObject retunJson = new JSONObject();
 		if(jsonArray != null && jsonArray.size() > 0) {
@@ -1313,11 +1313,11 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		}
 		catch (JSONException e) {
 			log.severe("JSONException in deliveryMetricsData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in deliveryMetricsData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		JSONObject retunJson = new JSONObject();
 		if(jsonArray != null && jsonArray.size() > 0) {
@@ -1853,11 +1853,11 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		}
 		catch (JSONException e) {
 			log.severe("JSONException in clicksLineChartData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in clicksLineChartData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		JSONObject retunJson = new JSONObject();
 		if(jsonObject != null && jsonObject.size() > 0) {
@@ -2245,11 +2245,11 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		}
 		catch (JSONException e) {
 			log.severe("JSONException in impressionsLineChartData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in impressionsLineChartData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		JSONObject retunJson = new JSONObject();
 		if(jsonObject != null && jsonObject.size() > 0) {
@@ -2540,11 +2540,11 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		}
 		catch (JSONException e) {
 			log.severe("JSONException in ctrLineChartData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in ctrLineChartData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		JSONObject retunJson = new JSONObject();
 		if(jsonObject != null && jsonObject.size() > 0) {
@@ -2952,11 +2952,11 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		}
 		catch (JSONException e) {
 			log.severe("JSONException in flightLineChartData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in flightLineChartData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		JSONObject retunJson = new JSONObject();
 		log.info("jsonArray.size() : "+jsonArray.size());
@@ -3121,11 +3121,11 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			}
 		}catch (ParseException e) {
 			log.severe("ParseException in getRunningFlight in PerformanceMonitoringService"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in getRunningFlight in PerformanceMonitoringService"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return null;
 	}
@@ -3192,11 +3192,11 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		}
 		catch (JSONException e) {
 			log.severe("JSONException in locationCompleteData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in locationCompleteData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		JSONObject retunJson = new JSONObject();
 		if(jsonObject != null && jsonObject.size() > 0) {
@@ -3277,11 +3277,11 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		}
 		catch (JSONException e) {
 			log.severe("JSONException in locationTopCitiesData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in locationTopCitiesData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		JSONObject retunJson = new JSONObject();
 		boolean isMemcacheRequired = false;
@@ -3365,11 +3365,11 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		}
 		catch (JSONException e) {
 			log.severe("JSONException in locationTargetData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in locationTargetData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		jsonObject.put("geoTargeted", geoTargeted);
 		jsonObject.put("targetImpressions", totalImpressions);
@@ -3683,11 +3683,11 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		}
 		catch (JSONException e) {
 			log.severe("JSONException in richMediaLineChartData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in richMediaLineChartData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		log.info("jsonArray.size() : "+jsonArray.size());
 		JSONObject retunJson = new JSONObject();
@@ -3711,7 +3711,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		}
 		catch (Exception e) {
 			log.severe("Exception in weekOrMonthAverage of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 	}
 	
@@ -3957,11 +3957,11 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		}
 		catch (JSONException e) {
 			log.severe("JSONException in videoData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in videoData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		JSONObject retunJson = new JSONObject();
 		if(jsonObject != null && jsonObject.size() > 0) {
@@ -4261,7 +4261,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			
 		}catch(Exception e){
 			log.severe("Exception in creativeBarChartData of PerformanceMonitoringService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return jsonChartMap;
 	}
@@ -4580,7 +4580,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			
 		}catch(Exception e){
 			log.severe("Exception in deviceBarChartData in PerformanceMonitoringService"+e.toString());
-			e.printStackTrace();
+			
 		}
 		
 		
@@ -4667,7 +4667,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 	  return jsonStr.toString();
 	}catch(Exception e){
 		log.severe("Exception in createJsonResponseForBarChart in PerformanceMonitoringService"+e.getMessage());
-		e.printStackTrace();
+		
 		}
 	  //System.out.println("LineChart Table JSON Data::" + jsonStr.toString());
 		return chartType;
@@ -4802,7 +4802,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		  return jsonStr.toString();
 		}catch(Exception e){
 		log.severe("Exception in createJsonResponseForBarChart in PerformanceMonitoringService"+e.getMessage());
-		e.printStackTrace();
+		
 		}
 	  //System.out.println("LineChart Table JSON Data::" + jsonStr.toString());
 		return chartType;
@@ -5084,7 +5084,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			MemcacheUtil.setObjectInCache(memcacheKey, jsonChartMap, EXPIRATION_TIME);
 			
 		}catch(Exception e){
-			e.printStackTrace();
+			
 		}
 		
 		

@@ -209,7 +209,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -420,7 +420,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -562,7 +562,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -768,7 +768,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -915,7 +915,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -944,7 +944,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadTopPerformerLineItems of AdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return topPerformerLineItemsList;
 	}
@@ -1096,7 +1096,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -1121,7 +1121,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadNonPerformerLineItems of AdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return topPerformerLineItemsList;
 	}
@@ -1331,7 +1331,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -1360,7 +1360,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadMostActiveLineItems of AdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return mostActiveLineItemList;
 	}
@@ -1567,7 +1567,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -1594,7 +1594,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadTopGainers of AdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return topGainersList;
 	}
@@ -1798,7 +1798,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -1825,7 +1825,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadTopLosers of AdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 			/**/
 		}
 		 return topLosersList;
@@ -1992,7 +1992,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -2026,7 +2026,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadPerformanceMetrics of AdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		if(performanceMetricsList != null) {
     		log.info("performanceMetricsList in DAO, size : "+performanceMetricsList.size());
@@ -2075,7 +2075,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -2101,7 +2101,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadAdvertisersByLocationData of AdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return advertiserByLocationObjList;
 	}
@@ -2193,7 +2193,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -2220,7 +2220,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadAdvertiserByMarketGraphData of AdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return advertiserByLocationObjList;
 	}
@@ -2345,7 +2345,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					queryResponse1 = BigQueryUtil.getBigQueryData(QUERY1);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse1.getJobComplete() && j<=3);
@@ -2356,7 +2356,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					queryResponse2 = BigQueryUtil.getBigQueryData(QUERY2);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse2.getJobComplete() && j<=3);
@@ -2410,7 +2410,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 			 }
 		}catch(Exception e) {
 			log.severe("Exception getLineItemForPopUP of AdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 	}
 	
@@ -2504,7 +2504,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -2523,7 +2523,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					}
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 
 			}
@@ -2557,7 +2557,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -2576,7 +2576,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					}
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 
 			}
@@ -2612,7 +2612,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -2631,7 +2631,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					}
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 
 			}
@@ -2675,7 +2675,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -2696,7 +2696,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					}
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 
 			}
@@ -2786,7 +2786,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 		}
 		 catch (Exception e) {
 			log.severe("Exception in loadAdvertiserDFPPropertyList in AdvertiserDAO"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 	 	return siteList;
 	
@@ -2809,7 +2809,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 			}
 		}catch (Exception e) {
 			log.severe("Exception in getPropertyObjByName of AdvertiserDAO"+e.getMessage());
-			e.printStackTrace();
+			
 		}*/
 		return propertyObj;
 	}
@@ -2885,7 +2885,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -2919,7 +2919,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadAdvertiserTotalDataList of AdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return advertiserTotalDataList;
 	}
@@ -3028,7 +3028,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(QUERY);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -3058,7 +3058,7 @@ public class AdvertiserDAO implements IAdvertiserDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception loadDeliveryIndicatorData of AdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		 return advertiserTotalDataList;
 	

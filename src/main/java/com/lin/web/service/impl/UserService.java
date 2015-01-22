@@ -345,7 +345,7 @@ public class UserService implements IUserService{
 			result = true;
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in sendActivationMail of UserService : "+e.getMessage());
 		}
 		return result;
@@ -741,7 +741,7 @@ public class UserService implements IUserService{
 		try {
 			userDetailsObj = dao.getUserById(userId);
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 		}
 		String toUserName  = userDetailsObj.getUserName();
 		
@@ -845,7 +845,7 @@ public class UserService implements IUserService{
 			EmailUtil.sendAuthMail(emailId.trim(), LinMobileVariables.SENDER_EMAIL_ADDRESS, subject, messageText, "");
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.info("Exception in sendForgetPasswordMail of UserService");
 		}
 	}
@@ -2475,7 +2475,7 @@ public class UserService implements IUserService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in createDefaultTeamAllEntity of userAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		
 	}
@@ -2506,7 +2506,7 @@ public class UserService implements IUserService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in createDefaultTeamNoEntity of userAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		
 	}
@@ -2560,7 +2560,7 @@ public class UserService implements IUserService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in updateDefaultTeamAllEntity of userAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		
 	}
@@ -2589,7 +2589,7 @@ public class UserService implements IUserService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in updateDefaultTeamNoEntity of userAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		
 	}
@@ -2644,7 +2644,7 @@ public class UserService implements IUserService{
 			}
 		} catch (Exception e) {
 			log.severe("Exception in getAuthorisations of UserService"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		//userDetailsDTO.setAuthorisationTextList(authorisationTextList);
 		userDetailsDTO.setAuthorisationKeywordList(authorisationKeywordList);
@@ -2977,7 +2977,7 @@ public class UserService implements IUserService{
 		}
 		catch (Exception e) {
 			log.info("Exception in getFirstPageForLoginUser of UserService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return "error";
 	}
@@ -3306,7 +3306,7 @@ public class UserService implements IUserService{
 			MemcacheUtil.setAccountAuthToken(username, clientLoginToken);
 		} catch (Exception e) {
 			log.severe(" Exception in getting authToken: "+e.getMessage());
-			e.printStackTrace();
+			
 		}	    
 	    return clientLoginToken;
 	}*/
@@ -3338,7 +3338,7 @@ public class UserService implements IUserService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in getCompanyDFPCredentials of UserService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		log.info("AdServerCredentialsDTO map size : "+map.size());
 		return map;
@@ -3375,7 +3375,7 @@ public class UserService implements IUserService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in getCompanyDFPCredentials of UserService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		log.info("AdServerCredentialsDTO map size : "+map.size());
 		return map;
@@ -3413,7 +3413,7 @@ public class UserService implements IUserService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in getPublisherBQId in UserService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return publisherBQId;
 	}
@@ -3436,7 +3436,7 @@ public class UserService implements IUserService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in getPublisherBQId in UserService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return publisherBQId;
 	}
@@ -3475,7 +3475,7 @@ public class UserService implements IUserService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in getPublisherIdsForBigQueryByCompanyId in UserService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		log.info("publisherIdsForBigQuery = " + publisherIdsForBigQuery.toString());
 		return publisherIdsForBigQuery.toString();
@@ -3515,7 +3515,7 @@ public class UserService implements IUserService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in getPublisherIdsForBigQueryByCompanyName in UserService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		log.info("publisherIdsForBigQuery = " + publisherIdsForBigQuery.toString());
 		return publisherIdsForBigQuery.toString();
@@ -3549,7 +3549,7 @@ public class UserService implements IUserService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in getPublisherIdsForBigQuery in UserService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		log.info("publisherIdsForBigQuery = " + publisherIdsForBigQuery.toString());
 		return publisherIdsForBigQuery.toString();
@@ -3799,11 +3799,11 @@ public class UserService implements IUserService{
 			}
 		} catch (FileNotFoundException e) {
 			log.severe("FileNotFoundException:" + e.getMessage());
-			e.printStackTrace();
+			
 
 		} catch (IOException e) {
 			log.severe("IOException:" + e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return uploadedFileURL;
 	}
@@ -3829,11 +3829,11 @@ public class UserService implements IUserService{
 			return uploadedFileURL;
 		} catch (FileNotFoundException e) {
 			log.severe(":FileNotFoundException::" + e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		} catch (Exception e) {
 			log.severe(":Exception::" + e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
    }
@@ -3871,7 +3871,7 @@ public class UserService implements IUserService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in getPublisherIdsForBigQueryByCompanyId in UserService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		commonDTO.setCompanyType(companyType);
 		commonDTO.setAccessToAccounts(accessToAccounts);
@@ -4091,7 +4091,7 @@ public class UserService implements IUserService{
 			}
 		}catch (Exception e) {
 			log.severe("Exception in createAccount of UserService : "+e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}
 		return result;
@@ -4144,7 +4144,7 @@ public class UserService implements IUserService{
 			}
 		} catch (Exception e) {
 			log.severe("Exception in initEditAccount of UserService : "+e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}
 		return result;
@@ -4193,7 +4193,7 @@ public class UserService implements IUserService{
 			}
 		}catch (Exception e) {
 			log.severe("Exception in updateAccount of UserService : "+e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}
 		return result;
@@ -4246,7 +4246,7 @@ public class UserService implements IUserService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in convertListToSeperatedString : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return returnStr;
 	}
@@ -4280,7 +4280,7 @@ public class UserService implements IUserService{
 			}
 			catch (Exception e) {
 				log.severe("Exception in getCompanyDFPCredentials of UserService : "+e.getMessage());
-				e.printStackTrace();
+				
 			}
 		}
 		log.info("adServerCredentialsDTOList size : "+adServerCredentialsDTOList.size());
@@ -4488,7 +4488,7 @@ public class UserService implements IUserService{
 			}
 		} catch(Exception e) {
 			log.severe("Esception in loadAdvertiserAndAgencyInBQ : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return map;
 	}
@@ -4732,7 +4732,7 @@ public class UserService implements IUserService{
 			}
 		} catch(Exception e) {
 			log.severe("Exception in getSiteIds in UserService : "+e.getMessage()); 
-			e.printStackTrace();
+			
 		}
 		log.info("siteIdlist size : "+siteIdlist.size());
 		return siteIdlist;
@@ -5001,7 +5001,7 @@ public class UserService implements IUserService{
 		} catch (Exception e) {
 			log.severe("Exception:" + e.getMessage());
 			map.put("message", "Exception:" + e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return map;
 	}
@@ -5115,7 +5115,7 @@ public class UserService implements IUserService{
 			companyList=userDAO.getSelectedCompaniesByUserId(userId);
 		} catch (Exception e) {
 			log.severe("Failed to load companies for user:"+userId+", exception :"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return companyList;
 	}
@@ -5162,7 +5162,7 @@ public class UserService implements IUserService{
 		} catch (Exception e) {
 			log.severe("Exception:" + e.getMessage());
 			msg = "Exception:" + e.getMessage();
-			e.printStackTrace();
+			
 		}
 		log.info(msg);
 		return msg;

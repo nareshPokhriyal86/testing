@@ -241,7 +241,7 @@ public class AdExchangeAction implements ServletRequestAware,ServletResponseAwar
 		 } catch (Exception e) {
 			log.severe(" Exception :"+e.getMessage());
 			reportsResponse=e.getMessage();
-			e.printStackTrace();
+			
 		 }
 	  	
          log.info("adExFinaliseLinMediaReport action ends..reportsResponse:"+reportsResponse);	
@@ -300,7 +300,7 @@ public class AdExchangeAction implements ServletRequestAware,ServletResponseAwar
 	    } catch (IOException e) {
 			log.severe("IOException :"+e.getMessage());
 			error=e.getMessage();
-			e.printStackTrace();				
+							
 		} 
 	    
 	}
@@ -393,7 +393,7 @@ public class AdExchangeAction implements ServletRequestAware,ServletResponseAwar
 			 response.sendRedirect("/adExReport.lin");
 		  } catch (IOException e) {
 			 log.severe("IOException: "+e.getMessage());
-			 e.printStackTrace();
+			 
 		  }
 		
    	    } catch (EntityNotFoundException ex) {
@@ -412,7 +412,7 @@ public class AdExchangeAction implements ServletRequestAware,ServletResponseAwar
 			response.sendRedirect(requestUrl.build());
 		  } catch (IOException e) {
 			  log.severe("IOException: "+e.getMessage());
-			e.printStackTrace();
+			
 		  }
    	      
    	    }
@@ -457,7 +457,7 @@ public class AdExchangeAction implements ServletRequestAware,ServletResponseAwar
 
 		} catch (IOException e) {
 			log.severe("IOException: " + e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return null;
     }

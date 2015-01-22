@@ -39,5 +39,9 @@ public class InstrumentDTO implements Serializable, Comparable<InstrumentDTO>{
 		return value.compareToIgnoreCase(commonDTO.getValue());
 	}
 
-	
+	@Override
+	public boolean equals(Object arg0) {
+		// TODO Auto-generated method stub
+		return super.equals(arg0);
+	}		
 }

@@ -124,7 +124,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 	    			reportURL=ReportUtil.uploadReportOnCloudStorage(strBuffer.toString(), fileName, dirName);
 	    		} catch (IOException e) {
 	    			log.severe("generateNexageReport :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-	    			e.printStackTrace();
+	    			
 	    		}		
 	    		log.info("generateNexageReport: reportURL:"+reportURL);    		
 	        }		
@@ -210,7 +210,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 				reportURL=ReportUtil.uploadReportOnCloudStorage(strBuffer.toString(), fileName, dirName);
 			} catch (IOException e) {
 				log.severe("generateNexageReport :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-				e.printStackTrace();
+				
 			}
 		
 		}
@@ -267,7 +267,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 				reportURL=ReportUtil.uploadReportOnCloudStorage(strBuffer.toString(), fileName, dirName);
 			} catch (IOException e) {
 				log.severe("generateMojivaReport :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-				e.printStackTrace();
+				
 			}		
 			log.info("generateMojivaReport: reportURL:"+reportURL);
 		}else{
@@ -335,7 +335,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 				reportURL=ReportUtil.uploadReportOnCloudStorage(strBuffer.toString(), fileName, dirName);
 			} catch (IOException e) {
 				log.severe("generateMojivaReport :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-				e.printStackTrace();
+				
 			}		
 			log.info("generateMojivaReport: reportURL:"+reportURL);
 		}else{
@@ -372,10 +372,10 @@ public class HistoricalReportService implements IHistoricalReportService{
 			}
 		}catch (IOException e){
 			log.severe("generateAdExReport :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-			e.printStackTrace();
+			
 		} catch (Exception e) {
 			log.severe("Exception:"+e.getMessage());
-			e.printStackTrace();
+			
 		}		
 		return reportURL;
 	}
@@ -418,7 +418,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 			}
 		} catch (IOException e) {
 			log.severe("generateDFPReport :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-			e.printStackTrace();
+			
 		}		
 		log.info("generateDFPReport: reportURL:"+reportURL);  
        
@@ -463,7 +463,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 			}
 		} catch (IOException e) {
 			log.severe("generateDFPReport :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-			e.printStackTrace();
+			
 		}		
 		log.info("generateDFPReport: reportURL:"+reportURL);  
        
@@ -509,7 +509,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 			}
 		} catch (IOException e) {
 			log.severe("generateDFPReport :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-			e.printStackTrace();
+			
 		}		
 		log.info("generateDFPReport: reportURL:"+reportURL);  
        
@@ -537,7 +537,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 			reportURL=ReportUtil.uploadReportOnCloudStorage(strBuffer.toString(), proccessFileName, dirName);
 		} catch (IOException e) {
 			log.severe("generateDFPReportByLocation :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-			e.printStackTrace();
+			
 		}		
 		log.info("reportURL:"+reportURL);  
        
@@ -565,7 +565,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 			reportURL=ReportUtil.uploadReportOnCloudStorage(strBuffer.toString(), proccessFileName, dirName);
 		} catch (IOException e) {
 			log.severe("generateDFPReportByLocation :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-			e.printStackTrace();
+			
 		}       
         return reportURL;
 	}
@@ -616,7 +616,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 					}
 				} catch (IOException e) {
 					log.severe("generateDFPReportByLocation :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-					e.printStackTrace();
+					
 				}      
 				i++;
 			}
@@ -631,7 +631,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 				
 			} catch (IOException e) {
 				log.severe("generateDFPReportByLocation :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-				e.printStackTrace();
+				
 			}      
 		}
         return fileList;
@@ -729,7 +729,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 			}
 		} catch (IOException e) {
 			log.severe("generateDFPReport :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-			e.printStackTrace();
+			
 		}		
 		log.info("generateDFPReport: reportURL:"+reportURL);  
        
@@ -751,7 +751,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 			reportList=reportDAO.loadDataCollectorReportByDownloadStatus(downloadStatus);
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return reportList;
 		
@@ -774,7 +774,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 			log.info("Object saved successfully in datastore ");
 		} catch (DataServiceException e) {
 			log.severe("Object failed to save in datastore :: "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 	}
    
@@ -798,7 +798,7 @@ public class HistoricalReportService implements IHistoricalReportService{
     			reportPath=ReportUtil.uploadReportOnCloudStorage(csvDate.toString(), procFileName, dirName);
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
     	}else{
     		log.info("No report found or processed :");
@@ -830,7 +830,7 @@ public class HistoricalReportService implements IHistoricalReportService{
     			
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
     	}else{
     		log.info("No report found or processed :");
@@ -958,7 +958,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 		    return true;
 	    } catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return false;
 		}	
     }
@@ -1081,7 +1081,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 		    return true;
 	    } catch (DataServiceException e) {
 			log.severe("DataServiceException :"+e.getMessage());
-			e.printStackTrace();
+			
 			return false;
 		}	
     }
@@ -1105,10 +1105,10 @@ public class HistoricalReportService implements IHistoricalReportService{
 
 		} catch (IOException e) {
 			log.severe("IOException:" + e.getMessage());
-			e.printStackTrace();
+			
 		} catch (GeneralSecurityException e) {
 			log.severe("Exception in saving data in bigquery::"+ e.getMessage());
-			e.printStackTrace();
+			
 		}
 
 		return bigQueryResponse;
@@ -1135,7 +1135,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 			
 		} catch (DataServiceException e) {
 			log.severe("getCronJobdata: DataServiceException:"+e.getClientMessage());
-			e.printStackTrace();
+			
 			
 		}
 		return obj;
@@ -1155,7 +1155,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 			return true;
 		} catch (DataServiceException e) {
 			log.severe("saveCronJobData: DataServiceException:"+e.getClientMessage());
-			e.printStackTrace();
+			
 			return false;
 		}
 	}
@@ -1181,7 +1181,7 @@ public class HistoricalReportService implements IHistoricalReportService{
     			reportPath=ReportUtil.uploadReportOnCloudStorage(csvDate.toString(), procFileName, dirName);
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
     	}else{
     		log.info("No report found or processed :");
@@ -1209,7 +1209,7 @@ public class HistoricalReportService implements IHistoricalReportService{
     			reportPath=ReportUtil.uploadReportOnCloudStorage(csvDate.toString(), procFileName, dirName);
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
     	}else{
     		log.info("No report found or processed :");
@@ -1240,7 +1240,7 @@ public class HistoricalReportService implements IHistoricalReportService{
     			reportPath=ReportUtil.uploadReportOnCloudStorage(csvDate.toString(), procFileName, dirName);
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
     	}else{
     		log.info("No report found or processed :");
@@ -1270,7 +1270,7 @@ public class HistoricalReportService implements IHistoricalReportService{
     			reportPath=ReportUtil.uploadReportOnCloudStorage(csvDate.toString(), procFileName, dirName);
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
     	}else{
     		log.info("No report found or processed :");
@@ -1309,7 +1309,7 @@ public class HistoricalReportService implements IHistoricalReportService{
     			reportPath=ReportUtil.uploadReportOnCloudStorage(csvDate.toString(), procFileName, dirName);
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
     	}else{
     		log.info("No report found or processed :");
@@ -1354,7 +1354,7 @@ public class HistoricalReportService implements IHistoricalReportService{
     			reportPath=ReportUtil.uploadReportOnCloudStorage(csvDate.toString(), procFileName, dirName,bucketName);
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
     	}else{
     		log.info("No report found or processed :");
@@ -1391,7 +1391,7 @@ public class HistoricalReportService implements IHistoricalReportService{
     			reportPath=ReportUtil.uploadReportOnCloudStorage(csvDate.toString(), procFileName, dirName,bucketName);
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
     	}else{
     		log.info("No report found or processed :");
@@ -1427,7 +1427,7 @@ public class HistoricalReportService implements IHistoricalReportService{
     			reportPath=ReportUtil.uploadReportOnCloudStorage(csvDate.toString(), procFileName, dirName);
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
     	}else{
     		log.info("No report found or processed :");
@@ -1462,7 +1462,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 				log.info("returning orderIds:"+orderIdList.size());
 			} catch (DataServiceException e) {
 				log.severe("DataServiceException : getAllOrderIds: :"+e.getMessage());
-				e.printStackTrace();
+				
 			}
     	}
     	return orderIdList;
@@ -1573,7 +1573,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 			}
 		} catch (IOException e) {
 			log.severe("generateDFPReport :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-			e.printStackTrace();
+			
 		}		
 		log.info("generateDFPReport: reportURL:"+reportURL);  
        
@@ -1650,7 +1650,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 			}
 		} catch (IOException e) {
 			log.severe("generateDFPReport :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-			e.printStackTrace();
+			
 		}		
 		log.info("generateDFPReport: reportURL:"+reportURL);  
        
@@ -1677,7 +1677,7 @@ public class HistoricalReportService implements IHistoricalReportService{
         	}
     	}catch(Exception e){
     		log.severe("Exception in getAllAccountId of ReportService "+e.getMessage());
-    		e.printStackTrace();
+    		
     	}
 		return accountIdList;
     	
@@ -1709,7 +1709,7 @@ public class HistoricalReportService implements IHistoricalReportService{
     		}
     	}catch(Exception e){
     		log.severe("Exception in getAllAccountId of ReportService "+e.getMessage());
-    		e.printStackTrace();
+    		
     	}
 		return accountIdList;
     	
@@ -1727,7 +1727,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 			return true;
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException:"+e.getMessage());
-			e.printStackTrace();
+			
 			return false;
 		}
     }
@@ -1885,7 +1885,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 	    			reportURL=ReportUtil.uploadReportOnCloudStorage(strBuffer.toString(), procFileName, dirName,bucketName);
 	    		} catch (IOException e) {
 	    			log.severe("uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-	    			e.printStackTrace();
+	    			
 	    		}		
 	    		log.info("reportURL:"+reportURL);    		
 	        }		
@@ -2000,7 +2000,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 					reportURL=ReportUtil.uploadReportOnCloudStorage(strBuffer.toString(), fileName, dirName,bucketName);
 				} catch (IOException e) {
 					log.severe("generateMojivaReport :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-					e.printStackTrace();
+					
 				}		
 				log.info("generateMojivaReport: reportURL:"+reportURL);
 			}else{				
@@ -2072,7 +2072,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 					reportURL=ReportUtil.uploadReportOnCloudStorage(strBuffer.toString(), fileName, dirName,bucketName);
 				} catch (IOException e) {
 					log.severe("generateMojivaReport :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-					e.printStackTrace();
+					
 				}		
 				log.info("generateMojivaReport: reportURL:"+reportURL);
 			}else{
@@ -2110,10 +2110,10 @@ public class HistoricalReportService implements IHistoricalReportService{
 			}
 		}catch (IOException e){
 			log.severe("uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-			e.printStackTrace();
+			
 		} catch (Exception e) {
 			log.severe("Exception:"+e.getMessage());
-			e.printStackTrace();
+			
 		}		
 		return reportURL;
 	}
@@ -2264,7 +2264,7 @@ public class HistoricalReportService implements IHistoricalReportService{
     			reportPath=ReportUtil.uploadReportOnCloudStorage(csvDate.toString(), procFileName, dirName);
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
     	}else{
     		log.info("No report found or processed :");
@@ -2318,7 +2318,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 			}
 		} catch (IOException e) {
 			log.severe("generateDFPReport :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-			e.printStackTrace();
+			
 		}		
 		log.info("generateDFPReport: reportURL:"+reportURL);  
        
@@ -2372,7 +2372,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 					}
 				} catch (IOException e) {
 					log.severe("generateDFPReportByLocation :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-					e.printStackTrace();
+					
 				}      
 				i++;
 			}
@@ -2387,7 +2387,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 				
 			} catch (IOException e) {
 				log.severe("generateDFPReportByLocation :uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-				e.printStackTrace();
+				
 			}      
 		}
         return fileList;
@@ -2416,7 +2416,7 @@ public class HistoricalReportService implements IHistoricalReportService{
 			reportURL=ReportUtil.uploadReportOnCloudStorage(strBuffer.toString(), procFileName, dirName);			
 		} catch (IOException e) {
 			log.severe("uploadReportOnCloudStorage:IOExcepotion: "+e.getMessage());
-			e.printStackTrace();
+			
 		}		
 		log.info("reportURL:"+reportURL);  
        
@@ -2451,7 +2451,7 @@ public class HistoricalReportService implements IHistoricalReportService{
     			reportPath=ReportUtil.uploadReportOnCloudStorage(csvDate.toString(), procFileName, dirName);
 			} catch (IOException e) {
 				log.severe("IOException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
     	}else{
     		log.info("No report found or processed :");

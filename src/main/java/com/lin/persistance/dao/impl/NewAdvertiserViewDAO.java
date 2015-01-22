@@ -96,7 +96,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -164,7 +164,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -213,7 +213,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -266,7 +266,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -346,7 +346,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -384,7 +384,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -428,7 +428,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -454,7 +454,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -478,7 +478,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -577,7 +577,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
              } catch (Exception e) {
  				log.severe("Query Exception = " + e.getMessage());
- 				e.printStackTrace();
+ 				
  			}
 			j++;
 		} while (!queryResponse.getJobComplete() && j <= 3);
@@ -637,7 +637,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 			 }	
 		}catch(Exception e) {
 			log.severe("Exception richMediaEventGraph of RichMediaAdvertiserDAO."+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return richMediaEventGraphList;
 	}
@@ -674,7 +674,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -727,7 +727,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -778,7 +778,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -821,7 +821,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -861,7 +861,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);
@@ -904,7 +904,7 @@ public class NewAdvertiserViewDAO implements INewAdvertiserViewDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while(!queryResponse.getJobComplete() && j<=3);

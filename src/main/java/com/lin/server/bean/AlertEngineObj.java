@@ -484,5 +484,9 @@ public class AlertEngineObj implements Serializable,Comparable<AlertEngineObj>{
 	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
 	}
-
+	@Override
+	public boolean equals(Object arg0) {
+		// TODO Auto-generated method stub
+		return super.equals(arg0);
+	}	
 }

@@ -672,7 +672,7 @@ public class ForecastInventoryService implements IForecastInventoryService{
 		   dao.deleteUpdateForcastInventoryObj(forcastInventoryObjsList, doEmptyTable); 
 	   }catch(Exception e){
 		   log.severe("Exception in deleteUpdateDFPSitesWithDMA "+e.getMessage());
-		   e.printStackTrace();
+		   
 	   }
 	return forcastInventoryObjsList;
    }
@@ -727,7 +727,7 @@ public class ForecastInventoryService implements IForecastInventoryService{
 	    	 //lineItemService = null;
 	    	 forecastService = null;
     		log.severe("Exception in getLineItemForcast of NewAdvertiserViewService service"+e.getMessage());
-    		e.printStackTrace();
+    		
     	}
 		return newAdvertiserViewDTO;
         
@@ -874,7 +874,7 @@ public class ForecastInventoryService implements IForecastInventoryService{
 		   }
 	   }catch(Exception e){
 		   log.severe("Exception in addTaskToGetProductForcast ::"+e.getMessage());
-		   e.printStackTrace();
+		   
 	   }
 	   
    }
@@ -946,7 +946,7 @@ public class ForecastInventoryService implements IForecastInventoryService{
 		  
 	   }catch(Exception e){
 		   log.severe("Exception in setProductFrocast ::"+e.getMessage());
-		   e.printStackTrace();
+		   
 		   return false;
 	   }
 	   return true;

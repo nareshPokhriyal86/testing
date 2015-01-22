@@ -335,6 +335,10 @@ public class PropertyObj implements Serializable, Comparable<PropertyObj> {
 		this.companyId = companyId;
 	}
 	
-	
+	@Override
+	public boolean equals(Object arg0) {
+		// TODO Auto-generated method stub
+		return super.equals(arg0);
+	}		
 	
 }

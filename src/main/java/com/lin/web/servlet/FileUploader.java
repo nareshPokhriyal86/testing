@@ -47,10 +47,10 @@ public class FileUploader extends HttpServlet{
 				 view.forward(request, response);
 			} catch (FileUploadException e) {				
 				log.severe(this.getServletName()+":FileUploadException::"+e.getMessage());
-				e.printStackTrace();
+				
 			} catch (Exception e) {
 				log.severe(this.getServletName()+":Exception::"+e.getMessage());				
-				e.printStackTrace();
+				
 			}
 	}
 

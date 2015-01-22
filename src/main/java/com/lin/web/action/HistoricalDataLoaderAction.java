@@ -1,8 +1,6 @@
 package com.lin.web.action;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.Console;
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
@@ -25,16 +23,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
-import org.omg.PortableInterceptor.SUCCESSFUL;
 
 import com.google.api.ads.dfp.jaxws.factory.DfpServices;
 import com.google.api.ads.dfp.lib.client.DfpSession;
-import com.google.appengine.tools.cloudstorage.GcsFileOptions;
-import com.google.appengine.tools.cloudstorage.GcsFilename;
-import com.google.appengine.tools.cloudstorage.GcsOutputChannel;
-import com.google.appengine.tools.cloudstorage.GcsService;
-import com.google.appengine.tools.cloudstorage.GcsServiceFactory;
-import com.google.appengine.tools.cloudstorage.RetryParams;
 import com.lin.dfp.api.IDFPReportService;
 import com.lin.dfp.api.impl.DFPAuthenticationUtil;
 import com.lin.dfp.api.impl.DFPReportService;
@@ -224,7 +215,7 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 				log.info("Finished all tasks");
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				
 			}
 				if(breaker != null){ return;}
 				}
@@ -274,7 +265,7 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 			}
 		} catch (Exception e) {
 			reportsResponse="Failed to upload data : exception :"+e.getMessage();
-			e.printStackTrace();
+			
 		}
 		
 		log.info("action ends : "+reportsResponse);
@@ -816,7 +807,7 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 			dfpServices = LinMobileProperties.getInstance().getDfpServices();
 
 			IDFPReportService dfpReportService = new DFPReportService();
-
+			List<DFPTaskEntity> taskEntitieList = new ArrayList<>();
 			List<String> orderIdList = Arrays.asList(orderIds.split(","));
 
 			CloudProjectDTO cloudProjectBQDTO=DataLoaderUtil.getCloudProjectDTO(publisherIdInBQ);
@@ -837,7 +828,12 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 				rawTableId= createRawTable(cloudProjectBQDTO, loadType, uploadedFileURL, startDate, endDate, orderIds);
 				DFPTaskEntity entity = service.getDFPTaskEntity(entityId);
 				entity.setRawTableId(rawTableId);
-				service.saveOrUpdateTask(entity); 
+				
+				synchronized (HistoricalDataLoaderAction.class) {
+					service.saveOrUpdateTask(entity);
+					taskEntitieList = service.getDFPTaskEntityByTaskKey(dfpTaskKey);
+				}
+				 
 			}catch(Exception e){
 				log.severe(e.getMessage());
 				throw new Exception("Exception with error code ["+LinMobileErrorCodes.RAW_TABLE_CREATE_FAILED+"]");
@@ -850,9 +846,6 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 				log.info("Proc table creation result is ["+result  == null || result.length()==0 ? "success " : result+"]");
 				//TaskQueueUtil.addBigQueryJobUpdateTask("/checkBigQueryJob.lin", entityId, publisherIdInBQ, jobId);
 				}else{
-					Thread.sleep(5000);
-					List<DFPTaskEntity> taskEntitieList = new ArrayList<>();
-					taskEntitieList = service.getDFPTaskEntityByTaskKey(dfpTaskKey);
 					if(taskEntitieList!=null && taskEntitieList.size()>0){
 						log.info("no of task found for dfpTaskKey "+dfpTaskKey+" is "+taskEntitieList.size());
 						List<String> rawTableIdList = new ArrayList<>();
@@ -861,17 +854,20 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 							if(dfpTaskEntity.getRawTableId()==null || dfpTaskEntity.getRawTableId().equals("") ){
 								log.info("empty rawTableID for for taskName = "+dfpTaskEntity.getTaskName()+" entity id = ["+dfpTaskEntity.getId()+"] time = "+ new Date());
 								return;
-							}else{
-								rawTableIdList.add(dfpTaskEntity.getRawTableId());
 							}
 						}
 						log.info("AllTasksDoneForRaw");
 						int mergeCount = 0;
-						for (String rawId : rawTableIdList) {
-							String result = createProcTable(cloudProjectBQDTO, rawId, loadType, networkCode, publisherIdInBQ, DataLoaderUtil.getPublisherName(publisherIdInBQ), mergeCount!=0, startDate, entityId);
-							log.info("Proc table creation result is ["+result  == null || result.length()==0 ? "success " : result+"]");
-							mergeCount++;
+						if(taskEntitieList!=null && taskEntitieList.size()>0){
+							for (DFPTaskEntity dfpTaskEntity : taskEntitieList) {
+								String result = createProcTableForDailyAndHistorical(cloudProjectBQDTO, dfpTaskEntity.getRawTableId(), loadType, networkCode, publisherIdInBQ, DataLoaderUtil.getPublisherName(publisherIdInBQ), mergeCount!=0, startDate, dfpTaskEntity.getId().toString(),mergeCount);
+								log.info("Proc table creation result is ["+result  == null || result.length()==0 ? "success " : result+"]");
+								mergeCount++;
+							}
+						}else{
+							log.info("rawTableIdList found null or empty");
 						}
+						
 					}
 				}
 			}catch(Exception e){
@@ -881,17 +877,16 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 		
 		}catch(Exception e){
 			log.severe("Exception in uploading report"+ e.getMessage());
-			e.printStackTrace();
+			
 			DFPTaskEntity entity = service.getDFPTaskEntity(entityId);
 			entity.setStatus(DFPTaskEntity.STATUS_FAILED);
 			service.saveOrUpdateTask(entity); 
 		}
 	}
-	
 
 	
 	public String  createRawTable(CloudProjectDTO cloudProjectBQDTO, String loadType, String uploadedFileUrl, String startDate, String endDate, String orderIds) throws GeneralSecurityException, IOException{
-	    String tableId = "_raw"+ ((orderIds != null && !orderIds.contains(",")) ? "_order_"+orderIds+"_" : "_daily" ) +"_"+loadType+"_"+startDate.replace("-", "_")+"_"+endDate.replace("-", "_")+"_"+System.currentTimeMillis();
+	    String tableId = "_raw"+ ((orderIds != null && !orderIds.contains(",")) ? "_order_"+orderIds+"_" : "daily" ) +"_"+loadType+"_"+startDate.replace("-", "_")+"_"+endDate.replace("-", "_")+"_"+System.currentTimeMillis();
 	    log.info("Going to insert in table with id ["+tableId+"]");
 	    String projectId = cloudProjectBQDTO.getBigQueryProjectId();
 		String serviceAccountEmail = cloudProjectBQDTO.getBigQueryServiceAccountEmail();
@@ -906,21 +901,29 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 	public String createProcTable(CloudProjectDTO cloudProjectBQDTO,    String rawTableId,  String loadType,
 			String networkCode,String  publisherId, String publisherName, boolean merge, String startDate, String taskId
 			) throws Exception{ 
+			return createProcTableForDailyAndHistorical(cloudProjectBQDTO, rawTableId, loadType, networkCode, publisherId, publisherName, merge, startDate, taskId, -1);
+	}
+	
+	public String createProcTableForDailyAndHistorical(CloudProjectDTO cloudProjectBQDTO,    String rawTableId,  String loadType,
+			String networkCode,String  publisherId, String publisherName, boolean merge, String startDate, String taskId, int count
+			) throws Exception{ 
+			
 			String projectId = cloudProjectBQDTO.getBigQueryProjectId();
 			String serviceAccountEmail = cloudProjectBQDTO.getBigQueryServiceAccountEmail();
 			String servicePrivateKey = cloudProjectBQDTO.getBigQueryServicePrivateKey();
 			String dataSetId = LinMobileVariables.GOOGLE_BIGQUERY_RAW_DATASET_ID;
 			String schemaName = DataLoaderUtil.getSchemaNameByLoadType(loadType);
 			String month = DateUtil.getFormatedDate(startDate, "yyyy-MM-dd", "yyyy_MM");
-			String firstDateOfMonth = DateUtil.getFormatedDate(DateUtil.getFirstDateOfMonth(DateUtil.getDateYYYYMMDD(startDate)), "yyyy-MM-dd");
-			String tableId  = schemaName + "_" + LinMobileConstants.DFP_DATA_SOURCE + "_" + firstDateOfMonth.replaceAll("-", "_");
+			//String tableId  = schemaName + "_" + LinMobileConstants.DFP_DATA_SOURCE + "_" + startDate.replaceAll("-", "_");
+			String tableId = schemaName + "_" + DFPReportService.getDFPDataSourceByDFPNetworkCode(networkCode) + "_" + startDate.replaceAll("-", "_");
 			IHistoricalReportService service = (IHistoricalReportService) BusinessServiceLocator.locate(IHistoricalReportService.class);		
 
-			if(merge){
+			if(merge && count < 0){
 			 tableId  = schemaName + "_" + month.replaceAll("-", "_");
 			}
 			String result = null;
 			try {
+				
 				result = BigQueryUtil.processRawData(serviceAccountEmail, servicePrivateKey, rawTableId, tableId, loadType, projectId, 
 				dataSetId, networkCode, publisherId, publisherName, merge);
 			} catch (IOException | InterruptedException e) {
@@ -935,6 +938,7 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 			}catch(Exception e){
 				 log.severe("Error while updating task in checkBigQueryJob taskId is ["+taskId+"]. "+e.getMessage());
 				 
+				
 			}
 		return result;
 		

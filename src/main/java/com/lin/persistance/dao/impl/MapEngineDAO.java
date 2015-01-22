@@ -42,7 +42,7 @@ public class MapEngineDAO implements IMapEngineDAO{
 						queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 					} catch (Exception e) {
 						log.severe("Query Exception = " + e.getMessage());
-						e.printStackTrace();
+						
 					}
 					j++;
 				}while(!queryResponse.getJobComplete() && j<=3);
@@ -65,7 +65,7 @@ public class MapEngineDAO implements IMapEngineDAO{
 		 }
 		 }catch(Exception e){
 			 log.info("Exception in getProductDataGMEByStateId of MapEngineDAO : "+e.getMessage());
-				e.printStackTrace();
+				
 			}
 		return MapEngineDTOList;
 		
@@ -97,7 +97,7 @@ public class MapEngineDAO implements IMapEngineDAO{
 							queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 						} catch (Exception e) {
 							log.severe("Query Exception = " + e.getMessage());
-							e.printStackTrace();
+							
 						}
 						j++;
 					}while(!queryResponse.getJobComplete() && j<=3);
@@ -120,7 +120,7 @@ public class MapEngineDAO implements IMapEngineDAO{
 			 }
 			 }catch(Exception e){
 				 log.info("Exception in getProductDataGMEByCityId of MapEngineDAO : "+e.getMessage());
-					e.printStackTrace();
+					
 				}
 			return MapEngineDTOList;
 			

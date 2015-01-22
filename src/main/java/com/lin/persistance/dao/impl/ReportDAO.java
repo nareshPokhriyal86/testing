@@ -34,17 +34,18 @@ public class ReportDAO implements IReportDAO{
 	}
 	public void saveDFPTaskEntity(DFPTaskEntity obj) throws DataServiceException {
 		strongObfy.save().entity(obj).now();
+		obfy.clear();
 	}
 	
 	 public DFPTaskEntity  loadDFPTaskEntity (String id) throws DataServiceException{
 		 
-		 DFPTaskEntity  obj=strongObfy.load().type(DFPTaskEntity .class).id(new Long(id)).now();
+		 DFPTaskEntity  obj=strongObfy.cache(false).load().type(DFPTaskEntity .class).id(new Long(id)).now();
 			return obj;
 		}
 	 
 	 public List<DFPTaskEntity>  loadDFPTaskEntityByTaskKey (String dfpTaskKey) throws DataServiceException{
 		 
-		 List<DFPTaskEntity>  taskEntitiesList =obfy.load().type(DFPTaskEntity .class)
+		 List<DFPTaskEntity>  taskEntitiesList =strongObfy.cache(false).load().type(DFPTaskEntity .class)
 				 .filter("taskGroupKey = " , dfpTaskKey).list();
 			return taskEntitiesList;
 		}

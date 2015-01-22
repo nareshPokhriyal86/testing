@@ -198,11 +198,11 @@ public class DFPAction implements ServletRequestAware,ServletResponseAware,Sessi
 		 } catch (ValidationException e) {
 			log.severe("DFP session exception: ValidationException :"+e.getMessage());
 			response=e.getMessage();
-			e.printStackTrace();
+			
 		 } catch (Exception e) {
 			log.severe("DFP report exception: Exception :"+e.getMessage());
 			response=e.getMessage();
-			e.printStackTrace();
+			
 		 }
     	return response;
 	}
@@ -297,7 +297,7 @@ public class DFPAction implements ServletRequestAware,ServletResponseAware,Sessi
 		 } catch (Exception e) {
 			log.severe("DFP report exception: Exception :"+e.getMessage());
 			reportsResponse=e.getMessage();
-			e.printStackTrace();
+			
 		 }
 	   }	
 	   return Action.SUCCESS;
@@ -404,7 +404,7 @@ public class DFPAction implements ServletRequestAware,ServletResponseAware,Sessi
 			 response.sendRedirect("/dfpReports.lin");
 		  } catch (IOException e) {
 			 log.severe("IOException: "+e.getMessage());
-			 e.printStackTrace();
+			 
 		  }
 		
    	    } catch (EntityNotFoundException ex) {
@@ -423,7 +423,7 @@ public class DFPAction implements ServletRequestAware,ServletResponseAware,Sessi
 			response.sendRedirect(requestUrl.build());
 		  } catch (IOException e) {
 			  log.severe("IOException: "+e.getMessage());
-			e.printStackTrace();
+			
 		  }
    	      
    	    }   	   
@@ -466,7 +466,7 @@ public class DFPAction implements ServletRequestAware,ServletResponseAware,Sessi
 
 		} catch (IOException e) {
 			log.severe("IOException: " + e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return null;
     }

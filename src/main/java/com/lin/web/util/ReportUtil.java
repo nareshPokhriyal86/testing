@@ -339,10 +339,10 @@ public class ReportUtil {
 			reader.close();
 		} catch (MalformedURLException e) {
 			log.severe("MalformedURLException:"+e.getMessage());
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			log.severe("IOException:"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 
 		return dataList;

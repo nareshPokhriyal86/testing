@@ -77,12 +77,12 @@ public class ExcelReportGenerator {
 
 		} catch (ParsePropertyException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		} catch (InvalidFormatException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		} catch(Exception e){
-			e.printStackTrace();
+			
 		}
 
 		//output.
@@ -98,7 +98,7 @@ public class ExcelReportGenerator {
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 		}
 
 		return xls;
@@ -130,13 +130,13 @@ public class ExcelReportGenerator {
 			output = (HSSFWorkbook) transformer.transformXLS(is, excelBeans);
 		} catch (ParsePropertyException e) {
 			log.severe("ParsePropertyException in ExcelReportGenerator : "+e.getMessage());
-			e.printStackTrace();
+			
 		} catch (InvalidFormatException e) {
 			log.severe("InvalidFormatException in ExcelReportGenerator : "+e.getMessage());
-			e.printStackTrace();
+			
 		} catch(Exception e){
 			log.severe("Exception in ExcelReportGenerator : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 
 		byte[] xls = null ;
@@ -146,7 +146,7 @@ public class ExcelReportGenerator {
 			xls = baos.toByteArray();
 		} catch (IOException e) {
 			log.severe("IOException in ExcelReportGenerator : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return xls;
 	}
@@ -181,11 +181,11 @@ public class ExcelReportGenerator {
 			output = (HSSFWorkbook) transformer.transformXLS(is, excelBeans);
 			// output =  (HSSFWorkbook) transformer.transformMultipleSheetsList(is, dataBean, sheetNames, "list", new HashMap(), 0);
 		} catch (ParsePropertyException e) {
-			e.printStackTrace();
+			
 		} catch (InvalidFormatException e) {
-			e.printStackTrace();
+			
 		}catch(Exception e){
-			e.printStackTrace();
+			
 		}
 		byte[] xls = null ;
 		try 
@@ -194,7 +194,7 @@ public class ExcelReportGenerator {
 			output.write(baos);
 			xls = baos.toByteArray();
 		} catch (IOException e) {
-			e.printStackTrace();
+			
 		}
 		return xls;
 	}
@@ -222,11 +222,11 @@ public class ExcelReportGenerator {
 		try {
 			output =  (HSSFWorkbook) transformer.transformMultipleSheetsList(is, dataBean, sheetNames, beanName, new HashMap(), startPage);
 		} catch (ParsePropertyException e) {
-			e.printStackTrace();
+			
 		} catch (InvalidFormatException e) {
-			e.printStackTrace();
+			
 		}catch(Exception e){
-			e.printStackTrace();
+			
 		}
 		byte[] xls = null ;
 		try 
@@ -235,7 +235,7 @@ public class ExcelReportGenerator {
 			output.write(baos);
 			xls = baos.toByteArray();
 		} catch (IOException e) {
-			e.printStackTrace();
+			
 		}
 		return xls;
 	}

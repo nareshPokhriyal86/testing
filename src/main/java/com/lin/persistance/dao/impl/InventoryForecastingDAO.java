@@ -29,7 +29,7 @@ public class InventoryForecastingDAO implements IInventoryForecastingDAO {
 			}
 		}catch(Exception e){
 			log.severe("Exception in getAllDFPSitesWithDMA()"+ e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return DFPSitesWithDMAObjList;
 	}
@@ -48,7 +48,7 @@ public class InventoryForecastingDAO implements IInventoryForecastingDAO {
 			
 		}catch(Exception e){
 			log.severe("Exception in deleteUpdateForcastInventoryObj() of InventoryForcastDAO"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 	}
 

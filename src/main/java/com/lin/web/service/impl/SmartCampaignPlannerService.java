@@ -288,7 +288,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 		} catch (Exception e) {
 			log.severe("Exception in saveCampaign method of SmartCampaignPlannerService = "
 					+ e.toString());
-			e.printStackTrace();
+			
 		}
 		return obj.getCampaignId();
 
@@ -1372,7 +1372,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 		} catch (Exception e) {
 			log.severe("DataServiceException : savePlacement : "
 					+ e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}
 		return placementId;
@@ -1585,7 +1585,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 		} catch (Exception e) {
 			log.severe("Exception in loadAllCampaigns of SmartCampaignPlannerService : "
 					+ e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return jsonArray;
 	}
@@ -1641,7 +1641,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 			} catch (Exception e) {
 				log.severe("Exception in getLineItemStatus of SmartCampaignPlannerService : "
 						+ e.getMessage());
-				e.printStackTrace();
+				
 			}
 		}
 		return lineItemStatus;
@@ -1938,7 +1938,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 		} catch (Exception e) {
 			log.severe("Exception in initCampaign method of SmartCampaignPlannerService"
 					+ e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return campaignDTO;
 	}
@@ -2100,7 +2100,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 		} catch (Exception e) {
 			log.severe("Exception in initEditCampaign method of SmartCampaignPlannerService"
 					+ e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return campaignDTO;
 
@@ -2533,7 +2533,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 		} catch (Exception e) {
 			log.severe("Exception in initEditPlacement method of SmartCampaignPlannerService"
 					+ e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return campaignDTO;
 
@@ -2574,7 +2574,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 		} catch (Exception e) {
 			log.severe("Exception in initEditFlight method of SmartCampaignPlannerService"
 					+ e.getMessage());
-			e.printStackTrace();
+			
 		}
 
 		return campaignDTO;
@@ -2633,9 +2633,9 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 	 * 
 	 * } catch(DataServiceException e) {
 	 * log.severe("DataServiceException : deleteCampaign: "+e.getMessage());
-	 * e.printStackTrace(); throw e; }catch(Exception e) {
+	 *  throw e; }catch(Exception e) {
 	 * log.severe("Exception : deleteCampaign: "+e.getMessage());
-	 * e.printStackTrace(); throw e; } return isArchived; }
+	 *  throw e; } return isArchived; }
 	 * 
 	 * 
 	 * @Override public boolean unarchiveCampaign(String campaignId) throws
@@ -2661,9 +2661,9 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 	 * 
 	 * } catch(DataServiceException e) {
 	 * log.severe("DataServiceException : unarchiveCampaign: "+e.getMessage());
-	 * e.printStackTrace(); throw e; }catch(Exception e) {
+	 *  throw e; }catch(Exception e) {
 	 * log.severe("Exception : unarchiveCampaign: "+e.getMessage());
-	 * e.printStackTrace(); throw e; } return isUnarchived; }
+	 *  throw e; } return isUnarchived; }
 	 */
 
 	@Override
@@ -2701,11 +2701,11 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException : deletePlacement: "
 					+ e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		} catch (Exception e) {
 			log.severe("Exception : deletePlacement: " + e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}
 		return isDelete;
@@ -2809,7 +2809,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 
 		} catch (Exception e) {
 			log.severe("Exception : adding account: " + e.getMessage());
-			e.printStackTrace();
+			
 			
 		}
 		
@@ -2913,7 +2913,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 
 		} catch (Exception e) {
 			log.severe("Exception : addAdvertiser: " + e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 		return null;
@@ -2965,7 +2965,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 						return accountsObj;
 		} catch (Exception e) {
 			log.severe("Exception : addAdvertiser: " + e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -3062,7 +3062,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 
 		} catch (Exception e) {
 			log.severe("Exception : addAgency: " + e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 
@@ -3682,7 +3682,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 			log.severe("Exception in migrateCampaign of SmartCampaignPlannerService : "
 					+ e.getMessage());
 			jsonObject.put("error", e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return jsonObject;
 	}
@@ -3900,7 +3900,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 			// LinMobileVariables.APPLICATION_TYPE, summary.toString(), "");
 			status = "Success : " + summary.toString().replaceAll("<br>", " ");
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 			String errorMessage = "Exception generated in DFP Campaign Status Update : " + e.getMessage();
 			log.severe(errorMessage);
 			summary.append(errorMessage + "<br>");
@@ -4005,7 +4005,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 			// LinMobileVariables.APPLICATION_TYPE, summary.toString(), "");
 			status = "Success : " + summary.toString().replaceAll("<br>", " ");
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 			String errorMessage = "Exception generated in DFP Campaign Status Update : " + e.getMessage();
 			log.severe(errorMessage);
 			summary.append(errorMessage + "<br>");
@@ -4375,7 +4375,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 		} catch (Exception e) {
 			log.severe("Exception in loadAllCampaignsFromCache of SmartCampaignPlannerService : "
 					+ e.getMessage());
-			// e.printStackTrace();
+			// 
 		}
 		return campaignList;
 	}
@@ -4474,11 +4474,11 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 		} catch (DataServiceException e) {
 			log.severe("DataServiceException : changeCampaignState: "
 					+ e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		} catch (Exception e) {
 			log.severe("Exception : changeCampaignState: " + e.getMessage());
-			e.printStackTrace();
+			
 			throw e;
 		}
 		return isStatusChange;
@@ -4507,7 +4507,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 		} catch (Exception e) {
 			log.severe("Exception:" + e.getMessage());
 			msg = "Exception:" + e.getMessage();
-			e.printStackTrace();
+			
 		}
 		log.info(msg);
 		return msg;
@@ -5002,12 +5002,12 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 		}catch (JSONException e) {
 			log.severe("JSONException in runCampaignReport of SmartCampaignPlannerService : "+e.getMessage());
 			jsonObject.put("error", e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in runCampaignReport of SmartCampaignPlannerService : "+e.getMessage());
 			jsonObject.put("error", e.getMessage());
-			e.printStackTrace();
+			
 		}
 		jsonObject.put("reportMetrics", jsonArray);
 		return jsonObject;
@@ -5369,12 +5369,12 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 		}catch (JSONException e) {
 			log.severe("JSONException in billingReport of SmartCampaignPlannerService : "+e.getMessage());
 			jsonObject.put("error", e.getMessage());
-			e.printStackTrace();
+			
 		}
 		catch (Exception e) {
 			log.severe("Exception in billingReport of SmartCampaignPlannerService : "+e.getMessage());
 			jsonObject.put("error", e.getMessage());
-			e.printStackTrace();
+			
 		}
 		jsonObject.put("billingReport", partnerInfoJsArr);
 		return jsonObject;
@@ -5700,12 +5700,12 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 			}
 		}catch (JSONException e) {
 			log.severe("JSONException in makeBillingExcelReport of SmartCampaignPlannerService : "+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 		catch (Exception e) {
 			log.severe("Exception in makeBillingExcelReport of SmartCampaignPlannerService : "+e.getMessage());
-			e.printStackTrace();
+			
 			return null;
 		}
 		return wb;

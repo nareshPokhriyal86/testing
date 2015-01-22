@@ -220,7 +220,7 @@ public class PerformanceByLocationAction implements ServletRequestAware,SessionA
 		 } catch (Exception e) {
 			log.severe("DFP report exception: Exception :"+e.getMessage());
 			reportsResponse=e.getMessage();
-			e.printStackTrace();
+			
 		 }
 	   }	
 	   return Action.SUCCESS;
@@ -343,11 +343,11 @@ public class PerformanceByLocationAction implements ServletRequestAware,SessionA
 			 } catch (ValidationException e) {
 				log.severe("DFP session exception: ValidationException :"+e.getMessage());
 				response=e.getMessage();
-				e.printStackTrace();
+				
 			 } catch (Exception e) {
 				log.severe("DFP report exception: Exception :"+e.getMessage());
 				response=e.getMessage();
-				e.printStackTrace();
+				
 			 }
 	    	return response;
 	}

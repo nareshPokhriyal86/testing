@@ -371,7 +371,7 @@ public class NexageReportUtil {
 	        } catch (IOException e) {
 	        	responseBody="IOException:"+e.getMessage()+" with responseBody:"+responseBody;
 				log.severe("IOException :"+e.getMessage()+" and request:"+request);
-				//e.printStackTrace();
+				//
 			} 
 			return responseBody;
 	}

@@ -103,7 +103,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 	    	}
 	 	}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in execution of isAuthorised : " + e.getMessage());
 		}
 		return false;
@@ -129,7 +129,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 		} catch(Exception e) {
 			log.info("Exception in getPublisherId in PerformanceMonitoringAction : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		log.info("publisherIdInBQ : "+publisherIdInBQ);
 		return publisherIdInBQ;
@@ -143,7 +143,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 	 	}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in execution of PerformanceMonitoringAction : " + e.getMessage());
 		}
 		return Action.SUCCESS;
@@ -176,7 +176,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 	 	}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			log.severe("Exception in execution of AdvertiserViewAction : " + e.getMessage());
 		}
 		return Action.SUCCESS;
@@ -219,7 +219,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 	     }catch(Exception e){
 	    	 log.severe("Exception in headerData in PerformanceMonitoringAction : "+e.getMessage());
-				e.printStackTrace();
+				
 	     }
 	   
 	     return Action.SUCCESS;
@@ -266,7 +266,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 		} catch(Exception e) {
 			 log.severe("Exception in deliveryMetricsData()  in PerformanceMonitoringAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -316,7 +316,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 		} catch(Exception e) {
 			 log.severe("Exception in ctrLineChartData()  in PerformanceMonitoringAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -366,7 +366,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 		} catch(Exception e) {
 			 log.severe("Exception in impressionsLineChartData()  in PerformanceMonitoringAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -416,7 +416,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 		} catch(Exception e) {
 			 log.severe("Exception in clicksLineChartData()  in PerformanceMonitoringAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -465,7 +465,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 		} catch(Exception e) {
 			 log.severe("Exception in locationCompleteData() in PerformanceMonitoringAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -514,7 +514,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 		} catch(Exception e) {
 			 log.severe("Exception in locationTopCitiesData() in PerformanceMonitoringAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -563,7 +563,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 		} catch(Exception e) {
 			 log.severe("Exception in locationTargetData() in PerformanceMonitoringAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -615,7 +615,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 		} catch(Exception e) {
 			 log.severe("Exception in flightLineChartData() in PerformanceMonitoringAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -659,7 +659,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 		
 		}catch(Exception e){
 			log.severe("Exception in loadAllCampaigns()  in PerformanceMonitoringAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -716,7 +716,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 		} catch(Exception e) {
 			 log.severe("Exception in creativeBarChartData()  in PerformanceMonitoringAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -766,7 +766,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 		} catch(Exception e) {
 			 log.severe("Exception in deviceBarChartData()  in PerformanceMonitoringAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -816,7 +816,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 		} catch(Exception e) {
 			 log.severe("Exception in creativeBarChartData()  in PerformanceMonitoringAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -858,7 +858,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 		} catch(Exception e) {
 			 log.severe("Exception in richMediaLineChartData()  in PerformanceMonitoringAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -941,7 +941,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			}
 		} catch(Exception e) {
 			 log.severe("Exception in videoData in PerformanceMonitoringAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 	}
@@ -1032,7 +1032,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 		} catch(Exception e) {
 			 log.severe("Exception in addLineItemInfo()  in PerformanceMonitoringAction : "+e.getMessage());
 			 log.warning(status);
-			 e.printStackTrace();
+			 
 		}
 		request.setAttribute("status", status);
 		return Action.SUCCESS;

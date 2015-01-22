@@ -1,6 +1,7 @@
 package com.lin.web.action;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -69,7 +70,7 @@ SessionAware {
 		String startDate=request.getParameter("start");		
 		String endDate=request.getParameter("end");		
 		String loadType  = request.getParameter("loadType");
-		
+		String taskType = LinMobileConstants.DAILY_TASK_TYPE;
 		if(startDate !=null && !DateUtil.isDateFormatYYYYMMDD(startDate)){
 			reportsResponse="Invalid startDate :"+startDate+", Please provide yyyy-MM-dd format.";
 			dateCheck=false;
@@ -87,13 +88,36 @@ SessionAware {
 			 if(loadType==null){
 				 loadType = "";
 			 }
-		    TaskQueueUtil.addDailyDataTask(taskURL, startDate, endDate, loadType);
+		    TaskQueueUtil.addDailyDataTask(taskURL, startDate, endDate, loadType,taskType);
 		   }else{
 			   reportsResponse="Invalid dates...";
 			   log.info(reportsResponse);
 		   }
 		   return Action.SUCCESS;
 		
+	}
+
+	/*
+	 * This action will reload all non-Finalise tables again once in a day
+	 */
+	public String updateDailyNonFinaliseData(){
+		log.info("updateDailyNonFinaliseData action executes..");	
+		String taskURL = "/addDailyDataTask.lin";
+		String taskType = LinMobileConstants.NON_FINALISE_TASK_TYPE;
+		Date currentDate=new Date();
+		int i=1;
+		String loadType  = request.getParameter("loadType");
+		while(i<LinMobileConstants.CHANGE_WINDOW_SIZE){
+			String startDate=DateUtil.getModifiedDateStringByDays(currentDate,-i, "yyyy-MM-dd");
+			String endDate=startDate;
+			log.info("startDate:"+startDate+" and endDate:"+endDate);
+			if(loadType==null){
+				 loadType = "";
+			 }
+			TaskQueueUtil.addDailyDataTask(taskURL, startDate, endDate, loadType,taskType);
+			i++;
+		}
+		return Action.SUCCESS;
 	}
 	
 /*	public void loadDailyDataTasks() throws Exception {
@@ -151,6 +175,7 @@ SessionAware {
 		String start=request.getParameter("startDate");		
 		String end=request.getParameter("endDate");		
 		String loadType  = request.getParameter("loadType");
+		String taskType = request.getParameter("taskType");
 		boolean historical = false;
 		ArrayList<String> loadTypeList = new ArrayList<String>();
 		if(loadType == null || loadType.trim().length() == 0 || loadType.equals("")){
@@ -171,8 +196,15 @@ SessionAware {
 						String dfpTaskkey = System.currentTimeMillis()+"_"+loadTypeElem+"_"+dataUploaderDTO.getDfpNetworkCode()+"_"+dataUploaderDTO.getPublisherBQId();
 						for(String orderIds : dataUploaderDTO.getOrderIdList() ){
 							DFPTaskEntity entity = service.saveInProgressTask("not-generated", dataUploaderDTO.getDfpNetworkCode(), start, end, dfpTaskkey, loadTypeElem, orderIds);
-							String taskName = TaskQueueUtil.dailyDataUpload("/runDailyDataTask.lin", start, end, orderIds, dataUploaderDTO.getDfpNetworkCode(),
-									dataUploaderDTO.getPublisherBQId()+"",loadTypeElem, historical, dfpTaskkey, (entity.getId() == null ? 0 : entity.getId()));
+							String taskName = "";
+							if(taskType!=null && taskType.equals(LinMobileConstants.DAILY_TASK_TYPE)){
+								 taskName = TaskQueueUtil.dailyDataUpload("/runDailyDataTask.lin", start, end, orderIds, dataUploaderDTO.getDfpNetworkCode(),
+										dataUploaderDTO.getPublisherBQId()+"",loadTypeElem, historical, dfpTaskkey, (entity.getId() == null ? 0 : entity.getId()), taskType);
+							}else if(taskType!=null && taskType.equals(LinMobileConstants.NON_FINALISE_TASK_TYPE)){
+								 taskName = TaskQueueUtil.dailyDataUpload("/runDailyDataTask.lin", start, end, orderIds, dataUploaderDTO.getDfpNetworkCode(),
+										dataUploaderDTO.getPublisherBQId()+"",loadTypeElem, historical, dfpTaskkey, (entity.getId() == null ? 0 : entity.getId()), taskType);
+							}
+							
 							entity.setTaskName(taskName);
 							service.saveOrUpdateTask(entity);
 							}

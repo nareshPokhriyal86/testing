@@ -68,7 +68,7 @@ public class LogoutAction extends ActionSupport implements ServletRequestAware, 
 			request.setAttribute("LoginStatus", "logout");
 			
 		} catch (Exception e) { 
-			e.printStackTrace();
+			
 			setLoginStatus("......");
             return "error";
 		}

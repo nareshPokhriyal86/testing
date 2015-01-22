@@ -135,7 +135,7 @@ public class AlertEngineService implements IAlertEngineService{
 
 		}catch(Exception e){
 			log.severe("Exception in AlertEngine of AlertEngineService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return alertDate;
 		
@@ -177,7 +177,7 @@ public class AlertEngineService implements IAlertEngineService{
 			
 		}catch(Exception e){
 			log.severe("Exception in generateCampaignAlert of AlertEngineService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		
 		return alertDate;
@@ -1299,7 +1299,7 @@ public class AlertEngineService implements IAlertEngineService{
 			}
 		}catch(Exception e){
 			log.severe("Exception in AlertEngine of AlertEngineService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 	
 		return publisherIdInBQ;
@@ -1389,7 +1389,7 @@ public class AlertEngineService implements IAlertEngineService{
 				
 		}catch(Exception e){
 			log.severe("Exception in campaignStatusAlertMail of AlertEngineService : "+e.toString());
-			e.printStackTrace();
+			
 		}
 	
 		//return campaignStatusAlertDTOList;
@@ -1463,7 +1463,7 @@ public class AlertEngineService implements IAlertEngineService{
 				
 		}catch(Exception e){
 			log.severe("Exception in sendCampaignStatusAlertMail of AlertEngineService : "+e.toString());
-			e.printStackTrace();
+			
 		}
 	
 		
@@ -1577,7 +1577,7 @@ public class AlertEngineService implements IAlertEngineService{
 			
 		}catch(Exception e){
 			log.severe("Exception in loadAllCampaignAlert of AlertEngineService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return jsonArray;
 		
@@ -1603,7 +1603,7 @@ public class AlertEngineService implements IAlertEngineService{
 			}
 		}catch(Exception e){
 			log.severe("Exception in getAletJSONObject of AlertEngineService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		
 		return jsonObject;
@@ -2194,7 +2194,7 @@ public class AlertEngineService implements IAlertEngineService{
 			
 		}catch(Exception e){
 			log.severe("Exception in loadAllCampaigns of AlertEngineService : "+e.toString());
-			e.printStackTrace();
+			
 		}
 		//return jsonArray;
 		log.info("alertDTOList.size() in loadAllCampaigns() of AlertEngineService..."+alertDTOList.size());

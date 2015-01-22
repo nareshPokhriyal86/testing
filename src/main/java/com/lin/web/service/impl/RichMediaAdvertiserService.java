@@ -95,7 +95,7 @@ public class RichMediaAdvertiserService implements IRichMediaAdvertiserService{
 			
 			}catch (Exception e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("TrendAnalysis Header Data for Advertiser View found from memcache:");
@@ -137,7 +137,7 @@ public class RichMediaAdvertiserService implements IRichMediaAdvertiserService{
 			
 			}catch (Exception e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("TrendAnalysis Actual Data for Advertiser View found from memcache:");
@@ -179,7 +179,7 @@ public class RichMediaAdvertiserService implements IRichMediaAdvertiserService{
 			
 			}catch (Exception e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Trend Analysis Forcasted Data found from memcache:");
@@ -228,7 +228,7 @@ public class RichMediaAdvertiserService implements IRichMediaAdvertiserService{
 			
 			}catch (DataServiceException e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Advertiser By Location Data found from memcache:");
@@ -302,7 +302,7 @@ public class RichMediaAdvertiserService implements IRichMediaAdvertiserService{
 			
 			}catch (DataServiceException e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Advertiser By Market Data found from memcache:");
@@ -387,7 +387,7 @@ public class RichMediaAdvertiserService implements IRichMediaAdvertiserService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in getAgencyDropDownList of RichMediaAdvertiserService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return agencyDTOList;
 	}
@@ -424,7 +424,7 @@ public class RichMediaAdvertiserService implements IRichMediaAdvertiserService{
 		}
 		catch (Exception e) {
 			log.severe("Exception in getAdvertiserDropDownList of RichMediaAdvertiserService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return advertiserDTOList;
 	}
@@ -923,7 +923,7 @@ public class RichMediaAdvertiserService implements IRichMediaAdvertiserService{
     		  
 		}catch(Exception e){
 			log.severe("Exception in updateReallocationLineItem in RichMediaAdvertiserService"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return advertiserReallocationTableList;
 		
@@ -1038,7 +1038,7 @@ public class RichMediaAdvertiserService implements IRichMediaAdvertiserService{
 			
 			}catch (Exception e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Advertiser Total Data found from memcache:");
@@ -1091,7 +1091,7 @@ public class RichMediaAdvertiserService implements IRichMediaAdvertiserService{
 			AdvertiserTotalDataMap.put("lineItemCalculated",lineItemCalculatedList);	
 			
 		}catch(Exception e){
-			e.printStackTrace();
+			
 		}
 		
 		return AdvertiserTotalDataMap;
@@ -1125,7 +1125,7 @@ public class RichMediaAdvertiserService implements IRichMediaAdvertiserService{
 			
 			}catch (Exception e) {
 				log.severe("DataServiceException :"+e.getMessage());
-				e.printStackTrace();
+				
 			}			
 		}else{
 			log.info("Delivery Indicator Data found from memcache:");
@@ -1160,7 +1160,7 @@ public class RichMediaAdvertiserService implements IRichMediaAdvertiserService{
 	        
 	    	}catch(Exception e){
 	    		log.severe("Exception in getLineItemForcast of advertiser service"+e.getMessage());
-	    		e.printStackTrace();
+	    		
 	    	}
 			return forcastLineItemDTO;
 	        

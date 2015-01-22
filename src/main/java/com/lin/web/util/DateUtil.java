@@ -45,7 +45,7 @@ public class DateUtil {
 			return date;
 		} catch (ParseException e) {
 			System.out.println("Exception in converting string to date:" + e);
-			e.printStackTrace();
+			
 			return null;
 		}
 
@@ -62,7 +62,7 @@ public class DateUtil {
 			return date;
 		} catch (ParseException e) {
 			System.out.println("Exception in converting string to date:" + e);
-			e.printStackTrace();
+			
 			return null;
 		}
 
@@ -101,7 +101,7 @@ public class DateUtil {
 			formattedDate = newFormat.parse(newDate);
 			return formattedDate;
 		} catch (ParseException e) {
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -115,7 +115,7 @@ public class DateUtil {
 			return reportDate;
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -134,7 +134,7 @@ public class DateUtil {
 			date2 = format.parse(time2);
 			difference = date2.getTime() - date1.getTime();
 		} catch (ParseException e) {
-			e.printStackTrace();
+			
 		}
 		return difference;
 
@@ -155,7 +155,7 @@ public class DateUtil {
 			date2 = format.parse(time2);
 			difference = date2.getTime() - date1.getTime();
 		} catch (ParseException e) {
-			e.printStackTrace();
+			
 		}
 		return difference;
 
@@ -172,7 +172,7 @@ public class DateUtil {
 
 			return newDate;
 		} catch (ParseException e) {
-			e.printStackTrace();
+			
 			return null;
 		}
 
@@ -190,7 +190,7 @@ public class DateUtil {
 
 			return myDt;
 		} catch (ParseException e) {
-			e.printStackTrace();
+			
 			return null;
 		}
 
@@ -209,7 +209,7 @@ public class DateUtil {
 			// 2010
 			return myDt;
 		} catch (ParseException e) {
-			e.printStackTrace();
+			
 			return null;
 		}
 
@@ -330,7 +330,7 @@ public class DateUtil {
 			return myDt;
 		} catch (ParseException e) {
 			log.severe("ParseException in getDateYYYYMMDD(String dateStr) of DateUtil.");
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -342,7 +342,7 @@ public class DateUtil {
 			return myDt;
 		} catch (ParseException e) {
 			log.severe("ParseException in getDateYYYYMMDD(String dateStr) of DateUtil.");
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -390,7 +390,7 @@ public class DateUtil {
 			return myDt;
 		} catch (ParseException e) {
 			log.severe("ParseException in getDate(Date date, String requiredFormat) of DateUtil.");
-			e.printStackTrace();
+			
 			return null;
 		}
 	}
@@ -425,7 +425,7 @@ public class DateUtil {
 
 			return diffDays;
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 			return 0;
 		}
 	}
@@ -691,16 +691,19 @@ public class DateUtil {
 		 	Calendar cal = GregorianCalendar.getInstance();
 		 	cal.setTime(startDate);
 		 	int monthDiff = getMonthDiff(startDate, new Date());
-		 	System.out.println(monthDiff);
+		 	System.out.println("diffs"+monthDiff);
 		 	String[][] dateArr = new String[500][2];
 		 	int i = 0 , j=0;
 		 	do{
 		 		dateArr[j][0] =   getDateAsString((cal.getTime()), format);
 		 		Date blockStartDate = cal.getTime();
-		 		cal.add(Calendar.DAY_OF_MONTH, 9);
+		 		cal.add(Calendar.DAY_OF_MONTH, 14);
+		 		if(getDaysDiff(cal.getTime(), getLastDateOfMonth(blockStartDate)) < 3){
+		 			cal.setTime(getLastDateOfMonth(blockStartDate));
+		 		}
 		 		if(cal.getTime().after(getLastDateOfMonth(blockStartDate))){
-		 			cal.add(Calendar.DAY_OF_MONTH, -9);
-		 			cal.setTime(getLastDateOfMonth(cal.getTime()));
+//		 			cal.add(Calendar.DAY_OF_MONTH, -14);
+		 			cal.setTime(getLastDateOfMonth(blockStartDate));
 		 		} 
 			 		dateArr[j][1] =   getDateAsString((cal.getTime()), format);		 			
 		 		 
@@ -728,7 +731,7 @@ public class DateUtil {
 	}
 	
 	public static void main(String[] args) {
-		Date startDate = DateUtil.getAbsoluteDate(DateUtil.getDateMMDDYYYY("3-1-2014"));
+		Date startDate = DateUtil.getAbsoluteDate(DateUtil.getDateMMDDYYYY("1-1-2014"));
 		Date endDate = DateUtil.getAbsoluteDate(DateUtil.getDateMMDDYYYY("1-25-2015"));
 					Date historicalCapDate = DateUtil.getDateBeforeAfterDays(-(LinMobileConstants.CHANGE_WINDOW_SIZE));
 String[][] arr = DateUtil.getMonthlyStartEndDates(startDate, endDate, "yyyy-MM-dd");

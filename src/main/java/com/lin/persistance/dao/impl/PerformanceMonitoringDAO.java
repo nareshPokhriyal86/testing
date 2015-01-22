@@ -52,7 +52,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -83,7 +83,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -123,7 +123,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -162,7 +162,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -201,7 +201,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 					queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 				} catch (Exception e) {
 					log.severe("Query Exception = " + e.getMessage());
-					e.printStackTrace();
+					
 				}
 				j++;
 			}while(!queryResponse.getJobComplete() && j<=3);
@@ -233,7 +233,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 	 }	
 		}catch(Exception e){
 			log.info("Exception in loadAllCampaigns of PerformanceMonitoringDAO : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 
 		return campaignList;
@@ -320,7 +320,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -360,7 +360,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -400,7 +400,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -467,7 +467,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -506,7 +506,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -548,7 +548,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -582,7 +582,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("richMediaLineChartData Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -628,7 +628,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("videoData Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -667,7 +667,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -709,7 +709,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e1) {
@@ -755,7 +755,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 				try{
 					Thread.sleep(1000);
 				}catch(Exception e1){
@@ -803,7 +803,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -841,7 +841,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e1) {
@@ -884,7 +884,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -941,7 +941,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -976,7 +976,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				log.severe("Query Exception = " + e.getMessage());
-				e.printStackTrace();
+				
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
@@ -1015,7 +1015,7 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				 queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
 			} catch (Exception e) {
 				 log.severe("Query Exception = " + e.getMessage());
-				 e.printStackTrace();
+				 
 			}
 			j++;
 		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);

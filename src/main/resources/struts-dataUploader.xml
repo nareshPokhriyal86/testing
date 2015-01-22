@@ -568,6 +568,11 @@
             <result type="json"/>
         </action>
         
+         <action name="updateDailyNonFinaliseData" class="com.lin.web.action.DailyDataLoaderAction" method="updateDailyNonFinaliseData">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
        <!-- Mapping for Topix -->
         <action name="dailyUpdateAdUnitsTopix" class="com.lin.web.action.TopixDFPAction" method="dailyUpdateAdUnits">
 		    <param name="contentType">text/html</param>

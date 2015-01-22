@@ -48,15 +48,15 @@ public class UndertoneReportUtil {
 			
 		} catch (FileNotFoundException e) {
 			log.severe("FileNotFoundException:" + e.getMessage());
-			e.printStackTrace();
+			
 
 		} catch (LockException e) {
 			log.severe("LockException:" + e.getMessage());
-			e.printStackTrace();
+			
 
 		} catch (IOException e) {
 			log.severe("IOException:" + e.getMessage());
-			e.printStackTrace();
+			
 		}
 		
 		return reportPath;
@@ -90,15 +90,15 @@ public class UndertoneReportUtil {
 			
 		} catch (FileNotFoundException e) {
 			log.severe("FileNotFoundException:" + e.getMessage());
-			e.printStackTrace();
+			
 
 		} catch (LockException e) {
 			log.severe("LockException:" + e.getMessage());
-			e.printStackTrace();
+			
 
 		} catch (IOException e) {
 			log.severe("IOException:" + e.getMessage());
-			e.printStackTrace();
+			
 		}
 		
 		return reportPath;
@@ -171,15 +171,15 @@ public class UndertoneReportUtil {
 			reader.close();
 		} catch (FileNotFoundException e) {
 			log.severe("FileNotFoundException:" + e.getMessage());
-			e.printStackTrace();
+			
 
 		} catch (LockException e) {
 			log.severe("LockException:" + e.getMessage());
-			e.printStackTrace();
+			
 
 		} catch (IOException e) {
 			log.severe("IOException:" + e.getMessage());
-			e.printStackTrace();
+			
 
 		}
 		return reportList;

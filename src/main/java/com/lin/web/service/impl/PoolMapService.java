@@ -56,7 +56,7 @@ public class PoolMapService implements IPoolMapService{
 				
 			} catch (DataServiceException e) {
 				log.severe("DataServiceException:"+e.getMessage());
-				e.printStackTrace();
+				
 			}
 		}
 		
@@ -123,7 +123,7 @@ public class PoolMapService implements IPoolMapService{
 			
 		}catch(Exception e){
 			log.severe("Exception in loadAllDMAsWithInventory() of PoolMapService"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return forcastInventoryDTOlist;
 		
@@ -217,7 +217,7 @@ public class PoolMapService implements IPoolMapService{
 			}
 		}catch(Exception e){
 				log.severe("Exception in loadAllocateInventry of poolmapService "+e.getMessage());
-				e.printStackTrace();
+				
 		}
 		return allocateInventryList;
 		

@@ -74,5 +74,8 @@ public class IABContextObj implements Serializable,  Comparable<IABContextObj> {
 		return true;
 	}
 	
-	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}	
 }

@@ -144,7 +144,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 			
 		}catch(Exception e){
 			log.severe("Exception in headerData() of NewAdvertiserViewService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return headerDataList;
 	}
@@ -187,7 +187,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 			// and returned as JSON formatted string
 		} catch (Exception e) {
 			log.severe("Exception in performarData() of NewAdvertiserViewService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return json;
 	}
@@ -230,7 +230,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 			// and returned as JSON formatted string
 		} catch (Exception e) {
 			log.severe("Exception in mostActiveData() of NewAdvertiserViewService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return json;
 	}
@@ -254,7 +254,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 			
 		} catch (Exception e) {
 			log.severe("Exception in deliveryMetrics() of NewAdvertiserViewService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return json;
 	}
@@ -279,7 +279,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 			}	
 		} catch (SQLException e) {
 			log.severe("Exception in performanceByLocationChartData() of NewAdvertiserViewService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return datatable;
 	}
@@ -312,7 +312,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 			
 		} catch (Exception e) {
 			log.severe("Exception :"+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return resultMap;
 	}
@@ -336,7 +336,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 			
 		} catch (Exception e) {
 			log.severe("Exception in performanceByAdSizeChartData() of NewAdvertiserViewService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return json;	
 	}
@@ -360,7 +360,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 			}			
 		} catch (SQLException e) {
 			log.severe("Exception in impressionByOSChartData() of NewAdvertiserViewService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return datatable;
 	}
@@ -384,7 +384,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 			}	
 		} catch (SQLException e) {
 			log.severe("Exception in impressionByDeviceChartData() of NewAdvertiserViewService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return datatable;
 	}
@@ -408,7 +408,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 			}	
 		} catch (SQLException e) {
 			log.severe("Exception in impressionBymobileWebVsAppChartData() of NewAdvertiserViewService : "+e.getMessage());
-			e.printStackTrace();
+			
 		}
 		return datatable;
 	}
@@ -468,7 +468,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 						 
 			} catch (Exception e) {
 				log.severe("Exception :"+e.getMessage());
-				e.printStackTrace();
+				
 			}
 		}else{
 			log.info("Found line chart data in memcache..size:"+jsonChartMap.size());
@@ -799,7 +799,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 				
 			} catch (Exception e) {
 				log.severe("Exception in performanceByAdSizeChartData() of NewAdvertiserViewService : "+e.getMessage());
-				e.printStackTrace();
+				
 			}
 			return json;	
 		}
@@ -824,7 +824,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 				
 			} catch (Exception e) {
 				log.severe("Exception in performanceByAdSizeChartData() of NewAdvertiserViewService : "+e.getMessage());
-				e.printStackTrace();
+				
 			}
 			return json;	
 		}
@@ -850,7 +850,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 				
 			} catch (Exception e) {
 				log.severe("Exception in performanceByAdSizeChartData() of NewAdvertiserViewService : "+e.getMessage());
-				e.printStackTrace();
+				
 			}
 			return json;	
 		}
@@ -963,7 +963,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 		       } 
 			}catch(Exception e){
 				log.severe("Exception in performanceBySiteReportObject()  in NewAdvertiserViewService : "+e.getMessage());
-				 e.printStackTrace();
+				 
 			}
 				
 			return performanceBySiteReportList;
@@ -988,7 +988,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 				}			
 			} catch (SQLException e) {
 				log.severe("Exception in impressionsByAdSizeChartData() of NewAdvertiserViewService : "+e.getMessage());
-				e.printStackTrace();
+				
 			}
 			return datatable;
 		}
@@ -1346,7 +1346,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 				}
 			}catch (Exception e) {
 				log.severe("Exception in videoCampaignData : "+e.getMessage());
-				e.printStackTrace();
+				
 				return null;
 			}
 			return jsonChartMap;
@@ -1400,7 +1400,7 @@ public class NewAdvertiserViewService implements INewAdvertiserViewService {
 				
 			} catch (Exception e) {
 				log.severe("Exception in campaignGridData() of NewAdvertiserViewService : "+e.getMessage());
-				e.printStackTrace();
+				
 			}
 			return campaignGridArray;
 		}

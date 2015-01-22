@@ -53,5 +53,8 @@ public class PlatformObj implements Serializable {
 		return true;
 	}
 	
-	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}	
 }

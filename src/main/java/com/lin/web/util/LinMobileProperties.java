@@ -36,7 +36,7 @@ public class LinMobileProperties {
 			linChannelService.load(LinMobileProperties.class.getResourceAsStream("/env/LinChannel.properties"));			
 		} catch (IOException e) {
 			log.severe(" LinChannel.properties not found- Exception :" + e.getMessage());
-			e.printStackTrace();
+			
 		}
 	}
 	

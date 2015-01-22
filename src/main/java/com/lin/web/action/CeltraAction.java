@@ -172,7 +172,7 @@ public class CeltraAction implements ServletRequestAware,SessionAware{
 	    		request.setAttribute("status", reportsResponse);
 			} catch (IOException e) {
 				log.severe("IO Exception : failed to upload file at cloud storage:"+e.getMessage());
-				e.printStackTrace();
+				
 			}*/
     		
     		

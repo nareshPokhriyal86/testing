@@ -27,7 +27,7 @@ public class MapEngineAction extends ActionSupport  {
 			}
 		}catch(Exception e){
 			log.severe("Exception in updateProductDataGME()  in MapEngineAction : "+e.getMessage());
-			 e.printStackTrace();
+			 
 		}
 		return Action.SUCCESS;
 		

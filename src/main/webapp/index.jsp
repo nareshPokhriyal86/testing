@@ -23,7 +23,7 @@
    <% 
       response.sendRedirect("/login.lin");
    %>
-   <div><h2>Welcome to Synergy Maps...</h2></div>
+   <div><h2>Welcome to Synergy Maps</h2></div>
    <br/>
    <div ><a style="cursor:pointer;color:blue;" onclick="getServerTime()">Click here for Ajax Demo, getServer Time</a></div>
    <br/>

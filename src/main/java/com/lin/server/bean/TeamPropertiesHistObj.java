@@ -21,7 +21,7 @@ public class TeamPropertiesHistObj implements Serializable{
 	private String teamDescription;
 	private String companyId;
 	private List<String> appViews;
-	private String teamType;		// Built-In, Custom
+	private String teamType;		 
 	private List<String> agencyId;
 	private List<String> advertiserId;
 	private List<String> propertyId;

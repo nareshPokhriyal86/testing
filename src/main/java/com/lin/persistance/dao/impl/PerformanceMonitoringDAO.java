@@ -95,12 +95,18 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 	}*/
 
 	@Override
-	public QueryResponse clicksLineChartData(String orderId, String lineItemId, boolean isNoise, double threshold, QueryDTO queryDTO) throws DataServiceException, IOException {
+	public QueryResponse clicksLineChartData(String orderId, String lineItemId, boolean isNoise, double threshold, QueryDTO queryDTO,boolean isClient,String userCompany) throws DataServiceException, IOException {
 		QueryResponse queryResponse = null;
 		StringBuilder query = new StringBuilder();
 		query.append(" Select * from ( ")
-		.append(" SELECT  date(date) date, line_item_id, ")
-		.append(" sum(total_clicks) Clicks, ")
+		.append(" SELECT  date(date) date, ");
+		
+		if(!isClient)
+			query.append(" line_item_id, ");
+		else
+			query.append(" '"+ userCompany +"', ");
+		
+		query.append(" sum(total_clicks) Clicks, ")
 		.append(" SUM(total_impressions) as Impression, ")
 		.append("RATIO_TO_REPORT(Impression) OVER() as Share")
 		.append(" from "+queryDTO.getQueryData())
@@ -108,7 +114,13 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 		if(!lineItemId.equalsIgnoreCase("All")) {
 			query.append(" and line_item_id in ('"+lineItemId+"') ");
 		}
-		query.append(" group each by date, line_item_id ignore case ) ");
+		query.append(" group each by date ");
+		
+		if(!isClient)
+			query.append(", line_item_id ");
+		
+		query.append(" ignore case ) ");
+		
 		if(isNoise) {
 			query.append("  where Share > "+threshold);
 		}
@@ -135,19 +147,31 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 	}
 	
 	@Override
-	public QueryResponse impressionsLineChartData(String orderId, String lineItemId, boolean isNoise, double threshold, QueryDTO queryDTO) throws DataServiceException, IOException {
+	public QueryResponse impressionsLineChartData(String orderId, String lineItemId, boolean isNoise, double threshold, QueryDTO queryDTO,boolean isClient,String userCompany) throws DataServiceException, IOException {
 		QueryResponse queryResponse = null;
 		StringBuilder query = new StringBuilder();
 		query.append(" Select * from ( ")
-		.append(" SELECT  date(date) date, line_item_id, ")
-		.append(" SUM(total_impressions) as Impression, ")
+		.append(" SELECT  date(date) date, ");
+		
+		if(isClient)
+			query.append(" '"+userCompany+"',");
+		else
+			query.append(" line_item_id,  ");
+		
+		query.append(" SUM(total_impressions) as Impression, ")
 		.append("RATIO_TO_REPORT(Impression) OVER() as Share")
 		.append(" from "+queryDTO.getQueryData())
 		.append(" Where Order_id = '"+orderId+"' ");
 		if(!lineItemId.equalsIgnoreCase("All")) {
 			query.append(" and line_item_id in ('"+lineItemId+"') ");
 		}
-		query.append(" group each by date, line_item_id ignore case ) ");
+		query.append(" group each by date");
+		
+		if(!isClient)
+			query.append(" , line_item_id  ");
+		
+		query.append(" ignore case )   ");
+		
 		if(isNoise) {
 			query.append("  where Share > "+threshold);
 		}
@@ -249,14 +273,18 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 			 log.info("inside superadmin status 1");
 			 cmapaignList = obfy.load().type(SmartCampaignObj.class)
 					// .filter("campaignStatus != ",	"4")
-					 .order("-sDate") /* Added by Anup | to sort campaigns by start date */
+					 /* Added by Anup | to sort campaigns by start date */
+					 .order("-sDate")
+					 .order("-eDate") 
                      .list();
 		 } 
 		 else{
 			 log.info("inside superadmin status !1");
 			  cmapaignList = obfy.load().type(SmartCampaignObj.class)
 					   .filter("campaignStatus = ",	campaignStatus)
-					   .order("-sDate") /* Added by Anup | to sort campaigns by start date */
+					   /* Added by Anup | to sort campaigns by start date */
+					   .order("-sDate")
+					   .order("-eDate") 
                    .list();
 		 }
 		 return cmapaignList;
@@ -272,7 +300,9 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 			 cmapaignList = obfy.load().type(SmartCampaignObj.class)
 					 .filter("companyId = ",companyId)
 					//  .filter("campaignStatus != ",	"4")
-					 .order("-sDate") /* Added by Anup | to sort campaigns by start date */
+					 /* Added by Anup | to sort campaigns by start date */
+					 .order("-sDate") 
+					 .order("eDate")
                      .list();
 		 } 
 		 else{
@@ -280,8 +310,10 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 			  cmapaignList = obfy.load().type(SmartCampaignObj.class)
 					  .filter("companyId = ",companyId)
 					   .filter("campaignStatus = ",	campaignStatus)
-					   .order("-sDate") /* Added by Anup | to sort campaigns by start date */
-                   .list();
+					   /* Added by Anup | to sort campaigns by start date */
+					   .order("-sDate")
+					   .order("eDate")
+					   .list();
 		 }
 		 return cmapaignList;
 	}
@@ -332,12 +364,18 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 	}
 
 	@Override
-	public QueryResponse ctrLineChartData(String orderId, String lineItemId, boolean isNoise, double threshold, QueryDTO queryDTO) throws DataServiceException, IOException {
+	public QueryResponse ctrLineChartData(String orderId, String lineItemId, boolean isNoise, double threshold, QueryDTO queryDTO,boolean isClient,String userCompany) throws DataServiceException, IOException {
 		QueryResponse queryResponse = null;
 		StringBuilder query = new StringBuilder();
 		query.append(" Select * from ( ")
-		.append(" SELECT  date(date) date, line_item_id, ")
-		.append(" sum(total_clicks) Clicks, ")
+		.append(" SELECT  date(date) date, ");
+		
+		if(!isClient)
+			query.append(" line_item_id, ");
+		else
+			query.append(" '"+ userCompany +"', ");
+		
+		query.append(" sum(total_clicks) Clicks, ")
 		.append(" SUM(total_impressions) as Impression, ")
 		.append("RATIO_TO_REPORT(Impression) OVER() as Share")
 		.append(" from "+queryDTO.getQueryData())
@@ -345,11 +383,21 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 		if(!lineItemId.equalsIgnoreCase("All")) {
 			query.append(" and line_item_id in ('"+lineItemId+"') ");
 		}
-		query.append(" group each by date, line_item_id ignore case ) ");
+		query.append(" group each by date ");
+		
+		if(!isClient)
+			query.append(" , line_item_id  ");
+		
+		query.append("ignore case ) ");
+		
 		if(isNoise) {
 			query.append("  where Share > "+threshold);
 		}
-		query.append(" order by date, line_item_id");
+		query.append(" order by date ");
+		
+		if(!isClient)
+			query.append(" , line_item_id  ");
+		
 		log.info("ctrLineChartData Query : "+query);
 		
 		queryDTO.setQueryData(query.toString());
@@ -560,17 +608,26 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 	}
 	
 	@Override
-	public QueryResponse richMediaLineChartData(String orderId, String lineItemId, QueryDTO queryDTO) throws DataServiceException, IOException {
+	public QueryResponse richMediaLineChartData(String orderId, String lineItemId, QueryDTO queryDTO, boolean isClient, String userCompany) throws DataServiceException, IOException {
 		QueryResponse queryResponse = null;
 		StringBuilder query = new StringBuilder();
-		query.append(" SELECT date(Date) as date, Line_Item_Id, Custom_Event, ")
-		.append(" if((Custom_Event_Type = 'Timer'),sum(Custom_Time_Value),sum(Custom_Count_Value)) as countValue, Custom_Event_Type ")
+		query.append(" SELECT date(Date) as date, ");
+		if(isClient) {
+			query.append(" '"+userCompany+"' as line_item_id ,");
+		} else {
+			query.append(" line_item_id ,");
+		}
+		query.append(" Custom_Event, if((Custom_Event_Type = 'Timer'),sum(Custom_Time_Value),sum(Custom_Count_Value)) as countValue, Custom_Event_Type ")
 		.append(" from "+queryDTO.getQueryData())
 		.append(" Where Order_id='"+orderId+"'");
 		if(!lineItemId.equalsIgnoreCase("All")) {
 			query.append(" and line_item_id in ('"+lineItemId+"') ");
 		}
-		query.append(" group by date , Line_Item_Id, Custom_Event, Custom_Event_Type ")
+		query.append(" group by date ");
+		if(!isClient) {
+			query.append(" ,line_item_id ");
+		}
+		query.append(" , Custom_Event, Custom_Event_Type ")
 		.append(" order by date, Custom_Event  ignore case");
 		
 		log.info("richMediaLineChartData Query  :"+query);
@@ -640,12 +697,19 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 	}
 	
 	@Override
-	public QueryResponse loadCreativeChartData(String orderId, String lineItemId, boolean isNoise, double threshold, QueryDTO queryDTO) throws DataServiceException, IOException{
+	public QueryResponse loadCreativeChartData(String orderId, String lineItemId, boolean isNoise, double threshold, QueryDTO queryDTO,boolean isClient , String userCompany) throws DataServiceException, IOException{
 		QueryResponse queryResponse = null;
 		StringBuilder query = new StringBuilder();
 		query.append(" select Impression_Delivered,Clicks,CTR,line_item_id,creative_size from ( Select sum(total_impressions) as Impression_Delivered ,sum(total_clicks) as Clicks, ")
-		.append(" ifnull(round((sum(total_clicks)/sum(total_impressions))*100,4),0.0) CTR,line_item_id,") 
-		.append("creative_size, ")
+		.append(" ifnull(round((sum(total_clicks)/sum(total_impressions))*100,4),0.0) CTR, ");
+		
+		if(isClient)
+			query.append(" '"+userCompany+"' as line_item_id,");
+		else
+			query.append(" line_item_id,");
+		
+		
+		query.append("creative_size, ")
 		.append("RATIO_TO_REPORT(Impression_Delivered) OVER() as Share")
 		.append(" from "+queryDTO.getQueryData())
 		.append(" Where Order_id='"+orderId+"'");
@@ -653,7 +717,13 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 		if(!lineItemId.equalsIgnoreCase("All")) {
 			query.append(" and line_item_id in ('"+lineItemId+"') ");
 		}
-		query.append(" group each by  creative_size,line_item_id ignore case )");
+		
+		query.append(" group each by  creative_size ");
+		
+		if(!isClient)
+			query.append(" ,line_item_id ");
+		
+		query.append(" ignore case ) ");
 		if(isNoise) {
 			query.append("  where Share > "+threshold);
 		}
@@ -714,7 +784,6 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 					Thread.sleep(1000);
 				} catch (InterruptedException e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
 				}
 			}
 			j++;
@@ -727,13 +796,20 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 
 	@Override
 	public QueryResponse loadOSChartData(String orderId, String lineItemId,
-			boolean isNoise, double threshold, QueryDTO queryDTO)
+			boolean isNoise, double threshold, QueryDTO queryDTO,boolean isClient, String userCompany)
 			throws DataServiceException, IOException {
 		QueryResponse queryResponse = null;
 		StringBuilder query = new StringBuilder();
 		
 		query.append("select Impression_Delivered,Clicks,CTR,line_item_id,Target_Value from ( select sum(total_impressions) as Impression_Delivered ,sum(total_clicks) as Clicks,")
-		.append("ifnull(round((sum(total_clicks)/sum(total_impressions))*100,4),0.0) as CTR, line_item_id ,Target_Value, ")
+		.append("ifnull(round((sum(total_clicks)/sum(total_impressions))*100,4),0.0) as CTR, ");
+		
+		if(isClient)
+			query.append(" '"+userCompany+"' as line_item_id ,");
+		else
+			query.append(" line_item_id ,");
+		
+		query.append("  case when Target_Value like '%Windows%' then 'Windows' when Target_Value like 'Android%' then 'Android' when Target_Value like '%iOS%' then 'iOS' else 'Other OS' End as Target_Value, ")
 		.append("RATIO_TO_REPORT(Impression_Delivered) OVER() as Share")
 		.append(" from "+queryDTO.getQueryData())
 		.append(" Where Order_id='"+orderId+"' and Target_Category = 'OperatingSystem' ");
@@ -741,7 +817,14 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 		if(!lineItemId.equalsIgnoreCase("All")) {
 			query.append(" and line_item_id in ('"+lineItemId+"') ");
 		}
-		query.append(" group each by  Target_Value, line_item_id ignore case ) ");
+		query.append(" group each by  Target_Value");
+		
+		if(!isClient)
+			query.append(" , line_item_id ");
+		
+		query.append(" ignore case ) ");
+		
+		
 		if(isNoise) {
 			query.append("  where Share > "+threshold);
 		}
@@ -759,7 +842,6 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				try{
 					Thread.sleep(1000);
 				}catch(Exception e1){
-					e1.printStackTrace();
 				}
 			}
 			j++;
@@ -773,13 +855,20 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 	
 	@Override
 	public QueryResponse loadDeviceChartData(String orderId, String lineItemId,
-			boolean isNoise, double threshold, QueryDTO queryDTO)
+			boolean isNoise, double threshold, QueryDTO queryDTO,boolean isClient, String userCompany)
 			throws DataServiceException, IOException {
 		QueryResponse queryResponse = null;
 		StringBuilder query = new StringBuilder();
 		
 		query.append("select * from ( select sum(total_impressions) as Impression_Delivered ,sum(total_clicks) as Clicks,")
-		.append("ifnull(round((sum(total_clicks)/sum(total_impressions))*100,4),0.0) as CTR, line_item_id ,case when Target_Value = 'MidRangeMobile' then 'Smart Phone' when  Target_Value = 'HighEndMobile' then 'Smart Phone' Else Target_Value End as Target_Value,")
+		.append("ifnull(round((sum(total_clicks)/sum(total_impressions))*100,4),0.0) as CTR,  ");
+		
+		if(isClient)
+			query.append(" '"+userCompany+"' as line_item_id , ");
+		else
+			query.append(" line_item_id , ");
+		
+		query.append(" case when Target_Value = 'MidRangeMobile' then 'Smart Phone' when  Target_Value = 'HighEndMobile' then 'Smart Phone' Else Target_Value End as Target_Value,")
 		.append("RATIO_TO_REPORT(Impression_Delivered) OVER() as Share")
 		.append(" from "+queryDTO.getQueryData())
 		.append(" Where Order_id='"+orderId+"' and Target_Category = 'Platform' ");
@@ -787,7 +876,12 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 		if(!lineItemId.equalsIgnoreCase("All")) {
 			query.append(" and line_item_id in ('"+lineItemId+"') ");
 		}
-		query.append(" group each by  Target_Value, line_item_id ignore case ) ");
+		query.append(" group each by  Target_Value ");
+		
+		if(!isClient)
+			query.append(" , line_item_id  ");
+		
+		query.append(" ignore case ) ");
 		
 		if(isNoise) {
 			query.append("  where Share > "+threshold);
@@ -845,7 +939,6 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 				try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e1) {
-					e1.printStackTrace();
 				}
 			}
 			j++;
@@ -863,7 +956,11 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 		QueryResponse queryResponse = null;
 		StringBuilder query = new StringBuilder();
 		
-		query.append("select Target_Value,Impression_Delivered,Clicks from ( select Target_Value, sum(total_impressions) as Impression_Delivered, sum(total_clicks) as Clicks,")
+		query.append("select Target_Value,Impression_Delivered,Clicks from ( select  ")
+		
+		.append("  case when Target_Value like '%Windows%' then 'Windows' when Target_Value like 'Android%' then 'Android' when Target_Value like '%iOS%' then 'iOS' else 'Other OS' End as Target_Value, ")
+
+		.append(" sum(total_impressions) as Impression_Delivered, sum(total_clicks) as Clicks, ")
 		.append("RATIO_TO_REPORT(Impression_Delivered) OVER() as Share ")
 		.append(" from "+queryDTO.getQueryData())
 		.append(" Where Order_id='"+orderId+"' and Target_Category = 'OperatingSystem' ");
@@ -1170,6 +1267,4 @@ public class PerformanceMonitoringDAO implements IPerformanceMonitoringDAO {
 	}
 
 
-	
-	
 }

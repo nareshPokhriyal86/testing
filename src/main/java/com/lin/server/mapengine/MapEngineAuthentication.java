@@ -59,7 +59,6 @@ public class MapEngineAuthentication {
     } catch (IOException e) {
       System.out.println(e.getMessage());
     } catch (Exception t) {
-      t.printStackTrace();
     }
   }
 }

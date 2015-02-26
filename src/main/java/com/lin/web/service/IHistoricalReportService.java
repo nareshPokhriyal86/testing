@@ -1,5 +1,6 @@
 package com.lin.web.service;
 
+import java.util.HashSet;
 import java.util.List;
 
 import com.lin.server.bean.DFPTaskEntity;
@@ -152,4 +153,5 @@ public interface IHistoricalReportService extends IBusinessService{
 			String startDate, String endDate, String taskGroupKey,
 			String loadType, String orderId);
 	List<DFPTaskEntity> getDFPTaskEntityByTaskKey(String dfpTaskKey);
+	HashSet getAllOrderIdsForNonFinaliseData(String publisherBQId);
 }

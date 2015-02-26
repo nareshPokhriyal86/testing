@@ -393,6 +393,9 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 		int result = 0;
 		try {
 			sessionDTO = (SessionObjectDTO) session.get("sessionDTO");
+			sessionDTO.setSuperAdmin(false);
+			sessionDTO.setAdminUser(false);
+			sessionDTO.setClient(false);
 			if(!isAuthorised(sessionDTO)) {
 				return "unAuthorisedAccess";
 			}
@@ -425,15 +428,10 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 					}
 					if(rolesAndAuthorisation.getRoleName().trim().equals(LinMobileConstants.ADMINS[0])) {
 						sessionDTO.setSuperAdmin(true);
-					}
-					else {
-						sessionDTO.setSuperAdmin(false);
-					}
-					if(rolesAndAuthorisation.getRoleName().trim().equals(LinMobileConstants.ADMINS[1])) {
+					}else if(rolesAndAuthorisation.getRoleName().trim().equals(LinMobileConstants.ADMINS[1])) {
 						sessionDTO.setAdminUser(true);
-					}
-					else {
-						sessionDTO.setAdminUser(false);
+					}else if(rolesAndAuthorisation.getRoleName().trim().equals(LinMobileConstants.USERS_ARRAY[2])) {
+						sessionDTO.setClient(true);
 					}
 					
 					sessionDTO.setEmailId(userDetailsDTO.getEmailId());
@@ -1465,6 +1463,7 @@ ModelDriven<UserDetailsDTO>,ServletRequestAware, SessionAware, ServletResponseAw
 					if(companyLogoURL != null && companyLogoURL.length() > 0) {
 						sessionDTO.setCompanyLogo(true);
 						sessionDTO.setCompanyLogoURL(companyLogoURL);
+						sessionDTO.setCompanyName(userDetailsDTO.getCompanyName());
 						session.put("sessionDTO", sessionDTO);
 					}
 					setLinStatus("updateSuccess");

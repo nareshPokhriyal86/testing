@@ -977,7 +977,7 @@ public class BigQueryUtil {
 		initBigQueryData(serviceAccountId, privateKey);
 		Bigquery bigQuery =bigQueryMap.get(serviceAccountId);
 		boolean tableExists = false;
-		String destDatasetId = LinMobileVariables.GOOGLE_BIGQUERY_DATASET_ID+"_V2";
+		String destDatasetId = LinMobileVariables.GOOGLE_BIGQUERY_DATASET_ID;
 		synchronized(BigQueryUtil.class){
 
 		 tableExists = createTableIfNotExists(serviceAccountId, privateKey, projectId, destDatasetId, processTableId, loadType);
@@ -1085,6 +1085,69 @@ public class BigQueryUtil {
 		
 	}
 	
+	
+	/**
+	 * @author Manish Mudgal
+	 * Required as we need to remove an order from BQ table before loading historical data.
+	 */
+	public static boolean copyTable(String tableFrom, String tableTo, String whereclause, String fromDataSet, String toDataSet, String serviceAccountId, String privateKey, String projectId, boolean merge)throws Exception{
+		return copyTable(null, tableFrom, tableTo, whereclause, fromDataSet, toDataSet, serviceAccountId, privateKey, projectId, merge);
+	}
+	public static boolean copyTable(Bigquery bigQuery, String tableFrom, String tableTo, String whereclause, String fromDataSet, String toDataSet, String serviceAccountId, String privateKey, String projectId, boolean merge)throws Exception{
+		initBigQueryData(serviceAccountId, privateKey);
+		if(bigQuery == null){
+			bigQuery   = bigQueryMap.get(serviceAccountId);
+		}
+		Job job = new Job();
+		JobConfiguration config = new JobConfiguration();
+		 
+		JobConfigurationQuery query = new JobConfigurationQuery();
+		if(!merge){
+			query.setWriteDisposition("WRITE_TRUNCATE");			
+		}else{
+			query.setWriteDisposition("WRITE_APPEND");
+		}
+
+		query.setQuery(" SELECT * FROM "+tableFrom+" "+ (whereclause == null ? "" : whereclause));
+		
+		DatasetReference dref = new DatasetReference();
+		dref.setDatasetId(fromDataSet);
+		dref.setProjectId(projectId);
+		query.setDefaultDataset(dref);
+
+		
+		TableReference tableRef = new TableReference();
+		tableRef.setDatasetId(toDataSet);
+		tableRef.setTableId(tableTo); // lin_dev_test_core_perf_3
+		tableRef.setProjectId(projectId);
+		query.setDestinationTable(tableRef);
+		 
+		config.setQuery(query);
+
+	 
+
+		System.out.println("Going to insert data....");
+		job.setConfiguration(config);
+		Insert insert = bigQuery.jobs().insert(projectId, job);
+		insert.setProjectId(projectId);
+
+		job = insert.execute();
+
+
+		 
+		JobReference jobRef = job.getJobReference();
+		JobStatus jobStatus = job.getStatus();
+		String state = jobStatus.getState();
+		System.out.println("after insert : state:" + state);
+		String jobId = jobRef.getJobId();
+		System.out.println("after insert : JobId: " + jobId);
+
+		 Job completedJob = checkQueryResults(bigQuery, projectId, jobRef);	 
+		  
+		return completedJob.getStatus().getErrors() == null;
+		
+	}
+	
 public static void main(String[] args) throws GeneralSecurityException, IOException, InterruptedException {
 	SCOPES = new ArrayList<String>();
 	SCOPES.add(LinMobileConstants.GOOGLE_BIGQUERY_SCOPE);
@@ -1120,11 +1183,12 @@ private static Job checkQueryResults(Bigquery bigquery, String projectId, String
 	if(result == null){
 		result = new StringBuffer();
 	}
+	Job pollJob = null;
 	while (true) {
-		Job pollJob = bigquery.jobs().get(projectId, jobId)
+		pollJob = bigquery.jobs().get(projectId, jobId)
 				.execute();
 		elapsedTime = System.currentTimeMillis() - startTime;
-		log.info("Job status :"+pollJob.getStatus().getState()+", jobId:"+jobId+", Time:"+elapsedTime+"\n");
+		log.info("Job status :"+pollJob.getStatus().getState()+", jobId:"+jobId+", Time:"+elapsedTime+" \n");
 		if (pollJob.getStatus().getState().equals("DONE")) {
 			if(pollJob.getStatus().getErrors() != null){
 				for(ErrorProto proto : pollJob.getStatus().getErrors()){
@@ -1134,11 +1198,14 @@ private static Job checkQueryResults(Bigquery bigquery, String projectId, String
 					result.append("reason ["+proto.getReason()+"]");
 				}
 			}
-			return pollJob;
+			break;
 		}
 	
 		Thread.sleep(2000);
+		
+		
 	}
+	return pollJob;
 }
 
 	public static String getJobStatus(String jobId, String serviceAccountId, String privateKey, String projectId) throws IOException, InterruptedException {

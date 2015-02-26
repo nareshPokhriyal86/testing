@@ -2,10 +2,21 @@ package com.lin.server.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Map;
 
 import com.googlecode.objectify.annotation.Id;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Index;
+import com.lin.dfp.api.impl.DFPReportService;
+import com.lin.persistance.dao.ISmartCampaignPlannerDAO;
+import com.lin.persistance.dao.IUserDetailsDAO;
+import com.lin.persistance.dao.impl.SmartCampaignPlannerDAO;
+import com.lin.persistance.dao.impl.UserDetailsDAO;
+import com.lin.web.dto.AdServerCredentialsDTO;
+import com.lin.web.dto.UserDetailsDTO;
+import com.lin.web.util.DateUtil;
+import com.lin.web.util.LinMobileConstants;
+import com.lin.server.bean.CompanyObj;;
 
 
 @Entity
@@ -16,7 +27,7 @@ import com.googlecode.objectify.annotation.Index;
  */
 @Index
 public class AccountsEntity implements Serializable, Comparable<AccountsEntity>{
-	
+
 	@Id	private String id;				// adServerId_accountId_companyId
 	private String accountDfpId;
 	private String accountName;
@@ -34,22 +45,22 @@ public class AccountsEntity implements Serializable, Comparable<AccountsEntity>{
 	private String companyId;
 	private Date creationDate;
 	private long createdByUserId;
-    private Date lastModifiedDate;
-    private long lastModifiedByUserId;
-    private String address;
-    private String state;
-    private String contactPersonName;
-    private String zip;
-    
+	private Date lastModifiedDate;
+	private long lastModifiedByUserId;
+	private String address;
+	private String state;
+	private String contactPersonName;
+	private String zip;
+
 	public AccountsEntity(){
 	}
-	
+
 	public AccountsEntity(String accountName,
 			String accountType, String status, String dfpAccountName,
 			String industry, String contact, String phone,
 			String email, String fax, String adServerId,
 			String companyId, long createdByUserId,String state,String zip,String address){
-	
+
 		this.accountName=accountName;
 		this.accountType=accountType;
 		this.status=status;
@@ -105,6 +116,64 @@ public class AccountsEntity implements Serializable, Comparable<AccountsEntity>{
 		this.address = address;
 	}
 
+	public AccountsEntity(AdvertiserObj advertiserObj , String adServerUsername , String companyId) {
+		this.id = String.valueOf(advertiserObj.getId());
+		this.accountDfpId = String.valueOf(advertiserObj.getAdvertiserId());
+		this.accountName = advertiserObj.getName();
+		this.accountType = LinMobileConstants.ADVERTISER_ID_PREFIX;
+		this.status = LinMobileConstants.STATUS_ARRAY[0];  
+		this.phone = advertiserObj.getPhone();
+		this.email = advertiserObj.getEmail();
+		this.fax = advertiserObj.getFax();
+		this.adServerId = advertiserObj.getDfpNetworkCode();
+		if(advertiserObj.getCreatedOn() != null){
+			this.creationDate =  DateUtil.getFormatedDate(advertiserObj.getCreatedOn(), "yyyy-MM-dd HH:mm:ss");
+		}
+		if(advertiserObj.getCreatedBy() != null)
+			this.createdByUserId = Long.valueOf(advertiserObj.getCreatedBy());
+		if(advertiserObj.getCreatedOn() != null)
+			this.lastModifiedDate = DateUtil.getFormatedDate(advertiserObj.getCreatedOn(), "yyyy-MM-dd HH:mm:ss");
+		if(advertiserObj.getCreatedBy() != null)
+			this.lastModifiedByUserId = Long.valueOf(advertiserObj.getCreatedBy());
+		this.contactPersonName = advertiserObj.getContactPersonName();
+		this.address = advertiserObj.getAddress();
+		this.adServerUserName = adServerUsername;
+		this.companyId = companyId;
+		
+	}
+
+	public AccountsEntity(AgencyObj agencyObj ,String  adServerUsername) {
+		ISmartCampaignPlannerDAO campaignDAO = new SmartCampaignPlannerDAO();
+		this.id = String.valueOf(agencyObj.getId());
+		this.accountDfpId = String.valueOf(agencyObj.getAgencyId());
+		this.accountName = agencyObj.getName();
+		this.accountType = LinMobileConstants.AGENCY_ID_PREFIX;
+		this.status = LinMobileConstants.STATUS_ARRAY[0];  
+		this.phone = agencyObj.getPhone();
+		this.email = agencyObj.getEmail();
+		this.fax = agencyObj.getFax();
+		this.adServerId = agencyObj.getDfpNetworkCode();
+		if(agencyObj.getCreatedOn() != null)
+			this.creationDate =  DateUtil.getFormatedDate(agencyObj.getCreatedOn(), "yyyy-MM-dd HH:mm:ss");
+		if(agencyObj.getCreatedBy() != null)
+			this.createdByUserId = Long.valueOf(agencyObj.getCreatedBy());
+		if(agencyObj.getCreatedOn() != null)
+			this.lastModifiedDate = DateUtil.getFormatedDate(agencyObj.getCreatedOn(), "yyyy-MM-dd HH:mm:ss");
+		if(agencyObj.getCreatedBy() != null)
+			this.lastModifiedByUserId = Long.valueOf(agencyObj.getCreatedBy());
+		this.contactPersonName = agencyObj.getContactPersonName();
+		this.address = agencyObj.getAddress();
+		this.adServerUserName = adServerUsername;
+		try {
+			if(this.id != null){
+				SmartCampaignObj smartCampObj = campaignDAO.getCampaignByAgencyId(this.id);
+				this.companyId = smartCampObj.getCompanyId();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
 
 
 	@Override
@@ -308,8 +377,8 @@ public class AccountsEntity implements Serializable, Comparable<AccountsEntity>{
 	public void setLastModifiedByUserId(long lastModifiedByUserId) {
 		this.lastModifiedByUserId = lastModifiedByUserId;
 	}
-	
-	
+
+
 
 	public String getAddress() {
 		return address;
@@ -323,7 +392,7 @@ public class AccountsEntity implements Serializable, Comparable<AccountsEntity>{
 	public void setContactPersonName(String contactPersonName) {
 		this.contactPersonName = contactPersonName;
 	}
-	
+
 	@Override
 	public int compareTo(AccountsEntity accountsObj) {
 		return accountName.compareToIgnoreCase(accountsObj.getAccountName());
@@ -359,5 +428,5 @@ public class AccountsEntity implements Serializable, Comparable<AccountsEntity>{
 		this.zip = zip;
 	}
 
-	
+
 }

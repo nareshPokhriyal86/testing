@@ -71,7 +71,7 @@ import com.lin.web.util.StringUtil;
 
 public class PerformanceMonitoringService implements IPerformanceMonitoringService{
 	 enum lagendColor {
-			Red, green, orange, blue, yellow , bronze , aqua , gold , darkred ,gray,cyan,amaranth,bole,buff,cadet,carmine,ceil,coral,corn
+			brown, green, orange, blue, yellow , bronze , aqua , gold , darkred ,gray,cyan,amaranth,bole,buff,cadet,carmine,ceil,coral,corn
 		}
 	private static final Logger log = Logger.getLogger(PerformanceMonitoringService.class.getName());
 	private static final int EXPIRATION_TIME = 60*15;
@@ -241,11 +241,13 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			        	Date otherStart = sdf.parse(smartCampaignFlightDTO.getStartDate());
 			        	Date clashEnd = sdf.parse(clashLessFlight.getEndDate());
 			        	Date otherEnd = sdf.parse(smartCampaignFlightDTO.getEndDate());
-						if(clashStart.compareTo(otherStart)<0 && clashEnd.compareTo(otherStart)<0) {
+						if(clashStart.compareTo(otherStart)<0 && clashEnd.compareTo(otherStart)<0) 
+						{
 							// No clash
 							continue;
 			        	}
-						else if(otherStart.compareTo(clashStart)<0 && otherEnd.compareTo(clashStart)<0) {
+						else if(otherStart.compareTo(clashStart)<0 && otherEnd.compareTo(clashStart)<0) 
+						{
 							// No clash
 							continue;
 			        	}
@@ -392,27 +394,9 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 				}
 				if(isSuperAdmin) {
 					isAuthorised = true;
-				}
-				else {
+				}else {
 					// check if campaign is authorised by account to user
 					isAuthorised = true;			// remove this line when account check code below is uncommented.
-					/*Map<String,String> accountDataMap = userService.getSelectedAccountsByUserId(userId, true, true);
-					String advertiserId = smartCampaignObj.getAdvertiserId();
-					String agencyId = smartCampaignObj.getAgencyId();
-					if((advertiserId != null && UserService.isAuthorisedAccountId(advertiserId, accountDataMap)) || 
-							(agencyId != null && UserService.isAuthorisedAccountId(agencyId, accountDataMap))) {
-						IUserDetailsDAO userDetailsDAO = new UserDetailsDAO();
-						List<CompanyObj> companyObjList = userDetailsDAO.getSelectedCompaniesByUserId(userId);
-						if(companyObjList != null && companyObjList.size() > 0) {
-							companyObj = companyObjList.get(0);
-							if(companyObj != null && companyObj.getStatus().equals(LinMobileConstants.STATUS_ARRAY[0]) && smartCampaignObj.getCompanyId().equals(companyObj.getId()+"")) {
-								isAuthorised = true;
-							}
-						}
-					}else {
-						//log.info("Campaign Account is not authorised, campaignId : "+smartCampaignObj.getCampaignId()+
-							//	", advertiserId : "+advertiserId+", agencyId : "+agencyId);
-					}*/
 				}
 			}
 			
@@ -644,34 +628,29 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 					}
 				}
 				
-				if(dataStoreCampaignList!=null && dataStoreCampaignList.size()>0 ){
+				if(dataStoreCampaignList!=null && dataStoreCampaignList.size()>0 ) {
 					log.info("campaign count for user : " + dataStoreCampaignList.size());
 					// check if campaign is authorised by account to user
-					/*IUserService userService = (IUserService) BusinessServiceLocator.locate(IUserService.class);
+					IUserService userService = (IUserService) BusinessServiceLocator.locate(IUserService.class);
 					Map<String,String> accountDataMap = userService.getSelectedAccountsByUserId(userId, true, true);
 					for (SmartCampaignObj smartCampaignObj : dataStoreCampaignList) {
-						if(smartCampaignObj!=null && !smartCampaignObj.getCampaignStatus().equals(CampaignStatusEnum.Archived.ordinal()+"")  && !smartCampaignObj.getCampaignStatus().equals(CampaignStatusEnum.Draft.ordinal()+"")){
+						if(smartCampaignObj!=null && !smartCampaignObj.getCampaignStatus().equals(CampaignStatusEnum.Archived.ordinal()+"") ){
 							String advertiserId = smartCampaignObj.getAdvertiserId();
 							String agencyId = smartCampaignObj.getAgencyId();
-							if((advertiserId != null && UserService.isAuthorisedAccountId(advertiserId, accountDataMap)) || 
-									(agencyId != null && UserService.isAuthorisedAccountId(agencyId, accountDataMap))) {
+							if( accountDataMap.containsKey("allAccounts") && accountDataMap.get("allAccounts")!=null && accountDataMap.get("allAccounts").equalsIgnoreCase("true")){
+								// ALL ACCOUNTS
 								campaignStatusMap.put(smartCampaignObj.getDfpOrderId()+"", smartCampaignObj);
+							} else if((advertiserId != null && UserService.isAuthorisedAccountId(advertiserId, accountDataMap)) || 
+									(agencyId != null && UserService.isAuthorisedAccountId(agencyId, accountDataMap))) {
+										campaignStatusMap.put(smartCampaignObj.getDfpOrderId()+"", smartCampaignObj);
+										log.info("Campaign Account is authorised, [campaignId: "+smartCampaignObj.getCampaignId()+"\n campaign name "+smartCampaignObj.getName()+", advertiserId : "+advertiserId+", agencyId : "+agencyId);
 							}else {
-								//log.info("Campaign Account is not authorised, campaignId : "+smartCampaignObj.getCampaignId()+
-									//	", advertiserId : "+advertiserId+", agencyId : "+agencyId);
+								//log.info("Campaign Account is not authorised, campaignId : "+smartCampaignObj.getCampaignId()+"\n campaign name "+smartCampaignObj.getName()+", advertiserId : "+advertiserId+", agencyId : "+agencyId);
 							}
 						}
 					}
-					log.info("After account authorisation check, authorised campaigns count : " + campaignStatusMap.size());*/
-					
-					IUserService userService = (IUserService) BusinessServiceLocator.locate(IUserService.class);
-					for (SmartCampaignObj smartCampaignObj : dataStoreCampaignList) {
-						if(smartCampaignObj!=null && !smartCampaignObj.getCampaignStatus().equals(CampaignStatusEnum.Archived.ordinal()+"")  /*&& !smartCampaignObj.getCampaignStatus().equals(CampaignStatusEnum.Draft.ordinal()+"")*/){
-							campaignStatusMap.put(smartCampaignObj.getDfpOrderId()+"", smartCampaignObj);
-						}
-					}
-					///////////////////////////////////////
-					
+					log.info("After account authorisation check, authorised campaigns count : " + campaignStatusMap.size());
+
 					for (PerformanceMonitoringDTO campaignObj : campaignList) {
 						if(campaignObj!=null && campaignObj.getOrderId()!=null && campaignStatusMap.containsKey(campaignObj.getOrderId()) && campaignStatusMap.get(campaignObj.getOrderId()) != null ){
 							double progressBarMargin = 0.0;
@@ -692,6 +671,15 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 								}else {
 									jsonObject.put("sDate", "");
 								}
+								
+								if(obj.geteDate() != null) {
+									jsonObject.put("eDate", obj.geteDate().getTime());
+								}else {
+									jsonObject.put("eDate", "");
+								}
+								
+								jsonObject.put("startDate", obj.getStartDate());
+								jsonObject.put("endDate", obj.getEndDate());
 							}
 						
 							placementByIdList = campaignDao.getAllPlacementOfCampaign(obj.getCampaignId());
@@ -963,6 +951,9 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		    	  	 jsonObject.put("budget", budget);
 		    	  	 jsonObject.put("spent", spent);
 		    	  	 jsonObject.put("left", left);
+		    	  	 jsonObject.put("startDate", placementJson.get("startDate"));
+		    	  	 jsonObject.put("endDate", placementJson.get("endDate"));
+		    	  	 
 				}
 			}
 		}
@@ -1562,13 +1553,17 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 	}
 	
 	@Override
-	public JSONObject clicksLineChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo) {
+	public JSONObject clicksLineChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo, boolean isClient,String userCompany) {
 		JSONObject jsonObject = null;
 		String memcacheKey = "";
 		try {
 			List<SmartCampaignFlightDTO> flightObjList = getFlights(campaignId, placementIds);
 			memcacheKey = orderId+campaignId+placementIds+isNoise+threshold+publisherIdInBQ+placementInfo+partnerInfo+flightObjList.toString();
 			String keyPrefix = "PM_ClicksData";
+			
+			if(isClient)
+				keyPrefix += "_Client";
+			
 			memcacheKey =  keyPrefix + StringUtil.hashToMaxLength(memcacheKey, (MemcacheUtil.MEMCACHE_KEY_LENGTH - keyPrefix.length()));
 			String cachedDataJsonString = (String) MemcacheUtil.getObjectFromCache(memcacheKey);
 			if(cachedDataJsonString != null && cachedDataJsonString.length() > 0) {
@@ -1598,7 +1593,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		    if(queryDTO != null && queryDTO.getQueryData() != null && queryDTO.getQueryData().length() > 0 && placementJson != null) {
 				IPerformanceMonitoringDAO monitoringDAO = new PerformanceMonitoringDAO();
 				String lineItemIds = placementJson.get("lineItemIds")+"";
-				queryResponse = monitoringDAO.clicksLineChartData(orderId, lineItemIds, isNoise, threshold, queryDTO);
+				queryResponse = monitoringDAO.clicksLineChartData(orderId, lineItemIds, isNoise, threshold, queryDTO, isClient , userCompany );
 			}
 			if (queryResponse!=null && queryResponse.getRows() != null && queryResponse.getRows().size() > 0 && placementJson != null && partnerInfoJson != null) {
 				boolean isShowPacing  = false;
@@ -1647,11 +1642,16 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 						int dateValue=Integer.parseInt((cellList.get(0).getV().toString()).replaceAll("-", ""));
 						int monthValue=Integer.parseInt((cellList.get(0).getV().toString()).split("-")[1]);
 						
-						String partnerName=partnerInfoJson.get(cellList.get(1).getV().toString())+"";
+						String partnerName="";
+						if(!isClient)
+							partnerName = partnerInfoJson.get(cellList.get(1).getV().toString())+"";
+						else
+							partnerName = userCompany;
+						
 						long clicks=StringUtil.getLongValue(cellList.get(2).getV().toString());
 						totalClicks = totalClicks + clicks;
 						
-						if(LinMobileUtil.isNumeric(targetPacing)) {					// Day wise Pacing
+						if(!isClient && LinMobileUtil.isNumeric(targetPacing)) {					// Day wise Pacing
 							pacingMap.put("Target", true);
 							String key=date+"_Target";
 							LineChartDTO lineChartDTO=new LineChartDTO();
@@ -1722,7 +1722,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 								}
 								weekDateMap.put(previousDate, null);
 								// week wise pacing
-								weekOrMonthPacing(targetPacing, pacingMap, perfWeekDataMap, flightObjList, weekStartDate, previousDate, "Clicks", thisWeekClicks, 0);
+								weekOrMonthPacing(targetPacing, pacingMap, perfWeekDataMap, flightObjList, weekStartDate, previousDate, "Clicks", thisWeekClicks, 0, isClient);
 							}
 							weekStartDate = date;
 							int thisDayNumber = DateUtil.getDayOfDate(date, "yyyy-MM-dd");
@@ -1751,7 +1751,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 								monthDateMap.put(previousDate, null);
 								
 								// month wise pacing
-								weekOrMonthPacing(targetPacing, pacingMap, perfMonthDataMap, flightObjList, monthStartDate, previousDate, "Clicks", thisMonthClicks, 0);
+								weekOrMonthPacing(targetPacing, pacingMap, perfMonthDataMap, flightObjList, monthStartDate, previousDate, "Clicks", thisMonthClicks, 0, isClient);
 								
 							}
 							monthStartDate = date;
@@ -1780,7 +1780,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 				}
 				weekDateMap.put(previousDate, null);
 				// week wise pacing
-				weekOrMonthPacing(targetPacing, pacingMap, perfWeekDataMap, flightObjList, weekStartDate, previousDate, "Clicks", thisWeekClicks, 0);
+				weekOrMonthPacing(targetPacing, pacingMap, perfWeekDataMap, flightObjList, weekStartDate, previousDate, "Clicks", thisWeekClicks, 0, isClient);
 				
 				long thisMonthClicks = 0;
 				for(String monthSiteKey : monthPartnerClicksMap.keySet()) {
@@ -1793,7 +1793,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 				}
 				monthDateMap.put(previousDate, null);
 				// month wise pacing
-				weekOrMonthPacing(targetPacing, pacingMap, perfMonthDataMap, flightObjList, monthStartDate, previousDate, "Clicks", thisMonthClicks, 0);
+				weekOrMonthPacing(targetPacing, pacingMap, perfMonthDataMap, flightObjList, monthStartDate, previousDate, "Clicks", thisMonthClicks, 0, isClient);
 				
 				currentPacing = "NA";
 				revisedPacing = "NA";
@@ -1869,14 +1869,14 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 	
 	public void weekOrMonthPacing(String targetPacing, Map<String, Boolean> pacingMap, Map<String, Object> performanceMap,
 							List<SmartCampaignFlightDTO> flightObjList, String durationStartDate, String durationLastDate, 
-							String chartType, long durationClicks, long durationImpressions) {
+							String chartType, long durationClicks, long durationImpressions, boolean isClient) {
 		log.info("pacing -> targetPacing:"+targetPacing+", durationStartDate"+durationStartDate+", durationLastDate"+durationLastDate
 				+"chartType"+chartType+", durationClicks:"+durationClicks+", durationImpressions:"+durationImpressions);
 		String startDate = "";
 		String endDate = "";
 		long totalDuration = 0;
 		long target = 0;
-		if(LinMobileUtil.isNumeric(targetPacing)) {
+		if(LinMobileUtil.isNumeric(targetPacing) && !isClient) {
 			if(!(chartType.equalsIgnoreCase("CTR"))) {
 				startDate = DateUtil.getFormatedDate(durationStartDate, "yyyy-MM-dd", "MM-dd-yyyy");
 				endDate = DateUtil.getFormatedDate(durationLastDate, "yyyy-MM-dd", "MM-dd-yyyy");
@@ -1929,13 +1929,17 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 	}
 	
 	@Override
-	public JSONObject impressionsLineChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo) {
+	public JSONObject impressionsLineChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo,boolean isClient,String userCompany) {
 		JSONObject jsonObject = null;
 		String memcacheKey = "";
 		try {
 			List<SmartCampaignFlightDTO> flightObjList = getFlights(campaignId, placementIds);
 			memcacheKey = orderId+campaignId+placementIds+isNoise+threshold+publisherIdInBQ+placementInfo+partnerInfo+flightObjList.toString();
 			String keyPrefix = "PM_ImpressionsData";
+			
+			if(isClient)
+				keyPrefix += "_Client";
+			
 			memcacheKey =  keyPrefix + StringUtil.hashToMaxLength(memcacheKey, (MemcacheUtil.MEMCACHE_KEY_LENGTH - keyPrefix.length()));
 			String cachedDataJsonString = (String) MemcacheUtil.getObjectFromCache(memcacheKey);
 			if(cachedDataJsonString != null && cachedDataJsonString.length() > 0) {
@@ -1965,7 +1969,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			if(queryDTO != null && queryDTO.getQueryData() != null && queryDTO.getQueryData().length() > 0 && placementJson != null) {
 				IPerformanceMonitoringDAO monitoringDAO = new PerformanceMonitoringDAO();
 				String lineItemIds = placementJson.get("lineItemIds")+"";
-				queryResponse = monitoringDAO.impressionsLineChartData(orderId, lineItemIds, isNoise, threshold, queryDTO);
+				queryResponse = monitoringDAO.impressionsLineChartData(orderId, lineItemIds, isNoise, threshold, queryDTO,isClient,userCompany);
 			}
 			if (queryResponse!=null && queryResponse.getRows() != null && queryResponse.getRows().size() > 0 && placementJson != null && partnerInfoJson != null) {
 				boolean isShowPacing  = false;
@@ -2033,11 +2037,17 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 						int dateValue=Integer.parseInt((cellList.get(0).getV().toString()).replaceAll("-", ""));
 						int monthValue=Integer.parseInt((cellList.get(0).getV().toString()).split("-")[1]);
 						
-						String partnerName=partnerInfoJson.get(cellList.get(1).getV().toString())+"";
+						String partnerName="";
+						
+						if(isClient)
+							partnerName = userCompany;
+						else
+							partnerName = partnerInfoJson.get(cellList.get(1).getV().toString())+"";
+						
 						long impressions=StringUtil.getLongValue(cellList.get(2).getV().toString());
 						totalImpressions = totalImpressions + impressions;
 						
-						if(LinMobileUtil.isNumeric(targetPacing)) {					// Day wise Pacing
+						if(!isClient && LinMobileUtil.isNumeric(targetPacing)) {					// Day wise Pacing
 							pacingMap.put("Target", true);
 							String key=date+"_Target";
 							LineChartDTO lineChartDTO=new LineChartDTO();
@@ -2111,7 +2121,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 								}
 								weekDateMap.put(previousDate, null);
 								// week wise pacing
-								weekOrMonthPacing(targetPacing, pacingMap, perfWeekDataMap, flightObjList, weekStartDate, previousDate, "Impressions", 0, thisWeekImpressions);
+								weekOrMonthPacing(targetPacing, pacingMap, perfWeekDataMap, flightObjList, weekStartDate, previousDate, "Impressions", 0, thisWeekImpressions, isClient);
 							}
 							weekStartDate = date;
 							int thisDayNumber = DateUtil.getDayOfDate(date, "yyyy-MM-dd");
@@ -2142,7 +2152,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 								}
 								monthDateMap.put(previousDate, null);
 								// month wise pacing
-								weekOrMonthPacing(targetPacing, pacingMap, perfMonthDataMap, flightObjList, monthStartDate, previousDate, "Impressions", 0, thisMonthImpressions);
+								weekOrMonthPacing(targetPacing, pacingMap, perfMonthDataMap, flightObjList, monthStartDate, previousDate, "Impressions", 0, thisMonthImpressions, isClient);
 							}
 							monthStartDate = date;
 							thisMonthValue = monthValue;
@@ -2170,7 +2180,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 				}
 				weekDateMap.put(previousDate, null);
 				// week wise pacing
-				weekOrMonthPacing(targetPacing, pacingMap, perfWeekDataMap, flightObjList, weekStartDate, previousDate, "Impressions", 0, thisWeekImpressions);
+				weekOrMonthPacing(targetPacing, pacingMap, perfWeekDataMap, flightObjList, weekStartDate, previousDate, "Impressions", 0, thisWeekImpressions, isClient);
 				
 				long thisMonthImpressions = 0;
 				for(String monthSiteKey : monthPartnerImpressionsMap.keySet()) {
@@ -2183,7 +2193,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 				}
 				monthDateMap.put(previousDate, null);
 				// month wise pacing
-				weekOrMonthPacing(targetPacing, pacingMap, perfMonthDataMap, flightObjList, monthStartDate, previousDate, "Impressions", 0, thisMonthImpressions);
+				weekOrMonthPacing(targetPacing, pacingMap, perfMonthDataMap, flightObjList, monthStartDate, previousDate, "Impressions", 0, thisMonthImpressions, isClient);
 				
 				log.info("Added week, month data");
 				
@@ -2260,10 +2270,14 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 	}
 
 	@Override
-	public JSONObject ctrLineChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo) {
+	public JSONObject ctrLineChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo,boolean isClient, String userCompany) {
 		JSONObject jsonObject = null;
 		String memcacheKey = orderId+campaignId+placementIds+isNoise+threshold+publisherIdInBQ+placementInfo+partnerInfo;
 		String keyPrefix = "PM_CtrData";
+		
+		if(isClient)
+			keyPrefix += "Client";
+		
 		memcacheKey =  keyPrefix + StringUtil.hashToMaxLength(memcacheKey, (MemcacheUtil.MEMCACHE_KEY_LENGTH - keyPrefix.length()));
 		String cachedDataJsonString = (String) MemcacheUtil.getObjectFromCache(memcacheKey);
 		if(cachedDataJsonString != null && cachedDataJsonString.length() > 0) {
@@ -2293,7 +2307,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			if(queryDTO != null && queryDTO.getQueryData() != null && queryDTO.getQueryData().length() > 0 && placementJson != null) {
 				IPerformanceMonitoringDAO monitoringDAO = new PerformanceMonitoringDAO();
 				String lineItemIds = placementJson.get("lineItemIds")+"";
-				queryResponse = monitoringDAO.ctrLineChartData(orderId, lineItemIds, isNoise, threshold, queryDTO);
+				queryResponse = monitoringDAO.ctrLineChartData(orderId, lineItemIds, isNoise, threshold, queryDTO, isClient, userCompany);
 			}
 			if (queryResponse!=null && queryResponse.getRows() != null && queryResponse.getRows().size() > 0 && partnerInfoJson != null) {
 				boolean isShowPacing  = false;
@@ -2335,7 +2349,13 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 						int dateValue=Integer.parseInt((cellList.get(0).getV().toString()).replaceAll("-", ""));
 						int monthValue=Integer.parseInt((cellList.get(0).getV().toString()).split("-")[1]);
 						
-						String partnerName=partnerInfoJson.get(cellList.get(1).getV().toString())+"";
+						String partnerName="";
+						
+						if(isClient)
+							partnerName = userCompany;
+						else
+							partnerName = partnerInfoJson.get(cellList.get(1).getV().toString())+"";
+						
 						long clicks=StringUtil.getLongValue(cellList.get(2).getV().toString());
 						long impressions=StringUtil.getLongValue(cellList.get(3).getV().toString());
 						totalImpressions = totalImpressions + impressions;
@@ -2405,7 +2425,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 								}
 								weekDateMap.put(previousDate, null);
 								// week wise pacing
-								weekOrMonthPacing(targetPacing, pacingMap, perfWeekDataMap, null, weekStartDate, previousDate, "CTR", thisWeekClicks, thisWeekImpressions);
+								weekOrMonthPacing(targetPacing, pacingMap, perfWeekDataMap, null, weekStartDate, previousDate, "CTR", thisWeekClicks, thisWeekImpressions, false);
 							}
 							weekStartDate = date;
 							int thisDayNumber = DateUtil.getDayOfDate(date, "yyyy-MM-dd");
@@ -2445,7 +2465,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 								}
 								monthDateMap.put(previousDate, null);
 								// month wise pacing
-								weekOrMonthPacing(targetPacing, pacingMap, perfMonthDataMap, null, monthStartDate, previousDate, "CTR", thisMonthClicks, thisMonthImpressions);
+								weekOrMonthPacing(targetPacing, pacingMap, perfMonthDataMap, null, monthStartDate, previousDate, "CTR", thisMonthClicks, thisMonthImpressions, false);
 							}
 							monthStartDate = date;
 							thisMonthValue = monthValue;
@@ -2482,7 +2502,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 				}
 				weekDateMap.put(previousDate, null);
 				// week wise pacing
-				weekOrMonthPacing(targetPacing, pacingMap, perfWeekDataMap, null, weekStartDate, previousDate, "CTR", thisWeekClicks, thisWeekImpressions);
+				weekOrMonthPacing(targetPacing, pacingMap, perfWeekDataMap, null, weekStartDate, previousDate, "CTR", thisWeekClicks, thisWeekImpressions, false);
 				
 				long thisMonthClicks = 0;
 				long thisMonthImpressions = 0;
@@ -2499,7 +2519,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 				}
 				monthDateMap.put(previousDate, null);
 				// month wise pacing
-				weekOrMonthPacing(targetPacing, pacingMap, perfMonthDataMap, null, monthStartDate, previousDate, "CTR", thisMonthClicks, thisMonthImpressions);
+				weekOrMonthPacing(targetPacing, pacingMap, perfMonthDataMap, null, monthStartDate, previousDate, "CTR", thisMonthClicks, thisMonthImpressions, false);
 				
 				currentPacing = "NA";
 				if(tempPartnerMap != null && tempPartnerMap.size() > 0) {
@@ -2557,6 +2577,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 	@Override
 	public JSONObject flightLineChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo, String lineItemPlacementIds, String lineItemPlacementName) {
 		int index = 0;
+		boolean isClient = false;
 		JSONArray jsonArray = new JSONArray();
 		JSONObject jsonObject = null;
 		String memcacheKey = "";
@@ -2729,7 +2750,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 									long clicks=StringUtil.getLongValue(flightLineChartDTO.getClicks());
 									totalClicks = totalClicks + clicks;
 									
-									if(LinMobileUtil.isNumeric(targetPacing)) {					// Day wise Pacing
+									if(!isClient && LinMobileUtil.isNumeric(targetPacing)) {					// Day wise Pacing
 										pacingMap.put("Target", true);
 										String key=date+"_Target";
 										LineChartDTO lineChartDTO=new LineChartDTO();
@@ -2802,7 +2823,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 											}
 											weekDateMap.put(previousDate, null);
 											// week wise pacing
-											weekOrMonthPacing(targetPacing, pacingMap, perfWeekDataMap, flightObjList, weekStartDate, previousDate, "Impressions", 0, thisWeekImpressions);
+											weekOrMonthPacing(targetPacing, pacingMap, perfWeekDataMap, flightObjList, weekStartDate, previousDate, "Impressions", 0, thisWeekImpressions, isClient);
 										}
 										weekStartDate = date;
 										int thisDayNumber = DateUtil.getDayOfDate(date, "yyyy-MM-dd");
@@ -2833,7 +2854,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 											}
 											monthDateMap.put(previousDate, null);
 											// month wise pacing
-											weekOrMonthPacing(targetPacing, pacingMap, perfMonthDataMap, flightObjList, monthStartDate, previousDate, "Impressions", 0, thisMonthImpressions);
+											weekOrMonthPacing(targetPacing, pacingMap, perfMonthDataMap, flightObjList, monthStartDate, previousDate, "Impressions", 0, thisMonthImpressions, isClient);
 										}
 										monthStartDate = date;
 										thisMonthValue = monthValue;
@@ -2861,7 +2882,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 							}
 							weekDateMap.put(previousDate, null);
 							// week wise pacing
-							weekOrMonthPacing(targetPacing, pacingMap, perfWeekDataMap, flightObjList, weekStartDate, previousDate, "Impressions", 0, thisWeekImpressions);
+							weekOrMonthPacing(targetPacing, pacingMap, perfWeekDataMap, flightObjList, weekStartDate, previousDate, "Impressions", 0, thisWeekImpressions, isClient);
 
 							long thisMonthImpressions = 0;
 							for(String monthSiteKey : monthPartnerImpressionsMap.keySet()) {
@@ -2874,7 +2895,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 							}
 							monthDateMap.put(previousDate, null);
 							// month wise pacing
-							weekOrMonthPacing(targetPacing, pacingMap, perfMonthDataMap, flightObjList, monthStartDate, previousDate, "Impressions", 0, thisMonthImpressions);
+							weekOrMonthPacing(targetPacing, pacingMap, perfMonthDataMap, flightObjList, monthStartDate, previousDate, "Impressions", 0, thisMonthImpressions, isClient);
 							log.info("Added week, month data");
 							
 							currentPacing = "NA";
@@ -3455,10 +3476,12 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		return geoTargetMap;
 	}
 	
-	public JSONObject richMediaLineChartData(String orderId, String campaignId, String placementIds, String publisherIdInBQ, String placementInfo, String partnerInfo) {
+	public JSONObject richMediaLineChartData(String orderId, String campaignId, String placementIds, String publisherIdInBQ, String placementInfo, String partnerInfo,boolean isClient, String userCompany) {
 		JSONObject jsonObject = null;
 		String memcacheKey = orderId+campaignId+placementIds+publisherIdInBQ+placementInfo+partnerInfo;
 		String keyPrefix = "PM_RMLineChartData";
+		if(isClient) 
+			{keyPrefix += "Client";}
 		memcacheKey =  keyPrefix + StringUtil.hashToMaxLength(memcacheKey, (MemcacheUtil.MEMCACHE_KEY_LENGTH - keyPrefix.length()));
 		String cachedDataJsonString = (String) MemcacheUtil.getObjectFromCache(memcacheKey);
 		if(cachedDataJsonString != null && cachedDataJsonString.length() > 0) {
@@ -3487,12 +3510,12 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			if(queryDTO != null && queryDTO.getQueryData() != null && queryDTO.getQueryData().length() > 0 && placementJson != null) {
 				IPerformanceMonitoringDAO monitoringDAO = new PerformanceMonitoringDAO();
 				String lineItemIds = placementJson.get("lineItemIds")+"";
-				queryResponse = monitoringDAO.richMediaLineChartData(orderId, lineItemIds, queryDTO);
+				queryResponse = monitoringDAO.richMediaLineChartData(orderId, lineItemIds, queryDTO, isClient, userCompany);
 			}
 			if (queryResponse!=null && queryResponse.getRows() != null && queryResponse.getRows().size() > 0 && partnerInfoJson != null) {
 				List<TableRow> rowList = queryResponse.getRows();
 				
-				Map<String, List<LineChartDTO>> eventWiseDataMap = getEventWiseDataMap(rowList, partnerInfoJson);
+				Map<String, List<LineChartDTO>> eventWiseDataMap = getEventWiseDataMap(rowList, partnerInfoJson, isClient, userCompany);
 				log.info("eventWiseDataMap : "+eventWiseDataMap);
 				if(eventWiseDataMap != null && eventWiseDataMap.size() > 0) {
 					log.info("eventWiseDataMap.size() : "+eventWiseDataMap.size());
@@ -3715,15 +3738,20 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 		}
 	}
 	
-	private Map<String, List<LineChartDTO>> getEventWiseDataMap(List<TableRow> rowList, JSONObject partnerInfoJson) throws Exception {
+	private Map<String, List<LineChartDTO>> getEventWiseDataMap(List<TableRow> rowList, JSONObject partnerInfoJson,boolean isClient, String userCompany) throws Exception {
 		Map<String, List<LineChartDTO>> eventWiseDataMap = new TreeMap<>();
 		try {
 			if(rowList != null && rowList.size() > 0 && partnerInfoJson != null) {
+				String partnerName="";
 				for (TableRow row : rowList) {
 					if(row != null && row.getF() != null && row.getF().size() > 0) {
 						List<TableCell> cellList = row.getF();
 						String date = cellList.get(0).getV().toString();
-						String partnerName=partnerInfoJson.get(cellList.get(1).getV().toString())+"";
+						if(isClient) {
+							partnerName = userCompany;
+						}else {
+							partnerName=partnerInfoJson.get(cellList.get(1).getV().toString())+"";
+						}
 						String customEvent = cellList.get(2).getV().toString();
 						long count = StringUtil.getLongValue(cellList.get(3).getV().toString());
 						LineChartDTO lineChartDTO = new LineChartDTO();
@@ -3975,7 +4003,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 	@SuppressWarnings("unchecked")
 	@Override
 	public Map<String,String> creativeBarChartData(String orderId, String campaignId,
-			String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo){
+			String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo,boolean isClient,String userCompany){
 		List<PerformanceMonitoringDTO> monitoringDTOList = new ArrayList<>();
 		LinkedHashMap<String,PerformanceMonitoringDTO> creativeDataMap  = new LinkedHashMap<>();
 		Map<String,String> jsonChartMap = null;
@@ -3993,6 +4021,10 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			List<SmartCampaignPlacementObj> smartCampaignPlacementObjList = getCampaignPlacementObj(campaignId, placementIds);
 			String memcacheKey = orderId+campaignId+placementIds+isNoise+threshold+publisherIdInBQ+placementInfo+partnerInfo+smartCampaignPlacementObjList.toString();
 			String keyPrefix = "PM_CreativeData";
+			
+			if(isClient)
+				keyPrefix += "_Client";
+			
 			memcacheKey =  keyPrefix + StringUtil.hashToMaxLength(memcacheKey, (MemcacheUtil.MEMCACHE_KEY_LENGTH - keyPrefix.length()));
 			jsonChartMap = (Map<String,String>) MemcacheUtil.getObjectFromCache(memcacheKey);
 			if(jsonChartMap != null && jsonChartMap.size() > 0) {
@@ -4041,7 +4073,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			if(queryDTO != null && queryDTO.getQueryData() != null && queryDTO.getQueryData().length() > 0 && placementJson != null) {
 				lineItemId = placementJson.get("lineItemIds")+"";
 				queryData = queryDTO.getQueryData();
-				queryResponse = monitoringDAO.loadCreativeChartData(orderId, lineItemId, isNoise, threshold, queryDTO);
+				queryResponse = monitoringDAO.loadCreativeChartData(orderId, lineItemId, isNoise, threshold, queryDTO,isClient,userCompany);
 			}
 			if (queryResponse!=null && queryResponse.getRows() != null && queryResponse.getRows().size() > 0 && placementJson != null && partnerInfoJson != null) {
 				List<TableRow> rowList = queryResponse.getRows();
@@ -4049,7 +4081,12 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 					if(row != null && row.getF() != null && row.getF().size() > 0) {
 						PerformanceMonitoringDTO monitoringDTO = new PerformanceMonitoringDTO();
 						List<TableCell> cellList = row.getF();
-						String partnerName = partnerInfoJson.get(cellList.get(3).getV().toString())+"";
+						String partnerName = "";
+						if(isClient)
+							partnerName = userCompany;
+						else
+							partnerName =  partnerInfoJson.get(cellList.get(3).getV().toString())+"";
+						
 						if(partnerName!=null && partnerName.length()>0){
 							monitoringDTO.setPublisherName(partnerName);
 						}
@@ -4270,7 +4307,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 	@Override
 	public Map<String,String> deviceBarChartData(String orderId,
 			String campaignId, String placementIds, boolean isNoise,
-			double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo){
+			double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo,boolean isClient, String userCompany){
 		
 		List<PerformanceMonitoringDTO> monitoringDTOList = new ArrayList<>();
 		LinkedHashMap<String,PerformanceMonitoringDTO> deviceDataMap  = new LinkedHashMap<>();
@@ -4288,6 +4325,10 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			List<SmartCampaignPlacementObj> smartCampaignPlacementObjList = getCampaignPlacementObj(campaignId, placementIds);
 			String memcacheKey = orderId+campaignId+placementIds+isNoise+threshold+publisherIdInBQ+placementInfo+partnerInfo+smartCampaignPlacementObjList.toString();
 			String keyPrefix = "PM_DeviceData";
+			
+			if(isClient)
+				keyPrefix += "_Client";
+			
 			memcacheKey =  keyPrefix + StringUtil.hashToMaxLength(memcacheKey, (MemcacheUtil.MEMCACHE_KEY_LENGTH - keyPrefix.length()));
 			jsonChartMap = (Map<String,String>) MemcacheUtil.getObjectFromCache(memcacheKey);
 			if(jsonChartMap != null && jsonChartMap.size() > 0) {
@@ -4339,7 +4380,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			if(queryDTO != null && queryDTO.getQueryData() != null && queryDTO.getQueryData().length() > 0 && placementJson != null) {
 				lineItemId = placementJson.get("lineItemIds")+"";
 				queryData = queryDTO.getQueryData();
-				queryResponse = monitoringDAO.loadDeviceChartData(orderId, lineItemId, isNoise, threshold, queryDTO);
+				queryResponse = monitoringDAO.loadDeviceChartData(orderId, lineItemId, isNoise, threshold, queryDTO,isClient,userCompany);
 			}
 			
 			if (queryResponse!=null && queryResponse.getRows() != null && queryResponse.getRows().size() > 0 && placementJson != null && partnerInfoJson != null) {
@@ -4348,7 +4389,11 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 					if(row != null && row.getF() != null && row.getF().size() > 0) {
 						PerformanceMonitoringDTO monitoringDTO = new PerformanceMonitoringDTO();
 						List<TableCell> cellList = row.getF();
-						String partnerName = partnerInfoJson.get(cellList.get(3).getV().toString())+"";
+						String partnerName = "";
+						if(isClient)
+							partnerName = userCompany;
+						else
+							partnerName = partnerInfoJson.get(cellList.get(3).getV().toString())+"";
 						if(partnerName!=null && partnerName.length()>0){
 							monitoringDTO.setPublisherName(partnerName);
 						}
@@ -4822,7 +4867,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 	 */
 	@Override
 	public Map<String, String> osChartData(String orderId, String campaignId,
-			String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo) {
+			String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo,boolean isClient,String userCompany) {
 		log.info("In method osChartData");
 		List<PerformanceMonitoringDTO> monitoringDTOList = new ArrayList<>();
 		LinkedHashMap<String,PerformanceMonitoringDTO> osDataMap  = new LinkedHashMap<>();
@@ -4839,6 +4884,10 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			List<SmartCampaignPlacementObj> smartCampaignPlacementObjList = getCampaignPlacementObj(campaignId, placementIds);
 			String memcacheKey = orderId+campaignId+placementIds+isNoise+threshold+publisherIdInBQ+placementInfo+partnerInfo+smartCampaignPlacementObjList.toString();
 			String keyPrefix = "PM_OSData";
+			
+			if(isClient)
+				keyPrefix += "_Client";
+			
 			memcacheKey =  keyPrefix + StringUtil.hashToMaxLength(memcacheKey, (MemcacheUtil.MEMCACHE_KEY_LENGTH - keyPrefix.length()));
 			jsonChartMap = (Map<String,String>) MemcacheUtil.getObjectFromCache(memcacheKey);
 			if(jsonChartMap != null && jsonChartMap.size() > 0) {
@@ -4882,7 +4931,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			
 			if(queryDTO != null && queryDTO.getQueryData() != null && queryDTO.getQueryData().length() > 0 && placementJson != null) {
 				lineItemId = placementJson.get("lineItemIds")+"";
-				queryResponse = monitoringDAO.loadOSChartData(orderId, lineItemId, isNoise, threshold, queryDTO);
+				queryResponse = monitoringDAO.loadOSChartData(orderId, lineItemId, isNoise, threshold, queryDTO,isClient,userCompany);
 			}
 			
 			if (queryResponse!=null && queryResponse.getRows() != null && queryResponse.getRows().size() > 0 && placementJson != null && partnerInfoJson != null) {
@@ -4891,7 +4940,13 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 					if(row != null && row.getF() != null && row.getF().size() > 0) {
 						PerformanceMonitoringDTO monitoringDTO = new PerformanceMonitoringDTO();
 						List<TableCell> cellList = row.getF();
-						String partnerName = partnerInfoJson.get(cellList.get(3).getV().toString())+"";
+						String partnerName = "";
+						
+						if(isClient)
+							partnerName = userCompany;
+						else	
+							partnerName = partnerInfoJson.get(cellList.get(3).getV().toString())+"";
+						
 						if(partnerName!=null && partnerName.length()>0){
 							monitoringDTO.setPublisherName(partnerName);
 						}
@@ -5059,12 +5114,15 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			 queryResponse = null;
 			 queryDTO.setQueryData(queryData);
 			 String targetGoal = "";
+			 String targetGoalClick = "";
+			 
 			 if(queryDTO != null && queryDTO.getQueryData() != null && queryDTO.getQueryData().length() > 0) {
 				 queryResponse = monitoringDAO.loadOperatingTotalGoal(orderId, lineItemId,targetOS, queryDTO);
 					List<TableRow> totalRowList = queryResponse.getRows();
 					if(totalRowList.size() > 0){
 						List<TableCell> cellList = totalRowList.get(0).getF();
 						targetGoal = cellList.get(0).getV().toString();
+						targetGoalClick = cellList.get(1).getV().toString();
 					}
 			 }
 			 
@@ -5077,6 +5135,7 @@ public class PerformanceMonitoringService implements IPerformanceMonitoringServi
 			jsonChartMap.put("TargetOS",targetOS);
 			jsonChartMap.put("NonTargetOS",nonTargetOS);
 			jsonChartMap.put("TargetGoal",targetGoal);
+			jsonChartMap.put("TargetGoalClick",targetGoalClick);
 			jsonChartMap.put("NonTargetGoal","");
 			jsonChartMap.put("NonTargetPercentage", "");
 			jsonChartMap.put("TargetPercentage", "");

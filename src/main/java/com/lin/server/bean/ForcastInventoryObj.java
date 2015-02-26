@@ -268,5 +268,9 @@ public class ForcastInventoryObj implements Serializable,Comparable<ForcastInven
 		return super.equals(arg0);
 	}		
 	
-	
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}	
 }

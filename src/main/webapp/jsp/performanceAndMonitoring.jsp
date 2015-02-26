@@ -12,6 +12,10 @@
 
 <script>
 	localStorage.clear();
+	var isClient = false;
+	<s:if test="%{#session.sessionDTO.client}">
+	isClient = true;
+	</s:if>
 </script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -105,14 +109,19 @@
 									<article class="span4">
 										<h3 style="margin-left: 25px; margin-top: 27px;">{{orderInfo.orderName}}</h3>
 									</article>
+									
+									<!-- Added by Anup - Check for Client  -->
 									<article class="span4">
+									
 										<div class="control-group" style="border-bottom: 0px; background: #FFFFFF;margin-top: 11px;">
 											<div class="controls">
 				           						<select id="placementSelect" multiple="true" class="span12 with-search" onchange="placementChanged();">
 				           						</select>
 											</div>
 										</div>
+									
 									</article>
+									
 									<article class="span4">
 										<div class="span11"
 											style="background: #F2F2F2; border-radius: 3px; margin: 7px; padding: 5px 10px; border: 1px solid #EBEBEB;">
@@ -141,26 +150,30 @@
 													onclick="applyFilters()" class="btn medium btn-success">GO</a>
 												</span>
 											</div>
+											
+											<s:if test="%{!#session.sessionDTO.client}">
 											<div style="float: left; margin-top: 15px; margin-left: 4%">
 												<a title="Download Report" class="btn" style="height: 23px;"
 													href="javascript:downLoadAdvertiserReport(orderInfo.orderId,orderInfo.orderName);">
 													<i class="cus-doc-excel-table"></i>
 												</a>
 											</div>
+											</s:if>
+											
 										</div>
 									</article>
 								</div>
 								<!-- filter Div Ends -->
 
 								<!-- header Div Starts -->
-								<div class="row-fluid p_m_header" ng-cloak>
+								<div class="row-fluid p_m_header" ng-cloak ng-show="isObjectAvailable(headerData.startDate)">
 									<div class="p_m_header_cell">
 										<div class="p_m_header_cell_upperText">{{headerData.rate
 											| currency:'$'}}</div>
 										<div class="p_m_header_cell_lowerText">{{headerData.rateLabel}}</div>
 									</div>
 									<div class="p_m_header_cell">
-										<div class="p_m_header_cell_upperText">{{headerData.duration}}</div>
+										<div class="p_m_header_cell_upperText">{{ convertStringToDate(headerData.startDate,'mm-dd-yyyy') | date:'mediumDate'}} - {{convertStringToDate(headerData.endDate,'mm-dd-yyyy') | date:'mediumDate'}}</div>
 										<div class="p_m_header_cell_lowerText">Duration</div>
 									</div>
 									<div class="p_m_header_cell">
@@ -245,6 +258,8 @@
 															style="background-position: 0 -126px;"></div> <span
 														style="font-size: 10px; color: #666666; line-height: 18px;">Location</span>
 												</a></li>
+												
+												<s:if test="%{!#session.sessionDTO.client}">
 												<li><a href="#clickTab" ng-click="getFlightData(true);"
 													data-toggle="tab" data-toggle2="tooltip"
 													data-placement="right" title="Flight Pacing">
@@ -253,6 +268,8 @@
 														style="font-size: 10px; color: #666666; line-height: 18px;">Flight
 															Pacing</span>
 												</a></li>
+												</s:if>
+												
 												<li><a href="#creativeTab"
 													ng-click="getCreativeData(true);" data-toggle="tab"
 													data-toggle2="tooltip" data-placement="right"
@@ -381,44 +398,46 @@
 														</div>
 													</article>
 												</div>
-
-												<div
-													style="position: relative; width: auto; height: auto; display: inline; top: 30px; left: -8px;">
-													<div
-														style="margin-right: 16px; margin-bottom: 16px; position: relative; width: auto; height: auto; display: inline; float: left;">
+												
+												<div id="targetCards">
+													<div style="position: relative; width: auto; height: auto; display: inline; top: 30px; left: -8px;" ng-show="(finalValue.target != 'NA')"  >
 														<div
-															style="background: #43C087; border-radius: 3px 3px 0px 0px; padding: 70px; text-align: center; vertical-align: middle; color: white; font-size: 6.0em;">
-															{{finalValue.target}}</div>
+															style="margin-right: 16px; margin-bottom: 16px; position: relative; width: auto; height: auto; display: inline; float: left;">
+															<div
+																style="background: #43C087; border-radius: 3px 3px 0px 0px; padding: 70px; text-align: center; vertical-align: middle; color: white; font-size: 6.0em;">
+																{{finalValue.target}}</div>
+															<div
+																style="background: #3CAC79; border-radius: 0 0 3px 3px; padding: 15px; text-align: center; vertical-align: middle; color: rgba(225, 225, 225, 0.9); font-size: 1.5em; font-weight: bold;">
+																TARGETED VALUE</div>
+														</div>
 														<div
-															style="background: #3CAC79; border-radius: 0 0 3px 3px; padding: 15px; text-align: center; vertical-align: middle; color: rgba(225, 225, 225, 0.9); font-size: 1.5em; font-weight: bold;">
-															TARGETED VALUE</div>
-													</div>
-													<div
-														style="margin-right: 16px; margin-bottom: 16px; position: relative; width: auto; height: auto; display: inline; float: left;">
-														<div
-															style="background: #F26C28; border-radius: 3px 3px 0px 0px; padding: 70px; text-align: center; vertical-align: middle; color: white; font-size: 6.0em;">
-															{{finalValue.current}}</div>
-														<div
-															style="background: #D96124; border-radius: 0 0 3px 3px; padding: 15px; text-align: center; vertical-align: middle; color: rgba(225, 225, 225, 0.9); font-size: 1.5em; font-weight: bold;">
-															CURRENT VALUE</div>
-													</div>
-													<div id="revisedPacing"
-														style="margin-right: 16px; margin-bottom: 16px; position: relative; width: auto; height: auto; display: inline; float: left; visibility: hidden;">
-														<div
-															style="background: #8F7FD4; border-radius: 3px 3px 0px 0px; padding: 70px; text-align: center; vertical-align: middle; color: white; font-size: 6.0em;">
-															{{finalValue.revised}}</div>
-														<div
-															style="background: #8072BE; border-radius: 0 0 3px 3px; padding: 15px; text-align: center; vertical-align: middle; color: rgba(225, 225, 225, 0.9); font-size: 1.5em; font-weight: bold;">
-															REVISED VALUE</div>
+															style="margin-right: 16px; margin-bottom: 16px; position: relative; width: auto; height: auto; display: inline; float: left;" ng-show="(finalValue.current != 'NA')" >
+															<div
+																style="background: #F26C28; border-radius: 3px 3px 0px 0px; padding: 70px; text-align: center; vertical-align: middle; color: white; font-size: 6.0em;">
+																{{finalValue.current}}</div>
+															<div
+																style="background: #D96124; border-radius: 0 0 3px 3px; padding: 15px; text-align: center; vertical-align: middle; color: rgba(225, 225, 225, 0.9); font-size: 1.5em; font-weight: bold;">
+																CURRENT VALUE</div>
+														</div>
+														<div id="revisedPacing"
+															style="margin-right: 16px; margin-bottom: 16px; position: relative; width: auto; height: auto; display: inline; float: left; visibility: hidden;" ng-show="(finalValue.revised != 'NA')" >
+															<div
+																style="background: #8F7FD4; border-radius: 3px 3px 0px 0px; padding: 70px; text-align: center; vertical-align: middle; color: white; font-size: 6.0em;">
+																{{finalValue.revised}}</div>
+															<div
+																style="background: #8072BE; border-radius: 0 0 3px 3px; padding: 15px; text-align: center; vertical-align: middle; color: rgba(225, 225, 225, 0.9); font-size: 1.5em; font-weight: bold;">
+																REVISED VALUE</div>
+														</div>
 													</div>
 												</div>
+												
 												<!-- Delivery Metrics Starts -->
 												<div class="row-fluid"
 													style="width: auto; height: auto; display: inline; top: 30px; left: -8px;">
 													<article class="span12" style="margin-top: 40px;">
 														<div class="jarviswidget" style="margin-right: 2%;">
 															<header>
-																<h2>DELIVERY METRICS</h2>
+																<h2>DAY TO DAY</h2>
 															</header>
 
 															<div class="inner-spacer">
@@ -497,33 +516,35 @@
 
 												<div
 													style="position: relative; width: auto; height: auto; display: inline; top: 30px; left: -8px;">
-													<div
-														style="margin-right: 16px; margin-bottom: 16px; position: relative; width: auto; height: auto; display: inline; float: left;">
-														<div
-															style="background: #8F7FD4; border-radius: 3px 3px 0px 0px; padding: 41px 80px; text-align: center; vertical-align: middle; color: white;">
-															<br>
-															<div style="font-size: 4em">{{locationCard.withInGeo.impressionPercentage}}</div>
-															<br>
-															<div style="font-size: 2em">{{locationCard.withInGeo.impressions}}</div>
+													
+													<s:if test="%{!#session.sessionDTO.client}">
+														<div style="margin-right: 16px; margin-bottom: 16px; position: relative; width: auto; height: auto; display: inline; float: left;">
+															<div
+																style="background: #8F7FD4; border-radius: 3px 3px 0px 0px; padding: 41px 80px; text-align: center; vertical-align: middle; color: white;">
+																<br>
+																<div style="font-size: 4em">{{locationCard.withInGeo.impressionPercentage}}</div>
+																<br>
+																<div style="font-size: 2em">{{locationCard.withInGeo.impressions}}</div>
+															</div>
+															<div
+																style="background: #8072BE; border-radius: 0 0 3px 3px; padding: 15px; text-align: center; vertical-align: middle; color: rgba(225, 225, 225, 0.9); font-size: 1.5em; font-weight: bold;">
+																WITH IN GEO</div>
 														</div>
-														<div
-															style="background: #8072BE; border-radius: 0 0 3px 3px; padding: 15px; text-align: center; vertical-align: middle; color: rgba(225, 225, 225, 0.9); font-size: 1.5em; font-weight: bold;">
-															WITH IN GEO</div>
-													</div>
-													<div
-														style="margin-right: 16px; margin-bottom: 16px; position: relative; width: auto; height: auto; display: inline; float: left;">
-														<div
-															style="background: #DA534F; border-radius: 3px 3px 0px 0px; padding: 41px 80px; text-align: center; vertical-align: middle; color: white;">
+														<div style="margin-right: 16px; margin-bottom: 16px; position: relative; width: auto; height: auto; display: inline; float: left;">
+															<div
+																style="background: #DA534F; border-radius: 3px 3px 0px 0px; padding: 41px 80px; text-align: center; vertical-align: middle; color: white;">
+																<br>
+																<div style="font-size: 4em">{{locationCard.outsideGeo.impressionPercentage}}</div>
+																<br>
+																<div style="font-size: 2em">{{locationCard.outsideGeo.impressions}}</div>
+															</div>
+															<div
+																style="background: #C44B47; border-radius: 0 0 3px 3px; padding: 15px; text-align: center; vertical-align: middle; color: rgba(225, 225, 225, 0.9); font-size: 1.5em; font-weight: bold;">
+																OUTSIDE GEO</div>
 															<br>
-															<div style="font-size: 4em">{{locationCard.outsideGeo.impressionPercentage}}</div>
-															<br>
-															<div style="font-size: 2em">{{locationCard.outsideGeo.impressions}}</div>
 														</div>
-														<div
-															style="background: #C44B47; border-radius: 0 0 3px 3px; padding: 15px; text-align: center; vertical-align: middle; color: rgba(225, 225, 225, 0.9); font-size: 1.5em; font-weight: bold;">
-															OUTSIDE GEO</div>
-														<br>
-													</div>
+													</s:if>
+													
 													<div
 														style="margin-right: 16px; margin-bottom: 16px; position: relative; width: auto; height: auto; display: inline; float: left;">
 														<div
@@ -665,7 +686,7 @@
 																		</div>
 																		<div>
 																			<span
-																				style="float: right; font-size: 1.7em; font-weight: 300; color: rg b(119, 117, 117);">{{
+																				style="float: right; font-size: 1.7em; font-weight: 300; color: rgb(119, 117, 117);">{{
 																				lagendData.count | number }}</span></br> <span
 																				style="font-size: 1.1em;color: rgb(148, 148, 148);float: right;<%-- padding-right: 4px; --%>">{{
 																				lagendData.event}}</span> </br> <span
@@ -759,146 +780,129 @@
 														</div>
 													</article>
 												</div>
-
-												<div class="row-fluid"
-													style="position: relative; height: auto; top: 26px; left: -3px;">
-													<div
-														style="margin-right: 16px; margin-bottom: 16px; position: relative; width: auto; height: auto; display: inline; float: left;">
+												
+												<s:if test="%{!#session.sessionDTO.client}">
+													<div class="row-fluid"
+														style="position: relative; height: auto; top: 26px; left: -3px;">
 														<div
-															style="background: #43C087; border-radius: 3px 3px 0px 0px; padding: 41px 80px; text-align: center; vertical-align: middle; color: white;">
-															<br>
-															<div style="font-size: 3em;">{{targetValue.targetPercentage}}</div>
-															<br>
-															<div style="font-size: 1.5em;">{{targetValue.targetGoal}}</div>
-															<div style="font-size: 1em">{{targetValue.targetCreative}}</div>
-														</div>
-														<div id="targetedValueDiv"
-															style="background: #3CAC79; border-radius: 0 0 3px 3px; padding: 15px; text-align: center; vertical-align: middle; color: rgba(225, 225, 225, 0.9); font-size: 1.5em; font-weight: bold;">
-															TARGETED DEVICES</div>
-													</div>
-													<div
-														style="margin-right: 16px; margin-bottom: 16px; position: relative; width: auto; height: auto; display: inline; float: left;">
-														<div
-															style="background: #F26C28; border-radius: 3px 3px 0px 0px; padding: 41px 80px; text-align: center; vertical-align: middle; color: white;">
-															<br>
-															<div style="font-size: 3em;">{{targetValue.nonTargetPercentage}}</div>
-															<br>
-															<div style="font-size: 1.5em;">{{targetValue.nonTargetGoal}}</div>
-															<div style="font-size: 1em">{{targetValue.nonTargetCreative}}</div>
-														</div>
-														<div id="nontargetedValueDiv"
-															style="background: #D96124; border-radius: 0 0 3px 3px; padding: 15px; text-align: center; vertical-align: middle; color: rgba(225, 225, 225, 0.9); font-size: 1.5em; font-weight: bold;">
-															NON TARGETED SIZE</div>
-													</div>
-												</div>
-												<div id="donutChartsDiv" class="row-fluid "
-													style="float: left; position: relative; margin-top: 36px;">
-													<article class="span6" id="aaa">
-														<div class="jarviswidget"
-															style="margin-right: -1%; background: #fff;"
-															id="creativelast">
-															<div id="donutChartLoaderId"
-																class="donutGraphloaderArea jarviswidget"
-																style="display: none; text-align: center; border-style: none;">
-																<img src="img/loaders/type4/light/46.gif" alt="loader">
+															style="margin-right: 16px; margin-bottom: 16px; position: relative; width: auto; height: auto; display: inline; float: left;">
+															<div
+																style="background: #43C087; border-radius: 3px 3px 0px 0px; padding: 41px 80px; text-align: center; vertical-align: middle; color: white;">
+																<br>
+																<div style="font-size: 3em;">{{targetValue.targetPercentage}}</div>
+																<br>
+																<div style="font-size: 1.5em;">{{targetValue.targetGoal}}</div>
+																<div style="font-size: 1em">{{targetValue.targetCreative}}</div>
 															</div>
-															<article class="span8" style="margin-left: -26px;">
-
-																<div id="donutChartNoDataId"
-																	class="donutGraphloaderArea jarviswidget"
-																	style="display: none; text-align: center; border-style: none;">
-																	<div
-																		style="text-align: center; margin-top: 100px; border: 0px;">
-																		<h4>No Data</h4>
+															<div id="targetedValueDiv"
+																style="background: #3CAC79; border-radius: 0 0 3px 3px; padding: 15px; text-align: center; vertical-align: middle; color: rgba(225, 225, 225, 0.9); font-size: 1.5em; font-weight: bold;">
+																TARGETED DEVICES</div>
+														</div>
+														<div
+															style="margin-right: 16px; margin-bottom: 16px; position: relative; width: auto; height: auto; display: inline; float: left;">
+															<div
+																style="background: #F26C28; border-radius: 3px 3px 0px 0px; padding: 41px 80px; text-align: center; vertical-align: middle; color: white;">
+																<br>
+																<div style="font-size: 3em;">{{targetValue.nonTargetPercentage}}</div>
+																<br>
+																<div style="font-size: 1.5em;">{{targetValue.nonTargetGoal}}</div>
+																<div style="font-size: 1em">{{targetValue.nonTargetCreative}}</div>
+															</div>
+															<div id="nontargetedValueDiv"
+																style="background: #D96124; border-radius: 0 0 3px 3px; padding: 15px; text-align: center; vertical-align: middle; color: rgba(225, 225, 225, 0.9); font-size: 1.5em; font-weight: bold;">
+																NON TARGETED SIZE</div>
+														</div>
+													</div>
+												</s:if>
+												
+												<!-- Start of OS Donut Chart -->
+												
+												
+												<div id="donutChartsDiv" class="row-fluid"
+													style="float: left; position: relative; margin-top: 20px; width: 102%;">
+													
+													<!-- Impression -->
+													<article class="span6" id="" style="margin-left: 0%; margin-right: 1%;">
+														<div id="donutChartLoaderId" class="donutGraphloaderArea jarviswidget" style="display: none; text-align: center; border-style: none;">
+																<img src="img/loaders/type4/light/46.gif" alt="loader">
+														</div>
+														<div class="jarviswidget" style="margin-right: 2%; background: #fff;">
+															
+															<article class="span8" style="">
+																<div class="inner-spacer" style="border-style: none; overflow: hidden;">
+																	<div id="donutImpressionHeader" style="margin-top: 25px; margin-bottom: -4px; margin-left: 35%; font-family: Arial; font-size: 1.1em; font-weight: bold; color: rgb(148, 148, 148);">
+																	</div>
+																	<div id="donutImpressionChart" style="height: 350px; width: 100%;">
 																	</div>
 																</div>
-																<div class="inner-spacer "
-																	style="border-style: none; overflow: hidden;">
-																	<div id="donutChartDiv" class="donutchartdatadiv "
-																		google-chart chart="donutChart" style=""
-																		on-ready="chartReady()"></div>
-																</div>
 															</article>
-															<article id="donutChartlagendDiv" class="span3"
-																style="background: #FAFAFA; height: 350px; width: 171px; float: right; overflow: auto;">
-																<div data-ng-repeat="impByCre in impByCreative "
-																	style="padding-top: 40px;">
-
-																	<span
-																		style=" padding-top: 24px;   text-align: right;    <%-- float: right; --%>">
-																		<div class="color-box"
-																			ng-style="setLagendColor(impByCre.color)"
-																			style="margin-left: 14px; margin-bottom: -11px;"
-																			id="colorB"></div>
-																		<div style="padding-right: 10px; margin-top: -1px;">
-																			<span
-																				style="padding-left: 14px; font-size: 1.7em; font-weight: 300; color: rg b(119, 117, 117);">{{
-																				impByCre.impressions| number }}</span></br> <span
-																				style="margin-right: -3px; font-size: 1.1em;color: rgb(148, 148, 148);<%-- padding-right: 4px; --%>">Impression</span>
-																			</br> <span
-																				style="margin-right: 1px; font-size: 13px; font-weight: bold; color: rgb(148, 148, 148);">{{
-																				impByCre.creative }}</span>
+															
+															<article id="" class="span3" style="background: #FAFAFA; height: 406px; float: right; width: 170px; overflow: auto; padding-right: 17px;">
+																<div data-ng-repeat="impByCre in impByCreative " style="padding-top: 24px; margin-left: 25px; padding-bottom: 27px;">
+																	<span style="padding-bottom: 21px;">
+																		<div>
+																			<span class="color-box" ng-style="setLagendColor(impByCre.color)" style="margin-right: 18px; margin-bottom: -10px;"></span>
+																		</div>
+																		<div>
+																			<span style="float: right; font-size: 1.7em; font-weight: 300; color: rg b(119, 117, 117);">
+																			{{impByCre.impressions| number}}
+																			</span>
+																			</br> 
+																			<span style="font-size: 13px; font-weight: bold; color: rgb(148, 148, 148); float: right;">
+																			{{impByCre.creative}}
+																			</span>
+																			
 																		</div>
 																	</span>
 																</div>
 															</article>
 														</div>
 													</article>
-
-													<article class="span6" id="creativeleftdiv"
-														style="height: 350px;">
-														<div class="jarviswidget"
-															style="margin-right: 0%; background: #fff; /* padding-left: 39px;"*/ >
-															<div id="donut2ChartLoaderId"
-																class="donutGraphloaderArea jarviswidget"
-																style="display: none; text-align: center; border-style: none;">
+													
+													
+													<!-- Click -->
+													
+													<article class="span6" id="" style="margin-left: 0%; margin-right: 1%;">
+														<div id="donut2ChartLoaderId" class="donutGraphloaderArea jarviswidget" style="display: none; text-align: center; border-style: none;">
 																<img src="img/loaders/type4/light/46.gif" alt="loader">
-															</div>
-															<article class="span8" id="creativemarg"
-																style="margin-left: 2px;">
-
-																<div id="donut2ChartNoDataId"
-																	class="donutGraphloaderArea jarviswidget"
-																	style="display: none; text-align: center; border-style: none;">
-																	<div
-																		style="text-align: center; margin-top: 100px; border: 0px;">
-																		<h4>No Data</h4>
+														</div>
+														<div class="jarviswidget" style="margin-right: 2%; background: #fff;">
+															<article class="span8" style="">
+																<div class="inner-spacer" style="border-style: none; overflow: hidden;">
+																	<div id="donutClickHeader" style="margin-top: 25px; margin-bottom: -4px; margin-left: 35%; font-family: Arial; font-size: 1.1em; font-weight: bold; color: rgb(148, 148, 148);">
+																	</div>
+																	<div id="donutClickChart" style="height: 350px; width: 100%;">
 																	</div>
 																</div>
-																<div class="inner-spacer "
-																	style="border-style: none; overflow: hidden;">
-																	<div id="donut2ChartDiv" class="donut2chartdatadiv "
-																		google-chart chart="donut2Chart" style=""
-																		on-ready="chartReady()"></div>
-																</div>
 															</article>
-															<article id="donut2ChartlagendDiv" class="span3"
-																style="background: #FAFAFA; width: 170px; height: 350px; float: right; overflow: auto;">
-																<div data-ng-repeat="clickByCre in clicksByCreative "
-																	style="padding-top: 40px;">
-																	<span
-																		style="text-align: right; padding-top: 24px;  <%--  float: right; --%>">
-																		<div class="color-box"
-																			ng-style="setLagendColor(clickByCre.color)"
-																			style="margin-left: 14px; margin-bottom: -11px;">
+															
+															<article id="" class="span3" style="background: #FAFAFA; height: 406px; float: right; width: 170px; overflow: auto; padding-right: 17px;">
+																<div data-ng-repeat="clickByCre in clicksByCreative" style="padding-top: 24px; margin-left: 25px; padding-bottom: 27px;">
+																	<span style="padding-bottom: 21px;">
+																		<div>
+																			<span class="color-box" ng-style="setLagendColor(clickByCre.color)" style="margin-right: 18px; margin-bottom: -10px;"></span>
 																		</div>
-																		<div style="padding-right: 13px; margin-top: -1px;">
-																			<span
-																				style="padding-left: 14px; font-size: 1.7em; font-weight: 300; color: rg b(119, 117, 117);">{{
-																				clickByCre.clicks| number }}</span></br> <span
-																				style="margin-right: -3px;font-size: 1.1em;color: rgb(148, 148, 148);<%-- padding-right: 4px; --%>">Clicks</span>
-																			</br> <span
-																				style="margin-right: 1px; font-size: 13px; font-weight: bold; color: rgb(148, 148, 148);">{{
-																				clickByCre.creative }}</span>
+																		<div>
+																			<span style="float: right; font-size: 1.7em; font-weight: 300; color: rg b(119, 117, 117);">
+																			{{clickByCre.clicks| number}}
+																			</span>
+																			</br> 
+																			<span style="font-size: 13px; font-weight: bold; color: rgb(148, 148, 148); float: right;">
+																			{{clickByCre.creative}}
+																			</span>
+																			
 																		</div>
 																	</span>
-
-
 																</div>
 															</article>
 														</div>
 													</article>
+													
+													
+													
 												</div>
+
+												<!-- End of OS Donut Chart -->
 
 												<div style="margin-bottom: 18px; color: white;">.</div>
 

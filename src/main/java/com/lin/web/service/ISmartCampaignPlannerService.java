@@ -30,11 +30,11 @@ public interface ISmartCampaignPlannerService extends IBusinessService {
 
 	UnifiedCampaignDTO getAllCampaignList(UnifiedCampaignDTO campaignDTO)
 			throws Exception;
-	
+
 	public UnifiedCampaignDTO initEditCampaign(UnifiedCampaignDTO campaignDTO,long campaignId, long userId);
 
-/*	boolean deleteCampaign(String campaignId) throws Exception;
-	
+	/*	boolean deleteCampaign(String campaignId) throws Exception;
+
 	boolean unarchiveCampaign(String campaignId) throws Exception;*/
 
 	/*boolean savePlacement(UnifiedCampaignDTO campaignDTO, long campaignId)
@@ -42,38 +42,38 @@ public interface ISmartCampaignPlannerService extends IBusinessService {
 
 	JSONArray loadAllCampaigns(String campaignStatus, long userId,
 			boolean isSuperAdmin, int campaignPerPage, int pageNumber, String searchKeyword) throws Exception;
-	
+
 	UnifiedCampaignDTO initEditPlacement(String campaignId, String placementId, long userId);
 
 	UnifiedCampaignDTO initEditFlight(UnifiedCampaignDTO campaignDTO,
 			long placementId);
-	
+
 	public UnifiedCampaignDTO loadCampaign(String campaignId);
 
 	boolean deletePlacement(String campaignId, String placementId, long userId) throws Exception;
 
 
-	AdvertiserObj addAdvertiser(String name, String address, String phone,
+	AdvertiserObj addAdvertiser(String name, String address, String phone,           //shubham
 			String fax, String email, String zip, long userId);
 
-	AgencyObj addAgency(String name, String address, String phone,
+	AgencyObj addAgency(String name, String address, String phone,                      //shubham
 			String fax, String email, String zip, long userId);
 
 
 	public boolean updateSmartCampaignAndPlacementsAfterAdServerSetup(SmartMediaPlanObj smartMediaPlan);
 	public boolean updateSmartCampaignStatus(CampaignStatusEnum campaignStatus,String campaignId);
 	public SmartCampaignObj loadSmartCampaign(String campaignId);
-	
+
 	public boolean updateSmartCampaignFlags(CampaignStatusEnum campaignStatus,String campaignId,
 			Boolean hasMediaPlan,Boolean isProcessing,Boolean isSetupOnDFP, Integer planTypeFlag);
-	
+
 	public void migrateCampaignFromBigQueryToDatastore(Map<String,MigrateCampaignDTO> campaignMap, String dfpNetworkName);
 	public SmartCampaignPlacementObj createSmartPlacementFromMigratePlacement(SmartCampaignObj smartCampaign,
 			MigratePlacementDTO migratedPlacement,long placemetMaxId);
 	public List<DropdownDataObj> loadRateTypeDropDown(String campaignTypeValue);
 	public AdvertiserObj saveOrUpdateAdvertiser(AdvertiserObj advertiser);
 	public AgencyObj saveOrUpdateAgency(AgencyObj agency);
-	
+
 
 	public JSONObject migrateCampaign(String dfpNetworkCode, String dfpNetworkName, String publisherIdInBQ, String companyId, String companyName);
 	public String getPublisherName(String publisherId);
@@ -109,7 +109,7 @@ public interface ISmartCampaignPlannerService extends IBusinessService {
 	public JSONObject searchPlacementsJSON(List<SmartCampaignObj> smartCampaignObjs, String companyId, boolean superAdmin, String searchText, long userId) throws Exception;
 
 	public List<SmartCampaignObj> loadAllCampaignsByIds(String commaSeperatedCampaignIds) throws Exception;
-	
+
 	List<SmartCampaignPlacementObj> loadAllPlacementsByIds(String commaSeperatedPlacementIds) throws Exception;
 
 	JSONObject selectedPlacementsJSON(List<SmartCampaignObj> smartCampaignObjs) throws Exception;
@@ -118,9 +118,10 @@ public interface ISmartCampaignPlannerService extends IBusinessService {
 			String reportType, String startDate, String endDate, String company, boolean superAdmin, String publisherBQId, long userId) throws Exception;
 
 	CompanyObj getCompanyObjForLinMobile(String dfpNetworkCode);
-	
+
 	public AccountsEntity addAccount(String name, String address,String accountType,
 			String phone, String fax, String email, String zip, long userId,String dfpNetworkCode,CompanyObj userCompany);
+	
 
 
 	boolean loadHistoricalDataForDataStoreCampaigns(String dfpNetworkCode,
@@ -131,7 +132,7 @@ public interface ISmartCampaignPlannerService extends IBusinessService {
 	public JSONObject billingReport(String campaignIds, String partners, String startDate, String endDate, String company, boolean isSuperAdmin, String publisherBQId, long userId);
 
 	Map<String, List<SmartCampaignObj>> getCampaignByCompanyId(List<SmartCampaignObj> campaignObjList);
-	
+
 	/*
 	 * Added by Anup to add Census Category
 	 * */
@@ -145,4 +146,5 @@ public interface ISmartCampaignPlannerService extends IBusinessService {
 
 	public boolean createCopyOfPlacement(String campaignId, long idOfPlacementToCopy, String placementName) throws Exception;
 	
+
 }

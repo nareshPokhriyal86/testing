@@ -1401,8 +1401,8 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 							}else {
 								log.info("Inactive company, id : "+companyObjList.get(0).getId());
 							}
-							campaignList = tempList;			// remove this line when account check code below is uncommented.
-						/*if(tempList != null && tempList.size() > 0) {
+							//campaignList = tempList;			// remove this line when account check code below is uncommented.
+						if(tempList != null && tempList.size() > 0) {
 							// check if campaign is authorised by account to user
 							log.info("Campaigns count before account check : "+tempList.size());
 							IUserService userService = (IUserService) BusinessServiceLocator.locate(IUserService.class);
@@ -1413,8 +1413,14 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 									if(campaignStatus.equals("1") && !smartCampaignObj.getCampaignStatus().equals(CampaignStatusEnum.Paused.ordinal()+"")){
 										String advertiserId = smartCampaignObj.getAdvertiserId();
 										String agencyId = smartCampaignObj.getAgencyId();
-										if((advertiserId != null && UserService.isAuthorisedAccountId(advertiserId, accountDataMap)) || 
+										if( accountDataMap.containsKey("allAccounts") && accountDataMap.get("allAccounts")!=null && accountDataMap.get("allAccounts").equalsIgnoreCase("true")){
+											// ALL ACCOUNTS
+											log.info("All Accounts");
+											campaignList.add(smartCampaignObj);
+										}else if((advertiserId != null && UserService.isAuthorisedAccountId(advertiserId, accountDataMap)) || 
 												(agencyId != null && UserService.isAuthorisedAccountId(agencyId, accountDataMap))) {
+											campaignList.add(smartCampaignObj);
+										}else if((advertiserId == null ||advertiserId.trim().isEmpty() || advertiserId.trim().equals("0")) && userId == smartCampaignObj.getUserId()) {
 											campaignList.add(smartCampaignObj);
 										}else {
 											//log.info("Campaign Account is not authorised, campaignId : "+smartCampaignObj.getCampaignId()+
@@ -1423,8 +1429,14 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 									}else if(!campaignStatus.equals("1")){
 										String advertiserId = smartCampaignObj.getAdvertiserId();
 										String agencyId = smartCampaignObj.getAgencyId();
-										if((advertiserId != null && UserService.isAuthorisedAccountId(advertiserId, accountDataMap)) || 
+										if( accountDataMap.containsKey("allAccounts") && accountDataMap.get("allAccounts")!=null && accountDataMap.get("allAccounts").equalsIgnoreCase("true")){
+											// ALL ACCOUNTS
+											log.info("All Accounts");
+											campaignList.add(smartCampaignObj);
+										}else if((advertiserId != null && UserService.isAuthorisedAccountId(advertiserId, accountDataMap)) || 
 												(agencyId != null && UserService.isAuthorisedAccountId(agencyId, accountDataMap))) {
+											campaignList.add(smartCampaignObj);
+										}else if((advertiserId == null ||advertiserId.trim().isEmpty() || advertiserId.trim().equals("0")) && userId == smartCampaignObj.getUserId()) {
 											campaignList.add(smartCampaignObj);
 										}else {
 											//log.info("Campaign Account is not authorised, campaignId : "+smartCampaignObj.getCampaignId()+
@@ -1438,7 +1450,7 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 							}
 						}else {
 							log.info("No campaign for user's company in datastore, id : "+companyObjList.get(0).getId());
-						}*/
+						}
 					}
 				}
 
@@ -5810,53 +5822,58 @@ public class SmartCampaignPlannerService implements ISmartCampaignPlannerService
 									if(campaignObjList!=null && campaignObjList.size()>0){
 										log.info("campaignObjList size : "+campaignObjList.size());
 										for (SmartCampaignObj smartCampaignObj : campaignObjList) {
-											if(smartCampaignObj!=null ){
-												SmartCampaignObj campaignObj = campaignPlannerDAO.getCampaignByCampaignId(smartCampaignObj.getDfpOrderId());
-												if(campaignObj==null && smartCampaignObj.getAdServerId()!=null){
-													newCampaign = true;
-												}else{
-													newCampaign = false;
-												}
-												if(smartCampaignObj.getAdServerId()!=null && smartCampaignObj.getAdvertiserId()!=null){
-													AdvertiserObj advertiserObj = new AdvertiserObj();
-													AccountsEntity accountsEntity = new AccountsEntity();
-													advertiserObj = getAdvertiserObj(smartCampaignObj.getAdServerId(), StringUtil.getLongValue(smartCampaignObj.getAdvertiserId()));
-													if(advertiserObj!=null){
-														advertiserObj = saveOrUpdateAdvertiser(advertiserObj);
+											try{
+												if(smartCampaignObj!=null ){
+													/*	SmartCampaignObj campaignObj = campaignPlannerDAO.getCampaignByCampaignId(smartCampaignObj.getDfpOrderId());
+														if(campaignObj==null && smartCampaignObj.getAdServerId()!=null){
+															newCampaign = true;
+														}else{
+															newCampaign = false;   //  stop historical data load for new campaigns
+														}*/
+														if(smartCampaignObj.getAdServerId()!=null && smartCampaignObj.getAdvertiserId()!=null && !smartCampaignObj.getAdvertiserId().equals("")){
+															AdvertiserObj advertiserObj = new AdvertiserObj();
+															AccountsEntity accountsEntity = new AccountsEntity();
+															advertiserObj = getAdvertiserObj(smartCampaignObj.getAdServerId(), StringUtil.getLongValue(smartCampaignObj.getAdvertiserId()));
+															if(advertiserObj!=null ){
+																advertiserObj = saveOrUpdateAdvertiser(advertiserObj);
+															}
+															log.info("going to Save Account");
+															accountsEntity = saveOrUpdateAccountEntity(advertiserObj.getId()+"", advertiserObj.getName(), 
+																	advertiserObj.getDfpNetworkCode(), smartCampaignObj.getAdServerUsername(), smartCampaignObj.getCompanyId(), "Advertiser");
+															log.info("Account updated : "+accountsEntity.getAccountDfpId());
+														}
+														if(smartCampaignObj.getAdServerId()!=null && smartCampaignObj.getAgencyId()!=null && !smartCampaignObj.getAgencyId().equals("")){
+															AgencyObj agencyObj = new AgencyObj();
+															AccountsEntity accountsEntity = new AccountsEntity();
+															agencyObj = getAgencyObj(smartCampaignObj.getAdServerId(), StringUtil.getLongValue(smartCampaignObj.getAgencyId()));
+															if(agencyObj!=null){
+																agencyObj = saveOrUpdateAgency(agencyObj);
+															}
+															log.info("going to Save Account");
+															accountsEntity = saveOrUpdateAccountEntity(agencyObj.getId()+"", agencyObj.getName(), 
+																	agencyObj.getDfpNetworkCode(), smartCampaignObj.getAdServerUsername(), smartCampaignObj.getCompanyId(), "Agency");
+															log.info("Account updated : "+accountsEntity.getAccountDfpId());
+														}
+														LineItemPage lineItemPage = new LineItemPage();
+														lineItemPage = getAllLineItemForOrderFromDFP(dfpServices, dfpSession, smartCampaignObj.getDfpOrderId());
+														Key<SmartCampaignObj> campaignKey = Key.create(SmartCampaignObj.class, smartCampaignObj.getCampaignId());
+														lineItemMap = getLineItemMap(smartCampaignObj.getCampaignId());
+														placementObjList = createPlacementObjsForOrder(lineItemPage, campaignKey, companyObj.getCompanyName() ,lineItemMap);
+														campaignPlannerDAO.saveObjectWithStrongConsistancy(smartCampaignObj);
+														if(placementObjList!=null && placementObjList.size()>0){
+															for (SmartCampaignPlacementObj smartCampaignPlacementObj : placementObjList) {
+																campaignPlannerDAO.saveObjectWithStrongConsistancy(smartCampaignPlacementObj);
+															}
+														}
+														/*if(newCampaign && smartCampaignObj.getDfpOrderId() >0
+																&&  smartCampaignObj.getAdServerId()!=null){
+															TaskQueueUtil.loadHistoricalData(loadHistoricalDataURL, smartCampaignObj.getDfpOrderId()+"", smartCampaignObj.getAdServerId()); // Load Historical data for a particular order ID.
+														}*/  //  stop historical data load for new campaigns
 													}
-													log.info("going to Save Account");
-													accountsEntity = saveOrUpdateAccountEntity(advertiserObj.getId()+"", advertiserObj.getName(), 
-															advertiserObj.getDfpNetworkCode(), smartCampaignObj.getAdServerUsername(), smartCampaignObj.getCompanyId(), "Advertiser");
-													log.info("Account updated : "+accountsEntity.getAccountDfpId());
-												}
-												if(smartCampaignObj.getAdServerId()!=null && smartCampaignObj.getAgencyId()!=null){
-													AgencyObj agencyObj = new AgencyObj();
-													AccountsEntity accountsEntity = new AccountsEntity();
-													agencyObj = getAgencyObj(smartCampaignObj.getAdServerId(), StringUtil.getLongValue(smartCampaignObj.getAgencyId()));
-													if(agencyObj!=null){
-														agencyObj = saveOrUpdateAgency(agencyObj);
-													}
-													log.info("going to Save Account");
-													accountsEntity = saveOrUpdateAccountEntity(agencyObj.getId()+"", agencyObj.getName(), 
-															agencyObj.getDfpNetworkCode(), smartCampaignObj.getAdServerUsername(), smartCampaignObj.getCompanyId(), "Agency");
-													log.info("Account updated : "+accountsEntity.getAccountDfpId());
-												}
-												LineItemPage lineItemPage = new LineItemPage();
-												lineItemPage = getAllLineItemForOrderFromDFP(dfpServices, dfpSession, smartCampaignObj.getDfpOrderId());
-												Key<SmartCampaignObj> campaignKey = Key.create(SmartCampaignObj.class, smartCampaignObj.getCampaignId());
-												lineItemMap = getLineItemMap(smartCampaignObj.getCampaignId());
-												placementObjList = createPlacementObjsForOrder(lineItemPage, campaignKey, companyObj.getCompanyName() ,lineItemMap);
-												campaignPlannerDAO.saveObjectWithStrongConsistancy(smartCampaignObj);
-												if(placementObjList!=null && placementObjList.size()>0){
-													for (SmartCampaignPlacementObj smartCampaignPlacementObj : placementObjList) {
-														campaignPlannerDAO.saveObjectWithStrongConsistancy(smartCampaignPlacementObj);
-													}
-												}
-												if(newCampaign && smartCampaignObj.getDfpOrderId() >0
-														&&  smartCampaignObj.getAdServerId()!=null){
-													TaskQueueUtil.loadHistoricalData(loadHistoricalDataURL, smartCampaignObj.getDfpOrderId()+"", smartCampaignObj.getAdServerId()); // Load Historical data for a particular order ID.
-												}
-											}	
+											}catch(Exception e){
+												log.severe(e.getMessage());
+											}
+										
 										}
 									}
 								}

@@ -6,6 +6,7 @@ import java.util.Map;
 
 import com.google.api.services.bigquery.model.QueryResponse;
 import com.lin.server.Exception.DataServiceException;
+import com.lin.server.bean.AccountsEntity;
 import com.lin.server.bean.AdFormatObj;
 import com.lin.server.bean.AdSizeObj;
 import com.lin.server.bean.AdvertiserObj;
@@ -70,7 +71,8 @@ public interface IMediaPlanDAO extends IBaseDao{
 	
 	public AdvertiserObj loadAdvertiser(long advertiserId,String dfpNetworkCode) throws DataServiceException;
 	public AdvertiserObj loadAdvertiser(Long id) throws DataServiceException;
-	public AdvertiserObj loadAdvertiser(String name) throws DataServiceException;
+	public AdvertiserObj loadAdvertiser(String name) throws DataServiceException;   
+	public AccountsEntity loadAccount(String accountId) throws DataServiceException;
 	public AdvertiserObj loadAdvertiser(String name,String dfpNetworkCode) throws DataServiceException;
 	public SmartMediaPlanObj loadMediaPlan(String campaignId,int active) throws DataServiceException;
 }

@@ -1017,6 +1017,10 @@ public class RolesAndAuthorisation implements Serializable, Comparable<RolesAndA
 		// TODO Auto-generated method stub
 		return super.equals(arg0);
 	}		
-	
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}	
 		
 }

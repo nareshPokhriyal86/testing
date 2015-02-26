@@ -22,7 +22,7 @@ var selected = 1;
 campaignPerformanceSetupApp.controller('campaignPerformanceSetupController', function($scope, $filter, campaignPerformanceSetupFactory) {
 	
 	if($scope.predicate == undefined) {
-		$scope.predicate = 'sDate';
+		$scope.predicate = ['sDate','-eDate'];
 	}
 	if($scope.reverse == undefined) {
 		$scope.reverse = true;
@@ -32,9 +32,14 @@ campaignPerformanceSetupApp.controller('campaignPerformanceSetupController', fun
 		$scope.campaigns = [];
 	}
 	
+	$scope.resetFilter = function(){
+		$scope.predicate = ['sDate','-eDate'];
+		$scope.reverse = true;
+	};
+	
 	$scope.loadCampaignData = function(selected) {
 		try {
-			$scope.campaignStatus = 1;
+			$scope.campaignStatus = 2;
 			if(selected!=undefined && selected!=null){
 				$scope.campaignStatus = selected;
 			}
@@ -69,14 +74,32 @@ campaignPerformanceSetupApp.controller('campaignPerformanceSetupController', fun
 	
 	$scope.showPerforemanceMonitoring = function(campaignId) {
 		 location.href="/performanceAndMonitoring.lin?orderId="+campaignId;
-	 }
+	 };
 	
 	$scope.getCampaignDetails = function(campaignId) {
 		$('#campaignId').val(campaignId);
 		document.unifiedCampaignSetupForm.submit();
 	};
 	
+	$scope.convertStringToDate = function(dateTxt,format){
+		if(dateTxt == "")
+			dateTxt = "01-01-1990";
+		
+		var d = $scope.parseDate(dateTxt,format);
+    	console.log("Time : ");
+    	console.log(d);
+		return d.getTime();
+	};
 	
+	
+	$scope.parseDate = function(input, format) {
+		  format = format || 'yyyy-mm-dd'; // default format
+		  var parts = input.match(/(\d+)/g), 
+		      i = 0, fmt = {};
+		  // extract date-part indexes from the format
+		  format.replace(/(yyyy|dd|mm)/g, function(part) { fmt[part] = i++; });
+		  return new Date(parts[fmt['yyyy']], parts[fmt['mm']]-1, parts[fmt['dd']]);
+	};
 	
 	/*$scope.$watch("searchCampaign",function(query){
 		$scope.filterCampaigns = $filter("filter")($scope.campaigns , query);
@@ -100,7 +123,7 @@ campaignPerformanceSetupApp.controller('campaignPerformanceSetupController', fun
               {id:'3', name:'Paused'},
               {id:'5', name:'Completed'},
 	];
-    $scope.selectedStatus = $scope.status[0]; // Active
+    $scope.selectedStatus = $scope.status[1]; // Running
 	
 	$scope.campaignPerformanceFilter = function(){
 		selected =   $scope.selectedStatus;
@@ -108,6 +131,9 @@ campaignPerformanceSetupApp.controller('campaignPerformanceSetupController', fun
 		campaignIds = [];
 		$scope.campaigns = [];
 		$scope.loadCampaignData(selected.id);
+		
+		$scope.predicate = ['sDate','-eDate'];
+		$scope.reverse = true;
 	};
 	
 	$scope.setGoalWidth = function(campaign){
@@ -132,6 +158,10 @@ campaignPerformanceSetupApp.controller('campaignPerformanceSetupController', fun
 		var dateWidth = dateValue-goalValue;
 		var lastValue = 100-(goalValue+dateWidth);
 		 return { width: lastValue+"%"};
+	};
+	
+	$scope.isFilterResetRequired = function(){
+		return !angular.isArray($scope.predicate);
 	};
 	
 });

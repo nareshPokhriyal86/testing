@@ -417,7 +417,7 @@ public class DFPTableSchemaUtil {
 		{"Average_View_Rate","FLOAT"},
 	};
 	
-	public static String[][] customEventProcSchemaFields = new String[][]{
+	public static final String[][] customEventProcSchemaFields = new String[][]{
 		{"Load_Timestamp","TIMESTAMP"},
 		{"Channel_Id","STRING"},
 		{"Channel_Name","STRING"},

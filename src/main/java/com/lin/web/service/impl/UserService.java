@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -17,6 +18,7 @@ import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.io.IOUtils;
+import org.openxmlformats.schemas.spreadsheetml.x2006.main.impl.STXstringImpl;
 
 import com.lin.persistance.dao.IUserDetailsDAO;
 import com.lin.persistance.dao.impl.UserDetailsDAO;
@@ -60,6 +62,9 @@ public class UserService implements IUserService{
 	@Override
 	public Boolean loginAuthentication(LoginDetailsDTO login) throws Exception {
 		log.info("inside loginAuthentication of UserService");
+		login.setSuperAdmin(false);
+		login.setAdminUser(false);
+		login.setClient(false);
 		Boolean isAuthenticate = false;
 		String emailId=login.getEmailId();
 		String password=login.getPassword();
@@ -75,13 +80,10 @@ public class UserService implements IUserService{
 					login.setRoleName(rolesAndAuthorisation.getRoleName().trim());
 					if(rolesAndAuthorisation.getRoleName().trim().equalsIgnoreCase(LinMobileConstants.ADMINS[0])) {
 						login.setSuperAdmin(true);
-					}else {
-						login.setSuperAdmin(false);
-					}
-					if(rolesAndAuthorisation.getRoleName().trim().equalsIgnoreCase(LinMobileConstants.ADMINS[1])) {
+					}else if(rolesAndAuthorisation.getRoleName().trim().equalsIgnoreCase(LinMobileConstants.ADMINS[1])) {
 						login.setAdminUser(true);
-					}else { 
-						login.setAdminUser(false);
+					}else if(rolesAndAuthorisation.getRoleName().trim().equalsIgnoreCase(LinMobileConstants.USERS_ARRAY[2])) {
+						login.setClient(true);
 					}
 				}else {
 					return false;
@@ -110,6 +112,7 @@ public class UserService implements IUserService{
 					if(companyObj.getCompanyLogoURL() != null && companyObj.getCompanyLogoURL().length() > 0) {
 						login.setCompanyLogoURL(companyObj.getCompanyLogoURL());
 					}
+					login.setCompanyName(companyObj.getCompanyName());
 				}
 			}
 		}else if(userDetails!=null && userDetails.getEmailId()!=null && userDetails.getStatus() != null && userDetails.getStatus().equalsIgnoreCase(LinMobileConstants.STATUS_ARRAY[1])){ 
@@ -129,6 +132,9 @@ public class UserService implements IUserService{
 		log.info("inside googleLoginAuthentication of UserService");
 		Boolean isAuthenticate = false;
 		IUserDetailsDAO userDAO = new UserDetailsDAO();
+		login.setSuperAdmin(false);
+		login.setAdminUser(false);
+		login.setClient(false);
 		UserDetailsObj userDetails = userDAO.getUserByEmailId(emailId);
 		if(userDetails!=null && userDetails.getEmailId()!=null && userDetails.getStatus().equalsIgnoreCase(LinMobileConstants.STATUS_ARRAY[0])){ 
 			if(userDetails.getRole()!=null){
@@ -139,13 +145,10 @@ public class UserService implements IUserService{
 					login.setRoleName(rolesAndAuthorisation.getRoleName().trim());
 					if(rolesAndAuthorisation.getRoleName().trim().equalsIgnoreCase(LinMobileConstants.ADMINS[0])) {
 						login.setSuperAdmin(true);
-					}else {
-						login.setSuperAdmin(false);
-					}
-					if(rolesAndAuthorisation.getRoleName().trim().equalsIgnoreCase(LinMobileConstants.ADMINS[1])) {
+					}else if(rolesAndAuthorisation.getRoleName().trim().equalsIgnoreCase(LinMobileConstants.ADMINS[1])) {
 						login.setAdminUser(true);
-					}else { 
-						login.setAdminUser(false);
+					}else if(rolesAndAuthorisation.getRoleName().trim().equalsIgnoreCase(LinMobileConstants.USERS_ARRAY[2])) {
+						login.setClient(true);
 					}
 				}else {
 					return false;
@@ -174,6 +177,7 @@ public class UserService implements IUserService{
 					if(companyObj.getCompanyLogoURL() != null && companyObj.getCompanyLogoURL().length() > 0) {
 						login.setCompanyLogoURL(companyObj.getCompanyLogoURL());
 					}
+					login.setCompanyName(companyObj.getCompanyName());
 				}
 			}
 		}
@@ -4384,10 +4388,12 @@ public class UserService implements IUserService{
 				// NO RESTRICTIONS
 				 CompanyObj companyForSuperUser = dao.getCompanyById(Long.valueOf("1"), allCompanyObjList);
 				 selectedAccountsMap.putAll(loadAdvertiserAndAgencyInBQ(getPublisherBQId(companyForSuperUser), "", "", getAdvertiser, getAgency));
+				 selectedAccountsMap.put("allAccounts", "true");
 			 }
 			 else if(roleName != null && roleName.trim().equals(LinMobileConstants.ADMINS[1])) {
 				// NO RESTRICTIONS
 				 selectedAccountsMap.putAll(loadAdvertiserAndAgencyInBQ(getPublisherBQId(getCompanyIdByAdminUserId(userId)), "", "", getAdvertiser, getAgency));
+				 selectedAccountsMap.put("allAccounts", "true");
 			 }
 			 else if(roleName != null && !roleName.trim().equals("") && userDetailsObj.getTeams() != null && userDetailsObj.getTeams().size() > 0) {
 				 List<TeamPropertiesObj> teamPropertiesObjList = MemcacheUtil.getAllTeamPropertiesObjList();
@@ -4404,21 +4410,22 @@ public class UserService implements IUserService{
 								 if(teamPropertiesObj.getAdvertiserId() != null && teamPropertiesObj.getAdvertiserId().contains(LinMobileConstants.NO_RESTRICTIONS) && teamPropertiesObj.getAgencyId() != null && teamPropertiesObj.getAgencyId().contains(LinMobileConstants.NO_RESTRICTIONS)) {
 									 selectedAccountsMap.clear();
 									 selectedAccountsMap.putAll(loadAdvertiserAndAgencyInBQ(getPublisherBQId(companyObj), "", "", getAdvertiser, getAgency));
+									 selectedAccountsMap.put("allAccounts", "true");
 									 break;
 								 }
 								 else if(teamPropertiesObj.getAdvertiserId() != null && teamPropertiesObj.getAdvertiserId().contains(LinMobileConstants.ALL_ADVERTISERS) && teamPropertiesObj.getAgencyId() != null && teamPropertiesObj.getAgencyId().contains(LinMobileConstants.ALL_AGENCIES)) {
 									 // ALL ADVERTISERS and AGENCIES
 									 selectedAccountsMap.clear();
 									 selectedAccountsMap.putAll(getActiveAccountsForDropDown(companyObj.getId()+"", getAdvertiser, getAgency));
+									 selectedAccountsMap.put("allAccounts", "true");					// Added by Agrim Grover
 									 break;
 								 }
 								 else {
 									 // SELECTED ADVERTISERS and AGENCIES
+									 
 									 if(getAdvertiser && teamPropertiesObj.getAdvertiserId() != null) {
 										 for(String advertiserId : teamPropertiesObj.getAdvertiserId()) {
-											 /*if(advertiserId != null && (advertiserId.split("__")).length == 3) {*/
 											 if(advertiserId != null && (advertiserId.split("__")).length == 4) {
-											 //
 												 AccountsEntity accountsObj = null;
 												 List<AccountsEntity> accountsObjList = null;
 												 String[] advertiser = advertiserId.split("__");
@@ -4459,7 +4466,27 @@ public class UserService implements IUserService{
 												 }
 											 }
 										 }
+									 }/////////////////////////////////////////////////////////////////////////////////////////
+									 /*List<String> accountIdList = new ArrayList<>();
+									 if(getAdvertiser && teamPropertiesObj.getAdvertiserId()!= null) {
+										 accountIdList.addAll(teamPropertiesObj.getAdvertiserId());
 									 }
+									 if(getAgency && teamPropertiesObj.getAgencyId() != null) {
+										 accountIdList.addAll(teamPropertiesObj.getAgencyId());
+									 }
+									 Map<String, AccountsEntity> accountsMap = dao.loadAllAccountsByIds(accountIdList.toArray(new String[accountIdList.size()]));
+									 if(accountsObjMap != null && accountsObjMap.size() > 0) {
+										 log.info("Accounts found in DS : "+accountsObjMap.size());
+										 for(String accountId : accountsObjMap.keySet()) {
+											 AccountsEntity accountsObj = accountsMap.get(accountId);
+											 if(accountsObj != null && accountsObj.getStatus().equals(LinMobileConstants.STATUS_ARRAY[0]) && accountsObj.getAccountType().equals(LinMobileConstants.AGENCY_ID_PREFIX)) {
+												 selectedAccountsMap.put("_"+accountsObj.getAccountDfpId(), accountsObj.getAccountName());
+											 }
+										 }
+									 }else {
+										 log.warning("No accounts found in Datastore, accountIdList : "+accountIdList);
+									 }*/
+									 ////////////////////////////////////////////////////////////////////////////////////////////
 								 }
 							 }
 						 }

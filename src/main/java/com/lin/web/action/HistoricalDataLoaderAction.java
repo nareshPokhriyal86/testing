@@ -101,101 +101,9 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 	 * @return
 	 * @throws Exception 
 	 */
-	public String loadHistoricalData() throws Exception {/*
-		int taskCount = 0;
-		try{
-		ISmartCampaignPlannerService campaignPlannerService = (ISmartCampaignPlannerService) BusinessServiceLocator
-				.locate(ISmartCampaignPlannerService.class);
-
-		String dfpNetworkCode = request.getParameter("dfpNetworkCode");
-		String orderId = request.getParameter("orderId");
-		
-		String publisherIdInBQ=request.getParameter("publisherIdInBQ");
-		String companyId=request.getParameter("companyId");
-		
-		
-		if (dfpNetworkCode == null || dfpNetworkCode.trim().length() == 0) {
-			log.severe("Invalid dfp network code received");
-			return Action.ERROR;
-		}
-
-		if (orderId == null || orderId.trim().length() == 0) {
-			log.severe("Invalid campaignId received");
-			return Action.ERROR;
-		}
-		
-        
-        
-		SmartCampaignObj smartCampaign = campaignPlannerService.loadSmartCampaignByOrderId(orderId, dfpNetworkCode);
-		String loadType  = request.getParameter("loadType");
-		if (smartCampaign != null) {
-			
-			companyId=smartCampaign.getCompanyId();
-			
-			if(companyId !=null && publisherIdInBQ==null){
-	        	IUserService service = (IUserService) BusinessServiceLocator.locate(IUserService.class);
-	        	CompanyObj companyObj = service.getCompanyById(StringUtil.getLongValue(companyId), MemcacheUtil.getAllCompanyList());
-	        	publisherIdInBQ=companyObj.getBqIdentifier()+"";
-	        }
-			log.info("Load historical data :: publisherIdInBQ : "+publisherIdInBQ+", companyId : "+companyId+", orderId : "+orderId+", dfpNetworkCode : "+dfpNetworkCode);
-			
-			Date startDate = DateUtil.getAbsoluteDate(DateUtil.getDateMMDDYYYY(smartCampaign.getStartDate()));
-			Date endDate = DateUtil.getAbsoluteDate(DateUtil.getDateMMDDYYYY(smartCampaign.getEndDate()));
-			if (startDate == null || endDate == null) {
-				log.severe("Start or End date are not valid for campaignID: "
-						+ smartCampaign.getCampaignId() + " startDate:["
-						+ smartCampaign.getStartDate() + "] AND endDate : ["
-						+ smartCampaign.getEndDate() + "]");
-				return Action.ERROR;
-			}
-		
-			// if today is 22Oct2014, this date will be 19Oct2014
-			Date historicalCapDate = DateUtil.getDateBeforeAfterDays(-(LinMobileConstants.CHANGE_WINDOW_SIZE));
-
-			// Load all finalised data for this campaign and merge them with
-			// existing table.
-			if (startDate.before(historicalCapDate) || startDate.equals(historicalCapDate)) {
-				String[][] dateArr = DateUtil.getMonthlyStartEndDates(startDate, endDate, "yyyy-MM-dd");
-				for (int i = 0; i < dateArr.length; i++) {
-					String startParamDate = dateArr[i][0];
-					String endParamDate = dateArr[i][1];
-					boolean endFound = false;
-					if (DateUtil.getMonthOfDate(historicalCapDate) == DateUtil.getMonthOfDate(DateUtil.getDateYYYYMMDD(endParamDate))) {
-						endParamDate = DateUtil.getDateAsString(historicalCapDate, "yyyy-MM-dd");
-						endFound = true;
-					}
-					loadHistoricalData(dfpNetworkCode, orderId, publisherIdInBQ, startParamDate, endParamDate, loadType, true);
-					taskCount ++;
-					if (endFound) {
-						break;
-					}
-				}
-
-			}
-
-			// load last two dates as well (non finalised) if this is the case.
-			if ((endDate.after(historicalCapDate) || startDate.after(historicalCapDate))) {
-				String date = DateUtil.getDateAsString(DateUtil.getDateBeforeAfterDays(-1), "yyyy-MM-dd");
-				loadHistoricalData(dfpNetworkCode, orderId, publisherIdInBQ,date, date, loadType, false);
-				date = DateUtil.getDateAsString(DateUtil.getDateBeforeAfterDays(-2), "yyyy-MM-dd");
-				loadHistoricalData(dfpNetworkCode, orderId, publisherIdInBQ, date, date, loadType, false);
-				taskCount += 2;
-			}
-
-		}
-		}catch(Exception e){
-			log.severe("Error occurred while loading historical data. "+ e.getMessage()); 
-		}
-		reportsResponse = "Total number of tasks added: "+ taskCount;
-	*/
 	
 	
-//			
  
- 		
-		return Action.SUCCESS;
-	}
-	
 	public void startFullHistoricalLoad(){
 		TaskQueueUtil.addFullHistoricalLoad("/executeFullHistoricalLoad.lin");
 		reportsResponse = "Task initiated. Sit back and relax.";
@@ -203,7 +111,7 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 	
 	public void executeFullHistoricalLoad(){
 		String breaker = request.getParameter("break");
-		List<DataUploaderDTO> dtoList = DataLoaderUtil.getDataUploaderDTO(100);
+		List<DataUploaderDTO> dtoList = DataLoaderUtil.getDataUploaderDTO(null, LinMobileConstants.HISTORICAL_TASK_TYPE);
 		for(DataUploaderDTO dto : dtoList){
 				for(String orderIdcsv :dto.getOrderIdList()){
 					log.info("executeFullHistoricalLoad");		
@@ -221,6 +129,12 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 				}
 		}
 	}
+	
+	// as executeFullHistorical load will take lot of time > 30 sec. We have  to use it as a separate task. 
+			 
+
+			 
+			
 
 	@Deprecated
 	private void loadHistoricalData(String networkCode, String orderId, String publisherIdInBQ, 
@@ -246,6 +160,7 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 	
 
 	
+ 
 	public String loadFinalizeNonFinalizeDataAsTask() {
 		boolean merge = request.getParameter("merge") != null && request.getParameter("merge").trim().equals("true");
 		String start = request.getParameter("start");
@@ -649,6 +564,10 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 	
 
 	 
+	
+	
+
+		
 	/**
 	 * this method is only for loading historical data of a particular order
 	 * @return
@@ -663,7 +582,7 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 		dfpTaskId = request.getParameter("dfpTaskId");
 		
 		boolean isHistorical = true;
-		
+		boolean loadTypeExists = loadType != null && loadType.trim().length() > 0;
 		int taskCount = 0;
 		try{
 		ISmartCampaignPlannerService campaignPlannerService = (ISmartCampaignPlannerService) BusinessServiceLocator.locate(ISmartCampaignPlannerService.class);
@@ -717,17 +636,33 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 
 			// Load all finalised data for this campaign and merge them with
 			// existing table.
+			List<String> addedMonths = new ArrayList<String>();
 			if (startDate.before(historicalCapDate) || startDate.equals(historicalCapDate)) {
 				String[][] dateArr = DateUtil.getMonthlyStartEndDates(startDate, endDate, "yyyy-MM-dd");
 				for (int i = 0; i < dateArr.length; i++) {
 					String startParamDate = dateArr[i][0];
 					String endParamDate = dateArr[i][1];
+					
 					boolean endFound = false;
 					if (DateUtil.getYearOfDate(historicalCapDate) == DateUtil.getYearOfDate(DateUtil.getDateYYYYMMDD(endParamDate))
 							&&
 							DateUtil.getMonthOfDate(historicalCapDate) == DateUtil.getMonthOfDate(DateUtil.getDateYYYYMMDD(endParamDate))) {
 						endParamDate = DateUtil.getDateAsString(historicalCapDate, "yyyy-MM-dd");
 						endFound = true;
+					}
+					String month = DateUtil.getFormatedDate(startParamDate, "yyyy-MM-dd", "yyyy_MM");
+					if(request.getParameter("manual") != null  && !addedMonths.contains(month)){
+						CloudProjectDTO cloudProjectBQDTO=DataLoaderUtil.getCloudProjectDTO(publisherIdInBQ);
+						String tableId = DataLoaderUtil.getSchemaNameByLoadType(loadType)+ "_" + month.replaceAll("-", "_");
+						if(BigQueryUtil.doesTableExist(cloudProjectBQDTO.getBigQueryServiceAccountEmail(), cloudProjectBQDTO.getBigQueryServicePrivateKey(), cloudProjectBQDTO.getBigQueryProjectId(), LinMobileVariables.GOOGLE_BIGQUERY_DATASET_ID, tableId))
+						{
+							String copiedTable = tableId+"_copy_"+System.currentTimeMillis();
+							log.info("Going to copy table from "+tableId+" to "+copiedTable);
+							BigQueryUtil.copyTable(tableId, copiedTable, "where order_id not in('"+orderId+"')", LinMobileVariables.GOOGLE_BIGQUERY_DATASET_ID, LinMobileVariables.GOOGLE_BIGQUERY_RAW_DATASET_ID, cloudProjectBQDTO.getBigQueryServiceAccountEmail(), cloudProjectBQDTO.getBigQueryServicePrivateKey(), cloudProjectBQDTO.getBigQueryProjectId(), false);
+							log.info("Going to copy back from "+copiedTable+" to "+tableId);
+							BigQueryUtil.copyTable(copiedTable, tableId, null, LinMobileVariables.GOOGLE_BIGQUERY_RAW_DATASET_ID, LinMobileVariables.GOOGLE_BIGQUERY_DATASET_ID, cloudProjectBQDTO.getBigQueryServiceAccountEmail(), cloudProjectBQDTO.getBigQueryServicePrivateKey(), cloudProjectBQDTO.getBigQueryProjectId(), false);
+						}
+						addedMonths.add(month);
 					}
 					loadAdvanceHistoricalData(dfpNetworkCode, orderId, publisherIdInBQ, startParamDate, endParamDate, loadType, isHistorical);
 					if (endFound) {
@@ -737,14 +672,14 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 
 			}
 
-			// load last two dates as well (non finalised) if this is the case.
+/*			// load last two dates as well (non finalised) if this is the case.
 			if ((endDate.after(historicalCapDate) || startDate.after(historicalCapDate))) {
 				String date = DateUtil.getDateAsString(DateUtil.getDateBeforeAfterDays(-1), "yyyy-MM-dd");
 				loadAdvanceHistoricalData(dfpNetworkCode, orderId, publisherIdInBQ,date, date, loadType, isHistorical);
 				date = DateUtil.getDateAsString(DateUtil.getDateBeforeAfterDays(-2), "yyyy-MM-dd");
 				loadAdvanceHistoricalData(dfpNetworkCode,  orderId , publisherIdInBQ, date, date, loadType, isHistorical);
 			}
-		}
+*/		}
 		}catch(Exception e){
 			log.severe("Error occurred while loading historical data. "+ e.getMessage()); 
 		}
@@ -768,14 +703,15 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 			loadTypeList.add(loadType);
 		}
 		
-		String dfpTaskkey = System.currentTimeMillis()+"_"+ new BigInteger(50, new SecureRandom()).toString(32);
 		IHistoricalReportService service = (IHistoricalReportService) BusinessServiceLocator.locate(IHistoricalReportService.class);
-		
+
 		for(String loadTypeElem : loadTypeList){
+			String dfpTaskkey = System.currentTimeMillis()+"_"+ new BigInteger(50, new SecureRandom()).toString(32);
 			DFPTaskEntity entity = service.saveInProgressTask("not-generated", networkCode, start, end, dfpTaskkey, loadTypeElem, orderId);
 			String taskName = TaskQueueUtil.addSmartDataLoaderTask("/runSmartDataLoaderTask.lin", start, end, 
 					orderId, publisherIdInBQ, networkCode, loadTypeElem, historical, dfpTaskkey, (entity.getId() == null ? 0 : entity.getId()));
 			entity.setTaskName(taskName);
+			entity.setTaskType(LinMobileConstants.HISTORICAL_TASK_TYPE);
 			service.saveOrUpdateTask(entity);
  		}
 	}
@@ -860,7 +796,9 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 						int mergeCount = 0;
 						if(taskEntitieList!=null && taskEntitieList.size()>0){
 							for (DFPTaskEntity dfpTaskEntity : taskEntitieList) {
-								String result = createProcTableForDailyAndHistorical(cloudProjectBQDTO, dfpTaskEntity.getRawTableId(), loadType, networkCode, publisherIdInBQ, DataLoaderUtil.getPublisherName(publisherIdInBQ), mergeCount!=0, startDate, dfpTaskEntity.getId().toString(),mergeCount);
+								String result = createProcTableForDailyAndHistorical(cloudProjectBQDTO, dfpTaskEntity.getRawTableId(), 
+										loadType, networkCode, publisherIdInBQ, DataLoaderUtil.getPublisherName(publisherIdInBQ), 
+										mergeCount!=0, startDate, dfpTaskEntity.getId().toString(),mergeCount);
 								log.info("Proc table creation result is ["+result  == null || result.length()==0 ? "success " : result+"]");
 								mergeCount++;
 							}
@@ -943,6 +881,80 @@ public class HistoricalDataLoaderAction implements ServletRequestAware,
 		return result;
 		
 	}
+	
+	public String smartFinaliseTableMerge(){
+		log.info("smartFinaliseTableMerge action executes..");
+		TaskQueueUtil.addTaskInDefaultQueue("/smartUpdateFinaliseData.lin");
+		return Action.SUCCESS;
+	}
+	
+	
+	public void moveFinaliseData() throws Exception{
+		Date currentDate=new Date();
+		String startDate=DateUtil.getModifiedDateStringByDays(currentDate,-LinMobileConstants.CHANGE_WINDOW_SIZE, "yyyy-MM-dd");
+	    String month=DateUtil.getFormatedDate(startDate, "yyyy-MM-dd", "yyyy_MM");
+	    String[] publisherIdArr = LinMobileConstants.DFP_BQ_PUBLISHER_ID_ARR;
+	    	for(int i=0;i<publisherIdArr.length;i++){
+	    		try{
+	    			log.info("going to get cloud project DTO for publisherID : "+publisherIdArr[i]);
+		    		CloudProjectDTO cloudDto = DataLoaderUtil.getCloudProjectDTO(publisherIdArr[i]);
+				    
+				    String[] loadTypes = new String[]{LinMobileConstants.LOAD_TYPE_CORE_PERFORMANCE,LinMobileConstants.LOAD_TYPE_LOCATION,
+				    		LinMobileConstants.LOAD_TYPE_TARGET,LinMobileConstants.LOAD_TYPE_CUSTOM_EVENT,LinMobileConstants.LOAD_TYPE_RICH_MEDIA};
+				    for(int j=0;j<loadTypes.length;j++){
+				    	log.info("going to get schema name for loadType : "+loadTypes[j]);
+				    	String schemaName = DataLoaderUtil.getSchemaNameByLoadType(loadTypes[j]);
+				    	log.info("schema name found as : "+schemaName);
+				    	if(publisherIdArr[i]!=null && publisherIdArr[i].equals(LinMobileConstants.LIN_MOBILE_PUBLISHER_ID)){
+				    		for(int k=0;k<2;k++){
+				    			try{
+				    				if(k==0){
+					    				String readyToMergeTableId=schemaName+"_"+LinMobileConstants.DFP_DATA_SOURCE+"_"+startDate.replaceAll("-", "_");
+								        String finaliseTableId=schemaName+"_"+month.replaceAll("-", "_");
+								        mergeFinaliseTable(cloudDto, readyToMergeTableId, finaliseTableId);
+					    			}else{
+					    				String readyToMergeTableId=schemaName+"_"+LinMobileConstants.LIN_MOBILE_NEW_DFP_NETWORK_CODE+"_"+startDate.replaceAll("-", "_");
+								        String finaliseTableId=schemaName+"_"+month.replaceAll("-", "_");
+								        mergeFinaliseTable(cloudDto, readyToMergeTableId, finaliseTableId);
+					    			}
+				    			}catch(Exception e){
+				    				log.severe(e.getMessage());
+				    			}
+				    		}
+				    	}else{
+				    		String readyToMergeTableId=schemaName+"_"+LinMobileConstants.DFP_DATA_SOURCE+"_"+startDate.replaceAll("-", "_");
+					        String finaliseTableId=schemaName+"_"+month.replaceAll("-", "_");
+					        mergeFinaliseTable(cloudDto, readyToMergeTableId, finaliseTableId);
+				    	}
+				    }
+	    	}catch(Exception e){
+		    	log.severe(e.getMessage());
+		    }
+	    }
+	}
+	
+	public void mergeFinaliseTable(CloudProjectDTO cloudDto, String readyToMergeTableId, String finaliseTableId){
+		
+		 boolean success;
+		try {
+			success = BigQueryUtil.copyTable(readyToMergeTableId, 
+			    		finaliseTableId, 
+			    		"", 
+			    		LinMobileVariables.GOOGLE_BIGQUERY_DATASET_ID, 
+			    		LinMobileVariables.GOOGLE_BIGQUERY_DATASET_ID, 
+			    		cloudDto.getBigQueryServiceAccountEmail(), 
+			    		cloudDto.getBigQueryServicePrivateKey(), 
+			    		cloudDto.getBigQueryProjectId(), true);
+		
+			if(success){
+				BigQueryUtil.deleteTableFromBigQuery(cloudDto.getBigQueryServiceAccountEmail(), 
+						cloudDto.getBigQueryServicePrivateKey(), 
+						cloudDto.getBigQueryProjectId(), LinMobileVariables.GOOGLE_BIGQUERY_DATASET_ID,  readyToMergeTableId)  ;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			}
+		}
 	
 	public void checkBigQueryJob(){
 		String publisherIdInBQ  = request.getParameter("publisherIdInBQ");

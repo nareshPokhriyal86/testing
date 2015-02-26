@@ -18,9 +18,12 @@ public class TeamPropertiesObj implements Serializable, Comparable<TeamPropertie
 	private String teamStatus;
 	@Index private String teamName;
 	private String teamDescription;
-	private String companyId;		// PublisherPoolPartner_ID, DemandPartner_ID, Client_ID
+	// PublisherPoolPartner_ID, DemandPartner_ID, Client_ID
+	private String companyId;		
 	private List<String> appViews;
-	private String teamType;		// Built-In, Custom
+	
+	// Built-In, Custom
+	private String teamType;		
 	private List<String> agencyId;
 	private List<String> advertiserId;
 	private List<String> propertyId;
@@ -172,4 +175,10 @@ public class TeamPropertiesObj implements Serializable, Comparable<TeamPropertie
 		// TODO Auto-generated method stub
 		return super.equals(arg0);
 	}		
+	
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
 }

@@ -78,7 +78,7 @@ public class LinMobileConstants {
 	public static final String PROXY_URL=null;
 	
 	public static final String[] ADMINS={"SuperAdmin", "Administrator"};
-	public static final String[] USERS_ARRAY={ADMINS[1], "Non Admin"};
+	public static final String[] USERS_ARRAY={ADMINS[1], "Non Admin", "Client"};
 	public static final String[] STATUS_ARRAY={"Active", "Inactive"};
 	public static final String[] COMPANY_TYPE={"Publisher Pool Partner", "Demand Partner", "Client"};
 	
@@ -359,9 +359,16 @@ public class LinMobileConstants {
 	public static final int LOAD_TYPE_PRODUCT_PERFORMANCE_ORDER_COUNT = 50;
 	public static final int LOAD_TYPE_SELL_THROUGH_ORDER_COUNT = 50;
 	
-	public static final int DAILY_REPORT_ORDER_COUNT = 36;
+	public static final int DAILY_REPORT_ORDER_COUNT = 40;
+	public static final int DAILY_REPORT_LIN_DIGITAL_ORDER_COUNT = 20;
+	public static final int DAILY_REPORT_LIN_MOBILE_ORDER_COUNT = 40;
+	public static final int DAILY_REPORT_LIN_MOBILE_NEW_ORDER_COUNT = 40;
 	public static final String DAILY_TASK_TYPE = "daily";
 	public static final String NON_FINALISE_TASK_TYPE = "nonfinalise";
+	public static final String HISTORICAL_TASK_TYPE = "historical";
 	public static final int[] PRODUCT_FORCAST_DAY = {30};
+	
+	
+	public static final String[] DFP_BQ_PUBLISHER_ID_ARR = {LIN_MOBILE_PUBLISHER_ID,LIN_MEDIA_PUBLISHER_ID};
 	
 }

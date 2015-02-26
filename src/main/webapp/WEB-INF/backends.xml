@@ -2,8 +2,8 @@
 <backends>
 	<!-- <backend name="demobackend"> //For demo application -->
 	<backend name="linbackend">
-		<class>B2</class>
-		<instances>1</instances>
+		<class>B4</class>
+		<instances>5</instances>
 		<options>
 			<dynamic>true</dynamic>
 			<public>true</public>

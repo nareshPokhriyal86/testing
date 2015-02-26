@@ -157,6 +157,9 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
  	var ctrChartData,impChartData,clickChartData,impressionDonutChartData,clickDonutChartData;   
  	var averageSeries = 1;
  	var myObj = {};
+ 	
+ 	$scope.sTab = "CTR";
+ 	
 	if($scope.headerData == undefined) {
 		$scope.headerData = emptyHeaderData;
 	}
@@ -227,6 +230,10 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 			$scope.selectedFlight = {goal:0,delivered:0,goalLabel:'Goal'};
 			$scope.finalValue = {target:'--',current:'--',revised:'--'};
 			$('#ctrDataDiv').show();
+			if(isClient) {
+				console.log("is client");
+				$('#targetCards').hide();
+			}
 		}
 		
 		if(chartName == ctrChartName) {
@@ -234,6 +241,9 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 			$('#chartTitleDiv').html('CTR');
 			$('#chartInfoDiv').html('CTR Details');
 			$('#revisedPacing').css('visibility','hidden');
+			if(isClient) {
+				$('#targetCards').show();
+			}
 		}
 		else if(chartName == impressionsChartName) {
 			$('#impressionTabDiv').attr('class','p_m_tabIconActive');
@@ -306,6 +316,9 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 		$scope.resetDurationButton('');
 		$scope.resetDurationButton('richMedia');
 		selectedTab = chartName;
+		
+		//Added By Anup
+		$scope.sTab = chartName;
 	};
 	
 	$scope.startLoading = function(chartName) {
@@ -714,7 +727,7 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 	    }
 	};
 	
-	var locationInterval;
+	var locationInterval = null;
 	$scope.checkHeader = function(withInGeoImpressions, completeImpressions, geoTargeted, topCities, geoChart) {
 		locationInterval = setInterval($scope.makeLocationArchiveData(withInGeoImpressions, completeImpressions, geoTargeted, topCities, geoChart), 500);
 	};
@@ -885,7 +898,7 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 			if(selectedTab == richMediaChartName) {
 				/*LineChart code Starts*/
 				if($scope.selectedCustomEvent == undefined || $scope.selectedCustomEvent == null || (JSON.stringify($scope.selectedCustomEvent)) == '{}' || (JSON.stringify($scope.selectedCustomEvent)) == '[]' || $scope.selectedCustomEvent.day == undefined || $scope.selectedCustomEvent.day == null) {
-					if($scope.archivedRichMediaData.lineChartData != null && $scope.archivedRichMediaData.lineChartData != undefined && (JSON.stringify($scope.archivedRichMediaData.lineChartData)) != '{}' && (JSON.stringify($scope.archivedRichMediaData.lineChartData)) != '[]') {
+					if($scope.archivedRichMediaData.lineChartData != null && $scope.archivedRichMediaData.lineChartData != undefined && (JSON.stringify($scope.archivedRichMediaData.lineChartData)) != '{}' && (JSON.stringify($scope.archivedRichMediaData.lineChartData)) != '[]' && $scope.archivedRichMediaData.lineChartData.length != undefined) {
 						$scope.selectedCustomEvent = $scope.archivedRichMediaData.lineChartData[0];
 					}
 				}
@@ -909,10 +922,11 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 	};
 	
 	$scope.makeDynamicDonut = function() {
-		if($scope.archivedRichMediaData != undefined && $scope.archivedRichMediaData != {}) {
+		if($scope.archivedRichMediaData != undefined && $scope.archivedRichMediaData != {} && $scope.archivedRichMediaData.donutData != undefined) {
 			$scope.richMediaDonutData = $scope.archivedRichMediaData.donutData;
 			var donutCount = $scope.richMediaDonutData.length;
-			var dynamicDonutInterval = setInterval(function() {
+			var dynamicDonutInterval = null;
+			dynamicDonutInterval = setTimeout(function() {
 				var length = $('#richMediaDonutsDivId > article').length;
 				console.log("donutCount : "+donutCount+", Donut Div Count : "+length);
 				if(donutCount <= length) {
@@ -939,7 +953,7 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
                 "legend": "none",
                 slices : {
 					0 : {
-						color : 'red'
+						color : 'brown'
 					},
 					1 : {
 						color : 'green'
@@ -971,11 +985,15 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 	
 	$scope.drawPieChart = function (divId,options,formatedData) { 
 	    var data = google.visualization.arrayToDataTable(formatedData);
+	    
+	    var formatter = new google.visualization.NumberFormat({pattern: '###,###'});
+	    
+	    formatter.format(data, 1);    
 	    var chart = new google.visualization.PieChart(document.getElementById(divId));
 	    chart.draw(data, options);
 	};
 	
-	var doubleClickRichMediaInterval;
+	var doubleClickRichMediaInterval = null;
 	$scope.getVideoData = function(isTabClick) {
 		if(isTabClick) {
 			$scope.initTabClick(videoChartName);
@@ -1070,9 +1088,9 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 		}
 	};
 	
-	$scope.dynamicDonut = function(index,donutData) {
-		console.log(donutData);
-		var donutData = donutData.donutJson;
+	$scope.dynamicDonut = function(index,dData) {
+		console.log(dData);
+		var donutData = dData.donutJson;
         var pieChart = {};
         pieChart.type = "PieChart";
         pieChart.displayed = false;
@@ -1098,7 +1116,7 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
                 "legend": "none",
                 slices : {
 					0 : {
-						color : 'red'
+						color : 'brown'
 					},
 					1 : {
 						color : 'green'
@@ -1173,7 +1191,7 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 	                "legend": "none",
 	                slices : {
 						0 : {
-							color : 'red'
+							color : 'brown'
 						},
 						1 : {
 							color : 'green'
@@ -1214,7 +1232,7 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 	                    "legend": "none",
 	                    slices : {
 	    					0 : {
-	    						color : 'red'
+	    						color : 'brown'
 	    					},
 	    					1 : {
 	    						color : 'green'
@@ -1279,7 +1297,8 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
     barChart.displayed = false;
     barChart.cssStyle = "height:400px; width:100%;";
     barChart.formatters = {};
-	$scope.fillCreativeData = function() {
+	
+    $scope.fillCreativeData = function() {
 		try {
 			if($scope.archivedCreativeData == undefined || $scope.archivedCreativeData == null) {
 				$scope.stopLoadingCreative(creativeChartName);
@@ -1292,17 +1311,17 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 		           	var clickData=$scope.archivedCreativeData['Clicks'];
 		           	var clickDonut = $scope.archivedCreativeData['DonutClick'];
 		           	var impresionDonut = $scope.archivedCreativeData['DonutImpression'];
-		           	$scope.targetValue = {targetCreative:'--',nonTargetCreative:'--',targetGoal:'--',nonTargetGoal:'--',targetPercentage:'--',nonTargetPercentage:'--'};
+		           	$scope.targetValue = {targetCreative:'',nonTargetCreative:'',targetGoal:'',nonTargetGoal:'',targetPercentage:'',nonTargetPercentage:''};
 		           
 		           	if($scope.archivedCreativeData['TargetCreative']!=null && $scope.archivedCreativeData['TargetCreative']!=undefined && $scope.archivedCreativeData['TargetCreative']!=[]){
 		        	   $scope.targetValue.targetCreative = "("+$scope.archivedCreativeData['TargetCreative']+")";
 		           	}else{
-		        	   $scope.targetValue.targetCreative = "--";
+		        	   $scope.targetValue.targetCreative = " ";
 		           	}
 		           	if($scope.archivedCreativeData['NonTargetCreative']!=null && $scope.archivedCreativeData['NonTargetCreative']!=undefined && $scope.archivedCreativeData['NonTargetCreative']!=[]){
 		        	   $scope.targetValue.nonTargetCreative = "("+$scope.archivedCreativeData['NonTargetCreative']+")";
 		           	}else{
-		        	   $scope.targetValue.nonTargetCreative = "--";
+		        	   $scope.targetValue.nonTargetCreative = " ";
 		           	}
 		           	
 		          
@@ -1314,7 +1333,7 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 		           		}
 		           		
 		           	}else{
-		           		$scope.targetValue.targetGoal="--";
+		           		$scope.targetValue.targetGoal=" ";
 		           	}
 		        	if($scope.archivedCreativeData['NonTargetGoal']!=null && $scope.archivedCreativeData['NonTargetGoal']!=undefined && $scope.archivedCreativeData['NonTargetGoal']!=[]){
 		        		
@@ -1325,17 +1344,17 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 		           		}
 		        		
 		           	}else{
-		           		$scope.targetValue.targetGoal="--";
+		           		$scope.targetValue.targetGoal=" ";
 		           	}
 		        	if($scope.archivedCreativeData['TargetPercentage']!=null && $scope.archivedCreativeData['TargetPercentage']!=undefined && $scope.archivedCreativeData['TargetPercentage']!=[]){
 		        		$scope.targetValue.targetPercentage = formatFloat($scope.archivedCreativeData['TargetPercentage'], 2)+'%';
 		           	}else{
-		           		$scope.targetValue.targetPercentage="--";
+		           		$scope.targetValue.targetPercentage=" ";
 		           	}
 		        	if($scope.archivedCreativeData['NonTargetPercentage']!=null && $scope.archivedCreativeData['NonTargetPercentage']!=undefined && $scope.archivedCreativeData['NonTargetPercentage']!=[]){
 		        		$scope.targetValue.nonTargetPercentage = formatFloat($scope.archivedCreativeData['NonTargetPercentage'], 2)+'%';
 		           	}else{
-		           		$scope.targetValue.nonTargetPercentage="--";
+		           		$scope.targetValue.nonTargetPercentage=" ";
 		           	}
 		        	
 		           	$scope.targetValue.campaignType = $scope.orderInfo.campaignType;
@@ -1382,14 +1401,15 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 		            $("#barChartLoaderId").hide();
 		            
 		            pieChart.options = {
-		                    "title": "IMPRESSION BY CREATIVE SIZE",
+		                    'chartType': 'PieChart',
 		                    "isStacked": "true",
 		                    "fill": 20,
 		                    "pieHole": 0.5,
+		                    "chartArea":{'width':'100%','height':'350px'},
 		                    "legend": "none",
 		                    slices : {
 								0 : {
-									color : 'red'
+									color : 'brown'
 								},
 								1 : {
 									color : 'green'
@@ -1424,14 +1444,15 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 		                $("#donutChartLoaderId").hide();
 		                
 		                pieChart2.options = {
-			                    "title": "CLICKS BY CREATIVE SIZE",
+			                    'chartType': 'PieChart',
 			                    "isStacked": "true",
 			                    "fill": 20,
 			                    "pieHole": 0.5,
+			                    "chartArea":{'width':'100%','height':'350px'},
 			                    "legend": "none",
 			                    slices : {
 									0 : {
-										color : 'red'
+										color : 'brown'
 									},
 									1 : {
 										color : 'green'
@@ -1463,12 +1484,38 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 			                pieChart2.data = clickDonutChartData;
 			                $scope.donut2Chart = pieChart2;
 			                $("#donut2ChartLoaderId").hide();
+			                
+			                $("#donutImpressionHeader").html("IMPRESSION BY CREATIVE SIZE");
+			                $("#donutClickHeader").html("CLICKS BY CREATIVE SIZE");
+			                
+			                $scope.drawSpecialChart("donutImpressionChart", pieChart.options,$scope.impByCreative,"impressions");
+			                $scope.drawSpecialChart("donutClickChart", pieChart2.options,$scope.clicksByCreative,"clicks");
 				}
 			}
 		}catch(err){
 	    	console.log("fillCreativeData : err: "+err);
 	    }
 	};
+	
+	$scope.drawSpecialChart = function(id,option,data,key){
+		var modifiedData = [];
+		
+		var tempArry = [];
+		tempArry.push("Creative");
+		tempArry.push("Value");
+		
+		modifiedData.push(tempArry);
+		
+		for(var i=0 ; i< data.length;i++){
+			var tempArry = [];
+			tempArry.push(data[i]["creative"]);
+			tempArry.push(parseInt(data[i][key]));
+			
+			modifiedData.push(tempArry);
+		}
+		google.setOnLoadCallback($scope.drawPieChart(id,option,modifiedData));
+	};
+	
 	
 	$scope.setLagendColor = function(color){
 		 return { backgroundColor: color };
@@ -1514,12 +1561,12 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 		           	if($scope.archivedDeviceData['TargetDevice']!=null && $scope.archivedDeviceData['TargetDevice']!=undefined && $scope.archivedDeviceData['TargetDevice']!=[]){
 			        	   $scope.targetValue.targetCreative = "("+$scope.archivedDeviceData['TargetDevice']+")";
 			           	}else{
-			        	   $scope.targetValue.targetCreative = "";
+			        	   $scope.targetValue.targetCreative = " ";
 			           	}
 			           	if($scope.archivedDeviceData['NonTargetDevice']!=null && $scope.archivedDeviceData['NonTargetDevice']!=undefined && $scope.archivedDeviceData['NonTargetDevice']!=[]){
 			        	   $scope.targetValue.nonTargetCreative = "("+$scope.archivedDeviceData['NonTargetDevice']+")";
 			           	}else{
-			        	   $scope.targetValue.nonTargetCreative = "";
+			        	   $scope.targetValue.nonTargetCreative = " ";
 			           	}
 			           	
 
@@ -1531,7 +1578,7 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 			           		}
 			           		
 			           	}else{
-			           		$scope.targetValue.targetGoal="";
+			           		$scope.targetValue.targetGoal=" ";
 			           	}
 			           	
 			        	if($scope.archivedDeviceData['NonTargetGoal']!=null && $scope.archivedDeviceData['NonTargetGoal']!=undefined && $scope.archivedDeviceData['NonTargetGoal']!=[]){
@@ -1542,19 +1589,19 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 			           			$scope.targetValue.nonTargetGoal =formatInt($scope.archivedDeviceData['NonTargetGoal'])+' CLICK';
 			           		}
 			           	}else{
-			           		$scope.targetValue.nonTargetGoal="";
+			           		$scope.targetValue.nonTargetGoal=" ";
 			           	}
 			        	
 			        	if($scope.archivedDeviceData['TargetPercentage']!=null && $scope.archivedDeviceData['TargetPercentage']!=undefined && $scope.archivedDeviceData['TargetPercentage']!=[]){
 			        		$scope.targetValue.targetPercentage = formatFloat($scope.archivedDeviceData['TargetPercentage'], 2)+'%';
 			           	}else{
-			           		$scope.targetValue.targetGoal="";
+			           		$scope.targetValue.targetGoal=" ";
 			           	}
 			        	
 			        	if($scope.archivedDeviceData['NonTargetPercentage']!=null && $scope.archivedDeviceData['NonTargetPercentage']!=undefined && $scope.archivedDeviceData['NonTargetPercentage']!=[]){
 			        		$scope.targetValue.nonTargetPercentage = formatFloat($scope.archivedDeviceData['NonTargetPercentage'], 2)+'%';
 			           	}else{
-			           		$scope.targetValue.targetGoal="";
+			           		$scope.targetValue.targetGoal=" ";
 			           	}
 
 		           	
@@ -1562,8 +1609,8 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 			           		averageSeries = parseInt($scope.archivedDeviceData['partnerCount']);
 				           	myObj[averageSeries] = {type : "line"};
 			           	}
-		        	$scope.targetValue.targetGoal = formatInt($scope.archivedDeviceData['TargetGoal'])+' IMP';
-		           	$scope.targetValue.nonTargetGoal =formatInt($scope.archivedDeviceData['NonTargetGoal'])+' IMP';
+		        	//$scope.targetValue.targetGoal = formatInt($scope.archivedDeviceData['TargetGoal'])+' IMP';
+		           	//$scope.targetValue.nonTargetGoal =formatInt($scope.archivedDeviceData['NonTargetGoal'])+' IMP';
 		           	$scope.targetValue.targetPercentage = formatFloat($scope.archivedDeviceData['TargetPercentage'], 2)+'%';
 		           	$scope.targetValue.nonTargetPercentage = formatFloat($scope.archivedDeviceData['NonTargetPercentage'], 2)+'%';
 		           	
@@ -1608,14 +1655,15 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 		            $("#barChartLoaderId").hide();
 		            
 		            pieChart.options = {
-		                    "title": "IMPRESSION BY DEVICES",
+		                    'chartType': 'PieChart',
 		                    "isStacked": "true",
 		                    "fill": 20,
 		                    "pieHole": 0.5,
+		                    "chartArea":{'width':'100%','height':'350px'},
 		                    "legend": "none",
 		                    slices : {
 								0 : {
-									color : 'red'
+									color : 'brown'
 								},
 								1 : {
 									color : 'green'
@@ -1650,14 +1698,15 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 		                $("#donutChartLoaderId").hide();
 		                
 		                pieChart2.options = {
-			                    "title": "CLICKS BY DEVICES",
 			                    "isStacked": "true",
+			                    'chartType': 'PieChart',
 			                    "fill": 20,
 			                    "pieHole": 0.5,
+			                    "chartArea":{'width':'100%','height':'350px'},
 			                    "legend": "none",
 			                    slices : {
 									0 : {
-										color : 'red'
+										color : 'brown'
 									},
 									1 : {
 										color : 'green'
@@ -1689,6 +1738,14 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 			                pieChart2.data = clickDonutChartData;
 			                $scope.donut2Chart = pieChart2;
 			                $("#donut2ChartLoaderId").hide();
+			                
+			                
+			                $("#donutImpressionHeader").html("IMPRESSION BY DEVICES");
+			                $("#donutClickHeader").html("CLICKS BY DEVICES");
+			                
+			                $scope.drawSpecialChart("donutImpressionChart", pieChart.options,$scope.impByCreative,"impressions");
+			                $scope.drawSpecialChart("donutClickChart", pieChart2.options,$scope.clicksByCreative,"clicks");
+			               
 				}
 			}
 		}catch(err){
@@ -1737,12 +1794,12 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 		           	if($scope.archivedOSData['TargetOS']!=null && $scope.archivedOSData['TargetOS']!=undefined && $scope.archivedOSData['TargetOS']!=[]){
 		        	   $scope.targetValue.targetCreative = "("+$scope.archivedOSData['TargetOS']+")";
 		           	}else{
-		        	   $scope.targetValue.targetCreative = "";
+		        	   $scope.targetValue.targetCreative = " ";
 		           	}
 		           	if($scope.archivedOSData['NonTargetOS']!=null && $scope.archivedOSData['NonTargetOS']!=undefined && $scope.archivedOSData['NonTargetOS']!=[]){
 		        	   $scope.targetValue.nonTargetCreative = "("+$scope.archivedOSData['NonTargetOS']+")";
 		           	}else{
-		        	   $scope.targetValue.nonTargetCreative = "";
+		        	   $scope.targetValue.nonTargetCreative = " ";
 		           	}
 					
 		           	if($scope.archivedOSData['TargetGoal'] >= $scope.headerData.delivered){
@@ -1753,21 +1810,29 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 		           		if($scope.orderInfo.campaignType=='CPM'){
 		           			$scope.targetValue.targetGoal = formatInt($scope.archivedOSData['TargetGoal'])+' IMP';
 		           		}else if($scope.orderInfo.campaignType=='CPC'){
-		           			$scope.targetValue.targetGoal = formatInt($scope.archivedOSData['TargetGoal'])+' CLICK';
+		           			$scope.targetValue.targetGoal = formatInt($scope.archivedOSData['TargetGoalClick'])+' CLICK';
 		           		}
 		           		
 		           	}else{
-		           		$scope.targetValue.targetGoal="";
+		           		$scope.targetValue.targetGoal=" ";
 		           	}
 		           	
 		           	if($scope.orderInfo.campaignType=='CPM'){
 	        			$scope.targetValue.nonTargetGoal =formatInt($scope.headerData.delivered - $scope.archivedOSData['TargetGoal'])+' IMP';
+	        			
+	        			$scope.targetValue.targetPercentage = formatFloat(($scope.archivedOSData['TargetGoal']/$scope.headerData.delivered)*100, 2)+'%';
+			           	$scope.targetValue.nonTargetPercentage = formatFloat((100-($scope.archivedOSData['TargetGoal']/$scope.headerData.delivered)*100), 2)+'%';
+			           	
 	           		}else if($scope.orderInfo.campaignType=='CPC'){
-	           			$scope.targetValue.nonTargetGoal =formatInt($scope.headerData.delivered - $scope.archivedOSData['TargetGoal'])+' CLICK';
+	           			$scope.targetValue.nonTargetGoal =formatInt($scope.headerData.clicks - $scope.archivedOSData['TargetGoalClick'])+' CLICK';
+	           			
+	           			$scope.targetValue.targetPercentage = formatFloat(($scope.archivedOSData['TargetGoalClick']/$scope.headerData.clicks)*100, 2)+'%';
+			           	$scope.targetValue.nonTargetPercentage = formatFloat((100-($scope.archivedOSData['TargetGoalClick']/$scope.headerData.clicks)*100), 2)+'%';
+			           	
 	           		}
 		           	
-		           	$scope.targetValue.targetPercentage = formatFloat(($scope.archivedOSData['TargetGoal']/$scope.headerData.delivered)*100, 2)+'%';
-		           	$scope.targetValue.nonTargetPercentage = formatFloat((100-($scope.archivedOSData['TargetGoal']/$scope.headerData.delivered)*100), 2)+'%';
+		           //	$scope.targetValue.targetPercentage = formatFloat(($scope.archivedOSData['TargetGoal']/$scope.headerData.delivered)*100, 2)+'%';
+		           //	$scope.targetValue.nonTargetPercentage = formatFloat((100-($scope.archivedOSData['TargetGoal']/$scope.headerData.delivered)*100), 2)+'%';
 		           	
 
 		        	if($scope.archivedOSData['partnerCount']!=null && $scope.archivedOSData['partnerCount']!=undefined){
@@ -1820,7 +1885,7 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 		            
 		            var colorSlices = {
 						0 : {
-							color : 'red'
+							color : 'brown'
 						},
 						1 : {
 							color : 'green'
@@ -1880,10 +1945,11 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 					};
 					
 		            pieChart.options = {
-		                    "title": "IMPRESSION BY OPERATING SYSTEM",
 		                    "isStacked": "true",
+		                    'chartType': 'PieChart',
 		                    "fill": 20,
 		                    "pieHole": 0.5,
+		                    "chartArea":{'width':'100%','height':'350px'},
 		                    "legend": "none",
 		                    slices : colorSlices,
 		                    "displayExactValues": true,
@@ -1906,10 +1972,11 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 		                $("#donutChartLoaderId").hide();
 		                
 		                pieChart2.options = {
-			                    "title": "CLICKS BY OPERATING SYSTEM",
 			                    "isStacked": "true",
+			                    'chartType': 'PieChart',
 			                    "fill": 20,
 			                    "pieHole": 0.5,
+			                    "chartArea":{'width':'100%','height':'350px'},
 			                    "legend": "none",
 			                    slices : colorSlices,
 			                    "displayExactValues": true,
@@ -1929,6 +1996,12 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 			                pieChart2.data = clickDonutChartData;
 			                $scope.donut2Chart = pieChart2;
 			                $("#donut2ChartLoaderId").hide();
+			                
+			                $("#donutImpressionHeader").html("IMPRESSION BY OS");
+			                $("#donutClickHeader").html("CLICKS BY OS");
+			                
+			                $scope.drawSpecialChart("donutImpressionChart", pieChart.options,$scope.impByCreative,"impressions");
+			                $scope.drawSpecialChart("donutClickChart", pieChart2.options,$scope.clicksByCreative,"clicks");
 				
 			}
 		}
@@ -1999,7 +2072,7 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 		    						"format":"##.####"
 		    					},
 		    					"hAxis": {
-		    						"title": "Date"	            	
+		    						"title": "Time"	            	
 		    					},
 		    					"tooltip": {
 	    					      "isHtml": true
@@ -2241,6 +2314,27 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 
 	    };
 	    
+	    $scope.convertStringToDate = function(dateTxt,format){
+	    	var d = $scope.parseDate(dateTxt,format);
+			return d.getTime();
+		};
+		
+		$scope.parseDate = function(input, format) {
+			  format = format || 'yyyy-mm-dd'; // default format
+			  var parts = input.match(/(\d+)/g), 
+			      i = 0, fmt = {};
+			  // extract date-part indexes from the format
+			  format.replace(/(yyyy|dd|mm)/g, function(part) { fmt[part] = i++; });
+			  return new Date(parts[fmt['yyyy']], parts[fmt['mm']]-1, parts[fmt['dd']]);
+		};
+		
+		$scope.isObjectAvailable = function(obj){
+			if(obj == "" || obj == null || angular.isUndefined(obj))
+	            return false;
+	        
+	        return true;
+		}
+	    
 	});
 
 	performanceViewChartApp.directive('multiselectDropdown', [function() {
@@ -2252,8 +2346,8 @@ performanceViewChartApp.controller("performanceViewChartCtrl", function ($scope,
 	
 	        element.multiselect({
 	        	includeSelectAllOption: true
-	        })
-	    }
+	        });
+	    };
 	}]);
 
 

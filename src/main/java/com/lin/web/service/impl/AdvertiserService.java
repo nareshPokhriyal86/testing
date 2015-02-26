@@ -334,7 +334,7 @@ public class AdvertiserService implements IAdvertiserService{
 	public List<AdvertiserPerformerDTO> loadTopGainers(String lowerDate,String upperDate, String compareStartDate, String compareEndDate,String advertiser, String agency,String publisherName,String properties) throws Exception {
 		String replaceStr = "\\\\'";
 		List<AdvertiserPerformerDTO> topGainersLineItemList=null;
-	//	IAdvertiserDAO advertiserDAO=new AdvertiserDAO();
+ 
 		if(advertiser != null && !advertiser.trim().equalsIgnoreCase("")) {
 			advertiser = advertiser.replaceAll("'", replaceStr);
 		}else {
@@ -346,7 +346,7 @@ public class AdvertiserService implements IAdvertiserService{
 			agency = "";
 		}
 		
-		//topGainersLineItemList=advertiserDAO.loadTopGainers(lowerDate,upperDate,compareStartDate,compareEndDate,advertiser,agency, publisherName,properties);
+ 
 		
 		topGainersLineItemList = MemcacheUtil.getTopGainersLineItemList(lowerDate,upperDate,compareStartDate,compareEndDate,publisherName,advertiser,agency,properties);
 		if(topGainersLineItemList == null || topGainersLineItemList.size() <= 0)
@@ -372,7 +372,6 @@ public class AdvertiserService implements IAdvertiserService{
 	public List<AdvertiserPerformerDTO> loadTopLosers(String lowerDate,String upperDate, String compareStartDate, String compareEndDate,String advertiser, String agency,String publisherName,String properties) throws Exception {
 		String replaceStr = "\\\\'";
 		List<AdvertiserPerformerDTO> topLosersLineItemList=null;
-//		IAdvertiserDAO advertiserDAO=new AdvertiserDAO();
 		if(advertiser != null && !advertiser.trim().equalsIgnoreCase("")) {
 			advertiser = advertiser.replaceAll("'", replaceStr);
 		}else {

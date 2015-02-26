@@ -24,11 +24,11 @@ public interface IPerformanceMonitoringService extends IBusinessService {
 
 	JSONObject headerData(String orderId, String campaignId, String placementIds, String publisherIdInBQ, String placementInfo);
 
-	JSONObject ctrLineChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo);
+	JSONObject ctrLineChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo,boolean isClient,String userCompany);
 
-	JSONObject impressionsLineChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo);
+	JSONObject impressionsLineChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo,boolean isClient,String userCompany);
 
-	JSONObject clicksLineChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo);
+	JSONObject clicksLineChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo, boolean isClient,String userCompany);
 
 	public JSONObject locationCompleteData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo);
 
@@ -36,17 +36,17 @@ public interface IPerformanceMonitoringService extends IBusinessService {
 
 	public JSONObject locationTargetData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo);
 
-	public JSONObject richMediaLineChartData(String orderId, String campaignId, String placementIds, String publisherIdInBQ, String placementInfo, String partnerInfo);
+	public JSONObject richMediaLineChartData(String orderId, String campaignId, String placementIds, String publisherIdInBQ, String placementInfo, String partnerInfo,boolean isClient, String userCompany);
 
 	public JSONArray richMediaDonutChartData(String orderId, String campaignId, String placementIds, String publisherIdInBQ, String placementInfo);
 	
 	public JSONObject videoData(String orderId, String campaignId, String placementIds, String publisherIdInBQ, String placementInfo);
 
-	public Map<String, String> creativeBarChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo);
+	public Map<String, String> creativeBarChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo,boolean isClient,String userCompany);
 
-	public Map<String, String> deviceBarChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo);
+	public Map<String, String> deviceBarChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo,boolean isClient,String userCompany);
 
-	public Map<String, String> osChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo);
+	public Map<String, String> osChartData(String orderId, String campaignId, String placementIds, boolean isNoise, double threshold, String publisherIdInBQ, String placementInfo, String partnerInfo,boolean isClient,String userCompany);
 	
 	public void updateCampaignData();
 

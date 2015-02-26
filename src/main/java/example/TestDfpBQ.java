@@ -5,12 +5,18 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
 import com.google.api.ads.common.lib.exception.ValidationException;
+import com.google.api.ads.dfp.jaxws.v201403.OrderPage;
+import com.google.api.ads.dfp.jaxws.v201403.OrderServiceInterface;
 import com.google.api.ads.dfp.jaxws.factory.DfpServices;
 import com.google.api.ads.dfp.jaxws.v201403.ApiException_Exception;
+import com.google.api.ads.dfp.jaxws.v201403.Order;
+import com.google.api.ads.dfp.jaxws.v201403.ReportServiceInterface;
+import com.google.api.ads.dfp.jaxws.v201403.Statement;
 import com.google.api.ads.dfp.lib.client.DfpSession;
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential;
 import com.google.api.client.http.HttpTransport;
@@ -44,11 +50,13 @@ import com.lin.dfp.api.impl.DFPAuthenticationUtil;
 import com.lin.dfp.api.impl.DFPReportService;
 import com.lin.web.action.AdSdkAction;
 import com.lin.web.action.HistoricalDataLoaderAction;
+import com.lin.web.dto.CloudProjectDTO;
 import com.lin.web.gaebigquery.BigQueryUtil;
 import com.lin.web.service.IHistoricalReportService;
 import com.lin.web.service.impl.BusinessServiceLocator;
 import com.lin.web.service.impl.HistoricalReportService;
 import com.lin.web.util.DFPTableSchemaUtil;
+import com.lin.web.util.DataLoaderUtil;
 import com.lin.web.util.DateUtil;
 import com.lin.web.util.LinMobileConstants;
 import com.lin.web.util.LinMobileProperties;
@@ -60,7 +68,23 @@ public class TestDfpBQ {
 	private static final JsonFactory JSON_FACTORY = new JacksonFactory();
 	private static List<String> SCOPES = new ArrayList<String>();
 	  private static final Logger log = Logger.getLogger(TestDfpBQ.class.getName());  
-
+		public static void main(String[] args) throws Exception {
+			//testDownload();
+	 		DfpServices dfpServices = LinMobileProperties.getInstance().getDfpServices();
+			OrderServiceInterface orderService = dfpServices.get(getDfpSession(), OrderServiceInterface.class);
+			 Statement statement=new Statement();	    
+		     StringBuffer query=new StringBuffer();
+		     query.append(" WHERE ID IN ( 181012302,181140222)");     
+		    
+		     log.info("PQL Query : "+query.toString());
+		     statement.setQuery(query.toString());		   
+			OrderPage page = orderService.getOrdersByStatement(statement);
+			for(Order order : page.getResults()){
+				System.out.println("impressions ["+order.getTotalImpressionsDelivered()+"]  clicks["+order.getTotalClicksDelivered()+"] ctr["+
+							new Double((order.getTotalClicksDelivered()*100/order.getTotalImpressionsDelivered()))
+						+ "]");
+			} 
+		}
 	public static String testDownload() throws ApiException_Exception,
 			InterruptedException, GeneralSecurityException, IOException,
 			ValidationException {
@@ -82,7 +106,7 @@ public class TestDfpBQ {
 		DfpSession dfpSession = new DfpSession.Builder()
 				.withNetworkCode("5678")
 				.withApplicationName(
-						LinMobileConstants.LIN_DIGITAL_DFP_APPLICATION_NAME)
+						LinMobileConstants.LIN_MOBILE_DFP_APPLICATION_NAME)
 				.withOAuth2Credential(credential).build();
 		DfpServices dfpServices = LinMobileProperties.getInstance()
 				.getDfpServices();
@@ -91,38 +115,11 @@ public class TestDfpBQ {
 				.locate(IHistoricalReportService.class);
 		IDFPReportService dfpReportService = new DFPReportService();
 		List<String> orderIdList = new ArrayList<String>();
-		String[] arr = new String[] { "15752622", "24659502", "25870542",
-				"26561262", "26902062", "26931702", "27484902", "28013982",
-				"28020822", "28876182", "29080302", "29087742", "29362902",
-				/*"29363022", "29444622", "29549382", "29552022", "29579502",
-				"29579622", "29627742", "29681982", "30177102", "30728142",
-				"31250982", "31572822", "31572942", "32483382", "32590782",
-				"32590902", "32829702", "33206142", "33503142", "33503262",
-				"33503382", "34000182", "34000302", "35545782", "35703102",
-				"36098502", "36110862", "36470382", "36470502", "36638142",
-				"36811782", "37747182", "38299062", "38648022", "39611142",
-				"40346142", "41246382", "41418582", "41580342", "41580702",
-				"42039462", "42784062", "42784902", "43043982", "43437342",
-				"43592742", "44056182", "44058702", "44800542", "45060342",
-				"45337782", "45495342", "45512982", "45524022", "45953382",
-				"46585662", "47319582", "47595222", "47600622", "48008982",
-				"48381702", "48384702", "48462582", "49058022", "49670622",
-				"49916742", "50038422", "50038542", "50038902", "50477622",
-				"50629422", "51143022", "51150702", "51416982", "51533742",
-				"52090542", "52090662", "52285422", "52530822", "52641222",
-				"52757742", "52856022", "52856142", "53299542", "53378382",
-				"53390982", "54006342", "54006462", "54366222", "54503382",
-				"54503502", "55187862", "55451262", "56067462", "56214702",
-				"56363382", "56534862", "57378462", "57803262", "57998142",
-				"58534182", "59066622", "59865942", "60022542", "60024582",
-				"60174462", "60754902", "60903582", "61217022", "61217142",
-				"61993182", "62283222", "62886582", "62886942", "63035142",
-				"63772662", "63971742", "65351262", "65915742", "66040182",*/
-				"66043662", "66044742" };
+		String[] arr = new String[] { "182141742"/*,"181401702","132015822","232241909","166591062","181694022","181385022","181557222","226432349","179537382","181140222","176849502","180634662","182125662","181909782","179527422","181601982","181266222","180444222","181285782","181656342","181268742","179039742","151688862","182137182","249206549","181283262","181239342","181647222","180970542","181328502","174463302",
+	*/ };
 		orderIdList = Arrays.asList(arr);
 
-		String downloadUrl = dfpReportService.getDFPReportByAccountIds(
-				dfpServices, dfpSession, "2014-12-04", "2014-12-04",
+		String downloadUrl = dfpReportService.getDFPTargetReportByOrderIds(dfpServices, dfpSession, "2014-12-01", "2015-02-10",
 				orderIdList);
 		System.out.println(downloadUrl);
 return downloadUrl;
@@ -292,6 +289,62 @@ return downloadUrl;
 		
 	}
 	
+	
+	
+	public static void copyTable(String tableFrom, String tableTo, final String whereclause)throws Exception{
+
+
+		String projectId = LinMobileConstants.LIN_MOBILE_GOOGLE_API_PROJECT_ID;
+ 
+
+		Bigquery bigQuery = getBigQuery();
+
+		Job job = new Job();
+		JobConfiguration config = new JobConfiguration();
+		 
+		JobConfigurationQuery query = new JobConfigurationQuery();
+		query.setWriteDisposition("WRITE_TRUNCATE");
+		query.setQuery(" SELECT * FROM "+tableFrom+" "+ (whereclause == null ? "" : whereclause));
+		
+		DatasetReference dref = new DatasetReference();
+		dref.setDatasetId("LIN_DEV");
+		dref.setProjectId(projectId);
+		query.setDefaultDataset(dref);
+
+		
+		TableReference tableRef = new TableReference();
+		tableRef.setDatasetId("LIN_DEV");
+		tableRef.setTableId(tableTo); // lin_dev_test_core_perf_3
+		tableRef.setProjectId(projectId);
+		query.setDestinationTable(tableRef);
+		 
+		config.setQuery(query);
+
+	 
+
+		System.out.println("Going to insert data....");
+		job.setConfiguration(config);
+		Insert insert = bigQuery.jobs().insert(projectId, job);
+		insert.setProjectId(projectId);
+
+		job = insert.execute();
+
+
+		 
+		JobReference jobRef = job.getJobReference();
+		JobStatus jobStatus = job.getStatus();
+		String state = jobStatus.getState();
+		System.out.println("after insert : state:" + state);
+		String jobId = jobRef.getJobId();
+		System.out.println("after insert : JobId: " + jobId);
+
+		 Job completedJob = checkQueryResults1(bigQuery, projectId, jobRef);	 
+
+		 
+		
+	}
+	
+	
 	private static Job checkQueryResults1(Bigquery bigquery, String projectId,
 			JobReference jobId) throws IOException, InterruptedException {
 		// Variables to keep track of total query time
@@ -397,11 +450,7 @@ return downloadUrl;
 			
 		}
 	*/}
-	public static void main(String[] args) throws Exception {
-		Bigquery bigQuery = getBigQuery();
-		bigQuery.datasets().delete("", "").setDeleteContents(true);
-		
-	}
+	
 
 	private static TableSchema generateSchema() {
 
@@ -493,7 +542,22 @@ return downloadUrl;
 			Thread.sleep(2000);
 		}
 	}
-	private static Bigquery getBigQuery(){
+	
+	
+	
+	 	
+ 
+	public static String[] getAllProjects(){ return null;}
+	
+	public static String[] getAllDataSets(String projectId){ return null;}
+	
+	public static String[] getAllTables(String projectId, String datasetId){ return null;}
+
+	public static void copyDatasetTablesInOneProject(String projectId, String dataSetId, String destinationDataSetId){
+		
+	}
+	
+	public static Bigquery getBigQuery(){
 		SCOPES.add(LinMobileConstants.GOOGLE_BIGQUERY_SCOPE);
 		GoogleCredential credentials = null;
 		try {
@@ -509,10 +573,10 @@ return downloadUrl;
 											+ LinMobileConstants.LIN_MOBILE_GOOGLE_BQ_SERVICE_ACCOUNT_PRIVATE_KEY))
 					.build();
 		} catch (GeneralSecurityException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
 			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
 			
 		}
 
@@ -523,5 +587,61 @@ return downloadUrl;
 		return bigQuery;
 	}
 
-	 
+	public static void testFinalise(String publisherId, Bigquery bigQuery) throws Exception{ /*
+		Date currentDate=new Date();
+		String startDate=DateUtil.getModifiedDateStringByDays(currentDate,-LinMobileConstants.CHANGE_WINDOW_SIZE, "yyyy-MM-dd");
+	    String month=DateUtil.getFormatedDate(startDate, "yyyy-MM-dd", "yyyy_MM");
+	    System.out.println("start ["+startDate+"] month ["+month+"]");
+	    CloudProjectDTO cloudDto = DataLoaderUtil.getCloudProjectDTO(publisherId);
+	    
+	    String[] loadTypes = new String[]{LinMobileConstants.LOAD_TYPE_CORE_PERFORMANCE,LinMobileConstants.LOAD_TYPE_LOCATION,
+	    		LinMobileConstants.LOAD_TYPE_TARGET,LinMobileConstants.LOAD_TYPE_CUSTOM_EVENT,LinMobileConstants.LOAD_TYPE_RICH_MEDIA};
+	    for(int i=0;i<loadTypes.length;i++){
+	    	String schemaName = DataLoaderUtil.getSchemaNameByLoadType(loadTypes[i]);
+	    	String readyToMergeTableId=schemaName+"_"+LinMobileConstants.DFP_DATA_SOURCE+"_"+startDate.replaceAll("-", "_");
+	        String finaliseTableId=schemaName+"_"+month.replaceAll("-", "_");
+	      boolean success =   BigQueryUtil.copyTable(bigQuery, readyToMergeTableId, 
+	        		finaliseTableId, 
+	        		"", 
+	        		"LIN", 
+	        		"LIN", 
+	        		cloudDto.getBigQueryServiceAccountEmail(), 
+	        		cloudDto.getBigQueryServicePrivateKey(), 
+	        		cloudDto.getBigQueryProjectId(), true);
+	      if(success){
+	    	  System.out.println("Done for "+ loadTypes[i]);
+	    	//  BigQueryUtil.deleteTableFromBigQuery(cloudDto.getBigQueryServiceAccountEmail(), 
+		      //  		cloudDto.getBigQueryServicePrivateKey(), 
+		       // 		cloudDto.getBigQueryProjectId(), 	LinMobileVariables.GOOGLE_BIGQUERY_DATASET_ID,  readyToMergeTableId)  ;
+	      }else{
+	    	  System.out.println("failed for "+ loadTypes[i]);
+	      }
+	    }
+	
+	*/}
+	
+
+
+public static DfpSession getDfpSession() throws ValidationException, GeneralSecurityException, IOException{
+	GoogleCredential credential = new GoogleCredential.Builder()
+	.setTransport(new NetHttpTransport())
+	.setJsonFactory(new GsonFactory())
+	.setServiceAccountId(LinMobileVariables.SERVICE_ACCOUNT_EMAIL)
+	.setServiceAccountScopes(
+			ImmutableList.of("https://www.googleapis.com/auth/dfp"))
+	.setServiceAccountPrivateKeyFromP12File(
+			new File(
+					"C:/Users/user/git/linmobile-dev/src/main/webapp/keys/"
+							+ LinMobileVariables.SERVICE_ACCOUNT_KEY))
+	.build();
+credential.refreshToken();
+
+// Construct a DfpSession.
+DfpSession dfpSession = new DfpSession.Builder()
+	.withNetworkCode("5678")
+	.withApplicationName(
+			LinMobileConstants.LIN_DIGITAL_DFP_APPLICATION_NAME)
+	.withOAuth2Credential(credential).build();
+return dfpSession;
+}	
 }

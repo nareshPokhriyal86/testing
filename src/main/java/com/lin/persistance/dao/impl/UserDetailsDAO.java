@@ -22,6 +22,7 @@ import com.lin.server.bean.EmailAuthObj;
 import com.lin.server.bean.MaxCountUserDetailsObj;
 import com.lin.server.bean.PropertyObj;
 import com.lin.server.bean.RolesAndAuthorisation;
+import com.lin.server.bean.SmartCampaignObj;
 import com.lin.server.bean.TeamPropertiesObj;
 import com.lin.server.bean.UserDetailsObj;
 import com.lin.web.dto.CommonDTO;
@@ -2179,6 +2180,14 @@ public class UserDetailsDAO implements IUserDetailsDAO{
 		 companyObj = obfy.load().type(CompanyObj.class).id(companyId).now();
 		 return companyObj;
 	 }
+	
+	@Override
+	public Map<String,AccountsEntity> loadAllAccountsByIds(String[] accountIds) throws Exception {
+		log.warning("In loadAllAccountsByIds, accountIds : "+accountIds);
+		Map<String,AccountsEntity> objs = obfy.load().type(AccountsEntity.class)
+				.ids(accountIds);
+		return objs;
+	}
 	
 	
 }

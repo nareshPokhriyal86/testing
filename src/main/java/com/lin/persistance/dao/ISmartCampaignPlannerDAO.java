@@ -48,7 +48,7 @@ public interface ISmartCampaignPlannerDAO {
 
 	public PlatformObj getPlatformById(String id) throws Exception;
 
-	
+
 
 	public SmartCampaignObj getCampaignById(long id) throws DataServiceException;
 
@@ -81,11 +81,11 @@ public interface ISmartCampaignPlannerDAO {
 
 
 
-	public AgencyObj getAgencyById(String id) throws Exception;
+/*	public AgencyObj getAgencyById(String id) throws Exception;
 
+*/
 
 	public AdvertiserObj getAdvertiserById(long id) throws Exception;
-
 
 	public DropdownDataObj getEducationById(String id) throws Exception;
 
@@ -101,15 +101,15 @@ public interface ISmartCampaignPlannerDAO {
 			throws Exception;
 
 	public List<DropdownDataObj> getRateTypeByValue(String valueType) throws DataServiceException;
-	
+
 	public SmartCampaignPlacementObj getPlacementById(long placementId) throws DataServiceException;
 
 
-	public AgencyObj getAgencyById(long id) throws Exception;
+	/*public AgencyObj getAgencyById(long id) throws Exception;*/
 
 	public List<SmartCampaignObj> getSmartCampaignList(String campaignStatus,
 			String companyId) throws Exception;
-/*	List<SmartCampaignObj> getSmartCampaignList(String campaignStatus,
+	/*	List<SmartCampaignObj> getSmartCampaignList(String campaignStatus,
 			String adServerId) throws Exception;*/
 
 
@@ -133,6 +133,8 @@ public interface ISmartCampaignPlannerDAO {
 	public SmartCampaignObj getCampaignByDFPOrderId(long dfpOrderId,String adServerCode) throws DataServiceException;
 
 
+	public List<SmartCampaignObj> getCampaignByDFPOrderId(String adServerId, String adServerUsername) throws DataServiceException;
+
 	public List<SmartCampaignObj> getCampaignByAdserverId(String adServerId) throws DataServiceException;
 	
 	public List<SmartCampaignObj> getCampaignsByCompanyId(String companyId) throws DataServiceException;
@@ -141,7 +143,7 @@ public interface ISmartCampaignPlannerDAO {
 	public List<SmartCampaignObj> getAllCampaign(String adServerCode) throws DataServiceException;
 
 	public SmartCampaignObj getCampaignByCampaignId(long campaignId) throws DataServiceException;
-	
+
 	public List<AlertEngineFlightObj> getAllAlertEngineFlightObj(long placementId) throws DataServiceException;
 
 	List<SmartCampaignHistObj> getCampaignHistByCampaignId(long campaignId) throws DataServiceException;
@@ -160,11 +162,18 @@ public interface ISmartCampaignPlannerDAO {
 
 	List<AccountsEntity> getAllAccounts() throws Exception;
 	public List<AccountsEntity> getAllAccounts(String adServerId)throws Exception;
-	
+
 	public AccountsEntity loadAccount(String accountDFPId, String adServerId)throws Exception;
 
 
 	List<AccountsEntity> getAllAccountsByName(String name) throws Exception;
+
+	public AccountsEntity getAccountByID(String accountId)throws Exception;   //shubham
+	
+
+	public List<AccountsEntity> getAllAccountByAdServerId(String adServerId , String accountType);   //shubham
+	
+	public List<AccountsEntity> getAllAccountByCompanyId(String companyId, String accountType);
 
 
 	List<SmartCampaignObj> searchCampaignsInDataStore(List<String> accountIdList, List<Long> campaignIdList) throws DataServiceException;
@@ -174,10 +183,19 @@ public interface ISmartCampaignPlannerDAO {
 
 	QueryResponse billingReportData(String lineItemIds, QueryDTO queryDTO, String startDate, String endDate) throws Exception;
 
-	List<SmartCampaignObj> getAllCampaignForDataUpload() throws DataServiceException;
-	
+	List<SmartCampaignObj> getAllCampaignForDataUpload()
+			throws DataServiceException;
+
 	List<CensusDTO> getAllCensus();
-	
+
 	//Added by Anup
 	List<Long> getAllLineItemIDByPartner(long campaignID, String partnerName);
+	
+	public SmartCampaignObj getCampaignByAdvertiserId(String advertiserId) throws DataServiceException;
+	public SmartCampaignObj getCampaignByAgencyId(String agencyId) throws DataServiceException;
+
+	List<SmartCampaignObj> loadAllCampaignsByDFPId(List<Long> dfpOrderIdList);
+
+
+	
 }

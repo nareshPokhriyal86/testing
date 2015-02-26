@@ -198,5 +198,41 @@
         <property name="edate" direction="asc"/>
     </datastore-index>
     
+    <datastore-index kind="SmartCampaignObj" ancestor="false" source="manual">
+        <property name="companyId" direction="asc"/>
+        <property name="sDate" direction="desc"/>
+        <property name="eDate" direction="asc"/>
+    </datastore-index>
   
+  	<datastore-index kind="SmartCampaignObj" ancestor="false" source="manual">
+        <property name="campaignStatus" direction="asc"/>
+        <property name="companyId" direction="asc"/>
+        <property name="sDate" direction="desc"/>
+        <property name="eDate" direction="asc"/>
+    </datastore-index>
+    
+    <datastore-index kind="SmartCampaignObj" ancestor="false" source="manual">
+        <property name="campaignStatus" direction="asc"/>
+        <property name="companyId" direction="asc"/>
+        <property name="sDate" direction="desc"/>
+        <property name="eDate" direction="desc"/>
+    </datastore-index>
+    
+    <datastore-index kind="SmartCampaignObj" ancestor="false" source="manual">
+        <property name="companyId" direction="asc"/>
+        <property name="sDate" direction="desc"/>
+        <property name="eDate" direction="desc"/>
+    </datastore-index>
+    
+    <datastore-index kind="SmartCampaignObj" ancestor="false" source="manual">
+        <property name="campaignStatus" direction="asc"/>
+        <property name="sDate" direction="desc"/>
+        <property name="eDate" direction="desc"/>
+    </datastore-index>
+    
+    <datastore-index kind="SmartCampaignObj" ancestor="false" source="manual">
+        <property name="sDate" direction="desc"/>
+        <property name="eDate" direction="desc"/>
+    </datastore-index>
+    
 </datastore-indexes>  

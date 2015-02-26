@@ -90,7 +90,7 @@ public class ProcessQueryBuilder {
 		appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getChannelTypeSubQueryForRichMedia(networkCode, publisherId, publisherName,  poCol, advertiserNameCol, lineItemTypeCol));
 		
 		appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getSalesTypeSubQueryForRichMedia(networkCode, publisherId, publisherName,  poCol, advertiserNameCol, lineItemTypeCol));
-		appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getPublisherIdSubQuery(networkCode, publisherId));
+		appendToQuery(getAsString(fieldIndex++, loadType), query,"'"+ProcessQueryBuilder.getPublisherIdSubQuery(networkCode, publisherId)+"'");
 		appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getPublisherNameSubQuery(networkCode, publisherName));
 		//8
 		appendToQuery(getAsString(fieldIndex++, loadType), query,"'"+LinMobileConstants.DFP_DATA_SOURCE+"'");
@@ -117,10 +117,10 @@ public class ProcessQueryBuilder {
 		appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getTimeStampColumn("DimensionAttribute.LINE_ITEM_START_DATE_TIME", columnMap, ProcessQueryBuilder.DEFAULT_STRING));
 		appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getTimeStampColumn("DimensionAttribute.ORDER_END_DATE_TIME", columnMap, ProcessQueryBuilder.DEFAULT_STRING));
 		appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getTimeStampColumn("DimensionAttribute.LINE_ITEM_END_DATE_TIME", columnMap, ProcessQueryBuilder.DEFAULT_STRING));
-		appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getStringColumn("DimensionAttribute.ORDER_AGENCY_ID", columnMap,  ProcessQueryBuilder.DEFAULT_STRING));
+		appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getCastColumn("DimensionAttribute.ORDER_AGENCY_ID", columnMap, ProcessQueryBuilder.CAST_INTEGER,  ProcessQueryBuilder.DEFAULT_INTEGER));
 		appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getStringColumn("DimensionAttribute.ORDER_AGENCY", columnMap, ProcessQueryBuilder.DEFAULT_STRING));					
 		String goalQty = columnMap.get("DimensionAttribute.LINE_ITEM_GOAL_QUANTITY");
-		appendToQuery(getAsString(fieldIndex++, loadType), query,"if(INTEGER("+goalQty+") IS NULL, -1, INTEGER("+goalQty+")) ");
+		appendToQuery(getAsString(fieldIndex++, loadType), query,"if(FLOAT("+goalQty+") IS NULL, -1, FLOAT("+goalQty+")) ");
 		String costPerUnit = columnMap.get("DimensionAttribute.LINE_ITEM_COST_PER_UNIT");
 		appendToQuery(getAsString(fieldIndex++, loadType), query,"FLOAT(INTEGER(if("+costPerUnit+" IS NULL OR "+costPerUnit+" == '-0', '0', "+costPerUnit+"))/1000000) ");
 		appendToQuery(getAsString(fieldIndex++, loadType), query,"''"); // market
@@ -161,7 +161,7 @@ public class ProcessQueryBuilder {
 			/*4*/ appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getChannelTypeSubQueryForRichMedia(networkCode, publisherId, publisherName,  poCol, advertiserNameCol, lineItemTypeCol));
 		
 		appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getSalesTypeSubQueryForRichMedia(networkCode, publisherId, publisherName,  poCol, advertiserNameCol, lineItemTypeCol));
-		appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getPublisherIdSubQuery(networkCode, publisherId));
+		appendToQuery(getAsString(fieldIndex++, loadType), query,"'"+ProcessQueryBuilder.getPublisherIdSubQuery(networkCode, publisherId)+"'");
 		appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getPublisherNameSubQuery(networkCode, publisherName));
 		//8
 		appendToQuery(getAsString(fieldIndex++, loadType), query,"'"+LinMobileConstants.DFP_DATA_SOURCE+"'");
@@ -186,7 +186,7 @@ public class ProcessQueryBuilder {
 		appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getStringColumn("DimensionAttribute.ORDER_AGENCY", columnMap, ProcessQueryBuilder.DEFAULT_STRING));					
 		appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getStringColumn("DimensionAttribute.ORDER_AGENCY_ID", columnMap,  ProcessQueryBuilder.DEFAULT_STRING));
 		String goalQty = columnMap.get("DimensionAttribute.LINE_ITEM_GOAL_QUANTITY");
-		appendToQuery(getAsString(fieldIndex++, loadType), query,"if(INTEGER("+goalQty+") IS NULL, -1, INTEGER("+goalQty+")) ");
+		appendToQuery(getAsString(fieldIndex++, loadType), query,"if(FLOAT("+goalQty+") IS NULL, -1, FLOAT("+goalQty+")) ");
 		String costPerUnit = columnMap.get("DimensionAttribute.LINE_ITEM_COST_PER_UNIT");
 		appendToQuery(getAsString(fieldIndex++, loadType), query,"FLOAT(INTEGER(if("+costPerUnit+" IS NULL OR "+costPerUnit+" == '-0', '0', "+costPerUnit+"))/1000000) ");
 
@@ -283,8 +283,8 @@ public class ProcessQueryBuilder {
 					appendToQuery(getAsString(fieldIndex++, loadType), query,"if(FLOAT("+deliveryIndicator+") IS NULL, 0.00, FLOAT("+deliveryIndicator+")) "); // TODO: ROUND
 					appendToQuery(getAsString(fieldIndex++, loadType), query,"'"+LinMobileConstants.DFP_DATA_SOURCE+"'");
 					String targetCriteria = columnMap.get("Dimension.GENERIC_CRITERION_NAME");
-					appendToQuery(getAsString(fieldIndex++, loadType), query," if(split("+targetCriteria+", '=') is null, '' , NTH(1, SPLIT("+targetCriteria+", '=')))");
-					appendToQuery(getAsString(fieldIndex++, loadType), query," if(split("+targetCriteria+", '=') is null, '' , NTH(2, SPLIT("+targetCriteria+", '=')))");  
+					appendToQuery(getAsString(fieldIndex++, loadType), query," NTH(1, SPLIT("+targetCriteria+", '='))");
+					appendToQuery(getAsString(fieldIndex++, loadType), query," NTH(2, SPLIT("+targetCriteria+", '='))");  
 
 				query.append(" FROM "+ tableName +" where col_0_0 <> 'Dimension.DATE'");
 				System.out.println("Last field index: "+ fieldIndex);
@@ -348,12 +348,12 @@ public class ProcessQueryBuilder {
 							appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getCastColumn("DimensionAttribute.ORDER_LIFETIME_CLICKS", columnMap, ProcessQueryBuilder.CAST_INTEGER,  ProcessQueryBuilder.DEFAULT_INTEGER));				
 							appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getCastColumn("DimensionAttribute.LINE_ITEM_LIFETIME_CLICKS", columnMap, ProcessQueryBuilder.CAST_INTEGER,  ProcessQueryBuilder.DEFAULT_INTEGER));				
 							
-							appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getTotalImpressions(columnMap));
+							appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getTotalImpressionsFloat(columnMap));
 							appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getTotalClicks(columnMap));
 								
 							appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getECPM(columnMap));
 							appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getCTR(columnMap));// TODO: Round off implementations in CTR
-							appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getPublisherIdSubQuery(networkCode, publisherId));
+							appendToQuery(getAsString(fieldIndex++, loadType), query,"'"+ProcessQueryBuilder.getPublisherIdSubQuery(networkCode, publisherId)+"'");
 							appendToQuery(getAsString(fieldIndex++, loadType), query,ProcessQueryBuilder.getPublisherNameSubQuery(networkCode, publisherName));
 							appendToQuery(getAsString(fieldIndex++, loadType), query,"'"+LinMobileConstants.DFP_DATA_SOURCE+"'");
  
@@ -810,7 +810,7 @@ public static String getSalesTypeSubQueryForRichMedia(String networkCode, String
 	public static String getPublisherIdSubQuery(String networkCode, String publisherId){
 		StringBuffer query = new StringBuffer();
 		if(networkCode!=null && networkCode.equals(LinMobileConstants.LIN_DIGITAL_DFP_NETWORK_CODE)){
-			query.append(StringUtil.getLongValue(LinMobileConstants.LIN_DIGITAL_PUBLISHER_ID)+" ") ;
+			query.append(StringUtil.getLongValue(LinMobileConstants.LIN_DIGITAL_PUBLISHER_ID)+"") ;
 			
 		}else if(networkCode!=null && networkCode.equals(LinMobileConstants.DFP_NETWORK_CODE)){
 			
@@ -829,6 +829,7 @@ public static String getSalesTypeSubQueryForRichMedia(String networkCode, String
 		
 		return query.toString();
 	}
+	
 	
 	public static String getPublisherNameSubQuery(String networkCode, String publisherName){
 		StringBuffer query = new StringBuffer();
@@ -955,6 +956,24 @@ public static String getSalesTypeSubQueryForRichMedia(String networkCode, String
 		
 		// Ad exchange column
 		String adExLevelImpCol = "INTEGER("+columnMap.get("Column.AD_EXCHANGE_LINE_ITEM_LEVEL_IMPRESSIONS")+")"; // long
+		
+		querySnippet.append("if("+advNameCol+" == 'WLIN | Google Ad Exchange - AdEx (Remnant)' , "
+				+ adExLevelImpCol
+				+ ","
+				+ levelImpCol+") ");
+				
+		return querySnippet.toString();
+	}
+	
+	public static String getTotalImpressionsFloat(Map<String, String> columnMap) {
+		StringBuilder querySnippet = new StringBuilder("");
+		String advNameCol = columnMap.get("Dimension.ADVERTISER_NAME");
+		// Normal columns
+		String levelImpCol = "FLOAT("+columnMap.get("Column.AD_SERVER_IMPRESSIONS")+")"; // long
+		
+		
+		// Ad exchange column
+		String adExLevelImpCol = "FLOAT("+columnMap.get("Column.AD_EXCHANGE_LINE_ITEM_LEVEL_IMPRESSIONS")+")"; // long
 		
 		querySnippet.append("if("+advNameCol+" == 'WLIN | Google Ad Exchange - AdEx (Remnant)' , "
 				+ adExLevelImpCol

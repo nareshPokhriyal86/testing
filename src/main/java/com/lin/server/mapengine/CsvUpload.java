@@ -176,7 +176,6 @@ public class CsvUpload {
     File inputFile = new File(fileName);
     if (!inputFile.exists()) {
       System.err.println("File " + fileName + " does not exist!");
-      System.exit(1);
     }
 
     try {

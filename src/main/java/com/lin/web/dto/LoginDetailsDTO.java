@@ -13,8 +13,13 @@ public class LoginDetailsDTO {
 	private String loginStatus;
 	private boolean isAdminUser;
 	private boolean isSuperAdmin;
+	private boolean client;
 	private boolean publisherPoolPartner;
 	private String companyLogoURL;
+	
+	//Added by Anup
+	private String companyName;
+	
     public LoginDetailsDTO(){		
 	}
 	
@@ -115,6 +120,22 @@ public class LoginDetailsDTO {
 
 	public String getCompanyLogoURL() {
 		return companyLogoURL;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	public boolean isClient() {
+		return client;
+	}
+
+	public void setClient(boolean client) {
+		this.client = client;
 	}
 
 	

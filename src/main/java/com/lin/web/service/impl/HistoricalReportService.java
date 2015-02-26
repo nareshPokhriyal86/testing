@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -15,6 +16,9 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
 
+import com.google.api.services.bigquery.model.QueryResponse;
+import com.google.api.services.bigquery.model.TableCell;
+import com.google.api.services.bigquery.model.TableRow;
 import com.lin.persistance.dao.IReportDAO;
 import com.lin.persistance.dao.IUserDetailsDAO;
 import com.lin.persistance.dao.impl.ReportDAO;
@@ -2597,6 +2601,41 @@ public class HistoricalReportService implements IHistoricalReportService{
 		 }catch(Exception e){
 			 throw new NullPointerException("Exception while fetching task from datastore. No task was found with dfpTaskKey ["+dfpTaskKey+"] ");
 		 }
+	 }
+	 
+	 @Override
+	 public HashSet getAllOrderIdsForNonFinaliseData(String publisherBQId){
+		 IReportDAO dao = new ReportDAO();
+		 QueryDTO queryDTO=null;
+		 Date currentDate=new Date();
+		 QueryResponse queryResponse = new QueryResponse();
+		 HashSet<String> nonFinaliseOrdersSet = new HashSet<>();
+		 try{
+			 String startDate=DateUtil.getModifiedDateStringByDays(currentDate,-2, "yyyy-MM-dd");
+			 String endDate=DateUtil.getModifiedDateStringByDays(currentDate,-1, "yyyy-MM-dd");
+			 queryDTO=BigQueryUtil.getQueryDTO(startDate,endDate,publisherBQId, LinMobileConstants.BQ_CORE_PERFORMANCE);
+			 log.info("Going to fetch All orders for non finalise data");
+			 queryResponse = dao.getAllOrderIdsForNonFinaliseData(queryDTO);
+			 if(queryResponse!=null){
+				 List<TableRow> records = queryResponse.getRows();
+				 if(records!=null && records.size()>0){
+					 log.info("No of orders found : "+records.size());
+						for (TableRow row : records) {
+							if(row != null && row.getF() != null && row.getF().size() > 0) {
+										List<TableCell> cellList = row.getF();
+										nonFinaliseOrdersSet.add(cellList.get(0).getV().toString());
+							}
+						} 
+						log.info("nonFinaliseOrdersSet size : "+nonFinaliseOrdersSet.size());
+				 }
+				 
+			 }
+		 }catch(Exception e){
+			 log.severe(e.getMessage());
+		 }
+		 
+		return nonFinaliseOrdersSet;
+		 
 	 }
 	 
 		 

@@ -72,7 +72,6 @@ import com.lin.web.dto.AccountDTO;
 import com.lin.web.dto.AdServerCredentialsDTO;
 import com.lin.web.dto.DFPLineItemDTO;
 import com.lin.web.dto.LineItemDTO;
-import com.lin.web.dto.NewAdvertiserViewDTO;
 import com.lin.web.util.CampaignStatusEnum;
 import com.lin.web.util.DateUtil;
 import com.lin.web.util.LinMobileConstants;

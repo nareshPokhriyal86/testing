@@ -597,7 +597,7 @@ function addFlight() {
 	$("#goalId_"+flightIncrement).val("");
 	$("#startdateId_"+flightIncrement).val("");
 	$("#enddateId_"+flightIncrement).val("");
-	if(flightCount!=null && flightCount!=undefined && isNaN(flightCount)){
+	if(flightCount!=null && flightCount!=undefined && !isNaN(flightCount)){ // fix for flight issue in story ID 87389740
 	flightCount++;
 	}
 	/*$("#flightDateSlider_" + flightIncrement).dateRangeSlider({
@@ -812,7 +812,7 @@ function addNewAdvertiserPopup(){
 	$("#myModalLabel").html("chartTitle");
 	    $modal.modal('show');
 //	 $( "#dialog-form" ).dialog( "open" );
-	}else if(selectedValue!=null  && selectedValue>0) {
+	}else if(selectedValue!=null  && selectedValue.lenght() >0) {
 	$('#advertiserError').html("");
 	}else {
 	$('#advertiserError').html("Advertiser is Required");
@@ -826,6 +826,7 @@ function addAdvertiser(){
 	var fax = $('#advertiserFax').val();
 	var email = $('#advertiserEmail').val();
 	var zip = $('#advertiserZip').val();
+
 	if(name==null || name==undefined || name==""){
 	//agencyNameError alert("name is required");
 	$('#advertiserNameError').html("Name is Required");
@@ -835,7 +836,7 @@ function addAdvertiser(){
 	$('#advertiserNameError').html("");
     $.ajax(
 	    {
-	        url : "/addAdvertiser.lin",
+	        url : "/addAccount.lin",
 	        type: "POST",
 	        data : {
 	        	name : name,
@@ -843,13 +844,14 @@ function addAdvertiser(){
 	        	phone : phone,
 	        	fax : fax,
 	        	email : email,
-	        	zip : zip
+	        	zip : zip,
+	        	type : 'Advertiser'
 	        },
 	        dataType: 'json',
 	        success:function(data, textStatus, jqXHR) 
 	        {
-	        	if(data!=null && data!=undefined && data.name!=null && data.name!=undefined){
-	        	 $('#advertiserListId').append("<option value="+data.id+">"+data.name+"</option>");
+	        	if(data!=null && data!=undefined && data.accountName!=null && data.accountName!=undefined){
+	        	 $('#advertiserListId').append("<option value="+data.id+">"+data.accountName+"</option>");
 	        	 $("#advertiserListId").select2('val',data.id);
 	        	 $('#advertiserName').val('');
 	        	     $('#advertiserAddress').val('');
@@ -880,6 +882,30 @@ function addAdvertiser(){
 	    });
 	}
 }
+
+jQuery("#advertiserListId").select2({
+    width: 'element',
+    matcher: function(term, text) {
+    	$('#advertiserName').val(term);
+        return text === 'Add New Advertiser' || $.fn.select2.defaults.matcher.apply(this, arguments);
+    },
+    sortResults: function(results) {
+        if (results.length > 1) results.pop();
+        return results;
+    }});
+
+
+jQuery("#agencyListId").select2({
+    width: 'element',
+    matcher: function(term, text) {
+    	$('#agencyName').val(term);
+        return text === 'Add New Agency' || $.fn.select2.defaults.matcher.apply(this, arguments);
+    },
+    sortResults: function(results) {
+        if (results.length > 1) results.pop();
+        return results;
+    }});
+
 
 function addNewAgencyPopup(){
 	var selectedValue = $('#agencyListId').val();
@@ -912,7 +938,7 @@ function addAgency(){
 	$('#agencyNameError').html("");
 	    $.ajax(
 	    {
-	        url : "/addAgency.lin",
+	        url : "/addAccount.lin",
 	        type: "POST",
 	        data : {
 	        	name : name,
@@ -920,13 +946,14 @@ function addAgency(){
 	        	phone : phone,
 	        	fax : fax,
 	        	email : email,
-	        	zip : zip
+	        	zip : zip,
+	        	type : 'Agency'   //shubham
 	        },
 	        dataType: 'json',
 	        success:function(data, textStatus, jqXHR) 
 	        {
 	        	if(data!=null && data!=undefined){
-	        	$('#agencyListId').append("<option value="+data.id+">"+data.name+"</option>");
+	        	$('#agencyListId').append("<option value="+data.id+">"+data.accountName+"</option>");
 	        	 $("#agencyListId").select2('val',data.id);
 	        	 $('#agencyName').val('');
 	        	     $('#agencyAddress').val('');
@@ -968,6 +995,7 @@ function cancleAdvertiser(){
     $modal.modal('hide');
     $('#advertiserError').html("Advertiser is Required");
 	$("#advertiserError").focus();
+	$('#advertiserListId').val('');
 }
 
 function cancleAgency(){
@@ -978,6 +1006,7 @@ function cancleAgency(){
 	});
 	$("#myModalLabel").html("chartTitle");
     $modal.modal('hide');
+	$('#agencyListId').val('');
 }
 
 function addCampaign(){

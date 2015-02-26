@@ -105,4 +105,8 @@ public class CensusDTO implements Serializable,Comparable<CensusDTO>{
 		return this.groupTxt.compareTo(temp.groupTxt);
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		return super.equals(obj);
+	}
 }

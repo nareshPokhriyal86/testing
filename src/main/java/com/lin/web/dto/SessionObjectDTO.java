@@ -14,11 +14,15 @@ public class SessionObjectDTO implements Serializable{
 	private String pageName;
 	private boolean adminUser;
 	private boolean superAdmin;
+	private boolean client;
+
 	private String error;
 	private String companyLogoURL;
 	private boolean companyLogo;
 	private boolean publisherPoolPartner;	// Use only if user in session is Admin user
 	
+	//Added by Anup
+	private String companyName;
 	
 	public SessionObjectDTO(){
 		
@@ -30,8 +34,10 @@ public class SessionObjectDTO implements Serializable{
 				+ ", roleId=" + roleId + ", roleName=" + roleName
 				+ ", userName=" + userName + ", pageName=" + pageName
 				+ ", adminUser=" + adminUser + ", superAdmin=" + superAdmin
-				+ ", error=" + error + ", publisherPoolPartner="
-				+ publisherPoolPartner + "]";
+				+ ", client=" + client + ", error=" + error
+				+ ", companyLogoURL=" + companyLogoURL + ", companyLogo="
+				+ companyLogo + ", publisherPoolPartner="
+				+ publisherPoolPartner + ", companyName=" + companyName + "]";
 	}
 
 	public long getUserId() {
@@ -128,6 +134,22 @@ public class SessionObjectDTO implements Serializable{
 
 	public boolean isCompanyLogo() {
 		return companyLogo;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+	
+	public boolean isClient() {
+		return client;
+	}
+
+	public void setClient(boolean client) {
+		this.client = client;
 	}
 	
 

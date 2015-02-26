@@ -30,6 +30,7 @@ import com.lin.web.dto.UserDetailsDTO;
 import com.lin.web.service.IPerformanceMonitoringService;
 import com.lin.web.service.IUserService;
 import com.lin.web.service.impl.BusinessServiceLocator;
+import com.lin.web.service.impl.UserService;
 import com.lin.web.util.DataLoaderUtil;
 import com.lin.web.util.LinMobileConstants;
 import com.lin.web.util.LinMobileUtil;
@@ -141,6 +142,7 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			if(!isAuthorised(sessionDTO)) {
 				return "unAuthorisedAccess";
 			}
+			boolean isClient = sessionDTO.getRoleId().equals("4");
 	 	}
 		catch (Exception e) {
 			
@@ -158,6 +160,23 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 			String campaignId = request.getParameter("orderId");
 			//publisherBQId = "5";
 			publisherBQId=getPublisherIdInBQ();
+			
+			//Added By Anup - To validate authorized user should access campaign
+			IUserService userService = (IUserService) BusinessServiceLocator.locate(IUserService.class);
+			Map<String,String> accountDataMap = userService.getSelectedAccountsByUserId(sessionDTO.getUserId(), true, true);
+			ISmartCampaignPlannerDAO plannerDAO = new SmartCampaignPlannerDAO();
+			
+			SmartCampaignObj smartCampaignObj = plannerDAO.getCampaignByCampaignId(Long.valueOf(campaignId));
+			String advertiserId = smartCampaignObj.getAdvertiserId();
+			String agencyId = smartCampaignObj.getAgencyId();
+			
+			if( accountDataMap.containsKey("allAccounts") && accountDataMap.get("allAccounts")!=null && accountDataMap.get("allAccounts").equalsIgnoreCase("true")){
+				// ALL ACCOUNTS
+				log.info("All Accounts");
+			}else if(!((advertiserId != null && UserService.isAuthorisedAccountId(advertiserId, accountDataMap)) || 
+					(agencyId != null && UserService.isAuthorisedAccountId(agencyId, accountDataMap)))) {
+				return "unAuthorisedAccess";
+			}
 			
 			if(campaignId != null && LinMobileUtil.isNumeric(campaignId) && (Long.valueOf(campaignId)) > 0) {
 				IPerformanceMonitoringService monitoringService = (IPerformanceMonitoringService)BusinessServiceLocator.locate(IPerformanceMonitoringService.class);
@@ -303,7 +322,8 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 						partnerInfo = placementInfoMap.get("partnerInfo");
 					}
 					if(placementInfo != null && partnerInfo != null) {
-						jsonObject = monitoringService.ctrLineChartData(orderId, campaignId, placementIds, isNoise, threshold, publisherIdInBQ, placementInfo, partnerInfo);
+						boolean isClient = sessionDTO.getRoleId().equals("4");
+						jsonObject = monitoringService.ctrLineChartData(orderId, campaignId, placementIds, isNoise, threshold, publisherIdInBQ, placementInfo, partnerInfo,isClient,sessionDTO.getCompanyName());
 					}
 					else {
 						log.info("No sufficient info for campaignId : "+campaignId+" --> "+placementInfoMap);
@@ -353,7 +373,8 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 						partnerInfo = placementInfoMap.get("partnerInfo");
 					}
 					if(placementInfo != null && partnerInfo != null) {
-						jsonObject = monitoringService.impressionsLineChartData(orderId, campaignId, placementIds, isNoise, threshold, publisherIdInBQ, placementInfo, partnerInfo);
+						boolean isClient = sessionDTO.getRoleId().equals("4");
+						jsonObject = monitoringService.impressionsLineChartData(orderId, campaignId, placementIds, isNoise, threshold, publisherIdInBQ, placementInfo, partnerInfo,isClient,sessionDTO.getCompanyName());
 					}
 					else {
 						log.info("No sufficient info for campaignId : "+campaignId+" --> "+placementInfoMap);
@@ -403,7 +424,8 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 						partnerInfo = placementInfoMap.get("partnerInfo");
 					}
 					if(placementInfo != null && partnerInfo != null) {
-						jsonObject = monitoringService.clicksLineChartData(orderId, campaignId, placementIds, isNoise, threshold, publisherIdInBQ, placementInfo, partnerInfo);
+						boolean isClient = sessionDTO.getRoleId().equals("4");
+						jsonObject = monitoringService.clicksLineChartData(orderId, campaignId, placementIds, isNoise, threshold, publisherIdInBQ, placementInfo, partnerInfo,isClient,sessionDTO.getCompanyName());
 					}
 					else {
 						log.info("No sufficient info for campaignId : "+campaignId+" --> "+placementInfoMap);
@@ -703,7 +725,8 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 						partnerInfo = placementInfoMap.get("partnerInfo");
 					}
 					if(placementInfo != null && partnerInfo != null) {
-						dataMap = monitoringService.creativeBarChartData(orderId, campaignId, placementIds, isNoise, threshold, publisherIdInBQ, placementInfo, partnerInfo);
+						boolean isClient = sessionDTO.getRoleId().equals("4");
+						dataMap = monitoringService.creativeBarChartData(orderId, campaignId, placementIds, isNoise, threshold, publisherIdInBQ, placementInfo, partnerInfo,isClient,sessionDTO.getCompanyName());
 					}
 					else {
 						log.info("No sufficient info for campaignId : "+campaignId+" --> "+placementInfoMap);
@@ -753,7 +776,8 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 						partnerInfo = placementInfoMap.get("partnerInfo");
 					}
 					if(placementInfo != null && partnerInfo != null) {
-						dataMap = monitoringService.deviceBarChartData(orderId, campaignId, placementIds, isNoise, threshold, publisherIdInBQ, placementInfo, partnerInfo);
+						boolean isClient = sessionDTO.getRoleId().equals("4");
+						dataMap = monitoringService.deviceBarChartData(orderId, campaignId, placementIds, isNoise, threshold, publisherIdInBQ, placementInfo, partnerInfo,isClient,sessionDTO.getCompanyName());
 					}
 					else {
 						log.info("No sufficient info for campaignId : "+campaignId+" --> "+placementInfoMap);
@@ -803,7 +827,8 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 						partnerInfo = placementInfoMap.get("partnerInfo");
 					}
 					if(placementInfo != null && partnerInfo != null) {
-						dataMap = monitoringService.osChartData(orderId, campaignId, placementIds, isNoise, threshold, publisherIdInBQ, placementInfo, partnerInfo);
+						boolean isClient = sessionDTO.getRoleId().equals("4");
+						dataMap = monitoringService.osChartData(orderId, campaignId, placementIds, isNoise, threshold, publisherIdInBQ, placementInfo, partnerInfo,isClient,sessionDTO.getCompanyName());
 					}
 					else {
 						log.info("No sufficient info for campaignId : "+campaignId+" --> "+placementInfoMap);
@@ -845,7 +870,8 @@ public class PerformanceMonitoringAction extends ActionSupport implements Sessio
 						partnerInfo = placementInfoMap.get("partnerInfo");
 					}
 					if(placementInfo != null && partnerInfo != null) {
-						jsonObject = monitoringService.richMediaLineChartData(orderId, campaignId, placementIds, publisherIdInBQ, placementInfo, partnerInfo);
+						boolean isClient = sessionDTO.getRoleId().equals("4");
+						jsonObject = monitoringService.richMediaLineChartData(orderId, campaignId, placementIds, publisherIdInBQ, placementInfo, partnerInfo, isClient,sessionDTO.getCompanyName());
 					}
 					else {
 						log.info("No sufficient info for campaignId : "+campaignId+" --> "+placementInfoMap);

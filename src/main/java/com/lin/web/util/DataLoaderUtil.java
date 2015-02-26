@@ -1,7 +1,9 @@
 package com.lin.web.util;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +15,7 @@ import com.lin.server.bean.CompanyObj;
 import com.lin.server.bean.SmartCampaignObj;
 import com.lin.web.dto.CloudProjectDTO;
 import com.lin.web.dto.DataUploaderDTO;
+import com.lin.web.service.IHistoricalReportService;
 import com.lin.web.service.ISmartCampaignPlannerService;
 import com.lin.web.service.IUserService;
 import com.lin.web.service.impl.BusinessServiceLocator;
@@ -100,6 +103,9 @@ public class DataLoaderUtil {
 			case LinMobileConstants.LOAD_TYPE_SELL_THROUGH:
 				schemaName=LinMobileConstants.BQ_SELL_THROUGH;
 			break;
+			default:
+				schemaName = null;
+		    break;
 		
 		}
 		return schemaName;
@@ -175,18 +181,27 @@ public class DataLoaderUtil {
 	 * @return List<DataUploaderDTO> : returns dataUploaderDTOList, this method returns list of DataUploaderDTO for data upload crons..
     */
 	
-	public static List<DataUploaderDTO> getDataUploaderDTO(int orderListSize){
+	
+	
+	
+	public static List<DataUploaderDTO> getDataUploaderDTO(String orderId, String taskType){
 		ISmartCampaignPlannerDAO dao = new SmartCampaignPlannerDAO();
 		ISmartCampaignPlannerService service =  (ISmartCampaignPlannerService) BusinessServiceLocator.locate(ISmartCampaignPlannerService.class);
 		List<SmartCampaignObj> campaignObjList = new ArrayList<>();
 		Map<String,List<SmartCampaignObj>> campaignByCompanyIdMap = new HashMap<>();
 		List<DataUploaderDTO> dataUploaderDTOList = new ArrayList<>();
 		try{
-			campaignObjList = dao.getAllCampaignForDataUpload();
+			if(orderId!=null && !orderId.equals("")){
+				List<Long> orderIdList = StringUtil.commaSeperatedToNumericList(orderId);
+				campaignObjList = dao.loadAllCampaignsByDFPId(orderIdList);
+			}else{
+				campaignObjList = dao.getAllCampaignForDataUpload();
+			}
+			
 			if(campaignObjList!=null && campaignObjList.size()>0){
 				log.info("campaignObjList size = "+campaignObjList.size());
 				campaignByCompanyIdMap = service.getCampaignByCompanyId(campaignObjList);
-				dataUploaderDTOList = getOrderByBQID(campaignByCompanyIdMap, orderListSize);
+				dataUploaderDTOList = getOrderByBQID(campaignByCompanyIdMap, taskType);
 			}else{
 				log.info("no order found for data uplaod");
 			}
@@ -202,10 +217,13 @@ public class DataLoaderUtil {
 	 * @param Map<String,List<SmartCampaignObj>> : HashMap of company Id as key and list of smartCampaignObj as value
 	 * @return List<DataUploaderDTO> : returns dataUploaderDTOList, this method returns list of DataUploaderDTO for data upload crons..
     */
-	private static List<DataUploaderDTO> getOrderByBQID(Map<String,List<SmartCampaignObj>> campaignByCompanyIdMap, int orderListSize){
+	private  static List<DataUploaderDTO> getOrderByBQID(Map<String,List<SmartCampaignObj>> campaignByCompanyIdMap, String taskType){
 		IUserService service =  (IUserService) BusinessServiceLocator.locate(IUserService.class);
+		IHistoricalReportService historicalService = (IHistoricalReportService) BusinessServiceLocator.locate(IHistoricalReportService.class);
 		List<DataUploaderDTO> dataUploaderDTOList = new ArrayList<>();
 		int count = 0;
+		int orderListSize = 0;
+		HashSet<String> nonFinaliseOrdersSet = new HashSet<>();
 		try{
 			if(campaignByCompanyIdMap!=null && campaignByCompanyIdMap.size()>0){
 				 Iterator iterator = campaignByCompanyIdMap.entrySet().iterator();
@@ -220,20 +238,60 @@ public class DataLoaderUtil {
 							String commaSepratedOrderId = "";
 							List<String> orderList = new ArrayList<>();
 							if(campaignObjList!=null && campaignObjList.size()>0){
+								if(campaignObjList!=null && campaignObjList.size()>0 &&  campaignObjList.get(0).getAdServerId()!=null ){
+									orderListSize = getOrderListSizeByNetworkCode(campaignObjList.get(0).getAdServerId());
+									log.info("orderListSize by networkCode = "+orderListSize);
+								}
 								dataUploaderDTO.setPublisherBQId(companyObj.getBqIdentifier());
 								dataUploaderDTO.setPublisherName(companyObj.getCompanyName());
-								for (SmartCampaignObj smartCampaignObj : campaignObjList) {
-									if(count>=orderListSize ){
-										commaSepratedOrderId = StringUtil.deleteFromLastOccurence(commaSepratedOrderId, ",");
-										orderList.add(commaSepratedOrderId);
-										count = 0;
-										commaSepratedOrderId = "";
-									}else if(smartCampaignObj!=null && commaSepratedOrderId!=null && !commaSepratedOrderId.contains(String.valueOf(smartCampaignObj.getDfpOrderId()))){
-										commaSepratedOrderId = commaSepratedOrderId+smartCampaignObj.getDfpOrderId()+",";
+								log.info("taskType = "+taskType);
+								if(taskType!=null && taskType.equals(LinMobileConstants.NON_FINALISE_TASK_TYPE)){
+									nonFinaliseOrdersSet = historicalService.getAllOrderIdsForNonFinaliseData(companyObj.getBqIdentifier()+"");
+									for (SmartCampaignObj smartCampaignObj : campaignObjList) {
+										if(smartCampaignObj!=null){
+											nonFinaliseOrdersSet.add(smartCampaignObj.getDfpOrderId()+"");
+											dataUploaderDTO.setDfpNetworkCode(smartCampaignObj.getAdServerId());
+										}
 									}
-									count++;
-									dataUploaderDTO.setDfpNetworkCode(smartCampaignObj.getAdServerId());
+									log.info("nonFinaliseOrdersSet size after adding campaign order : "+nonFinaliseOrdersSet.size());
+									for (String orderId : nonFinaliseOrdersSet) {
+										if(count>orderListSize ){
+											commaSepratedOrderId = StringUtil.deleteFromLastOccurence(commaSepratedOrderId, ",");
+											if(!commaSepratedOrderId.equals("")){
+												orderList.add(commaSepratedOrderId);
+											}
+											count = 0;
+											commaSepratedOrderId = "";
+										}else if(orderId!=null && !commaSepratedOrderId.contains(orderId)){
+											commaSepratedOrderId = commaSepratedOrderId+orderId+",";
+										}
+										count++;
+									}
+								}else{
+									for (SmartCampaignObj smartCampaignObj : campaignObjList) {
+										if(count>orderListSize ){
+											commaSepratedOrderId = StringUtil.deleteFromLastOccurence(commaSepratedOrderId, ",");
+											if(!commaSepratedOrderId.equals("")){
+												orderList.add(commaSepratedOrderId);
+											}
+											count = 0;
+											commaSepratedOrderId = "";
+										}else if(smartCampaignObj!=null && commaSepratedOrderId!=null && !commaSepratedOrderId.contains(String.valueOf(smartCampaignObj.getDfpOrderId()))){
+											/*String endDate = smartCampaignObj.getEndDate();
+											
+											Date eDate = DateUtil.getDateMMDDYYYY(endDate);
+											if(dataType.equals(LinMobileConstants.DAILY_TASK_TYPE) && !eDate.before(DateUtil.getAbsoluteDate(new Date()))){
+												commaSepratedOrderId = commaSepratedOrderId+smartCampaignObj.getDfpOrderId()+",";
+											}else if(dataType.equals(LinMobileConstants.HISTORICAL_TASK_TYPE)){
+												commaSepratedOrderId = commaSepratedOrderId+smartCampaignObj.getDfpOrderId()+",";
+											}*/
+											commaSepratedOrderId = commaSepratedOrderId+smartCampaignObj.getDfpOrderId()+",";
+										}
+										count++;
+										dataUploaderDTO.setDfpNetworkCode(smartCampaignObj.getAdServerId());
+									}
 								}
+								
 								commaSepratedOrderId = StringUtil.deleteFromLastOccurence(commaSepratedOrderId, ",");
 								orderList.add(commaSepratedOrderId);
 								dataUploaderDTO.setOrderIdList(orderList);
@@ -247,6 +305,25 @@ public class DataLoaderUtil {
 		}
 		return dataUploaderDTOList;
 		
+	}
+	
+	private static int getOrderListSizeByNetworkCode(String networkCode){
+		int orderListSize = 0;
+		switch (networkCode) {
+		case LinMobileConstants.LIN_DIGITAL_DFP_NETWORK_CODE:
+			orderListSize = LinMobileConstants.DAILY_REPORT_LIN_DIGITAL_ORDER_COUNT;
+			break;
+		case LinMobileConstants.LIN_MOBILE_DFP_NETWORK_CODE:
+			orderListSize = LinMobileConstants.DAILY_REPORT_LIN_MOBILE_ORDER_COUNT;
+			break;
+		case LinMobileConstants.LIN_MOBILE_NEW_DFP_NETWORK_CODE:
+			orderListSize = LinMobileConstants.DAILY_REPORT_LIN_MOBILE_NEW_ORDER_COUNT;
+			break;
+		default:
+			orderListSize = LinMobileConstants.DAILY_REPORT_ORDER_COUNT;
+			break;
+		}
+		return orderListSize;
 	}
 	
 }

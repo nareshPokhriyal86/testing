@@ -158,6 +158,7 @@ public class DFPCampaignSetupService implements IDFPCampaignSetupService {
 		Order order = new Order();
 		order.setName(orderName);
 		order.setAdvertiserId(advertiser.getAdvertiserId());
+		
 		if(agency !=null && agency.getAgencyId()>0){
 			order.setAgencyId(agency.getAgencyId());
 		}else{

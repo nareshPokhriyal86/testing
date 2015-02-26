@@ -328,7 +328,7 @@ public class TaskQueueUtil{
     	
     }
     
-    public static void addDailyDataTask(String taskURL, String startDate, String endDate, String loadType, String taskType){
+    public static void addDailyDataTask(String taskURL, String startDate, String endDate, String loadType, String taskType, String orderId){
     	log.info("Add task in taskQueue with taskURL:"+taskURL);
     	
     	Queue queue = queueMap.get("default");
@@ -340,7 +340,8 @@ public class TaskQueueUtil{
     			.param("startDate", startDate)
     			.param("loadType", loadType)
     			.param("endDate", endDate)
-    			.param("taskType", taskType));
+    			.param("taskType", taskType)
+    			.param("orderId", orderId));
     }
     
     /*public static void dailyDataUpload(String taskURL, String startDate, String endDate, String orderIds, String loadTypeElem
@@ -378,7 +379,7 @@ public class TaskQueueUtil{
     }*/
     
     public static String dailyDataUpload(String taskURL, String startDate, String endDate, String orderIds, String dfpNetworkCode , String publisherIdInBQ,
-    		String loadTypeElem, boolean historical,String dfpTaskKey, Long entityId, String taskType){
+    		String loadTypeElem, boolean historical,String dfpTaskKey, Long entityId, String taskType, String merge){
     	log.info("Add task in taskQueue with taskURL:"+taskURL);
     	String taskQueueType = "";
     	if(taskType!=null && taskType.equals(LinMobileConstants.DAILY_TASK_TYPE)){
@@ -403,6 +404,7 @@ public class TaskQueueUtil{
     			.param("publisherIdInBQ", publisherIdInBQ)
     			.param("merge",new Boolean(historical).toString())
     			.param("dfpTaskKey",dfpTaskKey)
+    			.param("merge",merge)
     			.param("entityId", entityId.toString()));
         
         try{

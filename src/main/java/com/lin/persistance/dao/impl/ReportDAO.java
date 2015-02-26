@@ -1,9 +1,11 @@
 package com.lin.persistance.dao.impl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import com.google.api.services.bigquery.model.QueryResponse;
 import com.google.appengine.api.datastore.ReadPolicy.Consistency;
 import com.googlecode.objectify.Objectify;
 import com.lin.persistance.dao.IReportDAO;
@@ -17,6 +19,8 @@ import com.lin.server.bean.DfpOrderIdsObj;
 import com.lin.server.bean.FinalisedTableDetailsObj;
 import com.lin.server.bean.ProcessFileObj;
 import com.lin.server.bean.TrackCronJobReport;
+import com.lin.web.dto.QueryDTO;
+import com.lin.web.gaebigquery.BigQueryUtil;
 import com.lin.web.service.impl.OfyService;
 
 
@@ -34,7 +38,7 @@ public class ReportDAO implements IReportDAO{
 	}
 	public void saveDFPTaskEntity(DFPTaskEntity obj) throws DataServiceException {
 		strongObfy.save().entity(obj).now();
-		obfy.clear();
+		strongObfy.clear();
 	}
 	
 	 public DFPTaskEntity  loadDFPTaskEntity (String id) throws DataServiceException{
@@ -231,4 +235,31 @@ public class ReportDAO implements IReportDAO{
     			.filter("processKey = ", processKey).first().now();
     	return dailyDataProcessObj;
     } 
+    
+    @Override
+	public QueryResponse getAllOrderIdsForNonFinaliseData(QueryDTO queryDTO) throws DataServiceException, IOException {
+    	QueryResponse queryResponse = null;
+		StringBuilder query = new StringBuilder();
+		query.append("SELECT Order_Id FROM "+queryDTO.getQueryData()+" group by Order_Id");
+		log.info("getAllOrderIdsForNonFinaliseData Query : "+query);
+		
+		queryDTO.setQueryData(query.toString());
+		
+		int j=0;
+		do{
+             try {
+				queryResponse = BigQueryUtil.getBigQueryData(queryDTO);
+			} catch (Exception e) {
+				log.severe("Query Exception = " + e.getMessage());
+				
+			}
+			j++;
+		}while((queryResponse == null || !queryResponse.getJobComplete()) && j<=3);
+		
+		if (queryResponse==null || queryResponse.getRows() == null || queryResponse.getRows().size() == 0) {
+			log.warning("Invalid getAllOrderIdsForNonFinaliseData query or no data found...");
+		}
+		return queryResponse;
+		
+    }
 }

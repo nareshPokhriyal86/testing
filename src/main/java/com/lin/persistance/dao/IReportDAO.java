@@ -1,7 +1,9 @@
 package com.lin.persistance.dao;
 
+import java.io.IOException;
 import java.util.List;
 
+import com.google.api.services.bigquery.model.QueryResponse;
 import com.lin.server.Exception.DataServiceException;
 import com.lin.server.bean.DFPTaskEntity;
 import com.lin.server.bean.DailyDataProcessObj;
@@ -12,6 +14,7 @@ import com.lin.server.bean.DfpOrderIdsObj;
 import com.lin.server.bean.FinalisedTableDetailsObj;
 import com.lin.server.bean.ProcessFileObj;
 import com.lin.server.bean.TrackCronJobReport;
+import com.lin.web.dto.QueryDTO;
 
 
 public interface IReportDAO extends IBaseDao{
@@ -53,4 +56,6 @@ public interface IReportDAO extends IBaseDao{
 	public void saveDFPTaskEntity(DFPTaskEntity obj) throws DataServiceException ;
 	DFPTaskEntity loadDFPTaskEntity(String id) throws DataServiceException;
 	public List<DFPTaskEntity>  loadDFPTaskEntityByTaskKey (String dfpTaskKey) throws DataServiceException;
+	QueryResponse getAllOrderIdsForNonFinaliseData(QueryDTO queryDTO)
+			throws DataServiceException, IOException;
 }

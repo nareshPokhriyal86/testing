@@ -19,6 +19,7 @@ public class LinMobileVariables {
 	
 	public static final String GOOGLE_BIGQUERY_DATASET_ID = "LIN_DEV";
 	public static final String GOOGLE_BIGQUERY_RAW_DATASET_ID = "LIN_RAW";
+
 	public static final String APPLICATION_BUCKET_NAME = "linmobile_dev";
 	public static final String LIN_DIGITAL_CLOUD_STORAGE_BUCKET = "lindigital_dev";
 	public static final String LIN_MEDIA_CLOUD_STORAGE_BUCKET = "linmedia_dev";

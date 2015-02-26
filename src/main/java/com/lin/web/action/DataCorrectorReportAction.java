@@ -176,7 +176,6 @@ public class DataCorrectorReportAction implements ServletRequestAware,SessionAwa
 			} catch (IOException e) {
 				log.severe("Failed to upload file at cloud storage. IOException: "+e.getMessage());
 				reportsResponse=null;
-				e.printStackTrace();
 			}
 			if(reportsResponse !=null){
 				collectorObj=new DataCollectorReport(id, reportId, splitRawFileName,
@@ -295,7 +294,6 @@ public class DataCorrectorReportAction implements ServletRequestAware,SessionAwa
 			} catch (IOException e) {
 				log.severe("Failed to upload file at cloud storage. IOException: "+e.getMessage());
 				reportsResponse=null;
-				e.printStackTrace();
 			}
 			if(reportsResponse !=null){			
 				processorObj.setReportPath(reportsResponse);

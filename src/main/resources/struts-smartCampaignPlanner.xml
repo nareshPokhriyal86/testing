@@ -213,16 +213,23 @@
 	            </result>
         </action>
          -->
-           <action name="addAdvertiser" class="com.lin.web.action.SmartCampaignPlannerAction" method="addAdvertiser">
+     <!--       <action name="addAdvertiser" class="com.lin.web.action.SmartCampaignPlannerAction" method="addAdvertiser">      //shubham
 		       <param name="contentType">text/html</param>
 	            <result type="json">
 	              <param name="root">advertisersObj</param> 
 	            </result>
         </action>
-         <action name="addAgency" class="com.lin.web.action.SmartCampaignPlannerAction" method="addAgency">
+         <action name="addAgency" class="com.lin.web.action.SmartCampaignPlannerAction" method="addAgency">                 //shubham
 		       <param name="contentType">text/html</param>
 	            <result type="json">
 	              <param name="root">agenciesObj</param> 
+	            </result>
+        </action> -->
+        
+           <action name="addAccount" class="com.lin.web.action.SmartCampaignPlannerAction" method="addAccount">
+		       <param name="contentType">text/html</param>
+	            <result type="json">
+	              <param name="root">accountObj</param> 
 	            </result>
         </action>
         
@@ -312,6 +319,10 @@
             <result type="json">
               <param name="root">jsonObject</param> 
             </result>
+       </action>
+       
+        <action name="copyAdvAgcyIntoAccount" class="com.lin.web.action.SmartCampaignPlannerAction" method="copyAdvAgcyIntoAccountEntity">
+         	
        </action>
        
        <action name="getAllProductsForcast" class="com.lin.web.action.SmartCampaignPlannerAction" method="getAllProductsForcast" />

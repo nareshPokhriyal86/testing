@@ -82,7 +82,6 @@ public class GetRefreshToken {
 							+ "located in your home directory in your src/main/resources directory, or "
 							+ "on your classpath. If you do not have a client ID or secret, please create one in "
 							+ "the API console: https://code.google.com/apis/console#access");
-			System.exit(1);
 		}
 		// Get the OAuth2 credential.
 		Credential credential = getOAuth2Credential(clientSecrets);

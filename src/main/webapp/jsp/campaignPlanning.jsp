@@ -168,12 +168,12 @@
 									    	<label class="control-label" for="multiSelect">Advertiser <span class="req star">*</span>&nbsp; &nbsp;<span type="hidden" style="color: red;" id="advertiserError" tabindex="-1"></span></label>
 												<div class="controls">
 												<s:if test="unifiedCampaignDTO.selectedAdvertiserList!=null && unifiedCampaignDTO.selectedAdvertiserList.size()>0">
-													<s:select Class="span12 with-search"	 id="advertiserListId" required="required" name="unifiedCampaignDTO.selectedAdvertiser"
+													<s:select Class="span12 select2-chosen"	 id="advertiserListId" required="required" name="unifiedCampaignDTO.selectedAdvertiser"
 				           						 		 onchange="addNewAdvertiserPopup()" list="unifiedCampaignDTO.advertiserList" listKey="id" listValue="value" value="%{unifiedCampaignDTO.selectedAdvertiserList.{id}}">
 				           							</s:select>
 												</s:if>
 												<s:else>
-													<s:select Class="span12 with-search"	 id="advertiserListId" required="required" name="unifiedCampaignDTO.selectedAdvertiser"
+													<s:select Class="span12 select2-chosen"	 id="advertiserListId" required="required" name="unifiedCampaignDTO.selectedAdvertiser"
 				           						 		 onchange="addNewAdvertiserPopup()" list="unifiedCampaignDTO.advertiserList" listKey="id" listValue="value" value="">
 				           							</s:select>
 												
@@ -186,12 +186,12 @@
 									    	<label class="control-label" for="multiSelect">Agency</label>
 												<div class="controls">
 												<s:if test="unifiedCampaignDTO.selectedAdvertiserList!=null && unifiedCampaignDTO.selectedAdvertiserList.size()>0">
-													<s:select Class="span12 with-search"	 id="agencyListId" required="required" name="unifiedCampaignDTO.selectedAgency"
+													<s:select Class="span12 select2-chosen"	 id="agencyListId" required="required" name="unifiedCampaignDTO.selectedAgency"
 				           						 		 onchange="addNewAgencyPopup()" list="unifiedCampaignDTO.agencyList" listKey="id" listValue="value" value="%{unifiedCampaignDTO.selectedAgencyList.{id}}">
 				           							</s:select>
 												</s:if>
 												<s:else>
-													<s:select Class="span12 with-search"	 id="agencyListId" required="required" name="unifiedCampaignDTO.selectedAgency"
+													<s:select Class="span12 select2-chosen"	 id="agencyListId" required="required" name="unifiedCampaignDTO.selectedAgency"
 				           						 		onchange="addNewAgencyPopup()" list="unifiedCampaignDTO.agencyList" listKey="id" listValue="value" value="">
 				           							</s:select>
 												</s:else>

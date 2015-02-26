@@ -171,5 +171,7 @@ public interface IUserDetailsDAO extends IBaseDao{
 	public List<CompanyObj> getAllCompany(String companyType) throws DataServiceException;
 
 	CompanyObj getCompanyByCompanyId(long companyId) throws Exception;
+
+	public Map<String, AccountsEntity> loadAllAccountsByIds(String[] accountIds) throws Exception;
   
 }

@@ -130,8 +130,10 @@ public class LoginAction extends ActionSupport implements
 					sessionDTO.setCompanyLogo(true);
 					sessionDTO.setCompanyLogoURL(login.getCompanyLogoURL());
 				}
+				sessionDTO.setCompanyName(login.getCompanyName());
 				sessionDTO.setAdminUser(login.isAdminUser());
 				sessionDTO.setSuperAdmin(login.isSuperAdmin());
+				sessionDTO.setClient(login.isClient());
 				sessionDTO.setPublisherPoolPartner(login.isPublisherPoolPartner());
 				
 				session.put("sessionDTO", sessionDTO);

@@ -24,6 +24,7 @@ import com.lin.server.bean.ProcessFileObj;
 import com.lin.web.dto.CloudProjectDTO;
 import com.lin.web.dto.DataUploaderDTO;
 import com.lin.web.dto.QueryDTO;
+import com.lin.web.gaebigquery.BigQueryUtil;
 import com.lin.web.service.IHistoricalReportService;
 import com.lin.web.service.IReportService;
 import com.lin.web.service.impl.BusinessServiceLocator;
@@ -71,6 +72,7 @@ SessionAware {
 		String endDate=request.getParameter("end");		
 		String loadType  = request.getParameter("loadType");
 		String taskType = LinMobileConstants.DAILY_TASK_TYPE;
+		String orderId = request.getParameter("orderId");
 		if(startDate !=null && !DateUtil.isDateFormatYYYYMMDD(startDate)){
 			reportsResponse="Invalid startDate :"+startDate+", Please provide yyyy-MM-dd format.";
 			dateCheck=false;
@@ -88,7 +90,10 @@ SessionAware {
 			 if(loadType==null){
 				 loadType = "";
 			 }
-		    TaskQueueUtil.addDailyDataTask(taskURL, startDate, endDate, loadType,taskType);
+			 if(orderId==null){
+				 orderId="";
+			 } 
+		    TaskQueueUtil.addDailyDataTask(taskURL, startDate, endDate, loadType,taskType, orderId);
 		   }else{
 			   reportsResponse="Invalid dates...";
 			   log.info(reportsResponse);
@@ -104,6 +109,7 @@ SessionAware {
 		log.info("updateDailyNonFinaliseData action executes..");	
 		String taskURL = "/addDailyDataTask.lin";
 		String taskType = LinMobileConstants.NON_FINALISE_TASK_TYPE;
+		String orderId = request.getParameter("orderId");
 		Date currentDate=new Date();
 		int i=1;
 		String loadType  = request.getParameter("loadType");
@@ -114,61 +120,15 @@ SessionAware {
 			if(loadType==null){
 				 loadType = "";
 			 }
-			TaskQueueUtil.addDailyDataTask(taskURL, startDate, endDate, loadType,taskType);
+			if(orderId==null){
+				 orderId="";
+			 }
+			TaskQueueUtil.addDailyDataTask(taskURL, startDate, endDate, loadType,taskType, orderId);
 			i++;
 		}
 		return Action.SUCCESS;
 	}
 	
-/*	public void loadDailyDataTasks() throws Exception {
-		log.info("inside loadDailyDataTasks");
-		String start=request.getParameter("startDate");		
-		String end=request.getParameter("endDate");		
-		String loadType  = request.getParameter("loadType");
-		
-		ArrayList<String> loadTypeList = new ArrayList<String>();
-		if(loadType == null || loadType.trim().length() == 0 || loadType.equals("")){
-			loadTypeList.add(LinMobileConstants.LOAD_TYPE_CORE_PERFORMANCE);
-			loadTypeList.add(LinMobileConstants.LOAD_TYPE_CUSTOM_EVENT);
-			loadTypeList.add(LinMobileConstants.LOAD_TYPE_LOCATION);
-			loadTypeList.add(LinMobileConstants.LOAD_TYPE_RICH_MEDIA);
-			loadTypeList.add(LinMobileConstants.LOAD_TYPE_TARGET);
-		}else{
-			loadTypeList.add(loadType);
-		}
-		IReportService service = (IReportService) BusinessServiceLocator.locate(IReportService.class);
-		Integer  progressTaskCount = 0;
-		List<DataUploaderDTO> DataUploaderDTOList = DataLoaderUtil.getDataUploaderDTO(LinMobileConstants.DAILY_REPORT_ORDER_COUNT);
-		if(DataUploaderDTOList!=null && DataUploaderDTOList.size()>0){
-			for(DataUploaderDTO dataUploaderDTO : DataUploaderDTOList){
-				for(String loadTypeElem : loadTypeList){
-					if(dataUploaderDTO != null  && dataUploaderDTO.getOrderIdList() != null && dataUploaderDTO.getOrderIdList().size() > 0){
-						String processKey = loadTypeElem+"_"+start+"_"+end+"_"+dataUploaderDTO.getDfpNetworkCode()+"_"+dataUploaderDTO.getPublisherBQId();
-						DailyDataProcessObj dailyDataProcessObj = new DailyDataProcessObj();
-						dailyDataProcessObj = service.getDailyDataProcessObj(processKey);
-						if(dailyDataProcessObj!=null){
-							progressTaskCount = dailyDataProcessObj.getTaskCount();
-						}
-						if(progressTaskCount == null || progressTaskCount<=0){
-							 dailyDataProcessObj = new DailyDataProcessObj(processKey, processKey, dataUploaderDTO.getOrderIdList().size());
-							service.saveDailyDataProcessObj(dailyDataProcessObj,processKey);
-							for(String orderIds : dataUploaderDTO.getOrderIdList() ){
-								TaskQueueUtil.dailyDataUpload("/runDailyDataTask.lin", start, end, orderIds, loadTypeElem, 
-											dataUploaderDTO.getDfpNetworkCode(), dataUploaderDTO.getPublisherBQId()+"", dataUploaderDTO.getPublisherName(),processKey);
-								log.info("Task added for orderIDs : "+orderIds+ " for loadtype : "+loadTypeElem+", processKey : "+processKey+", taskCount : "+progressTaskCount+", processDataKeyFileMap : "+processDataKeyFileMap);
-								//Thread.sleep(2000);
-							}
-						}else{
-							log.warning("tasks already in running for key : "+processKey);
-						}
-					}else {
-						log.info("getOrderIdList is Empty : "+dataUploaderDTO);
-					}
-				}
-			}
-		}
-
-	}*/
 	
 	public void loadDailyDataTasks() throws Exception {
 		log.info("inside loadDailyDataTasks");
@@ -176,6 +136,7 @@ SessionAware {
 		String end=request.getParameter("endDate");		
 		String loadType  = request.getParameter("loadType");
 		String taskType = request.getParameter("taskType");
+		String orderId = request.getParameter("orderId");
 		boolean historical = false;
 		ArrayList<String> loadTypeList = new ArrayList<String>();
 		if(loadType == null || loadType.trim().length() == 0 || loadType.equals("")){
@@ -188,23 +149,39 @@ SessionAware {
 			loadTypeList.add(loadType);
 		}
 		IHistoricalReportService service = (IHistoricalReportService) BusinessServiceLocator.locate(IHistoricalReportService.class);
-		List<DataUploaderDTO> DataUploaderDTOList = DataLoaderUtil.getDataUploaderDTO(LinMobileConstants.DAILY_REPORT_ORDER_COUNT);
+		List<DataUploaderDTO> DataUploaderDTOList = DataLoaderUtil.getDataUploaderDTO(orderId,taskType);
 		if(DataUploaderDTOList!=null && DataUploaderDTOList.size()>0){
 			for(DataUploaderDTO dataUploaderDTO : DataUploaderDTOList){
 				for(String loadTypeElem : loadTypeList){
-					if(dataUploaderDTO != null  && dataUploaderDTO.getOrderIdList() != null && dataUploaderDTO.getOrderIdList().size() > 0){
+					if(dataUploaderDTO != null  && dataUploaderDTO.getOrderIdList() != null && dataUploaderDTO.getOrderIdList().size() > 0 && !dataUploaderDTO.getDfpNetworkCode().equals(LinMobileConstants.LIN_DIGITAL_DFP_NETWORK_CODE) ){
 						String dfpTaskkey = System.currentTimeMillis()+"_"+loadTypeElem+"_"+dataUploaderDTO.getDfpNetworkCode()+"_"+dataUploaderDTO.getPublisherBQId();
 						for(String orderIds : dataUploaderDTO.getOrderIdList() ){
 							DFPTaskEntity entity = service.saveInProgressTask("not-generated", dataUploaderDTO.getDfpNetworkCode(), start, end, dfpTaskkey, loadTypeElem, orderIds);
 							String taskName = "";
+							Boolean merge = false;
+							if(orderId != null && !orderId.contains(",") && orderId.trim().length() > 0){
+								CloudProjectDTO cloudProjectBQDTO=DataLoaderUtil.getCloudProjectDTO(dataUploaderDTO.getPublisherBQId()+"");
+								String tableId = DataLoaderUtil.getSchemaNameByLoadType(loadType) + "_" + DFPReportService.getDFPDataSourceByDFPNetworkCode(dataUploaderDTO.getDfpNetworkCode()) + "_" + start.replaceAll("-", "_");
+								if(BigQueryUtil.doesTableExist(cloudProjectBQDTO.getBigQueryServiceAccountEmail(), cloudProjectBQDTO.getBigQueryServicePrivateKey(), cloudProjectBQDTO.getBigQueryProjectId(), LinMobileVariables.GOOGLE_BIGQUERY_DATASET_ID, tableId))
+								{
+									String copiedTable = tableId+"_copy_"+System.currentTimeMillis();
+									log.info("Going to copy table from "+tableId+" to "+copiedTable);
+									BigQueryUtil.copyTable(tableId, copiedTable, "where order_id not in('"+orderId+"')", LinMobileVariables.GOOGLE_BIGQUERY_DATASET_ID, LinMobileVariables.GOOGLE_BIGQUERY_RAW_DATASET_ID, cloudProjectBQDTO.getBigQueryServiceAccountEmail(), cloudProjectBQDTO.getBigQueryServicePrivateKey(), cloudProjectBQDTO.getBigQueryProjectId(), false);
+									log.info("Going to copy back from "+copiedTable+" to "+tableId);
+									BigQueryUtil.copyTable(copiedTable, tableId, null, LinMobileVariables.GOOGLE_BIGQUERY_RAW_DATASET_ID, LinMobileVariables.GOOGLE_BIGQUERY_DATASET_ID, cloudProjectBQDTO.getBigQueryServiceAccountEmail(), cloudProjectBQDTO.getBigQueryServicePrivateKey(), cloudProjectBQDTO.getBigQueryProjectId(), false);
+								merge = true;	
+								}
+
+							}
 							if(taskType!=null && taskType.equals(LinMobileConstants.DAILY_TASK_TYPE)){
 								 taskName = TaskQueueUtil.dailyDataUpload("/runDailyDataTask.lin", start, end, orderIds, dataUploaderDTO.getDfpNetworkCode(),
-										dataUploaderDTO.getPublisherBQId()+"",loadTypeElem, historical, dfpTaskkey, (entity.getId() == null ? 0 : entity.getId()), taskType);
+										dataUploaderDTO.getPublisherBQId()+"",loadTypeElem, historical, dfpTaskkey, (entity.getId() == null ? 0 : entity.getId()), taskType, merge.toString());
 							}else if(taskType!=null && taskType.equals(LinMobileConstants.NON_FINALISE_TASK_TYPE)){
-								 taskName = TaskQueueUtil.dailyDataUpload("/runDailyDataTask.lin", start, end, orderIds, dataUploaderDTO.getDfpNetworkCode(),
-										dataUploaderDTO.getPublisherBQId()+"",loadTypeElem, historical, dfpTaskkey, (entity.getId() == null ? 0 : entity.getId()), taskType);
+								 taskName = TaskQueueUtil.dailyDataUpload("/runDailyDataTask.lin", start, end, orderIds, dataUploaderDTO.getDfpNetworkCode(), 
+										dataUploaderDTO.getPublisherBQId()+"",loadTypeElem, historical, dfpTaskkey, (entity.getId() == null ? 0 : entity.getId()), taskType, merge.toString());
+								
 							}
-							
+							 entity.setTaskType(taskType);
 							entity.setTaskName(taskName);
 							service.saveOrUpdateTask(entity);
 							}

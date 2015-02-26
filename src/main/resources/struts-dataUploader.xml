@@ -528,7 +528,7 @@
             <result type="json"/>
         </action>  
 
-         <action name="loadHistoricalData" class="com.lin.web.action.HistoricalDataLoaderAction" method="loadHistoricalData">
+         <action name="loadFullHistorical" class="com.lin.web.action.HistoricalDataLoaderAction" method="startFullHistoricalLoad">
 		    <param name="contentType">text/html</param>
             <result type="json"/>
         </action>  
@@ -540,10 +540,7 @@
 		    <param name="contentType">text/html</param>
             <result type="json"/>
         </action>  
-        <action name="loadFullHistorical" class="com.lin.web.action.HistoricalDataLoaderAction" method="startFullHistoricalLoad">
-		    <param name="contentType">text/html</param>
-            <result type="json"/>
-        </action>  
+       
         
         <action name="runSmartDataLoader" class="com.lin.web.action.HistoricalDataLoaderAction" method="loadSmartDataFromDFP" />
         <action name="runSmartDataLoaderTask" class="com.lin.web.action.HistoricalDataLoaderAction" method="loadSmartDataFromDFPTask" />  
@@ -572,6 +569,17 @@
 		    <param name="contentType">text/html</param>
             <result type="json"/>
         </action>
+        
+        <action name="addSmartUpdateFinaliseDataTask" class="com.lin.web.action.HistoricalDataLoaderAction" method="smartFinaliseTableMerge">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
+        <action name="smartUpdateFinaliseData" class="com.lin.web.action.HistoricalDataLoaderAction" method="moveFinaliseData">
+		    <param name="contentType">text/html</param>
+            <result type="json"/>
+        </action>
+        
         
        <!-- Mapping for Topix -->
         <action name="dailyUpdateAdUnitsTopix" class="com.lin.web.action.TopixDFPAction" method="dailyUpdateAdUnits">

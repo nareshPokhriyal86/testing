@@ -74,20 +74,23 @@
 						class="icon-off"></i></a>
 				</div>
 				<!-- end buttons for phone device -->
-				<div class="btn-group hidden-phone" style="margin-left: 4px;">
-					<a href="campaignAlertListing.lin"><img
-						style="cursor: pointer; cursor: hand;" src="img/bell-image.png"></a>
-				</div>
-
+				<s:if test="%{#session.sessionDTO.roleId != 4}">
+					<div class="btn-group hidden-phone" style="margin-left: 4px;">
+						<a href="campaignAlertListing.lin"><img
+							style="cursor: pointer; cursor: hand;" src="img/bell-image.png"></a>
+					</div>
+				</s:if>
 				<!-- theme dropdown -->
+				<!--
 				<div class="btn-group hidden-phone" style="margin-left: 4px;">
 
 					<a href="javascript:void(0)" class="btn btn-small btn-inverse "
 						id="reset-widget"><i style="color: #FFF;" class="icon-refresh"></i></a>
-					<!--</div>-->
-					<!-- end theme dropdown-->
+					
+					<!--</div>
+					<!-- end theme dropdown
 
-				</div>
+				</div>  -->
 
 				<!-- end demo theme switcher-->
 			</div>

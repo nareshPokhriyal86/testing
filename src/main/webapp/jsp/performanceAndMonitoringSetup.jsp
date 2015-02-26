@@ -82,6 +82,17 @@
 		<link rel="stylesheet" href="../css/theme.css?v=<s:property value='deploymentVersion'/>">
 		<link rel="stylesheet" href="../css/custom.css?v=<s:property value='deploymentVersion'/>">
 		
+		<style>
+		.arrowDefault{
+			background: url('../img/DT/sort_both.png') no-repeat center right;
+		}
+		.arrowAsc{
+			background: url('../img/DT/sort_asc.png') no-repeat center right;
+		}
+		.arrowDesc{
+			background: url('../img/DT/sort_desc.png') no-repeat center right;
+		}
+		</style>
 		</head>
 		
 		<body >
@@ -111,8 +122,8 @@
 			                   <div class="controls">
                                    <select class="span2 with-search" id="campaignPerformanceFilter" ng-change="campaignPerformanceFilter()" ng-model="selectedStatus" ng-options="stat.name for stat in status" 
                                    style="font-size:16px;height: 33px;">
-            							  
                                    </select>
+                                   <div ng-show="isFilterResetRequired()" data-ng-click="resetFilter()" class="btn btn-small btn-primary" style="float:right" title="This will reset campaign list to default view"><i style="color: #FFF;" class="icon-refresh"  title="This will reset campaign list to default view"></i></div>
                                </div>
        <div>
 		<div class="row-fluid">
@@ -124,31 +135,55 @@
 					<table class="table table-striped table-hover" style="border: 1px solid #D6CBCB;">
 					
 							<tr>
-							<td style="font-weight:bold;cursor:pointer;cursor:hand;background:url('../img/DT/sort_both.png') no-repeat center right;padding-right: 22px;" data-ng-click="predicate = 'name'; reverse=!reverse" title="Campaign Name">Campaign Name</td>
-							<td style="font-weight:bold;cursor:pointer;cursor:hand;background:url('../img/DT/sort_both.png') no-repeat center right;padding-right: 22px;" data-ng-click="predicate = 'Partner'; reverse=!reverse" title="Partner">Partner</td>
-							<td style="font-weight:bold;cursor:pointer;cursor:hand;background:url('../img/DT/sort_both.png') no-repeat center right;padding-right: 22px;" data-ng-click="predicate = 'sDate'; reverse=!reverse" title="Date">Date</td>
-							<td style="font-weight:bold;cursor:pointer;cursor:hand;background:url('../img/DT/sort_both.png') no-repeat center right;padding-right: 22px;" data-ng-click="predicate = 'goal'; reverse=!reverse" 
-							title="CPM-Impression &#10;CPC-Clicks &#10;CPD-100% Allocation">Goal</td>
-							<td style="font-weight:bold;cursor:pointer;cursor:hand;background:url('../img/DT/sort_both.png') no-repeat center right;padding-right: 22px;" data-ng-click="predicate = 'delivered'; reverse=!reverse" title="Delivering">Delivering</td>
-							<td style="font-weight:bold;cursor:pointer;cursor:hand;background:url('../img/DT/sort_both.png') no-repeat center right;padding-right: 22px;" data-ng-click="predicate = 'clicks'; reverse=!reverse" title="Clicks">Clicks</td>
-							<td style="font-weight:bold;cursor:pointer;cursor:hand;background:url('../img/DT/sort_both.png') no-repeat center right;padding-right: 22px;" data-ng-click="predicate = 'ctr'; reverse=!reverse" title="CTR">CTR</td>
+							<td style="font-weight:bold;cursor:pointer;cursor:hand;padding-right: 22px;" data-ng-click="predicate = 'name'; reverse=!reverse" ng-class="(predicate == 'name')?(reverse?'arrowAsc':'arrowDesc'):'arrowDefault' ">Campaign Name</td>
+							
+							<s:if test="%{#session.sessionDTO.roleId !=4}">
+							<td style="font-weight:bold;cursor:pointer;cursor:hand;padding-right: 22px;" data-ng-click="predicate = 'Partner'; reverse=!reverse"  ng-class="(predicate == 'Partner')?(reverse?'arrowAsc':'arrowDesc'):'arrowDefault' ">Partner</td>
+							</s:if>
+							
+							<td style="font-weight:bold;cursor:pointer;cursor:hand;padding-right: 22px;" data-ng-click="predicate = 'sDate'; reverse=!reverse"  ng-class="(predicate == 'sDate')?(reverse?'arrowAsc':'arrowDesc'):'arrowDefault' ">Start Date</td>
+							<td style="font-weight:bold;cursor:pointer;cursor:hand;padding-right: 22px;" data-ng-click="predicate = 'eDate'; reverse=!reverse"  ng-class="(predicate == 'eDate')?(reverse?'arrowAsc':'arrowDesc'):'arrowDefault' ">End Date</td>
+							
+							<td style="font-weight:bold;cursor:pointer;cursor:hand;padding-right: 22px;" data-ng-click="predicate = 'goal'; reverse=!reverse"  ng-class="(predicate == 'goal')?(reverse?'arrowAsc':'arrowDesc'):'arrowDefault' ">Goal</td>
+							<td style="font-weight:bold;cursor:pointer;cursor:hand;padding-right: 22px;" data-ng-click="predicate = 'delivered'; reverse=!reverse"  ng-class="(predicate == 'delivered')?(reverse?'arrowAsc':'arrowDesc'):'arrowDefault' ">Delivered</td>
+							<td style="font-weight:bold;cursor:pointer;cursor:hand;padding-right: 22px;" data-ng-click="predicate = 'clicks'; reverse=!reverse" ng-class="(predicate == 'clicks')?(reverse?'arrowAsc':'arrowDesc'):'arrowDefault' ">Clicks</td>
+							<td style="font-weight:bold;cursor:pointer;cursor:hand;padding-right: 22px;" data-ng-click="predicate = 'ctr'; reverse=!reverse" ng-class="(predicate == 'ctr')?(reverse?'arrowAsc':'arrowDesc'):'arrowDefault' ">CTR</td>
 							<td style="font-weight:bold;" title="Progress">Progress</td>
-							<td style="font-weight:bold;cursor:pointer;cursor:hand;background:url('../img/DT/sort_both.png') no-repeat center right;padding-right: 22px;" data-ng-click="predicate = 'status'; reverse=!reverse" title="Status">Status</td>
+							<td style="font-weight:bold;cursor:pointer;cursor:hand;padding-right: 22px;" data-ng-click="predicate = 'status'; reverse=!reverse" ng-class="(predicate == 'status')?(reverse?'arrowAsc':'arrowDesc'):'arrowDefault' ">Status</td>
+							
+							<s:if test="%{#session.sessionDTO.roleId !=4}">
 							<td></td>
+							</s:if>
+							
 					     	</tr>
 						
 							<tr	data-ng-repeat="campaign in campaigns | filter:searchCampaign | orderBy : predicate : reverse">
 
 							<td>
-								<div style="cursor:pointer;cursor:hand;" title="{{ campaign.name }}" data-ng-click="showPerforemanceMonitoring(campaign.campaignId)">{{ campaign.name }}</div>
+								<div style="cursor:pointer;cursor:hand;" data-ng-click="showPerforemanceMonitoring(campaign.campaignId)">{{ campaign.name }}</div>
+								<s:if test="%{#session.sessionDTO.roleId !=4}">
 								<a href="https://www.google.com/dfp/{{ campaign.dfpNetworkCode }}#delivery/OrderDetail/orderId={{ campaign.id }}" target="_blank"><span><img src="img/dfp_id_logo.png" alt="dfp" style="height: 20px;"></span><span style="font-style: italic;font-size: 12px;border: 1px #adc8ea solid;padding-right: 2px;padding-left: 3px;padding-bottom: 0px;background-color: #e0e4ec;color: #2a5da4;font-weight: bold;"><span style="margin-right: -4px;">#</span> {{ campaign.id }}</span><span style="font:status-bar;margin-left:5px">{{campaign.dfpStatus}}</span></a>
+								</s:if>
 							</td>
-							<td  style="cursor:pointer;cursor:hand;" title="{{ campaign.partner }}" data-ng-click="showPerforemanceMonitoring(campaign.campaignId)">{{ campaign.partner }}</td>
-							<td  style="cursor:pointer;cursor:hand;width: 116px;" title="{{ campaign.date }}" data-ng-click="showPerforemanceMonitoring(campaign.campaignId)">{{ campaign.date }}</td>
-						    <td  style="cursor:pointer;cursor:hand;" title="{{ campaign.goal }}" data-ng-click="showPerforemanceMonitoring(campaign.campaignId)">{{ campaign.goal | number}}</td>
-						    <td  style="cursor:pointer;cursor:hand;" title="{{ campaign.delivered }}" data-ng-click="showPerforemanceMonitoring(campaign.campaignId)">{{ campaign.delivered | number}}</td>
-							<td  style="cursor:pointer;cursor:hand;" title="{{ campaign.clicks  }}" data-ng-click="showPerforemanceMonitoring(campaign.campaignId)">{{ campaign.clicks | number }}</td>
-							<td  style="cursor:pointer;cursor:hand;" title="{{ campaign.ctr }}" data-ng-click="showPerforemanceMonitoring(campaign.campaignId)">{{ campaign.ctr | number }}%</td>
+							
+							<s:if test="%{#session.sessionDTO.roleId !=4}">
+							<td  style="cursor:pointer;cursor:hand;" data-ng-click="showPerforemanceMonitoring(campaign.campaignId)">{{ campaign.partner }}</td>
+							</s:if>
+							
+							<td  style="cursor:pointer;cursor:hand;width: 116px;" data-ng-click="showPerforemanceMonitoring(campaign.campaignId)">{{ convertStringToDate(campaign.startDate,'mm-dd-yyyy') | date:'mediumDate' }}</td>
+							<td  style="cursor:pointer;cursor:hand;width: 116px;" data-ng-click="showPerforemanceMonitoring(campaign.campaignId)">{{ convertStringToDate(campaign.endDate,'mm-dd-yyyy') | date:'mediumDate' }}</td>
+							
+						    <td  style="cursor:pointer;cursor:hand;" data-ng-click="showPerforemanceMonitoring(campaign.campaignId)" ng-switch on="(campaign.goal != 0)">
+						    <div ng-switch-when="true" ng-switch on="campaign.rateType" style="font-size: 16px;">{{ campaign.goal | number}}<br/>
+						    	<span ng-switch-when="CPM">Impressions</span>
+						    	<span ng-switch-when="CPC">Clicks</span>
+						    	<span ng-switch-default>Impressions</span>
+						    </div>
+						    <div ng-switch-default style="font-size: 16px;">Not Set</div>
+						    </td>
+						    <td  style="cursor:pointer;cursor:hand;" data-ng-click="showPerforemanceMonitoring(campaign.campaignId)">{{ campaign.delivered | number}}</td>
+							<td  style="cursor:pointer;cursor:hand;" data-ng-click="showPerforemanceMonitoring(campaign.campaignId)">{{ campaign.clicks | number }}</td>
+							<td  style="cursor:pointer;cursor:hand;" data-ng-click="showPerforemanceMonitoring(campaign.campaignId)">{{ campaign.ctr | number }}%</td>
 							<td  style="cursor:pointer;cursor:hand;" ng-switch on="campaign.rateType">
 								
 								<div class="progress" ng-switch-when="CPM" ng-switch on="campaign.barStatus" data-html="true" popover="{{ campaign.dateProgress |number:0}}% Time Completed ({{ campaign.daysTillDate | number}} out of {{ campaign.totalDays | number}} Days)
@@ -202,16 +237,13 @@
  	  
 								</div>
 								
-								
-								
-							<!-- 	<div class="progress">
-              						<div class="bar bar-success" style="width:40%"></div>
-             	                 	<div class="bar " style="width:60%;border-right: 5px;border-right-style: outset;"></div>
-            					    <div class="bar " style="width: 100%;"></div>
-          						 </div> -->
 							</td>
-							<td  style="cursor:pointer;cursor:hand;" title="{{ campaign.status }}"  data-ng-click="showPerforemanceMonitoring(campaign.campaignId)">{{ campaign.status}}</td>
-						<td><span class="glyphicon glyphicon-bell " data-ng-click="showPopUp(campaign)"  ></span></td>
+							<td  style="cursor:pointer;cursor:hand;" data-ng-click="showPerforemanceMonitoring(campaign.campaignId)">{{ campaign.status}}</td>
+						
+						<s:if test="%{#session.sessionDTO.roleId !=4}">
+							<td><span class="glyphicon glyphicon-bell " data-ng-click="showPopUp(campaign)"  ></span></td>
+						</s:if>
+						
 						</tr>
 							  
 						<tr id="loaderRowId">

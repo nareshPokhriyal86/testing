@@ -47,6 +47,7 @@ public class DFPTaskEntity implements Serializable{
 	private String orderId;
 	private Date startTime = new Date();
 	private Date lastModifiedTime = new Date();
+	private String taskType;
 	public Long getId() {
 		return id;
 	}
@@ -158,6 +159,12 @@ public class DFPTaskEntity implements Serializable{
 	public void setDfpFileUrl(String dfpFileUrl) {
 		this.dfpFileUrl = dfpFileUrl;
 	}
+	public String getTaskType() {
+		return taskType;
+	}
+	public void setTaskType(String taskType) {
+		this.taskType = taskType;
+	}
 	public DFPTaskEntity(String taskName, String networkCode, String startDate, String endDate, String taskGroupKey, String loadType) {
 		super();
 		this.taskName = taskName;
@@ -190,8 +197,10 @@ public class DFPTaskEntity implements Serializable{
 				+ ", endDate=" + endDate + ", taskGroupKey=" + taskGroupKey
 				+ ", status=" + status + ", rawTableId=" + rawTableId
 				+ ", loadType=" + loadType + ", startTime=" + startTime
-				+ ", lastModifiedTime=" + lastModifiedTime + "]";
+				+ ", lastModifiedTime=" + lastModifiedTime 
+				+ ",taskType=" + taskType + "]";
 	}
+	
 	
 	
 }
